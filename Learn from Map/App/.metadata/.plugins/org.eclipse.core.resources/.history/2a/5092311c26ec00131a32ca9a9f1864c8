@@ -1,0 +1,7 @@
+package org.buildmlearn.learnfrommap.questionmodule;
+
+public class Question {
+	
+	private string code;
+
+}

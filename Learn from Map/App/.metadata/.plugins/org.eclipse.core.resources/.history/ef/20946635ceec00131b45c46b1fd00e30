@@ -1,0 +1,5 @@
+package org.buildmlearn.learnfrommap.databasehelper;
+
+public class DatabaseHelper {
+
+}

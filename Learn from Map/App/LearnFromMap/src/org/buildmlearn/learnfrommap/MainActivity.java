@@ -1,26 +1,29 @@
 package org.buildmlearn.learnfrommap;
 
-import org.buildmlearn.learnfrommap.questionmodule.XmlParser;
+import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
 
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 
 public class MainActivity extends ActionBarActivity {
 
+	
+	private static final String DB_NAME = "data_set3.db";
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        DatabaseHelper createDb = new DatabaseHelper(this, DB_NAME);
+        createDb.close();
+        
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())

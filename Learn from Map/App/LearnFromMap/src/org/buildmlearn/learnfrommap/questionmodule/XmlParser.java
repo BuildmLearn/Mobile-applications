@@ -1,8 +1,6 @@
 package org.buildmlearn.learnfrommap.questionmodule;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -16,11 +14,9 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import android.content.Context;
-import android.util.Log;
 
 public class XmlParser {
 	private Context mContext;
-	private String data;
 
 	public XmlParser(Context mContext)
 	{

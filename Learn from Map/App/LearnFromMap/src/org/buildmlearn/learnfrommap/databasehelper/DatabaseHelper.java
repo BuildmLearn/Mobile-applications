@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -14,6 +15,7 @@ import android.util.Log;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
 	public static String DB_PATH;
+	public static String TABLE_NAME = "main";
 	public static String DB_NAME;
 	public SQLiteDatabase database;
 	public Context context;
@@ -105,5 +107,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {}
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
+	
+	public Cursor select(String where, String[] whereArgs, String orderBy, String limit)
+	{
+		SQLiteDatabase db = this.getWritableDatabase();
+		Cursor cursor = db.query(TABLE_NAME, null, where, whereArgs, null, null, orderBy, limit);
+		Log.e("NAME", "starts");
+        if(cursor.moveToFirst())
+        {
+        	do
+        	{
+        		String name = cursor.getString(1);
+        		Log.e("NAME", name);
+        	}
+        	while(cursor.moveToNext());
+        }
+		db.close();
+		cursor.close();
+		return cursor;
+	}
 
 }

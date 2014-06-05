@@ -4,7 +4,9 @@ import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,8 +23,18 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DatabaseHelper createDb = new DatabaseHelper(this, DB_NAME);
-        createDb.close();
+        DatabaseHelper db = new DatabaseHelper(this, DB_NAME);
+        Cursor cursor = db.select(null, null, null, null);
+        if(cursor.moveToFirst())
+        {
+        	do
+        	{
+        		String name = cursor.getString(1);
+        		Log.d("NAME", name);
+        	}
+        	while(cursor.moveToNext());
+        }
+        db.close();
         
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -30,6 +42,8 @@ public class MainActivity extends ActionBarActivity {
                     .commit();
         }
     }
+    
+    		
 
 
     @Override

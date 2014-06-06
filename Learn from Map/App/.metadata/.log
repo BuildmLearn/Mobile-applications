@@ -1,0 +1,601 @@
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-06-05 00:24:54.438
+!MESSAGE Failed to call IFileListener.fileChanged
+!STACK 0
+java.lang.IllegalArgumentException: Path must include project and resource name: /appcompat_v7
+	at org.eclipse.core.runtime.Assert.isLegal(Assert.java:63)
+	at org.eclipse.core.internal.resources.Workspace.newResource(Workspace.java:2164)
+	at org.eclipse.core.internal.resources.Container.getFolder(Container.java:222)
+	at com.android.ide.eclipse.adt.internal.project.LibraryClasspathContainerInitializer.allocateDependencyContainer(LibraryClasspathContainerInitializer.java:371)
+	at com.android.ide.eclipse.adt.internal.project.LibraryClasspathContainerInitializer.updateProjects(LibraryClasspathContainerInitializer.java:88)
+	at com.android.ide.eclipse.adt.internal.project.ProjectHelper.updateProjects(ProjectHelper.java:278)
+	at com.android.ide.eclipse.adt.internal.sdk.Sdk$2.processJarFileChange(Sdk.java:1304)
+	at com.android.ide.eclipse.adt.internal.sdk.Sdk$2.fileChanged(Sdk.java:1274)
+	at com.android.ide.eclipse.adt.internal.resources.manager.GlobalProjectMonitor$DeltaVisitor.visit(GlobalProjectMonitor.java:233)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:69)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:49)
+	at com.android.ide.eclipse.adt.internal.resources.manager.GlobalProjectMonitor$1.resourceChanged(GlobalProjectMonitor.java:537)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
+	at org.eclipse.core.internal.resources.Resource.refreshLocal(Resource.java:1712)
+	at org.eclipse.egit.ui.Activator$ResourceRefreshJob.run(Activator.java:356)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-06-05 00:24:54.456
+!MESSAGE Failed to call IFileListener.fileChanged
+!STACK 0
+java.lang.IllegalArgumentException: Path must include project and resource name: /appcompat_v7
+	at org.eclipse.core.runtime.Assert.isLegal(Assert.java:63)
+	at org.eclipse.core.internal.resources.Workspace.newResource(Workspace.java:2164)
+	at org.eclipse.core.internal.resources.Container.getFolder(Container.java:222)
+	at com.android.ide.eclipse.adt.internal.project.LibraryClasspathContainerInitializer.allocateDependencyContainer(LibraryClasspathContainerInitializer.java:371)
+	at com.android.ide.eclipse.adt.internal.project.LibraryClasspathContainerInitializer.updateProjects(LibraryClasspathContainerInitializer.java:88)
+	at com.android.ide.eclipse.adt.internal.project.ProjectHelper.updateProjects(ProjectHelper.java:278)
+	at com.android.ide.eclipse.adt.internal.sdk.Sdk$2.processJarFileChange(Sdk.java:1304)
+	at com.android.ide.eclipse.adt.internal.sdk.Sdk$2.fileChanged(Sdk.java:1274)
+	at com.android.ide.eclipse.adt.internal.resources.manager.GlobalProjectMonitor$DeltaVisitor.visit(GlobalProjectMonitor.java:233)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:69)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:49)
+	at com.android.ide.eclipse.adt.internal.resources.manager.GlobalProjectMonitor$1.resourceChanged(GlobalProjectMonitor.java:537)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
+	at org.eclipse.core.internal.resources.Resource.refreshLocal(Resource.java:1712)
+	at org.eclipse.egit.ui.Activator$ResourceRefreshJob.run(Activator.java:356)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.egit.ui 4 0 2014-06-05 00:24:54.468
+!MESSAGE Failed to refresh projects from index changes
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Errors occurred while refreshing resources with the local file system.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refreshResource(FileSystemResourceManager.java:923)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refresh(FileSystemResourceManager.java:904)
+	at org.eclipse.core.internal.resources.Resource.refreshLocal(Resource.java:1699)
+	at org.eclipse.egit.ui.Activator$ResourceRefreshJob.run(Activator.java:356)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Contains: The project description file (.project) for 'appcompat_v7' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+!SUBENTRY 1 org.eclipse.core.resources 4 271 2014-06-05 00:24:54.469
+!MESSAGE Errors occurred while refreshing resources with the local file system.
+!SUBENTRY 2 org.eclipse.core.resources 4 567 2014-06-05 00:24:54.469
+!MESSAGE The project description file (.project) for 'appcompat_v7' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+
+!ENTRY org.eclipse.egit.ui 4 0 2014-06-05 00:24:54.475
+!MESSAGE Errors occurred while refreshing resources with the local file system.
+
+!ENTRY org.eclipse.jdt.core 4 4 2014-06-05 00:24:54.703
+!MESSAGE Exception while reading /LearnFromMap/.classpath
+!STACK 1
+org.eclipse.core.runtime.CoreException: File not found: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\LearnFromMap\.classpath.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:797)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
+	at org.eclipse.jdt.internal.core.util.Util.getResourceContentsAsByteArray(Util.java:1132)
+	at org.eclipse.jdt.internal.core.JavaProject.readFileEntriesWithException(JavaProject.java:2466)
+	at org.eclipse.jdt.internal.core.JavaProject.readFileEntries(JavaProject.java:2507)
+	at org.eclipse.jdt.internal.core.JavaProject.readRawClasspath(JavaProject.java:2545)
+	at com.android.ide.eclipse.adt.internal.build.builders.ResourceManagerBuilder.build(ResourceManagerBuilder.java:164)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: java.io.FileNotFoundException: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\LearnFromMap\.classpath (The system cannot find the file specified)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 19 more
+!SUBENTRY 1 org.eclipse.core.filesystem 4 271 2014-06-05 00:24:54.704
+!MESSAGE File not found: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\LearnFromMap\.classpath.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\LearnFromMap\.classpath (The system cannot find the file specified)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:797)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
+	at org.eclipse.jdt.internal.core.util.Util.getResourceContentsAsByteArray(Util.java:1132)
+	at org.eclipse.jdt.internal.core.JavaProject.readFileEntriesWithException(JavaProject.java:2466)
+	at org.eclipse.jdt.internal.core.JavaProject.readFileEntries(JavaProject.java:2507)
+	at org.eclipse.jdt.internal.core.JavaProject.readRawClasspath(JavaProject.java:2545)
+	at com.android.ide.eclipse.adt.internal.build.builders.ResourceManagerBuilder.build(ResourceManagerBuilder.java:164)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.jdt.core 4 4 2014-06-05 00:24:54.857
+!MESSAGE Exception while reading /LearnFromMap/.classpath
+!STACK 1
+org.eclipse.core.runtime.CoreException: File not found: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\LearnFromMap\.classpath.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:797)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
+	at org.eclipse.jdt.internal.core.util.Util.getResourceContentsAsByteArray(Util.java:1132)
+	at org.eclipse.jdt.internal.core.JavaProject.readFileEntriesWithException(JavaProject.java:2466)
+	at org.eclipse.jdt.internal.core.JavaProject.readFileEntries(JavaProject.java:2507)
+	at org.eclipse.jdt.internal.core.JavaProject.readRawClasspath(JavaProject.java:2545)
+	at com.android.ide.eclipse.adt.internal.build.builders.ResourceManagerBuilder.build(ResourceManagerBuilder.java:164)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: java.io.FileNotFoundException: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\LearnFromMap\.classpath (The system cannot find the file specified)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 19 more
+!SUBENTRY 1 org.eclipse.core.filesystem 4 271 2014-06-05 00:24:54.857
+!MESSAGE File not found: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\LearnFromMap\.classpath.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\LearnFromMap\.classpath (The system cannot find the file specified)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:797)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
+	at org.eclipse.jdt.internal.core.util.Util.getResourceContentsAsByteArray(Util.java:1132)
+	at org.eclipse.jdt.internal.core.JavaProject.readFileEntriesWithException(JavaProject.java:2466)
+	at org.eclipse.jdt.internal.core.JavaProject.readFileEntries(JavaProject.java:2507)
+	at org.eclipse.jdt.internal.core.JavaProject.readRawClasspath(JavaProject.java:2545)
+	at com.android.ide.eclipse.adt.internal.build.builders.ResourceManagerBuilder.build(ResourceManagerBuilder.java:164)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.jdt.core 4 4 2014-06-05 00:24:55.155
+!MESSAGE Exception while reading /LearnFromMap/.classpath
+!STACK 1
+org.eclipse.core.runtime.CoreException: File not found: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\LearnFromMap\.classpath.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:797)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
+	at org.eclipse.jdt.internal.core.util.Util.getResourceContentsAsByteArray(Util.java:1132)
+	at org.eclipse.jdt.internal.core.JavaProject.readFileEntriesWithException(JavaProject.java:2466)
+	at org.eclipse.jdt.internal.core.JavaProject.readFileEntries(JavaProject.java:2507)
+	at org.eclipse.jdt.internal.core.JavaProject.readRawClasspath(JavaProject.java:2545)
+	at com.android.ide.eclipse.adt.internal.project.BaseProjectHelper.getSourceClasspaths(BaseProjectHelper.java:84)
+	at com.android.ide.eclipse.adt.internal.project.BaseProjectHelper.getSourceClasspaths(BaseProjectHelper.java:103)
+	at com.android.ide.eclipse.adt.internal.build.builders.ChangedFileSetHelper.getJavaResCfs(ChangedFileSetHelper.java:65)
+	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.build(PostCompilerBuilder.java:274)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: java.io.FileNotFoundException: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\LearnFromMap\.classpath (The system cannot find the file specified)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 22 more
+!SUBENTRY 1 org.eclipse.core.filesystem 4 271 2014-06-05 00:24:55.156
+!MESSAGE File not found: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\LearnFromMap\.classpath.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\LearnFromMap\.classpath (The system cannot find the file specified)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:797)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
+	at org.eclipse.jdt.internal.core.util.Util.getResourceContentsAsByteArray(Util.java:1132)
+	at org.eclipse.jdt.internal.core.JavaProject.readFileEntriesWithException(JavaProject.java:2466)
+	at org.eclipse.jdt.internal.core.JavaProject.readFileEntries(JavaProject.java:2507)
+	at org.eclipse.jdt.internal.core.JavaProject.readRawClasspath(JavaProject.java:2545)
+	at com.android.ide.eclipse.adt.internal.project.BaseProjectHelper.getSourceClasspaths(BaseProjectHelper.java:84)
+	at com.android.ide.eclipse.adt.internal.project.BaseProjectHelper.getSourceClasspaths(BaseProjectHelper.java:103)
+	at com.android.ide.eclipse.adt.internal.build.builders.ChangedFileSetHelper.getJavaResCfs(ChangedFileSetHelper.java:65)
+	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.build(PostCompilerBuilder.java:274)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-06-05 00:24:55.803
+!MESSAGE fileChanged: failed to find manifest package for project appcompat_v7
+
+!ENTRY org.eclipse.jdt.core 4 4 2014-06-05 00:24:56.861
+!MESSAGE Exception while reading /LearnFromMap/.classpath
+!STACK 1
+org.eclipse.core.runtime.CoreException: File not found: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\LearnFromMap\.classpath.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:55)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:377)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:797)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
+	at org.eclipse.jdt.internal.core.util.Util.getResourceContentsAsByteArray(Util.java:1132)
+	at org.eclipse.jdt.internal.core.JavaProject.readFileEntriesWithException(JavaProject.java:2466)
+	at org.eclipse.jdt.internal.core.JavaProject.readFileEntries(JavaProject.java:2507)
+	at org.eclipse.jdt.internal.core.JavaProject.readRawClasspath(JavaProject.java:2545)
+	at com.android.ide.eclipse.adt.internal.project.BaseProjectHelper.getSourceClasspaths(BaseProjectHelper.java:84)
+	at com.android.ide.eclipse.adt.internal.project.BaseProjectHelper.getSourceClasspaths(BaseProjectHelper.java:103)
+	at com.android.ide.eclipse.adt.internal.build.builders.ChangedFileSetHelper.getJavaResCfs(ChangedFileSetHelper.java:65)
+	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.build(PostCompilerBuilder.java:274)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: java.io.FileNotFoundException: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\LearnFromMap\.classpath (The system cannot find the file specified)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	... 22 more
+!SUBENTRY 1 org.eclipse.core.filesystem 4 271 2014-06-05 00:24:56.861
+!MESSAGE File not found: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\LearnFromMap\.classpath.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\LearnFromMap\.classpath (The system cannot find the file specified)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.openInputStream(LocalFile.java:368)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:797)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
+	at org.eclipse.jdt.internal.core.util.Util.getResourceContentsAsByteArray(Util.java:1132)
+	at org.eclipse.jdt.internal.core.JavaProject.readFileEntriesWithException(JavaProject.java:2466)
+	at org.eclipse.jdt.internal.core.JavaProject.readFileEntries(JavaProject.java:2507)
+	at org.eclipse.jdt.internal.core.JavaProject.readRawClasspath(JavaProject.java:2545)
+	at com.android.ide.eclipse.adt.internal.project.BaseProjectHelper.getSourceClasspaths(BaseProjectHelper.java:84)
+	at com.android.ide.eclipse.adt.internal.project.BaseProjectHelper.getSourceClasspaths(BaseProjectHelper.java:103)
+	at com.android.ide.eclipse.adt.internal.build.builders.ChangedFileSetHelper.getJavaResCfs(ChangedFileSetHelper.java:65)
+	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.build(PostCompilerBuilder.java:274)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:733)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:302)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:358)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:381)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-06-05 00:25:01.676
+!MESSAGE Failed to call IFileListener.fileChanged
+!STACK 0
+java.lang.IllegalArgumentException: Path must include project and resource name: /appcompat_v7
+	at org.eclipse.core.runtime.Assert.isLegal(Assert.java:63)
+	at org.eclipse.core.internal.resources.Workspace.newResource(Workspace.java:2164)
+	at org.eclipse.core.internal.resources.Container.getFolder(Container.java:222)
+	at com.android.ide.eclipse.adt.internal.project.LibraryClasspathContainerInitializer.allocateDependencyContainer(LibraryClasspathContainerInitializer.java:371)
+	at com.android.ide.eclipse.adt.internal.project.LibraryClasspathContainerInitializer.updateProjects(LibraryClasspathContainerInitializer.java:88)
+	at com.android.ide.eclipse.adt.internal.project.ProjectHelper.updateProjects(ProjectHelper.java:278)
+	at com.android.ide.eclipse.adt.internal.sdk.Sdk$2.processJarFileChange(Sdk.java:1304)
+	at com.android.ide.eclipse.adt.internal.sdk.Sdk$2.fileChanged(Sdk.java:1274)
+	at com.android.ide.eclipse.adt.internal.resources.manager.GlobalProjectMonitor$DeltaVisitor.visit(GlobalProjectMonitor.java:233)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:69)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:49)
+	at com.android.ide.eclipse.adt.internal.resources.manager.GlobalProjectMonitor$1.resourceChanged(GlobalProjectMonitor.java:537)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1531)
+	at org.eclipse.core.internal.resources.Resource.refreshLocal(Resource.java:1712)
+	at org.eclipse.egit.ui.Activator$ResourceRefreshJob.run(Activator.java:356)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.egit.ui 4 0 2014-06-05 00:25:01.685
+!MESSAGE Failed to refresh projects from index changes
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Errors occurred while refreshing resources with the local file system.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refreshResource(FileSystemResourceManager.java:923)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refresh(FileSystemResourceManager.java:904)
+	at org.eclipse.core.internal.resources.Resource.refreshLocal(Resource.java:1699)
+	at org.eclipse.egit.ui.Activator$ResourceRefreshJob.run(Activator.java:356)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Contains: The project description file (.project) for 'LearnFromMap' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+!SUBENTRY 1 org.eclipse.core.resources 4 271 2014-06-05 00:25:01.686
+!MESSAGE Errors occurred while refreshing resources with the local file system.
+!SUBENTRY 2 org.eclipse.core.resources 4 567 2014-06-05 00:25:01.686
+!MESSAGE The project description file (.project) for 'LearnFromMap' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+
+!ENTRY org.eclipse.egit.ui 4 0 2014-06-05 00:25:01.691
+!MESSAGE Errors occurred while refreshing resources with the local file system.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-06-05 00:25:02.068
+!MESSAGE fileChanged: failed to find manifest package for project LearnFromMap
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-06-05 00:25:02.071
+!MESSAGE fileChanged: failed to find manifest package for project LearnFromMap
+
+!ENTRY org.eclipse.wst.sse.core 4 4 2014-06-05 00:25:37.183
+!MESSAGE C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\.metadata\.plugins\org.eclipse.wst.sse.core\task-tags.properties (The system cannot find the path specified)
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\.metadata\.plugins\org.eclipse.wst.sse.core\task-tags.properties (The system cannot find the path specified)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.wst.sse.core.internal.tasks.TaskScanningJob.setScannedProjects(TaskScanningJob.java:306)
+	at org.eclipse.wst.sse.core.internal.tasks.TaskScanningJob.addProjectDelta(TaskScanningJob.java:80)
+	at org.eclipse.wst.sse.core.internal.tasks.TaskScanningScheduler$ListenerVisitor.visit(TaskScanningScheduler.java:54)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:69)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:49)
+	at org.eclipse.wst.sse.core.internal.tasks.TaskScanningScheduler$ListenerVisitor.resourceChanged(TaskScanningScheduler.java:36)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
+	at org.eclipse.core.internal.resources.Workspace.checkpoint(Workspace.java:558)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:263)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY org.eclipse.core.resources 4 566 2014-06-05 00:25:37.317
+!MESSAGE Could not save master table to file 'C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources'.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources (The system cannot find the path specified)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:45)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:41)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1229)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1220)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1197)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1109)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.wst.sse.core 4 4 2014-06-05 00:25:52.869
+!MESSAGE C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\.metadata\.plugins\org.eclipse.wst.sse.core\task-tags.properties (The system cannot find the path specified)
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\.metadata\.plugins\org.eclipse.wst.sse.core\task-tags.properties (The system cannot find the path specified)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.wst.sse.core.internal.tasks.TaskScanningJob.setScannedProjects(TaskScanningJob.java:306)
+	at org.eclipse.wst.sse.core.internal.tasks.TaskScanningJob.addProjectDelta(TaskScanningJob.java:80)
+	at org.eclipse.wst.sse.core.internal.tasks.TaskScanningScheduler$ListenerVisitor.visit(TaskScanningScheduler.java:54)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:69)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:49)
+	at org.eclipse.wst.sse.core.internal.tasks.TaskScanningScheduler$ListenerVisitor.resourceChanged(TaskScanningScheduler.java:36)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:396)
+	at org.eclipse.core.internal.resources.Workspace.checkpoint(Workspace.java:558)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:263)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY org.eclipse.core.resources 4 566 2014-06-05 00:25:52.924
+!MESSAGE Could not save master table to file 'C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources'.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources (The system cannot find the path specified)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:45)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:41)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1229)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1220)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1197)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1109)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.core.resources 4 566 2014-06-05 00:25:56.850
+!MESSAGE Could not save master table to file 'C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources.bak'.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources.bak (The system cannot find the path specified)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:45)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:41)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1229)
+	at org.eclipse.core.internal.resources.SaveManager.cleanMasterTable(SaveManager.java:228)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1138)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2376)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor$5.run(IDEWorkbenchAdvisor.java:508)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY org.eclipse.ui.ide 4 4 2014-06-05 00:25:58.491
+!MESSAGE Problems saving workspace
+
+!ENTRY org.eclipse.ui.ide 4 1 2014-06-05 00:25:58.500
+!MESSAGE Problems occurred while trying to save the state of the workbench.
+!SUBENTRY 1 org.eclipse.core.resources 4 566 2014-06-05 00:25:58.500
+!MESSAGE Could not save master table to file 'C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources'.
+!STACK 0
+java.io.FileNotFoundException: C:\Users\Abhishek\Documents\GitHub\Mobile-applications\Learn from Map\App\.metadata\.plugins\org.eclipse.core.resources\.safetable\org.eclipse.core.resources (The system cannot find the path specified)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:45)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:41)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1229)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1220)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1197)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2376)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor$5.run(IDEWorkbenchAdvisor.java:508)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+!SESSION 2014-06-05 00:26:11.215 -----------------------------------------------
+eclipse.buildId=v22.6.2-1085508
+java.version=1.7.0_55
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Framework arguments:  -product com.android.ide.eclipse.adt.package.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-06-05 00:27:40.458
+!MESSAGE Failed to load properties file for project 'LearnFromMap'
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-06-05 00:27:42.157
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Abhishek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2014-06-05 00:28:00.009
+!MESSAGE Failed to render set of icons for AnalogClock, AutoCompleteTextView, Button, SmallButton, CheckBox, CheckedTextView, DigitalClock, PlainText, Password, PasswordNumeric, PersonName, Phone, PostalAddress, MultilineText, Date, Time, Email, Number, NumberSigned, NumberDecimal, LargeText, MediumText, SmallText, MultiAutoCompleteTextView, ProgressBarNormal, ProgressBarHorizontal, ProgressBarLarge, ProgressBarSmall, QuickContactBadge, RadioButton, RatingBar, SeekBar, ListView, ExpandableListView, Spinner, TextView, ToggleButton, ZoomButton, ZoomControls, CalendarView, RadioGroup
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-06-05 00:28:00.013
+!MESSAGE Write access not allowed during rendering (user.timezone)
+!STACK 0
+Write access not allowed during rendering (user.timezone)
+	at com.android.ide.common.rendering.RenderSecurityException.create(RenderSecurityException.java:52)
+	at com.android.ide.common.rendering.RenderSecurityManager.checkPermission(RenderSecurityManager.java:605)
+	at java.util.TimeZone.hasPermission(Unknown Source)
+	at java.util.TimeZone.setDefault(Unknown Source)
+	at com.ibm.icu.util.TimeZone.setDefault(TimeZone.java:973)
+	at libcore.icu.DateIntervalFormat_Delegate.createDateIntervalFormat(DateIntervalFormat_Delegate.java:61)
+	at libcore.icu.DateIntervalFormat.createDateIntervalFormat(DateIntervalFormat.java)
+	at libcore.icu.DateIntervalFormat.getFormatter(DateIntervalFormat.java:112)
+	at libcore.icu.DateIntervalFormat.formatDateRange(DateIntervalFormat.java:102)
+	at libcore.icu.DateIntervalFormat.formatDateRange(DateIntervalFormat.java:71)
+	at android.text.format.DateUtils.formatDateRange(DateUtils.java:826)
+	at android.text.format.DateUtils.formatDateRange(DateUtils.java:651)
+	at android.text.format.DateUtils.formatDateRange(DateUtils.java:628)
+	at android.text.format.DateUtils.formatDateTime(DateUtils.java:878)
+	at android.widget.AnalogClock.updateContentDescription(AnalogClock.java:256)
+	at android.widget.AnalogClock.onTimeChanged(AnalogClock.java:237)
+	at android.widget.AnalogClock.onAttachedToWindow(AnalogClock.java:121)
+	at android.view.View.dispatchAttachedToWindow(View.java:12585)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:2465)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:2465)
+	at android.view.AttachInfo_Accessor.setAttachInfo(AttachInfo_Accessor.java:42)
+	at com.android.layoutlib.bridge.impl.RenderSessionImpl.inflate(RenderSessionImpl.java:407)
+	at com.android.layoutlib.bridge.Bridge.createSession(Bridge.java:336)
+	at com.android.ide.common.rendering.LayoutLibrary.createSession(LayoutLibrary.java:332)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.RenderService.createRenderSession(RenderService.java:504)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.PreviewIconFactory.render(PreviewIconFactory.java:273)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.PreviewIconFactory.initColors(PreviewIconFactory.java:595)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.PreviewIconFactory.getBackgroundColor(PreviewIconFactory.java:570)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.PaletteControl.reloadPalette(PaletteControl.java:437)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.GraphicalEditorPart.reloadPalette(GraphicalEditorPart.java:1327)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.GraphicalEditorPart.changed(GraphicalEditorPart.java:771)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.GraphicalEditorPart.onTargetChange(GraphicalEditorPart.java:1196)
+	at com.android.ide.eclipse.adt.internal.editors.layout.LayoutEditorDelegate.onDescriptorsChanged(LayoutEditorDelegate.java:916)
+	at com.android.ide.eclipse.adt.internal.editors.layout.LayoutEditorDelegate.delegateInitUiRootNode(LayoutEditorDelegate.java:835)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.GraphicalEditorPart$TargetListener.updateEditor(GraphicalEditorPart.java:953)
+	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.GraphicalEditorPart$TargetListener.onTargetLoaded(GraphicalEditorPart.java:917)
+	at com.android.ide.eclipse.adt.AdtPlugin$11.run(AdtPlugin.java:1759)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4145)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3762)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:138)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:610)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1426)
+!SESSION 2014-06-05 21:04:34.240 -----------------------------------------------
+eclipse.buildId=v22.6.2-1085508
+java.version=1.7.0_55
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Framework arguments:  -product com.android.ide.eclipse.adt.package.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-06-05 21:04:58.762
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Abhishek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.

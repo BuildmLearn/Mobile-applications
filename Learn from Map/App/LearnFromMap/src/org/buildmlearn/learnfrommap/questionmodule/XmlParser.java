@@ -52,6 +52,7 @@ public class XmlParser {
 				location = Boolean.parseBoolean(element.getElementsByTagName("location").item(0).getTextContent());
 				Question question = new Question(code, type, format, answer, location, relation);
 				questions.add(question);
+				//Log.e("TEXT XML", format);
 			}
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block

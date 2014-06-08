@@ -15,22 +15,21 @@ import android.util.Log;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
 	public static String DB_PATH;
-	public static String TABLE_NAME = "main";
-	public static String DB_NAME;
+	private static final String TABLE_NAME = "main";
 	public SQLiteDatabase database;
 	public Context context;
+	private static final String DB_NAME = "data_set3.db";
 
 	public SQLiteDatabase getDb() {
 		return database;
 	}
 
 
-	public DatabaseHelper(Context context, String databaseName) {
-		super(context, databaseName, null, 1);
+	public DatabaseHelper(Context context) {
+		super(context, DB_NAME, null, 1);
 		this.context = context;
 		String packageName = context.getPackageName();
 		DB_PATH = String.format("//data//data//%s//databases//", packageName);
-		DB_NAME = databaseName;
 		openDataBase();
 	}
 
@@ -112,18 +111,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	{
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.query(TABLE_NAME, null, where, whereArgs, null, null, orderBy, limit);
-		Log.e("NAME", "starts");
-        if(cursor.moveToFirst())
-        {
-        	do
-        	{
-        		String name = cursor.getString(1);
-        		Log.e("NAME", name);
-        	}
-        	while(cursor.moveToNext());
-        }
-		db.close();
-		cursor.close();
+		//Log.e("NAME", "starts");
+//        if(cursor.moveToFirst())
+//        {
+//        	do
+//        	{
+//        		String name = cursor.getString(1);
+//        		Log.e("NAME", name);
+//        	}
+//        	while(cursor.moveToNext());
+//        }
+		//db.close();
+		//cursor.close();
 		return cursor;
 	}
 

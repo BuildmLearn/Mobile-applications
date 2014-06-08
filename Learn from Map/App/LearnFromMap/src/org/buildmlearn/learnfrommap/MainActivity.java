@@ -1,12 +1,13 @@
 package org.buildmlearn.learnfrommap;
 
-import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
+import java.util.ArrayList;
+import org.buildmlearn.learnfrommap.questionmodule.McqQuestion;
+import org.buildmlearn.learnfrommap.questionmodule.Question;
+import org.buildmlearn.learnfrommap.questionmodule.XmlParser;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,25 +17,31 @@ import android.view.ViewGroup;
 public class MainActivity extends ActionBarActivity {
 
 	
-	private static final String DB_NAME = "data_set3.db";
+	
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        XmlParser parser = new XmlParser(this);
+        ArrayList<Question> list = parser.fetchQuestions();
+        McqQuestion question = new McqQuestion(this, list.get(0),"country_code", "IN");
+        question.makeQuestion();    
+        
 
-        DatabaseHelper db = new DatabaseHelper(this, DB_NAME);
-        Cursor cursor = db.select(null, null, null, null);
-        if(cursor.moveToFirst())
-        {
-        	do
-        	{
-        		String name = cursor.getString(1);
-        		Log.d("NAME", name);
-        	}
-        	while(cursor.moveToNext());
-        }
-        db.close();
+//        DatabaseHelper db = new DatabaseHelper(this, DB_NAME);
+//        Cursor cursor = db.select(null, null, null, null);
+//        if(cursor.moveToFirst())
+//        {	
+//        	do
+//        	{
+//        		String name = cursor.getString(1);
+//        		Log.d("NAME", name);
+//        		
+//        	}
+//        	while(cursor.moveToNext());
+//        }
+//        db.close();
         
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()

@@ -92,7 +92,7 @@ public class BaseQuestion {
 		return location;
 	}
 
-	protected DbRow selectRowFromDb(String where, String[] whereArgs) {
+	protected DbRow selectRowFromDb(String where, String[] whereArgs) throws QuestionModuleException {
 
 		Cursor cursor = db.select(where, whereArgs, null, null);
 		DbRow dbRow;
@@ -104,6 +104,10 @@ public class BaseQuestion {
 		else
 		{
 			Log.e("Cursor", "Error");
+		}
+		if(cursor.getCount() == 0)
+		{
+			throw new QuestionModuleException("No rows selected for " + where);
 		}
 		if(cursor.getCount() == 1)
 		{
@@ -152,7 +156,7 @@ public class BaseQuestion {
 
 	}
 	
-	public void makeQuestion() {
+	public void makeQuestion() throws QuestionModuleException {
 
 		String where;
 		String[] whereArgs;

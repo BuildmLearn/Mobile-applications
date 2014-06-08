@@ -1,8 +1,10 @@
 package org.buildmlearn.learnfrommap;
 
 import java.util.ArrayList;
+
 import org.buildmlearn.learnfrommap.questionmodule.McqQuestion;
 import org.buildmlearn.learnfrommap.questionmodule.Question;
+import org.buildmlearn.learnfrommap.questionmodule.QuestionModuleException;
 import org.buildmlearn.learnfrommap.questionmodule.XmlParser;
 
 import android.support.v7.app.ActionBarActivity;
@@ -26,7 +28,12 @@ public class MainActivity extends ActionBarActivity {
         XmlParser parser = new XmlParser(this);
         ArrayList<Question> list = parser.fetchQuestions();
         McqQuestion question = new McqQuestion(this, list.get(0),"country_code", "IN");
-        question.makeQuestion();    
+        try {
+			question.makeQuestion();
+		} catch (QuestionModuleException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}    
         
 
 //        DatabaseHelper db = new DatabaseHelper(this, DB_NAME);

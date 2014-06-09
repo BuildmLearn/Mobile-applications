@@ -156,7 +156,7 @@ public class BaseQuestion {
 
 	}
 	
-	public void makeQuestion() throws QuestionModuleException {
+	public String[] makeQuestion() throws QuestionModuleException {
 
 		String where;
 		String[] whereArgs;
@@ -206,6 +206,11 @@ public class BaseQuestion {
 			//Need to implement
 			y = "";
 		}
+		else if(relation.equals("location"))
+		{
+			y = "location";
+			answer = String.valueOf(dbRow.getLat() + "," + dbRow.getLng());
+		}
 		else if(relation.equals("elevation"))
 		{
 			y = "elevation";
@@ -217,6 +222,10 @@ public class BaseQuestion {
 		format = format.replace(":relationship:", y);
 		Log.d("QUESTION", format);
 		Log.d("ANSWER", answer);
+		String[] questionAnswer = new String[2];
+		questionAnswer[0] = format;
+		questionAnswer[1] = answer;
+		return questionAnswer;
 	}
 
 

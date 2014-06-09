@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <questions>
 <question>
-    <code>VLC</code>
-    <type>PIN</type>
+    <code>PPLC</code>
+    <type>FILL</type>
     <relationship>country</relationship>
     <location>true</location>
-    <format>In which :relationship: :code: is located ?</format>
+    <format>:code: is the capital of ________</format>
     <answer>name</answer>
 </question>
 <question>

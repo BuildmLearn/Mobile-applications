@@ -190,35 +190,62 @@ public class BaseQuestion {
 		String x = dbRow.getName();
 		String y = null;
 		String answer = null;
+		y = "";
 		if(relation.equals("population"))
 		{
 			y = "population";
 			answer = String.valueOf(dbRow.getPopulation());
 		}
-		else if(relation.equals("country"))
+		else if(relation.equals("country_code"))
 		{
-			y = "country";
-			answer = dbRow.getCountry_code();
-			//get country from country code in base class
+			x = dbRow.getCountry_code();
 		}
 		else if(relation.equals("state"))
 		{
 			//Need to implement
-			y = "";
+			x = "";
 		}
 		else if(relation.equals("location"))
 		{
-			y = "location";
-			answer = String.valueOf(dbRow.getLat() + "," + dbRow.getLng());
+			x = String.valueOf(dbRow.getLat() + "," + dbRow.getLng());
+			
 		}
 		else if(relation.equals("elevation"))
 		{
-			y = "elevation";
+			x = String.valueOf(dbRow.getElevation());
+			
+		}
+		else if(relation.equals("population"))
+		{
+			x = String.valueOf(dbRow.getPopulation());
+		}
+		if(this.answer.equals("country_code"))
+		{
+			answer = dbRow.getCountry_code();
+		}
+		else if(this.answer.equals("state"))
+		{
+			answer = dbRow.getName();
+		}
+		else if(this.answer.equals("name"))
+		{
+			answer = dbRow.getName();
+		}
+		else if(this.answer.equals("location"))
+		{
+			answer = String.valueOf(dbRow.getLat() + "," + dbRow.getLng());
+		}
+		else if(this.answer.equals("population"))
+		{
+			answer = String.valueOf(dbRow.getPopulation());
+		}
+		else if(this.answer.equals("elevation"))
+		{
 			answer = String.valueOf(dbRow.getElevation());
 		}
 		String format;
 		format = this.format;
-		format = format.replace(":code:", x);
+		format = format.replace(":X:", x);
 		format = format.replace(":relationship:", y);
 		Log.d("QUESTION", format);
 		Log.d("ANSWER", answer);

@@ -23,12 +23,19 @@ public class MainActivity extends ActionBarActivity {
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);	
         setContentView(R.layout.activity_main);
         XmlParser parser = new XmlParser(this);
         ArrayList<Question> list = parser.fetchQuestions();
-        McqQuestion question = new McqQuestion(this, list.get(0),"country_code", "IN");
+        McqQuestion question = new McqQuestion(this, list.get(0));
         try {
+			question.makeQuestion();
+			question.makeQuestion();
+			question.makeQuestion();
+			question.makeQuestion();
+			question.makeQuestion();
+			question.makeQuestion();
+			question.makeQuestion();
 			question.makeQuestion();
 		} catch (QuestionModuleException e) {
 			// TODO Auto-generated catch block

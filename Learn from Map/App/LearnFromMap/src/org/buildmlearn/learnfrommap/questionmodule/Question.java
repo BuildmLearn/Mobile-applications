@@ -3,11 +3,12 @@ package org.buildmlearn.learnfrommap.questionmodule;
 public class Question {
 	
 	private String code;
-	private String type;
+	private Type type;
 	private String format;
 	private String answer;
 	private boolean location;
 	private String relation;
+	public static enum Type {PinOnMap, MultipleChoiceQuestion, FillBlanks};
 	
 	public String getCode() {
 		return code;
@@ -17,15 +18,16 @@ public class Question {
 		this.code = code;
 	}
 
-	public String getType() {
+	public Type getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 
 	public String getFormat() {
+		
 		return format;
 	}
 
@@ -61,7 +63,18 @@ public class Question {
 			boolean location, String relation) {
 		super();
 		this.code = code;
-		this.type = type;
+		if(type == "PIN")
+		{
+			this.type = Type.PinOnMap;
+		}
+		else if(type == "MCQ")
+		{
+			this.type = Type.MultipleChoiceQuestion;
+		}
+		else if(type == "FILL")
+		{
+			this.type = Type.FillBlanks;	
+		}
 		this.format = format;
 		this.answer = answer;
 		this.location = location;

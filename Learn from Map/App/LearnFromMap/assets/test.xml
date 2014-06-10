@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questions>
+	<question>
+	    <code>PPLC</code>
+	    <type>FILL</type>
+	    <relationship>country_code</relationship>
+	    <location>true</location>
+	    <format>Capital of :X: is _________</format>
+	    <answer>name</answer>
+	</question>
+</questions>

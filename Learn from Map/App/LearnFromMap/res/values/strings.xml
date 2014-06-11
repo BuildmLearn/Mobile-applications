@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <string name="app_name">Learn From Map</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <color android:id="@+id/color1" name="black_alpha">#50000000</color>
+
 
 </resources>

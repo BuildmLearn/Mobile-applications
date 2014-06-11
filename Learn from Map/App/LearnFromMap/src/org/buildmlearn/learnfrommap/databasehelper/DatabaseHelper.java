@@ -19,7 +19,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public SQLiteDatabase database;
 	public Context context;
 	private SQLiteDatabase db;
-	private static final String DB_NAME = "data_set2.db";
+	private static final String DB_NAME = "whole_new.db";
 
 	public SQLiteDatabase getDb() {
 		return database;

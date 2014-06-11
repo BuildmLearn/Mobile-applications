@@ -116,10 +116,11 @@ int bool abc_config_actionMenuItemAllCaps 0x7f060005
 int bool abc_config_allowActionMenuItemTextWithIcon 0x7f060004
 int bool abc_config_showMenuShortcutsWhenKeyboardPresent 0x7f060003
 int bool abc_split_action_bar_is_narrow 0x7f060002
-int color abc_search_url_text_holo 0x7f070003
+int color abc_search_url_text_holo 0x7f070004
 int color abc_search_url_text_normal 0x7f070000
 int color abc_search_url_text_pressed 0x7f070002
 int color abc_search_url_text_selected 0x7f070001
+int color black_alpha 0x7f070003
 int dimen abc_action_bar_default_height 0x7f080002
 int dimen abc_action_bar_icon_vertical_padding 0x7f080003
 int dimen abc_action_bar_progress_bar_size 0x7f08000a
@@ -226,7 +227,8 @@ int drawable abc_textfield_searchview_holo_dark 0x7f020053
 int drawable abc_textfield_searchview_holo_light 0x7f020054
 int drawable abc_textfield_searchview_right_holo_dark 0x7f020055
 int drawable abc_textfield_searchview_right_holo_light 0x7f020056
-int drawable ic_launcher 0x7f020057
+int drawable bg_nexus 0x7f020057
+int drawable ic_launcher 0x7f020058
 int id action_bar 0x7f05001c
 int id action_bar_activity_content 0x7f050015
 int id action_bar_container 0x7f05001b
@@ -238,7 +240,7 @@ int id action_context_bar 0x7f05001d
 int id action_menu_divider 0x7f050016
 int id action_menu_presenter 0x7f050017
 int id action_mode_close_button 0x7f050024
-int id action_settings 0x7f05003d
+int id action_settings 0x7f05003e
 int id activity_chooser_view_content 0x7f050025
 int id always 0x7f05000b
 int id beginning 0x7f050011
@@ -258,6 +260,7 @@ int id homeAsUp 0x7f050005
 int id icon 0x7f05002a
 int id ifRoom 0x7f05000a
 int id image 0x7f050027
+int id imageView1 0x7f05003d
 int id listMode 0x7f050001
 int id list_item 0x7f050029
 int id middle 0x7f050012
@@ -333,8 +336,10 @@ int string abc_shareactionprovider_share_with_application 0x7f0a000b
 int string action_settings 0x7f0a000f
 int string app_name 0x7f0a000d
 int string hello_world 0x7f0a000e
-int style AppBaseTheme 0x7f0b0083
-int style AppTheme 0x7f0b0084
+int style AppBaseTheme 0x7f0b0085
+int style AppTheme 0x7f0b0086
+int style CustomActionBarTheme 0x7f0b0083
+int style MyActionBar 0x7f0b0084
 int style TextAppearance_AppCompat_Base_CompactMenu_Dialog 0x7f0b0063
 int style TextAppearance_AppCompat_Base_SearchResult 0x7f0b006d
 int style TextAppearance_AppCompat_Base_SearchResult_Subtitle 0x7f0b006f

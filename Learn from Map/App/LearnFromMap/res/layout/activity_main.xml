@@ -1,8 +1,25 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:foo="http://schemas.android.com/apk/res/org.buildmlearn.learnfrommap"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.buildmlearn.learnfrommap.MainActivity"
-    tools:ignore="MergeRootFrame" />
+    tools:context="org.buildmlearn.learnfrommap.MainActivity" >
 
+    <!-- <ImageView -->
+    <!-- android:id="@+id/imageView1" -->
+    <!-- android:layout_width="match_parent" -->
+    <!-- android:layout_height="match_parent" -->
+    <!-- android:adjustViewBounds="true" -->
+    <!-- android:cropToPadding="false" -->
+    <!-- android:scaleType="centerCrop" -->
+    <!-- android:src="@drawable/bg_nexus" /> -->
+
+    <org.buildmlearn.learnfrommap.TextViewPlus
+        android:id="@+id/textViewPlus1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Hello World"
+        foo:customFont="Roboto_Black.ttf" >
+    </org.buildmlearn.learnfrommap.TextViewPlus>
+
+</RelativeLayout>

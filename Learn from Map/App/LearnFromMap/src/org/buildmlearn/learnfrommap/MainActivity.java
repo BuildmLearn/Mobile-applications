@@ -8,13 +8,9 @@ import org.buildmlearn.learnfrommap.questionmodule.Question;
 import org.buildmlearn.learnfrommap.questionmodule.QuestionModuleException;
 
 import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -41,27 +37,6 @@ public class MainActivity extends ActionBarActivity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}    
-        
-
-//        DatabaseHelper db = new DatabaseHelper(this, DB_NAME);
-//        Cursor cursor = db.select(null, null, null, null);
-//        if(cursor.moveToFirst())
-//        {	
-//        	do
-//        	{
-//        		String name = cursor.getString(1);
-//        		Log.d("NAME", name);
-//        		
-//        	}
-//        	while(cursor.moveToNext());
-//        }
-//        db.close();
-        
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }
     }
     
     		
@@ -87,20 +62,6 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
 
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
-        }
-    }
 
 }

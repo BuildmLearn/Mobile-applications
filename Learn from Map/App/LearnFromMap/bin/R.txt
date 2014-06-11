@@ -40,6 +40,7 @@ int attr backgroundSplit 0x7f01002d
 int attr backgroundStacked 0x7f01002c
 int attr buttonBarButtonStyle 0x7f010014
 int attr buttonBarStyle 0x7f010013
+int attr customFont 0x7f01006a
 int attr customNavigationLayout 0x7f01002e
 int attr disableChildrenWhenDisabled 0x7f010050
 int attr displayOptions 0x7f010024
@@ -246,7 +247,6 @@ int id always 0x7f05000b
 int id beginning 0x7f050011
 int id checkbox 0x7f05002d
 int id collapseActionView 0x7f05000d
-int id container 0x7f05003c
 int id default_activity_button 0x7f050028
 int id dialog 0x7f05000e
 int id disableHome 0x7f050008
@@ -287,6 +287,7 @@ int id showTitle 0x7f050006
 int id split_action_bar 0x7f05001e
 int id submit_area 0x7f050039
 int id tabMode 0x7f050002
+int id textViewPlus1 0x7f05003c
 int id title 0x7f05002b
 int id top_action_bar 0x7f050020
 int id up 0x7f050021
@@ -566,6 +567,8 @@ int styleable Spinner_disableChildrenWhenDisabled 9
 int styleable Spinner_popupPromptView 8
 int styleable Spinner_prompt 6
 int styleable Spinner_spinnerMode 7
+int[] styleable TextViewPlus { 0x7f01006a }
+int styleable TextViewPlus_customFont 0
 int[] styleable Theme { 0x7f010043, 0x7f010044, 0x7f010045, 0x7f010046, 0x7f010047, 0x7f010048 }
 int styleable Theme_actionDropDownStyle 0
 int styleable Theme_dropdownListPreferredItemHeight 1

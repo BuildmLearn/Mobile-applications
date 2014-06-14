@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
+import android.database.sqlite.SQLiteCantOpenDatabaseException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -19,7 +20,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public SQLiteDatabase database;
 	public Context context;
 	private SQLiteDatabase db;
-	private static final String DB_NAME = "whole_new.db";
+	private static final String DB_NAME = "pls10.db";
 
 	public SQLiteDatabase getDb() {
 		return database;
@@ -41,6 +42,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			try {
 				copyDataBase();
 			} catch (IOException e) {
+				
 				Log.e(this.getClass().toString(), "Copying error");
 				throw new Error("Error copying database!");
 			}
@@ -53,10 +55,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		SQLiteDatabase checkDb = null;
 		try {
 			String path = DB_PATH + DB_NAME;
+			Log.d("Here checkDataBase", "Before Error");
 			checkDb = SQLiteDatabase.openDatabase(path, null,
 					SQLiteDatabase.OPEN_READONLY);
-		} catch (SQLException e) {
-			Log.e(this.getClass().toString(), "Error while checking db");
+			Log.d("Here checkDataBase", "Before Error");
+		} 
+		catch(SQLiteCantOpenDatabaseException e)
+		{
+			Log.d("Database", "Database is not present");
+			
+		}
+		catch (SQLException e) {
+			Log.d(this.getClass().toString(), "Error while checking db");
+			Log.d("Here checkDataBase", "Catch");
 		}
 		if (checkDb != null) {
 			checkDb.close();

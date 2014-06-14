@@ -2,6 +2,7 @@ package org.buildmlearn.learnfrommap;
 
 import java.util.ArrayList;
 
+import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
 import org.buildmlearn.learnfrommap.parser.XmlParser;
 import org.buildmlearn.learnfrommap.questionmodule.McqQuestion;
 import org.buildmlearn.learnfrommap.questionmodule.Question;
@@ -21,22 +22,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);	
         setContentView(R.layout.activity_main);
-        XmlParser parser = new XmlParser(this);
-        ArrayList<Question> list = parser.fetchQuestions();
-        McqQuestion question = new McqQuestion(this, list.get(0));
-        try {
-			question.makeQuestion();
-			question.makeQuestion();
-			question.makeQuestion();
-			question.makeQuestion();
-			question.makeQuestion();
-			question.makeQuestion();
-			question.makeQuestion();
-			question.makeQuestion();
-		} catch (QuestionModuleException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}    
+        
     }
     
     		

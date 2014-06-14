@@ -4,7 +4,11 @@
     <string name="app_name">Learn From Map</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
     <color android:id="@+id/color1" name="black_alpha">#70000000</color>
 
+    <string name="title_activity_splash">SplashActivity</string>
+
+    <string name="buildmlearn">BuildmLearn</string>
 
 </resources>

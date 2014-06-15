@@ -90,13 +90,7 @@ public class SplashActivity extends ActionBarActivity {
 	        BaseQuestion question = new BaseQuestion(getApplicationContext(), list.get(0));
 	        try {
 				question.makeQuestion();
-				question.makeQuestion();
-				question.makeQuestion();
-				question.makeQuestion();
-				question.makeQuestion();
-				question.makeQuestion();
-				question.makeQuestion();
-				question.makeQuestion();
+
 			} catch (QuestionModuleException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

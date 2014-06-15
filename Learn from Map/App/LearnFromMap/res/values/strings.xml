@@ -11,4 +11,16 @@
 
     <string name="buildmlearn">BuildmLearn</string>
 
+    <string name="most_successful_answers">MOST SUCCESSFUL ANSWERS</string>
+
+    <string name="more_info">more info</string>
+
+    <string name="explore">Explore</string>
+
+    <string name="classic_mode">Classic Mode</string>
+
+    <string name="category_mode">Category Mode</string>
+
+    <string name="settings">Settings</string>
+
 </resources>

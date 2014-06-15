@@ -991,8 +991,13 @@ containing a value of this type.
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
         public static final int bg_nexus=0x7f020057;
-        public static final int ic_launcher=0x7f020058;
-        public static final int logo_white=0x7f020059;
+        public static final int category_mode=0x7f020058;
+        public static final int classic=0x7f020059;
+        public static final int globe=0x7f02005a;
+        public static final int ic_action_important=0x7f02005b;
+        public static final int ic_launcher=0x7f02005c;
+        public static final int logo_white=0x7f02005d;
+        public static final int settings=0x7f02005e;
     }
     public static final class id {
         public static final int action_bar=0x7f05001c;
@@ -1026,7 +1031,7 @@ containing a value of this type.
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f050027;
         public static final int imageView1=0x7f05003c;
-        public static final int imageView2=0x7f05003e;
+        public static final int imageView2=0x7f05003d;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
         public static final int middle=0x7f050012;
@@ -1053,7 +1058,7 @@ containing a value of this type.
         public static final int split_action_bar=0x7f05001e;
         public static final int submit_area=0x7f050039;
         public static final int tabMode=0x7f050002;
-        public static final int textViewPlus1=0x7f05003d;
+        public static final int textViewPlus1=0x7f05003e;
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
         public static final int up=0x7f050021;
@@ -1163,7 +1168,13 @@ containing a value of this type.
         public static final int action_settings=0x7f0a000f;
         public static final int app_name=0x7f0a000d;
         public static final int buildmlearn=0x7f0a0011;
+        public static final int category_mode=0x7f0a0016;
+        public static final int classic_mode=0x7f0a0015;
+        public static final int explore=0x7f0a0014;
         public static final int hello_world=0x7f0a000e;
+        public static final int more_info=0x7f0a0013;
+        public static final int most_successful_answers=0x7f0a0012;
+        public static final int settings=0x7f0a0017;
         public static final int title_activity_splash=0x7f0a0010;
     }
     public static final class style {

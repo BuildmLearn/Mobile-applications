@@ -229,8 +229,13 @@ int drawable abc_textfield_searchview_holo_light 0x7f020054
 int drawable abc_textfield_searchview_right_holo_dark 0x7f020055
 int drawable abc_textfield_searchview_right_holo_light 0x7f020056
 int drawable bg_nexus 0x7f020057
-int drawable ic_launcher 0x7f020058
-int drawable logo_white 0x7f020059
+int drawable category_mode 0x7f020058
+int drawable classic 0x7f020059
+int drawable globe 0x7f02005a
+int drawable ic_action_important 0x7f02005b
+int drawable ic_launcher 0x7f02005c
+int drawable logo_white 0x7f02005d
+int drawable settings 0x7f02005e
 int id action_bar 0x7f05001c
 int id action_bar_activity_content 0x7f050015
 int id action_bar_container 0x7f05001b
@@ -262,7 +267,7 @@ int id icon 0x7f05002a
 int id ifRoom 0x7f05000a
 int id image 0x7f050027
 int id imageView1 0x7f05003c
-int id imageView2 0x7f05003e
+int id imageView2 0x7f05003d
 int id listMode 0x7f050001
 int id list_item 0x7f050029
 int id middle 0x7f050012
@@ -289,7 +294,7 @@ int id showTitle 0x7f050006
 int id split_action_bar 0x7f05001e
 int id submit_area 0x7f050039
 int id tabMode 0x7f050002
-int id textViewPlus1 0x7f05003d
+int id textViewPlus1 0x7f05003e
 int id title 0x7f05002b
 int id top_action_bar 0x7f050020
 int id up 0x7f050021
@@ -342,7 +347,13 @@ int string abc_shareactionprovider_share_with_application 0x7f0a000b
 int string action_settings 0x7f0a000f
 int string app_name 0x7f0a000d
 int string buildmlearn 0x7f0a0011
+int string category_mode 0x7f0a0016
+int string classic_mode 0x7f0a0015
+int string explore 0x7f0a0014
 int string hello_world 0x7f0a000e
+int string more_info 0x7f0a0013
+int string most_successful_answers 0x7f0a0012
+int string settings 0x7f0a0017
 int string title_activity_splash 0x7f0a0010
 int style AppBaseTheme 0x7f0b0086
 int style AppTheme 0x7f0b0087

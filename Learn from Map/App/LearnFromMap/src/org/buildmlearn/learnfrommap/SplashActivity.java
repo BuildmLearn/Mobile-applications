@@ -4,21 +4,17 @@ import java.util.ArrayList;
 
 import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
 import org.buildmlearn.learnfrommap.parser.XmlParser;
-import org.buildmlearn.learnfrommap.questionmodule.McqQuestion;
-import org.buildmlearn.learnfrommap.questionmodule.Question;
+import org.buildmlearn.learnfrommap.questionmodule.BaseQuestion;
+import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion;
 import org.buildmlearn.learnfrommap.questionmodule.QuestionModuleException;
 
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
 
 public class SplashActivity extends ActionBarActivity {
 
@@ -26,30 +22,8 @@ public class SplashActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
-		DatabaseHelper db = new DatabaseHelper(this);
-        db.close();
-        XmlParser parser = new XmlParser(this);
-        ArrayList<Question> list = parser.fetchQuestions();
-        McqQuestion question = new McqQuestion(this, list.get(0));
-        try {
-			question.makeQuestion();
-			question.makeQuestion();
-			question.makeQuestion();
-			question.makeQuestion();
-			question.makeQuestion();
-			question.makeQuestion();
-			question.makeQuestion();
-			question.makeQuestion();
-		} catch (QuestionModuleException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}    
-        
-
-		if (savedInstanceState == null) {
-			getSupportFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
+		DatabaseProcess dbProcess = new DatabaseProcess();
+		dbProcess.execute();
 	}
 
 	@Override
@@ -72,21 +46,64 @@ public class SplashActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-	public static class PlaceholderFragment extends Fragment {
+	
+//	@SuppressLint("NewApi")
+//	@Override
+//	protected void onResume()
+//	{
+//	    super.onResume();
+//
+//	    if (Build.VERSION.SDK_INT < 16)
+//	    {
+//	        // Hide the status bar
+//	        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//	        // Hide the action bar
+//	        getSupportActionBar().hide();
+//	    }
+//	    else
+//	    {
+//	        // Hide the status bar
+//	        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+//	        // Hide the action bar
+//	        getActionBar().hide();
+//	    }
+//}
+	
+	public class DatabaseProcess extends AsyncTask<Void, Void, Void>
+	{
 
-		public PlaceholderFragment() {
+		@Override
+		protected void onPostExecute(Void result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+	        Intent intent= new Intent(getApplicationContext(), MainActivity.class);
+	        startActivity(intent);
 		}
 
 		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_splash,
-					container, false);
-			return rootView;
+		protected Void doInBackground(Void... arg0) {
+			// TODO Auto-generated method stub
+			DatabaseHelper db = new DatabaseHelper(getApplicationContext());
+	        db.close();
+	        XmlParser parser = new XmlParser(getApplicationContext());
+	        ArrayList<XmlQuestion> list = parser.fetchQuestions();	
+	        BaseQuestion question = new BaseQuestion(getApplicationContext(), list.get(0));
+	        try {
+				question.makeQuestion();
+				question.makeQuestion();
+				question.makeQuestion();
+				question.makeQuestion();
+				question.makeQuestion();
+				question.makeQuestion();
+				question.makeQuestion();
+				question.makeQuestion();
+			} catch (QuestionModuleException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}    
+			return null;
 		}
+		
 	}
 
 }

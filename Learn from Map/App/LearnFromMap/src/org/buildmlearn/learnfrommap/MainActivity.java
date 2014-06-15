@@ -1,13 +1,5 @@
 package org.buildmlearn.learnfrommap;
 
-import java.util.ArrayList;
-
-import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
-import org.buildmlearn.learnfrommap.parser.XmlParser;
-import org.buildmlearn.learnfrommap.questionmodule.McqQuestion;
-import org.buildmlearn.learnfrommap.questionmodule.Question;
-import org.buildmlearn.learnfrommap.questionmodule.QuestionModuleException;
-
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;

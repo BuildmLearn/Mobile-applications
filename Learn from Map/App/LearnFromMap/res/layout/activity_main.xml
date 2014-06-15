@@ -5,21 +5,50 @@
     android:layout_height="match_parent"
     tools:context="org.buildmlearn.learnfrommap.MainActivity" >
 
-    <!-- <ImageView -->
-    <!-- android:id="@+id/imageView1" -->
-    <!-- android:layout_width="match_parent" -->
-    <!-- android:layout_height="match_parent" -->
-    <!-- android:adjustViewBounds="true" -->
-    <!-- android:cropToPadding="false" -->
-    <!-- android:scaleType="centerCrop" -->
-    <!-- android:src="@drawable/bg_nexus" /> -->
-
-    <org.buildmlearn.learnfrommap.TextViewPlus
-        android:id="@+id/textViewPlus1"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello World"
-        foo:customFont="Roboto_Black.ttf" >
-    </org.buildmlearn.learnfrommap.TextViewPlus>
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_nexus" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="0.33"
+                android:background="#80000000"
+                android:orientation="vertical" >
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.67"
+                android:background="#80ffffff"
+                android:orientation="vertical" >
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>

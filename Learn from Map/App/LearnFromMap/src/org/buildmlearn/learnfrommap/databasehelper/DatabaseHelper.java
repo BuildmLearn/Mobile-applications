@@ -8,7 +8,6 @@ import java.io.OutputStream;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
-import android.database.sqlite.SQLiteCantOpenDatabaseException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -28,7 +27,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 	public DatabaseHelper(Context context) {
+		
 		super(context, DB_NAME, null, 1);
+		Log.d("jj","ji");
 		this.context = context;
 		String packageName = context.getPackageName();
 		DB_PATH = String.format("//data//data//%s//databases//", packageName);
@@ -58,16 +59,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			Log.d("Here checkDataBase", "Before Error");
 			checkDb = SQLiteDatabase.openDatabase(path, null,
 					SQLiteDatabase.OPEN_READONLY);
-			Log.d("Here checkDataBase", "Before Error");
 		} 
-		catch(SQLiteCantOpenDatabaseException e)
-		{
-			Log.d("Database", "Database is not present");
-			
-		}
 		catch (SQLException e) {
 			Log.d(this.getClass().toString(), "Error while checking db");
-			Log.d("Here checkDataBase", "Catch");
+		}
+		catch (Exception e)
+		{
+			Log.d("Exception", e.getMessage());
 		}
 		if (checkDb != null) {
 			checkDb.close();
@@ -123,18 +121,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	{
 		db = this.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_NAME, null, where, whereArgs, null, null, orderBy, limit);
-		//Log.e("NAME", "starts");
-//        if(cursor.moveToFirst())
-//        {
-//        	do
-//        	{
-//        		String name = cursor.getString(1);
-//        		Log.e("NAME", name);
-//        	}
-//        	while(cursor.moveToNext());
-//        }
-		//db.close();
-		//cursor.close();
 		return cursor;
 	}
 

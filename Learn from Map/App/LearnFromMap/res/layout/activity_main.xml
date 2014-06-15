@@ -36,10 +36,44 @@
                 android:background="#60000000"
                 android:orientation="vertical" >
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
-                </RelativeLayout>
+                    android:layout_height="0dp" 
+                    android:layout_weight="0.2">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_action_important" />
+
+                    <org.buildmlearn.learnfrommap.TextViewPlus
+                        android:id="@+id/textViewPlus1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="3dp"
+                        android:text="@string/most_successful_answers"
+                        android:textColor="@android:color/white"
+                        foo:customFont="Roboto_Black.ttf" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" 
+                    android:layout_weight="0.7"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" 
+                    android:layout_weight="0.1"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -54,6 +88,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:baselineAligned="false"
                     android:layout_marginBottom="2dp"
                     android:layout_weight="0.5"
                     android:gravity="center" >
@@ -63,7 +98,8 @@
                         android:layout_height="match_parent"
                         android:layout_marginRight="2dp"
                         android:layout_weight="0.5"
-                        android:background="#60000000"
+                        android:background="@drawable/custom_tile_color"
+                        android:clickable="true"
                         android:gravity="center"
                         android:orientation="vertical" >
 
@@ -82,7 +118,6 @@
                             android:textColor="@android:color/white"
                             android:textSize="16sp"
                             foo:customFont="Roboto_Light.ttf" />
-
                     </LinearLayout>
 
                     <LinearLayout
@@ -90,7 +125,8 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="2dp"
                         android:layout_weight="0.5"
-                        android:background="#60000000"
+                        android:background="@drawable/custom_tile_color"
+                        android:clickable="true"
                         android:gravity="center"
                         android:orientation="vertical" >
 
@@ -109,7 +145,6 @@
                             android:textColor="@android:color/white"
                             android:textSize="16sp"
                             foo:customFont="Roboto_Light.ttf" />
-
                     </LinearLayout>
                 </LinearLayout>
 
@@ -117,6 +152,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="2dp"
+                    android:baselineAligned="false"
                     android:layout_weight="0.5" >
 
                     <LinearLayout
@@ -124,7 +160,8 @@
                         android:layout_height="match_parent"
                         android:layout_marginRight="2dp"
                         android:layout_weight="0.5"
-                        android:background="#60000000"
+                        android:background="@drawable/custom_tile_color"
+                        android:clickable="true"
                         android:gravity="center"
                         android:orientation="vertical" >
 
@@ -144,7 +181,6 @@
                             android:textColor="@android:color/white"
                             android:textSize="16sp"
                             foo:customFont="Roboto_Light.ttf" />
-
                     </LinearLayout>
 
                     <LinearLayout
@@ -152,7 +188,8 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="2dp"
                         android:layout_weight="0.5"
-                        android:background="#60000000"
+                        android:background="@drawable/custom_tile_color"
+                        android:clickable="true"
                         android:gravity="center"
                         android:orientation="vertical" >
 
@@ -171,7 +208,6 @@
                             android:textColor="@android:color/white"
                             android:textSize="16sp"
                             foo:customFont="Roboto_Light.ttf" />
-
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

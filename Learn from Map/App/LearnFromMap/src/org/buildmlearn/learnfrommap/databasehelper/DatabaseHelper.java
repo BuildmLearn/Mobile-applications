@@ -123,5 +123,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		Cursor cursor = db.query(TABLE_NAME, null, where, whereArgs, null, null, orderBy, limit);
 		return cursor;
 	}
-
+	
+	public void insert(String rawQuery)
+	{
+		//Insert logic here
+	}
+	}
+	
 }

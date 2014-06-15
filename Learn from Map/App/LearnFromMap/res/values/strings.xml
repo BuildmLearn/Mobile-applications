@@ -22,5 +22,6 @@
     <string name="category_mode">Category Mode</string>
 
     <string name="settings">Settings</string>
+    <color name="pressed">#800099CC</color>
 
 </resources>

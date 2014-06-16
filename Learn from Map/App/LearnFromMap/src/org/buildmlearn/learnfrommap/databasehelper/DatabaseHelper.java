@@ -27,7 +27,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 	public DatabaseHelper(Context context) {
-		
+
 		super(context, DB_NAME, null, 1);
 		Log.d("jj","ji");
 		this.context = context;
@@ -43,7 +43,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			try {
 				copyDataBase();
 			} catch (IOException e) {
-				
+
 				Log.e(this.getClass().toString(), "Copying error");
 				throw new Error("Error copying database!");
 			}
@@ -116,18 +116,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {}
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
-	
+
 	public Cursor select(String where, String[] whereArgs, String orderBy, String limit)
 	{
 		db = this.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_NAME, null, where, whereArgs, null, null, orderBy, limit);
 		return cursor;
 	}
-	
+
 	public void insert(String rawQuery)
 	{
 		//Insert logic here
 	}
-	}
-	
 }
+

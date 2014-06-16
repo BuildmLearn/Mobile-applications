@@ -235,6 +235,14 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int buttonBarStyle=0x7f010013;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int customFont=0x7f01006a;
         /**  Specifies a layout for custom navigation. Overrides navigationMode. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -794,10 +802,12 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f060002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f070003;
+        public static final int abc_search_url_text_holo=0x7f070005;
         public static final int abc_search_url_text_normal=0x7f070000;
         public static final int abc_search_url_text_pressed=0x7f070002;
         public static final int abc_search_url_text_selected=0x7f070001;
+        public static final int black_alpha=0x7f070003;
+        public static final int pressed=0x7f070004;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -981,7 +991,15 @@ containing a value of this type.
         public static final int abc_textfield_searchview_holo_light=0x7f020054;
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
-        public static final int ic_launcher=0x7f020057;
+        public static final int bg_nexus=0x7f020057;
+        public static final int category_mode=0x7f020058;
+        public static final int classic=0x7f020059;
+        public static final int custom_tile_color=0x7f02005a;
+        public static final int globe=0x7f02005b;
+        public static final int ic_action_important=0x7f02005c;
+        public static final int ic_launcher=0x7f02005d;
+        public static final int logo_white=0x7f02005e;
+        public static final int settings=0x7f02005f;
     }
     public static final class id {
         public static final int action_bar=0x7f05001c;
@@ -995,13 +1013,12 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f05003d;
+        public static final int action_settings=0x7f050040;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
-        public static final int container=0x7f05003c;
         public static final int default_activity_button=0x7f050028;
         public static final int dialog=0x7f05000e;
         public static final int disableHome=0x7f050008;
@@ -1015,6 +1032,9 @@ containing a value of this type.
         public static final int icon=0x7f05002a;
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f050027;
+        public static final int imageView1=0x7f05003c;
+        public static final int imageView2=0x7f05003f;
+        public static final int imageView3=0x7f05003d;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
         public static final int middle=0x7f050012;
@@ -1041,6 +1061,7 @@ containing a value of this type.
         public static final int split_action_bar=0x7f05001e;
         public static final int submit_area=0x7f050039;
         public static final int tabMode=0x7f050002;
+        public static final int textViewPlus1=0x7f05003e;
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
         public static final int up=0x7f050021;
@@ -1097,11 +1118,12 @@ containing a value of this type.
         public static final int abc_search_dropdown_item_icons_2line=0x7f030015;
         public static final int abc_search_view=0x7f030016;
         public static final int activity_main=0x7f030017;
-        public static final int fragment_main=0x7f030018;
+        public static final int activity_splash=0x7f030018;
         public static final int support_simple_spinner_dropdown_item=0x7f030019;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
+        public static final int splash=0x7f0c0001;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1146,7 +1168,15 @@ containing a value of this type.
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000b;
         public static final int action_settings=0x7f0a000f;
         public static final int app_name=0x7f0a000d;
+        public static final int buildmlearn=0x7f0a0011;
+        public static final int category_mode=0x7f0a0016;
+        public static final int classic_mode=0x7f0a0015;
+        public static final int explore=0x7f0a0014;
         public static final int hello_world=0x7f0a000e;
+        public static final int more_info=0x7f0a0013;
+        public static final int most_successful_answers=0x7f0a0012;
+        public static final int settings=0x7f0a0017;
+        public static final int title_activity_splash=0x7f0a0010;
     }
     public static final class style {
         /** 
@@ -1170,11 +1200,17 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f0b0083;
+        public static final int AppBaseTheme=0x7f0b0086;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f0b0084;
+        public static final int AppTheme=0x7f0b0087;
+        /**  the theme applied to the application or activity 
+         */
+        public static final int CustomActionBarTheme=0x7f0b0083;
+        /**  ActionBar styles 
+         */
+        public static final int MyActionBar=0x7f0b0084;
         /**  Mimic text appearance in select_dialog_item.xml 
          */
         public static final int TextAppearance_AppCompat_Base_CompactMenu_Dialog=0x7f0b0063;
@@ -1250,6 +1286,7 @@ containing a value of this type.
         /**  Platform-independent theme providing an action bar in a dark-themed activity. 
          */
         public static final int Theme_AppCompat_Light_DarkActionBar=0x7f0b0079;
+        public static final int Theme_AppCompat_Light_NoActionBar=0x7f0b0085;
         /**  Base platform-dependent theme  
          */
         public static final int Theme_Base=0x7f0b007c;
@@ -2716,6 +2753,33 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           @attr name org.buildmlearn.learnfrommap:spinnerMode
         */
         public static final int Spinner_spinnerMode = 7;
+        /** Attributes that can be used with a TextViewPlus.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #TextViewPlus_customFont org.buildmlearn.learnfrommap:customFont}</code></td><td></td></tr>
+           </table>
+           @see #TextViewPlus_customFont
+         */
+        public static final int[] TextViewPlus = {
+            0x7f01006a
+        };
+        /**
+          <p>This symbol is the offset where the {@link org.buildmlearn.learnfrommap.R.attr#customFont}
+          attribute's value can be found in the {@link #TextViewPlus} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name org.buildmlearn.learnfrommap:customFont
+        */
+        public static final int TextViewPlus_customFont = 0;
         /**  These are the standard attributes that make up a complete theme. 
            <p>Includes the following attributes:</p>
            <table>

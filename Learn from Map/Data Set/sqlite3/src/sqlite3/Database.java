@@ -32,7 +32,7 @@ public class Database {
     }
 
     /*    public void executeQuery(String query) {
-    try {
+    try {h
     ResultSet rs = stmt.execute(query);
     System.out.println(rs.toString());
     } catch (SQLException e) {
@@ -43,10 +43,10 @@ public class Database {
 
     public void executeQuery1(String query) {
         try {
-            int status = stmt.executeUpdate(query);
+            stmt.executeUpdate(query);
             //ResultSet rs = stmt.getResultSet();
-            System.out.println("Rows affected: " + status + "\n");
-            c.commit();
+            //System.out.println("Rows affected: " + status + "\n");
+            
         } catch (SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage() + " Query: " + query);
             //System.exit(0);
@@ -55,6 +55,7 @@ public class Database {
 
     public void closeDb() {
         try {
+            c.commit();
             stmt.close();
             c.commit();
             c.close();

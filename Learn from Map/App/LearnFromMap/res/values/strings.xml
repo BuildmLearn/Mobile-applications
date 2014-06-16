@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <string name="app_name">Learn From Map</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <color android:id="@+id/color1" name="black_alpha">#70000000</color>
+
+    <string name="title_activity_splash">SplashActivity</string>
+
+    <string name="buildmlearn">BuildmLearn</string>
+
+    <string name="most_successful_answers">MOST SUCCESSFUL ANSWERS</string>
+
+    <string name="more_info">more info</string>
+
+    <string name="explore">Explore</string>
+
+    <string name="classic_mode">Classic Mode</string>
+
+    <string name="category_mode">Category Mode</string>
+
+    <string name="settings">Settings</string>
+    <color name="pressed">#800099CC</color>
 
 </resources>

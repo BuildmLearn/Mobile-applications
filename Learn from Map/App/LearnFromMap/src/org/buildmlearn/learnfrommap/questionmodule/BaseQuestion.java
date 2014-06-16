@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Random;
 
 import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
-import org.buildmlearn.learnfrommap.questionmodule.Question.Type;
+import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion.Type;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -31,12 +31,13 @@ public class BaseQuestion {
 	protected String locationValue;
 	protected Context mContext;
 	private DatabaseHelper db;
+	private XmlQuestion xml;
 
 
 	public static enum LocationType {None, Coordiates, String}
 
 
-	public BaseQuestion(Context mContext, Question question, float lat, float lng)
+	public BaseQuestion(Context mContext, XmlQuestion question, float lat, float lng)
 	{
 		db = new DatabaseHelper(mContext);
 		this.mContext = mContext;
@@ -49,9 +50,10 @@ public class BaseQuestion {
 		this.lat = lat;
 		this.lng = lng;
 		this.locationType = LocationType.Coordiates;
+		this.xml = question;
 	}
 
-	public BaseQuestion(Context mContext, Question question, String locationKey, String locationValue)
+	public BaseQuestion(Context mContext, XmlQuestion question, String locationKey, String locationValue)
 	{
 		db = new DatabaseHelper(mContext);
 		this.mContext = mContext;
@@ -64,9 +66,10 @@ public class BaseQuestion {
 		this.locationKey = locationKey;
 		this.locationValue = locationValue;
 		this.locationType = LocationType.String;
+		this.xml = question;
 	}
 
-	public BaseQuestion(Context mContext, Question question)	{
+	public BaseQuestion(Context mContext, XmlQuestion question)	{
 		this.mContext = mContext;
 		db = new DatabaseHelper(mContext);
 		this.code = question.getCode();
@@ -76,8 +79,11 @@ public class BaseQuestion {
 		this.location = question.isLocation();
 		this.relation = question.getRelation();
 		this.locationType = LocationType.None;
+		this.xml = question;
 	}
 
+	
+	//Converts coordinates to country
 	public Map<String, String> getAddress(double lat, double lng) {
 		Geocoder geocoder = new Geocoder(mContext, Locale.getDefault());
 		Map<String, String> location = new HashMap<String, String>();
@@ -156,11 +162,14 @@ public class BaseQuestion {
 
 	}
 	
-	public String[] makeQuestion() throws QuestionModuleException {
+	
+	//Logic for creating question from DbRow and XmlQuestion 
+	public GeneratedQuestion makeQuestion() throws QuestionModuleException {
 
 		String where;
 		String[] whereArgs;
 		DbRow dbRow;
+		GeneratedQuestion genQues = null;
 		if(locationType == LocationType.Coordiates)
 		{
 			whereArgs = new String[2];
@@ -179,13 +188,17 @@ public class BaseQuestion {
 			whereArgs[1] = locationValue;
 			dbRow = selectRowFromDb(where, whereArgs);
 		}
-		else
+		else if(locationType == LocationType.None)
 		{
 			whereArgs = new String[1];
 			where = "code=?";
 			whereArgs[0] = code;
 			Log.e("CODE", whereArgs[0]);
 			dbRow = selectRowFromDb(where, whereArgs);
+		}
+		else
+		{
+			throw new QuestionModuleException("Invalid locationType in BaseQuestion");
 		}
 		String x = dbRow.getName();
 		String y = null;
@@ -219,6 +232,8 @@ public class BaseQuestion {
 		{
 			x = String.valueOf(dbRow.getPopulation());
 		}
+		
+		//Answer
 		if(this.answer.equals("country_code"))
 		{
 			answer = dbRow.getCountry_code();
@@ -252,7 +267,21 @@ public class BaseQuestion {
 		String[] questionAnswer = new String[2];
 		questionAnswer[0] = format;
 		questionAnswer[1] = answer;
-		return questionAnswer;
+		
+		if(type ==  Type.MultipleChoiceQuestion)
+		{
+			//Make options
+			genQues = new GeneratedQuestion(dbRow, xml, format, answer, questionAnswer);
+		}
+		else if(type ==  Type.FillBlanks)
+		{
+			genQues = new GeneratedQuestion(dbRow, xml, format, answer, GeneratedQuestion.Type.Fill);
+		}
+		else if(type == Type.PinOnMap)
+		{
+			genQues = new GeneratedQuestion(dbRow, xml, format, answer, GeneratedQuestion.Type.Pin);
+		}
+		return genQues;
 	}
 
 

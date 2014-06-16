@@ -7,7 +7,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.buildmlearn.learnfrommap.questionmodule.Question;
+import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -26,7 +26,7 @@ public class XmlParser {
 	
 
 	
-	public ArrayList<Question> fetchQuestions()
+	public ArrayList<XmlQuestion> fetchQuestions()
 	{
 		String code;
 		String type;
@@ -34,7 +34,7 @@ public class XmlParser {
 		String answer;
 		boolean location;
 		String relation;
-		ArrayList<Question> questions = new ArrayList<Question>();
+		ArrayList<XmlQuestion> questions = new ArrayList<XmlQuestion>();
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder;
@@ -51,7 +51,7 @@ public class XmlParser {
 				relation = element.getElementsByTagName("relationship").item(0).getTextContent();
 				answer = element.getElementsByTagName("answer").item(0).getTextContent();
 				location = Boolean.parseBoolean(element.getElementsByTagName("location").item(0).getTextContent());
-				Question question = new Question(code, type, format, answer, location, relation);
+				XmlQuestion question = new XmlQuestion(code, type, format, answer, location, relation);
 				questions.add(question);
 				//Log.e("TEXT XML", format);
 			}

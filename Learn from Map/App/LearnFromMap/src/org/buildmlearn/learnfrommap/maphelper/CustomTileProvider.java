@@ -6,6 +6,8 @@ import java.io.InputStream;
 
 import android.content.res.AssetManager;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.Tile;
 import com.google.android.gms.maps.model.TileProvider;
 
@@ -16,15 +18,27 @@ public class CustomTileProvider implements TileProvider {
 	private static final int BUFFER_SIZE = 16 * 1024;
 
 	private AssetManager mAssets;
+	private GoogleMap map;
 
-	public CustomTileProvider(AssetManager assets) {
+	public CustomTileProvider(AssetManager assets, GoogleMap map) {
 		mAssets = assets;
+		this.map = map;
 	}
 
 	@Override
 	public Tile getTile(int x, int y, int zoom) {
-		byte[] image = readTileImage(x, y, zoom);
-		return image == null ? null : new Tile(TILE_WIDTH, TILE_HEIGHT, image);
+		if(zoom>4)
+		{
+
+			map.animateCamera(CameraUpdateFactory.zoomTo(4.0f));
+			return null;
+		}
+		else
+		{
+
+			byte[] image = readTileImage(x, y, zoom);
+			return image == null ? null : new Tile(TILE_WIDTH, TILE_HEIGHT, image);
+		}
 	}
 
 	private byte[] readTileImage(int x, int y, int zoom) {

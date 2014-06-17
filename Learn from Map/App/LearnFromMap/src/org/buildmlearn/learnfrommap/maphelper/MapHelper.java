@@ -2,8 +2,11 @@ package org.buildmlearn.learnfrommap.maphelper;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 
 import android.content.Context;
@@ -12,6 +15,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
+import android.widget.Toast;
 
 public class MapHelper extends ActionBarActivity {
 
@@ -21,8 +25,20 @@ public class MapHelper extends ActionBarActivity {
 	private Handler handler;
 	//////////////////
 	//Override these function 
+	
 	public void onMapReady()
 	{
+		mapView.setOnCameraChangeListener(new OnCameraChangeListener() {
+			@Override
+			public void onCameraChange(CameraPosition cameraPosition) {
+				Toast.makeText(getApplicationContext(), "Zoom: " + cameraPosition.zoom , Toast.LENGTH_SHORT).show();
+				if(cameraPosition.zoom > (float)4.0)
+				{
+					mapView.animateCamera(CameraUpdateFactory.zoomTo((float) 4.0));
+				}
+				
+			}
+		});
 
 	}
 
@@ -37,7 +53,7 @@ public class MapHelper extends ActionBarActivity {
 	}
 
 	//////////////////
-
+	
 
 	public void getMapView(SupportMapFragment mapFragment)
 	{
@@ -60,7 +76,7 @@ public class MapHelper extends ActionBarActivity {
 				else
 				{
 					mapView.setMapType(GoogleMap.MAP_TYPE_NONE);
-					mapView.addTileOverlay(new TileOverlayOptions().tileProvider(new CustomTileProvider(getResources().getAssets())));
+					mapView.addTileOverlay(new TileOverlayOptions().tileProvider(new CustomTileProvider(getResources().getAssets(), mapView)));
 					if(getApplicationContext() != null)
 					{
 						runOnUiThread(new Runnable() {

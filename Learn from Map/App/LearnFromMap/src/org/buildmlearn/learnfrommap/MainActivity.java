@@ -27,6 +27,12 @@ public class MainActivity extends ActionBarActivity {
     	startActivity(intent);
     }
 
+    public void mcq(View v)
+    {
+    	
+    	Intent intent = new Intent(getApplicationContext(), Mcq.class);
+    	startActivity(intent);
+    }
 
 
 	@Override

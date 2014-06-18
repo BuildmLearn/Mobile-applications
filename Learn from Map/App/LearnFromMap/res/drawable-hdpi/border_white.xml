@@ -1,25 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- <selector xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item android:drawable="@color/pressed" android:state_pressed="true"><shape android:shape="rectangle">
-            <solid android:color="@android:color/transparent" />
-
-            <stroke android:width="2dip" android:color="#ff00ffff" />
-        </shape></item>
-    pressed
-    <item android:drawable="@color/pressed" android:state_focused="true"><shape android:shape="rectangle">
-            <solid android:color="@android:color/transparent" />
-
-            <stroke android:width="2dip" android:color="#ff00ffff" />
-        </shape></item>
-    focused
-    <item android:drawable="@android:color/transparent"><shape android:shape="rectangle">
-            <stroke android:width="1dip" android:color="#ff00ffff" />
-        </shape></item>
-    default
-
-</selector> --> 
-
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
    <item android:state_pressed="true" >        
         <shape android:shape="rectangle">
@@ -30,7 +9,7 @@
                 android:right="10dp"
                 android:bottom="10dp" />
             <stroke   
-                android:width="2dp"
+                android:width="1dp"
                 android:color="@color/topline_btn" />                        
         </shape>    
     </item>

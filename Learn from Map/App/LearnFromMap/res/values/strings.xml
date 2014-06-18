@@ -20,5 +20,8 @@
 
     <string name="title_activity_map">Map</string>
     <string name="title_activity_fun">Fun</string>
+    <string name="question">Pin the capital of India</string>
+    <string name="time">00:60</string>
+    <string name="next_question">Next</string>
 
 </resources>

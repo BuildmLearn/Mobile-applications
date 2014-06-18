@@ -59,7 +59,8 @@
         </activity>
         <activity
             android:name="org.buildmlearn.learnfrommap.Map"
-            android:label="@string/title_activity_map" >
+            android:label="@string/title_activity_map" 
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         </activity>
         <activity
             android:name="org.buildmlearn.learnfrommap.Fun"

@@ -1393,7 +1393,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f070028;
         public static final int action_menu_presenter=0x7f070029;
         public static final int action_mode_close_button=0x7f070036;
-        public static final int action_settings=0x7f070058;
+        public static final int action_settings=0x7f070054;
         public static final int activity_chooser_view_content=0x7f070037;
         public static final int always=0x7f07001e;
         public static final int beginning=0x7f070023;
@@ -1427,11 +1427,7 @@ containing a value of this type.
         public static final int imageView3=0x7f070050;
         public static final int listMode=0x7f070014;
         public static final int list_item=0x7f07003b;
-        public static final int mapContent=0x7f070054;
-        public static final int mapFragment=0x7f070057;
-        public static final int mapHost=0x7f070056;
-        public static final int mapLocationText=0x7f070055;
-        public static final int mapProgress=0x7f070053;
+        public static final int mapFragment=0x7f070053;
         public static final int match_parent=0x7f07000c;
         public static final int middle=0x7f070024;
         public static final int monochrome=0x7f070013;
@@ -1681,7 +1677,10 @@ containing a value of this type.
         public static final int hello_world=0x7f05002e;
         public static final int more_info=0x7f050033;
         public static final int most_successful_answers=0x7f050032;
+        public static final int next_question=0x7f05003c;
+        public static final int question=0x7f05003a;
         public static final int settings=0x7f050037;
+        public static final int time=0x7f05003b;
         public static final int title_activity_fun=0x7f050039;
         public static final int title_activity_map=0x7f050038;
         public static final int title_activity_splash=0x7f050030;

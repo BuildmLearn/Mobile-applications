@@ -17,11 +17,21 @@
     <string name="settings">Settings</string>
 
     <color name="pressed">#800099CC</color>
+    <color name="topline_btn">#51ffffff</color>
+    <color name="bottomline_btn">#51000000</color>
+    <color name="grey">#A0797979</color>
+    <color name="grey_end">#A0606060</color>
 
     <string name="title_activity_map">Map</string>
     <string name="title_activity_fun">Fun</string>
     <string name="question">Pin the capital of India</string>
     <string name="time">00:60</string>
     <string name="next_question">Next</string>
+    <string name="title_activity_mcq">Mcq</string>
+    <string name="mcq_question">What is the capital of India ?</string>
+    <string name="option1">Option 1</string>
+    <string name="option2">Option 2</string>
+    <string name="option3">Option 3</string>
+    <string name="option4">Option 4</string>
 
 </resources>

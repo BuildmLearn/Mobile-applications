@@ -49,7 +49,7 @@
                         android:src="@drawable/ic_action_important" />
 
                     <org.buildmlearn.learnfrommap.TextViewPlus
-                        android:id="@+id/textViewPlus1"
+                        android:id="@+id/splash_msg"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
@@ -112,7 +112,7 @@
                             android:src="@drawable/globe" />
 
                         <org.buildmlearn.learnfrommap.TextViewPlus
-                            android:id="@+id/textViewPlus1"
+                            android:id="@+id/splash_msg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/explore"
@@ -140,7 +140,7 @@
                             android:src="@drawable/classic" />
 
                         <org.buildmlearn.learnfrommap.TextViewPlus
-                            android:id="@+id/textViewPlus1"
+                            android:id="@+id/splash_msg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/classic_mode"
@@ -175,7 +175,7 @@
                             android:src="@drawable/category_mode" />
 
                         <org.buildmlearn.learnfrommap.TextViewPlus
-                            android:id="@+id/textViewPlus1"
+                            android:id="@+id/splash_msg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="5dp"
@@ -203,7 +203,7 @@
                             android:src="@drawable/settings" />
 
                         <org.buildmlearn.learnfrommap.TextViewPlus
-                            android:id="@+id/textViewPlus1"
+                            android:id="@+id/splash_msg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/settings"

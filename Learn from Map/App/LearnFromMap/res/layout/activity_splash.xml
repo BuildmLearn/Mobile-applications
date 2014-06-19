@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     xmlns:foo="http://schemas.android.com/apk/res/org.buildmlearn.learnfrommap"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="org.buildmlearn.learnfrommap.SplashActivity" >
 
@@ -14,7 +14,22 @@
         android:src="@drawable/bg_nexus" />
 
     <org.buildmlearn.learnfrommap.TextViewPlus
-        android:id="@+id/textViewPlus1"
+        android:id="@+id/splash_msg"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_margin="7dp"
+        android:padding="10dp"
+        android:background="#60000000"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:text="@string/buildmlearn"
+        android:textColor="@android:color/white"
+        android:visibility="invisible"
+        foo:customFont="Roboto_Light.ttf" />
+
+    <org.buildmlearn.learnfrommap.TextViewPlus
+        android:id="@+id/splash_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -32,5 +47,12 @@
         android:adjustViewBounds="true"
         android:padding="20dp"
         android:src="@drawable/logo_white" />
+
+    <ProgressBar
+        android:id="@+id/splash_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

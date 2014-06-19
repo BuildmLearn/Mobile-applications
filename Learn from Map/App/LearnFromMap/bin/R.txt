@@ -343,7 +343,7 @@ int id action_context_bar 0x7f07002f
 int id action_menu_divider 0x7f070028
 int id action_menu_presenter 0x7f070029
 int id action_mode_close_button 0x7f070036
-int id action_settings 0x7f070054
+int id action_settings 0x7f070055
 int id activity_chooser_view_content 0x7f070037
 int id always 0x7f07001e
 int id beginning 0x7f070023
@@ -405,12 +405,13 @@ int id shortcut 0x7f070040
 int id showCustom 0x7f07001a
 int id showHome 0x7f070017
 int id showTitle 0x7f070019
+int id splash_loading 0x7f070054
+int id splash_msg 0x7f070051
 int id split_action_bar 0x7f070030
 int id strict_sandbox 0x7f070009
 int id submit_area 0x7f07004b
 int id tabMode 0x7f070015
 int id terrain 0x7f070003
-int id textViewPlus1 0x7f070051
 int id title 0x7f07003d
 int id top_action_bar 0x7f070032
 int id up 0x7f070033

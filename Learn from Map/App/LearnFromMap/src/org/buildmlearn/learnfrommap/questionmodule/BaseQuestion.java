@@ -7,7 +7,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 
-import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
+import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion.Type;
 
 import android.content.Context;
@@ -30,7 +30,7 @@ public class BaseQuestion {
 	protected String locationKey;
 	protected String locationValue;
 	protected Context mContext;
-	private DatabaseHelper db;
+	private Database db;
 	private XmlQuestion xml;
 
 
@@ -39,7 +39,7 @@ public class BaseQuestion {
 
 	public BaseQuestion(Context mContext, XmlQuestion question, float lat, float lng)
 	{
-		db = new DatabaseHelper(mContext);
+		db = new Database(mContext);
 		this.mContext = mContext;
 		this.code = question.getCode();
 		this.type = question.getType();
@@ -55,7 +55,7 @@ public class BaseQuestion {
 
 	public BaseQuestion(Context mContext, XmlQuestion question, String locationKey, String locationValue)
 	{
-		db = new DatabaseHelper(mContext);
+		db = new Database(mContext);
 		this.mContext = mContext;
 		this.code = question.getCode();
 		this.type = question.getType();
@@ -71,7 +71,7 @@ public class BaseQuestion {
 
 	public BaseQuestion(Context mContext, XmlQuestion question)	{
 		this.mContext = mContext;
-		db = new DatabaseHelper(mContext);
+		db = new Database(mContext);
 		this.code = question.getCode();
 		this.type = question.getType();
 		this.format = question.getFormat();
@@ -80,6 +80,7 @@ public class BaseQuestion {
 		this.relation = question.getRelation();
 		this.locationType = LocationType.None;
 		this.xml = question;
+		db.queryDatabase();
 	}
 
 	

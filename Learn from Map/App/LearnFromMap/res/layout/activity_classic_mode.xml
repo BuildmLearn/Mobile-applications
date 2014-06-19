@@ -1,0 +1,133 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:foo="http://schemas.android.com/apk/res/org.buildmlearn.learnfrommap"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.buildmlearn.learnfrommap.MainActivity" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_nexus" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="7dp"
+                android:layout_weight="0.33"
+                android:orientation="vertical" >
+
+                <org.buildmlearn.learnfrommap.TextViewPlus
+                    android:id="@+id/splash_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#80000000"
+                    android:padding="10dp"
+                    android:text="@string/classic_mode_description"
+                    android:textColor="@android:color/white"
+                    foo:customFont="Roboto_Regular.ttf" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="7dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_weight="0.67"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_tile_color"
+                    android:clickable="true"
+                    android:gravity="center" >
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_action_location_found" />
+
+                    <org.buildmlearn.learnfrommap.TextViewPlus
+                        android:id="@+id/splash_msg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="@string/use_my_location"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp"
+                        foo:customFont="Roboto_Light.ttf" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#ffffff" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#80000000"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <org.buildmlearn.learnfrommap.TextViewPlus
+                        android:id="@+id/splash_msg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="@string/select_a_location"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp"
+                        foo:customFont="Roboto_Light.ttf" />
+
+                    <Spinner
+                        android:id="@+id/spinner1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/Spinner"
+                        tools:listitem="@android:layout/simple_spinner_dropdown_item" />
+
+                    <org.buildmlearn.learnfrommap.TextViewPlus
+                        android:id="@+id/splash_msg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:padding="15dp"
+                        android:text="@string/play"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
+                        foo:customFont="Roboto_Light.ttf" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

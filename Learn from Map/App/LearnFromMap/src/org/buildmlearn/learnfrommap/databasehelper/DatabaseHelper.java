@@ -63,8 +63,10 @@ public class DatabaseHelper extends ActionBarActivity {
 				{
 					Database main_db = new Database(getApplicationContext());
 					SQLiteDatabase db = main_db.getReadableDatabase();
-					
+					db.close();
+					main_db.close();
 					msg = "Successfull";
+					Thread.sleep(500);
 					if (getApplicationContext() != null) 
 					{
 						runOnUiThread(new Runnable() 

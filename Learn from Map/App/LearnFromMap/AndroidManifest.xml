@@ -56,6 +56,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+ >
         </activity>
         <activity
             android:name="org.buildmlearn.learnfrommap.Map"
@@ -69,6 +70,22 @@
         <activity
             android:name="org.buildmlearn.learnfrommap.Mcq"
             android:label="@string/title_activity_mcq" >
+        </activity>
+        <activity
+            android:name="org.buildmlearn.learnfrommap.CategoryActivity"
+            android:label="@string/title_activity_category"
+            android:parentActivityName="org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper" />
+        </activity>
+        <activity
+            android:name="org.buildmlearn.learnfrommap.ClassicModeActivity"
+            android:label="@string/title_activity_classic_mode"
+            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.buildmlearn.learnfrommap.MainActivity" />
         </activity>
     </application>
 

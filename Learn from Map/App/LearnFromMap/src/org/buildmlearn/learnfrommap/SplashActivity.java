@@ -9,7 +9,6 @@ import org.buildmlearn.learnfrommap.questionmodule.BaseQuestion;
 import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion;
 import org.buildmlearn.learnfrommap.questionmodule.QuestionModuleException;
 
-import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;

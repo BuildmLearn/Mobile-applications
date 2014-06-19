@@ -30,7 +30,7 @@ public class MainActivity extends ActionBarActivity {
     public void mcq(View v)
     {
     	
-    	Intent intent = new Intent(getApplicationContext(), Mcq.class);
+    	Intent intent = new Intent(getApplicationContext(), ClassicModeActivity.class);
     	startActivity(intent);
     }
 

@@ -33,7 +33,7 @@ public class ExploreMode extends ActionBarActivity {
 	}
 
 	OnTouchListener worldMapTouchListener = new OnTouchListener() {
-
+		
 		@Override
 		public boolean onTouch(View v, MotionEvent event) {
 
@@ -97,6 +97,7 @@ public class ExploreMode extends ActionBarActivity {
 				continent = "North America";
 			}
 			Toast.makeText(getApplicationContext(), continent, Toast.LENGTH_SHORT).show();
+			
 
 			return true;
 		}

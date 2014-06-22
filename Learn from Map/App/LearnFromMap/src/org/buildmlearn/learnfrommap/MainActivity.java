@@ -23,7 +23,7 @@ public class MainActivity extends ActionBarActivity {
     public void loadMap(View v)
     {
     	
-    	Intent intent = new Intent(getApplicationContext(), Map.class);
+    	Intent intent = new Intent(getApplicationContext(), ExploreMode.class);
     	startActivity(intent);
     }
 

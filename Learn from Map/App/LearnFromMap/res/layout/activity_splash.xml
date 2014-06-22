@@ -6,7 +6,7 @@
     tools:context="org.buildmlearn.learnfrommap.SplashActivity" >
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/explore_world_map"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"

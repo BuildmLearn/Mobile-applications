@@ -4,8 +4,9 @@
 
 *.pydevproject
 .project
-Learn\ from\ Map/App/.metadata
-bin/
+Learn\ from\ Map/App/bin/
+Learn from Map/App/bin/
+.bin/
 tmp/
 *.tmp
 *.bak

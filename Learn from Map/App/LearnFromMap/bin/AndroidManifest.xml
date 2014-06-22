@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.buildmlearn.learnfrommap"
     android:versionCode="1"
+    android:largeHeap="true"
     android:versionName="1.0" >
 
     <uses-sdk
@@ -85,7 +86,8 @@
             android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.buildmlearn.learnfrommap.MainActivity" />
+                android:value="org.buildmlearn.learnfrommap.
+                MainActivity" />
         </activity>
     </application>
 

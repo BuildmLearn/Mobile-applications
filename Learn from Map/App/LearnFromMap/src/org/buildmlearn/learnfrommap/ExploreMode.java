@@ -1,23 +1,18 @@
 package org.buildmlearn.learnfrommap;
 
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
-import android.os.Build;
 
 public class ExploreMode extends ActionBarActivity {
 
@@ -94,10 +89,16 @@ public class ExploreMode extends ActionBarActivity {
 			}
 			else if(color.equals("ff555555"))
 			{
-				continent = "North America";
+				continent = "Australia";
 			}
-			Toast.makeText(getApplicationContext(), continent, Toast.LENGTH_SHORT).show();
-			
+			if(continent.length() > 0)
+			{
+				Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+				intent.putExtra("MODE", "EXPLORE_MODE");
+				intent.putExtra("SELECTION", "continent");
+				intent.putExtra("VALUE", continent);
+				startActivity(intent);	
+			}
 
 			return true;
 		}

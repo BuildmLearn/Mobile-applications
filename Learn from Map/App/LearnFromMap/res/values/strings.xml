@@ -42,5 +42,6 @@
     <string name="title_activity_explore_mode">ExploreMode</string>
     <string name="select_continent">Select a  continent</string>
     <string name="unlocked_continents">Unlocked continents : Asia, North America</string>
+    <string name="title_activity_game">GameActivity</string>
 
 </resources>

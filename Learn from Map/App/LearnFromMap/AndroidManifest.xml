@@ -64,10 +64,6 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         </activity>
         <activity
-            android:name="org.buildmlearn.learnfrommap.Fun"
-            android:label="@string/title_activity_fun" >
-        </activity>
-        <activity
             android:name="org.buildmlearn.learnfrommap.Mcq"
             android:label="@string/title_activity_mcq" >
         </activity>
@@ -91,6 +87,10 @@
         <activity
             android:name="org.buildmlearn.learnfrommap.ExploreMode"
             android:label="@string/title_activity_explore_mode" >
+        </activity>
+        <activity
+            android:name="org.buildmlearn.learnfrommap.GameActivity"
+            android:label="@string/title_activity_game" >
         </activity>
     </application>
 

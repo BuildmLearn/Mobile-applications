@@ -63,15 +63,15 @@ public class XmlQuestion {
 			boolean location, String relation) {
 		super();
 		this.code = code;
-		if(type == "PIN")
+		if(type.equals("PIN"))
 		{
 			this.type = Type.PinOnMap;
 		}
-		else if(type == "MCQ")
+		else if(type.equals("MCQ"))
 		{
 			this.type = Type.MultipleChoiceQuestion;
 		}
-		else if(type == "FILL")
+		else if(type.equals("FILL"))
 		{
 			this.type = Type.FillBlanks;	
 		}

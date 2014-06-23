@@ -1437,7 +1437,6 @@ containing a value of this type.
         public static final int checkbox=0x7f07003f;
         public static final int classic=0x7f070011;
         public static final int collapseActionView=0x7f070020;
-        public static final int container=0x7f070053;
         public static final int default_activity_button=0x7f07003a;
         public static final int dialog=0x7f070021;
         public static final int disableHome=0x7f07001b;
@@ -1461,6 +1460,7 @@ containing a value of this type.
         public static final int imageView3=0x7f070054;
         public static final int listMode=0x7f070014;
         public static final int list_item=0x7f07003b;
+        public static final int main_layout=0x7f070053;
         public static final int mapFragment=0x7f070055;
         public static final int match_parent=0x7f07000c;
         public static final int middle=0x7f070024;
@@ -1557,24 +1557,23 @@ containing a value of this type.
         public static final int activity_category=0x7f030017;
         public static final int activity_classic_mode=0x7f030018;
         public static final int activity_explore_mode=0x7f030019;
-        public static final int activity_fun=0x7f03001a;
+        public static final int activity_game=0x7f03001a;
         public static final int activity_main=0x7f03001b;
         public static final int activity_map=0x7f03001c;
         public static final int activity_mcq=0x7f03001d;
         public static final int activity_splash=0x7f03001e;
-        public static final int fragment_fun=0x7f03001f;
-        public static final int fragment_map=0x7f030020;
-        public static final int support_simple_spinner_dropdown_item=0x7f030021;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001f;
     }
     public static final class menu {
         public static final int category=0x7f0c0000;
         public static final int classic_mode=0x7f0c0001;
         public static final int explore_mode=0x7f0c0002;
         public static final int fun=0x7f0c0003;
-        public static final int main=0x7f0c0004;
-        public static final int map=0x7f0c0005;
-        public static final int mcq=0x7f0c0006;
-        public static final int splash=0x7f0c0007;
+        public static final int game=0x7f0c0004;
+        public static final int main=0x7f0c0005;
+        public static final int map=0x7f0c0006;
+        public static final int mcq=0x7f0c0007;
+        public static final int splash=0x7f0c0008;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1738,6 +1737,7 @@ containing a value of this type.
         public static final int title_activity_classic_mode=0x7f050044;
         public static final int title_activity_explore_mode=0x7f050049;
         public static final int title_activity_fun=0x7f050039;
+        public static final int title_activity_game=0x7f05004c;
         public static final int title_activity_map=0x7f050038;
         public static final int title_activity_mcq=0x7f05003d;
         public static final int title_activity_splash=0x7f050030;

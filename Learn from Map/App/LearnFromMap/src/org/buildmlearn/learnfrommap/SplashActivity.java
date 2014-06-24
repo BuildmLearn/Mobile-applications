@@ -37,6 +37,7 @@ public class SplashActivity extends DatabaseHelper {
 		pb.setVisibility(View.GONE);
         Intent intent= new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
+        finish();
 	}
 
 	@Override

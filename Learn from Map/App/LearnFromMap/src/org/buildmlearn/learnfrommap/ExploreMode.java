@@ -16,7 +16,9 @@ import android.widget.ImageView;
 
 public class ExploreMode extends ActionBarActivity {
 
+
 	private ImageView worldMap;
+	private Boolean isClicked = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,13 @@ public class ExploreMode extends ActionBarActivity {
 		worldMap = (ImageView)findViewById(R.id.explore_world_map);
 		worldMap.setOnTouchListener(worldMapTouchListener);
 
+	}
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		isClicked = false;
 	}
 
 	OnTouchListener worldMapTouchListener = new OnTouchListener() {
@@ -91,13 +100,17 @@ public class ExploreMode extends ActionBarActivity {
 			{
 				continent = "Australia";
 			}
-			if(continent.length() > 0)
+			if(continent.length() > 0 && !isClicked)
 			{
+				isClicked = true;
+				worldMap.setClickable(false);
 				Intent intent = new Intent(getApplicationContext(), GameActivity.class);
 				intent.putExtra("MODE", "EXPLORE_MODE");
 				intent.putExtra("SELECTION", "continent");
 				intent.putExtra("VALUE", continent);
-				startActivity(intent);	
+				startActivity(intent);
+				return true;
+				
 			}
 
 			return true;

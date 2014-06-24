@@ -1,32 +1,31 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:foo="http://schemas.android.com/apk/res/org.buildmlearn.learnfrommap"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black" >
-
-    <fragment
-        android:id="@+id/mapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        class="com.google.android.gms.maps.SupportMapFragment" />
+    tools:context="org.buildmlearn.learnfrommap.Mcq$PlaceholderFragment" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:layout_margin="7dp"
         android:background="#80000000"
         android:orientation="vertical"
+        android:paddingBottom="5dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:paddingTop="10dp" >
+        android:paddingTop="5dp" >
 
         <org.buildmlearn.learnfrommap.TextViewPlus
             android:id="@+id/question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="010dp"
-            android:text="@string/question"
+            android:gravity="center_vertical"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/mcq_question"
             android:textColor="@android:color/white"
             android:textSize="24sp"
             foo:customFont="Roboto_Light.ttf" />
@@ -34,6 +33,23 @@
         <View
             android:layout_width="fill_parent"
             android:layout_height="1dp"
+            android:layout_marginBottom="5dp"
+            android:background="#ffffff" />
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/answer" >
+
+            <requestFocus />
+        </EditText>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
             android:background="#ffffff" />
 
         <LinearLayout
@@ -57,12 +73,14 @@
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
                 android:layout_weight="0.5"
+                android:background="@drawable/custom_tile_color_no_bg"
+                android:clickable="true"
                 android:gravity="center_vertical|right"
+                android:onClick="nextQuestion"
                 android:padding="10dp"
                 android:text="@string/next_question"
                 android:textColor="@android:color/white"
                 foo:customFont="Roboto_Light.ttf" />
-
         </LinearLayout>
     </LinearLayout>
 

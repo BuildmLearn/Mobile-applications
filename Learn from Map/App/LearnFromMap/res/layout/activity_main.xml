@@ -10,7 +10,7 @@
         android:layout_height="match_parent" >
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/explore_world_map"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
@@ -19,6 +19,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/main_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
@@ -49,7 +50,7 @@
                         android:src="@drawable/ic_action_important" />
 
                     <org.buildmlearn.learnfrommap.TextViewPlus
-                        android:id="@+id/textViewPlus1"
+                        android:id="@+id/splash_msg"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
@@ -101,6 +102,7 @@
                         android:background="@drawable/custom_tile_color"
                         android:clickable="true"
                         android:gravity="center"
+                        android:onClick="loadMap"
                         android:orientation="vertical" >
 
                         <ImageView
@@ -111,7 +113,7 @@
                             android:src="@drawable/globe" />
 
                         <org.buildmlearn.learnfrommap.TextViewPlus
-                            android:id="@+id/textViewPlus1"
+                            android:id="@+id/splash_msg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/explore"
@@ -128,6 +130,7 @@
                         android:background="@drawable/custom_tile_color"
                         android:clickable="true"
                         android:gravity="center"
+                        android:onClick="mcq"
                         android:orientation="vertical" >
 
                         <ImageView
@@ -138,7 +141,7 @@
                             android:src="@drawable/classic" />
 
                         <org.buildmlearn.learnfrommap.TextViewPlus
-                            android:id="@+id/textViewPlus1"
+                            android:id="@+id/splash_msg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/classic_mode"
@@ -173,7 +176,7 @@
                             android:src="@drawable/category_mode" />
 
                         <org.buildmlearn.learnfrommap.TextViewPlus
-                            android:id="@+id/textViewPlus1"
+                            android:id="@+id/splash_msg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="5dp"
@@ -201,7 +204,7 @@
                             android:src="@drawable/settings" />
 
                         <org.buildmlearn.learnfrommap.TextViewPlus
-                            android:id="@+id/textViewPlus1"
+                            android:id="@+id/splash_msg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/settings"

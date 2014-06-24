@@ -7,7 +7,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 
-import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
+import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion.Type;
 
 import android.content.Context;
@@ -30,7 +30,7 @@ public class BaseQuestion {
 	protected String locationKey;
 	protected String locationValue;
 	protected Context mContext;
-	private DatabaseHelper db;
+	private Database db;
 	private XmlQuestion xml;
 
 
@@ -39,7 +39,7 @@ public class BaseQuestion {
 
 	public BaseQuestion(Context mContext, XmlQuestion question, float lat, float lng)
 	{
-		db = new DatabaseHelper(mContext);
+		db = new Database(mContext);
 		this.mContext = mContext;
 		this.code = question.getCode();
 		this.type = question.getType();
@@ -55,7 +55,7 @@ public class BaseQuestion {
 
 	public BaseQuestion(Context mContext, XmlQuestion question, String locationKey, String locationValue)
 	{
-		db = new DatabaseHelper(mContext);
+		db = new Database(mContext);
 		this.mContext = mContext;
 		this.code = question.getCode();
 		this.type = question.getType();
@@ -71,7 +71,7 @@ public class BaseQuestion {
 
 	public BaseQuestion(Context mContext, XmlQuestion question)	{
 		this.mContext = mContext;
-		db = new DatabaseHelper(mContext);
+		db = new Database(mContext);
 		this.code = question.getCode();
 		this.type = question.getType();
 		this.format = question.getFormat();
@@ -80,6 +80,7 @@ public class BaseQuestion {
 		this.relation = question.getRelation();
 		this.locationType = LocationType.None;
 		this.xml = question;
+		db.queryDatabase();
 	}
 
 	
@@ -98,7 +99,7 @@ public class BaseQuestion {
 		return location;
 	}
 
-	protected DbRow selectRowFromDb(String where, String[] whereArgs) throws QuestionModuleException {
+	private DbRow selectRowFromDb(String where, String[] whereArgs) throws QuestionModuleException {
 
 		Cursor cursor = db.select(where, whereArgs, null, null);
 		DbRow dbRow;
@@ -125,9 +126,13 @@ public class BaseQuestion {
 			float lng = cursor.getFloat(3);
 			String code = cursor.getString(4);
 			String country_code = cursor.getString(5);
-			int population = cursor.getInt(6);
-			int elevation = cursor.getInt(7);
-			dbRow = new DbRow(id, lng, lat, name, code, country_code, population, elevation);
+			String capital = cursor.getString(6);
+			String country = cursor.getString(7);
+			String state = cursor.getString(8);
+			String continent = cursor.getString(9);
+			int population = cursor.getInt(10);
+			int elevation = cursor.getInt(11);
+			dbRow = new DbRow(id, lng, lat, name, code, country_code, country, capital, state, continent, population, elevation);
 		}
 		else
 		{
@@ -148,9 +153,13 @@ public class BaseQuestion {
 			float lng = cursor.getFloat(3);
 			String code = cursor.getString(4);
 			String country_code = cursor.getString(5);
-			int population = cursor.getInt(6);
-			int elevation = cursor.getInt(7);
-			DbRow dbRow = new DbRow(id, lng, lat, name, code, country_code, population, elevation);
+			String capital = cursor.getString(6);
+			String country = cursor.getString(7);
+			String state = cursor.getString(8);
+			String continent = cursor.getString(9);
+			int population = cursor.getInt(10);
+			int elevation = cursor.getInt(11);
+			DbRow dbRow = new DbRow(id, lng, lat, name, code, country_code, country, capital, state, continent, population, elevation);
 			return dbRow;
 		}
 		else
@@ -209,9 +218,9 @@ public class BaseQuestion {
 			y = "population";
 			answer = String.valueOf(dbRow.getPopulation());
 		}
-		else if(relation.equals("country_code"))
+		else if(relation.equals("country"))
 		{
-			x = dbRow.getCountry_code();
+			x = dbRow.getCountry();
 		}
 		else if(relation.equals("state"))
 		{
@@ -234,9 +243,9 @@ public class BaseQuestion {
 		}
 		
 		//Answer
-		if(this.answer.equals("country_code"))
+		if(this.answer.equals("country"))
 		{
-			answer = dbRow.getCountry_code();
+			answer = dbRow.getCountry();
 		}
 		else if(this.answer.equals("state"))
 		{

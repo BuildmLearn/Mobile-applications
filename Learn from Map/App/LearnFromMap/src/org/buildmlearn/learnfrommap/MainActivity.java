@@ -1,9 +1,11 @@
 package org.buildmlearn.learnfrommap;
 
 import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -18,9 +20,37 @@ public class MainActivity extends ActionBarActivity {
     }
     
     		
+    public void loadMap(View v)
+    {
+    	
+    	Intent intent = new Intent(getApplicationContext(), ExploreMode.class);
+    	startActivity(intent);
+    }
+
+    public void mcq(View v)
+    {
+//    	RelativeLayout main = (RelativeLayout)findViewById(R.id.main_layout);
+//    	View view = getLayoutInflater().inflate(R.layout.activity_map, main,false);
+//        main.addView(view);
+//
+//		new Handler().post(new Runnable() {
+//
+//			@Override
+//			public void run() {
+//				getMapView((SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.mapFragment));
+//
+//			}
+//		});	
+//		main.removeAllViews();
+//		
+				
+    	Intent intent = new Intent(getApplicationContext(), ClassicModeActivity.class);
+    	startActivity(intent);
+    }
 
 
-    @Override
+    
+	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -39,7 +69,5 @@ public class MainActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 
 }

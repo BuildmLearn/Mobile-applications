@@ -19,7 +19,7 @@ public class StatisticalDatabase {
 		String type =result.getType();
 		String insertQuery = "";
 		//Insert into stat table
-		DatabaseHelper db = new DatabaseHelper(mContext);
-		db.insert(insertQuery);			
+		Database db = new Database(mContext);
+		//db.insert(insertQuery);			
 	}
 }

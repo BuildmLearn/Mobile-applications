@@ -3,7 +3,7 @@
 	<question>
 	    <code>PPLC</code>
 	    <type>FILL</type>
-	    <relationship>country_code</relationship>
+	    <relationship>country</relationship>
 	    <location>true</location>
 	    <format>Capital of :X: is _________</format>
 	    <answer>name</answer>

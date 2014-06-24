@@ -2,27 +2,52 @@ package org.buildmlearn.learnfrommap;
 
 import java.util.ArrayList;
 
+import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
 import org.buildmlearn.learnfrommap.parser.XmlParser;
 import org.buildmlearn.learnfrommap.questionmodule.BaseQuestion;
 import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion;
 import org.buildmlearn.learnfrommap.questionmodule.QuestionModuleException;
 
-import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-public class SplashActivity extends ActionBarActivity {
+public class SplashActivity extends DatabaseHelper {
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
-		DatabaseProcess dbProcess = new DatabaseProcess();
-		dbProcess.execute();
+		loadDatabase();
+//		DatabaseProcess dbProcess = new DatabaseProcess();
+//		dbProcess.execute();
+	}
+
+	@Override
+	public void onDatabaseLoad(String msg) {
+		super.onDatabaseLoad(msg);
+		ProgressBar pb = (ProgressBar)findViewById(R.id.splash_loading);
+		pb.setVisibility(View.GONE);
+        Intent intent= new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+        finish();
+	}
+
+	@Override
+	public void onDatabaseLoadError(String msg) {
+		super.onDatabaseLoadError(msg);
+		TextView tvMsg = (TextView)findViewById(R.id.splash_msg);
+		ProgressBar pb = (ProgressBar)findViewById(R.id.splash_loading);
+		tvMsg.setText(msg);
+		tvMsg.setVisibility(View.VISIBLE);
+		pb.setVisibility(View.GONE);
 	}
 
 	@Override
@@ -82,7 +107,7 @@ public class SplashActivity extends ActionBarActivity {
 		@Override
 		protected Void doInBackground(Void... arg0) {
 			// TODO Auto-generated method stub
-			DatabaseHelper db = new DatabaseHelper(getApplicationContext());
+			Database db = new Database(getApplicationContext());
 	        db.close();
 	        XmlParser parser = new XmlParser(getApplicationContext());
 	        ArrayList<XmlQuestion> list = parser.fetchQuestions();	

@@ -8,20 +8,40 @@
     <color android:id="@+id/color1" name="black_alpha">#70000000</color>
 
     <string name="title_activity_splash">SplashActivity</string>
-
     <string name="buildmlearn">BuildmLearn</string>
-
     <string name="most_successful_answers">MOST SUCCESSFUL ANSWERS</string>
-
     <string name="more_info">more info</string>
-
     <string name="explore">Explore</string>
-
     <string name="classic_mode">Classic Mode</string>
-
     <string name="category_mode">Category Mode</string>
-
     <string name="settings">Settings</string>
+
     <color name="pressed">#800099CC</color>
+    <color name="topline_btn">#51ffffff</color>
+    <color name="bottomline_btn">#51000000</color>
+    <color name="grey">#A0797979</color>
+    <color name="grey_end">#A0606060</color>
+
+    <string name="title_activity_map">Map</string>
+    <string name="title_activity_fun">Fun</string>
+    <string name="question">Pin the capital of India</string>
+    <string name="time">00:60</string>
+    <string name="next_question">Next</string>
+    <string name="title_activity_mcq">Mcq</string>
+    <string name="mcq_question">What is the capital of India ?</string>
+    <string name="option1">Option 1</string>
+    <string name="option2">Option 2</string>
+    <string name="option3">Option 3</string>
+    <string name="option4">Option 4</string>
+    <string name="title_activity_category">CategoryActivity</string>
+    <string name="title_activity_classic_mode">Classic Mode</string>
+    <string name="classic_mode_description">"Description goes here.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "</string>
+    <string name="use_my_location">Use My Location</string>
+    <string name="select_a_location">Or select a location</string>
+    <string name="play">Play</string>
+    <string name="title_activity_explore_mode">ExploreMode</string>
+    <string name="select_continent">Select a  continent</string>
+    <string name="unlocked_continents">Unlocked continents : Asia, North America</string>
+    <string name="title_activity_game">GameActivity</string>
 
 </resources>

@@ -86,7 +86,8 @@
         </activity>
         <activity
             android:name="org.buildmlearn.learnfrommap.ExploreMode"
-            android:label="@string/title_activity_explore_mode" >
+            android:label="@string/title_activity_explore_mode"
+            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity" >
         </activity>
         <activity
             android:name="org.buildmlearn.learnfrommap.GameActivity"

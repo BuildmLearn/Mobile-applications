@@ -39,7 +39,7 @@
     <string name="use_my_location">Use My Location</string>
     <string name="select_a_location">Or select a location</string>
     <string name="play">Play</string>
-    <string name="title_activity_explore_mode">ExploreMode</string>
+    <string name="title_activity_explore_mode">Explore Mode</string>
     <string name="select_continent">Select a  continent</string>
     <string name="unlocked_continents">Unlocked continents : Asia, North America</string>
     <string name="title_activity_game">GameActivity</string>

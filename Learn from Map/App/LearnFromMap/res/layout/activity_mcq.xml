@@ -35,7 +35,7 @@
                 android:paddingTop="5dp" >
 
                 <org.buildmlearn.learnfrommap.TextViewPlus
-                    android:id="@+id/splash_msg"
+                    android:id="@+id/question"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content" >
 
                     <org.buildmlearn.learnfrommap.TextViewPlus
-                        android:id="@+id/splash_msg"
+                        android:id="@+id/question"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
@@ -73,7 +73,7 @@
                         foo:customFont="Roboto_Light.ttf" />
 
                     <org.buildmlearn.learnfrommap.TextViewPlus
-                        android:id="@+id/splash_msg"
+                        android:id="@+id/question"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
@@ -93,7 +93,7 @@
                     android:layout_height="wrap_content" >
 
                     <org.buildmlearn.learnfrommap.TextViewPlus
-                        android:id="@+id/splash_msg"
+                        android:id="@+id/question"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
@@ -108,7 +108,7 @@
                         foo:customFont="Roboto_Light.ttf" />
 
                     <org.buildmlearn.learnfrommap.TextViewPlus
-                        android:id="@+id/splash_msg"
+                        android:id="@+id/question"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
@@ -134,7 +134,7 @@
                     android:layout_height="wrap_content" >
 
                     <org.buildmlearn.learnfrommap.TextViewPlus
-                        android:id="@+id/splash_msg"
+                        android:id="@+id/question"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.5"
@@ -145,7 +145,7 @@
                         foo:customFont="Roboto_Light.ttf" />
 
                     <org.buildmlearn.learnfrommap.TextViewPlus
-                        android:id="@+id/splash_msg"
+                        android:id="@+id/question"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"

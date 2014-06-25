@@ -1,6 +1,7 @@
 package org.buildmlearn.learnfrommap;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.buildmlearn.learnfrommap.parser.XmlParser;
 import org.buildmlearn.learnfrommap.questionmodule.BaseQuestion;
@@ -9,9 +10,15 @@ import org.buildmlearn.learnfrommap.questionmodule.QuestionModuleException;
 import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class GameActivity extends Helper {
@@ -19,6 +26,10 @@ public class GameActivity extends Helper {
 	private String mode;
 	private String selection;
 	private String value;
+	private ProgressBar progressBar;
+	private TextViewPlus loadingText;
+	private RelativeLayout main;
+	private View view;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,27 +39,28 @@ public class GameActivity extends Helper {
 		mode = intent.getStringExtra("MODE");
 		selection = intent.getStringExtra("SELECTION");
 		value = intent.getStringExtra("VALUE");
-		
+		loadingText = (TextViewPlus)findViewById(R.id.question);
+		progressBar = (ProgressBar)findViewById(R.id.game_progressbar);
+		progressBar.setMax(20);
+		progressBar.incrementProgressBy(1);
 		if(mode.equals("EXPLORE_MODE"))
 		{
-			exploreMode(selection, value);
+			setTitle("Explore Mode");
 		}
-		
+		GenerateQuestions genQues = new GenerateQuestions(selection, value);
+		genQues.execute();
+
+		main = (RelativeLayout)findViewById(R.id.main_layout);
+		view = getLayoutInflater().inflate(R.layout.layout_play_game, main,false);
+		//        main.addView(view);
+		//
+
+
 	}
 
-	private void exploreMode(String selection, String value) {
-		
-		XmlParser xmlParser = new XmlParser(getApplicationContext());
-		ArrayList<XmlQuestion> questionRules = xmlParser.fetchQuestions();
-		BaseQuestion question = new BaseQuestion(getApplicationContext(), questionRules.get(0), selection, value);
-		try {
-			GeneratedQuestion formedQuestion = question.makeQuestion();
-			Toast.makeText(getApplicationContext(), formedQuestion.getQuestion(), Toast.LENGTH_SHORT).show();
-		} catch (QuestionModuleException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+	public void startGame(View v)
+	{
+		Toast.makeText(getApplicationContext(), "Starting game", Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
@@ -71,5 +83,75 @@ public class GameActivity extends Helper {
 		return super.onOptionsItemSelected(item);
 	}
 
+
+	public class GenerateQuestions extends AsyncTask<Void, Integer, String>
+	{
+
+		String selection;
+		String value;
+
+		@Override
+		protected String doInBackground(Void... params) {
+
+			Random random = new Random();
+			XmlParser xmlParser = new XmlParser(getApplicationContext());
+			ArrayList<XmlQuestion> questionRules = xmlParser.fetchQuestions();
+			for(int i = 1; i< 21; i++)
+			{
+				XmlQuestion rule = getRandomQuestionRule(questionRules, random);
+				makeQuestion(rule, selection, value);
+				onProgressUpdate(i);
+			}
+			return null;
+		}
+
+		public GenerateQuestions(String selection, String value) {
+			super();
+			this.selection = selection;
+			this.value = value;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			main.removeAllViews();
+			main.addView(view);
+
+		}
+
+		@Override
+		protected void onProgressUpdate(final Integer... values) {
+			// TODO Auto-generated method stub
+			super.onProgressUpdate(values);
+			progressBar.setProgress(values[0]);
+
+			runOnUiThread(new Runnable() {
+				public void run() {
+					loadingText.setText("Loading question " + values[0] + " of 20");
+				}
+			});
+		}
+
+		private GeneratedQuestion makeQuestion(XmlQuestion questionRule, String selection, String value)
+		{
+			BaseQuestion question = new BaseQuestion(getApplicationContext(), questionRule, selection, value);
+			try {
+				GeneratedQuestion formedQuestion = question.makeQuestion();
+				Log.e("Question", formedQuestion.getQuestion());
+			} catch (QuestionModuleException e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
+
+		private XmlQuestion getRandomQuestionRule(ArrayList<XmlQuestion> questionRule, Random random)
+		{
+			int index = random.nextInt(questionRule.size());
+			return questionRule.get(index);
+		}
+
+
+	}
 
 }

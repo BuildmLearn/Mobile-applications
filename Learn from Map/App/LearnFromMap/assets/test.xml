@@ -21,8 +21,8 @@
 	    <type>MCQ</type>
 	    <relationship>name</relationship>
 	    <location>true</location>
-	    <format>What is thecapital of :X:</format>
-	    <answer>location</answer>
+	    <format>What is the capital of :X:</format>
+	    <answer>capital</answer>
 	</question>
 	<question>
 	    <code>PPLC</code>

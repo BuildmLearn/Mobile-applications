@@ -222,10 +222,13 @@ public class BaseQuestion {
 		{
 			x = dbRow.getCountry();
 		}
-		else if(relation.equals("state"))
+		else if(this.answer.equals("state"))
 		{
-			//Need to implement
-			x = "";
+			x = dbRow.getState();
+		}
+		else if(this.answer.equals("capital"))
+		{
+			x = dbRow.getCapital();
 		}
 		else if(relation.equals("location"))
 		{
@@ -249,7 +252,11 @@ public class BaseQuestion {
 		}
 		else if(this.answer.equals("state"))
 		{
-			answer = dbRow.getName();
+			answer = dbRow.getState();
+		}
+		else if(this.answer.equals("capital"))
+		{
+			answer = dbRow.getCapital();
 		}
 		else if(this.answer.equals("name"))
 		{

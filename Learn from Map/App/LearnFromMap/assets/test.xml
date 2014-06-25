@@ -8,14 +8,14 @@
 	    <format>Capital of :X: is _________</format>
 	    <answer>name</answer>
 	</question>
-	<question>
+<!-- 	<question>
 	    <code>PCLI</code>
 	    <type>PIN</type>
 	    <relationship>name</relationship>
 	    <location>true</location>
 	    <format>Pin the capital of :X:</format>
 	    <answer>location</answer>
-	</question>
+	</question> -->
 	<question>
 	    <code>PCLI</code>
 	    <type>MCQ</type>

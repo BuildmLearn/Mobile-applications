@@ -68,7 +68,7 @@
                 foo:customFont="Roboto_Light.ttf" />
 
             <org.buildmlearn.learnfrommap.TextViewPlus
-                android:id="@+id/question"
+                android:id="@+id/next_btn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"

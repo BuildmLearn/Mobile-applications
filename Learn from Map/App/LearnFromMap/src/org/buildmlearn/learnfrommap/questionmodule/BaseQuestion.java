@@ -98,7 +98,7 @@ public class BaseQuestion {
 
 	private DbRow selectRowFromDb(String where, String[] whereArgs) throws QuestionModuleException {
 
-		ArrayList<DbRow> dbRowList = db.select(where, whereArgs, null, null);
+		ArrayList<DbRow> dbRowList = db.select(where, whereArgs, "RANDOM()", "1");
 		if(dbRowList.size() == 1)
 		{
 			return dbRowList.get(0);
@@ -184,7 +184,7 @@ public class BaseQuestion {
 		return genQues;
 	}
 	
-	public String[] createOption(String columnName, String answer) throws QuestionModuleException
+	private String[] createOption(String columnName, String answer) throws QuestionModuleException
 	{
 		String where = columnName + "!=?";
 		String[] whereArgs = new String[1];
@@ -195,6 +195,7 @@ public class BaseQuestion {
 		if(list.size() != 3)
 		{
 			Log.e("Error", "Size not equal to 3");
+			throw new QuestionModuleException("NO of elements selected is less then 3 in createOptions for Column Name: " + columnName + " and Value: " + answer);
 		}
 		else
 		{

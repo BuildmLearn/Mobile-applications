@@ -4,7 +4,6 @@ import org.buildmlearn.learnfrommap.maphelper.MapHelper;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.ActionBarActivity;
 import android.widget.Toast;
 
 public class DatabaseHelper extends MapHelper {

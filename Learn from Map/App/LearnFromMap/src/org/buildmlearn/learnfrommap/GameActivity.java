@@ -3,6 +3,7 @@ package org.buildmlearn.learnfrommap;
 import java.util.ArrayList;
 import java.util.Random;
 
+import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.parser.XmlParser;
 import org.buildmlearn.learnfrommap.questionmodule.BaseQuestion;
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion;
@@ -18,7 +19,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class GameActivity extends Helper {
@@ -42,6 +42,7 @@ public class GameActivity extends Helper {
 		loadingText = (TextViewPlus)findViewById(R.id.question);
 		progressBar = (ProgressBar)findViewById(R.id.game_progressbar);
 		progressBar.setMax(20);
+		progressBar.setProgress(0);
 		progressBar.incrementProgressBy(1);
 		if(mode.equals("EXPLORE_MODE"))
 		{
@@ -89,17 +90,19 @@ public class GameActivity extends Helper {
 
 		String selection;
 		String value;
+		Database db;
 
 		@Override
 		protected String doInBackground(Void... params) {
 
+			db = new Database(getApplicationContext());
 			Random random = new Random();
 			XmlParser xmlParser = new XmlParser(getApplicationContext());
 			ArrayList<XmlQuestion> questionRules = xmlParser.fetchQuestions();
 			for(int i = 1; i< 21; i++)
 			{
 				XmlQuestion rule = getRandomQuestionRule(questionRules, random);
-				makeQuestion(rule, selection, value);
+				makeQuestion(rule, selection, value, db);
 				onProgressUpdate(i);
 			}
 			return null;
@@ -115,6 +118,7 @@ public class GameActivity extends Helper {
 		protected void onPostExecute(String result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
+			db.close();
 			main.removeAllViews();
 			main.addView(view);
 
@@ -133,9 +137,10 @@ public class GameActivity extends Helper {
 			});
 		}
 
-		private GeneratedQuestion makeQuestion(XmlQuestion questionRule, String selection, String value)
+		private GeneratedQuestion makeQuestion(XmlQuestion questionRule, String selection, String value, Database db)
 		{
-			BaseQuestion question = new BaseQuestion(getApplicationContext(), questionRule, selection, value);
+			
+			BaseQuestion question = new BaseQuestion(db, questionRule, selection, value);
 			try {
 				GeneratedQuestion formedQuestion = question.makeQuestion();
 				Log.e("Question", formedQuestion.getQuestion());

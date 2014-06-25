@@ -1,6 +1,7 @@
 package org.buildmlearn.learnfrommap.questionmodule;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -11,7 +12,6 @@ import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion.Type;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.location.Address;
 import android.location.Geocoder;
 import android.util.Log;
@@ -37,10 +37,9 @@ public class BaseQuestion {
 	public static enum LocationType {None, Coordiates, String}
 
 
-	public BaseQuestion(Context mContext, XmlQuestion question, float lat, float lng)
+	public BaseQuestion(Database db, XmlQuestion question, float lat, float lng)
 	{
-		db = new Database(mContext);
-		this.mContext = mContext;
+		this.db = db;
 		this.code = question.getCode();
 		this.type = question.getType();
 		this.format = question.getFormat();
@@ -53,10 +52,9 @@ public class BaseQuestion {
 		this.xml = question;
 	}
 
-	public BaseQuestion(Context mContext, XmlQuestion question, String locationKey, String locationValue)
+	public BaseQuestion(Database db, XmlQuestion question, String locationKey, String locationValue)
 	{
-		db = new Database(mContext);
-		this.mContext = mContext;
+		this.db = db;
 		this.code = question.getCode();
 		this.type = question.getType();
 		this.format = question.getFormat();
@@ -69,9 +67,8 @@ public class BaseQuestion {
 		this.xml = question;
 	}
 
-	public BaseQuestion(Context mContext, XmlQuestion question)	{
-		this.mContext = mContext;
-		db = new Database(mContext);
+	public BaseQuestion(Database db, XmlQuestion question)	{
+		this.db = db;
 		this.code = question.getCode();
 		this.type = question.getType();
 		this.format = question.getFormat();
@@ -80,7 +77,7 @@ public class BaseQuestion {
 		this.relation = question.getRelation();
 		this.locationType = LocationType.None;
 		this.xml = question;
-		db.queryDatabase();
+		//db.queryDatabase();
 	}
 
 	
@@ -101,73 +98,23 @@ public class BaseQuestion {
 
 	private DbRow selectRowFromDb(String where, String[] whereArgs) throws QuestionModuleException {
 
-		Cursor cursor = db.select(where, whereArgs, null, null);
-		DbRow dbRow;
-		cursor.moveToFirst();
-		if(cursor.moveToFirst())
+		ArrayList<DbRow> dbRowList = db.select(where, whereArgs, null, null);
+		if(dbRowList.size() == 1)
 		{
-			Log.e("Cursor", "All Good");
-		}
-		else
-		{
-			Log.e("Cursor", "Error");
-		}
-		if(cursor.getCount() == 0)
-		{
-			throw new QuestionModuleException("No rows selected for " + where);
-		}
-		if(cursor.getCount() == 1)
-		{
-			//0,1,2 represents the order of column in the table
-			//like name is the second column so used 1
-			int id = cursor.getInt(0);
-			String name = cursor.getString(1);
-			float lat = cursor.getFloat(2);
-			float lng = cursor.getFloat(3);
-			String code = cursor.getString(4);
-			String country_code = cursor.getString(5);
-			String capital = cursor.getString(6);
-			String country = cursor.getString(7);
-			String state = cursor.getString(8);
-			String continent = cursor.getString(9);
-			int population = cursor.getInt(10);
-			int elevation = cursor.getInt(11);
-			dbRow = new DbRow(id, lng, lat, name, code, country_code, country, capital, state, continent, population, elevation);
+			return dbRowList.get(0);
 		}
 		else
 		{
 			//Get a random row between 0 to cursor.getcount and check if it has been used before
-			dbRow = getRandomRow(cursor);
+			return getRandomRow(dbRowList);
 		}
-		return dbRow;
 	}
 
-	private DbRow getRandomRow(Cursor cursor) {
+	private DbRow getRandomRow(ArrayList<DbRow> dbRowList) {
 		Random random = new Random();
-		int pos = random.nextInt(cursor.getCount());
-		if(cursor.move(pos))
-		{
-			int id = cursor.getInt(0);
-			String name = cursor.getString(1);
-			float lat = cursor.getFloat(2);
-			float lng = cursor.getFloat(3);
-			String code = cursor.getString(4);
-			String country_code = cursor.getString(5);
-			String capital = cursor.getString(6);
-			String country = cursor.getString(7);
-			String state = cursor.getString(8);
-			String continent = cursor.getString(9);
-			int population = cursor.getInt(10);
-			int elevation = cursor.getInt(11);
-			DbRow dbRow = new DbRow(id, lng, lat, name, code, country_code, country, capital, state, continent, population, elevation);
-			return dbRow;
-		}
-		else
-		{
-			//throw error 
-			Log.d("Error", "Cursor error");
-			return null;
-		}
+		int pos = random.nextInt(dbRowList.size());
+		return dbRowList.get(pos);
+
 
 	}
 	
@@ -210,84 +157,21 @@ public class BaseQuestion {
 			throw new QuestionModuleException("Invalid locationType in BaseQuestion");
 		}
 		String x = dbRow.getName();
-		String y = null;
 		String answer = null;
-		y = "";
-		if(relation.equals("population"))
-		{
-			y = "population";
-			answer = String.valueOf(dbRow.getPopulation());
-		}
-		else if(relation.equals("country"))
-		{
-			x = dbRow.getCountry();
-		}
-		else if(this.answer.equals("state"))
-		{
-			x = dbRow.getState();
-		}
-		else if(this.answer.equals("capital"))
-		{
-			x = dbRow.getCapital();
-		}
-		else if(relation.equals("location"))
-		{
-			x = String.valueOf(dbRow.getLat() + "," + dbRow.getLng());
-			
-		}
-		else if(relation.equals("elevation"))
-		{
-			x = String.valueOf(dbRow.getElevation());
-			
-		}
-		else if(relation.equals("population"))
-		{
-			x = String.valueOf(dbRow.getPopulation());
-		}
-		
+
+		x = dbRow.getDataByColumnName(this.relation);
 		//Answer
-		if(this.answer.equals("country"))
-		{
-			answer = dbRow.getCountry();
-		}
-		else if(this.answer.equals("state"))
-		{
-			answer = dbRow.getState();
-		}
-		else if(this.answer.equals("capital"))
-		{
-			answer = dbRow.getCapital();
-		}
-		else if(this.answer.equals("name"))
-		{
-			answer = dbRow.getName();
-		}
-		else if(this.answer.equals("location"))
-		{
-			answer = String.valueOf(dbRow.getLat() + "," + dbRow.getLng());
-		}
-		else if(this.answer.equals("population"))
-		{
-			answer = String.valueOf(dbRow.getPopulation());
-		}
-		else if(this.answer.equals("elevation"))
-		{
-			answer = String.valueOf(dbRow.getElevation());
-		}
+		answer = dbRow.getDataByColumnName(this.answer);
+
 		String format;
 		format = this.format;
 		format = format.replace(":X:", x);
-		format = format.replace(":relationship:", y);
-		Log.d("QUESTION", format);
-		Log.d("ANSWER", answer);
-		String[] questionAnswer = new String[2];
-		questionAnswer[0] = format;
-		questionAnswer[1] = answer;
+
 		
 		if(type ==  Type.MultipleChoiceQuestion)
-		{
-			//Make options
-			genQues = new GeneratedQuestion(dbRow, xml, format, answer, questionAnswer);
+		{	
+			String[] options = createOption(this.answer, answer);
+			genQues = new GeneratedQuestion(dbRow, xml, format, answer, options);
 		}
 		else if(type ==  Type.FillBlanks)
 		{
@@ -299,6 +183,30 @@ public class BaseQuestion {
 		}
 		return genQues;
 	}
+	
+	public String[] createOption(String columnName, String answer) throws QuestionModuleException
+	{
+		String where = columnName + "!=?";
+		String[] whereArgs = new String[1];
+		String[] options = new String[3];
+		whereArgs[0] = answer;
+		
+		ArrayList<String> list = db.selectColumn(true, where, whereArgs, "RANDOM()", "3", columnName);
+		if(list.size() != 3)
+		{
+			Log.e("Error", "Size not equal to 3");
+		}
+		else
+		{
+			for(int i =0; i< list.size(); i++)
+			{
+				options[i] = list.get(i);
+			}
+		}
+		
+		return options;
+	}
+	
 
 
 }

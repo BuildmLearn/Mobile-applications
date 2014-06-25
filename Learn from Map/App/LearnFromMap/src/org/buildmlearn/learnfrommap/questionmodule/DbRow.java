@@ -129,5 +129,46 @@ public class DbRow {
 		this.elevation = elevation;
 	}
 
+	public String getDataByColumnName(String column) throws QuestionModuleException
+	{
+		if(column.equals("location"))
+		{
+			return this.getLat() + "," + this.getLng();
+		}
+		else if(column.equals("name"))
+		{
+			return this.getName();
+		}
+		else if(column.equals("capital"))
+		{
+			return this.getCapital();
+		}
+		else if(column.equals("country"))
+		{
+			return this.getCountry();
+		}
+		else if(column.equals("state"))
+		{
+			return this.getState();
+		}
+		else if(column.equals("continent"))
+		{
+			return this.getContinent();
+		}
+		else if(column.equals("population"))
+		{
+			return String.valueOf(this.getPopulation());
+		}
+		else if(column.equals("elevation"))
+		{
+			return String.valueOf(this.getElevation());
+		}
+		else
+		{
+			throw new QuestionModuleException("Invalid column name: " + column);
+		}
+	
+	}
+	
 	
 }

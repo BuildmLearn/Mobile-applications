@@ -1,14 +1,7 @@
 package org.buildmlearn.learnfrommap;
 
-import java.util.ArrayList;
-
 import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
-import org.buildmlearn.learnfrommap.parser.XmlParser;
-import org.buildmlearn.learnfrommap.questionmodule.BaseQuestion;
-import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion;
-import org.buildmlearn.learnfrommap.questionmodule.QuestionModuleException;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -109,17 +102,7 @@ public class SplashActivity extends DatabaseHelper {
 			// TODO Auto-generated method stub
 			Database db = new Database(getApplicationContext());
 	        db.close();
-	        XmlParser parser = new XmlParser(getApplicationContext());
-	        ArrayList<XmlQuestion> list = parser.fetchQuestions();	
-	        BaseQuestion question = new BaseQuestion(getApplicationContext(), list.get(0));
-	        try {
-				question.makeQuestion();
-
-			} catch (QuestionModuleException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}    
-			return null;
+	        return null;
 		}
 		
 	}

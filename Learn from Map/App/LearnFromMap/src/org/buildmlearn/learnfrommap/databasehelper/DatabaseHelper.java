@@ -68,7 +68,7 @@ public class DatabaseHelper extends MapHelper {
 					db.close();
 					main_db.close();
 					msg = "Successfull";
-					Thread.sleep(500);
+					Thread.sleep(1000);
 					if (getApplicationContext() != null) 
 					{
 						runOnUiThread(new Runnable() 

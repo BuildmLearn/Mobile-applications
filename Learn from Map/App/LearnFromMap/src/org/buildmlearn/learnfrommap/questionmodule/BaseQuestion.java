@@ -85,7 +85,7 @@ public class BaseQuestion {
 
 	
 	//Converts coordinates to country
-	public Map<String, String> getAddress(double lat, double lng) {
+	private Map<String, String> getAddress(double lat, double lng) {
 		Geocoder geocoder = new Geocoder(mContext, Locale.getDefault());
 		Map<String, String> location = new HashMap<String, String>();
 		try {

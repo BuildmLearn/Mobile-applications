@@ -19,6 +19,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -107,6 +108,20 @@ public class GameActivity extends Helper {
 	public void nextQuestion(View v)
 	{
 		countTimer.cancel();
+		if(question.get(questionCounter-1).getType() == Type.Pin)
+		{
+			android.support.v4.app.Fragment fragment = (getSupportFragmentManager().findFragmentById(R.id.mapFragment));  
+			if(fragment != null)
+			{
+				FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+				ft.remove(getSupportFragmentManager().findFragmentById(R.id.mapFragment)).commit();
+				getSupportFragmentManager().popBackStackImmediate();
+				main.removeAllViews();	
+
+			}	
+
+		}
+
 		loadQuestion();
 	}
 
@@ -115,7 +130,7 @@ public class GameActivity extends Helper {
 
 		if(questionCounter == 20)
 		{
-			questionCounter = 0;
+			return;
 		}
 		GeneratedQuestion genQuestion = question.get(questionCounter++);
 		if(genQuestion.getType() == Type.Fill)
@@ -151,20 +166,23 @@ public class GameActivity extends Helper {
 		}
 		else
 		{
-			//			killOldMap();
-			android.support.v4.app.Fragment fragment = (getSupportFragmentManager().findFragmentById(R.id.mapFragment));  
-			if(fragment != null)
-			{
-				FragmentTransaction ft = this.getSupportFragmentManager().beginTransaction();
-				ft.remove(fragment);
-				ft.commit();
-			}
+			//			killOldMap();	
 			view = getLayoutInflater().inflate(R.layout.activity_map, main,false);
 			main.removeAllViews();
 			main.addView(view);
 			displayQuestion = (TextViewPlus)findViewById(R.id.question);
 			displayQuestion.setText(genQuestion.getQuestion());
+			new Handler().post(new Runnable() {
+
+				@Override
+				public void run() {
+					getMapView((SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.mapFragment));
+
+				}
+			});	
 		}
+	
+
 		timer = (TextViewPlus)findViewById(R.id.timer);
 		countTimer = new CountDownTimer(30000, 1000) {
 
@@ -176,7 +194,7 @@ public class GameActivity extends Helper {
 				nextQuestion(null);
 			}
 		}.start();
-		
+
 
 
 

@@ -1427,7 +1427,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f070028;
         public static final int action_menu_presenter=0x7f070029;
         public static final int action_mode_close_button=0x7f070036;
-        public static final int action_settings=0x7f07005b;
+        public static final int action_settings=0x7f070061;
         public static final int activity_chooser_view_content=0x7f070037;
         public static final int always=0x7f07001e;
         public static final int beginning=0x7f070023;
@@ -1442,7 +1442,7 @@ containing a value of this type.
         public static final int dialog=0x7f070021;
         public static final int disableHome=0x7f07001b;
         public static final int dropdown=0x7f070022;
-        public static final int editText1=0x7f07005a;
+        public static final int editText1=0x7f070060;
         public static final int edit_query=0x7f070042;
         public static final int end=0x7f070025;
         public static final int expand_activities_button=0x7f070038;
@@ -1467,9 +1467,14 @@ containing a value of this type.
         public static final int main_layout=0x7f070054;
         public static final int mapFragment=0x7f070057;
         public static final int match_parent=0x7f07000c;
+        public static final int mcq_option1=0x7f07005a;
+        public static final int mcq_option2=0x7f07005b;
+        public static final int mcq_option3=0x7f07005c;
+        public static final int mcq_option4=0x7f07005d;
         public static final int middle=0x7f070024;
         public static final int monochrome=0x7f070013;
         public static final int never=0x7f07001c;
+        public static final int next_btn=0x7f070059;
         public static final int none=0x7f070000;
         public static final int normal=0x7f070001;
         public static final int production=0x7f070007;
@@ -1495,13 +1500,14 @@ containing a value of this type.
         public static final int showHome=0x7f070017;
         public static final int showTitle=0x7f070019;
         public static final int spinner1=0x7f070051;
-        public static final int splash_loading=0x7f070059;
-        public static final int splash_msg=0x7f070058;
+        public static final int splash_loading=0x7f07005f;
+        public static final int splash_msg=0x7f07005e;
         public static final int split_action_bar=0x7f070030;
         public static final int strict_sandbox=0x7f070009;
         public static final int submit_area=0x7f07004b;
         public static final int tabMode=0x7f070015;
         public static final int terrain=0x7f070003;
+        public static final int timer=0x7f070058;
         public static final int title=0x7f07003d;
         public static final int top_action_bar=0x7f070032;
         public static final int up=0x7f070033;
@@ -1575,12 +1581,10 @@ containing a value of this type.
         public static final int category=0x7f0c0000;
         public static final int classic_mode=0x7f0c0001;
         public static final int explore_mode=0x7f0c0002;
-        public static final int fun=0x7f0c0003;
-        public static final int game=0x7f0c0004;
-        public static final int main=0x7f0c0005;
-        public static final int map=0x7f0c0006;
-        public static final int mcq=0x7f0c0007;
-        public static final int splash=0x7f0c0008;
+        public static final int game=0x7f0c0003;
+        public static final int main=0x7f0c0004;
+        public static final int map=0x7f0c0005;
+        public static final int splash=0x7f0c0006;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1751,6 +1755,7 @@ containing a value of this type.
         public static final int title_activity_map=0x7f050038;
         public static final int title_activity_mcq=0x7f05003d;
         public static final int title_activity_splash=0x7f050030;
+        public static final int title_activity_test=0x7f050050;
         public static final int unlocked_continents=0x7f05004b;
         public static final int use_my_location=0x7f050046;
         /**  Text on a placeholder buy button when Google Play services is not

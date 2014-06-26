@@ -18,7 +18,6 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -41,7 +40,7 @@ public class GameActivity extends Helper {
 	private TextViewPlus option2;
 	private TextViewPlus option3;
 	private TextViewPlus option4;
-	private CountDownTimer countTimer;
+
 	private TextViewPlus displayQuestion;
 
 	private RelativeLayout main;
@@ -70,6 +69,7 @@ public class GameActivity extends Helper {
 		}
 		GenerateQuestions genQues = new GenerateQuestions(selection, value);
 		genQues.execute();
+
 		main = (RelativeLayout)findViewById(R.id.main_layout);
 		view = getLayoutInflater().inflate(R.layout.layout_play_game, main,false);
 
@@ -106,7 +106,6 @@ public class GameActivity extends Helper {
 
 	public void nextQuestion(View v)
 	{
-		countTimer.cancel();
 		loadQuestion();
 	}
 
@@ -165,18 +164,6 @@ public class GameActivity extends Helper {
 			displayQuestion = (TextViewPlus)findViewById(R.id.question);
 			displayQuestion.setText(genQuestion.getQuestion());
 		}
-		timer = (TextViewPlus)findViewById(R.id.timer);
-		countTimer = new CountDownTimer(30000, 1000) {
-
-			public void onTick(long millisUntilFinished) {
-				timer.setText("Time remaining: " + millisUntilFinished / 1000);
-			}
-
-			public void onFinish() {
-				nextQuestion(null);
-			}
-		}.start();
-		
 
 
 

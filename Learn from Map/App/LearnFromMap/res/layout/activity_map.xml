@@ -41,7 +41,7 @@
             android:layout_height="wrap_content" >
 
             <org.buildmlearn.learnfrommap.TextViewPlus
-                android:id="@+id/timer"
+                android:id="@+id/question"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"

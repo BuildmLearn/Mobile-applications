@@ -1,24 +1,31 @@
 package org.buildmlearn.learnfrommap;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
+import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.parser.XmlParser;
 import org.buildmlearn.learnfrommap.questionmodule.BaseQuestion;
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion;
+import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion.Type;
 import org.buildmlearn.learnfrommap.questionmodule.QuestionModuleException;
 import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion;
 
+import com.google.android.gms.maps.SupportMapFragment;
+
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class GameActivity extends Helper {
@@ -28,13 +35,25 @@ public class GameActivity extends Helper {
 	private String value;
 	private ProgressBar progressBar;
 	private TextViewPlus loadingText;
+	private TextViewPlus timer;
+	private TextViewPlus option1;
+	private TextViewPlus option2;
+	private TextViewPlus option3;
+	private TextViewPlus option4;
+
+	private TextViewPlus displayQuestion;
+
 	private RelativeLayout main;
 	private View view;
+	private List<GeneratedQuestion> question;
+	private int questionCounter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
+		question = new ArrayList<GeneratedQuestion>();
+		questionCounter = 0;
 		Intent intent = getIntent();
 		mode = intent.getStringExtra("MODE");
 		selection = intent.getStringExtra("SELECTION");
@@ -42,6 +61,7 @@ public class GameActivity extends Helper {
 		loadingText = (TextViewPlus)findViewById(R.id.question);
 		progressBar = (ProgressBar)findViewById(R.id.game_progressbar);
 		progressBar.setMax(20);
+		progressBar.setProgress(0);
 		progressBar.incrementProgressBy(1);
 		if(mode.equals("EXPLORE_MODE"))
 		{
@@ -52,15 +72,101 @@ public class GameActivity extends Helper {
 
 		main = (RelativeLayout)findViewById(R.id.main_layout);
 		view = getLayoutInflater().inflate(R.layout.layout_play_game, main,false);
-		//        main.addView(view);
-		//
+
 
 
 	}
 
+	private void killOldMap() {
+		SupportMapFragment mapFragment = ((SupportMapFragment) this.getSupportFragmentManager().findFragmentById(R.id.mapFragment));
+		if(mapFragment != null)
+		{
+			getSupportFragmentManager().beginTransaction().remove(getSupportFragmentManager().findFragmentById(R.id.mapFragment)).commit();
+		}
+
+	}
+
+	static void shuffleArray(String[] ar)
+	{
+		Random rnd = new Random();
+		for (int i = ar.length - 1; i > 0; i--)
+		{
+			int index = rnd.nextInt(i + 1);
+			String a = ar[index];
+			ar[index] = ar[i];
+			ar[i] = a;
+		}
+	}
+
 	public void startGame(View v)
 	{
-		Toast.makeText(getApplicationContext(), "Starting game", Toast.LENGTH_SHORT).show();
+		loadQuestion();
+
+	}
+
+	public void nextQuestion(View v)
+	{
+		loadQuestion();
+	}
+
+	public void loadQuestion()
+	{
+
+		if(questionCounter == 20)
+		{
+			questionCounter = 0;
+		}
+		GeneratedQuestion genQuestion = question.get(questionCounter++);
+		if(genQuestion.getType() == Type.Fill)
+		{
+			view = getLayoutInflater().inflate(R.layout.layout_fill, main,false);
+			main.removeAllViews();
+			main.addView(view);
+			displayQuestion = (TextViewPlus)findViewById(R.id.question);
+			displayQuestion.setText(genQuestion.getQuestion());
+
+		}
+		else if(genQuestion.getType() == Type.Mcq)
+		{
+
+			view = getLayoutInflater().inflate(R.layout.activity_mcq, main,false);
+			main.removeAllViews();
+			main.addView(view);
+			displayQuestion = (TextViewPlus)findViewById(R.id.question);
+			displayQuestion.setText(genQuestion.getQuestion());
+			option1 = (TextViewPlus)findViewById(R.id.mcq_option1);
+			option2 = (TextViewPlus)findViewById(R.id.mcq_option2);
+			option3 = (TextViewPlus)findViewById(R.id.mcq_option3);
+			option4 = (TextViewPlus)findViewById(R.id.mcq_option4);
+			String[] temp = genQuestion.getOption();
+			String[] options = {temp[0], temp[1], temp[2], genQuestion.getAnswer()};
+			shuffleArray(options);
+			option1.setText(options[0]);
+			option2.setText(options[1]);
+			option3.setText(options[2]);
+			option4.setText(options[3]);
+
+
+		}
+		else
+		{
+			//			killOldMap();
+			android.support.v4.app.Fragment fragment = (getSupportFragmentManager().findFragmentById(R.id.mapFragment));  
+			if(fragment != null)
+			{
+				FragmentTransaction ft = this.getSupportFragmentManager().beginTransaction();
+				ft.remove(fragment);
+				ft.commit();
+			}
+			view = getLayoutInflater().inflate(R.layout.activity_map, main,false);
+			main.removeAllViews();
+			main.addView(view);
+			displayQuestion = (TextViewPlus)findViewById(R.id.question);
+			displayQuestion.setText(genQuestion.getQuestion());
+		}
+
+
+
 	}
 
 	@Override
@@ -89,17 +195,19 @@ public class GameActivity extends Helper {
 
 		String selection;
 		String value;
+		Database db;
 
 		@Override
 		protected String doInBackground(Void... params) {
 
+			db = new Database(getApplicationContext());
 			Random random = new Random();
 			XmlParser xmlParser = new XmlParser(getApplicationContext());
 			ArrayList<XmlQuestion> questionRules = xmlParser.fetchQuestions();
 			for(int i = 1; i< 21; i++)
 			{
 				XmlQuestion rule = getRandomQuestionRule(questionRules, random);
-				makeQuestion(rule, selection, value);
+				makeQuestion(rule, selection, value, db);
 				onProgressUpdate(i);
 			}
 			return null;
@@ -115,6 +223,7 @@ public class GameActivity extends Helper {
 		protected void onPostExecute(String result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
+			db.close();
 			main.removeAllViews();
 			main.addView(view);
 
@@ -133,11 +242,13 @@ public class GameActivity extends Helper {
 			});
 		}
 
-		private GeneratedQuestion makeQuestion(XmlQuestion questionRule, String selection, String value)
+		private GeneratedQuestion makeQuestion(XmlQuestion questionRule, String selection, String value, Database db)
 		{
-			BaseQuestion question = new BaseQuestion(getApplicationContext(), questionRule, selection, value);
+
+			BaseQuestion question = new BaseQuestion(db, questionRule, selection, value);
 			try {
 				GeneratedQuestion formedQuestion = question.makeQuestion();
+				GameActivity.this.question.add(formedQuestion);
 				Log.e("Question", formedQuestion.getQuestion());
 			} catch (QuestionModuleException e) {
 				e.printStackTrace();

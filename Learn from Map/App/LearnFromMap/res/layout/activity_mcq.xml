@@ -5,159 +5,144 @@
     android:layout_height="match_parent"
     tools:context="org.buildmlearn.learnfrommap.Mcq$PlaceholderFragment" >
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="7dp"
+        android:background="#80000000"
+        android:orientation="vertical"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp" >
 
-        <ImageView
-            android:id="@+id/explore_world_map"
+        <org.buildmlearn.learnfrommap.TextViewPlus
+            android:id="@+id/question"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/bg_nexus" />
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/mcq_question"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            foo:customFont="Roboto_Light.ttf" />
 
-        <RelativeLayout
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="5dp"
+            android:background="#ffffff" />
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="?attr/actionBarSize" >
+            android:layout_height="wrap_content" >
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_margin="7dp"
-                android:background="#80000000"
-                android:orientation="vertical"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp" >
+            <org.buildmlearn.learnfrommap.TextViewPlus
+                android:id="@+id/mcq_option1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/border_white"
+                android:clickable="true"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/option1"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                foo:customFont="Roboto_Light.ttf" />
 
-                <org.buildmlearn.learnfrommap.TextViewPlus
-                    android:id="@+id/question"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:text="@string/mcq_question"
-                    android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    foo:customFont="Roboto_Light.ttf" />
+            <org.buildmlearn.learnfrommap.TextViewPlus
+                android:id="@+id/mcq_option2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/border_white"
+                android:clickable="true"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/option2"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                foo:customFont="Roboto_Light.ttf" />
+        </LinearLayout>
 
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="#ffffff" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+            <org.buildmlearn.learnfrommap.TextViewPlus
+                android:id="@+id/mcq_option3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/border_white"
+                android:clickable="true"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/option3"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                foo:customFont="Roboto_Light.ttf" />
 
-                    <org.buildmlearn.learnfrommap.TextViewPlus
-                        android:id="@+id/question"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:layout_weight="0.5"
-                        android:background="@drawable/border_white"
-                        android:clickable="true"
-                        android:gravity="center_horizontal"
-                        android:padding="5dp"
-                        android:text="@string/option1"
-                        android:textColor="@android:color/white"
-                        android:textSize="16sp"
-                        foo:customFont="Roboto_Light.ttf" />
+            <org.buildmlearn.learnfrommap.TextViewPlus
+                android:id="@+id/mcq_option4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/border_white"
+                android:clickable="true"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/option4"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                foo:customFont="Roboto_Light.ttf" />
+        </LinearLayout>
 
-                    <org.buildmlearn.learnfrommap.TextViewPlus
-                        android:id="@+id/question"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:layout_weight="0.5"
-                        android:background="@drawable/border_white"
-                        android:clickable="true"
-                        android:gravity="center_horizontal"
-                        android:padding="5dp"
-                        android:text="@string/option2"
-                        android:textColor="@android:color/white"
-                        android:textSize="16sp"
-                        foo:customFont="Roboto_Light.ttf" />
-                </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="#ffffff" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
 
-                    <org.buildmlearn.learnfrommap.TextViewPlus
-                        android:id="@+id/question"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:layout_weight="0.5"
-                        android:background="@drawable/border_white"
-                        android:clickable="true"
-                        android:gravity="center_horizontal"
-                        android:padding="5dp"
-                        android:text="@string/option3"
-                        android:textColor="@android:color/white"
-                        android:textSize="16sp"
-                        foo:customFont="Roboto_Light.ttf" />
+            <org.buildmlearn.learnfrommap.TextViewPlus
+                android:id="@+id/question"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:gravity="center_vertical|left"
+                android:padding="10dp"
+                android:text="@string/time"
+                android:textColor="@android:color/white"
+                foo:customFont="Roboto_Light.ttf" />
 
-                    <org.buildmlearn.learnfrommap.TextViewPlus
-                        android:id="@+id/question"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:layout_weight="0.5"
-                        android:background="@drawable/border_white"
-                        android:clickable="true"
-                        android:gravity="center_horizontal"
-                        android:padding="5dp"
-                        android:text="@string/option4"
-                        android:textColor="@android:color/white"
-                        android:textSize="16sp"
-                        foo:customFont="Roboto_Light.ttf" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="5dp"
-                    android:background="#ffffff" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
-
-                    <org.buildmlearn.learnfrommap.TextViewPlus
-                        android:id="@+id/question"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.5"
-                        android:gravity="center_vertical|left"
-                        android:padding="10dp"
-                        android:text="@string/time"
-                        android:textColor="@android:color/white"
-                        foo:customFont="Roboto_Light.ttf" />
-
-                    <org.buildmlearn.learnfrommap.TextViewPlus
-                        android:id="@+id/question"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_margin="2dp"
-                        android:layout_weight="0.5"
-                        android:gravity="center_vertical|right"
-                        android:padding="10dp"
-                        android:text="@string/next_question"
-                        android:textColor="@android:color/white"
-                        foo:customFont="Roboto_Light.ttf" />
-                </LinearLayout>
-            </LinearLayout>
-        </RelativeLayout>
-    </RelativeLayout>
+            <org.buildmlearn.learnfrommap.TextViewPlus
+                android:id="@+id/next_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="2dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/custom_tile_color_no_bg"
+                android:clickable="true"
+                android:gravity="center_vertical|right"
+                android:onClick="nextQuestion"
+                android:padding="10dp"
+                android:text="@string/next_question"
+                android:textColor="@android:color/white"
+                foo:customFont="Roboto_Light.ttf" />
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

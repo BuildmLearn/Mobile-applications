@@ -4,7 +4,6 @@ import org.buildmlearn.learnfrommap.maphelper.MapHelper;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.ActionBarActivity;
 import android.widget.Toast;
 
 public class DatabaseHelper extends MapHelper {
@@ -68,7 +67,7 @@ public class DatabaseHelper extends MapHelper {
 					db.close();
 					main_db.close();
 					msg = "Successfull";
-					Thread.sleep(500);
+					Thread.sleep(1000);
 					if (getApplicationContext() != null) 
 					{
 						runOnUiThread(new Runnable() 

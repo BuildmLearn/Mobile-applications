@@ -1,7 +1,5 @@
 package org.buildmlearn.learnfrommap.databasehelper;
 
-import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion.Type;
-
 public class ResultHolder {
 
 	private String country;

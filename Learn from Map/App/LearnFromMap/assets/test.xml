@@ -8,4 +8,28 @@
 	    <format>Capital of :X: is _________</format>
 	    <answer>name</answer>
 	</question>
+<!-- 	<question>
+	    <code>PCLI</code>
+	    <type>PIN</type>
+	    <relationship>name</relationship>
+	    <location>true</location>
+	    <format>Pin the capital of :X:</format>
+	    <answer>location</answer>
+	</question> -->
+	<question>
+	    <code>PCLI</code>
+	    <type>MCQ</type>
+	    <relationship>name</relationship>
+	    <location>true</location>
+	    <format>What is the capital of :X:</format>
+	    <answer>capital</answer>
+	</question>
+	<question>
+	    <code>PPLC</code>
+	    <type>MCQ</type>
+	    <relationship>name</relationship>
+	    <location>true</location>
+	    <format>:X: is the capital of which country?</format>
+	    <answer>country</answer>
+	</question>
 </questions>

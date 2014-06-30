@@ -78,14 +78,6 @@ public class GameActivity extends Helper {
 
 	}
 
-	private void killOldMap() {
-		SupportMapFragment mapFragment = ((SupportMapFragment) this.getSupportFragmentManager().findFragmentById(R.id.mapFragment));
-		if(mapFragment != null)
-		{
-			getSupportFragmentManager().beginTransaction().remove(getSupportFragmentManager().findFragmentById(R.id.mapFragment)).commit();
-		}
-
-	}
 
 	static void shuffleArray(String[] ar)
 	{
@@ -128,6 +120,8 @@ public class GameActivity extends Helper {
 	public void loadQuestion()
 	{
 
+		
+		
 		if(questionCounter == 20)
 		{
 			return;
@@ -166,7 +160,6 @@ public class GameActivity extends Helper {
 		}
 		else
 		{
-			//			killOldMap();	
 			view = getLayoutInflater().inflate(R.layout.activity_map, main,false);
 			main.removeAllViews();
 			main.addView(view);
@@ -194,6 +187,7 @@ public class GameActivity extends Helper {
 				nextQuestion(null);
 			}
 		}.start();
+		getSupportActionBar().setTitle("Question " + questionCounter + " of 20");
 
 
 

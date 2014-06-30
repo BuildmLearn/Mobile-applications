@@ -117,11 +117,45 @@ public class GameActivity extends Helper {
 		loadQuestion();
 	}
 
+	public void onOptionClick(View v)
+	{
+		switch (v.getId()) {
+		case R.id.mcq_option1:
+			option1.setPressed(true);
+			option2.setPressed(false);
+			option3.setPressed(false);
+			option4.setPressed(false);			
+			break;
+		case R.id.mcq_option2:
+			option2.setPressed(true);
+			option1.setPressed(false);
+			option3.setPressed(false);
+			option4.setPressed(false);			
+			break;
+		case R.id.mcq_option3:
+			option3.setPressed(true);
+			option2.setPressed(false);
+			option1.setPressed(false);
+			option4.setPressed(false);			
+			break;
+		case R.id.mcq_option4:
+			option4.setPressed(true);
+			option2.setPressed(false);
+			option3.setPressed(false);
+			option1.setPressed(false);			
+			break;
+
+		default:
+			break;
+		}
+
+	}
+
 	public void loadQuestion()
 	{
 
-		
-		
+
+
 		if(questionCounter == 20)
 		{
 			return;
@@ -151,12 +185,6 @@ public class GameActivity extends Helper {
 			String[] temp = genQuestion.getOption();
 			String[] options = {temp[0], temp[1], temp[2], genQuestion.getAnswer()};
 			shuffleArray(options);
-			option1.setText(options[0]);
-			option2.setText(options[1]);
-			option3.setText(options[2]);
-			option4.setText(options[3]);
-
-
 		}
 		else
 		{
@@ -174,7 +202,7 @@ public class GameActivity extends Helper {
 				}
 			});	
 		}
-	
+
 
 		timer = (TextViewPlus)findViewById(R.id.timer);
 		countTimer = new CountDownTimer(30000, 1000) {

@@ -14,7 +14,9 @@ import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion;
 
 import com.google.android.gms.maps.SupportMapFragment;
 
+import android.app.Fragment;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -26,12 +28,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
-public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallbacks {
+public class GameActivity extends Helper {
 
-	private static final String TAG_TASK_FRAGMENT = "task_fragment";
-	private static final String KEY_CURRENT_PROGRESS = "current_progress";
-	private static final String KEY_PERCENT_PROGRESS = "percent_progress";
 	private String mode;
 	private String selection;
 	private String value;
@@ -44,45 +44,22 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 	private TextViewPlus option4;
 	private CountDownTimer countTimer;
 	private TextViewPlus displayQuestion;
-	private Database db;
 
 	private RelativeLayout main;
 	private View view;
-	public List<GeneratedQuestion> question;
+	private List<GeneratedQuestion> question;
 	private int questionCounter;
-	private AsyncTaskFragment mTaskFragment;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
-		Intent intent = getIntent();
-		selection = intent.getStringExtra("SELECTION");
-		value = intent.getStringExtra("VALUE");
-
-
-
-		FragmentManager fm = getSupportFragmentManager();
-		mTaskFragment = (AsyncTaskFragment) fm.findFragmentByTag(TAG_TASK_FRAGMENT);
-
-		// If the Fragment is non-null, then it is currently being
-		// retained across a configuration change.
-		if (mTaskFragment == null) 
-		{
-			mTaskFragment = new AsyncTaskFragment();
-			Bundle bundle = new Bundle();
-			bundle.putString("SELECTION", selection);
-			bundle.putString("VALUE", value);
-			fm.beginTransaction().add(mTaskFragment, TAG_TASK_FRAGMENT).commit();
-		}
-
-
-
 		question = new ArrayList<GeneratedQuestion>();
 		questionCounter = 0;
-
+		Intent intent = getIntent();
 		mode = intent.getStringExtra("MODE");
-
+		selection = intent.getStringExtra("SELECTION");
+		value = intent.getStringExtra("VALUE");
 		loadingText = (TextViewPlus)findViewById(R.id.question);
 		progressBar = (ProgressBar)findViewById(R.id.game_progressbar);
 		progressBar.setMax(20);
@@ -92,29 +69,23 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 		{
 			setTitle("Explore Mode");
 		}
-
+		GenerateQuestions genQues = new GenerateQuestions(selection, value);
+		genQues.execute();
 		main = (RelativeLayout)findViewById(R.id.main_layout);
 		view = getLayoutInflater().inflate(R.layout.layout_play_game, main,false);
 
 
-		// Restore saved state.
-		if (savedInstanceState != null) {
-			progressBar.setProgress(savedInstanceState.getInt(KEY_CURRENT_PROGRESS));
-			loadingText.setText(savedInstanceState.getString(KEY_PERCENT_PROGRESS));
+
+	}
+
+	private void killOldMap() {
+		SupportMapFragment mapFragment = ((SupportMapFragment) this.getSupportFragmentManager().findFragmentById(R.id.mapFragment));
+		if(mapFragment != null)
+		{
+			getSupportFragmentManager().beginTransaction().remove(getSupportFragmentManager().findFragmentById(R.id.mapFragment)).commit();
 		}
 
-
-
 	}
-
-	@Override
-	public void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-		outState.putInt(KEY_CURRENT_PROGRESS, progressBar.getProgress());
-		outState.putString(KEY_PERCENT_PROGRESS, loadingText.getText().toString());
-	}
-
-
 
 	static void shuffleArray(String[] ar)
 	{
@@ -210,7 +181,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 				}
 			});	
 		}
-
+	
 
 		timer = (TextViewPlus)findViewById(R.id.timer);
 		countTimer = new CountDownTimer(30000, 1000) {
@@ -250,76 +221,79 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 	}
 
 
-	
+	public class GenerateQuestions extends AsyncTask<Void, Integer, String>
+	{
 
-	@Override
-	public void onPreExecute() {
-		// TODO Auto-generated method stub
+		String selection;
+		String value;
+		Database db;
 
-	}
+		@Override
+		protected String doInBackground(Void... params) {
 
-	@Override
-	public void onProgressUpdate(final int percent) {
-
-		progressBar.setProgress(percent);
-		runOnUiThread(new Runnable() {
-
-			@Override
-			public void run() {
-				loadingText.setText("Loading question " +percent + " of 20");
-
+			db = new Database(getApplicationContext());
+			Random random = new Random();
+			XmlParser xmlParser = new XmlParser(getApplicationContext());
+			ArrayList<XmlQuestion> questionRules = xmlParser.fetchQuestions();
+			for(int i = 1; i< 21; i++)
+			{
+				XmlQuestion rule = getRandomQuestionRule(questionRules, random);
+				makeQuestion(rule, selection, value, db);
+				onProgressUpdate(i);
 			}
-		});
+			return null;
+		}
 
-	}
+		public GenerateQuestions(String selection, String value) {
+			super();
+			this.selection = selection;
+			this.value = value;
+		}
 
-	@Override
-	public void onCancelled() {
-		// TODO Auto-generated method stub
+		@Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			db.close();
+			main.removeAllViews();
+			main.addView(view);
 
-	}
+		}
 
-	@Override
-	public void onPostExecute() {
-		// TODO Auto-generated method stub
-		main.removeAllViews();
-		main.addView(view);
-	}
+		@Override
+		protected void onProgressUpdate(final Integer... values) {
+			// TODO Auto-generated method stub
+			super.onProgressUpdate(values);
+			progressBar.setProgress(values[0]);
 
-	@Override
-	public void doInBackground() {
-		db = new Database(getApplicationContext());
-		Random random = new Random();
-		XmlParser xmlParser = new XmlParser(getApplicationContext());
-		ArrayList<XmlQuestion> questionRules = xmlParser.fetchQuestions();
-		for(int i = 1; i< 21; i++)
+			runOnUiThread(new Runnable() {
+				public void run() {
+					loadingText.setText("Loading question " + values[0] + " of 20");
+				}
+			});
+		}
+
+		private GeneratedQuestion makeQuestion(XmlQuestion questionRule, String selection, String value, Database db)
 		{
-			XmlQuestion rule = getRandomQuestionRule(questionRules, random);
-			makeQuestion(rule, selection, value, db);
-			onProgressUpdate(i);
+
+			BaseQuestion question = new BaseQuestion(db, questionRule, selection, value);
+			try {
+				GeneratedQuestion formedQuestion = question.makeQuestion();
+				GameActivity.this.question.add(formedQuestion);
+				Log.e("Question", formedQuestion.getQuestion());
+			} catch (QuestionModuleException e) {
+				e.printStackTrace();
+			}
+			return null;
 		}
-		return;
 
-	}
-
-	private GeneratedQuestion makeQuestion(XmlQuestion questionRule, String selection, String value, Database db)
-	{
-
-		BaseQuestion question = new BaseQuestion(db, questionRule, selection, value);
-		try {
-			GeneratedQuestion formedQuestion = question.makeQuestion();
-			GameActivity.this.question.add(formedQuestion);
-			Log.e("Question", formedQuestion.getQuestion());
-		} catch (QuestionModuleException e) {
-			e.printStackTrace();
+		private XmlQuestion getRandomQuestionRule(ArrayList<XmlQuestion> questionRule, Random random)
+		{
+			int index = random.nextInt(questionRule.size());
+			return questionRule.get(index);
 		}
-		return null;
-	}
 
-	private XmlQuestion getRandomQuestionRule(ArrayList<XmlQuestion> questionRule, Random random)
-	{
-		int index = random.nextInt(questionRule.size());
-		return questionRule.get(index);
+
 	}
 
 }

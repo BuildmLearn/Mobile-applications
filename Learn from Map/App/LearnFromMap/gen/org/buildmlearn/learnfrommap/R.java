@@ -1429,7 +1429,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f070028;
         public static final int action_menu_presenter=0x7f070029;
         public static final int action_mode_close_button=0x7f070036;
-        public static final int action_settings=0x7f070061;
+        public static final int action_settings=0x7f070062;
         public static final int activity_chooser_view_content=0x7f070037;
         public static final int always=0x7f07001e;
         public static final int beginning=0x7f070023;
@@ -1444,7 +1444,7 @@ containing a value of this type.
         public static final int dialog=0x7f070021;
         public static final int disableHome=0x7f07001b;
         public static final int dropdown=0x7f070022;
-        public static final int editText1=0x7f070060;
+        public static final int editText1=0x7f070061;
         public static final int edit_query=0x7f070042;
         public static final int end=0x7f070025;
         public static final int expand_activities_button=0x7f070038;
@@ -1468,11 +1468,12 @@ containing a value of this type.
         public static final int list_item=0x7f07003b;
         public static final int main_layout=0x7f070054;
         public static final int mapFragment=0x7f070057;
+        public static final int map_progress=0x7f07005a;
         public static final int match_parent=0x7f07000c;
-        public static final int mcq_option1=0x7f07005a;
-        public static final int mcq_option2=0x7f07005b;
-        public static final int mcq_option3=0x7f07005c;
-        public static final int mcq_option4=0x7f07005d;
+        public static final int mcq_option1=0x7f07005b;
+        public static final int mcq_option2=0x7f07005c;
+        public static final int mcq_option3=0x7f07005d;
+        public static final int mcq_option4=0x7f07005e;
         public static final int middle=0x7f070024;
         public static final int monochrome=0x7f070013;
         public static final int never=0x7f07001c;
@@ -1502,8 +1503,8 @@ containing a value of this type.
         public static final int showHome=0x7f070017;
         public static final int showTitle=0x7f070019;
         public static final int spinner1=0x7f070051;
-        public static final int splash_loading=0x7f07005f;
-        public static final int splash_msg=0x7f07005e;
+        public static final int splash_loading=0x7f070060;
+        public static final int splash_msg=0x7f07005f;
         public static final int split_action_bar=0x7f070030;
         public static final int strict_sandbox=0x7f070009;
         public static final int submit_area=0x7f07004b;

@@ -374,7 +374,7 @@ int id action_context_bar 0x7f07002f
 int id action_menu_divider 0x7f070028
 int id action_menu_presenter 0x7f070029
 int id action_mode_close_button 0x7f070036
-int id action_settings 0x7f070061
+int id action_settings 0x7f070062
 int id activity_chooser_view_content 0x7f070037
 int id always 0x7f07001e
 int id beginning 0x7f070023
@@ -389,7 +389,7 @@ int id default_activity_button 0x7f07003a
 int id dialog 0x7f070021
 int id disableHome 0x7f07001b
 int id dropdown 0x7f070022
-int id editText1 0x7f070060
+int id editText1 0x7f070061
 int id edit_query 0x7f070042
 int id end 0x7f070025
 int id expand_activities_button 0x7f070038
@@ -413,11 +413,12 @@ int id listMode 0x7f070014
 int id list_item 0x7f07003b
 int id main_layout 0x7f070054
 int id mapFragment 0x7f070057
+int id map_progress 0x7f07005a
 int id match_parent 0x7f07000c
-int id mcq_option1 0x7f07005a
-int id mcq_option2 0x7f07005b
-int id mcq_option3 0x7f07005c
-int id mcq_option4 0x7f07005d
+int id mcq_option1 0x7f07005b
+int id mcq_option2 0x7f07005c
+int id mcq_option3 0x7f07005d
+int id mcq_option4 0x7f07005e
 int id middle 0x7f070024
 int id monochrome 0x7f070013
 int id never 0x7f07001c
@@ -447,8 +448,8 @@ int id showCustom 0x7f07001a
 int id showHome 0x7f070017
 int id showTitle 0x7f070019
 int id spinner1 0x7f070051
-int id splash_loading 0x7f07005f
-int id splash_msg 0x7f07005e
+int id splash_loading 0x7f070060
+int id splash_msg 0x7f07005f
 int id split_action_bar 0x7f070030
 int id strict_sandbox 0x7f070009
 int id submit_area 0x7f07004b

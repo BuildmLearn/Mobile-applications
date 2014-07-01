@@ -1,49 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android" >
-   <item android:state_pressed="true" >        
-        <shape android:shape="rectangle">
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true"><shape android:shape="rectangle">
             <solid android:color="@color/grey_end" />
-            <padding 
-                   android:left="10dp"
-                android:top="10dp"
-                android:right="10dp"
-                android:bottom="10dp" />
-            <stroke   
-                android:width="1dp"
-                android:color="@color/topline_btn" />                        
-        </shape>    
-    </item>
-    <item>
-        <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
-           <item>
-                <shape android:shape="rectangle">
+
+            <stroke android:width="1dp" android:color="@color/topline_btn" />
+        </shape></item>
+    <item><layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+            <item><shape android:shape="rectangle">
                     <solid android:color="@color/grey" />
-                    <gradient
-                        android:startColor="@color/grey"
-                        android:endColor="@color/grey_end"
-                        android:angle="270" />
-                </shape>
-            </item>
-            <item android:top="0dp" android:bottom="-1dp" android:left="-1dp" android:right="-1dp">
-                <shape android:shape="rectangle">
-                    <stroke   
-                        android:width="1dp"
-                        android:color="@color/topline_btn" />                       
+
+                    <gradient android:angle="270" android:endColor="@color/grey_end" android:startColor="@color/grey" />
+                </shape></item>
+            <item android:bottom="-1dp" android:left="-1dp" android:right="-1dp" android:top="0dp"><shape android:shape="rectangle">
+                    <stroke android:width="1dp" android:color="@color/topline_btn" />
+
                     <solid android:color="#00000000" />
+
                     <corners android:radius="0dp" />
-                </shape>
-            </item>
-            <item android:top="-1dp" android:bottom="0dp" android:left="-1dp" android:right="-1dp">
-                <shape android:shape="rectangle">
-                    <stroke   
-                        android:width="1dp"
-                        android:color="@color/bottomline_btn" />                        
+                </shape></item>
+            <item android:bottom="0dp" android:left="-1dp" android:right="-1dp" android:top="-1dp"><shape android:shape="rectangle">
+                    <stroke android:width="1dp" android:color="@color/bottomline_btn" />
+
                     <solid android:color="#00000000" />
+
                     <corners android:radius="0dp" />
-                </shape>
-            </item>         
-        </layer-list>
-    </item>  
+                </shape></item>
+        </layer-list></item>
+
 </selector>
-
-

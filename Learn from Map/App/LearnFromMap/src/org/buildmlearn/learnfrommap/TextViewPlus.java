@@ -1,8 +1,10 @@
 package org.buildmlearn.learnfrommap;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.TextView;
@@ -42,5 +44,40 @@ public class TextViewPlus extends TextView {
         setTypeface(tf);  
         return true;
     }
+    
+    @Override
+    public void setBackgroundResource(int resid) {
+        int pl = getPaddingLeft();
+        int pt = getPaddingTop();
+        int pr = getPaddingRight();
+        int pb = getPaddingBottom();
+
+        super.setBackgroundResource(resid);
+
+        this.setPadding(pl, pt, pr, pb);
+    }
+
+	@SuppressLint("NewApi") @Override
+	public void setBackground(Drawable background) {
+
+        int pl = getPaddingLeft();
+        int pt = getPaddingTop();
+        int pr = getPaddingRight();
+        int pb = getPaddingBottom();
+		super.setBackground(background);
+		this.setPadding(pl, pt, pr, pb);
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public void setBackgroundDrawable(Drawable background) {
+
+        int pl = getPaddingLeft();
+        int pt = getPaddingTop();
+        int pr = getPaddingRight();
+        int pb = getPaddingBottom();
+		super.setBackgroundDrawable(background);
+		this.setPadding(pl, pt, pr, pb);
+	}
 
 }

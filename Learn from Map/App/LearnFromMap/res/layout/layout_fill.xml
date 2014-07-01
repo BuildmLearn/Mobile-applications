@@ -42,6 +42,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/answer"
+            android:singleLine="true"
             android:textColor="@android:color/white"
             android:textColorHint="#C0ffffff" >
 

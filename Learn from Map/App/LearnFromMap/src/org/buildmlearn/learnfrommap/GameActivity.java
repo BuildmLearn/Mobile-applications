@@ -14,8 +14,10 @@ import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion;
 
 import com.google.android.gms.maps.SupportMapFragment;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -117,38 +119,77 @@ public class GameActivity extends Helper {
 		loadQuestion();
 	}
 
-	public void onOptionClick(View v)
+	@SuppressLint("NewApi") @SuppressWarnings("deprecation")
+	public void onOption1Click(View v)
 	{
-		switch (v.getId()) {
-		case R.id.mcq_option1:
-			option1.setPressed(true);
-			option2.setPressed(false);
-			option3.setPressed(false);
-			option4.setPressed(false);			
-			break;
-		case R.id.mcq_option2:
-			option2.setPressed(true);
-			option1.setPressed(false);
-			option3.setPressed(false);
-			option4.setPressed(false);			
-			break;
-		case R.id.mcq_option3:
-			option3.setPressed(true);
-			option2.setPressed(false);
-			option1.setPressed(false);
-			option4.setPressed(false);			
-			break;
-		case R.id.mcq_option4:
-			option4.setPressed(true);
-			option2.setPressed(false);
-			option3.setPressed(false);
-			option1.setPressed(false);			
-			break;
-
-		default:
-			break;
+//		option2.setPressed(false);
+//		option3.setPressed(false);
+//		option4.setPressed(false);		
+		
+		int sdk = android.os.Build.VERSION.SDK_INT;
+		if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+			option1.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_click));
+			option2.setBackgroundDrawable(getResources().getDrawable(R.drawable.border_white));
+			option4.setBackgroundDrawable(getResources().getDrawable(R.drawable.border_white));
+			option3.setBackgroundDrawable(getResources().getDrawable(R.drawable.border_white));
+		} else {
+			option1.setBackground(getResources().getDrawable(R.drawable.button_click));
+			option2.setBackground(getResources().getDrawable(R.drawable.border_white));
+			option3.setBackground(getResources().getDrawable(R.drawable.border_white));
+			option4.setBackground(getResources().getDrawable(R.drawable.border_white));
 		}
-
+		
+	}
+	@SuppressLint("NewApi") @SuppressWarnings("deprecation")
+	public void onOption2Click(View v)
+	{
+		int sdk = android.os.Build.VERSION.SDK_INT;
+		if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+			option2.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_click));
+			option1.setBackgroundDrawable(getResources().getDrawable(R.drawable.border_white));
+			option3.setBackgroundDrawable(getResources().getDrawable(R.drawable.border_white));
+			option4.setBackgroundDrawable(getResources().getDrawable(R.drawable.border_white));
+		} else {
+			option2.setBackground(getResources().getDrawable(R.drawable.button_click));
+			option1.setBackground(getResources().getDrawable(R.drawable.border_white));
+			option3.setBackground(getResources().getDrawable(R.drawable.border_white));
+			option4.setBackground(getResources().getDrawable(R.drawable.border_white));
+		}		
+		
+	}
+	@SuppressLint("NewApi") @SuppressWarnings("deprecation")
+	public void onOption3Click(View v)
+	{
+		int sdk = android.os.Build.VERSION.SDK_INT;
+		if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+			option3.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_click));
+			option2.setBackgroundDrawable(getResources().getDrawable(R.drawable.border_white));
+			option1.setBackgroundDrawable(getResources().getDrawable(R.drawable.border_white));
+			option4.setBackgroundDrawable(getResources().getDrawable(R.drawable.border_white));
+		} else {
+			option3.setBackground(getResources().getDrawable(R.drawable.button_click));
+			option2.setBackground(getResources().getDrawable(R.drawable.border_white));
+			option1.setBackground(getResources().getDrawable(R.drawable.border_white));
+			option4.setBackground(getResources().getDrawable(R.drawable.border_white));
+		}		
+		
+	}
+	@SuppressLint("NewApi") @SuppressWarnings("deprecation")
+	public void onOption4Click(View v)
+	{
+		int sdk = android.os.Build.VERSION.SDK_INT;
+		if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+			option4.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_click));
+			option2.setBackgroundDrawable(getResources().getDrawable(R.drawable.border_white));
+			option3.setBackgroundDrawable(getResources().getDrawable(R.drawable.border_white));
+			option1.setBackgroundDrawable(getResources().getDrawable(R.drawable.border_white));
+		} else {
+			option4.setBackground(getResources().getDrawable(R.drawable.button_click));
+			option2.setBackground(getResources().getDrawable(R.drawable.border_white));
+			option3.setBackground(getResources().getDrawable(R.drawable.border_white));
+			option1.setBackground(getResources().getDrawable(R.drawable.border_white));
+		}			
+		
 	}
 
 	public void loadQuestion()
@@ -185,6 +226,11 @@ public class GameActivity extends Helper {
 			String[] temp = genQuestion.getOption();
 			String[] options = {temp[0], temp[1], temp[2], genQuestion.getAnswer()};
 			shuffleArray(options);
+			option1.setText(options[0]);
+			option2.setText(options[1]);
+			option3.setText(options[2]);
+			option4.setText(options[3]);
+			
 		}
 		else
 		{

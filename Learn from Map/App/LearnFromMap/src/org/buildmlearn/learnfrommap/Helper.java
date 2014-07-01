@@ -46,7 +46,7 @@ public class Helper extends ActionBarActivity {
 			public void onCameraChange(CameraPosition cameraPosition) {
 				if (cameraPosition.zoom > (float) 4.0) {
 					mapView.animateCamera(CameraUpdateFactory
-							.zoomTo((float) 4.0));
+							.zoomTo((float) 4.99));
 				}
 
 			}
@@ -66,6 +66,16 @@ public class Helper extends ActionBarActivity {
 			}
 		});
 
+	}
+	
+	public LatLng getPosition()
+	{
+		if(marker != null)
+		{
+			return marker.getPosition();
+		}
+		return null;
+		
 	}
 
 	public boolean isMapReady() {
@@ -190,6 +200,7 @@ public class Helper extends ActionBarActivity {
 					mapView.addTileOverlay(new TileOverlayOptions()
 							.tileProvider(new CustomTileProvider(getResources()
 									.getAssets(), mapView)));
+					marker = null;
 					if (getApplicationContext() != null) {
 						runOnUiThread(new Runnable() {
 

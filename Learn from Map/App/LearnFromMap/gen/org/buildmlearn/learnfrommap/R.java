@@ -1444,13 +1444,13 @@ containing a value of this type.
         public static final int dialog=0x7f070021;
         public static final int disableHome=0x7f07001b;
         public static final int dropdown=0x7f070022;
-        public static final int editText1=0x7f070061;
         public static final int edit_query=0x7f070042;
         public static final int end=0x7f070025;
         public static final int expand_activities_button=0x7f070038;
         public static final int expanded_menu=0x7f07003e;
         public static final int explore_top=0x7f070052;
         public static final int explore_world_map=0x7f07004e;
+        public static final int fill_answer=0x7f070061;
         public static final int game_progressbar=0x7f070055;
         public static final int grayscale=0x7f070012;
         public static final int holo_dark=0x7f070005;

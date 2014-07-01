@@ -37,7 +37,7 @@
             android:background="#ffffff" />
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/fill_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"

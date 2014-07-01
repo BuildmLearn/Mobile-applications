@@ -10,9 +10,11 @@ import org.buildmlearn.learnfrommap.questionmodule.BaseQuestion;
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion;
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion.Type;
 import org.buildmlearn.learnfrommap.questionmodule.QuestionModuleException;
+import org.buildmlearn.learnfrommap.questionmodule.UserAnsweredData;
 import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion;
 
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -25,6 +27,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
@@ -43,16 +46,21 @@ public class GameActivity extends Helper {
 	private CountDownTimer mCountTimer;
 	private TextViewPlus mDisplayQuestion;
 	private int mSdk;
-
+	private int mSelectedOption;
+	private ArrayList<UserAnsweredData> mAnsweredList;
 	private RelativeLayout mMain;
 	private View mView;
 	private List<GeneratedQuestion> mQuestion;
 	private int mQuestionCounter;
+	private GeneratedQuestion genQuestion;
+	private String[] options;
+	private boolean mIsAnswered;
 
 	@Override	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mSdk = android.os.Build.VERSION.SDK_INT;
+		mAnsweredList = new ArrayList<UserAnsweredData>();
 		setContentView(R.layout.activity_game);
 		mQuestion = new ArrayList<GeneratedQuestion>();
 		mQuestionCounter = 0;
@@ -126,12 +134,14 @@ public class GameActivity extends Helper {
 				mOption2.setBackgroundDrawable(getResources().getDrawable(R.drawable.border_white));
 				mOption4.setBackgroundDrawable(getResources().getDrawable(R.drawable.border_white));
 				mOption3.setBackgroundDrawable(getResources().getDrawable(R.drawable.border_white));
+				
 			} else {
 				mOption1.setBackground(getResources().getDrawable(R.drawable.button_click));
 				mOption2.setBackground(getResources().getDrawable(R.drawable.border_white));
 				mOption3.setBackground(getResources().getDrawable(R.drawable.border_white));
 				mOption4.setBackground(getResources().getDrawable(R.drawable.border_white));
 			}
+			mSelectedOption = 0;
 			break;
 		case R.id.mcq_option2:
 			if(mSdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
@@ -145,7 +155,7 @@ public class GameActivity extends Helper {
 				mOption3.setBackground(getResources().getDrawable(R.drawable.border_white));
 				mOption4.setBackground(getResources().getDrawable(R.drawable.border_white));
 			}		
-
+			mSelectedOption = 1;
 			break;
 		case R.id.mcq_option3:
 			if(mSdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
@@ -159,6 +169,7 @@ public class GameActivity extends Helper {
 				mOption1.setBackground(getResources().getDrawable(R.drawable.border_white));
 				mOption4.setBackground(getResources().getDrawable(R.drawable.border_white));
 			}
+			mSelectedOption = 2;
 			break;
 		case R.id.mcq_option4:
 			if(mSdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
@@ -172,20 +183,65 @@ public class GameActivity extends Helper {
 				mOption3.setBackground(getResources().getDrawable(R.drawable.border_white));
 				mOption1.setBackground(getResources().getDrawable(R.drawable.border_white));
 			}
+			mSelectedOption = 3;
 			break;
 		default:
 			break;
 		}
+		mIsAnswered = true;
 
 	}
 
 	public void loadQuestion()
 	{
-		if(mQuestionCounter == 20)
+		if(mQuestionCounter > 0)
+		{
+			String question = genQuestion.getQuestion();
+			String answer = genQuestion.getAnswer();
+			UserAnsweredData userAnswerData;
+			if(genQuestion.getType() == Type.Fill)
+			{
+				EditText fillAnswer = (EditText)findViewById(R.id.fill_answer);
+				String userAnswer  = fillAnswer.getText().toString();
+				userAnswerData = new UserAnsweredData(question, answer, userAnswer, genQuestion.getType(), genQuestion.getXml().getAnswer());
+				
+			}
+			else if(genQuestion.getType() == Type.Mcq)
+			{
+				String userAnswer;
+				if(mIsAnswered)
+				{
+					userAnswer = options[mSelectedOption];
+				}
+				else
+				{
+					userAnswer = "";
+				}
+				userAnswerData = new UserAnsweredData(question, answer, userAnswer, genQuestion.getType(), genQuestion.getXml().getAnswer(), options);
+				
+			}
+			else
+			{
+				LatLng postion = getPosition();
+				String userAnswer;
+				if(postion != null)
+				{
+					userAnswer = postion.latitude + "," + postion.longitude;
+				}
+				else
+				{
+					userAnswer = "";
+				}
+				userAnswerData = new UserAnsweredData(question, answer, userAnswer, genQuestion.getType(), genQuestion.getXml().getAnswer());
+			}
+			mAnsweredList.add(userAnswerData);
+			
+		}
+		if(mQuestionCounter == 21)
 		{
 			return;
 		}
-		GeneratedQuestion genQuestion = mQuestion.get(mQuestionCounter++);
+		genQuestion = mQuestion.get(mQuestionCounter++);
 		if(genQuestion.getType() == Type.Fill)
 		{
 			mView = getLayoutInflater().inflate(R.layout.layout_fill, mMain,false);
@@ -198,7 +254,7 @@ public class GameActivity extends Helper {
 		}
 		else if(genQuestion.getType() == Type.Mcq)
 		{
-
+			mIsAnswered = false;
 			mView = getLayoutInflater().inflate(R.layout.activity_mcq, mMain,false);
 			mMain.removeAllViews();
 			mMain.addView(mView);
@@ -209,7 +265,8 @@ public class GameActivity extends Helper {
 			mOption3 = (TextViewPlus)findViewById(R.id.mcq_option3);
 			mOption4 = (TextViewPlus)findViewById(R.id.mcq_option4);
 			String[] temp = genQuestion.getOption();
-			String[] options = {temp[0], temp[1], temp[2], genQuestion.getAnswer()};
+			String[] _options = {temp[0], temp[1], temp[2], genQuestion.getAnswer()};
+			options = _options;
 			shuffleArray(options);
 			mOption1.setText(options[0]);
 			mOption2.setText(options[1]);

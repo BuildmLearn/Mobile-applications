@@ -6,6 +6,7 @@
 .project
 .metadata
 Learn\ from\ Map/App/LearnFromMap/bin/
+Learn\ from\ Map/App/LearnFromMap/gen/
 tmp/
 *.tmp
 *.bak

@@ -16,6 +16,7 @@ public class UserAnsweredData  implements Serializable{
 	private GeneratedQuestion.Type mQuestionType;
 	private String mAnswerType;
 	private String[] mOptions;
+	private boolean mIsAnswered;
 	
 	
 	public UserAnsweredData(String mQuestion, String mAnswer,
@@ -31,7 +32,7 @@ public class UserAnsweredData  implements Serializable{
 
 	public UserAnsweredData(String mQuestion, String mAnswer,
 			String mUserAnswer, Type mQuestionType, String mAnswerType,
-			String[] mOptions) {
+			String[] mOptions, boolean isAnswered) {
 		super();
 		this.mQuestion = mQuestion;
 		this.mAnswer = mAnswer;
@@ -39,6 +40,7 @@ public class UserAnsweredData  implements Serializable{
 		this.mQuestionType = mQuestionType;
 		this.mAnswerType = mAnswerType;
 		this.mOptions = mOptions;
+		this.mIsAnswered = isAnswered;
 	}
 
 
@@ -101,6 +103,11 @@ public class UserAnsweredData  implements Serializable{
 		this.mOptions = mOptions;
 	}
 	
+	
+	public boolean isAnswered()
+	{
+		return mIsAnswered;
+	}
 	
 	
 	

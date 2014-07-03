@@ -220,7 +220,7 @@ public class GameActivity extends Helper {
 				{
 					userAnswer = "";
 				}
-				userAnswerData = new UserAnsweredData(question, answer, userAnswer, genQuestion.getType(), genQuestion.getXml().getAnswer(), options);
+				userAnswerData = new UserAnsweredData(question, answer, userAnswer, genQuestion.getType(), genQuestion.getXml().getAnswer(), options, mIsAnswered);
 				
 			}
 			else
@@ -305,7 +305,7 @@ public class GameActivity extends Helper {
 	private void startTimer()
 	{
 		mTimer = (TextViewPlus)findViewById(R.id.timer);
-		mCountTimer = new CountDownTimer(1000, 1000) {
+		mCountTimer = new CountDownTimer(3000, 1000) {
 			@Override
 			public void onTick(long millisUntilFinished) {
 				mTimer.setText("Time remaining: " + millisUntilFinished / 1000);

@@ -5,17 +5,19 @@ import java.util.List;
 
 import org.buildmlearn.learnfrommap.R;
 import org.buildmlearn.learnfrommap.TextViewPlus;
+import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion.Type;
 import org.buildmlearn.learnfrommap.questionmodule.UserAnsweredData;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 public class ScoreAdapter extends ArrayAdapter<UserAnsweredData> {
-	
+
 	private Context mContext;
 	private ArrayList<UserAnsweredData> mData;
 	private int mListResourceId;
@@ -49,7 +51,81 @@ public class ScoreAdapter extends ArrayAdapter<UserAnsweredData> {
 		{
 			holder = (AnswerHolder)row.getTag();
 		}
-		holder.question.setText(userAnswer.getmQuestion());
+		holder.data = userAnswer;
+		holder.question.setText(holder.data.getmQuestion());
+		if(holder.data.getmQuestionType() == Type.Mcq)
+		{
+			holder.option1.setText(holder.data.getmOptions()[0]);
+			holder.option2.setText(holder.data.getmOptions()[1]);
+			holder.option3.setText(holder.data.getmOptions()[2]);
+			holder.option4.setText(holder.data.getmOptions()[3]);
+			holder.option1.setBackgroundColor(Color.TRANSPARENT);
+			holder.option2.setBackgroundColor(Color.TRANSPARENT);
+			holder.option3.setBackgroundColor(Color.TRANSPARENT);
+			holder.option4.setBackgroundColor(Color.TRANSPARENT);
+			
+			
+			if(userAnswer.isAnswered())
+			{
+				if(holder.data.getmUserAnswer().equals(holder.data.getmAnswer()))
+				{
+					if(holder.data.getmUserAnswer().equals(holder.data.getmOptions()[0]))
+					{
+						holder.option1.setBackgroundColor(Color.argb(128, 0, 255, 0));
+					}
+					else if(holder.data.getmUserAnswer().equals(holder.data.getmOptions()[1]))
+					{
+						holder.option2.setBackgroundColor(Color.argb(128, 0, 255, 0));
+					}
+					else if(holder.data.getmUserAnswer().equals(holder.data.getmOptions()[2]))
+					{
+						holder.option3.setBackgroundColor(Color.argb(128, 0, 255, 0));
+					}
+					else
+					{
+						holder.option4.setBackgroundColor(Color.argb(128, 0, 255, 0));
+					}
+				}
+				else
+				{
+					if(!holder.data.getmUserAnswer().equals(holder.data.getmAnswer()))
+					{
+						if(holder.data.getmUserAnswer().equals(holder.data.getmOptions()[0]))
+						{
+							holder.option1.setBackgroundColor(Color.argb(128, 255, 0, 0));
+						}
+						else if(holder.data.getmUserAnswer().equals(holder.data.getmOptions()[1]))
+						{
+							holder.option2.setBackgroundColor(Color.argb(128, 255, 0, 0));
+						}
+						else if(holder.data.getmUserAnswer().equals(holder.data.getmOptions()[2]))
+						{
+							holder.option3.setBackgroundColor(Color.argb(128, 255, 0, 0));
+						}
+						else
+						{
+							holder.option4.setBackgroundColor(Color.argb(128, 255, 0, 0));
+						}
+					}
+				}
+			}
+			if(holder.data.getmAnswer().equals(holder.data.getmOptions()[0]))
+			{
+				holder.option1.setBackgroundColor(Color.argb(128, 0, 255, 0));
+			}
+			else if(holder.data.getmAnswer().equals(holder.data.getmOptions()[1]))
+			{
+				holder.option2.setBackgroundColor(Color.argb(128, 0, 255, 0));
+			}
+			else if(holder.data.getmAnswer().equals(holder.data.getmOptions()[2]))
+			{
+				holder.option3.setBackgroundColor(Color.argb(128, 0, 255, 0));
+			}
+			else
+			{
+				holder.option4.setBackgroundColor(Color.argb(128, 0, 255, 0));
+			}
+		}
 		return row;
 	}
 
@@ -60,8 +136,9 @@ public class ScoreAdapter extends ArrayAdapter<UserAnsweredData> {
 		public TextViewPlus option2;
 		public TextViewPlus option3;
 		public TextViewPlus option4;
-		
-		
+		public UserAnsweredData data;
+
+
 	}
 
 

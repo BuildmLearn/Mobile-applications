@@ -1,5 +1,6 @@
 package org.buildmlearn.learnfrommap;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -22,6 +23,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Menu;
@@ -192,6 +194,7 @@ public class GameActivity extends Helper {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	public void loadQuestion()
 	{
 		if(mQuestionCounter > 0)
@@ -237,8 +240,12 @@ public class GameActivity extends Helper {
 			mAnsweredList.add(userAnswerData);
 			
 		}
-		if(mQuestionCounter == 21)
+		if(mQuestionCounter == 20)
 		{
+			Intent intent = new Intent(getApplicationContext(), ScoreActivity.class);
+			intent.putParcelableArrayListExtra("SCORE_DATA", (ArrayList<? extends Parcelable>) mAnsweredList);
+			startActivity(intent);
+			finish();
 			return;
 		}
 		genQuestion = mQuestion.get(mQuestionCounter++);
@@ -298,7 +305,7 @@ public class GameActivity extends Helper {
 	private void startTimer()
 	{
 		mTimer = (TextViewPlus)findViewById(R.id.timer);
-		mCountTimer = new CountDownTimer(30000, 1000) {
+		mCountTimer = new CountDownTimer(1000, 1000) {
 			@Override
 			public void onTick(long millisUntilFinished) {
 				mTimer.setText("Time remaining: " + millisUntilFinished / 1000);

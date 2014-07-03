@@ -19,9 +19,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-    <!-- External storage for caching. -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- My Location -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -40,13 +38,6 @@
         <activity
             android:name="org.buildmlearn.learnfrommap.MainActivity"
             android:label="@string/app_name" >
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name="org.buildmlearn.learnfrommap.SplashActivity"
@@ -78,13 +69,17 @@
         <activity
             android:name="org.buildmlearn.learnfrommap.ExploreMode"
             android:label="@string/title_activity_explore_mode"
-            android:screenOrientation="portrait"
-            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity" >
+            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="org.buildmlearn.learnfrommap.GameActivity"
             android:label="@string/title_activity_game"
             android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="org.buildmlearn.learnfrommap.ScoreActivity"
+            android:label="@string/title_activity_score" >
         </activity>
     </application>
 

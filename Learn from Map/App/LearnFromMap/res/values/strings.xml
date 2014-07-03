@@ -47,5 +47,10 @@
     <string name="start_game">Start Challenge</string>
     <string name="answer">Answer</string>
     <string name="title_activity_test">Test</string>
+    <string name="title_activity_score">Score Board</string>
+    <string name="score">96</string>
+    <string name="your_score">Your Score</string>
+    <string name="questions_correctly_solved">Questions correctly solved</string>
+    <string name="question_answer_count">18/20</string>
 
 </resources>

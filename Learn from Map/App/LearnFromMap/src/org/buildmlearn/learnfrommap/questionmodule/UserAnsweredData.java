@@ -1,9 +1,15 @@
 package org.buildmlearn.learnfrommap.questionmodule;
 
+import java.io.Serializable;
+
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion.Type;
 
-public class UserAnsweredData {
+public class UserAnsweredData  implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String mQuestion;
 	private String mAnswer;
 	private String mUserAnswer;

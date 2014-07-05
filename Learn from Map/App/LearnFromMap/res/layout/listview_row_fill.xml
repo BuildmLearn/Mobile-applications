@@ -4,42 +4,42 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="3dp"
-    android:orientation="vertical" >
-
-    <org.buildmlearn.learnfrommap.TextViewPlus
-        android:id="@+id/list_question"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/question"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        
-        foo:customFont="Roboto_Light.ttf" />
+    android:gravity="center"
+    android:orientation="horizontal" >
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.8"
+        android:orientation="vertical" >
+
+        <org.buildmlearn.learnfrommap.TextViewPlus
+            android:id="@+id/list_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/question"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            foo:customFont="Roboto_Light.ttf" />
 
         <org.buildmlearn.learnfrommap.TextViewPlus
             android:id="@+id/answer"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="3dp"
             android:gravity="center_vertical"
             android:text="@string/option1"
-            android:layout_margin="3dp"
             android:textColor="@android:color/white"
-            android:layout_weight="0.8"
             foo:customFont="Roboto_Light.ttf" />
+    </LinearLayout>
 
-        <ImageView
-            android:id="@+id/answer_status"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.2"
-            android:adjustViewBounds="true"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_action_accept" />
-
-    </LinearLayout>	
+    <ImageView
+        android:id="@+id/answer_status"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_weight="0.20"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_action_accept" />
 
 </LinearLayout>

@@ -138,6 +138,7 @@ public class ScoreAdapter extends ArrayAdapter<UserAnsweredData> {
 		}
 		else if(getItemViewType(position) == FILL)
 		{
+
 			View row = convertView;
 			UserAnsweredData userAnswer = mData.get(position);
 			AnswerHolderFill holder  = null;
@@ -168,12 +169,41 @@ public class ScoreAdapter extends ArrayAdapter<UserAnsweredData> {
 			}
 			return row;
 		}
-		return null;
+		else
+		{
+			View row = convertView;
+			UserAnsweredData userAnswer = mData.get(position);
+			AnswerHolderPin holder  = null;
+			if(row == null)
+			{
+				holder = new AnswerHolderPin();
+				LayoutInflater inflator =  ((Activity)mContext).getLayoutInflater();
+				row = inflator.inflate(R.layout.listview_row_map, parent, false);
+				holder.question = (TextViewPlus)row.findViewById(R.id.list_question);
+				holder.isCorrect = (ImageView)row.findViewById(R.id.answer_status);
+				row.setTag(holder);
+			}
+			else
+			{
+				holder = (AnswerHolderPin)row.getTag();
+			}
+			holder.data = userAnswer;
+			holder.question.setText("Ques" + (position + 1) + ": " + holder.data.getmQuestion());
+			if(holder.data.isAnswerCorrect() || true)
+			{
+				holder.isCorrect.setImageResource(R.drawable.ic_action_accept);
+			}
+			else
+			{
+				holder.isCorrect.setImageResource(R.drawable.ic_action_cancel);
+			}
+			return row;
+		}
 	}
 
 	@Override
 	public int getViewTypeCount() {
-		 return 3;
+		return 3;
 	}
 
 	@Override
@@ -212,6 +242,13 @@ public class ScoreAdapter extends ArrayAdapter<UserAnsweredData> {
 		public TextViewPlus question;
 		public ImageView isCorrect;
 
+	}
+
+	static class AnswerHolderPin
+	{
+		public UserAnsweredData data;
+		public TextViewPlus question;
+		public ImageView isCorrect;
 	}
 
 

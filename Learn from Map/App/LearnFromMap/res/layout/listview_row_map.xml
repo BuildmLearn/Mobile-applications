@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:foo="http://schemas.android.com/apk/res/org.buildmlearn.learnfrommap"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="3dp"
+    android:gravity="center"
+    android:orientation="horizontal" >
+
+    <org.buildmlearn.learnfrommap.TextViewPlus
+        android:id="@+id/list_question"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:layout_weight="0.8"
+        android:gravity="center_vertical"
+        android:text="@string/option1"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        foo:customFont="Roboto_Light.ttf" />
+
+    <ImageView
+        android:id="@+id/answer_status"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_weight="0.2"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_action_accept" />
+
+</LinearLayout>

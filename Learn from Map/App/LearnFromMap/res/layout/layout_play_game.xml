@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_margin="7dp"
+        android:layout_marginBottom="25dp"
         android:background="@drawable/custom_tile_color"
         android:clickable="true"
         android:gravity="center"

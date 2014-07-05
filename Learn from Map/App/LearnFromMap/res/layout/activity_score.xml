@@ -98,7 +98,7 @@
                 android:divider="#60ffffff"
                 android:dividerHeight="2dp"
                 android:padding="10dp"
-                tools:listitem="@layout/listview_row" >
+                tools:listitem="@layout/listview_row_mcq" >
 
             </ListView>
 

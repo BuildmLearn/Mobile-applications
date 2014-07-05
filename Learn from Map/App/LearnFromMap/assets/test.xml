@@ -10,7 +10,7 @@
 	</question>
 	<question>
 	    <code>PCLI</code>
-	    <type>PIN</type>
+	    <type>FILL</type>
 	    <relationship>name</relationship>
 	    <location>true</location>
 	    <format>Pin the capital of :X:</format>

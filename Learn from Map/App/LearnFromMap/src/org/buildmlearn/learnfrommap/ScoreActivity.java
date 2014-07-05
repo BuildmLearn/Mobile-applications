@@ -24,7 +24,7 @@ public class ScoreActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_score);
 		mQuestionList  = (ListView)findViewById(R.id.score_question_list);
 		mAnsweredList = (ArrayList<UserAnsweredData>) getIntent().getSerializableExtra("SCORE_DATA");
-		mAdapter = new ScoreAdapter(this, R.layout.listview_row, mAnsweredList);
+		mAdapter = new ScoreAdapter(this, R.layout.listview_row_mcq, mAnsweredList);
 		mQuestionList.setAdapter(mAdapter);
 
 	}

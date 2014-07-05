@@ -1,8 +1,16 @@
 package org.buildmlearn.learnfrommap.questionmodule;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.List;
+import java.util.Locale;
 
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion.Type;
+
+import android.content.Context;
+import android.location.Address;
+import android.location.Geocoder;
+import android.util.FloatMath;
 
 public class UserAnsweredData  implements Serializable{
 
@@ -12,16 +20,21 @@ public class UserAnsweredData  implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String mQuestion;
 	private String mAnswer;
+
+
 	private String mUserAnswer;
 	private GeneratedQuestion.Type mQuestionType;
 	private String mAnswerType;
 	private String[] mOptions;
 	private boolean mIsAnswered;
 	private boolean mIsCorrect;
-	
-	
-	
-	public UserAnsweredData(String mQuestion, String mAnswer,
+	private transient Context mContext;
+	private int mPoints;
+	private double mLat;
+	private double mLog;
+
+
+	public UserAnsweredData(Context mContext, String mQuestion, String mAnswer,
 			String mUserAnswer, Type mQuestionType, String mAnswerType) {
 		super();
 		this.mQuestion = mQuestion;
@@ -29,7 +42,120 @@ public class UserAnsweredData  implements Serializable{
 		this.mUserAnswer = mUserAnswer;
 		this.mQuestionType = mQuestionType;
 		this.mAnswerType = mAnswerType;
-		isCorrect();
+
+		if(mQuestionType == Type.Pin)
+		{
+			if(mUserAnswer.length() > 0)
+			{
+				String[] coords = mUserAnswer.split(",");
+				this.mLat = Double.parseDouble(coords[0]);
+				this.mLog = Double.parseDouble(coords[1]);
+				this.mContext = mContext;
+				evaluatePin();
+			}
+			else
+			{
+				this.mPoints = 0;
+				mIsCorrect = false;
+			}
+		}
+		else
+		{
+			if(mUserAnswer.length() > 0)
+			{
+				evaluateFill();
+			}
+			else
+			{
+				this.mPoints = 0;
+				mIsCorrect = false;
+			}
+		}
+	}
+
+	private void evaluatePin()
+	{
+
+		if(mAnswerType.equals("country"))
+		{
+			String country = getAddress(mLat, mLog).getCountryName();
+			if(country.equals(mAnswer))
+			{
+				this.mPoints = 10;
+				mIsCorrect = true;
+			}
+			else
+			{
+				this.mPoints = 0;
+				mIsCorrect = false;
+			}
+		}
+		else if(mAnswerType.equals("state"))
+		{
+			String state = getAddress(mLat, mLog).getAdminArea();
+			if(state.equals(mAnswer))
+			{
+				this.mPoints = 10;
+				mIsCorrect = true;
+			}
+			else
+			{
+				this.mPoints = 0;
+				mIsCorrect = false;
+			}
+
+		}
+		else	
+		{
+
+			String[] coords = mAnswer.split(",");
+			float lat = Float.parseFloat(coords[0]);
+			float lng = Float.parseFloat(coords[1]);
+			double distance = distanceBetween(lat, lng, (float)mLat, (float)mLog);
+			distance /= 100000;
+			if(distance < 10)
+			{
+				int point = 10-(int)distance;
+				this.mPoints = point;
+				mIsCorrect = true;
+			}
+			else
+			{
+				this.mPoints = 0;
+				mIsCorrect = false;
+			}
+		}
+
+	}
+
+	private double distanceBetween(float lat1, float lng1, float lat2, float lng2) {
+		float x = (float) (180/3.14169);
+
+		float a1 = lat1 / x;
+		float a2 = lng1 / x;
+		float b1 = lat2 / x;
+		float b2 = lng2 / x;
+
+		float t1 = FloatMath.cos(a1)*FloatMath.cos(a2)*FloatMath.cos(b1)*FloatMath.cos(b2);
+		float t2 = FloatMath.cos(a1)*FloatMath.sin(a2)*FloatMath.cos(b1)*FloatMath.sin(b2);
+		float t3 = FloatMath.sin(a1)*FloatMath.sin(b1);
+		double tt = Math.acos(t1 + t2 + t3);
+
+		return 6366000*tt;
+	}
+
+	//Converts coordinates to country
+	private Address getAddress(double lat, double lng) {
+		Geocoder geocoder = new Geocoder(mContext, Locale.getDefault());
+		try {
+			List<Address> addresses = geocoder.getFromLocation(lat, lng, 1);
+			Address obj = addresses.get(0);
+			return obj;
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 
@@ -44,6 +170,22 @@ public class UserAnsweredData  implements Serializable{
 		this.mAnswerType = mAnswerType;
 		this.mOptions = mOptions;
 		this.mIsAnswered = isAnswered;
+		if(this.mIsAnswered)
+		{
+			if(this.mAnswer.equals(this.mUserAnswer))
+			{
+				this.mPoints = 10;
+			}
+			else
+			{
+				this.mPoints = 0;
+			}
+		}
+		else
+		{
+			this.mPoints = 0;
+		}
+
 	}
 
 
@@ -105,33 +247,39 @@ public class UserAnsweredData  implements Serializable{
 	public void setmOptions(String[] mOptions) {
 		this.mOptions = mOptions;
 	}
-	
-	
+
+
 	public boolean isAnswered()
 	{
 		return mIsAnswered;
 	}
-	
-	private void isCorrect()
+
+	private void evaluateFill()
 	{
 		if(this.mQuestionType == Type.Fill)
 		{
 			if(this.mAnswer.equals(this.mUserAnswer))
 			{
 				this.mIsCorrect = true;
+				this.mPoints = 10;
 			}
 			else
 			{
 				this.mIsCorrect = false;
+				this.mPoints = 0;
 			}
 		}
-		
+
 	}
-	
+
 	public boolean isAnswerCorrect()
 	{
 		return mIsCorrect;
 	}
-	
-	
+
+	public int getmPoints() {
+		return mPoints;
+	}
+
+
 }

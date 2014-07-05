@@ -6,6 +6,7 @@ import org.buildmlearn.learnfrommap.adapter.ScoreAdapter;
 import org.buildmlearn.learnfrommap.questionmodule.UserAnsweredData;
 
 import android.support.v7.app.ActionBarActivity;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,14 +17,31 @@ public class ScoreActivity extends ActionBarActivity {
 	private ScoreAdapter mAdapter;
 	private ListView mQuestionList;
 	private ArrayList<UserAnsweredData> mAnsweredList;
+	private TextViewPlus mPoints;
+	private TextViewPlus mCount;
 
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_score);
+
 		mQuestionList  = (ListView)findViewById(R.id.score_question_list);
 		mAnsweredList = (ArrayList<UserAnsweredData>) getIntent().getSerializableExtra("SCORE_DATA");
+		mPoints = (TextViewPlus)findViewById(R.id.score_points);
+		mCount = (TextViewPlus)findViewById(R.id.score_count);
+		int count = 0;
+		int points = 0;
+		for (UserAnsweredData userAnswer : mAnsweredList) {
+			if(userAnswer.isAnswered())
+			{
+				count++;
+				points += userAnswer.getmPoints();
+			}
+		}
+		
+		mPoints.setText(String.valueOf(points));
+		mCount.setText(count + "/20");
 		mAdapter = new ScoreAdapter(this, R.layout.listview_row_mcq, mAnsweredList);
 		mQuestionList.setAdapter(mAdapter);
 

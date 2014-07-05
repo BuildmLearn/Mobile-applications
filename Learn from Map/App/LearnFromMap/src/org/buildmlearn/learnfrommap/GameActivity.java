@@ -1,8 +1,12 @@
 package org.buildmlearn.learnfrommap;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 import java.util.Random;
 
 import org.buildmlearn.learnfrommap.databasehelper.Database;
@@ -19,12 +23,17 @@ import com.google.android.gms.maps.model.LatLng;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Parcelable;
 import android.support.v4.app.FragmentTransaction;
+import android.util.FloatMath;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,6 +41,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 public class GameActivity extends Helper {
 
@@ -136,7 +146,7 @@ public class GameActivity extends Helper {
 				mOption2.setBackgroundDrawable(getResources().getDrawable(R.drawable.border_white));
 				mOption4.setBackgroundDrawable(getResources().getDrawable(R.drawable.border_white));
 				mOption3.setBackgroundDrawable(getResources().getDrawable(R.drawable.border_white));
-				
+
 			} else {
 				mOption1.setBackground(getResources().getDrawable(R.drawable.button_click));
 				mOption2.setBackground(getResources().getDrawable(R.drawable.border_white));
@@ -206,8 +216,8 @@ public class GameActivity extends Helper {
 			{
 				EditText fillAnswer = (EditText)findViewById(R.id.fill_answer);
 				String userAnswer  = fillAnswer.getText().toString();
-				userAnswerData = new UserAnsweredData(question, answer, userAnswer, genQuestion.getType(), genQuestion.getXml().getAnswer());
-				
+				userAnswerData = new UserAnsweredData(getApplicationContext(), question, answer, userAnswer, genQuestion.getType(), genQuestion.getXml().getAnswer());
+
 			}
 			else if(genQuestion.getType() == Type.Mcq)
 			{
@@ -221,7 +231,7 @@ public class GameActivity extends Helper {
 					userAnswer = "";
 				}
 				userAnswerData = new UserAnsweredData(question, answer, userAnswer, genQuestion.getType(), genQuestion.getXml().getAnswer(), options, mIsAnswered);
-				
+
 			}
 			else
 			{
@@ -235,10 +245,10 @@ public class GameActivity extends Helper {
 				{
 					userAnswer = "";
 				}
-				userAnswerData = new UserAnsweredData(question, answer, userAnswer, genQuestion.getType(), genQuestion.getXml().getAnswer());
+				userAnswerData = new UserAnsweredData(getApplicationContext(), question, answer, userAnswer, genQuestion.getType(), genQuestion.getXml().getAnswer());
 			}
 			mAnsweredList.add(userAnswerData);
-			
+
 		}
 		if(mQuestionCounter == 20)
 		{
@@ -256,6 +266,8 @@ public class GameActivity extends Helper {
 			mMain.addView(mView);
 			mDisplayQuestion = (TextViewPlus)findViewById(R.id.question);
 			mDisplayQuestion.setText(genQuestion.getQuestion());
+			EditText fillAnswer = (EditText)findViewById(R.id.fill_answer);
+			fillAnswer.setText(genQuestion.getAnswer());
 			startTimer();
 
 		}
@@ -297,15 +309,16 @@ public class GameActivity extends Helper {
 				}
 			});	
 		}
-		
+
 		getSupportActionBar().setTitle("Question " + mQuestionCounter + " of 20");
 
 	}
-	
+
+
 	private void startTimer()
 	{
 		mTimer = (TextViewPlus)findViewById(R.id.timer);
-		mCountTimer = new CountDownTimer(3000, 1000) {
+		mCountTimer = new CountDownTimer(30000, 1000) {
 			@Override
 			public void onTick(long millisUntilFinished) {
 				mTimer.setText("Time remaining: " + millisUntilFinished / 1000);
@@ -316,7 +329,7 @@ public class GameActivity extends Helper {
 			}
 		}.start();
 	}
-	
+
 	@Override
 	public void onMapReady() {
 		super.onMapReady();

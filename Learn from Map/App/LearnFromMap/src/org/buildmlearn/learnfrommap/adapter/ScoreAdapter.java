@@ -189,7 +189,7 @@ public class ScoreAdapter extends ArrayAdapter<UserAnsweredData> {
 			}
 			holder.data = userAnswer;
 			holder.question.setText("Ques" + (position + 1) + ": " + holder.data.getmQuestion());
-			if(holder.data.isAnswerCorrect() || true)
+			if(holder.data.isAnswerCorrect())
 			{
 				holder.isCorrect.setImageResource(R.drawable.ic_action_accept);
 			}

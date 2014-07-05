@@ -17,6 +17,8 @@ public class UserAnsweredData  implements Serializable{
 	private String mAnswerType;
 	private String[] mOptions;
 	private boolean mIsAnswered;
+	private boolean mIsCorrect;
+	
 	
 	
 	public UserAnsweredData(String mQuestion, String mAnswer,
@@ -27,6 +29,7 @@ public class UserAnsweredData  implements Serializable{
 		this.mUserAnswer = mUserAnswer;
 		this.mQuestionType = mQuestionType;
 		this.mAnswerType = mAnswerType;
+		isCorrect();
 	}
 
 
@@ -109,6 +112,26 @@ public class UserAnsweredData  implements Serializable{
 		return mIsAnswered;
 	}
 	
+	private void isCorrect()
+	{
+		if(this.mQuestionType == Type.Fill)
+		{
+			if(this.mAnswer.equals(this.mUserAnswer))
+			{
+				this.mIsCorrect = true;
+			}
+			else
+			{
+				this.mIsCorrect = false;
+			}
+		}
+		
+	}
+	
+	public boolean isAnswerCorrect()
+	{
+		return mIsCorrect;
+	}
 	
 	
 }

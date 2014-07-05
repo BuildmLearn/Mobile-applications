@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 
 public class ScoreAdapter extends ArrayAdapter<UserAnsweredData> {
 
@@ -147,6 +148,7 @@ public class ScoreAdapter extends ArrayAdapter<UserAnsweredData> {
 				row = inflator.inflate(R.layout.listview_row_fill, parent, false);
 				holder.question = (TextViewPlus)row.findViewById(R.id.list_question);
 				holder.answer = (TextViewPlus)row.findViewById(R.id.answer);
+				holder.isCorrect = (ImageView)row.findViewById(R.id.answer_status);
 				row.setTag(holder);
 			}
 			else
@@ -156,6 +158,14 @@ public class ScoreAdapter extends ArrayAdapter<UserAnsweredData> {
 			holder.data = userAnswer;
 			holder.question.setText("Ques" + (position + 1) + ": " + holder.data.getmQuestion());
 			holder.answer.setText("Answer: " + holder.data.getmAnswer());
+			if(holder.data.isAnswerCorrect())
+			{
+				holder.isCorrect.setImageResource(R.drawable.ic_action_accept);
+			}
+			else
+			{
+				holder.isCorrect.setImageResource(R.drawable.ic_action_cancel);
+			}
 			return row;
 		}
 		return null;
@@ -200,6 +210,7 @@ public class ScoreAdapter extends ArrayAdapter<UserAnsweredData> {
 		public TextViewPlus answer;
 		public UserAnsweredData data;
 		public TextViewPlus question;
+		public ImageView isCorrect;
 
 	}
 

@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Random;
-
 import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion.Type;
 
@@ -99,27 +97,10 @@ public class BaseQuestion {
 
 	private DbRow selectRowFromDb(String where, String[] whereArgs) throws QuestionModuleException {
 
-		ArrayList<DbRow> dbRowList = db.select(where, whereArgs, "RANDOM()", "1");
-		if(dbRowList.size() == 1)
-		{
-			return dbRowList.get(0);
-		}
-		else
-		{
-			//Get a random row between 0 to cursor.getcount and check if it has been used before
-			return getRandomRow(dbRowList);
-		}
+		return db.select(where, whereArgs, "RANDOM()");
 	}
 
-	private DbRow getRandomRow(ArrayList<DbRow> dbRowList) {
-		Random random = new Random(lastSeed);
-		int pos = random.nextInt(dbRowList.size());
-		lastSeed = pos;
-		return dbRowList.get(pos);
 
-
-	}
-	
 	
 	//Logic for creating question from DbRow and XmlQuestion 
 	public GeneratedQuestion makeQuestion() throws QuestionModuleException {

@@ -32,6 +32,7 @@ public class BaseQuestion {
 	protected Context mContext;
 	private Database db;
 	private XmlQuestion xml;
+	public static long lastSeed = 0;
 
 
 	public static enum LocationType {None, Coordiates, String}
@@ -111,8 +112,9 @@ public class BaseQuestion {
 	}
 
 	private DbRow getRandomRow(ArrayList<DbRow> dbRowList) {
-		Random random = new Random();
+		Random random = new Random(lastSeed);
 		int pos = random.nextInt(dbRowList.size());
+		lastSeed = pos;
 		return dbRowList.get(pos);
 
 

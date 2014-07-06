@@ -175,15 +175,18 @@ public class UserAnsweredData  implements Serializable{
 			if(this.mAnswer.equals(this.mUserAnswer))
 			{
 				this.mPoints = 10;
+				this.mIsCorrect = true;
 			}
 			else
 			{
 				this.mPoints = 0;
+				this.mIsCorrect = false;
 			}
 		}
 		else
 		{
 			this.mPoints = 0;
+			this.mIsCorrect = false;
 		}
 
 	}

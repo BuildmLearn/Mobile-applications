@@ -33,7 +33,7 @@ public class ScoreActivity extends ActionBarActivity {
 		int count = 0;
 		int points = 0;
 		for (UserAnsweredData userAnswer : mAnsweredList) {
-			if(userAnswer.isAnswered())
+			if(userAnswer.isAnswerCorrect())
 			{
 				count++;
 				points += userAnswer.getmPoints();

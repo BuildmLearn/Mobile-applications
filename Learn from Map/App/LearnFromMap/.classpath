@@ -6,5 +6,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry exported="true" kind="lib" path="libs/sqliteassethelper-2.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/simmetrics_jar_v1_6_2_d07_02_07.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

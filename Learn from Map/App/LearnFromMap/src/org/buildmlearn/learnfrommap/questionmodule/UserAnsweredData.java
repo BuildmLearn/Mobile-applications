@@ -7,10 +7,12 @@ import java.util.Locale;
 
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion.Type;
 
+import uk.ac.shef.wit.simmetrics.similaritymetrics.JaroWinkler;
 import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
 import android.util.FloatMath;
+import android.util.Log;
 
 public class UserAnsweredData  implements Serializable{
 
@@ -261,7 +263,8 @@ public class UserAnsweredData  implements Serializable{
 	{
 		if(this.mQuestionType == Type.Fill)
 		{
-			if(this.mAnswer.equals(this.mUserAnswer))
+			double result = compareStrings(mUserAnswer, mAnswer);
+			if(result > 9.5)
 			{
 				this.mIsCorrect = true;
 				this.mPoints = 10;
@@ -273,6 +276,11 @@ public class UserAnsweredData  implements Serializable{
 			}
 		}
 
+	}
+	
+	public double compareStrings(String stringA, String stringB) {
+	    JaroWinkler algorithm = new JaroWinkler();
+	    return algorithm.getSimilarity(stringA, stringB);
 	}
 
 	public boolean isAnswerCorrect()

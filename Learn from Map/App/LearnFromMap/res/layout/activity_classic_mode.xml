@@ -107,10 +107,9 @@
                         foo:customFont="Roboto_Light.ttf" />
 
                     <Spinner
-                        android:id="@+id/spinner1"
+                        android:id="@+id/classic_spinner1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/Spinner"
                         tools:listitem="@android:layout/simple_spinner_dropdown_item" />
 
                     <org.buildmlearn.learnfrommap.TextViewPlus

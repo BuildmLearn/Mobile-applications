@@ -75,11 +75,21 @@
         <activity
             android:name="org.buildmlearn.learnfrommap.GameActivity"
             android:label="@string/title_activity_game"
+            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity"
             android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.buildmlearn.learnfrommap.
+                MainActivity" />
         </activity>
         <activity
             android:name="org.buildmlearn.learnfrommap.ScoreActivity"
-            android:label="@string/title_activity_score" >
+            android:label="@string/title_activity_score"
+            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.buildmlearn.learnfrommap.MainActivity" />
         </activity>
     </application>
 

@@ -264,7 +264,7 @@ public class UserAnsweredData  implements Serializable{
 		if(this.mQuestionType == Type.Fill)
 		{
 			double result = compareStrings(mUserAnswer, mAnswer);
-			if(result > 9.5)
+			if(result > .95)
 			{
 				this.mIsCorrect = true;
 				this.mPoints = 10;

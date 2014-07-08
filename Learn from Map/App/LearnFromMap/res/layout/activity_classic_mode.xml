@@ -121,6 +121,7 @@
                         android:clickable="true"
                         android:gravity="center"
                         android:padding="15dp"
+                        android:onClick="customCountry"
                         android:text="@string/play"
                         android:background="@drawable/custom_tile_color"
                         android:textColor="@android:color/white"

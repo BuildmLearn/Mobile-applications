@@ -27,12 +27,13 @@ public class ClassicModeActivity extends ActionBarActivity {
 	private LocationListener locationListener;
 	private Location location;
 	private Intent intent;
+	private Spinner spinner;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_classic_mode);
-		Spinner spinner = (Spinner) findViewById(R.id.classic_spinner1);
+		spinner = (Spinner) findViewById(R.id.classic_spinner1);
 		
 
     	intent = new Intent(getBaseContext(), GameActivity.class);
@@ -57,7 +58,6 @@ public class ClassicModeActivity extends ActionBarActivity {
 		    	intent.putExtra("VALUE", getCountry(location.getLatitude(), location.getLongitude()));
 		    	startActivity(intent);
 		    	locationManager.removeUpdates(locationListener);
-		    	finish();
 		    }
 
 		    public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -75,6 +75,14 @@ public class ClassicModeActivity extends ActionBarActivity {
 		
 	}
 	
+	public void customCountry(View v)
+	{
+		String country = spinner.getSelectedItem().toString();
+		intent.putExtra("VALUE", country);
+    	startActivity(intent);
+		
+	}
+	
 	public void loadLocation(View v)
 	{
 
@@ -88,7 +96,6 @@ public class ClassicModeActivity extends ActionBarActivity {
 			intent.putExtra("VALUE", getCountry(location.getLatitude(), location.getLongitude()));
 			startActivity(intent);
 			locationManager.removeUpdates(locationListener);
-			finish();
 		}
 
 	}

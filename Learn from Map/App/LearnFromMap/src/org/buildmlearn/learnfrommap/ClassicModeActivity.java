@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import android.support.v7.app.ActionBarActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -15,17 +16,29 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 public class ClassicModeActivity extends ActionBarActivity {
 	 	
+	private LocationManager locationManager;
+	private LocationListener locationListener;
+	private Location location;
+	private Intent intent;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_classic_mode);
 		Spinner spinner = (Spinner) findViewById(R.id.classic_spinner1);
+		
+
+    	intent = new Intent(getBaseContext(), GameActivity.class);
+    	intent.putExtra("MODE", "CLASSIC_MODE");
+    	intent.putExtra("SELECTION", "country");
+
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
 		        R.array.countries_array, android.R.layout.simple_spinner_item);
@@ -33,14 +46,18 @@ public class ClassicModeActivity extends ActionBarActivity {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		// Apply the adapter to the spinner
 		spinner.setAdapter(adapter);
-		LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-
+		locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+		location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 		// Define a listener that responds to location updates
-		LocationListener locationListener = new LocationListener() {
+		locationListener = new LocationListener() {
 			@Override
 		    public void onLocationChanged(Location location) {
 		      // Called when a new location is found by the network location provider.
 		    	Toast.makeText(getApplicationContext(), "Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude(), Toast.LENGTH_LONG).show();
+		    	intent.putExtra("VALUE", getCountry(location.getLatitude(), location.getLongitude()));
+		    	startActivity(intent);
+		    	locationManager.removeUpdates(locationListener);
+		    	finish();
 		    }
 
 		    public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -55,14 +72,23 @@ public class ClassicModeActivity extends ActionBarActivity {
 		    	Toast.makeText(getApplicationContext(), "onProviderDisabled", Toast.LENGTH_LONG).show();
 		    }
 		  };
+		
+	}
+	
+	public void loadLocation(View v)
+	{
+
 
 		// Register the listener with the Location Manager to receive location updates
 		locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
-		Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+		
 		if(location != null)
 		{
 			Toast.makeText(getApplicationContext(), getCountry(location.getLatitude(), location.getLongitude()), Toast.LENGTH_LONG).show();
-			
+			intent.putExtra("VALUE", getCountry(location.getLatitude(), location.getLongitude()));
+			startActivity(intent);
+			locationManager.removeUpdates(locationListener);
+			finish();
 		}
 
 	}

@@ -88,6 +88,10 @@ public class GameActivity extends Helper {
 		{
 			setTitle("Explore Mode");
 		}
+		else if(mode.equals("CLASSIC_MODE"))
+		{
+			setTitle("Classic Mode");
+		}
 		GenerateQuestions genQues = new GenerateQuestions(mSelection, mValue);
 		genQues.execute();
 		mMain = (RelativeLayout)findViewById(R.id.main_layout);

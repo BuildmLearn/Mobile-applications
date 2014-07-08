@@ -60,6 +60,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_tile_color"
                     android:clickable="true"
+                    android:onClick="loadLocation"
                     android:gravity="center" >
 
                     <ImageView
@@ -121,6 +122,7 @@
                         android:gravity="center"
                         android:padding="15dp"
                         android:text="@string/play"
+                        android:background="@drawable/custom_tile_color"
                         android:textColor="@android:color/white"
                         android:textSize="20sp"
                         foo:customFont="Roboto_Light.ttf" />

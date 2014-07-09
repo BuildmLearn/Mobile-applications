@@ -81,6 +81,7 @@ public class UserAnsweredData  implements Serializable{
 		if(mAnswerType.equals("country"))
 		{
 			String country = getAddress(mLat, mLog).getCountryName();
+			Log.e("Country", country);
 			if(country.equals(mAnswer))
 			{
 				this.mPoints = 10;
@@ -95,6 +96,7 @@ public class UserAnsweredData  implements Serializable{
 		else if(mAnswerType.equals("state"))
 		{
 			String state = getAddress(mLat, mLog).getAdminArea();
+			Log.e("State", state);
 			if(state.equals(mAnswer))
 			{
 				this.mPoints = 10;

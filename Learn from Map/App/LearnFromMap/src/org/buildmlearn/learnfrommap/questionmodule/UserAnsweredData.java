@@ -77,9 +77,15 @@ public class UserAnsweredData  implements Serializable{
 	private void evaluatePin()
 	{
 
-		if(mAnswerType.equals("country"))
+		Address address = getAddress(mLat, mLog);
+		if(address == null)
 		{
-			String country = getAddress(mLat, mLog).getCountryName();
+			this.mPoints = 0;
+			mIsCorrect = false;
+		}
+		else if(mAnswerType.equals("country"))
+		{
+			String country = address.getCountryName();
 			Log.e("Country", country);
 			if(country.equals(mAnswer))
 			{
@@ -94,7 +100,7 @@ public class UserAnsweredData  implements Serializable{
 		}
 		else if(mAnswerType.equals("state"))
 		{
-			String state = getAddress(mLat, mLog).getAdminArea();
+			String state = address.getAdminArea();
 			Log.e("State", state);
 			if(state.equals(mAnswer))
 			{
@@ -153,6 +159,10 @@ public class UserAnsweredData  implements Serializable{
 		Geocoder geocoder = new Geocoder(mContext, Locale.getDefault());
 		try {
 			List<Address> addresses = geocoder.getFromLocation(lat, lng, 1);
+			if(addresses.size() == 0)
+			{
+				return null;
+			}
 			Address obj = addresses.get(0);
 			return obj;
 

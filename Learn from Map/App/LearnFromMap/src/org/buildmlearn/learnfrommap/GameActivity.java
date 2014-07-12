@@ -1,5 +1,7 @@
 package org.buildmlearn.learnfrommap;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -18,6 +20,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Parcelable;
 import android.support.v4.app.FragmentTransaction;
@@ -361,6 +364,7 @@ public class GameActivity extends Helper {
 
 		@Override
 		protected String doInBackground(Void... params) {
+
 
 			db = new Database(getApplicationContext(), 1);
 			XmlParser xmlParser = new XmlParser(getApplicationContext());

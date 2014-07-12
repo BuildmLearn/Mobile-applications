@@ -58,7 +58,7 @@ public class Helper extends ActionBarActivity {
 				{
 					marker.remove();
 				}
-				markerOptions = new MarkerOptions().draggable(true).position(arg0).flat(true).title("Hello world").icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_100));
+				markerOptions = new MarkerOptions().draggable(true).position(arg0).flat(true).title("Your Answer").icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_100));
 				marker = mapView.addMarker(markerOptions);
 			}
 		});

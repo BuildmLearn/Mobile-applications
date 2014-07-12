@@ -38,7 +38,7 @@ public class ClassicModeActivity extends ActionBarActivity {
 
     	intent = new Intent(getBaseContext(), GameActivity.class);
     	intent.putExtra("MODE", "CLASSIC_MODE");
-    	intent.putExtra("SELECTION", "country");
+    	intent.putExtra("SELECTION", "COUNTRY");
 
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,

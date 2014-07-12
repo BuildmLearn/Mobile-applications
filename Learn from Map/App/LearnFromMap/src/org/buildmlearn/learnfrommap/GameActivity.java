@@ -1,39 +1,26 @@
 package org.buildmlearn.learnfrommap;
 
-import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
 import java.util.Random;
 
 import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.parser.XmlParser;
-import org.buildmlearn.learnfrommap.questionmodule.BaseQuestion;
+import org.buildmlearn.learnfrommap.questionmodule.DbRow;
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion;
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion.Type;
 import org.buildmlearn.learnfrommap.questionmodule.QuestionModuleException;
 import org.buildmlearn.learnfrommap.questionmodule.UserAnsweredData;
 import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion;
 
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Parcelable;
 import android.support.v4.app.FragmentTransaction;
-import android.util.FloatMath;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,7 +28,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
+
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
 
 public class GameActivity extends Helper {
 
@@ -373,16 +362,77 @@ public class GameActivity extends Helper {
 		@Override
 		protected String doInBackground(Void... params) {
 
-			db = new Database(getApplicationContext());
-			Random random = new Random();
+			db = new Database(getApplicationContext(), 1);
 			XmlParser xmlParser = new XmlParser(getApplicationContext());
-			ArrayList<XmlQuestion> questionRules = xmlParser.fetchQuestions();
+			ArrayList<XmlQuestion> questionRules = xmlParser.fetchQuestions();		
+			Random random = new Random();
+			ArrayList<Integer> blackListRules = new ArrayList<Integer>();
+
+			//Where condition selection
+			//Explore Mode
+			String where = null;
+			if(selection.equals("CONTINENT"))
+			{
+				where = "continent = " + value;
+			}
+			else if(selection.equals("COUNTRY"))
+			{
+
+
+				try {
+					where = "country = " + db.getId("SELECT * FROM country WHERE name='" + value + "'");
+				} catch (QuestionModuleException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
+
 			for(int i = 1; i< 21; i++)
 			{
-				XmlQuestion rule = getRandomQuestionRule(questionRules, random);
-				makeQuestion(rule, selection, value, db);
-				onProgressUpdate(i);
+				int randomNo = random.nextInt(questionRules.size());
+				if(!blackListRules.contains(randomNo))
+				{
+					XmlQuestion questionRule = questionRules.get(randomNo);
+					String tableName = questionRule.getCode();
+					String query = "SELECT * FROM " + tableName + " WHERE "+ where +" LIMIT ";
+					String countQuery = "SELECT COUNT(*) FROM " + tableName + " WHERE " + where;
+					try {
+						DbRow row = db.rawSelect(query, countQuery);
+						String question = questionRule.getFormat().replace(":", row.getDataByColumnName(questionRule.getRelation()));
+						String answer = row.getDataByColumnName(questionRule.getAnswer());
+						GeneratedQuestion genQues;
+						if(questionRule.getType() == XmlQuestion.Type.MultipleChoiceQuestion)
+						{
+							Log.e("ANSWER", answer);
+							String[] options = db.createOptions(questionRule.getAnswer(), answer, questionRule.getCode());
+							Log.e("OPTION", options[0] + "," + options[1] + "," + options[2]);
+							genQues = new GeneratedQuestion(row, questionRule, question, answer, options);
+						}
+						else if(questionRule.getType() == XmlQuestion.Type.FillBlanks)
+						{
+							genQues = new GeneratedQuestion(row, questionRule, question, answer, Type.Fill);
+						}
+						else
+						{
+							genQues = new GeneratedQuestion(row, questionRule, question, answer, Type.Pin);
+						}
+						mQuestion.add(genQues);
+						Log.e("DATA", i + "");
+						publishProgress(i);
+					} catch (QuestionModuleException e) {
+						blackListRules.add(randomNo);
+						i--;
+						e.printStackTrace();
+					}
+				}
+				else
+				{
+					i--;
+				}
+
 			}
+
 			return null;
 		}
 
@@ -391,6 +441,8 @@ public class GameActivity extends Helper {
 			this.selection = selection;
 			this.value = value;
 		}
+
+
 
 		@Override
 		protected void onPostExecute(String result) {
@@ -414,28 +466,6 @@ public class GameActivity extends Helper {
 				}
 			});
 		}
-
-		private GeneratedQuestion makeQuestion(XmlQuestion questionRule, String selection, String value, Database db)
-		{
-
-			BaseQuestion question = new BaseQuestion(db, questionRule, selection, value);
-			try {
-				GeneratedQuestion formedQuestion = question.makeQuestion();
-				GameActivity.this.mQuestion.add(formedQuestion);
-				Log.e("Question", formedQuestion.getQuestion());
-			} catch (QuestionModuleException e) {
-				e.printStackTrace();
-			}
-			return null;
-		}
-
-		private XmlQuestion getRandomQuestionRule(ArrayList<XmlQuestion> questionRule, Random random)
-		{
-			int index = random.nextInt(questionRule.size());
-			return questionRule.get(index);
-		}
-
-
 	}
 
 }

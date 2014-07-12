@@ -112,35 +112,31 @@ public class ExploreMode extends ActionBarActivity {
 			String continent = "";
 			if(color.equals("ffeeeeee"))
 			{
-				continent = "Asia";
+				continent = "2";
 			}
 			else if(color.equals("ff333333"))
 			{
-				continent = "North America";
+				continent = "4";
 			}
 			else if(color.equals("ff999999"))
 			{
-				continent = "South America";
+				continent = "6";
 			}
 			else if(color.equals("ff777777"))
 			{
-				continent = "Africa";
+				continent = "1";
 			}
 			else if(color.equals("ffaaaaaa"))
 			{
-				continent = "Europe";
+				continent = "3";
 			}
 			else if(color.equals("ffffffff"))
 			{
-				continent = "Antarctica";
-			}
-			else if(color.equals("ff333333"))
-			{
-				continent = "North America";
+				continent = "7";
 			}
 			else if(color.equals("ff555555"))
 			{
-				continent = "Australia";
+				continent = "5";
 			}
 			if(continent.length() > 0 && !isClicked)
 			{
@@ -198,35 +194,31 @@ public class ExploreMode extends ActionBarActivity {
 			String continent = "";
 			if(color.equals("ffeeeeee"))
 			{
-				continent = "Asia";
+				continent = "2";
 			}
 			else if(color.equals("ff333333"))
 			{
-				continent = "North America";
+				continent = "4";
 			}
 			else if(color.equals("ff999999"))
 			{
-				continent = "South America";
+				continent = "6";
 			}
 			else if(color.equals("ff777777"))
 			{
-				continent = "Africa";
+				continent = "1";
 			}
 			else if(color.equals("ffaaaaaa"))
 			{
-				continent = "Europe";
+				continent = "3";
 			}
 			else if(color.equals("ffffffff"))
 			{
-				continent = "Antarctica";
-			}
-			else if(color.equals("ff333333"))
-			{
-				continent = "North America";
+				continent = "7";
 			}
 			else if(color.equals("ff555555"))
 			{
-				continent = "Australia";
+				continent = "5";
 			}
 			if(continent.length() > 0 && !isClicked)
 			{
@@ -234,7 +226,7 @@ public class ExploreMode extends ActionBarActivity {
 				worldMap.setClickable(false);
 				Intent intent = new Intent(getApplicationContext(), GameActivity.class);
 				intent.putExtra("MODE", "EXPLORE_MODE");
-				intent.putExtra("SELECTION", "continent");
+				intent.putExtra("SELECTION", "CONTINENT");
 				intent.putExtra("VALUE", continent);
 				startActivity(intent);
 				return true;

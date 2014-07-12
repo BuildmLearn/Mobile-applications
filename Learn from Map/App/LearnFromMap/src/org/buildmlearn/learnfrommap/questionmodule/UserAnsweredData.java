@@ -4,10 +4,9 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
-
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion.Type;
-
 import uk.ac.shef.wit.simmetrics.similaritymetrics.JaroWinkler;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
@@ -132,6 +131,7 @@ public class UserAnsweredData  implements Serializable{
 
 	}
 
+	@SuppressLint("FloatMath") 
 	private double distanceBetween(float lat1, float lng1, float lat2, float lng2) {
 		float x = (float) (180/3.14169);
 

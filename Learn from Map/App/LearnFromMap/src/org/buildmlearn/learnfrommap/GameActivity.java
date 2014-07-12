@@ -399,7 +399,7 @@ public class GameActivity extends Helper {
 					String countQuery = "SELECT COUNT(*) FROM " + tableName + " WHERE " + where;
 					try {
 						DbRow row = db.rawSelect(query, countQuery);
-						String question = questionRule.getFormat().replace(":", row.getDataByColumnName(questionRule.getRelation()));
+						String question = questionRule.getFormat().replace(":X:", row.getDataByColumnName(questionRule.getRelation()));
 						String answer = row.getDataByColumnName(questionRule.getAnswer());
 						GeneratedQuestion genQues;
 						if(questionRule.getType() == XmlQuestion.Type.MultipleChoiceQuestion)

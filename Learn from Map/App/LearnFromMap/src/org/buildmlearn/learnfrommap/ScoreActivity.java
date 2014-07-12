@@ -6,7 +6,6 @@ import org.buildmlearn.learnfrommap.adapter.ScoreAdapter;
 import org.buildmlearn.learnfrommap.questionmodule.UserAnsweredData;
 
 import android.support.v7.app.ActionBarActivity;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;

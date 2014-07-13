@@ -95,6 +95,7 @@
                     android:gravity="center" >
 
                     <LinearLayout
+                        android:id="@+id/expore_mode"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="2dp"
@@ -102,7 +103,7 @@
                         android:background="@drawable/custom_tile_color"
                         android:clickable="true"
                         android:gravity="center"
-                        android:onClick="loadMap"
+                        android:onClick="loadMode"
                         android:orientation="vertical" >
 
                         <ImageView
@@ -123,6 +124,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/classic_mode"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="2dp"
@@ -130,7 +132,7 @@
                         android:background="@drawable/custom_tile_color"
                         android:clickable="true"
                         android:gravity="center"
-                        android:onClick="mcq"
+                        android:onClick="loadMode"
                         android:orientation="vertical" >
 
                         <ImageView
@@ -159,12 +161,14 @@
                     android:layout_weight="0.5" >
 
                     <LinearLayout
+                        android:id="@+id/category_mode"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="2dp"
                         android:layout_weight="0.5"
                         android:background="@drawable/custom_tile_color"
                         android:clickable="true"
+                        android:onClick="loadMode"
                         android:gravity="center"
                         android:orientation="vertical" >
 
@@ -187,12 +191,14 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/settings"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="2dp"
                         android:layout_weight="0.5"
                         android:background="@drawable/custom_tile_color"
                         android:clickable="true"
+                        android:onClick="loadMode"
                         android:gravity="center"
                         android:orientation="vertical" >
 

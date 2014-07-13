@@ -4,10 +4,9 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
-
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion.Type;
-
 import uk.ac.shef.wit.simmetrics.similaritymetrics.JaroWinkler;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
@@ -78,9 +77,15 @@ public class UserAnsweredData  implements Serializable{
 	private void evaluatePin()
 	{
 
-		if(mAnswerType.equals("country"))
+		Address address = getAddress(mLat, mLog);
+		if(address == null)
 		{
-			String country = getAddress(mLat, mLog).getCountryName();
+			this.mPoints = 0;
+			mIsCorrect = false;
+		}
+		else if(mAnswerType.equals("country"))
+		{
+			String country = address.getCountryName();
 			Log.e("Country", country);
 			if(country.equals(mAnswer))
 			{
@@ -95,10 +100,11 @@ public class UserAnsweredData  implements Serializable{
 		}
 		else if(mAnswerType.equals("state"))
 		{
-			String state = getAddress(mLat, mLog).getAdminArea();
-			Log.e("State", state);
-			if(state.equals(mAnswer))
+			String state = address.getAdminArea();
+
+			if(state != null && state.equals(mAnswer))
 			{
+				Log.e("State", state);
 				this.mPoints = 10;
 				mIsCorrect = true;
 			}
@@ -132,6 +138,7 @@ public class UserAnsweredData  implements Serializable{
 
 	}
 
+	@SuppressLint("FloatMath") 
 	private double distanceBetween(float lat1, float lng1, float lat2, float lng2) {
 		float x = (float) (180/3.14169);
 
@@ -153,6 +160,10 @@ public class UserAnsweredData  implements Serializable{
 		Geocoder geocoder = new Geocoder(mContext, Locale.getDefault());
 		try {
 			List<Address> addresses = geocoder.getFromLocation(lat, lng, 1);
+			if(addresses.size() == 0)
+			{
+				return null;
+			}
 			Address obj = addresses.get(0);
 			return obj;
 

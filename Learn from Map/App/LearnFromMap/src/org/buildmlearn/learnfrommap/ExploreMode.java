@@ -7,7 +7,6 @@ import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -82,7 +81,6 @@ public class ExploreMode extends ActionBarActivity {
 
 		@Override
 		public boolean onDown(MotionEvent event) {
-			Log.e("Gesture", "Down");
 			float eventX = event.getX();
 			float eventY = event.getY();
 			float[] eventXY = new float[] {eventX, eventY};
@@ -112,35 +110,31 @@ public class ExploreMode extends ActionBarActivity {
 			String continent = "";
 			if(color.equals("ffeeeeee"))
 			{
-				continent = "Asia";
+				continent = "2";
 			}
 			else if(color.equals("ff333333"))
 			{
-				continent = "North America";
+				continent = "4";
 			}
 			else if(color.equals("ff999999"))
 			{
-				continent = "South America";
+				continent = "6";
 			}
 			else if(color.equals("ff777777"))
 			{
-				continent = "Africa";
+				continent = "1";
 			}
 			else if(color.equals("ffaaaaaa"))
 			{
-				continent = "Europe";
+				continent = "3";
 			}
 			else if(color.equals("ffffffff"))
 			{
-				continent = "Antarctica";
-			}
-			else if(color.equals("ff333333"))
-			{
-				continent = "North America";
+				continent = "7";
 			}
 			else if(color.equals("ff555555"))
 			{
-				continent = "Australia";
+				continent = "5";
 			}
 			if(continent.length() > 0 && !isClicked)
 			{
@@ -154,21 +148,18 @@ public class ExploreMode extends ActionBarActivity {
 		@Override
 		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
 				float velocityY) {
-			Log.e("Gesture", "Fling");
 			return true;
 		}
 
 		@Override
 		public boolean onScroll(MotionEvent e1, MotionEvent e2,
 				float distanceX, float distanceY) {
-			Log.e("Gesture", "Scroll");
 			return true;
 		}
 
 		@Override
 		public boolean onDoubleTap(MotionEvent event) {
 
-			Log.e("Gesture", "DoubleTap");
 			float eventX = event.getX();
 			float eventY = event.getY();
 			float[] eventXY = new float[] {eventX, eventY};
@@ -198,35 +189,31 @@ public class ExploreMode extends ActionBarActivity {
 			String continent = "";
 			if(color.equals("ffeeeeee"))
 			{
-				continent = "Asia";
+				continent = "2";
 			}
 			else if(color.equals("ff333333"))
 			{
-				continent = "North America";
+				continent = "4";
 			}
 			else if(color.equals("ff999999"))
 			{
-				continent = "South America";
+				continent = "6";
 			}
 			else if(color.equals("ff777777"))
 			{
-				continent = "Africa";
+				continent = "1";
 			}
 			else if(color.equals("ffaaaaaa"))
 			{
-				continent = "Europe";
+				continent = "3";
 			}
 			else if(color.equals("ffffffff"))
 			{
-				continent = "Antarctica";
-			}
-			else if(color.equals("ff333333"))
-			{
-				continent = "North America";
+				continent = "7";
 			}
 			else if(color.equals("ff555555"))
 			{
-				continent = "Australia";
+				continent = "5";
 			}
 			if(continent.length() > 0 && !isClicked)
 			{
@@ -234,7 +221,7 @@ public class ExploreMode extends ActionBarActivity {
 				worldMap.setClickable(false);
 				Intent intent = new Intent(getApplicationContext(), GameActivity.class);
 				intent.putExtra("MODE", "EXPLORE_MODE");
-				intent.putExtra("SELECTION", "continent");
+				intent.putExtra("SELECTION", "CONTINENT");
 				intent.putExtra("VALUE", continent);
 				startActivity(intent);
 				return true;

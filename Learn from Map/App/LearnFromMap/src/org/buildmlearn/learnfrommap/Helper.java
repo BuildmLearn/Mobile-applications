@@ -7,7 +7,6 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -20,7 +19,6 @@ import com.google.android.gms.maps.model.TileOverlayOptions;
 import android.content.Context;
 import android.content.pm.FeatureInfo;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
 import android.os.Handler;
@@ -33,7 +31,6 @@ public class Helper extends ActionBarActivity {
 	public Location myLocation;
 	private SupportMapFragment mapFragment;
 	private Handler handler;
-	private static final String TABLE_NAME = "main";
 	private MarkerOptions markerOptions;
 	private Marker marker;
 
@@ -61,7 +58,7 @@ public class Helper extends ActionBarActivity {
 				{
 					marker.remove();
 				}
-				markerOptions = new MarkerOptions().draggable(true).position(arg0).flat(true).title("Hello world").icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_100));
+				markerOptions = new MarkerOptions().draggable(true).position(arg0).flat(true).title("Your Answer").icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_100));
 				marker = mapView.addMarker(markerOptions);
 			}
 		});
@@ -105,26 +102,15 @@ public class Helper extends ActionBarActivity {
 	public void queryDatabase(String where, String[] whereArgs, String orderBy,
 			String limit) {
 		class QueryDatabase implements Runnable {
-			String where;
-			String[] whereArgs;
-			String orderBy;
-			String limit;
-
 			public QueryDatabase(String where, String[] whereArgs,
 					String orderBy, String limit) {
 				super();
-				this.where = where;
-				this.whereArgs = whereArgs;
-				this.orderBy = orderBy;
-				this.limit = limit;
 			}
 
 			@Override
 			public void run() {
 				Database main_db = new Database(getApplicationContext());
-				SQLiteDatabase db = main_db.getReadableDatabase();
-				Cursor cursor = db.query(TABLE_NAME, null, where, whereArgs,
-						null, null, orderBy, limit);
+				main_db.getReadableDatabase();
 				if (getApplicationContext() != null) {
 					runOnUiThread(new Runnable() {
 						@Override

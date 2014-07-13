@@ -297,4 +297,6 @@
         <item>Zimbabwe</item>
     </string-array>
 
+    <string name="title_activity_test_db">TestDb</string>
+
 </resources>

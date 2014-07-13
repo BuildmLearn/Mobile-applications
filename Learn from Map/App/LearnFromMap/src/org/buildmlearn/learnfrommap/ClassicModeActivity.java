@@ -13,7 +13,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,7 +37,7 @@ public class ClassicModeActivity extends ActionBarActivity {
 
     	intent = new Intent(getBaseContext(), GameActivity.class);
     	intent.putExtra("MODE", "CLASSIC_MODE");
-    	intent.putExtra("SELECTION", "country");
+    	intent.putExtra("SELECTION", "COUNTRY");
 
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,

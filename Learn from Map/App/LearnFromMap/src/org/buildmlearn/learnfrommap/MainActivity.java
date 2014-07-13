@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -19,36 +20,30 @@ public class MainActivity extends ActionBarActivity {
         
     }
     
-    		
-    public void loadMap(View v)
+
+
+    public void loadMode(View v)
     {
-    	
-    	Intent intent = new Intent(getApplicationContext(), ExploreMode.class);
-    	startActivity(intent);
+    	int id = v.getId();
+    	Intent intent;
+		switch (id) {
+		case R.id.expore_mode:
+			intent = new Intent(getApplicationContext(), ExploreMode.class);
+	    	startActivity(intent);
+			break;
+		case R.id.classic_mode:
+			intent = new Intent(getApplicationContext(), ClassicModeActivity.class);
+	    	startActivity(intent);
+	    	break;
+		case R.id.category_mode:
+			Toast.makeText(getApplicationContext(), "Coming Soon!", Toast.LENGTH_SHORT).show();
+			break;
+
+		default:
+			break;
+		}
     }
-
-    public void mcq(View v)
-    {
-//    	RelativeLayout main = (RelativeLayout)findViewById(R.id.main_layout);
-//    	View view = getLayoutInflater().inflate(R.layout.activity_map, main,false);
-//        main.addView(view);
-//
-//		new Handler().post(new Runnable() {
-//
-//			@Override
-//			public void run() {
-//				getMapView((SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.mapFragment));
-//
-//			}
-//		});	
-//		main.removeAllViews();
-//		
-				
-    	Intent intent = new Intent(getApplicationContext(), ClassicModeActivity.class);
-    	startActivity(intent);
-    }
-
-
+    
     
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {

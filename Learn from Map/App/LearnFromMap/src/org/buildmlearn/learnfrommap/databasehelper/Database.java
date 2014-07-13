@@ -25,13 +25,11 @@ public class Database extends SQLiteAssetHelper  {
 
 	public Database(Context context) {
 		super(context, DB_NAME, null, DATABASE_VERSION);
-		Log.e("Here", "I am in constructor");
-		//db = getReadableDatabase();
 	}
 
 	public Database(Context context,  int i) {
 		super(context, DB_NAME, null, DATABASE_VERSION);
-		Log.e("Here", "I am in constructor");
+		Log.d("Database", "Opening readable database");
 		db = getReadableDatabase();
 	}
 
@@ -39,11 +37,18 @@ public class Database extends SQLiteAssetHelper  {
 		return database;
 	}
 
-
+	public void closeReadableDatabase()
+	{
+		Log.d("Database", "Cloasing database");
+		db.close();
+	}
+	
+	
 
 	@Override
 	public synchronized void close() {
 		if (database != null) {
+			
 			database.close();
 		}
 		super.close();
@@ -98,7 +103,6 @@ public class Database extends SQLiteAssetHelper  {
 				Random random = new Random(lastSeed + new Date().getTime());
 				randomNo = random.nextInt(c);
 				lastSeed =  randomNo;
-				Log.e("LAST SEED", lastSeed + "");
 			}
 			else
 			{
@@ -268,7 +272,6 @@ public class Database extends SQLiteAssetHelper  {
 				Random random = new Random(lastSeed + new Date().getTime());
 				randomNo = random.nextInt(c);
 				lastSeed =  randomNo;
-				Log.e("LAST SEED", lastSeed + "");
 			}
 			else
 			{

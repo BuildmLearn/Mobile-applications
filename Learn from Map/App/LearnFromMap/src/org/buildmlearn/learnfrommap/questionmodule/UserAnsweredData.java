@@ -101,9 +101,10 @@ public class UserAnsweredData  implements Serializable{
 		else if(mAnswerType.equals("state"))
 		{
 			String state = address.getAdminArea();
-			Log.e("State", state);
-			if(state.equals(mAnswer))
+
+			if(state != null && state.equals(mAnswer))
 			{
+				Log.e("State", state);
 				this.mPoints = 10;
 				mIsCorrect = true;
 			}

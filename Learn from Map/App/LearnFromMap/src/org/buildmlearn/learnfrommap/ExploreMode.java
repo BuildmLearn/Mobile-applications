@@ -7,7 +7,6 @@ import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -82,7 +81,6 @@ public class ExploreMode extends ActionBarActivity {
 
 		@Override
 		public boolean onDown(MotionEvent event) {
-			Log.e("Gesture", "Down");
 			float eventX = event.getX();
 			float eventY = event.getY();
 			float[] eventXY = new float[] {eventX, eventY};
@@ -150,21 +148,18 @@ public class ExploreMode extends ActionBarActivity {
 		@Override
 		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
 				float velocityY) {
-			Log.e("Gesture", "Fling");
 			return true;
 		}
 
 		@Override
 		public boolean onScroll(MotionEvent e1, MotionEvent e2,
 				float distanceX, float distanceY) {
-			Log.e("Gesture", "Scroll");
 			return true;
 		}
 
 		@Override
 		public boolean onDoubleTap(MotionEvent event) {
 
-			Log.e("Gesture", "DoubleTap");
 			float eventX = event.getX();
 			float eventY = event.getY();
 			float[] eventXY = new float[] {eventX, eventY};

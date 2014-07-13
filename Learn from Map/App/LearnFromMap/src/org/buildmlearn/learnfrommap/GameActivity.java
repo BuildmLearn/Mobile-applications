@@ -1,7 +1,5 @@
 package org.buildmlearn.learnfrommap;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -20,11 +18,9 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Parcelable;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -408,9 +404,7 @@ public class GameActivity extends Helper {
 						GeneratedQuestion genQues;
 						if(questionRule.getType() == XmlQuestion.Type.MultipleChoiceQuestion)
 						{
-							Log.e("ANSWER", answer);
 							String[] options = db.createOptions(questionRule.getAnswer(), answer, questionRule.getCode());
-							Log.e("OPTION", options[0] + "," + options[1] + "," + options[2]);
 							genQues = new GeneratedQuestion(row, questionRule, question, answer, options);
 						}
 						else if(questionRule.getType() == XmlQuestion.Type.FillBlanks)
@@ -422,7 +416,6 @@ public class GameActivity extends Helper {
 							genQues = new GeneratedQuestion(row, questionRule, question, answer, Type.Pin);
 						}
 						mQuestion.add(genQues);
-						Log.e("DATA", i + "");
 						publishProgress(i);
 					} catch (QuestionModuleException e) {
 						blackListRules.add(randomNo);
@@ -452,6 +445,7 @@ public class GameActivity extends Helper {
 		protected void onPostExecute(String result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
+			db.closeReadableDatabase();
 			db.close();
 			mMain.removeAllViews();
 			mMain.addView(mView);

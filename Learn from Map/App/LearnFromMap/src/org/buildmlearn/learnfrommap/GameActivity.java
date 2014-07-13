@@ -55,6 +55,7 @@ public class GameActivity extends Helper {
 	private GeneratedQuestion genQuestion;
 	private String[] options;
 	private boolean mIsAnswered;
+	private String mDisplatMsg;
 
 	@Override	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +67,7 @@ public class GameActivity extends Helper {
 		mQuestionCounter = 0;
 		Intent intent = getIntent();
 		mode = intent.getStringExtra("MODE");
+		mDisplatMsg = intent.getStringExtra("DISPLAY");
 		mSelection = intent.getStringExtra("SELECTION");
 		mValue = intent.getStringExtra("VALUE");
 		mLoadingText = (TextViewPlus)findViewById(R.id.question);
@@ -449,6 +451,8 @@ public class GameActivity extends Helper {
 			db.close();
 			mMain.removeAllViews();
 			mMain.addView(mView);
+			TextViewPlus selection = (TextViewPlus)findViewById(R.id.play_selection);
+			selection.setText(mDisplatMsg);
 
 		}
 

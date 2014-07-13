@@ -54,7 +54,9 @@ public class ClassicModeActivity extends ActionBarActivity {
 		    public void onLocationChanged(Location location) {
 		      // Called when a new location is found by the network location provider.
 		    	Toast.makeText(getApplicationContext(), "Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude(), Toast.LENGTH_LONG).show();
-		    	intent.putExtra("VALUE", getCountry(location.getLatitude(), location.getLongitude()));
+		    	String country = getCountry(location.getLatitude(), location.getLongitude());
+		    	intent.putExtra("VALUE", country);
+		    	intent.putExtra("DISPLAY", "Country: " + country);
 		    	startActivity(intent);
 		    	locationManager.removeUpdates(locationListener);
 		    }
@@ -78,6 +80,7 @@ public class ClassicModeActivity extends ActionBarActivity {
 	{
 		String country = spinner.getSelectedItem().toString();
 		intent.putExtra("VALUE", country);
+		intent.putExtra("DISPLAY", "Country: " + country);
     	startActivity(intent);
 		
 	}

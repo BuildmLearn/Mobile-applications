@@ -1,10 +1,12 @@
 package org.buildmlearn.learnfrommap;
 
 import android.support.v7.app.ActionBarActivity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.GestureDetector;
@@ -12,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -64,11 +67,21 @@ public class ExploreMode extends ActionBarActivity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
+			showCustomDialog();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
 
+    protected void showCustomDialog() {
+        // TODO Auto-generated method stub
+        final Dialog dialog = new Dialog(ExploreMode.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.setContentView(R.layout.about_dialog);   
+        dialog.show();
+    }
+	
 	public class GestureListener extends
 	GestureDetector.SimpleOnGestureListener {
 

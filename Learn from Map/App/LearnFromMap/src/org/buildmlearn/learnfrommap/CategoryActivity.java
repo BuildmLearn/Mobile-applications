@@ -2,9 +2,12 @@ package org.buildmlearn.learnfrommap;
 
 import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
 
+import android.app.Dialog;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 
 public class CategoryActivity extends DatabaseHelper {
 
@@ -30,11 +33,19 @@ public class CategoryActivity extends DatabaseHelper {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
+			showCustomDialog();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
 
-
+    protected void showCustomDialog() {
+        // TODO Auto-generated method stub
+        final Dialog dialog = new Dialog(CategoryActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.setContentView(R.layout.about_dialog);   
+        dialog.show();
+    }
 
 }

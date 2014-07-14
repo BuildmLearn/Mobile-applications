@@ -14,7 +14,9 @@ import org.buildmlearn.learnfrommap.questionmodule.UserAnsweredData;
 import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -24,6 +26,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -399,10 +402,20 @@ public class GameActivity extends Helper {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
+			showCustomDialog();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+    protected void showCustomDialog() {
+        // TODO Auto-generated method stub
+        final Dialog dialog = new Dialog(GameActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.setContentView(R.layout.about_dialog);   
+        dialog.show();
+    }
 
 
 	public class GenerateQuestions extends AsyncTask<Void, Integer, String>

@@ -82,6 +82,7 @@ public class UserAnsweredData  implements Serializable{
 		{
 			this.mPoints = 0;
 			mIsCorrect = false;
+			Log.e("GeoCoder", "Address Null");
 		}
 		else if(mAnswerType.equals("country"))
 		{

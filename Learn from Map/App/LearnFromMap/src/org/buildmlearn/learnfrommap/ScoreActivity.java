@@ -40,7 +40,7 @@ public class ScoreActivity extends ActionBarActivity {
 		}
 		
 		mPoints.setText(String.valueOf(points));
-		mCount.setText(count + "/20");
+		mCount.setText(count + "/" + GameActivity.QUESTION_COUNT);
 		mAdapter = new ScoreAdapter(this, R.layout.listview_row_mcq, mAnsweredList);
 		mQuestionList.setAdapter(mAdapter);
 

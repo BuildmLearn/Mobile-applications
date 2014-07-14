@@ -33,7 +33,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class GameActivity extends Helper {
 
-	private final int QUESTION_COUNT = 10;
+	public static final int QUESTION_COUNT = 10;
 	private String mode;
 	private String mSelection;
 	private String mValue;	
@@ -57,6 +57,7 @@ public class GameActivity extends Helper {
 	private String[] options;
 	private boolean mIsAnswered;
 	private String mDisplatMsg;
+	protected long timeLeft;
 
 	@Override	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -309,6 +310,55 @@ public class GameActivity extends Helper {
 
 	}
 
+	@Override
+	protected void onPause() {
+		if(mCountTimer != null)
+		{
+			mCountTimer.cancel();
+		}
+		super.onPause();
+		
+	}
+
+
+
+
+
+	@Override
+	protected void onResume() {
+		if(mCountTimer != null)
+		{
+			startTimer((int)timeLeft);
+		}
+		super.onResume();
+	}
+
+
+
+
+
+	@Override
+	protected void onSaveInstanceState(Bundle savedInstanceState) {
+	  super.onSaveInstanceState(savedInstanceState);
+	  // Save UI state changes to the savedInstanceState.
+	  // This bundle will be passed to onCreate if the process is
+	  // killed and restarted.
+	  savedInstanceState.putLong("TIME", timeLeft);
+	  mCountTimer.cancel();
+	  // etc.
+	}
+
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onRestoreInstanceState(savedInstanceState);
+		timeLeft = savedInstanceState.getLong("TIME");
+		startTimer((int)timeLeft);
+	}
+
+
+
+
 
 	private void startTimer(int timer)
 	{
@@ -317,6 +367,7 @@ public class GameActivity extends Helper {
 			@Override
 			public void onTick(long millisUntilFinished) {
 				mTimer.setText("Time remaining: " + millisUntilFinished / 1000);
+				timeLeft = millisUntilFinished;
 			}
 			@Override
 			public void onFinish() {

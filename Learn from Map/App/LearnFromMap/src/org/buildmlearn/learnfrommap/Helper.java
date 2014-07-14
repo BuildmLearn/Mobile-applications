@@ -182,6 +182,7 @@ public class Helper extends ActionBarActivity {
 				if (mapView == null) {
 					handler.postDelayed(this, 1000);
 				} else {
+					mapView.setMyLocationEnabled(false);
 					mapView.setMapType(GoogleMap.MAP_TYPE_NONE);
 					mapView.addTileOverlay(new TileOverlayOptions()
 							.tileProvider(new CustomTileProvider(getResources()

@@ -35,7 +35,7 @@
     <string name="option4">Option 4</string>
     <string name="title_activity_category">CategoryActivity</string>
     <string name="title_activity_classic_mode">Classic Mode</string>
-    <string name="classic_mode_description">"Description goes here.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "</string>
+    <string name="classic_mode_description">"In this mode you can select your current location or select any of the available countries from the drop-down. The questions will be specifically based on your selection."</string>
     <string name="use_my_location">Use My Location</string>
     <string name="select_a_location">Or select a location</string>
     <string name="play">Play</string>

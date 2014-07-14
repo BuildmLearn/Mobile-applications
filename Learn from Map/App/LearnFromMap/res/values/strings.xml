@@ -299,4 +299,6 @@
 
     <string name="title_activity_test_db">TestDb</string>
 
+    <string name="fetching_location">Please Wait...\nFetching Your Location</string>
+
 </resources>

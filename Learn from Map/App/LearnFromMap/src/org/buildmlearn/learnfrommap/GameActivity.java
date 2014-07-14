@@ -73,7 +73,7 @@ public class GameActivity extends Helper {
 		mValue = intent.getStringExtra("VALUE");
 		mLoadingText = (TextViewPlus)findViewById(R.id.question);
 		mProgressBar = (ProgressBar)findViewById(R.id.game_progressbar);
-		mProgressBar.setMax(20);
+		mProgressBar.setMax(QUESTION_COUNT);
 		mProgressBar.setProgress(0);
 		if(mode.equals("EXPLORE_MODE"))
 		{

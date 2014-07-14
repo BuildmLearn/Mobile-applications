@@ -71,12 +71,12 @@ public class ExploreMode extends ActionBarActivity {
 
 	public class GestureListener extends
 	GestureDetector.SimpleOnGestureListener {
-		
+
 		private View v;
 		public GestureListener(View v)
 		{
 			this.v = v;
-			
+
 		}
 
 		@Override
@@ -108,37 +108,45 @@ public class ExploreMode extends ActionBarActivity {
 			int touchedRGB = bitmap.getPixel(x, y);
 			String color = Integer.toHexString(touchedRGB);
 			String continent = "";
+			String s = "";
 			if(color.equals("ffeeeeee"))
 			{
 				continent = "2";
+				s = "Asia";
 			}
 			else if(color.equals("ff333333"))
 			{
 				continent = "4";
+				s = "Norht America";
 			}
 			else if(color.equals("ff999999"))
 			{
 				continent = "6";
+				s = "South America";
 			}
 			else if(color.equals("ff777777"))
 			{
 				continent = "1";
+				s = "Africa";
 			}
 			else if(color.equals("ffaaaaaa"))
 			{
 				continent = "3";
+				s = "Europe";
 			}
 			else if(color.equals("ffffffff"))
 			{
 				continent = "7";
+				s = "Antarctica";
 			}
 			else if(color.equals("ff555555"))
 			{
 				continent = "5";
+				s = "Oceania";
 			}
 			if(continent.length() > 0 && !isClicked)
 			{
-				
+
 				Toast.makeText(getApplicationContext(), "Double tap to select a continent", Toast.LENGTH_SHORT).show();
 
 			}
@@ -187,39 +195,48 @@ public class ExploreMode extends ActionBarActivity {
 			int touchedRGB = bitmap.getPixel(x, y);
 			String color = Integer.toHexString(touchedRGB);
 			String continent = "";
+			String s = "";
 			if(color.equals("ffeeeeee"))
 			{
 				continent = "2";
+				s = "Asia";
 			}
 			else if(color.equals("ff333333"))
 			{
 				continent = "4";
+				s = "North America";
 			}
 			else if(color.equals("ff999999"))
 			{
 				continent = "6";
+				s = "South America";
 			}
 			else if(color.equals("ff777777"))
 			{
 				continent = "1";
+				s = "Africa";
 			}
 			else if(color.equals("ffaaaaaa"))
 			{
 				continent = "3";
+				s = "Europe";
 			}
 			else if(color.equals("ffffffff"))
 			{
 				continent = "7";
+				s = "Antarctica";
 			}
 			else if(color.equals("ff555555"))
 			{
 				continent = "5";
-			}
+				s = "Oceania";
+			}			
 			if(continent.length() > 0 && !isClicked)
 			{
 				isClicked = true;
 				worldMap.setClickable(false);
 				Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+				intent.putExtra("DISPLAY", "Continent: " + s);
 				intent.putExtra("MODE", "EXPLORE_MODE");
 				intent.putExtra("SELECTION", "CONTINENT");
 				intent.putExtra("VALUE", continent);

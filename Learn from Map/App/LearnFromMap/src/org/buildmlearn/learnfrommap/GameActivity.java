@@ -33,6 +33,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class GameActivity extends Helper {
 
+	private final int QUESTION_COUNT = 10;
 	private String mode;
 	private String mSelection;
 	private String mValue;	
@@ -55,6 +56,7 @@ public class GameActivity extends Helper {
 	private GeneratedQuestion genQuestion;
 	private String[] options;
 	private boolean mIsAnswered;
+	private String mDisplatMsg;
 
 	@Override	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,7 @@ public class GameActivity extends Helper {
 		mQuestionCounter = 0;
 		Intent intent = getIntent();
 		mode = intent.getStringExtra("MODE");
+		mDisplatMsg = intent.getStringExtra("DISPLAY");
 		mSelection = intent.getStringExtra("SELECTION");
 		mValue = intent.getStringExtra("VALUE");
 		mLoadingText = (TextViewPlus)findViewById(R.id.question);
@@ -242,7 +245,7 @@ public class GameActivity extends Helper {
 			mAnsweredList.add(userAnswerData);
 
 		}
-		if(mQuestionCounter == 20)
+		if(mQuestionCounter == QUESTION_COUNT)
 		{
 			Intent intent = new Intent(getApplicationContext(), ScoreActivity.class);
 			intent.putParcelableArrayListExtra("SCORE_DATA", (ArrayList<? extends Parcelable>) mAnsweredList);
@@ -260,7 +263,7 @@ public class GameActivity extends Helper {
 			mDisplayQuestion.setText(genQuestion.getQuestion());
 			EditText fillAnswer = (EditText)findViewById(R.id.fill_answer);
 			fillAnswer.setText(genQuestion.getAnswer());
-			startTimer();
+			startTimer(60000);
 
 		}
 		else if(genQuestion.getType() == Type.Mcq)
@@ -283,7 +286,7 @@ public class GameActivity extends Helper {
 			mOption2.setText(options[1]);
 			mOption3.setText(options[2]);
 			mOption4.setText(options[3]);
-			startTimer();
+			startTimer(60000);
 		}
 		else
 		{
@@ -302,15 +305,15 @@ public class GameActivity extends Helper {
 			});	
 		}
 
-		getSupportActionBar().setTitle("Question " + mQuestionCounter + " of 20");
+		getSupportActionBar().setTitle("Question " + mQuestionCounter + " of " + QUESTION_COUNT);
 
 	}
 
 
-	private void startTimer()
+	private void startTimer(int timer)
 	{
 		mTimer = (TextViewPlus)findViewById(R.id.timer);
-		mCountTimer = new CountDownTimer(30000, 1000) {
+		mCountTimer = new CountDownTimer(timer, 1000) {
 			@Override
 			public void onTick(long millisUntilFinished) {
 				mTimer.setText("Time remaining: " + millisUntilFinished / 1000);
@@ -327,7 +330,7 @@ public class GameActivity extends Helper {
 		super.onMapReady();
 		ProgressBar loading = (ProgressBar)findViewById(R.id.map_progress);
 		loading.setVisibility(View.GONE);
-		startTimer();	
+		startTimer(90000);	
 	}
 
 	@Override
@@ -388,7 +391,7 @@ public class GameActivity extends Helper {
 
 			}
 
-			for(int i = 1; i< 21; i++)
+			for(int i = 1; i<= QUESTION_COUNT; i++)
 			{
 				int randomNo = random.nextInt(questionRules.size());
 				if(!blackListRules.contains(randomNo))
@@ -449,6 +452,8 @@ public class GameActivity extends Helper {
 			db.close();
 			mMain.removeAllViews();
 			mMain.addView(mView);
+			TextViewPlus selection = (TextViewPlus)findViewById(R.id.play_selection);
+			selection.setText(mDisplatMsg);
 
 		}
 
@@ -460,7 +465,7 @@ public class GameActivity extends Helper {
 
 			runOnUiThread(new Runnable() {
 				public void run() {
-					mLoadingText.setText("Loading question " + values[0] + " of 20");
+					mLoadingText.setText("Loading question " + values[0] + " of " + QUESTION_COUNT);
 				}
 			});
 		}

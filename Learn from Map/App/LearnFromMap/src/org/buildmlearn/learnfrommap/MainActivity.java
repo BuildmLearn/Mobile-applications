@@ -38,6 +38,9 @@ public class MainActivity extends ActionBarActivity {
 		case R.id.category_mode:
 			Toast.makeText(getApplicationContext(), "Coming Soon!", Toast.LENGTH_SHORT).show();
 			break;
+		case R.id.settings:
+			Toast.makeText(getApplicationContext(), "Coming Soon!", Toast.LENGTH_SHORT).show();
+			break;
 
 		default:
 			break;

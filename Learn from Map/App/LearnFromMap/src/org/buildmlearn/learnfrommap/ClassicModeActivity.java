@@ -40,8 +40,9 @@ public class ClassicModeActivity extends ActionBarActivity {
     	intent.putExtra("SELECTION", "COUNTRY");
 
 		// Create an ArrayAdapter using the string array and a default spinner layout
+    	//ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_text_view,  R.array.countries_array);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-		        R.array.countries_array, android.R.layout.simple_spinner_item);
+		        R.array.countries_array, R.layout.spinner_text_view);
 		// Specify the layout to use when the list of choices appears
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		// Apply the adapter to the spinner
@@ -54,7 +55,9 @@ public class ClassicModeActivity extends ActionBarActivity {
 		    public void onLocationChanged(Location location) {
 		      // Called when a new location is found by the network location provider.
 		    	Toast.makeText(getApplicationContext(), "Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude(), Toast.LENGTH_LONG).show();
-		    	intent.putExtra("VALUE", getCountry(location.getLatitude(), location.getLongitude()));
+		    	String country = getCountry(location.getLatitude(), location.getLongitude());
+		    	intent.putExtra("VALUE", country);
+		    	intent.putExtra("DISPLAY", "Country: " + country);
 		    	startActivity(intent);
 		    	locationManager.removeUpdates(locationListener);
 		    }
@@ -78,6 +81,7 @@ public class ClassicModeActivity extends ActionBarActivity {
 	{
 		String country = spinner.getSelectedItem().toString();
 		intent.putExtra("VALUE", country);
+		intent.putExtra("DISPLAY", "Country: " + country);
     	startActivity(intent);
 		
 	}

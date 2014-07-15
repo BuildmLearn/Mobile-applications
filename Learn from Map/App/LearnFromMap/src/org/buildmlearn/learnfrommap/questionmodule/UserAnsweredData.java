@@ -277,7 +277,7 @@ public class UserAnsweredData  implements Serializable{
 	{
 		if(this.mQuestionType == Type.Fill)
 		{
-			double result = compareStrings(mUserAnswer, mAnswer);
+			double result = CompareStrings(mUserAnswer, mAnswer);
 			if(result > .95)
 			{
 				this.mIsCorrect = true;
@@ -292,7 +292,7 @@ public class UserAnsweredData  implements Serializable{
 
 	}
 	
-	public double compareStrings(String stringA, String stringB) {
+	public static double CompareStrings(String stringA, String stringB) {
 	    JaroWinkler algorithm = new JaroWinkler();
 	    return algorithm.getSimilarity(stringA, stringB);
 	}

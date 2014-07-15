@@ -171,6 +171,22 @@ public class GameActivity extends Helper {
 				}
 				
 			}
+			else if(genQuestion.getType() ==  Type.Fill)
+			{
+				EditText fillAnswer = (EditText)findViewById(R.id.fill_answer);
+				String userAnswer  = fillAnswer.getText().toString();
+				if(UserAnsweredData.CompareStrings(userAnswer, genQuestion.getAnswer()) > 0.95)
+				{
+					mTimer.setText("That's the correct answer!");
+				}
+				else
+				{
+					mTimer.setText("Sorry, wrong answer!");
+				}
+				fillAnswer.setVisibility(View.GONE);
+				TextViewPlus correctAnswer = (TextViewPlus)findViewById(R.id.fill_correct_answer);
+				correctAnswer.setText("Answer: " + genQuestion.getAnswer());
+			}
 			button.setText("Next");
 		}
 		else

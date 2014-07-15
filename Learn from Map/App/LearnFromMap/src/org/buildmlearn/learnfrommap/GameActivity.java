@@ -30,6 +30,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
@@ -126,6 +127,7 @@ public class GameActivity extends Helper {
 		TextViewPlus button = (TextViewPlus)findViewById(R.id.next_btn);
 		if(button.getText().toString().equals("Submit"))
 		{
+			Boolean isCorrect = false;
 			mCountTimer.cancel();
 			mCountTimer = null;
 			mTimer.setText("");
@@ -136,6 +138,7 @@ public class GameActivity extends Helper {
 				if(!mIsAnswered)
 				{
 					mTimer.setText("Correct answer is " + answer);
+					isCorrect = null;
 				}
 				for(int i=0; i<4; i++)
 				{
@@ -146,6 +149,7 @@ public class GameActivity extends Helper {
 						if(options[i].getText().toString().equals(answer))
 						{
 							mTimer.setText("That's the correct answer!");
+							isCorrect = true;
 						}
 						else
 						{
@@ -178,14 +182,30 @@ public class GameActivity extends Helper {
 				if(UserAnsweredData.CompareStrings(userAnswer, genQuestion.getAnswer()) > 0.95)
 				{
 					mTimer.setText("That's the correct answer!");
+					isCorrect = true;
 				}
 				else
 				{
 					mTimer.setText("Sorry, wrong answer!");
 				}
+				if(userAnswer.length() == 0)
+				{
+					isCorrect = null;
+				}
 				fillAnswer.setVisibility(View.GONE);
 				TextViewPlus correctAnswer = (TextViewPlus)findViewById(R.id.fill_correct_answer);
 				correctAnswer.setText("Answer: " + genQuestion.getAnswer());
+				LinearLayout layout = (LinearLayout) findViewById(R.id.layout);
+				if(isCorrect != null && isCorrect)
+				{
+					layout.setBackgroundResource(R.drawable.layout_right_answer);
+				}
+				else if(isCorrect != null && !isCorrect)
+				{
+					layout.setBackgroundResource(R.drawable.layout_right_wrong);
+				}
+					
+					
 			}
 			button.setText("Next");
 		}

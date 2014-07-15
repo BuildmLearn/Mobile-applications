@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.xml.namespace.QName;
+
 import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.parser.XmlParser;
 import org.buildmlearn.learnfrommap.questionmodule.DbRow;
@@ -118,21 +120,77 @@ public class GameActivity extends Helper {
 
 	}
 
+	@SuppressLint("NewApi") 
 	public void nextQuestion(View v)
 	{
-		mCountTimer.cancel();
-		if(mQuestion.get(mQuestionCounter-1).getType() == Type.Pin)
+		TextViewPlus button = (TextViewPlus)findViewById(R.id.next_btn);
+		if(button.getText().toString().equals("Submit"))
 		{
-			android.support.v4.app.Fragment fragment = (getSupportFragmentManager().findFragmentById(R.id.mapFragment));  
-			if(fragment != null)
+			mCountTimer.cancel();
+			mCountTimer = null;
+			mTimer.setText("");
+			if(genQuestion.getType() == Type.Mcq)
 			{
-				FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-				ft.remove(getSupportFragmentManager().findFragmentById(R.id.mapFragment)).commit();
-				getSupportFragmentManager().popBackStackImmediate();
-				mMain.removeAllViews();	
-			}	
+				String answer = genQuestion.getAnswer();
+				TextViewPlus[] options = {mOption1, mOption2, mOption3, mOption4};
+				if(!mIsAnswered)
+				{
+					mTimer.setText("Correct answer is " + answer);
+				}
+				for(int i=0; i<4; i++)
+				{
+					
+					options[i].setClickable(false);
+					if(mIsAnswered && mSelectedOption == i)
+					{
+						if(options[i].getText().toString().equals(answer))
+						{
+							mTimer.setText("That's the correct answer!");
+						}
+						else
+						{
+							mTimer.setText("Sorry, wrong answer!");
+							if(mSdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+								options[i].setBackgroundDrawable(getResources().getDrawable(R.drawable.wrong_answer));
+
+							} else {
+								options[i].setBackground(getResources().getDrawable(R.drawable.wrong_answer));
+							}
+						}
+					}
+					
+					if(options[i].getText().toString().equals(answer))
+					{
+						if(mSdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+							options[i].setBackgroundDrawable(getResources().getDrawable(R.drawable.right_answer));
+
+						} else {
+							options[i].setBackground(getResources().getDrawable(R.drawable.right_answer));
+						}
+					}
+				}
+				
+			}
+			button.setText("Next");
 		}
-		loadQuestion();
+		else
+		{
+			if(mQuestion.get(mQuestionCounter-1).getType() == Type.Pin)
+			{
+				android.support.v4.app.Fragment fragment = (getSupportFragmentManager().findFragmentById(R.id.mapFragment));  
+				if(fragment != null)
+				{
+					FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+					ft.remove(getSupportFragmentManager().findFragmentById(R.id.mapFragment)).commit();
+					getSupportFragmentManager().popBackStackImmediate();
+					mMain.removeAllViews();	
+				}	
+			}
+			loadQuestion();
+		}
+				
+		
+
 	}
 
 	@SuppressLint("NewApi") 
@@ -347,7 +405,11 @@ public class GameActivity extends Helper {
 	  // This bundle will be passed to onCreate if the process is
 	  // killed and restarted.
 	  savedInstanceState.putLong("TIME", timeLeft);
-	  mCountTimer.cancel();
+	  if(mCountTimer != null)
+	  {
+		  mCountTimer.cancel();
+	  }
+	 
 	  // etc.
 	}
 
@@ -356,7 +418,7 @@ public class GameActivity extends Helper {
 		// TODO Auto-generated method stub
 		super.onRestoreInstanceState(savedInstanceState);
 		timeLeft = savedInstanceState.getLong("TIME");
-		startTimer((int)timeLeft);
+		//startTimer((int)timeLeft);
 	}
 
 

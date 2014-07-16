@@ -16,38 +16,43 @@
     <RelativeLayout
         android:id="@+id/main_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize" >
+        android:layout_height="match_parent" >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="7dp"
-            android:background="#80000000"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="10dp" >
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:gravity="center" >
 
-            <org.buildmlearn.learnfrommap.TextViewPlus
-                android:id="@+id/question"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:background="#80000000"
                 android:gravity="center"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:text="@string/loading"
-                android:textColor="@android:color/white"
-                foo:customFont="Roboto_Light.ttf" />
+                android:orientation="vertical"
+                android:padding="10dp" >
 
-            <ProgressBar
-                android:id="@+id/game_progressbar"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <org.buildmlearn.learnfrommap.TextViewPlus
+                    android:id="@+id/question"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="@string/loading"
+                    android:textColor="@android:color/white"
+                    foo:customFont="Roboto_Light.ttf" />
+
+                <ProgressBar
+                    android:id="@+id/game_progressbar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
         </LinearLayout>
+
     </RelativeLayout>
 
 </RelativeLayout>

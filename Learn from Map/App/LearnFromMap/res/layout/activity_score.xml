@@ -98,6 +98,7 @@
                 android:background="#60000000"
                 android:divider="#60ffffff"
                 android:dividerHeight="2dp"
+                android:cacheColorHint="#00000000"
                 android:padding="10dp"
                 tools:listitem="@layout/listview_row_mcq" >
 

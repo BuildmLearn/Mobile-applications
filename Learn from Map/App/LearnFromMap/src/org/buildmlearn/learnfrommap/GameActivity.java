@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.xml.namespace.QName;
+
 import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.parser.XmlParser;
 import org.buildmlearn.learnfrommap.questionmodule.DbRow;
@@ -14,7 +16,9 @@ import org.buildmlearn.learnfrommap.questionmodule.UserAnsweredData;
 import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -24,7 +28,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
@@ -33,7 +39,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class GameActivity extends Helper {
 
-	private final int QUESTION_COUNT = 10;
+	public static final int QUESTION_COUNT = 10;
 	private String mode;
 	private String mSelection;
 	private String mValue;	
@@ -57,6 +63,7 @@ public class GameActivity extends Helper {
 	private String[] options;
 	private boolean mIsAnswered;
 	private String mDisplatMsg;
+	protected long timeLeft;
 
 	@Override	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +80,7 @@ public class GameActivity extends Helper {
 		mValue = intent.getStringExtra("VALUE");
 		mLoadingText = (TextViewPlus)findViewById(R.id.question);
 		mProgressBar = (ProgressBar)findViewById(R.id.game_progressbar);
-		mProgressBar.setMax(20);
+		mProgressBar.setMax(QUESTION_COUNT);
 		mProgressBar.setProgress(0);
 		if(mode.equals("EXPLORE_MODE"))
 		{
@@ -114,21 +121,112 @@ public class GameActivity extends Helper {
 
 	}
 
+	@SuppressLint("NewApi") 
 	public void nextQuestion(View v)
 	{
-		mCountTimer.cancel();
-		if(mQuestion.get(mQuestionCounter-1).getType() == Type.Pin)
+		TextViewPlus button = (TextViewPlus)findViewById(R.id.next_btn);
+		if(button.getText().toString().equals("Submit"))
 		{
-			android.support.v4.app.Fragment fragment = (getSupportFragmentManager().findFragmentById(R.id.mapFragment));  
-			if(fragment != null)
+			Boolean isCorrect = false;
+			mCountTimer.cancel();
+			mCountTimer = null;
+			mTimer.setText("");
+			if(genQuestion.getType() == Type.Mcq)
 			{
-				FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-				ft.remove(getSupportFragmentManager().findFragmentById(R.id.mapFragment)).commit();
-				getSupportFragmentManager().popBackStackImmediate();
-				mMain.removeAllViews();	
-			}	
+				String answer = genQuestion.getAnswer();
+				TextViewPlus[] options = {mOption1, mOption2, mOption3, mOption4};
+				if(!mIsAnswered)
+				{
+					mTimer.setText("Correct answer is " + answer);
+					isCorrect = null;
+				}
+				for(int i=0; i<4; i++)
+				{
+					
+					options[i].setClickable(false);
+					if(mIsAnswered && mSelectedOption == i)
+					{
+						if(options[i].getText().toString().equals(answer))
+						{
+							mTimer.setText("That's the correct answer!");
+							isCorrect = true;
+						}
+						else
+						{
+							mTimer.setText("Sorry, wrong answer!");
+							if(mSdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+								options[i].setBackgroundDrawable(getResources().getDrawable(R.drawable.wrong_answer));
+
+							} else {
+								options[i].setBackground(getResources().getDrawable(R.drawable.wrong_answer));
+							}
+						}
+					}
+					
+					if(options[i].getText().toString().equals(answer))
+					{
+						if(mSdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+							options[i].setBackgroundDrawable(getResources().getDrawable(R.drawable.right_answer));
+
+						} else {
+							options[i].setBackground(getResources().getDrawable(R.drawable.right_answer));
+						}
+					}
+				}
+				
+			}
+			else if(genQuestion.getType() ==  Type.Fill)
+			{
+				EditText fillAnswer = (EditText)findViewById(R.id.fill_answer);
+				String userAnswer  = fillAnswer.getText().toString();
+				if(UserAnsweredData.CompareStrings(userAnswer, genQuestion.getAnswer()) > 0.95)
+				{
+					mTimer.setText("That's the correct answer!");
+					isCorrect = true;
+				}
+				else
+				{
+					mTimer.setText("Sorry, wrong answer!");
+				}
+				if(userAnswer.length() == 0)
+				{
+					isCorrect = null;
+				}
+				fillAnswer.setVisibility(View.GONE);
+				TextViewPlus correctAnswer = (TextViewPlus)findViewById(R.id.fill_correct_answer);
+				correctAnswer.setText("Answer: " + genQuestion.getAnswer());
+				LinearLayout layout = (LinearLayout) findViewById(R.id.layout);
+				if(isCorrect != null && isCorrect)
+				{
+					layout.setBackgroundResource(R.drawable.layout_right_answer);
+				}
+				else if(isCorrect != null && !isCorrect)
+				{
+					layout.setBackgroundResource(R.drawable.layout_right_wrong);
+				}
+					
+					
+			}
+			button.setText("Next");
 		}
-		loadQuestion();
+		else
+		{
+			if(mQuestion.get(mQuestionCounter-1).getType() == Type.Pin)
+			{
+				android.support.v4.app.Fragment fragment = (getSupportFragmentManager().findFragmentById(R.id.mapFragment));  
+				if(fragment != null)
+				{
+					FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+					ft.remove(getSupportFragmentManager().findFragmentById(R.id.mapFragment)).commit();
+					getSupportFragmentManager().popBackStackImmediate();
+					mMain.removeAllViews();	
+				}	
+			}
+			loadQuestion();
+		}
+				
+		
+
 	}
 
 	@SuppressLint("NewApi") 
@@ -309,6 +407,59 @@ public class GameActivity extends Helper {
 
 	}
 
+	@Override
+	protected void onPause() {
+		if(mCountTimer != null)
+		{
+			mCountTimer.cancel();
+		}
+		super.onPause();
+		
+	}
+
+
+
+
+
+	@Override
+	protected void onResume() {
+		if(mCountTimer != null)
+		{
+			startTimer((int)timeLeft);
+		}
+		super.onResume();
+	}
+
+
+
+
+
+	@Override
+	protected void onSaveInstanceState(Bundle savedInstanceState) {
+	  super.onSaveInstanceState(savedInstanceState);
+	  // Save UI state changes to the savedInstanceState.
+	  // This bundle will be passed to onCreate if the process is
+	  // killed and restarted.
+	  savedInstanceState.putLong("TIME", timeLeft);
+	  if(mCountTimer != null)
+	  {
+		  mCountTimer.cancel();
+	  }
+	 
+	  // etc.
+	}
+
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onRestoreInstanceState(savedInstanceState);
+		timeLeft = savedInstanceState.getLong("TIME");
+		//startTimer((int)timeLeft);
+	}
+
+
+
+
 
 	private void startTimer(int timer)
 	{
@@ -317,6 +468,7 @@ public class GameActivity extends Helper {
 			@Override
 			public void onTick(long millisUntilFinished) {
 				mTimer.setText("Time remaining: " + millisUntilFinished / 1000);
+				timeLeft = millisUntilFinished;
 			}
 			@Override
 			public void onFinish() {
@@ -348,10 +500,20 @@ public class GameActivity extends Helper {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
+			showCustomDialog();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+    protected void showCustomDialog() {
+        // TODO Auto-generated method stub
+        final Dialog dialog = new Dialog(GameActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.setContentView(R.layout.about_dialog);   
+        dialog.show();
+    }
 
 
 	public class GenerateQuestions extends AsyncTask<Void, Integer, String>

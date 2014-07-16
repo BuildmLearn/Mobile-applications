@@ -19,9 +19,11 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/classic_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize" >
+        android:layout_marginTop="?attr/actionBarSize"
+        android:visibility="invisible" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,8 +62,8 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_tile_color"
                     android:clickable="true"
-                    android:onClick="loadLocation"
-                    android:gravity="center" >
+                    android:gravity="center"
+                    android:onClick="loadLocation" >
 
                     <ImageView
                         android:id="@+id/imageView2"
@@ -118,18 +120,47 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="10dp"
+                        android:background="@drawable/custom_tile_color"
                         android:clickable="true"
                         android:gravity="center"
-                        android:padding="15dp"
                         android:onClick="customCountry"
+                        android:padding="15dp"
                         android:text="@string/play"
-                        android:background="@drawable/custom_tile_color"
                         android:textColor="@android:color/white"
                         android:textSize="20sp"
                         foo:customFont="Roboto_Light.ttf" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/classic_load"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:background="#60000000" >
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+
+        <org.buildmlearn.learnfrommap.TextViewPlus
+            android:id="@+id/question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/progressBar1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/fetching_location"
+            android:textColor="@android:color/white"
+            foo:customFont="Roboto_Regular.ttf" />
+
     </RelativeLayout>
 
 </RelativeLayout>

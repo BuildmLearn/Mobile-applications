@@ -124,7 +124,7 @@
                         android:clickable="true"
                         android:gravity="center"
                         android:onClick="customCountry"
-                        android:padding="15dp"
+                        android:padding="10dp"
                         android:text="@string/play"
                         android:textColor="@android:color/white"
                         android:textSize="20sp"

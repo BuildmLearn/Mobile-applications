@@ -64,6 +64,7 @@ public class GameActivity extends Helper {
 	private boolean mIsAnswered;
 	private String mDisplatMsg;
 	protected long timeLeft;
+	private Dialog dialog;
 
 	@Override	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -502,7 +503,18 @@ public class GameActivity extends Helper {
 			showCustomDialog();
 			return true;
 		}
+		else if(id == android.R.id.home)
+		{
+			showConfirmDialog();
+			return true;
+		
+		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void customBackPressed()
+	{
+		super.onBackPressed();
 	}
 	
     protected void showCustomDialog() {
@@ -512,6 +524,48 @@ public class GameActivity extends Helper {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog.setContentView(R.layout.about_dialog);   
         dialog.show();
+    }
+    
+    protected void showConfirmDialog() {
+        dialog = new Dialog(GameActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.setContentView(R.layout.dialog_confirm);   
+        dialog.show();
+        TextViewPlus yes = (TextViewPlus)dialog.findViewById(R.id.confirm_yes);
+        yes.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+				customBackPressed();
+			}
+		});
+        TextViewPlus no = (TextViewPlus)dialog.findViewById(R.id.confirm_no);
+        no.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+    }
+    
+    public void Confirm(View v)
+    {
+    	if(v.getId() == R.id.confirm_yes)
+    	{
+    		super.onBackPressed();
+    	}   
+    	else
+    	{
+    		dialog.dismiss();
+    	}
+    }
+    
+    @Override
+    public void onBackPressed() {
+    	showConfirmDialog();
     }
 
 

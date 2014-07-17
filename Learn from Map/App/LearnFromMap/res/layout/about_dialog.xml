@@ -2,14 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:foo="http://schemas.android.com/apk/res/org.buildmlearn.learnfrommap"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="#c0000000"
+    android:padding="10dp" >
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:adjustViewBounds="true"
         android:padding="20dp"
         android:src="@drawable/logo_white" />
@@ -18,9 +20,9 @@
         android:id="@+id/buildmlearn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:layout_below="@+id/version"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
         android:text="@string/buildmlearn"
         android:textColor="@android:color/white"
         foo:customFont="Roboto_Light.ttf" />

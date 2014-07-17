@@ -27,7 +27,7 @@ public class ScoreActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_score);
-
+		getSupportActionBar().setHomeButtonEnabled(true);
 		mQuestionList  = (ListView)findViewById(R.id.score_question_list);
 		mAnsweredList = (ArrayList<UserAnsweredData>) getIntent().getSerializableExtra("SCORE_DATA");
 		mPoints = (TextViewPlus)findViewById(R.id.score_points);

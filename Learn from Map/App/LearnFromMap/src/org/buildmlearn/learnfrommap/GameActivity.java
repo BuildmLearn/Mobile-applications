@@ -69,6 +69,7 @@ public class GameActivity extends Helper {
 	@Override	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getSupportActionBar().setHomeButtonEnabled(true);
 		mSdk = android.os.Build.VERSION.SDK_INT;
 		mAnsweredList = new ArrayList<UserAnsweredData>();
 		setContentView(R.layout.activity_game);
@@ -78,6 +79,7 @@ public class GameActivity extends Helper {
 		mode = intent.getStringExtra("MODE");
 		mDisplatMsg = intent.getStringExtra("DISPLAY");
 		mSelection = intent.getStringExtra("SELECTION");
+
 		mValue = intent.getStringExtra("VALUE");
 		mLoadingText = (TextViewPlus)findViewById(R.id.question);
 		mProgressBar = (ProgressBar)findViewById(R.id.game_progressbar);
@@ -142,7 +144,7 @@ public class GameActivity extends Helper {
 				}
 				for(int i=0; i<4; i++)
 				{
-					
+
 					options[i].setClickable(false);
 					if(mIsAnswered && mSelectedOption == i)
 					{
@@ -162,7 +164,7 @@ public class GameActivity extends Helper {
 							}
 						}
 					}
-					
+
 					if(options[i].getText().toString().equals(answer))
 					{
 						if(mSdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
@@ -173,7 +175,7 @@ public class GameActivity extends Helper {
 						}
 					}
 				}
-				
+
 			}
 			else if(genQuestion.getType() ==  Type.Fill)
 			{
@@ -204,8 +206,8 @@ public class GameActivity extends Helper {
 				{
 					layout.setBackgroundResource(R.drawable.layout_right_wrong);
 				}
-					
-					
+
+
 			}
 			button.setText("Next");
 		}
@@ -224,8 +226,8 @@ public class GameActivity extends Helper {
 			}
 			loadQuestion();
 		}
-				
-		
+
+
 
 	}
 
@@ -414,7 +416,7 @@ public class GameActivity extends Helper {
 			mCountTimer.cancel();
 		}
 		super.onPause();
-		
+
 	}
 
 
@@ -436,17 +438,17 @@ public class GameActivity extends Helper {
 
 	@Override
 	protected void onSaveInstanceState(Bundle savedInstanceState) {
-	  super.onSaveInstanceState(savedInstanceState);
-	  // Save UI state changes to the savedInstanceState.
-	  // This bundle will be passed to onCreate if the process is
-	  // killed and restarted.
-	  savedInstanceState.putLong("TIME", timeLeft);
-	  if(mCountTimer != null)
-	  {
-		  mCountTimer.cancel();
-	  }
-	 
-	  // etc.
+		super.onSaveInstanceState(savedInstanceState);
+		// Save UI state changes to the savedInstanceState.
+		// This bundle will be passed to onCreate if the process is
+		// killed and restarted.
+		savedInstanceState.putLong("TIME", timeLeft);
+		if(mCountTimer != null)
+		{
+			mCountTimer.cancel();
+		}
+
+		// etc.
 	}
 
 	@Override
@@ -507,66 +509,66 @@ public class GameActivity extends Helper {
 		{
 			showConfirmDialog();
 			return true;
-		
+
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	public void customBackPressed()
 	{
 		super.onBackPressed();
 	}
-	
-    protected void showCustomDialog() {
-        // TODO Auto-generated method stub
-        final Dialog dialog = new Dialog(GameActivity.this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        dialog.setContentView(R.layout.about_dialog);   
-        dialog.show();
-    }
-    
-    protected void showConfirmDialog() {
-        dialog = new Dialog(GameActivity.this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        dialog.setContentView(R.layout.dialog_confirm);   
-        dialog.show();
-        TextViewPlus yes = (TextViewPlus)dialog.findViewById(R.id.confirm_yes);
-        yes.setOnClickListener(new View.OnClickListener() {
-			
+
+	protected void showCustomDialog() {
+		// TODO Auto-generated method stub
+		final Dialog dialog = new Dialog(GameActivity.this);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+		dialog.setContentView(R.layout.about_dialog);   
+		dialog.show();
+	}
+
+	protected void showConfirmDialog() {
+		dialog = new Dialog(GameActivity.this);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+		dialog.setContentView(R.layout.dialog_confirm);   
+		dialog.show();
+		TextViewPlus yes = (TextViewPlus)dialog.findViewById(R.id.confirm_yes);
+		yes.setOnClickListener(new View.OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
 				dialog.dismiss();
 				customBackPressed();
 			}
 		});
-        TextViewPlus no = (TextViewPlus)dialog.findViewById(R.id.confirm_no);
-        no.setOnClickListener(new View.OnClickListener() {
-			
+		TextViewPlus no = (TextViewPlus)dialog.findViewById(R.id.confirm_no);
+		no.setOnClickListener(new View.OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
 				dialog.dismiss();
 			}
 		});
-    }
-    
-    public void Confirm(View v)
-    {
-    	if(v.getId() == R.id.confirm_yes)
-    	{
-    		super.onBackPressed();
-    	}   
-    	else
-    	{
-    		dialog.dismiss();
-    	}
-    }
-    
-    @Override
-    public void onBackPressed() {
-    	showConfirmDialog();
-    }
+	}
+
+	public void Confirm(View v)
+	{
+		if(v.getId() == R.id.confirm_yes)
+		{
+			super.onBackPressed();
+		}   
+		else
+		{
+			dialog.dismiss();
+		}
+	}
+
+	@Override
+	public void onBackPressed() {
+		showConfirmDialog();
+	}
 
 
 	public class GenerateQuestions extends AsyncTask<Void, Integer, String>

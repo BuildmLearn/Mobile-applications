@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:background="#c0000000"
+    android:background="#A0000000"
     android:padding="10dp" >
 
     <ImageView

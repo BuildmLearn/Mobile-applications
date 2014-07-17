@@ -96,7 +96,6 @@ public class GameActivity extends Helper {
 		mView = getLayoutInflater().inflate(R.layout.layout_play_game, mMain,false);
 
 
-
 	}
 
 

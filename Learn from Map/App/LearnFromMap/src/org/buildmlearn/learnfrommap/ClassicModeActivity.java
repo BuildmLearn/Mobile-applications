@@ -39,6 +39,7 @@ public class ClassicModeActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getSupportActionBar().setHomeButtonEnabled(true);
 		setContentView(R.layout.activity_classic_mode);
 		spinner = (Spinner) findViewById(R.id.classic_spinner1);
 		mMain = (RelativeLayout)findViewById(R.id.classic_main);

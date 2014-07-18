@@ -78,19 +78,19 @@ public class ScoreAdapter extends ArrayAdapter<UserAnsweredData> {
 				{
 					if(holder.data.getmUserAnswer().equals(holder.data.getmOptions()[0]))
 					{
-						holder.option1.setBackgroundColor(Color.argb(128, 0, 255, 0));
+						holder.option1.setBackgroundResource(R.drawable.right_answer);
 					}
 					else if(holder.data.getmUserAnswer().equals(holder.data.getmOptions()[1]))
 					{
-						holder.option2.setBackgroundColor(Color.argb(128, 0, 255, 0));
+						holder.option2.setBackgroundResource(R.drawable.right_answer);
 					}
 					else if(holder.data.getmUserAnswer().equals(holder.data.getmOptions()[2]))
 					{
-						holder.option3.setBackgroundColor(Color.argb(128, 0, 255, 0));
+						holder.option3.setBackgroundResource(R.drawable.right_answer);
 					}
 					else
 					{
-						holder.option4.setBackgroundColor(Color.argb(128, 0, 255, 0));
+						holder.option4.setBackgroundResource(R.drawable.right_answer);
 					}
 				}
 				else
@@ -99,38 +99,38 @@ public class ScoreAdapter extends ArrayAdapter<UserAnsweredData> {
 					{
 						if(holder.data.getmUserAnswer().equals(holder.data.getmOptions()[0]))
 						{
-							holder.option1.setBackgroundColor(Color.argb(128, 255, 0, 0));
+							holder.option1.setBackgroundResource(R.drawable.wrong_answer);
 						}
 						else if(holder.data.getmUserAnswer().equals(holder.data.getmOptions()[1]))
 						{
-							holder.option2.setBackgroundColor(Color.argb(128, 255, 0, 0));
+							holder.option2.setBackgroundResource(R.drawable.wrong_answer);
 						}
 						else if(holder.data.getmUserAnswer().equals(holder.data.getmOptions()[2]))
 						{
-							holder.option3.setBackgroundColor(Color.argb(128, 255, 0, 0));
+							holder.option3.setBackgroundResource(R.drawable.wrong_answer);
 						}
 						else
 						{
-							holder.option4.setBackgroundColor(Color.argb(128, 255, 0, 0));
+							holder.option4.setBackgroundResource(R.drawable.wrong_answer);
 						}
 					}
 				}
 			}
 			if(holder.data.getmAnswer().equals(holder.data.getmOptions()[0]))
 			{
-				holder.option1.setBackgroundColor(Color.argb(128, 0, 255, 0));
+				holder.option1.setBackgroundResource(R.drawable.right_answer);
 			}
 			else if(holder.data.getmAnswer().equals(holder.data.getmOptions()[1]))
 			{
-				holder.option2.setBackgroundColor(Color.argb(128, 0, 255, 0));
+				holder.option2.setBackgroundResource(R.drawable.right_answer);
 			}
 			else if(holder.data.getmAnswer().equals(holder.data.getmOptions()[2]))
 			{
-				holder.option3.setBackgroundColor(Color.argb(128, 0, 255, 0));
+				holder.option3.setBackgroundResource(R.drawable.right_answer);
 			}
 			else
 			{
-				holder.option4.setBackgroundColor(Color.argb(128, 0, 255, 0));
+				holder.option4.setBackgroundResource(R.drawable.right_answer);
 			}
 
 			return row;

@@ -22,8 +22,8 @@
         android:id="@+id/classic_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:visibility="invisible" >
+        android:layout_marginTop="?attr/actionBarSize" >
+<!--         android:visibility="invisible" --> 
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -120,11 +120,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="10dp"
-                        android:background="@drawable/custom_tile_color"
+                        android:background="@drawable/border_button"
                         android:clickable="true"
                         android:gravity="center"
                         android:onClick="customCountry"
-                        android:padding="15dp"
+                        android:padding="10dp"
                         android:text="@string/play"
                         android:textColor="@android:color/white"
                         android:textSize="20sp"

@@ -29,6 +29,7 @@ public class ExploreMode extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getSupportActionBar().setHomeButtonEnabled(true);
 		setContentView(R.layout.activity_explore_mode);
 		worldMap = (ImageView)findViewById(R.id.explore_world_map);
 		gestureDetector = new GestureDetector(this, new GestureListener(worldMap));

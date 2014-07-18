@@ -306,4 +306,10 @@
 
     <string name="version">Version: 1 Alpha</string>
 
+    <string name="confirm_exit">Are you sure you want to exit?</string>
+
+    <string name="yes">Yes</string>
+
+    <string name="no">No</string>
+
 </resources>

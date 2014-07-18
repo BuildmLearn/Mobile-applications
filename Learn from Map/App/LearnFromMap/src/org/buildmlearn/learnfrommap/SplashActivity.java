@@ -54,7 +54,7 @@ public class SplashActivity extends DatabaseHelper {
 			}
 		}
 
-		if (country != null && country.equals("India")) // i.e., Geocoder succeed
+		if (country != null && country.length() > 0) // i.e., Geocoder succeed
 		{
 			Toast.makeText(getApplicationContext(), "Geocoder verified", Toast.LENGTH_SHORT).show();
 			Intent intent= new Intent(getApplicationContext(), MainActivity.class);

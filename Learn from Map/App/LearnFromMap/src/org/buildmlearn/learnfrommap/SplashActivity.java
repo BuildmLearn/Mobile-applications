@@ -1,23 +1,17 @@
 package org.buildmlearn.learnfrommap;
 
-import java.util.List;
-import java.util.Locale;
-
 import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
+import org.buildmlearn.learnfrommap.helper.InternetConnection;
 
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class SplashActivity extends DatabaseHelper {
 
@@ -36,36 +30,17 @@ public class SplashActivity extends DatabaseHelper {
 		super.onDatabaseLoad(msg);
 		ProgressBar pb = (ProgressBar)findViewById(R.id.splash_loading);
 		pb.setVisibility(View.GONE);
-		String country = null;
-		if (Geocoder.isPresent())
+		InternetConnection netConnection = new InternetConnection(getApplicationContext());
+		if (netConnection.isConnectingToInternet())
 		{
-			try
-			{
-				Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
-				List<Address> addresses = geocoder.getFromLocation(21.00, 78.00, 1);
-				if (addresses.size() > 0)
-				{
-					country = addresses.get(0).getCountryName();
-				}
-			}
-			catch (Exception e)
-			{
-				Log.e("GeoCoder", e.getMessage());
-			}
-		}
-
-		if (country != null && country.length() > 0) // i.e., Geocoder succeed
-		{
-			Toast.makeText(getApplicationContext(), "Geocoder verified", Toast.LENGTH_SHORT).show();
 			Intent intent= new Intent(getApplicationContext(), MainActivity.class);
 			startActivity(intent);
 			finish();
-
 		}
 		else 
 		{
 			TextView tvMsg = (TextView)findViewById(R.id.splash_msg);
-			tvMsg.setText("GeoCoder service is currently unavailable. Please restart your device");
+			tvMsg.setText("Error: Your device is not connected to internet");
 			tvMsg.setVisibility(View.VISIBLE);
 			pb.setVisibility(View.GONE);
 		}

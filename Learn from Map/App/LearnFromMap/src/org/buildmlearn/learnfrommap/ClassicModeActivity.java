@@ -1,22 +1,25 @@
 package org.buildmlearn.learnfrommap;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import com.google.android.gms.common.api.Releasable;
-
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.Request.Method;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -64,33 +67,8 @@ public class ClassicModeActivity extends ActionBarActivity {
 		locationListener = new LocationListener() {
 			@Override
 			public void onLocationChanged(Location location) {
-				// Called when a new location is found by the network location provider.
-				//Toast.makeText(getApplicationContext(), "Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude(), Toast.LENGTH_LONG).show();
-				String country;
-				try {
-					country = getCountry(location.getLatitude(), location.getLongitude());
-					if(country == null)
-					{
-						Toast.makeText(getApplicationContext(), "Unable to fetch your location. Please select a country from the list", Toast.LENGTH_LONG).show();
-						mLoading.setVisibility(View.GONE);
-						mMain.setVisibility(View.VISIBLE);
-					}
-					else
-					{
-						intent.putExtra("VALUE", country);
-						intent.putExtra("DISPLAY", "Country: " + country);
-						startActivity(intent);
-						locationManager.removeUpdates(locationListener);
-					}
-				}
-				catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					Toast.makeText(getApplicationContext(), "Unable to fetch your location. Please select a country from the list", Toast.LENGTH_LONG).show();
-					mLoading.setVisibility(View.GONE);
-					mMain.setVisibility(View.VISIBLE);
-				}
-
+				
+				getCountry(location.getLatitude(), location.getLongitude());
 			}
 
 			public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -139,46 +117,7 @@ public class ClassicModeActivity extends ActionBarActivity {
 
 		if(location != null)
 		{
-
-			new Thread(new Runnable() {
-				public void run() {
-
-					try {
-						final String country;
-						country = getCountry(location.getLatitude(), location.getLongitude());
-						if(country != null)
-						{
-							runOnUiThread(new Runnable() {
-
-								@Override
-								public void run() {
-									// TODO Auto-generated method stubstartActivity(intent);
-									intent.putExtra("VALUE", country);	
-									intent.putExtra("DISPLAY", "Country: " + country);
-									startActivity(intent);
-
-								}
-							});
-						}
-
-					} catch (IOException e) {
-						e.printStackTrace();
-						runOnUiThread(new Runnable() {
-
-							@Override
-							public void run() {
-								Toast.makeText(getApplicationContext(), "Unable to fetch your location. Please select a country from the list", Toast.LENGTH_LONG).show();
-								mLoading.setVisibility(View.GONE);
-								mMain.setVisibility(View.VISIBLE);
-
-							}
-						});
-
-					}
-
-				}
-			}).start();
-
+			getCountry(location.getLatitude(), location.getLongitude());
 		}
 		else
 		{
@@ -189,11 +128,64 @@ public class ClassicModeActivity extends ActionBarActivity {
 
 	}
 
-	private String getCountry(double lat, double lng) throws IOException {
-		Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
-		List<Address> addresses = geocoder.getFromLocation(lat, lng, 1);
-		Address obj = addresses.get(0);
-		return obj.getCountryName();
+	private void getCountry(double lat, double lng) {
+		String googleurl = "https://maps.google.com/maps/api/geocode/json?key=AIzaSyACYVxd_d-49UnhqibCI6F9f7b5Gw1qTSc&";
+		Log.v("HTTP" , "Latitude is: " + lat + "Longitude is:" + lng);
+		StringBuilder sbuilder = new StringBuilder();
+		sbuilder.append(googleurl);
+
+		sbuilder.append("latlng=" + lat + "," + lng);
+		sbuilder.append("&sensor=true");
+		String url = sbuilder.toString();
+		Log.v("URL", url);
+		StringRequest myReq = new StringRequest(Method.GET, 
+				url,
+				new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Log.d("VOLLEY", response);
+				try {
+					JSONObject main = new JSONObject(response);
+					JSONArray array = main.getJSONArray("results");
+					JSONObject obj = array.getJSONObject(0);
+					array = obj.getJSONArray("address_components");
+					for(int i=0; i<array.length(); i++)
+					{
+						obj = array.getJSONObject(i);
+						Log.d("JSON" + i, obj.toString());	
+						JSONArray tempArray = obj.getJSONArray("types");
+						if(tempArray.getString(0).equals("country"))
+						{
+							String country = obj.getString("long_name");
+							Log.e("Country", country);
+							intent.putExtra("VALUE", country);
+							intent.putExtra("DISPLAY", "Country: " + country);
+							startActivity(intent);
+							locationManager.removeUpdates(locationListener);
+						}
+					}
+
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					Toast.makeText(getApplicationContext(), "There was some error fetching your location\nError: " + e.getMessage(), Toast.LENGTH_LONG).show();
+					mLoading.setVisibility(View.GONE);
+					mMain.setVisibility(View.VISIBLE);
+					e.printStackTrace();
+				}
+
+			}
+		},
+		new Response.ErrorListener() {
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				Log.d("VOLLEY ERROR", error.getMessage());
+				Toast.makeText(getApplicationContext(), "There was some error fetching your location\nError: " + error.getMessage(), Toast.LENGTH_LONG).show();
+				mLoading.setVisibility(View.GONE);
+				mMain.setVisibility(View.VISIBLE);
+			}
+		});
+		RequestQueue mQueue = Volley.newRequestQueue(this);
+		mQueue.add(myReq);
 	}
 
 
@@ -217,15 +209,15 @@ public class ClassicModeActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-    protected void showCustomDialog() {
-        // TODO Auto-generated method stub
-        final Dialog dialog = new Dialog(ClassicModeActivity.this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        dialog.setContentView(R.layout.about_dialog);   
-        dialog.show();
-    }
+
+	protected void showCustomDialog() {
+		// TODO Auto-generated method stub
+		final Dialog dialog = new Dialog(ClassicModeActivity.this);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+		dialog.setContentView(R.layout.about_dialog);   
+		dialog.show();
+	}
 
 
 

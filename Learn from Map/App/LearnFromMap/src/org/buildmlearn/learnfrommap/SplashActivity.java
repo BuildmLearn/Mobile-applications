@@ -3,10 +3,12 @@ package org.buildmlearn.learnfrommap;
 import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
 import org.buildmlearn.learnfrommap.helper.InternetConnection;
+import org.buildmlearn.learnfrommap.maphelper.CustomReverseGeocoder;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +35,8 @@ public class SplashActivity extends DatabaseHelper {
 		InternetConnection netConnection = new InternetConnection(getApplicationContext());
 		if (netConnection.isConnectingToInternet())
 		{
+			CustomReverseGeocoder geocoder = new CustomReverseGeocoder(this);
+			geocoder.getState();
 			Intent intent= new Intent(getApplicationContext(), MainActivity.class);
 			startActivity(intent);
 			finish();

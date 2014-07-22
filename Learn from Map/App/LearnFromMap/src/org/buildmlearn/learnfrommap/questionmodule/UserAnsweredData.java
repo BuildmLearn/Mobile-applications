@@ -21,8 +21,6 @@ public class UserAnsweredData  implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String mQuestion;
 	private String mAnswer;
-
-
 	private String mUserAnswer;
 	private GeneratedQuestion.Type mQuestionType;
 	private String mAnswerType;
@@ -86,6 +84,8 @@ public class UserAnsweredData  implements Serializable{
 		}
 		else if(mAnswerType.equals("country"))
 		{
+			
+			//Country()
 			String country = address.getCountryName();
 			Log.e("Country", country);
 			if(country.equals(mAnswer))
@@ -101,6 +101,7 @@ public class UserAnsweredData  implements Serializable{
 		}
 		else if(mAnswerType.equals("state"))
 		{
+			//getState()
 			String state = address.getAdminArea();
 
 			if(state != null && state.equals(mAnswer))

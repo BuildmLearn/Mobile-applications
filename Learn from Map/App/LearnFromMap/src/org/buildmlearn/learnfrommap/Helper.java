@@ -32,7 +32,7 @@ public class Helper extends ActionBarActivity {
 	private SupportMapFragment mapFragment;
 	private Handler handler;
 	private MarkerOptions markerOptions;
-	private Marker marker;
+	public Marker marker;
 
 	// ////////////////
 	// Override these function
@@ -63,6 +63,12 @@ public class Helper extends ActionBarActivity {
 			}
 		});
 
+	}
+	
+	public GoogleMap getMaps()
+	{
+		return mapView;
+		
 	}
 	
 	public LatLng getPosition()

@@ -31,6 +31,8 @@ public class UserAnsweredData  implements Serializable{
 	private int mPoints;
 	private double mLat;
 	private double mLog;
+	private String mState;
+	private String mCountry;
 
 
 	public UserAnsweredData(Context mContext, String mQuestion, String mAnswer,
@@ -50,7 +52,6 @@ public class UserAnsweredData  implements Serializable{
 				this.mLat = Double.parseDouble(coords[0]);
 				this.mLog = Double.parseDouble(coords[1]);
 				this.mContext = mContext;
-				evaluatePin();
 			}
 			else
 			{
@@ -72,21 +73,14 @@ public class UserAnsweredData  implements Serializable{
 		}
 	}
 
-	private void evaluatePin()
+	public void evaluatePin()
 	{
 
-		Address address = getAddress(mLat, mLog);
-		if(address == null)
+		if(mAnswerType.equals("country"))
 		{
-			this.mPoints = 0;
-			mIsCorrect = false;
-			Log.e("GeoCoder", "Address Null");
-		}
-		else if(mAnswerType.equals("country"))
-		{
-			
+
 			//Country()
-			String country = address.getCountryName();
+			String country = getCountry();
 			Log.e("Country", country);
 			if(country.equals(mAnswer))
 			{
@@ -102,7 +96,7 @@ public class UserAnsweredData  implements Serializable{
 		else if(mAnswerType.equals("state"))
 		{
 			//getState()
-			String state = address.getAdminArea();
+			String state = getState();
 
 			if(state != null && state.equals(mAnswer))
 			{
@@ -274,6 +268,24 @@ public class UserAnsweredData  implements Serializable{
 		return mIsAnswered;
 	}
 
+
+
+	public String getState() {
+		return mState;
+	}
+
+	public void setState(String mState) {
+		this.mState = mState;
+	}
+
+	public String getCountry() {
+		return mCountry;
+	}
+
+	public void setCountry(String mCountry) {
+		this.mCountry = mCountry;
+	}
+
 	private void evaluateFill()
 	{
 		if(this.mQuestionType == Type.Fill)
@@ -292,10 +304,10 @@ public class UserAnsweredData  implements Serializable{
 		}
 
 	}
-	
+
 	public static double CompareStrings(String stringA, String stringB) {
-	    JaroWinkler algorithm = new JaroWinkler();
-	    return algorithm.getSimilarity(stringA, stringB);
+		JaroWinkler algorithm = new JaroWinkler();
+		return algorithm.getSimilarity(stringA, stringB);
 	}
 
 	public boolean isAnswerCorrect()

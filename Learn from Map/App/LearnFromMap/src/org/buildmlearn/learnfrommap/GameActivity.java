@@ -5,6 +5,14 @@ import java.util.List;
 import java.util.Random;
 
 
+
+
+
+
+
+
+
+
 import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.parser.XmlParser;
 import org.buildmlearn.learnfrommap.questionmodule.DbRow;
@@ -13,6 +21,9 @@ import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion.Type;
 import org.buildmlearn.learnfrommap.questionmodule.QuestionModuleException;
 import org.buildmlearn.learnfrommap.questionmodule.UserAnsweredData;
 import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -24,6 +35,7 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Parcelable;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,9 +44,20 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.Request.Method;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class GameActivity extends Helper {
 
@@ -64,6 +87,10 @@ public class GameActivity extends Helper {
 	private String mDisplatMsg;
 	protected long timeLeft;
 	private Dialog dialog;
+	private GoogleMap gmaps;
+	private Marker userMarker;
+	private String country;
+	private String state;
 
 	@Override	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -208,26 +235,107 @@ public class GameActivity extends Helper {
 
 
 			}
+			else if(genQuestion.getType() ==  Type.Pin)
+			{
+				if(getPosition() != null)
+				{
+					double lat  = getPosition().latitude;
+					double lng = getPosition().longitude;
+					String googleurl = "https://maps.google.com/maps/api/geocode/json?key=AIzaSyACYVxd_d-49UnhqibCI6F9f7b5Gw1qTSc&";
+					Log.v("HTTP" , "Latitude is: " + lat + "Longitude is:" + lng);
+					StringBuilder sbuilder = new StringBuilder();
+					sbuilder.append(googleurl);
+					sbuilder.append("latlng=" + lat + "," + lng);
+					sbuilder.append("&sensor=true");
+					String url = sbuilder.toString();
+					Log.v("URL", url);
+					StringRequest myReq = new StringRequest(Method.GET, 
+							url,
+							new Response.Listener<String>() {
+
+
+						@Override
+						public void onResponse(String response) {
+							//Log.d("VOLLEY", response);
+							try {
+								JSONObject main = new JSONObject(response);
+								JSONArray array = main.getJSONArray("results");
+								JSONObject obj = array.getJSONObject(0);
+								array = obj.getJSONArray("address_components");
+								for(int i=0; i<array.length(); i++)
+								{
+									obj = array.getJSONObject(i);
+									JSONArray tempArray = obj.getJSONArray("types");
+									if(tempArray.getString(0).equals("country"))
+									{
+										country = obj.getString("long_name");
+										Log.e("Country", country);
+									}
+									if(tempArray.getString(0).equals("administrative_area_level_1"))
+									{
+										state = obj.getString("long_name");
+										Log.e("State", state);
+
+									}
+								}
+
+							} catch (JSONException e) {
+								// TODO Auto-generated catch block
+								Toast.makeText(getApplicationContext(), "There was some error fetching your location\nError: " + e.getMessage(), Toast.LENGTH_LONG).show();
+								country = "";
+								state = "";
+								e.printStackTrace();
+							}
+
+						}
+					},
+					new Response.ErrorListener() {
+						@Override
+						public void onErrorResponse(VolleyError error) {
+							Log.d("VOLLEY ERROR", error.getMessage());
+							Toast.makeText(getApplicationContext(), "There was some error fetching your location\nError: " + error.getMessage(), Toast.LENGTH_LONG).show();
+						}
+					});
+					RequestQueue mQueue = Volley.newRequestQueue(this);
+					mQueue.add(myReq);
+
+				}
+				else
+				{
+					country = "";
+					state = "";
+				}
+				LatLng newPostion = new LatLng(genQuestion.getDbRow().getLat(), genQuestion.getDbRow().getLng());
+				MarkerOptions markerOption = new MarkerOptions().draggable(false).position(newPostion).flat(true).title("Accurate Answer");
+				marker = mapView.addMarker(markerOption);
+				marker.showInfoWindow();
+				getMaps().addMarker(markerOption);
+				mTimer.setText("Correct answer is pinned on the map");
+				
+			}
 			button.setText("Next");
 		}
 		else
 		{
-			if(mQuestion.get(mQuestionCounter-1).getType() == Type.Pin)
-			{
-				android.support.v4.app.Fragment fragment = (getSupportFragmentManager().findFragmentById(R.id.mapFragment));  
-				if(fragment != null)
-				{
-					FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-					ft.remove(getSupportFragmentManager().findFragmentById(R.id.mapFragment)).commit();
-					getSupportFragmentManager().popBackStackImmediate();
-					mMain.removeAllViews();	
-				}	
-			}
-			loadQuestion();
+			loadNextQuestion();
 		}
+	}
 
+	public void loadNextQuestion()
+	{
 
-
+		if(mQuestion.get(mQuestionCounter-1).getType() == Type.Pin)
+		{
+			android.support.v4.app.Fragment fragment = (getSupportFragmentManager().findFragmentById(R.id.mapFragment));  
+			if(fragment != null)
+			{
+				FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+				ft.remove(getSupportFragmentManager().findFragmentById(R.id.mapFragment)).commit();
+				getSupportFragmentManager().popBackStackImmediate();
+				mMain.removeAllViews();	
+			}	
+		}
+		loadQuestion();
 	}
 
 	@SuppressLint("NewApi") 
@@ -340,6 +448,9 @@ public class GameActivity extends Helper {
 					userAnswer = "";
 				}
 				userAnswerData = new UserAnsweredData(getApplicationContext(), question, answer, userAnswer, genQuestion.getType(), genQuestion.getXml().getAnswer());
+				userAnswerData.setCountry(country);
+				userAnswerData.setState(state);
+				userAnswerData.evaluatePin();
 			}
 			mAnsweredList.add(userAnswerData);
 
@@ -484,6 +595,8 @@ public class GameActivity extends Helper {
 		ProgressBar loading = (ProgressBar)findViewById(R.id.map_progress);
 		loading.setVisibility(View.GONE);
 		startTimer(90000);	
+		gmaps = mapView;
+		userMarker = marker;
 	}
 
 	@Override

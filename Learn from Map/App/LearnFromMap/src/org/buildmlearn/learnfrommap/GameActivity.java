@@ -13,6 +13,8 @@ import java.util.Random;
 
 
 
+
+
 import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.parser.XmlParser;
 import org.buildmlearn.learnfrommap.questionmodule.DbRow;
@@ -52,6 +54,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.Request.Method;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -306,12 +310,14 @@ public class GameActivity extends Helper {
 					state = "";
 				}
 				LatLng newPostion = new LatLng(genQuestion.getDbRow().getLat(), genQuestion.getDbRow().getLng());
-				MarkerOptions markerOption = new MarkerOptions().draggable(false).position(newPostion).flat(true).title("Accurate Answer");
+				MarkerOptions markerOption = new MarkerOptions().draggable(false).position(newPostion).flat(true).title("Correct Answer");
 				marker = mapView.addMarker(markerOption);
-				marker.showInfoWindow();
 				getMaps().addMarker(markerOption);
+				CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(newPostion, 4);
+				getMaps().animateCamera(cameraUpdate);
 				mTimer.setText("Correct answer is pinned on the map");
-				
+				marker.showInfoWindow();
+
 			}
 			button.setText("Next");
 		}
@@ -719,13 +725,27 @@ public class GameActivity extends Helper {
 				}
 
 			}
-
 			for(int i = 1; i<= QUESTION_COUNT; i++)
 			{
 				int randomNo = random.nextInt(questionRules.size());
+				XmlQuestion questionRule = questionRules.get(randomNo);
 				if(!blackListRules.contains(randomNo))
 				{
-					XmlQuestion questionRule = questionRules.get(randomNo);
+					if(mode.equals("CLASSIC_MODE"))
+					{
+						if(questionRule.getAnswer().equals("country"))
+						{
+							blackListRules.add(randomNo);
+							i--;
+							continue;
+						}
+						if(questionRule.getCount().equals("unique"))
+						{
+							blackListRules.add(randomNo);
+						}
+					}
+					
+					
 					String tableName = questionRule.getCode();
 					String query = "SELECT * FROM " + tableName + " WHERE "+ where +" LIMIT ";
 					String countQuery = "SELECT COUNT(*) FROM " + tableName + " WHERE " + where;

@@ -41,9 +41,9 @@ public class Helper extends ActionBarActivity {
 		mapView.setOnCameraChangeListener(new OnCameraChangeListener() {
 			@Override
 			public void onCameraChange(CameraPosition cameraPosition) {
-				if (cameraPosition.zoom > (float) 4.0) {
+				if (cameraPosition.zoom > (float) 5.0) {
 					mapView.animateCamera(CameraUpdateFactory
-							.zoomTo((float) 4.99));
+							.zoomTo((float) 5.99));
 				}
 
 			}
@@ -58,7 +58,7 @@ public class Helper extends ActionBarActivity {
 				{
 					marker.remove();
 				}
-				markerOptions = new MarkerOptions().draggable(true).position(arg0).flat(true).title("Your Answer").icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_100));
+				markerOptions = new MarkerOptions().draggable(true).position(arg0).flat(true).title("Your Answer").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 				marker = mapView.addMarker(markerOptions);
 			}
 		});

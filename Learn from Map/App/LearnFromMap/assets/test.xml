@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <questions>
-	<question>
+ 	<question>
 	    <code>PPLC</code>
 	    <type>FILL</type>
 	    <relationship>country</relationship>
 	    <location>true</location>
 	    <format>Capital of :X: is _________</format>
+	    <count>unique</count>
 	    <answer>name</answer>
 	</question>
 	<question>
-	    <code>PCLI</code>
+	    <code>PPLC</code>
 	    <type>PIN</type>
 	    <relationship>name</relationship>
 	    <location>true</location>
 	    <format>Pin the capital of :X:</format>
+	    <count>unique</count>
 	    <answer>location</answer>
 	</question>
-	<question>
+ 	<question>
 	    <code>PCLI</code>
 	    <type>MCQ</type>
 	    <relationship>name</relationship>
 	    <location>true</location>
 	    <format>What is the capital of :X:</format>
+	    <count>unique</count>
 	    <answer>capital</answer>
 	</question>
 	<question>
@@ -30,6 +33,7 @@
 	    <relationship>name</relationship>
 	    <location>true</location>
 	    <format>:X: is the capital of which country?</format>
+	    <count>normal</count>
 	    <answer>country</answer>
 	</question>
 	<question>
@@ -38,6 +42,7 @@
 	    <relationship>name</relationship>
 	    <location>true</location>
 	    <format>What is the population of :X:?</format>
+	    <count>unique</count>
 	    <answer>population</answer>
 	</question>
 		<question>
@@ -46,6 +51,7 @@
 	    <relationship>name</relationship>
 	    <location>true</location>
 	    <format>Mountain :X: is located in ______________ country.</format>
+	    <count>normal</count>
 	    <answer>country</answer>
 	</question>
 	<question>
@@ -54,6 +60,7 @@
 	    <relationship>name</relationship>
 	    <location>true</location>
 	    <format>Volcano :X: is located in ______________ country.</format>
+	    <count>normal</count>
 	    <answer>country</answer>
 	</question>
 		<question>
@@ -62,6 +69,7 @@
 	    <relationship>name</relationship>
 	    <location>true</location>
 	    <format>:X: (plains) is located in ______________ country.</format>
+	    <count>normal</count>
 	    <answer>country</answer>
 	</question>
 	<question>
@@ -70,6 +78,7 @@
 	    <relationship>name</relationship>
 	    <location>true</location>
 	    <format>:X: (peninsula) is located in ______________ country.</format>
+	    <count>normal</count>
 	    <answer>country</answer> 
 	</question>
 		<question>
@@ -78,9 +87,7 @@
 	    <relationship>name</relationship>
 	    <location>true</location>
 	    <format>Pin the :X: (state)</format>
+	    <count>normal</count>
 	    <answer>state</answer>
 	</question>
-	
-	
-	
 </questions>

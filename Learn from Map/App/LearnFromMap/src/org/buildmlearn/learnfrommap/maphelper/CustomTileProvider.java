@@ -27,7 +27,7 @@ public class CustomTileProvider implements TileProvider {
 
 	@Override
 	public Tile getTile(int x, int y, int zoom) {
-		if(zoom>4)
+		if(zoom>5)
 		{
 
 			map.animateCamera(CameraUpdateFactory.zoomTo(4.0f));
@@ -71,8 +71,8 @@ public class CustomTileProvider implements TileProvider {
 	}
 
 	private String getTileFilename(int x, int y, int zoom) {
-		if(zoom ==2)
-			return "map/" + zoom + '/' + x + '/' + y + ".jpg";
-		return "map/" + zoom + '/' + x + '/' + y + ".png";
+//		if(zoom ==2)
+//			return "map/" + zoom + '/' + x + '/' + y + ".jpg";
+		return "map/" + zoom + '/' + x + '/' + y + ".jpg";
 	}
 }

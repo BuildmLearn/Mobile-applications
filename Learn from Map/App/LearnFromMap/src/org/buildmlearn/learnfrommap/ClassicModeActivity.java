@@ -1,5 +1,9 @@
 package org.buildmlearn.learnfrommap;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
+import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,6 +22,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -38,6 +43,7 @@ public class ClassicModeActivity extends ActionBarActivity {
 	private Spinner spinner;
 	private RelativeLayout mLoading;
 	private RelativeLayout mMain;
+	private ArrayAdapter<String> adapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +60,7 @@ public class ClassicModeActivity extends ActionBarActivity {
 
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		//ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_text_view,  R.array.countries_array);
-		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-				R.array.countries_array, R.layout.spinner_text_view);
-		// Specify the layout to use when the list of choices appears
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		// Apply the adapter to the spinner
-		spinner.setAdapter(adapter);
+
 		locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 		location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
@@ -85,8 +86,10 @@ public class ClassicModeActivity extends ActionBarActivity {
 				mMain.setVisibility(View.VISIBLE);
 			}
 		};
+		new GetCountryList().execute(); 
 
 	}
+	
 
 
 	@Override
@@ -219,6 +222,32 @@ public class ClassicModeActivity extends ActionBarActivity {
 		dialog.show();
 	}
 
+	
+	public class GetCountryList extends AsyncTask<Void, Void, Void>
+	{
+		ArrayList<String> countryList;
+		@Override
+		protected Void doInBackground(Void... arg0) {
+			Database db =  new Database(getApplicationContext());
+			countryList = db.countryList();
+			Collections.sort(countryList);
+			db.close();
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			super.onPostExecute(result);
+			adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_text_view, countryList);
+			// Specify the layout to use when the list of choices appears
+			adapter.setDropDownViewResource(R.layout.spinner_text_view_dropdown);
+			// Apply the adapter to the spinner
+			spinner.setAdapter(adapter);
+		}
+		
+		
+		
+	}
 
 
 }

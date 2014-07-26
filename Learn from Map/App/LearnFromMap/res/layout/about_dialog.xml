@@ -57,6 +57,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         android:text="@string/website"
+        android:autoLink="web"
         android:textColor="@android:color/white"
         foo:customFont="Roboto_Light.ttf" />
 

@@ -1,40 +1,63 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:foo="http://schemas.android.com/apk/res/org.buildmlearn.learnfrommap"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:layout_margin="10dp"
     android:background="#A0000000"
+    android:gravity="center"
+    android:orientation="vertical"
     android:padding="10dp" >
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:adjustViewBounds="true"
-        android:padding="20dp"
+        android:layout_marginTop="2dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="8dp"
         android:src="@drawable/logo_white" />
 
-    <org.buildmlearn.learnfrommap.TextViewPlus
-        android:id="@+id/buildmlearn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/version"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:text="@string/buildmlearn"
-        android:textColor="@android:color/white"
-        foo:customFont="Roboto_Light.ttf" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="5dp"
+        android:background="#ffffff" />
 
     <org.buildmlearn.learnfrommap.TextViewPlus
-        android:id="@+id/version"
+        android:id="@+id/about"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView2"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:text="@string/version"
         android:textColor="@android:color/white"
         foo:customFont="Roboto_Light.ttf" />
 
-</RelativeLayout>
+    <org.buildmlearn.learnfrommap.TextViewPlus
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/about_build_m_learn"
+        android:textColor="@android:color/white"
+        foo:customFont="Roboto_Light.ttf" />
+
+    <org.buildmlearn.learnfrommap.TextViewPlus
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/developed_by_build_m_learn"
+        android:textColor="@android:color/white"
+        foo:customFont="Roboto_Light.ttf" />
+
+    <org.buildmlearn.learnfrommap.TextViewPlus
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/website"
+        android:textColor="@android:color/white"
+        foo:customFont="Roboto_Light.ttf" />
+
+</LinearLayout>

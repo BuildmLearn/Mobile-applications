@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import org.buildmlearn.learnfrommap.databasehelper.Database;
+import org.buildmlearn.learnfrommap.helper.CustomDialog;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,6 +15,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.Request.Method;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
 import android.support.v7.app.ActionBarActivity;
 import android.app.Dialog;
 import android.content.Context;
@@ -68,7 +70,7 @@ public class ClassicModeActivity extends ActionBarActivity {
 		locationListener = new LocationListener() {
 			@Override
 			public void onLocationChanged(Location location) {
-				
+
 				getCountry(location.getLatitude(), location.getLongitude());
 			}
 
@@ -89,7 +91,7 @@ public class ClassicModeActivity extends ActionBarActivity {
 		new GetCountryList().execute(); 
 
 	}
-	
+
 
 
 	@Override
@@ -181,7 +183,7 @@ public class ClassicModeActivity extends ActionBarActivity {
 		new Response.ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
-				Log.d("VOLLEY ERROR", error.getMessage());
+				error.printStackTrace();
 				Toast.makeText(getApplicationContext(), "There was some error fetching your location\nError: " + error.getMessage(), Toast.LENGTH_LONG).show();
 				mLoading.setVisibility(View.GONE);
 				mMain.setVisibility(View.VISIBLE);
@@ -207,22 +209,13 @@ public class ClassicModeActivity extends ActionBarActivity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
-			showCustomDialog();
+			CustomDialog.AboutDialog(ClassicModeActivity.this);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
 
-	protected void showCustomDialog() {
-		// TODO Auto-generated method stub
-		final Dialog dialog = new Dialog(ClassicModeActivity.this);
-		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-		dialog.setContentView(R.layout.about_dialog);   
-		dialog.show();
-	}
 
-	
 	public class GetCountryList extends AsyncTask<Void, Void, Void>
 	{
 		ArrayList<String> countryList;
@@ -244,9 +237,9 @@ public class ClassicModeActivity extends ActionBarActivity {
 			// Apply the adapter to the spinner
 			spinner.setAdapter(adapter);
 		}
-		
-		
-		
+
+
+
 	}
 
 

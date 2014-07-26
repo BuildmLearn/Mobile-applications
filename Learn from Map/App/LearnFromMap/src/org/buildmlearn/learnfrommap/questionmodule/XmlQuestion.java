@@ -1,5 +1,7 @@
 package org.buildmlearn.learnfrommap.questionmodule;
 
+import android.util.Log;
+
 public class XmlQuestion {
 	
 	private String code;
@@ -68,6 +70,11 @@ public class XmlQuestion {
 
 	public void setCount(String count) {
 		this.count = count;
+	}
+	
+	public void printRule()
+	{
+		Log.e("Rule", this.getFormat());
 	}
 
 	public XmlQuestion(String code, String type, String format, String answer,

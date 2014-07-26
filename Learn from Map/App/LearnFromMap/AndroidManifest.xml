@@ -30,7 +30,7 @@
         android:theme="@style/CustomActionBarTheme" >
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyBYjDcRrGLyGBhunJT0nql6d5UMkmDmltY" />
+            android:value="AIzaSyCq8O-1lVOwqic6qx1GezTLXSpCtSYpee0" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -54,8 +54,8 @@
         <activity
             android:name="org.buildmlearn.learnfrommap.CategoryActivity"
             android:label="@string/title_activity_category"
-            android:screenOrientation="portrait"
-            android:parentActivityName="org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper" >
+            android:parentActivityName="org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper" />
@@ -63,8 +63,8 @@
         <activity
             android:name="org.buildmlearn.learnfrommap.ClassicModeActivity"
             android:label="@string/title_activity_classic_mode"
-            android:screenOrientation="portrait"
-            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity" >
+            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.buildmlearn.learnfrommap.

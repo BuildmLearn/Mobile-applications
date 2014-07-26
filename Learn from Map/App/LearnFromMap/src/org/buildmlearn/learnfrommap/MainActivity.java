@@ -1,5 +1,7 @@
 package org.buildmlearn.learnfrommap;
 
+import org.buildmlearn.learnfrommap.helper.CustomDialog;
+
 import android.support.v7.app.ActionBarActivity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -67,19 +69,11 @@ public class MainActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-        	showCustomDialog();
+        	CustomDialog.AboutDialog(MainActivity.this);
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
     
-    protected void showCustomDialog() {
-        // TODO Auto-generated method stub
-        final Dialog dialog = new Dialog(MainActivity.this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        dialog.setContentView(R.layout.about_dialog);   
-        dialog.show();
-    }
 
 }

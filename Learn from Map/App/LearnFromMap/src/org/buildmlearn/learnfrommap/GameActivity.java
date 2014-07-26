@@ -15,11 +15,17 @@ import java.util.Random;
 
 
 
+
+
+
+
 import org.buildmlearn.learnfrommap.databasehelper.Database;
+import org.buildmlearn.learnfrommap.helper.CustomDialog;
 import org.buildmlearn.learnfrommap.parser.XmlParser;
 import org.buildmlearn.learnfrommap.questionmodule.DbRow;
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion;
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion.Type;
+import org.buildmlearn.learnfrommap.questionmodule.NoDbRowException;
 import org.buildmlearn.learnfrommap.questionmodule.QuestionModuleException;
 import org.buildmlearn.learnfrommap.questionmodule.UserAnsweredData;
 import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion;
@@ -30,12 +36,14 @@ import org.json.JSONObject;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Parcelable;
+import android.provider.Settings.Global;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Menu;
@@ -227,14 +235,15 @@ public class GameActivity extends Helper {
 				fillAnswer.setVisibility(View.GONE);
 				TextViewPlus correctAnswer = (TextViewPlus)findViewById(R.id.fill_correct_answer);
 				correctAnswer.setText("Answer: " + genQuestion.getAnswer());
-				LinearLayout layout = (LinearLayout) findViewById(R.id.layout);
+				LinearLayout layout = (LinearLayout) findViewById(R.id.answer_status);
 				if(isCorrect != null && isCorrect)
 				{
-					layout.setBackgroundResource(R.drawable.layout_right_answer);
+					new Color();
+					layout.setBackgroundColor(Color.argb(128, 102, 153, 00));
 				}
 				else if(isCorrect != null && !isCorrect)
 				{
-					layout.setBackgroundResource(R.drawable.layout_right_wrong);
+					layout.setBackgroundColor(Color.argb(128, 204, 00, 00));
 				}
 
 
@@ -620,7 +629,7 @@ public class GameActivity extends Helper {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
-			showCustomDialog();
+			CustomDialog.AboutDialog(GameActivity.this);
 			return true;
 		}
 		else if(id == android.R.id.home)
@@ -637,14 +646,6 @@ public class GameActivity extends Helper {
 		super.onBackPressed();
 	}
 
-	protected void showCustomDialog() {
-		// TODO Auto-generated method stub
-		final Dialog dialog = new Dialog(GameActivity.this);
-		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-		dialog.setContentView(R.layout.about_dialog);   
-		dialog.show();
-	}
 
 	protected void showConfirmDialog() {
 		dialog = new Dialog(GameActivity.this);
@@ -695,11 +696,12 @@ public class GameActivity extends Helper {
 		String selection;
 		String value;
 		Database db;
+		ArrayList<DbRow> globalDbRow;
 
 		@Override
 		protected String doInBackground(Void... params) {
 
-
+			globalDbRow = new ArrayList<DbRow>();
 			db = new Database(getApplicationContext(), 1);
 			XmlParser xmlParser = new XmlParser(getApplicationContext());
 			ArrayList<XmlQuestion> questionRules = xmlParser.fetchQuestions();		
@@ -715,8 +717,6 @@ public class GameActivity extends Helper {
 			}
 			else if(selection.equals("COUNTRY"))
 			{
-
-
 				try {
 					where = "country = " + db.getId("SELECT * FROM country WHERE name='" + value + "'");
 				} catch (QuestionModuleException e) {
@@ -744,13 +744,45 @@ public class GameActivity extends Helper {
 							blackListRules.add(randomNo);
 						}
 					}
-					
+					questionRule.printRule();
+
 					
 					String tableName = questionRule.getCode();
 					String query = "SELECT * FROM " + tableName + " WHERE "+ where +" LIMIT ";
 					String countQuery = "SELECT COUNT(*) FROM " + tableName + " WHERE " + where;
 					try {
-						DbRow row = db.rawSelect(query, countQuery);
+						boolean isUnique = false;
+						int tryCount = 0;
+						DbRow row = null;
+						row = db.rawSelect(query, countQuery);
+//						while(!isUnique)
+//						{
+//							isUnique = true;
+//
+//							row = db.rawSelect(query, countQuery);
+//							Log.e("Stat", row.getName() + " " + row.getCountry());
+//							for(DbRow row1 : globalDbRow)
+//							{
+//								if(row1.isEqual(row))
+//								{
+//									
+//									tryCount++;
+//									isUnique = false;
+//									Log.e("DUPLICATE", "");
+//									if(tryCount == 10)
+//									{
+//										
+//										//throw new NoDbRowException("No row present");
+//									}
+//									
+//								}
+//							}
+//							if(isUnique)
+//							{
+//								globalDbRow.add(row);	
+//							}
+//						}
+
 						String question = questionRule.getFormat().replace(":X:", row.getDataByColumnName(questionRule.getRelation()));
 						String answer = row.getDataByColumnName(questionRule.getAnswer());
 						GeneratedQuestion genQues;
@@ -774,6 +806,12 @@ public class GameActivity extends Helper {
 						i--;
 						e.printStackTrace();
 					}
+
+//					} catch (NoDbRowException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//						cancel(true);
+//					}
 				}
 				else
 				{

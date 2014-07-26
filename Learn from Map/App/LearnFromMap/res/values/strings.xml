@@ -57,9 +57,12 @@
     <string name="question_answer_count">18/20</string>
     <string name="title_activity_test_db">TestDb</string>
     <string name="fetching_location">Please Wait...\nFetching Your Location</string>
-    <string name="version">Version: 1.0.0\n\n\'Learn from Map\' is an educative game that teaches geography in a fun way. The users get to use an interactive map to answer questions by pinning relevant location on the Maps.\n\nDeveloped by BuildmLearn\nVisit us at www.buildmlean.org</string>
+    <string name="version">Version: 1.0.0</string>
     <string name="confirm_exit">Are you sure you want to exit?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="about_build_m_learn">"\'Learn from Map\' is an educative game that teaches geography in a fun way. The users get to use an interactive map to answer questions by pinning relevant location on the Maps."</string>
+    <string name="developed_by_build_m_learn">Developed by BuildmLearn</string>
+    <string name="website">Visit us at www.buildmlean.org</string>
 
 </resources>

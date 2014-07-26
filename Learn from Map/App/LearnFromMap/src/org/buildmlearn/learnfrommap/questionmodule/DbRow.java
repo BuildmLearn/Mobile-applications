@@ -49,6 +49,20 @@ public class DbRow {
 		all += "Elevation: " + elevation + "\n";
 		return all;
 	}
+	
+	public boolean isEqual(DbRow x)
+	{
+		if(!this.country.equals(x.getCountry()))
+		{
+			return false;
+		}
+		if(!this.state.equals(x.getState()))
+		{
+			return false;
+		}
+		return true;
+		
+	}
 
 
 	public int getId() {

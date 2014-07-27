@@ -3,36 +3,18 @@ package org.buildmlearn.learnfrommap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.helper.CustomDialog;
 import org.buildmlearn.learnfrommap.parser.XmlParser;
 import org.buildmlearn.learnfrommap.questionmodule.DbRow;
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion;
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion.Type;
-import org.buildmlearn.learnfrommap.questionmodule.NoDbRowException;
 import org.buildmlearn.learnfrommap.questionmodule.QuestionModuleException;
 import org.buildmlearn.learnfrommap.questionmodule.UserAnsweredData;
 import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
@@ -43,7 +25,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Parcelable;
-import android.provider.Settings.Global;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Menu;
@@ -55,7 +36,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -66,7 +46,6 @@ import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -138,10 +117,6 @@ public class GameActivity extends Helper {
 
 
 	}
-
-
-
-
 
 	static void shuffleArray(String[] ar)
 	{
@@ -544,10 +519,6 @@ public class GameActivity extends Helper {
 
 	}
 
-
-
-
-
 	@Override
 	protected void onResume() {
 		if(mCountTimer != null)
@@ -578,15 +549,10 @@ public class GameActivity extends Helper {
 
 	@Override
 	protected void onRestoreInstanceState(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onRestoreInstanceState(savedInstanceState);
 		timeLeft = savedInstanceState.getLong("TIME");
 		//startTimer((int)timeLeft);
 	}
-
-
-
-
 
 	private void startTimer(int timer)
 	{
@@ -646,7 +612,6 @@ public class GameActivity extends Helper {
 		super.onBackPressed();
 	}
 
-
 	protected void showConfirmDialog() {
 		dialog = new Dialog(GameActivity.this);
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -689,10 +654,8 @@ public class GameActivity extends Helper {
 		showConfirmDialog();
 	}
 
-
 	public class GenerateQuestions extends AsyncTask<Void, Integer, String>
 	{
-
 		String selection;
 		String value;
 		Database db;
@@ -782,7 +745,7 @@ public class GameActivity extends Helper {
 //								globalDbRow.add(row);	
 //							}
 //						}
-
+						
 						String question = questionRule.getFormat().replace(":X:", row.getDataByColumnName(questionRule.getRelation()));
 						String answer = row.getDataByColumnName(questionRule.getAnswer());
 						GeneratedQuestion genQues;
@@ -817,9 +780,7 @@ public class GameActivity extends Helper {
 				{
 					i--;
 				}
-
 			}
-
 			return null;
 		}
 
@@ -829,11 +790,8 @@ public class GameActivity extends Helper {
 			this.value = value;
 		}
 
-
-
 		@Override
 		protected void onPostExecute(String result) {
-			// TODO Auto-generated method stub
 			super.onPostExecute(result);
 			db.closeReadableDatabase();
 			db.close();
@@ -841,12 +799,10 @@ public class GameActivity extends Helper {
 			mMain.addView(mView);
 			TextViewPlus selection = (TextViewPlus)findViewById(R.id.play_selection);
 			selection.setText(mDisplatMsg);
-
 		}
 
 		@Override
 		protected void onProgressUpdate(final Integer... values) {
-			// TODO Auto-generated method stub
 			super.onProgressUpdate(values);
 			mProgressBar.setProgress(values[0]);
 

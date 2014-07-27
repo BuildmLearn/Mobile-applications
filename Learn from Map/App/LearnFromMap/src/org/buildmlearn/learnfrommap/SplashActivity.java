@@ -6,6 +6,7 @@ import org.buildmlearn.learnfrommap.maphelper.CustomReverseGeocoder;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -16,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SplashActivity extends DatabaseHelper {
 
@@ -25,6 +27,12 @@ public class SplashActivity extends DatabaseHelper {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
 		loadDatabase();
+		BitmapFactory.Options options = new BitmapFactory.Options();
+		options.inJustDecodeBounds = true;
+		BitmapFactory.decodeResource(getResources(), R.id.explore_world_map, options);
+		int imageHeight = options.outHeight;
+		int imageWidth = options.outWidth;
+		Toast.makeText(getApplicationContext(), imageHeight + ", " + imageWidth, Toast.LENGTH_SHORT).show();
 		//		DatabaseProcess dbProcess = new DatabaseProcess();
 		//		dbProcess.execute();
 	}

@@ -50,7 +50,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class GameActivity extends Helper {
+public class GameActivityTest extends Helper {
 
 	public static final int QUESTION_COUNT = 10;
 	private String mode;
@@ -578,7 +578,7 @@ public class GameActivity extends Helper {
 		startTimer(90000);	
 		gmaps = mapView;
 		userMarker = marker;
-		//userMarker.setDraggable(false);
+		userMarker.setDraggable(false);
 	}
 
 	@Override
@@ -596,7 +596,7 @@ public class GameActivity extends Helper {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
-			CustomDialog.AboutDialog(GameActivity.this);
+			CustomDialog.AboutDialog(GameActivityTest.this);
 			return true;
 		}
 		else if(id == android.R.id.home)
@@ -614,7 +614,7 @@ public class GameActivity extends Helper {
 	}
 
 	protected void showConfirmDialog() {
-		dialog = new Dialog(GameActivity.this);
+		dialog = new Dialog(GameActivityTest.this);
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 		dialog.setContentView(R.layout.dialog_confirm);   

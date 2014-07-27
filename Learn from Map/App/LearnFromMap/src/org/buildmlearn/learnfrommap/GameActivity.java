@@ -578,6 +578,7 @@ public class GameActivity extends Helper {
 		startTimer(90000);	
 		gmaps = mapView;
 		userMarker = marker;
+		userMarker.setDraggable(false);
 	}
 
 	@Override

@@ -2,10 +2,12 @@ package org.buildmlearn.learnfrommap;
 
 import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
-import org.buildmlearn.learnfrommap.helper.InternetConnection;
 import org.buildmlearn.learnfrommap.maphelper.CustomReverseGeocoder;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,8 +34,13 @@ public class SplashActivity extends DatabaseHelper {
 		super.onDatabaseLoad(msg);
 		ProgressBar pb = (ProgressBar)findViewById(R.id.splash_loading);
 		pb.setVisibility(View.GONE);
-		InternetConnection netConnection = new InternetConnection(getApplicationContext());
-		if (netConnection.isConnectingToInternet())
+		ConnectivityManager cm =
+		        (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+		 
+		NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+		boolean isConnected = activeNetwork != null &&
+		                      activeNetwork.isConnectedOrConnecting();
+		if (isConnected)
 		{
 			CustomReverseGeocoder geocoder = new CustomReverseGeocoder(this);
 			geocoder.getState();

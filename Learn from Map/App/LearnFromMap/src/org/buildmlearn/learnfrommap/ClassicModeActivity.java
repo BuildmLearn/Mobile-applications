@@ -126,9 +126,20 @@ public class ClassicModeActivity extends ActionBarActivity {
 		}
 		else
 		{
-			locationManager.requestLocationUpdates(LocationManager.PASSIVE_PROVIDER, 0, 0, locationListener);
-			locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
-			locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+			try 
+			{
+				locationManager.requestLocationUpdates(LocationManager.PASSIVE_PROVIDER, 0, 0, locationListener);
+				locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+				locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+			}
+			catch(IllegalArgumentException e)
+			{
+				Toast.makeText(getApplicationContext(), "There was some error fetching your location\nError: " + e.getMessage(), Toast.LENGTH_LONG).show();
+				mLoading.setVisibility(View.GONE);
+				mMain.setVisibility(View.VISIBLE);
+				e.printStackTrace();
+			}
+
 		}
 
 	}

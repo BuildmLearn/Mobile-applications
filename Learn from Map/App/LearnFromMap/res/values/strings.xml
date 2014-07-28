@@ -42,7 +42,7 @@
     <string name="use_my_location">Use My Location</string>
     <string name="select_a_location">Or select a location</string>
     <string name="play">Play</string>
-    <string name="title_activity_explore_mode">Explore Mode</string>
+    <string name="title_activity_explore_mode">Learn From Map</string>
     <string name="select_continent">Select a  continent</string>
     <string name="unlocked_continents">Double tap the continent to select</string>
     <string name="title_activity_game">GameActivity</string>
@@ -58,7 +58,7 @@
     <string name="title_activity_test_db">TestDb</string>
     <string name="fetching_location">Please Wait...\nFetching Your Location</string>
     <string name="version">Version: 1.0.0</string>
-    <string name="confirm_exit">Are you sure you want to exit?</string>
+    <string name="confirm_exit">Are you sure you want to quit this challenge?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="about_build_m_learn">"\'Learn from Map\' is an educative game that teaches geography in a fun way. The users get to use an interactive map to answer questions by pinning relevant location on the Maps."</string>

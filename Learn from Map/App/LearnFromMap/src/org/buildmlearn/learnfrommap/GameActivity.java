@@ -82,6 +82,7 @@ public class GameActivity extends Helper {
 	private Marker userMarker;
 	private String country;
 	private String state;
+	private LatLng mPositon;
 
 	@Override	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -229,6 +230,7 @@ public class GameActivity extends Helper {
 				{
 					double lat  = getPosition().latitude;
 					double lng = getPosition().longitude;
+					mPositon = new LatLng(lat, lng);
 					String googleurl = "https://maps.google.com/maps/api/geocode/json?key=AIzaSyACYVxd_d-49UnhqibCI6F9f7b5Gw1qTSc&";
 					Log.v("HTTP" , "Latitude is: " + lat + "Longitude is:" + lng);
 					StringBuilder sbuilder = new StringBuilder();
@@ -269,7 +271,7 @@ public class GameActivity extends Helper {
 
 							} catch (JSONException e) {
 								// TODO Auto-generated catch block
-								Toast.makeText(getApplicationContext(), "There was some error fetching your location\nError: " + e.getMessage(), Toast.LENGTH_LONG).show();
+								//Toast.makeText(getApplicationContext(), "There was some error fetching your location\nError: " + e.getMessage(), Toast.LENGTH_LONG).show();
 								country = "";
 								state = "";
 								e.printStackTrace();
@@ -280,8 +282,11 @@ public class GameActivity extends Helper {
 					new Response.ErrorListener() {
 						@Override
 						public void onErrorResponse(VolleyError error) {
-							Log.d("VOLLEY ERROR", error.getMessage());
-							Toast.makeText(getApplicationContext(), "There was some error fetching your location\nError: " + error.getMessage(), Toast.LENGTH_LONG).show();
+							if(error != null)
+							{
+								error.printStackTrace();
+								Toast.makeText(getApplicationContext(), "There was some error fetching your location\nError: " + error.getMessage(), Toast.LENGTH_LONG).show();
+							}
 						}
 					});
 					RequestQueue mQueue = Volley.newRequestQueue(this);
@@ -294,7 +299,7 @@ public class GameActivity extends Helper {
 					state = "";
 				}
 				LatLng newPostion = new LatLng(genQuestion.getDbRow().getLat(), genQuestion.getDbRow().getLng());
-				MarkerOptions markerOption = new MarkerOptions().draggable(false).position(newPostion).flat(true).title("Correct Answer");
+				MarkerOptions markerOption = new MarkerOptions().draggable(false).position(newPostion).flat(true).title(genQuestion.getAnswer());
 				marker = mapView.addMarker(markerOption);
 				getMaps().addMarker(markerOption);
 				CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(newPostion, 4);
@@ -427,7 +432,7 @@ public class GameActivity extends Helper {
 			}
 			else
 			{
-				LatLng postion = getPosition();
+				LatLng postion = mPositon;
 				String userAnswer;
 				if(postion != null)
 				{
@@ -455,14 +460,13 @@ public class GameActivity extends Helper {
 		}
 		genQuestion = mQuestion.get(mQuestionCounter++);
 		if(genQuestion.getType() == Type.Fill)
-		{
+		{	
 			mView = getLayoutInflater().inflate(R.layout.layout_fill, mMain,false);
 			mMain.removeAllViews();
 			mMain.addView(mView);
 			mDisplayQuestion = (TextViewPlus)findViewById(R.id.question);
 			mDisplayQuestion.setText(genQuestion.getQuestion());
-			EditText fillAnswer = (EditText)findViewById(R.id.fill_answer);
-			fillAnswer.setText(genQuestion.getAnswer());
+			//fillAnswer.setText(genQuestion.getAnswer());
 			startTimer(60000);
 
 		}
@@ -710,7 +714,7 @@ public class GameActivity extends Helper {
 					}
 					questionRule.printRule();
 
-					
+
 					String tableName = questionRule.getCode();
 					String query = "SELECT * FROM " + tableName + " WHERE "+ where +" LIMIT ";
 					String countQuery = "SELECT COUNT(*) FROM " + tableName + " WHERE " + where;
@@ -719,34 +723,34 @@ public class GameActivity extends Helper {
 						int tryCount = 0;
 						DbRow row = null;
 						row = db.rawSelect(query, countQuery);
-//						while(!isUnique)
-//						{
-//							isUnique = true;
-//
-//							row = db.rawSelect(query, countQuery);
-//							Log.e("Stat", row.getName() + " " + row.getCountry());
-//							for(DbRow row1 : globalDbRow)
-//							{
-//								if(row1.isEqual(row))
-//								{
-//									
-//									tryCount++;
-//									isUnique = false;
-//									Log.e("DUPLICATE", "");
-//									if(tryCount == 10)
-//									{
-//										
-//										//throw new NoDbRowException("No row present");
-//									}
-//									
-//								}
-//							}
-//							if(isUnique)
-//							{
-//								globalDbRow.add(row);	
-//							}
-//						}
-						
+						//						while(!isUnique)
+						//						{
+						//							isUnique = true;
+						//
+						//							row = db.rawSelect(query, countQuery);
+						//							Log.e("Stat", row.getName() + " " + row.getCountry());
+						//							for(DbRow row1 : globalDbRow)
+						//							{
+						//								if(row1.isEqual(row))
+						//								{
+						//									
+						//									tryCount++;
+						//									isUnique = false;
+						//									Log.e("DUPLICATE", "");
+						//									if(tryCount == 10)
+						//									{
+						//										
+						//										//throw new NoDbRowException("No row present");
+						//									}
+						//									
+						//								}
+						//							}
+						//							if(isUnique)
+						//							{
+						//								globalDbRow.add(row);	
+						//							}
+						//						}
+
 						String question = questionRule.getFormat().replace(":X:", row.getDataByColumnName(questionRule.getRelation()));
 						String answer = row.getDataByColumnName(questionRule.getAnswer());
 						GeneratedQuestion genQues;
@@ -771,11 +775,11 @@ public class GameActivity extends Helper {
 						e.printStackTrace();
 					}
 
-//					} catch (NoDbRowException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//						cancel(true);
-//					}
+					//					} catch (NoDbRowException e) {
+					//						// TODO Auto-generated catch block
+					//						e.printStackTrace();
+					//						cancel(true);
+					//					}
 				}
 				else
 				{

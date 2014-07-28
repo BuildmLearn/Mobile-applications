@@ -121,8 +121,7 @@ public class UserAnsweredData  implements Serializable{
 			distance /= 100000;
 			if(distance < 10)
 			{
-				int point = 10-(int)distance;
-				this.mPoints = point;
+				this.mPoints = 10;
 				mIsCorrect = true;
 			}
 			else
@@ -150,25 +149,6 @@ public class UserAnsweredData  implements Serializable{
 
 		return 6366000*tt;
 	}
-
-	//Converts coordinates to country
-	private Address getAddress(double lat, double lng) {
-		Geocoder geocoder = new Geocoder(mContext, Locale.getDefault());
-		try {
-			List<Address> addresses = geocoder.getFromLocation(lat, lng, 1);
-			if(addresses.size() == 0)
-			{
-				return null;
-			}
-			Address obj = addresses.get(0);
-			return obj;
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
 
 	public UserAnsweredData(String mQuestion, String mAnswer,
 			String mUserAnswer, Type mQuestionType, String mAnswerType,

@@ -112,9 +112,7 @@
                     <Spinner
                         android:id="@+id/classic_spinner1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:popupBackground="@android:color/transparent"
-                        tools:listitem="@android:layout/simple_spinner_dropdown_item" />
+                        android:layout_height="wrap_content" />
 
                     <org.buildmlearn.learnfrommap.TextViewPlus
                         android:id="@+id/question"

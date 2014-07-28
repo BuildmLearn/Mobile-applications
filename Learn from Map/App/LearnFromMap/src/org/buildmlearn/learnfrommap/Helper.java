@@ -193,7 +193,9 @@ public class Helper extends ActionBarActivity {
 					mapView.addTileOverlay(new TileOverlayOptions()
 							.tileProvider(new CustomTileProvider(getResources()
 									.getAssets(), mapView)));
-					marker = null;
+					markerOptions = new MarkerOptions().draggable(true).position(new LatLng(0, 0)).flat(true).title("Your Answer").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+					marker = mapView.addMarker(markerOptions);
+					//marker = null;
 					if (getApplicationContext() != null) {
 						runOnUiThread(new Runnable() {
 
@@ -233,7 +235,7 @@ public class Helper extends ActionBarActivity {
 						}
 					} else {
 						// OpenGL version is not supported
-						if (getApplicationContext() != null) {
+						if (getApplicationContext() != null) {		
 							runOnUiThread(new Runnable() {
 								@Override
 								public void run() {

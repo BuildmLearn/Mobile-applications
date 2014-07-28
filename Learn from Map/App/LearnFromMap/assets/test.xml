@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <questions>
- 	<question>
+<!--  	<question>
 	    <code>PPLC</code>
 	    <type>FILL</type>
 	    <relationship>country</relationship>
@@ -8,8 +8,8 @@
 	    <format>Capital of :X: is _________</format>
 	    <count>unique</count>
 	    <answer>name</answer>
-	</question>
-	<question>
+	</question> -->
+<!-- 	<question>
 	    <code>PPLC</code>
 	    <type>PIN</type>
 	    <relationship>name</relationship>
@@ -17,7 +17,7 @@
 	    <format>Pin the capital of :X:</format>
 	    <count>unique</count>
 	    <answer>location</answer>
-	</question>
+	</question> -->
  	<question>
 	    <code>PCLI</code>
 	    <type>MCQ</type>
@@ -63,7 +63,7 @@
 	    <count>normal</count>
 	    <answer>country</answer>
 	</question>
-		<question>
+<!-- 		<question>
 	    <code>PLN</code>
 	    <type>FILL</type>
 	    <relationship>name</relationship>
@@ -71,8 +71,8 @@
 	    <format>:X: (plains) is located in ______________ country.</format>
 	    <count>normal</count>
 	    <answer>country</answer>
-	</question>
-	<question>
+	</question> -->
+<!-- 	<question>
 	    <code>PEN</code>
 	    <type>FILL</type>
 	    <relationship>name</relationship>
@@ -80,7 +80,7 @@
 	    <format>:X: (peninsula) is located in ______________ country.</format>
 	    <count>normal</count>
 	    <answer>country</answer> 
-	</question>
+	</question> -->
 		<question>
 	    <code>ADM1</code>
 	    <type>PIN</type>

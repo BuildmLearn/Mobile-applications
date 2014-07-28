@@ -32,9 +32,6 @@ public class SplashActivity extends DatabaseHelper {
 		BitmapFactory.decodeResource(getResources(), R.id.explore_world_map, options);
 		int imageHeight = options.outHeight;
 		int imageWidth = options.outWidth;
-		Toast.makeText(getApplicationContext(), imageHeight + ", " + imageWidth, Toast.LENGTH_SHORT).show();
-		//		DatabaseProcess dbProcess = new DatabaseProcess();
-		//		dbProcess.execute();
 	}
 
 	@Override
@@ -52,7 +49,7 @@ public class SplashActivity extends DatabaseHelper {
 		{
 			CustomReverseGeocoder geocoder = new CustomReverseGeocoder(this);
 			geocoder.getState();
-			Intent intent= new Intent(getApplicationContext(), MainActivity.class);
+			Intent intent= new Intent(getApplicationContext(), ExploreMode.class);
 			startActivity(intent);
 			finish();
 		}
@@ -125,7 +122,7 @@ public class SplashActivity extends DatabaseHelper {
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
-			Intent intent= new Intent(getApplicationContext(), MainActivity.class);
+			Intent intent= new Intent(getApplicationContext(), ExploreMode.class);
 			startActivity(intent);
 		}
 

@@ -2,8 +2,9 @@
     xmlns:foo="http://schemas.android.com/apk/res/org.buildmlearn.learnfrommap"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="7dp"
+    android:background="#282828"
     android:gravity="center_horizontal"
-    android:background="#80000000"
     android:orientation="vertical"
     android:padding="10dp" >
 
@@ -11,8 +12,8 @@
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
         android:layout_marginTop="2dp"
+        android:adjustViewBounds="true"
         android:paddingBottom="5dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
@@ -53,10 +54,10 @@
     <org.buildmlearn.learnfrommap.TextViewPlus
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
-        android:text="@string/website"
+        android:layout_marginTop="10dp"
         android:autoLink="web"
+        android:text="@string/website"
         android:textColor="@android:color/white"
         foo:customFont="Roboto_Light.ttf" />
 

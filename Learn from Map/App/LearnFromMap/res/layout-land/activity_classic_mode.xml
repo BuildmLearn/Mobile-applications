@@ -109,8 +109,7 @@
                     <Spinner
                         android:id="@+id/spinner1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        tools:listitem="@android:layout/simple_spinner_dropdown_item" />
+                        android:layout_height="wrap_content" />
 
 
                     <org.buildmlearn.learnfrommap.TextViewPlus

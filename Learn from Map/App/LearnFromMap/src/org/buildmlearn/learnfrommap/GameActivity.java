@@ -258,11 +258,13 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 									{
 										country = obj.getString("long_name");
 										Log.e("Country", country);
+										Toast.makeText(getApplicationContext(), country, Toast.LENGTH_SHORT);
 									}
 									if(tempArray.getString(0).equals("administrative_area_level_1"))
 									{
 										state = obj.getString("long_name");
 										Log.e("State", state);
+										Toast.makeText(getApplicationContext(), state, Toast.LENGTH_SHORT);
 
 									}
 								}
@@ -463,8 +465,6 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 			mMain.addView(mView);
 			mDisplayQuestion = (TextViewPlus)findViewById(R.id.question);
 			mDisplayQuestion.setText(genQuestion.getQuestion());
-			EditText fillAnswer = (EditText)findViewById(R.id.fill_answer);
-			fillAnswer.setText(genQuestion.getAnswer());
 			startTimer(60000);
 
 		}

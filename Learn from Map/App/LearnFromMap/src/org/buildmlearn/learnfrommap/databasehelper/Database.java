@@ -6,6 +6,9 @@ import java.util.Random;
 
 import org.buildmlearn.learnfrommap.questionmodule.DbRow;
 import org.buildmlearn.learnfrommap.questionmodule.QuestionModuleException;
+
+import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;

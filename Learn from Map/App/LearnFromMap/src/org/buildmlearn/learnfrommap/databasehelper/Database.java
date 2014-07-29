@@ -6,9 +6,6 @@ import java.util.Random;
 
 import org.buildmlearn.learnfrommap.questionmodule.DbRow;
 import org.buildmlearn.learnfrommap.questionmodule.QuestionModuleException;
-
-import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
-
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -28,8 +25,8 @@ public class Database extends SQLiteAssetHelper  {
 		super(context, DB_NAME, null, DATABASE_VERSION);
 	}
 
-	public Database(Context context,  int i) {
-		super(context, DB_NAME, null, DATABASE_VERSION);
+	public Database(Context context,  int i , String path) {
+		super(context, DB_NAME, path, null, DATABASE_VERSION);
 		Log.d("Database", "Opening readable database");
 		db = getReadableDatabase();
 	}

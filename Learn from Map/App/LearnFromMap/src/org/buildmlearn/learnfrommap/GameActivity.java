@@ -2,29 +2,26 @@ package org.buildmlearn.learnfrommap;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import org.buildmlearn.learnfrommap.databasehelper.Database;
+
 import org.buildmlearn.learnfrommap.helper.CustomDialog;
-import org.buildmlearn.learnfrommap.parser.XmlParser;
-import org.buildmlearn.learnfrommap.questionmodule.DbRow;
+import org.buildmlearn.learnfrommap.helper.HelperFunctions;
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion;
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion.Type;
-import org.buildmlearn.learnfrommap.questionmodule.QuestionModuleException;
 import org.buildmlearn.learnfrommap.questionmodule.UserAnsweredData;
-import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Parcelable;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Menu;
@@ -36,6 +33,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -44,15 +42,16 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class GameActivity extends Helper {
+public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallbacks {
 
+	private static final String TAG_TASK_FRAGMENT = "task_fragment";
 	public static final int QUESTION_COUNT = 10;
+	
 	private String mode;
 	private String mSelection;
 	private String mValue;	
@@ -78,11 +77,10 @@ public class GameActivity extends Helper {
 	private String mDisplatMsg;
 	protected long timeLeft;
 	private Dialog dialog;
-	private GoogleMap gmaps;
 	private Marker userMarker;
 	private String country;
 	private String state;
-	private LatLng mPositon;
+	private AsyncTaskFragment mTaskFragment;
 
 	@Override	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -97,8 +95,25 @@ public class GameActivity extends Helper {
 		mode = intent.getStringExtra("MODE");
 		mDisplatMsg = intent.getStringExtra("DISPLAY");
 		mSelection = intent.getStringExtra("SELECTION");
-
 		mValue = intent.getStringExtra("VALUE");
+		
+		FragmentManager fm = getSupportFragmentManager();
+		mTaskFragment = (AsyncTaskFragment) fm.findFragmentByTag(TAG_TASK_FRAGMENT);
+
+		// If the Fragment is non-null, then it is currently being
+		// retained across a configuration change.
+		if (mTaskFragment == null) 
+		{
+			mTaskFragment = new AsyncTaskFragment();
+			Bundle bundle = new Bundle();
+			bundle.putString("SELECTION", mSelection);
+			bundle.putString("VALUE", mValue);
+			bundle.putString("MODE", mode);
+			bundle.putInt("QUESTION_COUNT", QUESTION_COUNT);
+			fm.beginTransaction().add(mTaskFragment, TAG_TASK_FRAGMENT).commit();
+			mTaskFragment.setArguments(bundle);
+			//mTaskFragment.start();
+		}
 		mLoadingText = (TextViewPlus)findViewById(R.id.question);
 		mProgressBar = (ProgressBar)findViewById(R.id.game_progressbar);
 		mProgressBar.setMax(QUESTION_COUNT);
@@ -111,25 +126,11 @@ public class GameActivity extends Helper {
 		{
 			setTitle("Classic Mode");
 		}
-		GenerateQuestions genQues = new GenerateQuestions(mSelection, mValue);
-		genQues.execute();
 		mMain = (RelativeLayout)findViewById(R.id.main_layout);
 		mView = getLayoutInflater().inflate(R.layout.layout_play_game, mMain,false);
-
-
 	}
 
-	static void shuffleArray(String[] ar)
-	{
-		Random rnd = new Random();
-		for (int i = ar.length - 1; i > 0; i--)
-		{
-			int index = rnd.nextInt(i + 1);
-			String a = ar[index];
-			ar[index] = ar[i];
-			ar[i] = a;
-		}
-	}
+
 
 	public void startGame(View v)
 	{
@@ -230,7 +231,6 @@ public class GameActivity extends Helper {
 				{
 					double lat  = getPosition().latitude;
 					double lng = getPosition().longitude;
-					mPositon = new LatLng(lat, lng);
 					String googleurl = "https://maps.google.com/maps/api/geocode/json?key=AIzaSyACYVxd_d-49UnhqibCI6F9f7b5Gw1qTSc&";
 					Log.v("HTTP" , "Latitude is: " + lat + "Longitude is:" + lng);
 					StringBuilder sbuilder = new StringBuilder();
@@ -271,7 +271,7 @@ public class GameActivity extends Helper {
 
 							} catch (JSONException e) {
 								// TODO Auto-generated catch block
-								//Toast.makeText(getApplicationContext(), "There was some error fetching your location\nError: " + e.getMessage(), Toast.LENGTH_LONG).show();
+								Toast.makeText(getApplicationContext(), "There was some error fetching your location\nError: " + e.getMessage(), Toast.LENGTH_LONG).show();
 								country = "";
 								state = "";
 								e.printStackTrace();
@@ -282,11 +282,8 @@ public class GameActivity extends Helper {
 					new Response.ErrorListener() {
 						@Override
 						public void onErrorResponse(VolleyError error) {
-							if(error != null)
-							{
-								error.printStackTrace();
-								Toast.makeText(getApplicationContext(), "There was some error fetching your location\nError: " + error.getMessage(), Toast.LENGTH_LONG).show();
-							}
+							Log.d("VOLLEY ERROR", error.getMessage());
+							Toast.makeText(getApplicationContext(), "There was some error fetching your location\nError: " + error.getMessage(), Toast.LENGTH_LONG).show();
 						}
 					});
 					RequestQueue mQueue = Volley.newRequestQueue(this);
@@ -299,7 +296,7 @@ public class GameActivity extends Helper {
 					state = "";
 				}
 				LatLng newPostion = new LatLng(genQuestion.getDbRow().getLat(), genQuestion.getDbRow().getLng());
-				MarkerOptions markerOption = new MarkerOptions().draggable(false).position(newPostion).flat(true).title(genQuestion.getAnswer());
+				MarkerOptions markerOption = new MarkerOptions().draggable(false).position(newPostion).flat(true).title("Correct Answer");
 				marker = mapView.addMarker(markerOption);
 				getMaps().addMarker(markerOption);
 				CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(newPostion, 4);
@@ -432,7 +429,7 @@ public class GameActivity extends Helper {
 			}
 			else
 			{
-				LatLng postion = mPositon;
+				LatLng postion = getPosition();
 				String userAnswer;
 				if(postion != null)
 				{
@@ -460,13 +457,14 @@ public class GameActivity extends Helper {
 		}
 		genQuestion = mQuestion.get(mQuestionCounter++);
 		if(genQuestion.getType() == Type.Fill)
-		{	
+		{
 			mView = getLayoutInflater().inflate(R.layout.layout_fill, mMain,false);
 			mMain.removeAllViews();
 			mMain.addView(mView);
 			mDisplayQuestion = (TextViewPlus)findViewById(R.id.question);
 			mDisplayQuestion.setText(genQuestion.getQuestion());
-			//fillAnswer.setText(genQuestion.getAnswer());
+			EditText fillAnswer = (EditText)findViewById(R.id.fill_answer);
+			fillAnswer.setText(genQuestion.getAnswer());
 			startTimer(60000);
 
 		}
@@ -485,7 +483,7 @@ public class GameActivity extends Helper {
 			String[] temp = genQuestion.getOption();
 			String[] _options = {temp[0], temp[1], temp[2], genQuestion.getAnswer()};
 			options = _options;
-			shuffleArray(options);
+			HelperFunctions.ShuffleArray(options);
 			mOption1.setText(options[0]);
 			mOption2.setText(options[1]);
 			mOption3.setText(options[2]);
@@ -532,10 +530,6 @@ public class GameActivity extends Helper {
 		super.onResume();
 	}
 
-
-
-
-
 	@Override
 	protected void onSaveInstanceState(Bundle savedInstanceState) {
 		super.onSaveInstanceState(savedInstanceState);
@@ -580,9 +574,8 @@ public class GameActivity extends Helper {
 		ProgressBar loading = (ProgressBar)findViewById(R.id.map_progress);
 		loading.setVisibility(View.GONE);
 		startTimer(90000);	
-		gmaps = mapView;
 		userMarker = marker;
-		//userMarker.setDraggable(false);
+		userMarker.setDraggable(false);
 	}
 
 	@Override
@@ -659,164 +652,41 @@ public class GameActivity extends Helper {
 		showConfirmDialog();
 	}
 
-	public class GenerateQuestions extends AsyncTask<Void, Integer, String>
-	{
-		String selection;
-		String value;
-		Database db;
-		ArrayList<DbRow> globalDbRow;
+	@Override
+	public void onPreExecute() {
+		// TODO Auto-generated method stub
 
-		@Override
-		protected String doInBackground(Void... params) {
+	}
 
-			globalDbRow = new ArrayList<DbRow>();
-			db = new Database(getApplicationContext(), 1);
-			XmlParser xmlParser = new XmlParser(getApplicationContext());
-			ArrayList<XmlQuestion> questionRules = xmlParser.fetchQuestions();		
-			Random random = new Random();
-			ArrayList<Integer> blackListRules = new ArrayList<Integer>();
+	@Override
+	public void onProgressUpdate(final int percent) {
+		mProgressBar.setProgress(percent);
 
-			//Where condition selection
-			//Explore Mode
-			String where = null;
-			if(selection.equals("CONTINENT"))
-			{
-				where = "continent = " + value;
+		runOnUiThread(new Runnable() {
+			public void run() {
+				mLoadingText.setText("Loading question " + percent + " of " + QUESTION_COUNT);
 			}
-			else if(selection.equals("COUNTRY"))
-			{
-				try {
-					where = "country = " + db.getId("SELECT * FROM country WHERE name='" + value + "'");
-				} catch (QuestionModuleException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+		});
+	}
 
-			}
-			for(int i = 1; i<= QUESTION_COUNT; i++)
-			{
-				int randomNo = random.nextInt(questionRules.size());
-				XmlQuestion questionRule = questionRules.get(randomNo);
-				if(!blackListRules.contains(randomNo))
-				{
-					if(mode.equals("CLASSIC_MODE"))
-					{
-						if(questionRule.getAnswer().equals("country"))
-						{
-							blackListRules.add(randomNo);
-							i--;
-							continue;
-						}
-						if(questionRule.getCount().equals("unique"))
-						{
-							blackListRules.add(randomNo);
-						}
-					}
-					questionRule.printRule();
+	@Override
+	public void onCancelled() {
+		// TODO Auto-generated method stub
 
+	}
 
-					String tableName = questionRule.getCode();
-					String query = "SELECT * FROM " + tableName + " WHERE "+ where +" LIMIT ";
-					String countQuery = "SELECT COUNT(*) FROM " + tableName + " WHERE " + where;
-					try {
-						boolean isUnique = false;
-						int tryCount = 0;
-						DbRow row = null;
-						row = db.rawSelect(query, countQuery);
-						//						while(!isUnique)
-						//						{
-						//							isUnique = true;
-						//
-						//							row = db.rawSelect(query, countQuery);
-						//							Log.e("Stat", row.getName() + " " + row.getCountry());
-						//							for(DbRow row1 : globalDbRow)
-						//							{
-						//								if(row1.isEqual(row))
-						//								{
-						//									
-						//									tryCount++;
-						//									isUnique = false;
-						//									Log.e("DUPLICATE", "");
-						//									if(tryCount == 10)
-						//									{
-						//										
-						//										//throw new NoDbRowException("No row present");
-						//									}
-						//									
-						//								}
-						//							}
-						//							if(isUnique)
-						//							{
-						//								globalDbRow.add(row);	
-						//							}
-						//						}
+	@SuppressWarnings("unchecked")
+	@Override
+	public void onPostExecute(Object question) {
+		mQuestion = (ArrayList<GeneratedQuestion>)question;
+		mMain.removeAllViews();
+		mMain.addView(mView);
+		TextViewPlus selection = (TextViewPlus)findViewById(R.id.play_selection);
+		selection.setText(mDisplatMsg);
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		ft.remove(getSupportFragmentManager().findFragmentByTag(TAG_TASK_FRAGMENT)).commit();
+		getSupportFragmentManager().popBackStackImmediate();
 
-						String question = questionRule.getFormat().replace(":X:", row.getDataByColumnName(questionRule.getRelation()));
-						String answer = row.getDataByColumnName(questionRule.getAnswer());
-						GeneratedQuestion genQues;
-						if(questionRule.getType() == XmlQuestion.Type.MultipleChoiceQuestion)
-						{
-							String[] options = db.createOptions(questionRule.getAnswer(), answer, questionRule.getCode());
-							genQues = new GeneratedQuestion(row, questionRule, question, answer, options);
-						}
-						else if(questionRule.getType() == XmlQuestion.Type.FillBlanks)
-						{
-							genQues = new GeneratedQuestion(row, questionRule, question, answer, Type.Fill);
-						}
-						else
-						{
-							genQues = new GeneratedQuestion(row, questionRule, question, answer, Type.Pin);
-						}
-						mQuestion.add(genQues);
-						publishProgress(i);
-					} catch (QuestionModuleException e) {
-						blackListRules.add(randomNo);
-						i--;
-						e.printStackTrace();
-					}
-
-					//					} catch (NoDbRowException e) {
-					//						// TODO Auto-generated catch block
-					//						e.printStackTrace();
-					//						cancel(true);
-					//					}
-				}
-				else
-				{
-					i--;
-				}
-			}
-			return null;
-		}
-
-		public GenerateQuestions(String selection, String value) {
-			super();
-			this.selection = selection;
-			this.value = value;
-		}
-
-		@Override
-		protected void onPostExecute(String result) {
-			super.onPostExecute(result);
-			db.closeReadableDatabase();
-			db.close();
-			mMain.removeAllViews();
-			mMain.addView(mView);
-			TextViewPlus selection = (TextViewPlus)findViewById(R.id.play_selection);
-			selection.setText(mDisplatMsg);
-		}
-
-		@Override
-		protected void onProgressUpdate(final Integer... values) {
-			super.onProgressUpdate(values);
-			mProgressBar.setProgress(values[0]);
-
-			runOnUiThread(new Runnable() {
-				public void run() {
-					mLoadingText.setText("Loading question " + values[0] + " of " + QUESTION_COUNT);
-				}
-			});
-		}
 	}
 
 }

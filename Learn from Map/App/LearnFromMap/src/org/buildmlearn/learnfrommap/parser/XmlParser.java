@@ -24,8 +24,6 @@ public class XmlParser {
 		this.mContext = mContext;
 	}
 	
-
-	
 	public ArrayList<XmlQuestion> fetchQuestions()
 	{
 		String code;
@@ -55,16 +53,12 @@ public class XmlParser {
 				location = Boolean.parseBoolean(element.getElementsByTagName("location").item(0).getTextContent());
 				XmlQuestion question = new XmlQuestion(code, type, format, answer, location, relation, count);
 				questions.add(question);
-				//Log.e("TEXT XML", format);
 			}
 		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SAXException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

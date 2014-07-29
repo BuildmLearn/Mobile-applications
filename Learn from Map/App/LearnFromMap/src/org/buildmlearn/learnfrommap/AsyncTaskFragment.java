@@ -312,8 +312,8 @@ class KeyHolder
 		KeyHolder x = (KeyHolder)o;
 		if(!this.answer.equals(x.answer))
 			return false;
-		if(!this.code.equals(x.code))
-			return false;
+//		if(!this.code.equals(x.code))
+//			return false;
 		if(!this.relation.equals(x.relation))
 			return false;
 		return true;	

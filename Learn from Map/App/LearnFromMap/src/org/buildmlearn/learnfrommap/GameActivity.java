@@ -130,8 +130,6 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 		mView = getLayoutInflater().inflate(R.layout.layout_play_game, mMain,false);
 	}
 
-
-
 	public void startGame(View v)
 	{
 		loadQuestion();
@@ -282,7 +280,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 					new Response.ErrorListener() {
 						@Override
 						public void onErrorResponse(VolleyError error) {
-							Log.d("VOLLEY ERROR", error.getMessage());
+							Log.d("VOLLEY ERROR", "Error " + error.getMessage());
 							Toast.makeText(getApplicationContext(), "There was some error fetching your location\nError: " + error.getMessage(), Toast.LENGTH_LONG).show();
 						}
 					});
@@ -680,6 +678,11 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 	@SuppressWarnings("unchecked")
 	@Override
 	public void onPostExecute(Object question) {
+		if(question == null)
+		{
+			Toast.makeText(getApplicationContext(), "Currently " + mValue + " is not supported", Toast.LENGTH_LONG).show();
+			finish();
+		}
 		mQuestion = (ArrayList<GeneratedQuestion>)question;
 		mMain.removeAllViews();
 		mMain.addView(mView);

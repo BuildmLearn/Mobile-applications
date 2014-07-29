@@ -1,6 +1,7 @@
 package org.buildmlearn.learnfrommap;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
 import org.buildmlearn.learnfrommap.databasehelper.Database;
@@ -21,6 +22,7 @@ import android.util.Log;
 public class AsyncTaskFragment extends Fragment {
 
 	private static final String TAG = AsyncTaskFragment.class.getSimpleName();
+	public static long lastSeed;
 
 	private Context mContext;
 
@@ -51,6 +53,7 @@ public class AsyncTaskFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 		//mContext = getActivity().getApplicationContext();
 		// Retain this fragment across configuration changes.
+		lastSeed = 0;
 		setRetainInstance(true);
 		Bundle bundle = getArguments();
 		mSelection = bundle.getString("SELECTION");
@@ -114,29 +117,20 @@ public class AsyncTaskFragment extends Fragment {
 
 	public class GenerateQuestions extends AsyncTask<Void, Integer, Object>
 	{
-		private ArrayList<DbRow> globalDbRow;
 		private ArrayList<GeneratedQuestion> questionList;
 
 		@Override
 		protected ArrayList<GeneratedQuestion> doInBackground(Void... params) {
+			int globalCount = 0;
 
 			questionList = new ArrayList<GeneratedQuestion>();
-			globalDbRow = new ArrayList<DbRow>();
-//			String path = null;
-//			try
-//			{
-//				path = mContext.getApplicationInfo().dataDir;
-//			}
-//			catch(NullPointerException e)
-//			{
-//				e.printStackTrace();
-//			}
-			//Log.e("Path", path);
 			Database db = new Database(mContext, 1, mContext.getFilesDir().getPath());
 			XmlParser xmlParser = new XmlParser(mContext);
-			ArrayList<XmlQuestion> questionRules = xmlParser.fetchQuestions();		
-			Random random = new Random();
+			ArrayList<XmlQuestion> questionRules = xmlParser.fetchQuestions();	
+			lastSeed += new Date().getTime();
+			Random random = new Random(lastSeed);
 			ArrayList<Integer> blackListRules = new ArrayList<Integer>();
+			ArrayList<KeyHolder> dbRows = new ArrayList<KeyHolder>();
 
 			//Where condition selection
 			//Explore Mode
@@ -155,9 +149,14 @@ public class AsyncTaskFragment extends Fragment {
 				}
 
 			}
+			
+			//
+			//Main logic starts here//
+			//
 			for(int i = 1; i<= mQuestionCount; i++)
 			{
 				int randomNo = random.nextInt(questionRules.size());
+				Log.d("Random", randomNo + "");
 				XmlQuestion questionRule = questionRules.get(randomNo);
 				if(!blackListRules.contains(randomNo))
 				{
@@ -182,7 +181,53 @@ public class AsyncTaskFragment extends Fragment {
 					String query = "SELECT * FROM " + tableName + " WHERE "+ where +" LIMIT ";
 					String countQuery = "SELECT COUNT(*) FROM " + tableName + " WHERE " + where;
 					try {
-						DbRow row = db.rawSelect(query, countQuery);
+						DbRow row = null;
+						//
+						boolean loop = true;
+						boolean removeLoop = false;
+						int counter = 0;
+						while(loop)
+						{
+							boolean isPresent = false;
+							row = db.rawSelect(query, countQuery);
+							KeyHolder temp = new KeyHolder(questionRule.getCode(), row.getDataByColumnName(questionRule.getRelation()), row.getDataByColumnName(questionRule.getAnswer()));
+							for(KeyHolder holder :  dbRows)
+							{
+								if(holder.equals(temp))
+								{
+									isPresent = true;
+									break;
+								}
+							}
+							if(isPresent)
+							{
+								counter++;
+								Log.d("DUPLICATE", "Duplicate");
+							}
+							else
+							{
+								Log.d("RESET GLOBAL COUNT", "0");
+								globalCount = 0;
+								dbRows.add(temp);
+								loop = false;
+							}
+							if(counter == 10)
+							{
+								loop = false;
+								removeLoop = true;
+							}
+							
+						}
+						if(removeLoop)
+						{
+							blackListRules.add(randomNo);
+							Log.d("REMOVED", "removed");
+							i--;
+							continue;
+						}
+						
+						
+						//
 						String question = questionRule.getFormat().replace(":X:", row.getDataByColumnName(questionRule.getRelation()));
 						String answer = row.getDataByColumnName(questionRule.getAnswer());
 						GeneratedQuestion genQues;
@@ -216,6 +261,12 @@ public class AsyncTaskFragment extends Fragment {
 				else
 				{
 					i--;
+					globalCount++;
+					Log.d("GLOBAL COUNT", globalCount + "");
+					if(globalCount == 200)
+					{
+						return null;
+					}
 				}
 			}
 			return questionList;
@@ -241,10 +292,31 @@ public class AsyncTaskFragment extends Fragment {
 			}
 		}
 
-
-
-
 	} 
 
+}
 
+class KeyHolder
+{
+	public String code;
+	public String relation;
+	public String answer;
+	public KeyHolder(String code, String relation, String answer) {
+		super();
+		this.code = code;
+		this.relation = relation;
+		this.answer = answer;
+	}
+	@Override
+	public boolean equals(Object o) {
+		KeyHolder x = (KeyHolder)o;
+		if(!this.answer.equals(x.answer))
+			return false;
+		if(!this.code.equals(x.code))
+			return false;
+		if(!this.relation.equals(x.relation))
+			return false;
+		return true;	
+	}
+	
 }

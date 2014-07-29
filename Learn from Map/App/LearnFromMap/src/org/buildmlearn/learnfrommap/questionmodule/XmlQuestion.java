@@ -1,5 +1,7 @@
 package org.buildmlearn.learnfrommap.questionmodule;
 
+import android.util.Log;
+
 public class XmlQuestion {
 	
 	private String code;
@@ -8,6 +10,7 @@ public class XmlQuestion {
 	private String answer;
 	private boolean location;
 	private String relation;
+	private String count;
 	public static enum Type {PinOnMap, MultipleChoiceQuestion, FillBlanks};
 	
 	public String getCode() {
@@ -17,6 +20,8 @@ public class XmlQuestion {
 	public void setCode(String code) {
 		this.code = code;
 	}
+	
+	
 
 	public Type getType() {
 		return type;
@@ -59,8 +64,21 @@ public class XmlQuestion {
 		this.relation = relation;
 	}
 
+	public String getCount() {
+		return count;
+	}
+
+	public void setCount(String count) {
+		this.count = count;
+	}
+	
+	public void printRule()
+	{
+		Log.e("Rule", this.getFormat());
+	}
+
 	public XmlQuestion(String code, String type, String format, String answer,
-			boolean location, String relation) {
+			boolean location, String relation, String count) {
 		super();
 		this.code = code;
 		if(type.equals("PIN"))
@@ -79,6 +97,7 @@ public class XmlQuestion {
 		this.answer = answer;
 		this.location = location;
 		this.relation = relation;
+		this.count = count;
 	}
 	
 	

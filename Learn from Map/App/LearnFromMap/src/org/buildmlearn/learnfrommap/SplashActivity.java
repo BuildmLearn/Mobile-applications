@@ -1,14 +1,14 @@
 package org.buildmlearn.learnfrommap;
 
-import java.util.List;
-import java.util.Locale;
-
 import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
+import org.buildmlearn.learnfrommap.maphelper.CustomReverseGeocoder;
 
+import android.content.Context;
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
+import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,8 +27,11 @@ public class SplashActivity extends DatabaseHelper {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
 		loadDatabase();
-		//		DatabaseProcess dbProcess = new DatabaseProcess();
-		//		dbProcess.execute();
+		BitmapFactory.Options options = new BitmapFactory.Options();
+		options.inJustDecodeBounds = true;
+		BitmapFactory.decodeResource(getResources(), R.id.explore_world_map, options);
+		int imageHeight = options.outHeight;
+		int imageWidth = options.outWidth;
 	}
 
 	@Override
@@ -36,36 +39,24 @@ public class SplashActivity extends DatabaseHelper {
 		super.onDatabaseLoad(msg);
 		ProgressBar pb = (ProgressBar)findViewById(R.id.splash_loading);
 		pb.setVisibility(View.GONE);
-		String country = null;
-		if (Geocoder.isPresent())
+		ConnectivityManager cm =
+		        (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+		 
+		NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+		boolean isConnected = activeNetwork != null &&
+		                      activeNetwork.isConnectedOrConnecting();
+		if (isConnected)
 		{
-			try
-			{
-				Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
-				List<Address> addresses = geocoder.getFromLocation(21.00, 78.00, 1);
-				if (addresses.size() > 0)
-				{
-					country = addresses.get(0).getCountryName();
-				}
-			}
-			catch (Exception e)
-			{
-				Log.e("GeoCoder", e.getMessage());
-			}
-		}
-
-		if (country != null && country.length() > 0) // i.e., Geocoder succeed
-		{
-			Toast.makeText(getApplicationContext(), "Geocoder verified", Toast.LENGTH_SHORT).show();
-			Intent intent= new Intent(getApplicationContext(), MainActivity.class);
+			CustomReverseGeocoder geocoder = new CustomReverseGeocoder(this);
+			geocoder.getState();
+			Intent intent= new Intent(getApplicationContext(), ExploreMode.class);
 			startActivity(intent);
 			finish();
-
 		}
 		else 
 		{
 			TextView tvMsg = (TextView)findViewById(R.id.splash_msg);
-			tvMsg.setText("GeoCoder service is currently unavailable. Please restart your device");
+			tvMsg.setText("Error: Your device is not connected to internet");
 			tvMsg.setVisibility(View.VISIBLE);
 			pb.setVisibility(View.GONE);
 		}
@@ -131,7 +122,7 @@ public class SplashActivity extends DatabaseHelper {
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
-			Intent intent= new Intent(getApplicationContext(), MainActivity.class);
+			Intent intent= new Intent(getApplicationContext(), ExploreMode.class);
 			startActivity(intent);
 		}
 

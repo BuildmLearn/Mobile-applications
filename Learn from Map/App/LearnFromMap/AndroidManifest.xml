@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.buildmlearn.learnfrommap"
-    android:largeHeap="true"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -27,10 +26,11 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:theme="@style/CustomActionBarTheme" >
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyBYjDcRrGLyGBhunJT0nql6d5UMkmDmltY" />
+            android:value="AIzaSyCq8O-1lVOwqic6qx1GezTLXSpCtSYpee0" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -54,8 +54,8 @@
         <activity
             android:name="org.buildmlearn.learnfrommap.CategoryActivity"
             android:label="@string/title_activity_category"
-            android:screenOrientation="portrait"
-            android:parentActivityName="org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper" >
+            android:parentActivityName="org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper" />
@@ -63,37 +63,34 @@
         <activity
             android:name="org.buildmlearn.learnfrommap.ClassicModeActivity"
             android:label="@string/title_activity_classic_mode"
-            android:screenOrientation="portrait"
-            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.buildmlearn.learnfrommap.
-                MainActivity" />
-        </activity>
-        <activity
-            android:name="org.buildmlearn.learnfrommap.ExploreMode"
-            android:label="@string/title_activity_explore_mode"
-            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="org.buildmlearn.learnfrommap.GameActivity"
-            android:label="@string/title_activity_game"
-            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity"
-            android:screenOrientation="portrait" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.buildmlearn.learnfrommap.
-                MainActivity" />
-        </activity>
-        <activity
-            android:name="org.buildmlearn.learnfrommap.ScoreActivity"
-            android:label="@string/title_activity_score"
             android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.buildmlearn.learnfrommap.MainActivity" />
+        </activity>
+        <activity
+            android:name="org.buildmlearn.learnfrommap.ExploreMode"
+            android:label="@string/title_activity_explore_mode"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="org.buildmlearn.learnfrommap.GameActivity"
+            android:label="@string/title_activity_game"
+            android:parentActivityName="org.buildmlearn.learnfrommap.ExploreMode"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.buildmlearn.learnfrommap.ExploreMode" />
+        </activity>
+        <activity
+            android:name="org.buildmlearn.learnfrommap.ScoreActivity"
+            android:label="@string/title_activity_score"
+            android:parentActivityName="org.buildmlearn.learnfrommap.ExploreMode"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.buildmlearn.learnfrommap.ExploreMode" />
         </activity>
     </application>
 

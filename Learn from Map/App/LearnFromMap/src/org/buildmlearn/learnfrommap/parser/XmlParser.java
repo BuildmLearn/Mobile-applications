@@ -34,6 +34,7 @@ public class XmlParser {
 		String answer;
 		boolean location;
 		String relation;
+		String count;
 		ArrayList<XmlQuestion> questions = new ArrayList<XmlQuestion>();
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -50,8 +51,9 @@ public class XmlParser {
 				format = element.getElementsByTagName("format").item(0).getTextContent();
 				relation = element.getElementsByTagName("relationship").item(0).getTextContent();
 				answer = element.getElementsByTagName("answer").item(0).getTextContent();
+				count = element.getElementsByTagName("count").item(0).getTextContent();
 				location = Boolean.parseBoolean(element.getElementsByTagName("location").item(0).getTextContent());
-				XmlQuestion question = new XmlQuestion(code, type, format, answer, location, relation);
+				XmlQuestion question = new XmlQuestion(code, type, format, answer, location, relation, count);
 				questions.add(question);
 				//Log.e("TEXT XML", format);
 			}

@@ -21,8 +21,6 @@ public class UserAnsweredData  implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String mQuestion;
 	private String mAnswer;
-
-
 	private String mUserAnswer;
 	private GeneratedQuestion.Type mQuestionType;
 	private String mAnswerType;
@@ -33,6 +31,8 @@ public class UserAnsweredData  implements Serializable{
 	private int mPoints;
 	private double mLat;
 	private double mLog;
+	private String mState;
+	private String mCountry;
 
 
 	public UserAnsweredData(Context mContext, String mQuestion, String mAnswer,
@@ -52,7 +52,6 @@ public class UserAnsweredData  implements Serializable{
 				this.mLat = Double.parseDouble(coords[0]);
 				this.mLog = Double.parseDouble(coords[1]);
 				this.mContext = mContext;
-				evaluatePin();
 			}
 			else
 			{
@@ -74,19 +73,14 @@ public class UserAnsweredData  implements Serializable{
 		}
 	}
 
-	private void evaluatePin()
+	public void evaluatePin()
 	{
 
-		Address address = getAddress(mLat, mLog);
-		if(address == null)
+		if(mAnswerType.equals("country"))
 		{
-			this.mPoints = 0;
-			mIsCorrect = false;
-			Log.e("GeoCoder", "Address Null");
-		}
-		else if(mAnswerType.equals("country"))
-		{
-			String country = address.getCountryName();
+
+			//Country()
+			String country = getCountry();
 			Log.e("Country", country);
 			if(country.equals(mAnswer))
 			{
@@ -101,7 +95,8 @@ public class UserAnsweredData  implements Serializable{
 		}
 		else if(mAnswerType.equals("state"))
 		{
-			String state = address.getAdminArea();
+			//getState()
+			String state = getState();
 
 			if(state != null && state.equals(mAnswer))
 			{
@@ -126,8 +121,7 @@ public class UserAnsweredData  implements Serializable{
 			distance /= 100000;
 			if(distance < 10)
 			{
-				int point = 10-(int)distance;
-				this.mPoints = point;
+				this.mPoints = 10;
 				mIsCorrect = true;
 			}
 			else
@@ -155,25 +149,6 @@ public class UserAnsweredData  implements Serializable{
 
 		return 6366000*tt;
 	}
-
-	//Converts coordinates to country
-	private Address getAddress(double lat, double lng) {
-		Geocoder geocoder = new Geocoder(mContext, Locale.getDefault());
-		try {
-			List<Address> addresses = geocoder.getFromLocation(lat, lng, 1);
-			if(addresses.size() == 0)
-			{
-				return null;
-			}
-			Address obj = addresses.get(0);
-			return obj;
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
 
 	public UserAnsweredData(String mQuestion, String mAnswer,
 			String mUserAnswer, Type mQuestionType, String mAnswerType,
@@ -273,6 +248,24 @@ public class UserAnsweredData  implements Serializable{
 		return mIsAnswered;
 	}
 
+
+
+	public String getState() {
+		return mState;
+	}
+
+	public void setState(String mState) {
+		this.mState = mState;
+	}
+
+	public String getCountry() {
+		return mCountry;
+	}
+
+	public void setCountry(String mCountry) {
+		this.mCountry = mCountry;
+	}
+
 	private void evaluateFill()
 	{
 		if(this.mQuestionType == Type.Fill)
@@ -291,10 +284,10 @@ public class UserAnsweredData  implements Serializable{
 		}
 
 	}
-	
+
 	public static double CompareStrings(String stringA, String stringB) {
-	    JaroWinkler algorithm = new JaroWinkler();
-	    return algorithm.getSimilarity(stringA, stringB);
+		JaroWinkler algorithm = new JaroWinkler();
+		return algorithm.getSimilarity(stringA, stringB);
 	}
 
 	public boolean isAnswerCorrect()

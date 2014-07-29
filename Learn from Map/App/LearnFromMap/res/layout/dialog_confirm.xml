@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:padding="10dp"
-    android:background="#A0000000"
+    android:background="#282828"
     android:orientation="vertical" >
 
     <org.buildmlearn.learnfrommap.TextViewPlus

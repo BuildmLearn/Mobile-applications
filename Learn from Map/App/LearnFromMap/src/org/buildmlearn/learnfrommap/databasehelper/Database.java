@@ -1,5 +1,6 @@
 package org.buildmlearn.learnfrommap.databasehelper;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
@@ -62,6 +63,25 @@ public class Database extends SQLiteAssetHelper  {
 	public String getId(String query) throws QuestionModuleException
 	{
 		return getId(query, 0);
+	}
+	
+	public ArrayList<String> countryList()
+	{
+		ArrayList<String> list = new ArrayList<String>();
+		db = getReadableDatabase();
+		Cursor cursor = db.rawQuery("SELECT name FROM country", null);
+		if(cursor.moveToFirst())
+		{
+			do
+			{
+				list.add(cursor.getString(0));
+			}
+			while(cursor.moveToNext());
+		}
+		cursor.close();
+		db.close();
+		return list;
+		
 	}
 
 	public String getId(String query, int columnIndex) throws QuestionModuleException

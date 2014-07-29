@@ -32,7 +32,7 @@ public class Helper extends ActionBarActivity {
 	private SupportMapFragment mapFragment;
 	private Handler handler;
 	private MarkerOptions markerOptions;
-	private Marker marker;
+	public Marker marker;
 
 	// ////////////////
 	// Override these function
@@ -41,9 +41,9 @@ public class Helper extends ActionBarActivity {
 		mapView.setOnCameraChangeListener(new OnCameraChangeListener() {
 			@Override
 			public void onCameraChange(CameraPosition cameraPosition) {
-				if (cameraPosition.zoom > (float) 4.0) {
+				if (cameraPosition.zoom > (float) 5.0) {
 					mapView.animateCamera(CameraUpdateFactory
-							.zoomTo((float) 4.99));
+							.zoomTo((float) 5.99));
 				}
 
 			}
@@ -58,11 +58,17 @@ public class Helper extends ActionBarActivity {
 				{
 					marker.remove();
 				}
-				markerOptions = new MarkerOptions().draggable(true).position(arg0).flat(true).title("Your Answer").icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_100));
+				markerOptions = new MarkerOptions().draggable(true).position(arg0).flat(true).title("Your Answer").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 				marker = mapView.addMarker(markerOptions);
 			}
 		});
 
+	}
+	
+	public GoogleMap getMaps()
+	{
+		return mapView;
+		
 	}
 	
 	public LatLng getPosition()
@@ -187,7 +193,9 @@ public class Helper extends ActionBarActivity {
 					mapView.addTileOverlay(new TileOverlayOptions()
 							.tileProvider(new CustomTileProvider(getResources()
 									.getAssets(), mapView)));
-					marker = null;
+					markerOptions = new MarkerOptions().draggable(true).position(new LatLng(0, 0)).flat(true).title("Your Answer").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+					marker = mapView.addMarker(markerOptions);
+					//marker = null;
 					if (getApplicationContext() != null) {
 						runOnUiThread(new Runnable() {
 
@@ -227,7 +235,7 @@ public class Helper extends ActionBarActivity {
 						}
 					} else {
 						// OpenGL version is not supported
-						if (getApplicationContext() != null) {
+						if (getApplicationContext() != null) {		
 							runOnUiThread(new Runnable() {
 								@Override
 								public void run() {

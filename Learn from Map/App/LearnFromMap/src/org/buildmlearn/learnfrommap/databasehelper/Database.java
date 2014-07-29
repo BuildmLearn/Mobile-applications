@@ -28,8 +28,8 @@ public class Database extends SQLiteAssetHelper  {
 		super(context, DB_NAME, null, DATABASE_VERSION);
 	}
 
-	public Database(Context context,  int i) {
-		super(context, DB_NAME, null, DATABASE_VERSION);
+	public Database(Context context,  int i , String path) {
+		super(context, DB_NAME, path, null, DATABASE_VERSION);
 		Log.d("Database", "Opening readable database");
 		db = getReadableDatabase();
 	}

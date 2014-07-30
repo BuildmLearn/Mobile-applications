@@ -30,8 +30,6 @@ public class SplashActivity extends DatabaseHelper {
 		BitmapFactory.Options options = new BitmapFactory.Options();
 		options.inJustDecodeBounds = true;
 		BitmapFactory.decodeResource(getResources(), R.id.explore_world_map, options);
-		int imageHeight = options.outHeight;
-		int imageWidth = options.outWidth;
 	}
 
 	@Override
@@ -40,11 +38,11 @@ public class SplashActivity extends DatabaseHelper {
 		ProgressBar pb = (ProgressBar)findViewById(R.id.splash_loading);
 		pb.setVisibility(View.GONE);
 		ConnectivityManager cm =
-		        (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-		 
+				(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
 		NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 		boolean isConnected = activeNetwork != null &&
-		                      activeNetwork.isConnectedOrConnecting();
+				activeNetwork.isConnectedOrConnecting();
 		if (isConnected)
 		{
 			CustomReverseGeocoder geocoder = new CustomReverseGeocoder(this);
@@ -92,48 +90,5 @@ public class SplashActivity extends DatabaseHelper {
 		return super.onOptionsItemSelected(item);
 	}
 
-
-	//	@SuppressLint("NewApi")
-	//	@Override
-	//	protected void onResume()
-	//	{
-	//	    super.onResume();
-	//
-	//	    if (Build.VERSION.SDK_INT < 16)
-	//	    {
-	//	        // Hide the status bar
-	//	        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-	//	        // Hide the action bar
-	//	        getSupportActionBar().hide();
-	//	    }
-	//	    else
-	//	    {
-	//	        // Hide the status bar
-	//	        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
-	//	        // Hide the action bar
-	//	        getActionBar().hide();
-	//	    }
-	//}
-
-	public class DatabaseProcess extends AsyncTask<Void, Void, Void>
-	{
-
-		@Override
-		protected void onPostExecute(Void result) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(result);
-			Intent intent= new Intent(getApplicationContext(), ExploreMode.class);
-			startActivity(intent);
-		}
-
-		@Override
-		protected Void doInBackground(Void... arg0) {
-			// TODO Auto-generated method stub
-			Database db = new Database(getApplicationContext());
-			db.close();
-			return null;
-		}
-
-	}
 
 }

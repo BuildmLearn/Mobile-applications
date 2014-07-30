@@ -11,8 +11,19 @@ public class XmlQuestion {
 	private boolean location;
 	private String relation;
 	private String count;
+	private String display;
 	public static enum Type {PinOnMap, MultipleChoiceQuestion, FillBlanks};
 	
+	
+	
+	public String getDisplay() {
+		return display;
+	}
+
+	public void setDisplay(String display) {
+		this.display = display;
+	}
+
 	public String getCode() {
 		return code;
 	}
@@ -98,6 +109,7 @@ public class XmlQuestion {
 		this.location = location;
 		this.relation = relation;
 		this.count = count;
+		this.display = "name";
 	}
 	
 	

@@ -9,15 +9,15 @@
 	    <count>unique</count>
 	    <answer>name</answer>
 	</question> -->
-<!-- 	<question>
+	<question>
 	    <code>PPLC</code>
 	    <type>PIN</type>
-	    <relationship>name</relationship>
+	    <relationship>country</relationship>
 	    <location>true</location>
 	    <format>Pin the capital of :X:</format>
 	    <count>unique</count>
 	    <answer>location</answer>
-	</question> -->
+	</question>
  	<question>
 	    <code>PCLI</code>
 	    <type>MCQ</type>

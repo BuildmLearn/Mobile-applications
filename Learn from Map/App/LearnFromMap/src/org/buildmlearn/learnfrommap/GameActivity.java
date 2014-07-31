@@ -43,6 +43,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -267,6 +268,9 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 										Toast.makeText(getApplicationContext(), state, Toast.LENGTH_SHORT);
 
 									}
+									
+
+									marker.setTitle(state + ", " +country);
 								}
 
 							} catch (JSONException e) {
@@ -282,8 +286,15 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 					new Response.ErrorListener() {
 						@Override
 						public void onErrorResponse(VolleyError error) {
+<<<<<<< HEAD
 							Log.d("VOLLEY ERROR", "Error " + error.getMessage());
 							Toast.makeText(getApplicationContext(), "There was some error fetching your location\nError: " + error.getMessage(), Toast.LENGTH_LONG).show();
+=======
+							Log.d("VOLLEY ERROR", error.getMessage() + "");
+							country = "";
+							state = "";
+							Toast.makeText(getApplicationContext(), "Network Error: " + error.getMessage(), Toast.LENGTH_LONG).show();
+>>>>>>> origin/LearnFromMap_release1
 						}
 					});
 					RequestQueue mQueue = Volley.newRequestQueue(this);
@@ -296,15 +307,15 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 					state = "";
 				}
 				LatLng newPostion = new LatLng(genQuestion.getDbRow().getLat(), genQuestion.getDbRow().getLng());
-				MarkerOptions markerOption = new MarkerOptions().draggable(false).position(newPostion).flat(true).title("Correct Answer");
+				MarkerOptions markerOption = new MarkerOptions().draggable(false).position(newPostion).flat(true).title(genQuestion.getDbRow().getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 				mapView.setOnMapClickListener(null);
 				marker.setDraggable(false);
-				marker = mapView.addMarker(markerOption);
-				getMaps().addMarker(markerOption);
-				CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(newPostion, 4);
+				mapView.addMarker(markerOption);
+				Marker answerMarker = getMaps().addMarker(markerOption);
+				CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(newPostion, 5);
 				getMaps().animateCamera(cameraUpdate);
 				mTimer.setText("Correct answer is pinned on the map");
-				marker.showInfoWindow();
+				answerMarker.showInfoWindow();
 
 			}
 			button.setText("Next");

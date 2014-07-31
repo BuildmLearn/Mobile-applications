@@ -9,12 +9,20 @@
 	    <format>Capital of :X: is _________</format>
 	    <count>unique</count>
 	    <answer>name</answer>
+<<<<<<< HEAD
 	</question>
 	<question>
 	    <code>PPLC</code>
 	    <type>PIN</type>
 	    <alias></alias>
 	    <relationship>name</relationship>
+=======
+	</question> -->
+	<question>
+	    <code>PPLC</code>
+	    <type>PIN</type>
+	    <relationship>country</relationship>
+>>>>>>> origin/LearnFromMap_release1
 	    <location>true</location>
 	    <format>Pin the capital of :X:</format>
 	    <count>unique</count>

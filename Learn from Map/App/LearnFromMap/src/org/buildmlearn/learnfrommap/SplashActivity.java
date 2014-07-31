@@ -34,11 +34,11 @@ public class SplashActivity extends DatabaseHelper {
 		ProgressBar pb = (ProgressBar)findViewById(R.id.splash_loading);
 		pb.setVisibility(View.GONE);
 		ConnectivityManager cm =
-		        (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-		 
+				(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
 		NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 		boolean isConnected = activeNetwork != null &&
-		                      activeNetwork.isConnectedOrConnecting();
+				activeNetwork.isConnectedOrConnecting();
 		if (isConnected)
 		{
 			CustomReverseGeocoder geocoder = new CustomReverseGeocoder(this);
@@ -86,4 +86,8 @@ public class SplashActivity extends DatabaseHelper {
 		return super.onOptionsItemSelected(item);
 	}
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/LearnFromMap_release1
 }

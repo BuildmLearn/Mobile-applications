@@ -97,10 +97,11 @@ public class UserAnsweredData  implements Serializable{
 		{
 			//getState()
 			String state = getState();
-
+			
 			if(state != null && state.equals(mAnswer))
 			{
 				Log.e("State", state);
+				Log.e("State", mAnswer);
 				this.mPoints = 10;
 				mIsCorrect = true;
 			}
@@ -119,7 +120,7 @@ public class UserAnsweredData  implements Serializable{
 			float lng = Float.parseFloat(coords[1]);
 			double distance = distanceBetween(lat, lng, (float)mLat, (float)mLog);
 			distance /= 100000;
-			if(distance < 10)
+			if(distance < 20)
 			{
 				this.mPoints = 10;
 				mIsCorrect = true;
@@ -134,7 +135,7 @@ public class UserAnsweredData  implements Serializable{
 	}
 
 	@SuppressLint("FloatMath") 
-	private double distanceBetween(float lat1, float lng1, float lat2, float lng2) {
+	private static double distanceBetween(float lat1, float lng1, float lat2, float lng2) {
 		float x = (float) (180/3.14169);
 
 		float a1 = lat1 / x;

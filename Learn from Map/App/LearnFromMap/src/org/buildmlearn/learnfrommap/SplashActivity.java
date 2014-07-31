@@ -86,8 +86,4 @@ public class SplashActivity extends DatabaseHelper {
 		return super.onOptionsItemSelected(item);
 	}
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/LearnFromMap_release1
 }

@@ -286,15 +286,10 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 					new Response.ErrorListener() {
 						@Override
 						public void onErrorResponse(VolleyError error) {
-<<<<<<< HEAD
-							Log.d("VOLLEY ERROR", "Error " + error.getMessage());
-							Toast.makeText(getApplicationContext(), "There was some error fetching your location\nError: " + error.getMessage(), Toast.LENGTH_LONG).show();
-=======
 							Log.d("VOLLEY ERROR", error.getMessage() + "");
 							country = "";
 							state = "";
 							Toast.makeText(getApplicationContext(), "Network Error: " + error.getMessage(), Toast.LENGTH_LONG).show();
->>>>>>> origin/LearnFromMap_release1
 						}
 					});
 					RequestQueue mQueue = Volley.newRequestQueue(this);

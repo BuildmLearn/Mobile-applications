@@ -5,17 +5,16 @@ import java.util.ArrayList;
 import org.buildmlearn.learnfrommap.adapter.CategoryAdapter;
 import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
 import org.buildmlearn.learnfrommap.helper.CustomDialog;
+import org.buildmlearn.learnfrommap.parser.XmlParser;
+import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion;
 
-import android.app.Dialog;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
 import android.widget.ListView;
 
 public class CategoryActivity extends DatabaseHelper {
-	
+
 	ListView mCategoryList;
 	ArrayList<String> mCList;
 	CategoryAdapter mAdapter;
@@ -27,8 +26,15 @@ public class CategoryActivity extends DatabaseHelper {
 		getSupportActionBar().setHomeButtonEnabled(true);
 		mCategoryList = (ListView)findViewById(R.id.listView_category);
 		mCList = new ArrayList<String>();
-		mCList.add("Abhishek");
-		mCList.add("Batra");
+		XmlParser parser = new XmlParser(getApplicationContext());
+		ArrayList<XmlQuestion> xmlList = parser.fetchQuestions();
+		for(XmlQuestion temp: xmlList)
+		{
+			if(!mCList.contains(temp.getAlias()))
+			{
+				mCList.add(temp.getAlias());
+			}
+		}
 		mAdapter = new CategoryAdapter(this, R.layout.listview_row_category_mode, mCList);
 		mCategoryList.setAdapter(mAdapter);
 

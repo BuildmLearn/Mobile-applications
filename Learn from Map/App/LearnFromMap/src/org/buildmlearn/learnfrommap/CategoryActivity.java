@@ -1,5 +1,8 @@
 package org.buildmlearn.learnfrommap;
 
+import java.util.ArrayList;
+
+import org.buildmlearn.learnfrommap.adapter.CategoryAdapter;
 import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
 import org.buildmlearn.learnfrommap.helper.CustomDialog;
 
@@ -9,14 +12,25 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
+import android.widget.ListView;
 
 public class CategoryActivity extends DatabaseHelper {
+	
+	ListView mCategoryList;
+	ArrayList<String> mCList;
+	CategoryAdapter mAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_category);
 		getSupportActionBar().setHomeButtonEnabled(true);
+		mCategoryList = (ListView)findViewById(R.id.listView_category);
+		mCList = new ArrayList<String>();
+		mCList.add("Abhishek");
+		mCList.add("Batra");
+		mAdapter = new CategoryAdapter(this, R.layout.listview_row_category_mode, mCList);
+		mCategoryList.setAdapter(mAdapter);
 
 	}
 

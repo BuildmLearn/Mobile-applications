@@ -35,13 +35,13 @@
                 android:textSize="24sp"
                 foo:customFont="Roboto_Light.ttf" />
 
-	            <View
-	                android:layout_width="fill_parent"
-	                android:layout_height="1dp"
-	                android:layout_marginBottom="5dp"
-	                android:layout_marginLeft="2dp"
-	                android:layout_marginRight="2dp"
-	                android:background="#ffffff" />
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:background="#ffffff" />
 
             <org.buildmlearn.learnfrommap.TextViewPlus
                 android:layout_width="wrap_content"
@@ -50,18 +50,17 @@
                 android:text="@string/category_desc"
                 android:textColor="@android:color/white"
                 foo:customFont="Roboto_Light.ttf" />
-
         </LinearLayout>
 
         <ListView
-            android:id="@+id/listView1"
+            android:id="@+id/listView_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="7dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10.0sp"
             tools:listitem="@layout/listview_row_category_mode" >
-            
         </ListView>
-
     </LinearLayout>
 
 </RelativeLayout>

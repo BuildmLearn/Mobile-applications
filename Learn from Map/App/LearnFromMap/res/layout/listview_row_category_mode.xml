@@ -20,7 +20,7 @@
         android:layout_height="match_parent" >
 
         <org.buildmlearn.learnfrommap.TextViewPlus
-            android:id="@+id/list_question"
+            android:id="@+id/category"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
@@ -30,7 +30,7 @@
             android:text="@string/option1"
             android:textColor="@android:color/white"
             android:textSize="16sp"
-            foo:customFont="Roboto_Light.ttf" />
+            foo:customFont="Roboto_Regular.ttf" />
 
         <ImageView
             android:id="@+id/imageView2"

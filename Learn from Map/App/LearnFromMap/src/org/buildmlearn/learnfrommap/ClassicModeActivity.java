@@ -57,9 +57,6 @@ public class ClassicModeActivity extends ActionBarActivity {
 		intent.putExtra("MODE", "CLASSIC_MODE");
 		intent.putExtra("SELECTION", "COUNTRY");
 
-		// Create an ArrayAdapter using the string array and a default spinner layout
-		//ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_text_view,  R.array.countries_array);
-
 		locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 		location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
@@ -111,18 +108,17 @@ public class ClassicModeActivity extends ActionBarActivity {
 
 	public void loadLocation(View v)
 	{
+		// Register the listener with the Location Manager to receive location updates
 
 		mLoading.setVisibility(View.VISIBLE);
 		mMain.setVisibility(View.GONE);
-		// Register the listener with the Location Manager to receive location updates
-
-
 		if(location != null)
 		{
 			getCountry(location.getLatitude(), location.getLongitude());
 		}
 		else
-		{
+		{		
+
 			try 
 			{
 				locationManager.requestLocationUpdates(LocationManager.PASSIVE_PROVIDER, 0, 0, locationListener);

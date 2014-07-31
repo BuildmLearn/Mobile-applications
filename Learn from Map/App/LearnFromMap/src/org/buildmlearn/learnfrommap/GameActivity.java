@@ -130,8 +130,6 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 		mView = getLayoutInflater().inflate(R.layout.layout_play_game, mMain,false);
 	}
 
-
-
 	public void startGame(View v)
 	{
 		loadQuestion();
@@ -260,11 +258,13 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 									{
 										country = obj.getString("long_name");
 										Log.e("Country", country);
+										Toast.makeText(getApplicationContext(), country, Toast.LENGTH_SHORT);
 									}
 									if(tempArray.getString(0).equals("administrative_area_level_1"))
 									{
 										state = obj.getString("long_name");
 										Log.e("State", state);
+										Toast.makeText(getApplicationContext(), state, Toast.LENGTH_SHORT);
 
 									}
 								}
@@ -282,7 +282,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 					new Response.ErrorListener() {
 						@Override
 						public void onErrorResponse(VolleyError error) {
-							Log.d("VOLLEY ERROR", error.getMessage());
+							Log.d("VOLLEY ERROR", "Error " + error.getMessage());
 							Toast.makeText(getApplicationContext(), "There was some error fetching your location\nError: " + error.getMessage(), Toast.LENGTH_LONG).show();
 						}
 					});
@@ -465,8 +465,6 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 			mMain.addView(mView);
 			mDisplayQuestion = (TextViewPlus)findViewById(R.id.question);
 			mDisplayQuestion.setText(genQuestion.getQuestion());
-			EditText fillAnswer = (EditText)findViewById(R.id.fill_answer);
-			fillAnswer.setText(genQuestion.getAnswer());
 			startTimer(60000);
 
 		}
@@ -680,6 +678,11 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 	@SuppressWarnings("unchecked")
 	@Override
 	public void onPostExecute(Object question) {
+		if(question == null)
+		{
+			Toast.makeText(getApplicationContext(), "Currently " + mValue + " is not supported", Toast.LENGTH_LONG).show();
+			finish();
+		}
 		mQuestion = (ArrayList<GeneratedQuestion>)question;
 		mMain.removeAllViews();
 		mMain.addView(mView);

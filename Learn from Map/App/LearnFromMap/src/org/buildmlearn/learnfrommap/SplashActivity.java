@@ -43,7 +43,7 @@ public class SplashActivity extends DatabaseHelper {
 		{
 			CustomReverseGeocoder geocoder = new CustomReverseGeocoder(this);
 			geocoder.getState();
-			Intent intent= new Intent(getApplicationContext(), MainActivity.class);
+			Intent intent= new Intent(getApplicationContext(), ExploreMode.class);
 			startActivity(intent);
 			finish();
 		}

@@ -10,9 +10,6 @@ import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion;
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion.Type;
 import org.buildmlearn.learnfrommap.questionmodule.QuestionModuleException;
 import org.buildmlearn.learnfrommap.questionmodule.UserAnsweredData;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -46,7 +43,6 @@ import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -78,12 +74,11 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 	private GeneratedQuestion genQuestion;
 	private String[] options;
 	private boolean mIsAnswered;
+	private boolean mIsCorrect;
 	private String mDisplatMsg;
 	protected long timeLeft;
 	private Dialog dialog;
 	private Marker userMarker;
-	private String country;
-	private String state;
 	private AsyncTaskFragment mTaskFragment;
 
 	@Override	
@@ -229,6 +224,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 			}
 			else if(genQuestion.getType() ==  Type.Pin)
 			{
+				mIsCorrect = false;
 				mTimer.setText("Please wait");
 				button.setVisibility(View.INVISIBLE);
 				final ProgressBar progress = (ProgressBar)findViewById(R.id.map_progress1);
@@ -269,55 +265,79 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 							{
 								if(distance < 600)
 								{
+									mIsCorrect = true;
 									marker.setPosition(new LatLng(ansLat, andLng));
 									marker.setTitle(markerTitle);
+									marker.showInfoWindow();
 									mTimer.setText("Your answer is correct but more accurate answer is shown below");
 									marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 								}
 								else
 								{
 									mTimer.setText("Wrong answer!\nCorrect answer is shown below");
-									mapView.addMarker(markerOption);
+									mapView.addMarker(markerOption).showInfoWindow();;
 								}
+								CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(ansLat, andLng), 3);
+								getMaps().animateCamera(cameraUpdate);
 							}
 							else if(answerColumn.equals("state"))
 							{
 								if(reGeoData.getState().equals(genQuestion.getDbRow().getState()))
 								{
+									mIsCorrect = true;
+									marker.setTitle(markerTitle);
+									marker.showInfoWindow();
 									mTimer.setText("That's the correct answer!");
 									marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 								}
 								else if(distance < 600)
 								{
+									mIsCorrect = true;
 									marker.setPosition(new LatLng(ansLat, andLng));
 									marker.setTitle(markerTitle);
+									marker.showInfoWindow();
 									marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 									mTimer.setText("Your answer is correct but more accurate answer is shown below");
+									CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(ansLat, andLng), 3);
+									getMaps().animateCamera(cameraUpdate);
 								}
 								else
 								{
 									mTimer.setText("Wrong answer!\nCorrect answer is shown below");
-									mapView.addMarker(markerOption);
+									mapView.addMarker(markerOption).showInfoWindow();;
+									marker.setTitle(reGeoData.getState());
+									CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(ansLat, andLng), 3);
+									getMaps().animateCamera(cameraUpdate);
 								}
 							}
 							else if(answerColumn.equals("country"))
 							{
-								if(reGeoData.getState().equals(genQuestion.getDbRow().getCountry()))
+								if(reGeoData.getCountry().equals(genQuestion.getDbRow().getCountry()))
 								{
+									mIsCorrect = true;
+									marker.setTitle(markerTitle);
+									marker.showInfoWindow();
 									mTimer.setText("That's the correct answer!");
 									marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 								}
 								else if(distance < 600)
 								{
+									mIsCorrect = true;
 									marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 									marker.setPosition(new LatLng(ansLat, andLng));
 									marker.setTitle(markerTitle);
+									marker.showInfoWindow();
 									mTimer.setText("Your answer is correct but more accurate answer is shown below");
+									CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(ansLat, andLng), 3);
+									getMaps().animateCamera(cameraUpdate);
 								}
 								else
 								{
 									mTimer.setText("Wrong answer!\nCorrect answer is shown below");
-									mapView.addMarker(markerOption);
+									marker.setTitle(reGeoData.getCountry());
+									mapView.addMarker(markerOption).showInfoWindow();;
+									CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(ansLat, andLng), 3);
+									getMaps().animateCamera(cameraUpdate);
 								}
 							}
 							else
@@ -331,16 +351,20 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 							MarkerOptions markerOption = new MarkerOptions().draggable(false).position(ansPosition).flat(true).title(genQuestion.getDbRow().getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 							if(distance < 600)
 							{
+								mIsCorrect = true;
 								marker.setPosition(new LatLng(ansLat, andLng));
 								marker.setTitle(markerTitle);
+								marker.showInfoWindow();
 								mTimer.setText("Your answer is correct but more accurate answer is shown below");
 								marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 							}
 							else
 							{
 								mTimer.setText("Wrong answer!\nCorrect answer is shown below");
-								mapView.addMarker(markerOption);
+								mapView.addMarker(markerOption).showInfoWindow();;
 							}
+							CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(ansLat, andLng), 3);
+							getMaps().animateCamera(cameraUpdate);
 						}
 
 					}
@@ -355,6 +379,12 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 								double andLng = genQuestion.getDbRow().getLng();
 								LatLng ansPosition = new LatLng(ansLat, andLng);
 								String markerTitle = "";
+								try {
+									markerTitle = genQuestion.getDbRow().getDataByColumnName(genQuestion.getXml().getMarker());
+								} catch (QuestionModuleException e) {
+									Toast.makeText(getApplicationContext(), "Invalid entry in \"marker\" in Xml", Toast.LENGTH_SHORT).show();
+									e.printStackTrace();
+								}
 								double userLat = marker.getPosition().latitude;
 								double userLng = marker.getPosition().longitude;
 								double distance = HelperFunctions.distance(userLat, userLng, ansLat, andLng, 'K');
@@ -362,16 +392,20 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 								MarkerOptions markerOption = new MarkerOptions().draggable(false).position(ansPosition).flat(true).title(genQuestion.getDbRow().getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 								if(distance < 600)
 								{
+									mIsCorrect = true;
 									marker.setPosition(new LatLng(ansLat, andLng));
 									marker.setTitle(markerTitle);
+									marker.showInfoWindow();
 									mTimer.setText("Your answer is correct but more accurate answer is shown below");
 									marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 								}
 								else
 								{
 									mTimer.setText("Wrong answer!\nCorrect answer is shown below");
-									mapView.addMarker(markerOption);
+									mapView.addMarker(markerOption).showInfoWindow();
 								}
+								CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(ansLat, andLng), 3);
+								getMaps().animateCamera(cameraUpdate);
 								Toast.makeText(getApplicationContext(), "Network Error", Toast.LENGTH_SHORT).show();
 							}
 						});
@@ -514,9 +548,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 					userAnswer = "";
 				}
 				userAnswerData = new UserAnsweredData(getApplicationContext(), question, answer, userAnswer, genQuestion.getType(), genQuestion.getXml().getAnswer());
-				userAnswerData.setCountry(country);
-				userAnswerData.setState(state);
-				userAnswerData.evaluatePin();
+				userAnswerData.evaluatePin(mIsCorrect);
 			}
 			mAnsweredList.add(userAnswerData);
 

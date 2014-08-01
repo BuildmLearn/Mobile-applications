@@ -64,7 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
                     android:layout_margin="2dp"
                     android:background="@drawable/custom_tile_color_no_bg"
                     android:clickable="true"

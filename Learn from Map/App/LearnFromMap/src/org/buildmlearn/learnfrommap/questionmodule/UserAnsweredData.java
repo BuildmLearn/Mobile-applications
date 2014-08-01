@@ -73,64 +73,73 @@ public class UserAnsweredData  implements Serializable{
 		}
 	}
 
-	public void evaluatePin()
+	public void evaluatePin(boolean isCorrect)
 	{
-
-		if(mAnswerType.equals("country"))
+		if(isCorrect)
 		{
-
-			//Country()
-			String country = getCountry();
-			Log.e("Country", country);
-			if(country.equals(mAnswer))
-			{
-				this.mPoints = 10;
-				mIsCorrect = true;
-			}
-			else
-			{
-				this.mPoints = 0;
-				mIsCorrect = false;
-			}
+			this.mPoints = 10;
+			mIsCorrect = true;
 		}
-		else if(mAnswerType.equals("state"))
+		else
 		{
-			//getState()
-			String state = getState();
-			
-			if(state != null && state.equals(mAnswer))
-			{
-				Log.e("State", state);
-				Log.e("State", mAnswer);
-				this.mPoints = 10;
-				mIsCorrect = true;
-			}
-			else
-			{
-				this.mPoints = 0;
-				mIsCorrect = false;
-			}
-
+			this.mPoints = 0;
+			mIsCorrect = false;
 		}
-		else	
-		{
-
-			String[] coords = mAnswer.split(",");
-			float lat = Float.parseFloat(coords[0]);
-			float lng = Float.parseFloat(coords[1]);
-			double distance = distanceBetween(lat, lng, (float)mLat, (float)mLog);
-			distance /= 100000;
-			if(distance < 20)
-			{
-				this.mPoints = 10;
-				mIsCorrect = true;
-			}
-			else
-			{
-				this.mPoints = 0;
-				mIsCorrect = false;
-			}
-		}
+//		if(mAnswerType.equals("country"))
+//		{
+//
+//			//Country()
+//			String country = getCountry();
+//			Log.e("Country", country);
+//			if(country.equals(mAnswer))
+//			{
+//				this.mPoints = 10;
+//				mIsCorrect = true;
+//			}
+//			else
+//			{
+//				this.mPoints = 0;
+//				mIsCorrect = false;
+//			}
+//		}
+//		else if(mAnswerType.equals("state"))
+//		{
+//			//getState()
+//			String state = getState();
+//			
+//			if(state != null && state.equals(mAnswer))
+//			{
+//				Log.e("State", state);
+//				Log.e("State", mAnswer);
+//				this.mPoints = 10;
+//				mIsCorrect = true;
+//			}
+//			else
+//			{
+//				this.mPoints = 0;
+//				mIsCorrect = false;
+//			}
+//
+//		}
+//		else	
+//		{
+//
+//			String[] coords = mAnswer.split(",");
+//			float lat = Float.parseFloat(coords[0]);
+//			float lng = Float.parseFloat(coords[1]);
+//			double distance = distanceBetween(lat, lng, (float)mLat, (float)mLog);
+//			distance /= 100000;
+//			if(distance < 20)
+//			{
+//				this.mPoints = 10;
+//				mIsCorrect = true;
+//			}
+//			else
+//			{
+//				this.mPoints = 0;
+//				mIsCorrect = false;
+//			}
+//		}
 
 	}
 

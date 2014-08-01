@@ -45,7 +45,7 @@
     <string name="title_activity_explore_mode">Learn From Map</string>
     <string name="select_continent">Select a  continent</string>
     <string name="unlocked_continents">Double tap the continent to select</string>
-    <string name="title_activity_game">GameActivity</string>
+    <string name="title_activity_game">Start Challenge</string>
     <string name="loading">Loading</string>
     <string name="start_game">Start Challenge</string>
     <string name="answer">Answer</string>
@@ -63,7 +63,7 @@
     <string name="no">No</string>
     <string name="about_build_m_learn">"\'Learn from Map\' is an educative game that teaches geography in a fun way. The users get to use an interactive map to answer questions by pinning relevant location on the Maps."</string>
     <string name="developed_by_build_m_learn">Developed by BuildmLearn</string>
-    <string name="website">Visit us at www.buildmlean.org</string>
+    <string name="website">Visit us at www.buildmlearn.org</string>
     <string name="select_a_category">Select a category</string>
     <string name="category_desc">"In this mode you can select the category (like country, states, mountains etc.) for which you want to play the challenge. Question will be particularly based on category selected. "</string>
 

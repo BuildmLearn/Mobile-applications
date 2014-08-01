@@ -74,6 +74,19 @@
                     android:text="@string/next_question"
                     android:textColor="@android:color/white"
                     foo:customFont="Roboto_Light.ttf" />
+
+                <ProgressBar
+                    android:id="@+id/map_progress1"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/timer"
+                    android:layout_alignLeft="@+id/next_btn"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:visibility="gone"
+                    android:layout_margin="2dp" />
+
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

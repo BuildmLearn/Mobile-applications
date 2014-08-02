@@ -7,7 +7,7 @@
 
     <color android:id="@+id/color1" name="black_alpha">#70000000</color>
 
-    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_splash"></string>
     <string name="buildmlearn">BuildmLearn</string>
     <string name="most_successful_answers">MOST SUCCESSFUL ANSWERS</string>
     <string name="more_info">more info</string>
@@ -36,7 +36,7 @@
     <string name="option2">Option 2</string>
     <string name="option3">Option 3</string>
     <string name="option4">Option 4</string>
-    <string name="title_activity_category">CategoryActivity</string>
+    <string name="title_activity_category">Category Mode</string>
     <string name="title_activity_classic_mode">Classic Mode</string>
     <string name="classic_mode_description">"In this mode you can select your current location or select any of the available countries from the drop-down. The questions will be specifically based on your selection."</string>
     <string name="use_my_location">Use My Location</string>

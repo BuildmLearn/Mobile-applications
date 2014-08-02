@@ -78,6 +78,22 @@ public class HelperFunctions {
 			stat.putListInt("COUNTRY_ANS", ans, context);
 		}
 	}
+	
+	public static ArrayList<StatHolder> bindStat(Context context)
+	{
+		TinyDB stat = new TinyDB(context);
+		ArrayList<StatHolder> data = new ArrayList<StatHolder>();
+		ArrayList<String> countryList = stat.getList("COUNTRY");
+		ArrayList<Integer> total = stat.getListInt("COUNTRY_TOTAL", context);
+		ArrayList<Integer> ans = stat.getListInt("COUNTRY_ANS", context);
+		for(int i=0; i < countryList.size(); i++)
+		{
+			StatHolder temp = new StatHolder(countryList.get(i), total.get(i), ans.get(i));
+			data.add(temp);
+		}
+		return data;
+		
+	}
 
 
 }

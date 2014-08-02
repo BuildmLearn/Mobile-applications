@@ -7,12 +7,9 @@ import org.buildmlearn.learnfrommap.helper.CustomDialog;
 import org.buildmlearn.learnfrommap.questionmodule.UserAnsweredData;
 
 import android.support.v7.app.ActionBarActivity;
-import android.app.Dialog;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
 import android.widget.ListView;
 
 public class ScoreActivity extends ActionBarActivity {

@@ -122,41 +122,33 @@ public class ExploreMode extends ActionBarActivity {
 			int touchedRGB = bitmap.getPixel(x, y);
 			String color = Integer.toHexString(touchedRGB);
 			String continent = "";
-			String s = "";
 			if(color.equals("ffeeeeee"))
 			{
 				continent = "2";
-				s = "Asia";
 			}
 			else if(color.equals("ff333333"))
 			{
 				continent = "4";
-				s = "Norht America";
 			}
 			else if(color.equals("ff999999"))
 			{
 				continent = "6";
-				s = "South America";
 			}
 			else if(color.equals("ff777777"))
 			{
 				continent = "1";
-				s = "Africa";
 			}
 			else if(color.equals("ffaaaaaa"))
 			{
 				continent = "3";
-				s = "Europe";
 			}
 			else if(color.equals("ffffffff"))
 			{
 				continent = "7";
-				s = "Antarctica";
 			}
 			else if(color.equals("ff555555"))
 			{
 				continent = "5";
-				s = "Oceania";
 			}
 			if(continent.length() > 0 && !isClicked)
 			{

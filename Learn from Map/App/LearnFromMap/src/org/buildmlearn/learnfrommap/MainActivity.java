@@ -43,7 +43,8 @@ public class MainActivity extends ActionBarActivity {
 	    	startActivity(intent);
 			break;
 		case R.id.settings:
-			Toast.makeText(getApplicationContext(), "Coming Soon!", Toast.LENGTH_SHORT).show();
+			intent = new Intent(getApplicationContext(), StatisticsActivity.class);
+	    	startActivity(intent);
 			break;
 
 		default:

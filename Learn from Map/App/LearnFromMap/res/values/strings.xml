@@ -66,5 +66,6 @@
     <string name="website">Visit us at www.buildmlearn.org</string>
     <string name="select_a_category">Select a category</string>
     <string name="category_desc">"In this mode you can select the category (like country, states, mountains etc.) for which you want to play the challenge. Question will be particularly based on category selected. "</string>
+    <string name="title_activity_statistics">Statistics</string>
 
 </resources>

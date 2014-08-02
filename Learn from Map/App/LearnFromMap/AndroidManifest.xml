@@ -92,6 +92,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.buildmlearn.learnfrommap.ExploreMode" />
         </activity>
+        <activity
+            android:name="org.buildmlearn.learnfrommap.StatisticsActivity"
+            android:label="@string/title_activity_statistics" >
+        </activity>
     </application>
 
 </manifest>

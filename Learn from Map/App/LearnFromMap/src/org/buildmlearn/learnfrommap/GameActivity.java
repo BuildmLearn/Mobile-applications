@@ -153,6 +153,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 				{
 					mTimer.setText("Correct answer is " + answer);
 					isCorrect = null;
+					HelperFunctions.updateStats(getApplicationContext(), false, genQuestion.getDbRow().getCountry());
 				}
 				for(int i=0; i<4; i++)
 				{
@@ -164,9 +165,11 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 						{
 							mTimer.setText("That's the correct answer!");
 							isCorrect = true;
+							HelperFunctions.updateStats(getApplicationContext(), true, genQuestion.getDbRow().getCountry());
 						}
 						else
 						{
+							HelperFunctions.updateStats(getApplicationContext(), false, genQuestion.getDbRow().getCountry());
 							mTimer.setText("Sorry, wrong answer!");
 							if(mSdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
 								options[i].setBackgroundDrawable(getResources().getDrawable(R.drawable.wrong_answer));
@@ -214,11 +217,14 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 				{
 					new Color();
 					layout.setBackgroundColor(Color.argb(128, 102, 153, 00));
+					HelperFunctions.updateStats(getApplicationContext(), true, genQuestion.getDbRow().getCountry());
 				}
 				else if(isCorrect != null && !isCorrect)
 				{
 					layout.setBackgroundColor(Color.argb(128, 204, 00, 00));
+					HelperFunctions.updateStats(getApplicationContext(), false, genQuestion.getDbRow().getCountry());
 				}
+
 
 
 			}
@@ -549,6 +555,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 				}
 				userAnswerData = new UserAnsweredData(getApplicationContext(), question, answer, userAnswer, genQuestion.getType(), genQuestion.getXml().getAnswer());
 				userAnswerData.evaluatePin(mIsCorrect);
+				HelperFunctions.updateStats(getApplicationContext(), mIsCorrect, genQuestion.getDbRow().getCountry());
 			}
 			mAnsweredList.add(userAnswerData);
 

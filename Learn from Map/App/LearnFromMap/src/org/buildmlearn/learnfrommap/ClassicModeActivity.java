@@ -5,7 +5,6 @@ import java.util.Collections;
 
 import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.helper.CustomDialog;
-import org.buildmlearn.learnfrommap.helper.TinyDB;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -228,22 +227,7 @@ public class ClassicModeActivity extends ActionBarActivity {
 		protected Void doInBackground(Void... arg0) {
 			Database db =  new Database(getApplicationContext());
 			countryList = db.countryList();
-			Collections.sort(countryList);
-			TinyDB pref = new TinyDB(getApplicationContext());
-			ArrayList<String> temp = pref.getList("COUNTRY");
-			if(temp.size() == 0)
-			{
-				Log.e("SHARED PRED", "Init");
-				pref.putList("COUNTRY", countryList);
-				ArrayList<Integer> tempScore = new ArrayList<Integer>(); 
-				for(int i=0; i<countryList.size(); i++)
-				{
-					tempScore.add(0);
-				}
-				pref.putListInt("COUNTRY_TOTAL", tempScore, getApplicationContext());
-				pref.putListInt("COUNTRY_ANS", tempScore, getApplicationContext());
-			}
-			
+			Collections.sort(countryList);			
 			db.close();
 			return null;
 		}

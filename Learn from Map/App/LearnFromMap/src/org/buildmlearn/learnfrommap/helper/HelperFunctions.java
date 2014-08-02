@@ -1,7 +1,9 @@
 package org.buildmlearn.learnfrommap.helper;
 
+import java.util.ArrayList;
 import java.util.Random;
 
+import android.content.Context;
 import android.util.Log;
 
 public class HelperFunctions {
@@ -17,7 +19,7 @@ public class HelperFunctions {
 			ar[i] = a;
 		}
 	}
-	
+
 	//Calculates the distance between two geo-coordinates
 	public static double distance(double lat1, double lon1, double lat2, double lon2, char unit) {
 		double theta = lon1 - lon2;
@@ -42,7 +44,7 @@ public class HelperFunctions {
 	private static double rad2deg(double rad) {
 		return (rad * 180 / Math.PI);
 	}
-	
+
 	public static String geoCoderUrlBuilder(double lat, double lng)
 	{
 		String googleurl = "https://maps.google.com/maps/api/geocode/json?key=AIzaSyACYVxd_d-49UnhqibCI6F9f7b5Gw1qTSc&";
@@ -54,6 +56,28 @@ public class HelperFunctions {
 		String url = sbuilder.toString();
 		return url;
 	}
-	
+
+	public static void updateStats(Context context, boolean isCorrect, String country)
+	{
+		TinyDB stat = new TinyDB(context);
+		ArrayList<String> countryList = stat.getList("COUNTRY");
+		int index = countryList.indexOf(country);
+		Log.e("INDEX", "Index: " + index);
+		ArrayList<Integer> total = stat.getListInt("COUNTRY_TOTAL", context);
+		int iTotal = total.get(index);
+		iTotal++;
+		total.set(index, iTotal);
+		Log.e("TOTAL", "Total: " + iTotal);
+		stat.putListInt("COUNTRY_TOTAL", total, context);
+		if(isCorrect)
+		{
+			ArrayList<Integer> ans = stat.getListInt("COUNTRY_ANS", context);
+			int iAns = ans.get(index);
+			iAns++;
+			ans.set(index, iAns);
+			stat.putListInt("COUNTRY_ANS", ans, context);
+		}
+	}
+
 
 }

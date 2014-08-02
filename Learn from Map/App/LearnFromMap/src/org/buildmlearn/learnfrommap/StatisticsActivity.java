@@ -30,9 +30,13 @@ public class StatisticsActivity extends ActionBarActivity {
 		slice.setColor(Color.parseColor("#AA66CC"));
 		slice.setValue(8);
 		pg.addSlice(slice);
-		pg.setInnerCircleRatio(150);
+		pg.setInnerCircleRatio(180);
+		pg.setPadding(2);
 		for (PieSlice s : pg.getSlices())
-			s.setGoalValue((float)Math.random() * 10);
+		{
+			s.setGoalValue((float) 10.0);
+			s.setTitle("Nice");
+		}
 		pg.setDuration(1000);//default if unspecified is 300 ms
 		pg.setInterpolator(new AccelerateDecelerateInterpolator());//default if unspecified is linear; constant speed
 		//pg.setAnimationListener(getAnimationListener());//optional

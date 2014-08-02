@@ -23,8 +23,6 @@ public class MainActivity extends ActionBarActivity {
         
     }
     
-
-
     public void loadMode(View v)
     {
     	int id = v.getId();
@@ -50,6 +48,12 @@ public class MainActivity extends ActionBarActivity {
 		default:
 			break;
 		}
+    }
+    
+    public void loadStats(View v)
+    {
+		Intent intent = new Intent(getApplicationContext(), StatisticsActivity.class);
+    	startActivity(intent);
     }
     
     

@@ -1,14 +1,16 @@
 package org.buildmlearn.learnfrommap;
 
-import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
-import org.buildmlearn.learnfrommap.maphelper.CustomReverseGeocoder;
+import java.util.ArrayList;
 
+import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
+import org.buildmlearn.learnfrommap.helper.TinyDB;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +28,9 @@ public class SplashActivity extends DatabaseHelper {
 		BitmapFactory.Options options = new BitmapFactory.Options();
 		options.inJustDecodeBounds = true;
 		BitmapFactory.decodeResource(getResources(), R.id.explore_world_map, options);
+		TinyDB pref = new TinyDB(getApplicationContext());
+		ArrayList<String> list1 = pref.getList("NAME");
+		Log.e("SIZE", list1.size() + "");
 	}
 
 	@Override
@@ -41,8 +46,6 @@ public class SplashActivity extends DatabaseHelper {
 				activeNetwork.isConnectedOrConnecting();
 		if (isConnected)
 		{
-			CustomReverseGeocoder geocoder = new CustomReverseGeocoder(this);
-			geocoder.getState();
 			Intent intent= new Intent(getApplicationContext(), MainActivity.class);
 			startActivity(intent);
 			finish();

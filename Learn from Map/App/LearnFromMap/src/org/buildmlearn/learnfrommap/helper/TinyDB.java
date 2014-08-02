@@ -47,7 +47,7 @@ public class TinyDB {
 	}
 
 	public Bitmap getImage(String path) {
-		Bitmap theGottenBitmap = null;
+		Bitmap theGottenBitmap = null;	
 		try {
 			theGottenBitmap = BitmapFactory.decodeFile(path);
 		} catch (Exception e) {
@@ -216,8 +216,7 @@ public class TinyDB {
 		// the comma like character used below is not a comma it is the SINGLE
 		// LOW-9 QUOTATION MARK unicode 201A and unicode 2017 they are used for
 		// seprating the items in the list
-		String[] mylist = TextUtils
-				.split(preferences.getString(key, ""), "‚‗‚");
+		String[] mylist = TextUtils.split(preferences.getString(key, ""), "‚‗‚");
 		ArrayList<String> gottenlist = new ArrayList<String>(
 				Arrays.asList(mylist));
 		return gottenlist;

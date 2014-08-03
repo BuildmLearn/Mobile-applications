@@ -20,11 +20,11 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ListView;
 
 public class StatisticsActivity extends ActionBarActivity {
-	
+
 	private ArrayList<StatHolder> mData;
 	private ListView mStatList;
 	private StatsAdapter mAdapter;
-	public static final String[] colors = {"#0099CC", "#9933CC", "#CC0000", "#669900", "#FF8800"};
+	public static final String[] colors = {"#CC0099CC", "#CC9933CC", "#CCCC0000", "#CC669900", "#CCFF8800"};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +46,13 @@ public class StatisticsActivity extends ActionBarActivity {
 				temp.setColor(colors[i]);
 			}
 			mData.set(i, temp);	
-			
+
 		}
-		
+
 		mStatList = (ListView)findViewById(R.id.listView_stats);
 		mAdapter = new StatsAdapter(this, R.layout.listview_row_stat, mData);
 		mStatList.setAdapter(mAdapter);
-		
+
 		PieGraph pg = (PieGraph)findViewById(R.id.graph);
 		PieSlice slice = new PieSlice();
 		slice.setColor(Color.parseColor(colors[0]));
@@ -69,12 +69,14 @@ public class StatisticsActivity extends ActionBarActivity {
 		slice = new PieSlice();
 		slice.setColor(Color.parseColor(colors[4]));
 		pg.addSlice(slice);
-		pg.setInnerCircleRatio(180);
+		pg.setInnerCircleRatio(200);
 		pg.setPadding(2);
 		int count = 0;
 		for (PieSlice s : pg.getSlices())
 		{
+			s.setValue((float) Math.random() * 10);
 			if(count < 4)
+
 				s.setGoalValue(mData.get(count).getTotal());
 			else
 				s.setGoalValue(total);

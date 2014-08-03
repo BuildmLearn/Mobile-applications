@@ -4,14 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:background="#80000000"
     android:gravity="center"
     android:orientation="horizontal" >
 
     <View
         android:id="@+id/legend"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_margin="5dp"
         android:background="#0099cc" />
 

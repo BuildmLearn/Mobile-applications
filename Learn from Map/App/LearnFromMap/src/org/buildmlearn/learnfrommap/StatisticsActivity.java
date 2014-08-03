@@ -22,7 +22,7 @@ public class StatisticsActivity extends ActionBarActivity {
 	private ArrayList<StatHolder> mData;
 	private ListView mStatList;
 	private StatsAdapter mAdapter;
-	public static final String[] colors = {"#CC0099CC", "#CC9933CC", "#CCCC0000", "#CC669900", "#CCFF8800"};
+	public static final String[] colors = {"#CCFF8800", "#CC9933CC", "#CCCC0000", "#CC669900", "#CC0099CC"};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

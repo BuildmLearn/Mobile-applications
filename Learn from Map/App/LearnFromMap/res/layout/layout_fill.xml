@@ -20,7 +20,7 @@
         android:paddingRight="10dp"
         android:paddingTop="5dp" >
 
-        <org.buildmlearn.learnfrommap.TextViewPlus
+        <org.buildmlearn.learnfrommap.helper.TextViewPlus
             android:id="@+id/question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
             <requestFocus />
         </EditText>
 
-        <org.buildmlearn.learnfrommap.TextViewPlus
+        <org.buildmlearn.learnfrommap.helper.TextViewPlus
             android:id="@+id/fill_correct_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            <org.buildmlearn.learnfrommap.TextViewPlus
+            <org.buildmlearn.learnfrommap.helper.TextViewPlus
                 android:id="@+id/timer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
                 android:textColor="@android:color/white"
                 foo:customFont="Roboto_Light.ttf" />
 
-            <org.buildmlearn.learnfrommap.TextViewPlus
+            <org.buildmlearn.learnfrommap.helper.TextViewPlus
                 android:id="@+id/next_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

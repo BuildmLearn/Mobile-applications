@@ -49,7 +49,7 @@
                         android:adjustViewBounds="true"
                         android:src="@drawable/ic_action_important" />
 
-                    <org.buildmlearn.learnfrommap.TextViewPlus
+                    <org.buildmlearn.learnfrommap.helper.TextViewPlus
                         android:id="@+id/question"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -68,7 +68,7 @@
                     android:gravity="center"
                     android:orientation="vertical" >
 
-                    <org.buildmlearn.learnfrommap.TextViewPlus
+                    <org.buildmlearn.learnfrommap.helper.TextViewPlus
                         android:id="@+id/main_no_country_msg"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -92,7 +92,7 @@
                             android:layout_weight=".44"
                             android:gravity="center" >
 
-                            <org.buildmlearn.learnfrommap.TextViewPlus
+                            <org.buildmlearn.learnfrommap.helper.TextViewPlus
                                 android:id="@+id/c1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
                                 android:textSize="24sp"
                                 foo:customFont="Roboto_Light.ttf" />
 
-                            <org.buildmlearn.learnfrommap.TextViewPlus
+                            <org.buildmlearn.learnfrommap.helper.TextViewPlus
                                 android:id="@+id/p1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
                                 android:padding="2dp"
                                 android:src="@drawable/flag" />
 
-                            <org.buildmlearn.learnfrommap.TextViewPlus
+                            <org.buildmlearn.learnfrommap.helper.TextViewPlus
                                 android:id="@+id/c2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -154,7 +154,7 @@
                                 android:textSize="16sp"
                                 foo:customFont="Roboto_Light.ttf" />
 
-                            <org.buildmlearn.learnfrommap.TextViewPlus
+                            <org.buildmlearn.learnfrommap.helper.TextViewPlus
                                 android:id="@+id/p2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -183,7 +183,7 @@
                                 android:padding="2dp"
                                 android:src="@drawable/flag" />
 
-                            <org.buildmlearn.learnfrommap.TextViewPlus
+                            <org.buildmlearn.learnfrommap.helper.TextViewPlus
                                 android:id="@+id/c3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -195,7 +195,7 @@
                                 android:textSize="16sp"
                                 foo:customFont="Roboto_Light.ttf" />
 
-                            <org.buildmlearn.learnfrommap.TextViewPlus
+                            <org.buildmlearn.learnfrommap.helper.TextViewPlus
                                 android:id="@+id/p3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -218,7 +218,7 @@
                     android:gravity="bottom|right"
                     android:orientation="vertical" >
 
-                    <org.buildmlearn.learnfrommap.TextViewPlus
+                    <org.buildmlearn.learnfrommap.helper.TextViewPlus
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/custom_tile_color_no_bg"
@@ -267,7 +267,7 @@
                             android:padding="3dp"
                             android:src="@drawable/globe" />
 
-                        <org.buildmlearn.learnfrommap.TextViewPlus
+                        <org.buildmlearn.learnfrommap.helper.TextViewPlus
                             android:id="@+id/question"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -296,7 +296,7 @@
                             android:padding="3dp"
                             android:src="@drawable/classic" />
 
-                        <org.buildmlearn.learnfrommap.TextViewPlus
+                        <org.buildmlearn.learnfrommap.helper.TextViewPlus
                             android:id="@+id/question"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -333,7 +333,7 @@
                             android:padding="3dp"
                             android:src="@drawable/category_mode" />
 
-                        <org.buildmlearn.learnfrommap.TextViewPlus
+                        <org.buildmlearn.learnfrommap.helper.TextViewPlus
                             android:id="@+id/question"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -363,7 +363,7 @@
                             android:padding="3dp"
                             android:src="@drawable/settings" />
 
-                        <org.buildmlearn.learnfrommap.TextViewPlus
+                        <org.buildmlearn.learnfrommap.helper.TextViewPlus
                             android:id="@+id/question"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.buildmlearn.learnfrommap.adapter.ScoreAdapter;
 import org.buildmlearn.learnfrommap.helper.CustomDialog;
+import org.buildmlearn.learnfrommap.helper.TextViewPlus;
 import org.buildmlearn.learnfrommap.questionmodule.UserAnsweredData;
 
 import android.support.v7.app.ActionBarActivity;

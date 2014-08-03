@@ -54,11 +54,11 @@
         <activity
             android:name="org.buildmlearn.learnfrommap.CategoryActivity"
             android:label="@string/title_activity_category"
-            android:parentActivityName="org.buildmlearn.learnfrommap.databasehelper.MainActivity"
+            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.buildmlearn.learnfrommap.databasehelper.MainActivity" />
+                android:value="org.buildmlearn.learnfrommap.MainActivity" />
         </activity>
         <activity
             android:name="org.buildmlearn.learnfrommap.ClassicModeActivity"
@@ -99,7 +99,8 @@
         <activity
             android:name="org.buildmlearn.learnfrommap.StatisticsActivity"
             android:label="@string/title_activity_statistics"
-            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity" >
+            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.buildmlearn.learnfrommap.MainActivity" />

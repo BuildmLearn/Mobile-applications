@@ -1,8 +1,9 @@
 package org.buildmlearn.learnfrommap.adapter;
 
 import java.util.ArrayList;
+
 import org.buildmlearn.learnfrommap.R;
-import org.buildmlearn.learnfrommap.TextViewPlus;
+import org.buildmlearn.learnfrommap.helper.TextViewPlus;
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion.Type;
 import org.buildmlearn.learnfrommap.questionmodule.UserAnsweredData;
 

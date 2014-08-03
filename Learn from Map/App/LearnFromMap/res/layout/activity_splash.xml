@@ -13,7 +13,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/bg_nexus" />
 
-    <org.buildmlearn.learnfrommap.TextViewPlus
+    <org.buildmlearn.learnfrommap.helper.TextViewPlus
         android:id="@+id/splash_msg"
         android:layout_width="wrap_content"
         android:gravity="center"
@@ -28,7 +28,7 @@
         android:visibility="invisible"
         foo:customFont="Roboto_Light.ttf" />
 
-    <org.buildmlearn.learnfrommap.TextViewPlus
+    <org.buildmlearn.learnfrommap.helper.TextViewPlus
         android:id="@+id/question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.buildmlearn.learnfrommap.adapter.CategoryAdapter;
 import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
 import org.buildmlearn.learnfrommap.helper.CustomDialog;
+import org.buildmlearn.learnfrommap.helper.TextViewPlus;
 import org.buildmlearn.learnfrommap.parser.XmlParser;
 import org.buildmlearn.learnfrommap.questionmodule.XmlQuestion;
 

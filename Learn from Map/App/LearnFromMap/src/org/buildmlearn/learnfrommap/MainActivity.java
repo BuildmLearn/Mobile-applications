@@ -7,6 +7,7 @@ import java.util.Comparator;
 import org.buildmlearn.learnfrommap.helper.CustomDialog;
 import org.buildmlearn.learnfrommap.helper.HelperFunctions;
 import org.buildmlearn.learnfrommap.helper.StatHolder;
+import org.buildmlearn.learnfrommap.helper.TextViewPlus;
 
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;

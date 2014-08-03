@@ -3,7 +3,7 @@ package org.buildmlearn.learnfrommap.adapter;
 import java.util.ArrayList;
 
 import org.buildmlearn.learnfrommap.R;
-import org.buildmlearn.learnfrommap.TextViewPlus;
+import org.buildmlearn.learnfrommap.helper.TextViewPlus;
 
 import android.app.Activity;
 import android.content.Context;

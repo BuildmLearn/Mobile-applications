@@ -73,7 +73,7 @@
                             android:padding="3dp"
                             android:src="@drawable/globe" />
 
-                        <org.buildmlearn.learnfrommap.TextViewPlus
+                        <org.buildmlearn.learnfrommap.helper.TextViewPlus
                             android:id="@+id/question"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
                             android:padding="3dp"
                             android:src="@drawable/classic" />
 
-                        <org.buildmlearn.learnfrommap.TextViewPlus
+                        <org.buildmlearn.learnfrommap.helper.TextViewPlus
                             android:id="@+id/question"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
                             android:padding="3dp"
                             android:src="@drawable/category_mode" />
 
-                        <org.buildmlearn.learnfrommap.TextViewPlus
+                        <org.buildmlearn.learnfrommap.helper.TextViewPlus
                             android:id="@+id/question"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -169,7 +169,7 @@
                             android:padding="3dp"
                             android:src="@drawable/settings" />
 
-                        <org.buildmlearn.learnfrommap.TextViewPlus
+                        <org.buildmlearn.learnfrommap.helper.TextViewPlus
                             android:id="@+id/question"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

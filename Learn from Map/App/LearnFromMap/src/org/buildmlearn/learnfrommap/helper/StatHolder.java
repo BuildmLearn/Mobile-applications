@@ -5,6 +5,7 @@ public class StatHolder implements Comparable<StatHolder>{
 	private String country;
 	private int total;
 	private int answered;
+	private String color;
 	
 	public StatHolder(String country, int total, int answered) {
 		super();
@@ -13,6 +14,8 @@ public class StatHolder implements Comparable<StatHolder>{
 		this.answered = answered;
 	}
 
+	
+	
 	/**
 	 * @return the country
 	 */
@@ -33,6 +36,18 @@ public class StatHolder implements Comparable<StatHolder>{
 	public int getTotal() {
 		return total;
 	}
+
+	public String getColor() {
+		return color;
+	}
+
+
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+
 
 	/**
 	 * @param total the total to set
@@ -58,7 +73,7 @@ public class StatHolder implements Comparable<StatHolder>{
 	@Override
 	public int compareTo(StatHolder another) {
 		
-		return total - another.getTotal();
+		return another.getTotal() - total;
 	}
 	
 	

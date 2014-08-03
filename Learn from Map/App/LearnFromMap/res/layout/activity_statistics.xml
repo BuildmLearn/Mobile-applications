@@ -26,13 +26,13 @@
         android:id="@+id/graph"/>
 
         <ListView
-            android:id="@+id/listView_category"
+            android:id="@+id/listView_stats"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="7dp"
             android:divider="@android:color/transparent"
             android:dividerHeight="10.0sp"
-            tools:listitem="@layout/listview_row_category_mode" >
+            tools:listitem="@layout/listview_row_stat" >
         </ListView>
     </LinearLayout>
 

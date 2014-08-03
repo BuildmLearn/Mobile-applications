@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:background="#80000000"
+    android:background="@drawable/custom_tile_color"
     android:gravity="center"
     android:orientation="horizontal" >
 

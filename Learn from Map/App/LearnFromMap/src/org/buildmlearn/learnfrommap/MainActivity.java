@@ -37,7 +37,8 @@ public class MainActivity extends ActionBarActivity {
     
     @Override
 	protected void onResume() {
-		
+    	super.onResume();
+		Log.e("Called", "OnResume");
         data = HelperFunctions.bindStat(getApplicationContext());
         
         Collections.sort(data, new Comparator<StatHolder>(){
@@ -66,8 +67,7 @@ public class MainActivity extends ActionBarActivity {
         	statsLl.setVisibility(View.GONE);
         	TextViewPlus noStatMsg = (TextViewPlus)findViewById(R.id.main_no_country_msg);
         	noStatMsg.setVisibility(View.VISIBLE);
-        }
-        super.onResume();
+        }    
 	}
 
 	public void loadMode(View v)

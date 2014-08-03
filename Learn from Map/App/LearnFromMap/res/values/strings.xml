@@ -11,7 +11,7 @@
     <string name="buildmlearn">BuildmLearn</string>
     <string name="most_successful_answers">MOST SUCCESSFUL ANSWERS</string>
     <string name="more_info">more info</string>
-    <string name="explore">Explore</string>
+    <string name="explore">Explore Mode</string>
     <string name="classic_mode">Classic Mode</string>
     <string name="category_mode">Category Mode</string>
     <string name="settings">Settings</string>
@@ -42,7 +42,7 @@
     <string name="use_my_location">Use My Location</string>
     <string name="select_a_location">Or select a location</string>
     <string name="play">Play</string>
-    <string name="title_activity_explore_mode">Learn From Map</string>
+    <string name="title_activity_explore_mode">Explore Mode</string>
     <string name="select_continent">Select a  continent</string>
     <string name="unlocked_continents">Double tap the continent to select</string>
     <string name="title_activity_game">Start Challenge</string>

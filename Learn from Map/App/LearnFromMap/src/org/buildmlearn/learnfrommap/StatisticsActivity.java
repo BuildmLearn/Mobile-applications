@@ -6,8 +6,6 @@ import java.util.Collections;
 import org.buildmlearn.learnfrommap.adapter.StatsAdapter;
 import org.buildmlearn.learnfrommap.helper.HelperFunctions;
 import org.buildmlearn.learnfrommap.helper.StatHolder;
-import org.buildmlearn.learnfrommap.helper.TinyDB;
-
 import com.echo.holographlibrary.PieGraph;
 import com.echo.holographlibrary.PieSlice;
 
@@ -30,6 +28,7 @@ public class StatisticsActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_statistics);
+        getSupportActionBar().setHomeButtonEnabled(true);
 		mData = HelperFunctions.bindStat(getApplicationContext());
 		Collections.sort(mData);
 		int total = 0;

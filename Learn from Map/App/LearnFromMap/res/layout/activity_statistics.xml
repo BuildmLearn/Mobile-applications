@@ -46,8 +46,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
+                android:cacheColorHint="@android:color/transparent"
                 android:divider="@android:color/transparent"
                 android:dividerHeight="10.0sp"
+                android:listSelector="@android:color/transparent"
                 tools:listitem="@layout/listview_row_stat" >
             </ListView>
         </LinearLayout>

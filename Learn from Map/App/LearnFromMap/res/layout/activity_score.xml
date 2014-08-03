@@ -86,7 +86,6 @@
                         android:text="@string/question_answer_count"
                         android:textColor="@android:color/white"
                         foo:customFont="Roboto_Light.ttf" />
-
                 </RelativeLayout>
             </LinearLayout>
 
@@ -96,14 +95,13 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
                 android:background="#60000000"
+                android:cacheColorHint="@android:color/transparent"
                 android:divider="#60ffffff"
                 android:dividerHeight="2dp"
-                android:cacheColorHint="#00000000"
+                android:listSelector="@android:color/transparent"
                 android:padding="10dp"
                 tools:listitem="@layout/listview_row_mcq" >
-
             </ListView>
-
         </LinearLayout>
     </RelativeLayout>
 

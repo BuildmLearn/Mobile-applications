@@ -125,6 +125,10 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 		{
 			setTitle("Classic Mode");
 		}
+		else if(mode.equals("CATEGORY_MODE"))
+		{
+			setTitle("Category Mode");
+		}
 		mMain = (RelativeLayout)findViewById(R.id.main_layout);
 		mView = getLayoutInflater().inflate(R.layout.layout_play_game, mMain,false);
 	}

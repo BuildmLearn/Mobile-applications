@@ -105,6 +105,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.buildmlearn.learnfrommap.MainActivity" />
         </activity>
+        <activity
+            android:name="org.buildmlearn.learnfrommap.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.buildmlearn.learnfrommap.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

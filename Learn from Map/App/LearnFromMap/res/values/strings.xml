@@ -70,5 +70,6 @@
     <string name="no_data">Sorry, no data available</string>
     <string name="india">India</string>
     <string name="per95">95%</string>
+    <string name="title_activity_settings">Settings</string>
 
 </resources>

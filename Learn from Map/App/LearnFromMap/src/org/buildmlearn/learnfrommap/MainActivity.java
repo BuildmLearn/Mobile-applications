@@ -89,7 +89,7 @@ public class MainActivity extends ActionBarActivity {
 	    	startActivity(intent);
 			break;
 		case R.id.settings:
-			intent = new Intent(getApplicationContext(), StatisticsActivity.class);
+			intent = new Intent(getApplicationContext(), SettingsActivity.class);
 	    	startActivity(intent);
 			break;
 

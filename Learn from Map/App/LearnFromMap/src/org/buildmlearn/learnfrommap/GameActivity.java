@@ -270,7 +270,13 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 								e.printStackTrace();
 							}
 							LatLng ansPosition = new LatLng(ansLat, andLng);
-							MarkerOptions markerOption = new MarkerOptions().draggable(false).position(ansPosition).flat(true).title(genQuestion.getDbRow().getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+							MarkerOptions markerOption;
+							try {
+								markerOption = new MarkerOptions().draggable(false).position(ansPosition).flat(true).title(genQuestion.getDbRow().getDataByColumnName(genQuestion.getXml().getMarker())).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+							} catch (QuestionModuleException e) {
+								markerOption = new MarkerOptions().draggable(false).position(ansPosition).flat(true).title(genQuestion.getDbRow().getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+								e.printStackTrace();
+							}
 
 							if(answerColumn.equals("location"))
 							{
@@ -418,6 +424,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 								CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(ansLat, andLng), 3);
 								getMaps().animateCamera(cameraUpdate);
 								Toast.makeText(getApplicationContext(), "Network Error", Toast.LENGTH_SHORT).show();
+								Log.e("Volley Error", "Error :" + error.getMessage());
 							}
 						});
 				RequestQueue mQueue = Volley.newRequestQueue(this);

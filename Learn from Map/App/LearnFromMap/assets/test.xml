@@ -110,4 +110,103 @@
 	    <count>normal</count>
 	    <answer>country</answer>
 	</question>
+	<question>
+	    <code>ADM1</code>
+	    <type>PIN</type>
+	    <alias>State</alias>
+	    <marker>country</marker>
+	    <relationship>name</relationship>
+	    <location>true</location>
+	    <format>Pin the country in which :X: (state) is located</format>
+	    <count>normal</count>
+	    <answer>country</answer>
+	</question>
+	<question>
+	    <code>VLC</code>
+	    <type>PIN</type>
+	    <alias>Volcano</alias>
+	    <marker>name</marker>
+	    <relationship>name</relationship>
+	    <location>true</location>
+	    <format>Pin the volcano: :X:</format>
+	    <count>normal</count>
+	    <answer>location</answer>
+	</question>
+	<question>
+	    <code>DSRT</code>
+	    <type>PIN</type>
+	    <alias>Desert</alias>
+	    <marker>country</marker>
+	    <relationship>name</relationship>
+	    <location>true</location>
+	    <format>Pin the country in which :X: (desert) is located</format>
+	    <count>normal</count>
+	    <answer>country</answer>
+	</question>
+	<question>
+	    <code>FLLS</code>
+	    <type>PIN</type>
+	    <alias>Waterfall</alias>
+	    <marker>country</marker>
+	    <relationship>name</relationship>
+	    <location>true</location>
+	    <format>Pin the country in which :X: (waterfall) is located</format>
+	    <count>normal</count>
+	    <answer>country</answer>
+	</question>
+	<question>
+	    <code>FLLS</code>
+	    <type>PIN</type>
+	    <alias>Waterfall</alias>
+	    <marker>name</marker>
+	    <relationship>name</relationship>
+	    <location>true</location>
+	    <format>Pin the location of :X: (waterfall)</format>
+	    <count>normal</count>
+	    <answer>location</answer>
+	</question>
+	<question>
+	    <code>GLCR</code>
+	    <type>PIN</type>
+	    <alias>Glacier</alias>
+	    <marker>name</marker>
+	    <relationship>name</relationship>
+	    <location>true</location>
+	    <format>Pin the location of :X: (glacier)</format>
+	    <count>normal</count>
+	    <answer>location</answer>
+	</question>
+	<question>
+	    <code>GLCR</code>
+	    <type>PIN</type>
+	    <alias>Glacier</alias>
+	    <marker>country</marker>
+	    <relationship>name</relationship>
+	    <location>true</location>
+	    <format>Pin the country in which :X: (glacier) is located</format>
+	    <count>normal</count>
+	    <answer>country</answer>
+	</question>
+	<question>
+	    <code>MTS</code>
+	    <type>PIN</type>
+	    <alias>Mountain Range</alias>
+	    <marker>name</marker>
+	    <relationship>name</relationship>
+	    <location>true</location>
+	    <format>Pin the location of :X: (mountain range)</format>
+	    <count>normal</count>
+	    <answer>location</answer>
+	</question>
+	<question>
+	    <code>MTS</code>
+	    <type>PIN</type>
+	    <alias>Mountain Range</alias>
+	    <marker>country</marker>
+	    <relationship>name</relationship>
+	    <location>true</location>
+	    <format>Pin the country in which :X: (mountain range) is located</format>
+	    <count>normal</count>
+	    <answer>country</answer>
+	</question>
 </questions>

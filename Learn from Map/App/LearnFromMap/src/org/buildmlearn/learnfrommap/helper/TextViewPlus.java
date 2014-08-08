@@ -1,4 +1,7 @@
-package org.buildmlearn.learnfrommap;
+package org.buildmlearn.learnfrommap.helper;
+
+import org.buildmlearn.learnfrommap.R;
+import org.buildmlearn.learnfrommap.R.styleable;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

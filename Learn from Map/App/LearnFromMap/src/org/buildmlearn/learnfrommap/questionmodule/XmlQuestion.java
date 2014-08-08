@@ -11,8 +11,43 @@ public class XmlQuestion {
 	private boolean location;
 	private String relation;
 	private String count;
+	private String display;
+	private String alias;
+	private String marker;
 	public static enum Type {PinOnMap, MultipleChoiceQuestion, FillBlanks};
 	
+	
+	
+	/**
+	 * @return the marker
+	 */
+	public String getMarker() {
+		return marker;
+	}
+
+	/**
+	 * @param marker the marker to set
+	 */
+	public void setMarker(String marker) {
+		this.marker = marker;
+	}
+
+	public String getAlias() {
+		return alias;
+	}
+
+	public void setAlias(String alias) {
+		this.alias = alias;
+	}
+
+	public String getDisplay() {
+		return display;
+	}
+
+	public void setDisplay(String display) {
+		this.display = display;
+	}
+
 	public String getCode() {
 		return code;
 	}
@@ -78,7 +113,7 @@ public class XmlQuestion {
 	}
 
 	public XmlQuestion(String code, String type, String format, String answer,
-			boolean location, String relation, String count) {
+			boolean location, String relation, String count, String alias, String marker) {
 		super();
 		this.code = code;
 		if(type.equals("PIN"))
@@ -98,6 +133,9 @@ public class XmlQuestion {
 		this.location = location;
 		this.relation = relation;
 		this.count = count;
+		this.alias = alias;
+		this.display = "name";
+		this.marker = marker;
 	}
 	
 	

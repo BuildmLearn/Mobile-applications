@@ -19,7 +19,7 @@
         android:paddingRight="10dp"
         android:paddingTop="5dp" >
 
-        <org.buildmlearn.learnfrommap.TextViewPlus
+        <org.buildmlearn.learnfrommap.helper.TextViewPlus
             android:id="@+id/question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            <org.buildmlearn.learnfrommap.TextViewPlus
+            <org.buildmlearn.learnfrommap.helper.TextViewPlus
                 android:id="@+id/mcq_option1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -59,7 +59,7 @@
                 android:textSize="16sp"
                 foo:customFont="Roboto_Light.ttf" />
 
-            <org.buildmlearn.learnfrommap.TextViewPlus
+            <org.buildmlearn.learnfrommap.helper.TextViewPlus
                 android:id="@+id/mcq_option2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -80,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            <org.buildmlearn.learnfrommap.TextViewPlus
+            <org.buildmlearn.learnfrommap.helper.TextViewPlus
                 android:id="@+id/mcq_option3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -96,7 +96,7 @@
                 android:textSize="16sp"
                 foo:customFont="Roboto_Light.ttf" />
 
-            <org.buildmlearn.learnfrommap.TextViewPlus
+            <org.buildmlearn.learnfrommap.helper.TextViewPlus
                 android:id="@+id/mcq_option4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -123,7 +123,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            <org.buildmlearn.learnfrommap.TextViewPlus
+            <org.buildmlearn.learnfrommap.helper.TextViewPlus
                 android:id="@+id/timer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -135,7 +135,7 @@
                 android:textColor="@android:color/white"
                 foo:customFont="Roboto_Light.ttf" />
 
-            <org.buildmlearn.learnfrommap.TextViewPlus
+            <org.buildmlearn.learnfrommap.helper.TextViewPlus
                 android:id="@+id/next_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

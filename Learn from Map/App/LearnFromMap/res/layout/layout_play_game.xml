@@ -13,7 +13,7 @@
         android:layout_margin="7dp"
         android:orientation="vertical" >
 
-        <org.buildmlearn.learnfrommap.TextViewPlus
+        <org.buildmlearn.learnfrommap.helper.TextViewPlus
             android:id="@+id/question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
             android:textColor="@android:color/white"
             android:textSize="24sp"
             foo:customFont="Roboto_Light.ttf" />
-        <org.buildmlearn.learnfrommap.TextViewPlus
+        <org.buildmlearn.learnfrommap.helper.TextViewPlus
             android:id="@+id/play_selection"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

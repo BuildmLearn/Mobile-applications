@@ -1,11 +1,9 @@
 package org.buildmlearn.learnfrommap.adapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.buildmlearn.learnfrommap.R;
-import org.buildmlearn.learnfrommap.TextViewPlus;
-import org.buildmlearn.learnfrommap.databasehelper.Database;
+import org.buildmlearn.learnfrommap.helper.TextViewPlus;
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion.Type;
 import org.buildmlearn.learnfrommap.questionmodule.UserAnsweredData;
 
@@ -53,6 +51,7 @@ public class ScoreAdapter extends ArrayAdapter<UserAnsweredData> {
 				holder.option2 = (TextViewPlus)row.findViewById(R.id.option2);
 				holder.option3 = (TextViewPlus)row.findViewById(R.id.option3);
 				holder.option4 = (TextViewPlus)row.findViewById(R.id.option4);
+				holder.isCorrect = (ImageView)row.findViewById(R.id.answer_status);
 				row.setTag(holder);
 			}
 			else
@@ -131,6 +130,14 @@ public class ScoreAdapter extends ArrayAdapter<UserAnsweredData> {
 			else
 			{
 				holder.option4.setBackgroundResource(R.drawable.right_answer);
+			}
+			if(holder.data.isAnswerCorrect())
+			{
+				holder.isCorrect.setImageResource(R.drawable.ic_action_accept);
+			}
+			else
+			{
+				holder.isCorrect.setImageResource(R.drawable.ic_action_cancel);
 			}
 
 			return row;
@@ -231,6 +238,7 @@ public class ScoreAdapter extends ArrayAdapter<UserAnsweredData> {
 		public TextViewPlus option3;
 		public TextViewPlus option4;
 		public UserAnsweredData data;
+		public ImageView isCorrect;
 
 
 	}

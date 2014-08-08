@@ -33,48 +33,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="7dp"
-                android:layout_weight="0.33"
-                android:background="#60000000"
+                android:layout_weight="0.17"
                 android:orientation="vertical" >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp" 
-                    android:layout_weight="0.2">
-
-                    <ImageView
-                        android:id="@+id/imageView3"
-                        android:layout_width="20dp"
-                        android:layout_height="match_parent"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_action_important" />
-
-                    <org.buildmlearn.learnfrommap.TextViewPlus
-                        android:id="@+id/question"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="3dp"
-                        android:text="@string/most_successful_answers"
-                        android:textColor="@android:color/white"
-                        foo:customFont="Roboto_Black.ttf" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp" 
-                    android:layout_weight="0.7"
-                    android:orientation="vertical" >
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp" 
-                    android:layout_weight="0.1"
-                    android:orientation="vertical" >
-                </LinearLayout>
-
             </LinearLayout>
 
             <LinearLayout
@@ -89,9 +49,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:baselineAligned="false"
                     android:layout_marginBottom="2dp"
                     android:layout_weight="0.5"
+                    android:baselineAligned="false"
                     android:gravity="center" >
 
                     <LinearLayout
@@ -113,7 +73,7 @@
                             android:padding="3dp"
                             android:src="@drawable/globe" />
 
-                        <org.buildmlearn.learnfrommap.TextViewPlus
+                        <org.buildmlearn.learnfrommap.helper.TextViewPlus
                             android:id="@+id/question"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -142,7 +102,7 @@
                             android:padding="3dp"
                             android:src="@drawable/classic" />
 
-                        <org.buildmlearn.learnfrommap.TextViewPlus
+                        <org.buildmlearn.learnfrommap.helper.TextViewPlus
                             android:id="@+id/question"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -157,8 +117,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="2dp"
-                    android:baselineAligned="false"
-                    android:layout_weight="0.5" >
+                    android:layout_weight="0.5"
+                    android:baselineAligned="false" >
 
                     <LinearLayout
                         android:id="@+id/category_mode"
@@ -168,8 +128,8 @@
                         android:layout_weight="0.5"
                         android:background="@drawable/custom_tile_color"
                         android:clickable="true"
-                        android:onClick="loadMode"
                         android:gravity="center"
+                        android:onClick="loadMode"
                         android:orientation="vertical" >
 
                         <ImageView
@@ -179,7 +139,7 @@
                             android:padding="3dp"
                             android:src="@drawable/category_mode" />
 
-                        <org.buildmlearn.learnfrommap.TextViewPlus
+                        <org.buildmlearn.learnfrommap.helper.TextViewPlus
                             android:id="@+id/question"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -198,8 +158,8 @@
                         android:layout_weight="0.5"
                         android:background="@drawable/custom_tile_color"
                         android:clickable="true"
-                        android:onClick="loadMode"
                         android:gravity="center"
+                        android:onClick="loadMode"
                         android:orientation="vertical" >
 
                         <ImageView
@@ -209,7 +169,7 @@
                             android:padding="3dp"
                             android:src="@drawable/settings" />
 
-                        <org.buildmlearn.learnfrommap.TextViewPlus
+                        <org.buildmlearn.learnfrommap.helper.TextViewPlus
                             android:id="@+id/question"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -219,6 +179,14 @@
                             foo:customFont="Roboto_Light.ttf" />
                     </LinearLayout>
                 </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="7dp"
+                android:layout_weight="0.16"
+                android:orientation="vertical" >
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

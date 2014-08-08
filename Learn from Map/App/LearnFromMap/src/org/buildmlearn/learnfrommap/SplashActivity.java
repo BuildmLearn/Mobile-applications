@@ -1,14 +1,20 @@
 package org.buildmlearn.learnfrommap;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
+import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
-import org.buildmlearn.learnfrommap.maphelper.CustomReverseGeocoder;
+import org.buildmlearn.learnfrommap.helper.TinyDB;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +32,9 @@ public class SplashActivity extends DatabaseHelper {
 		BitmapFactory.Options options = new BitmapFactory.Options();
 		options.inJustDecodeBounds = true;
 		BitmapFactory.decodeResource(getResources(), R.id.explore_world_map, options);
+		TinyDB pref = new TinyDB(getApplicationContext());
+		ArrayList<String> list1 = pref.getList("NAME");
+		Log.e("SIZE", list1.size() + "");
 	}
 
 	@Override
@@ -34,25 +43,21 @@ public class SplashActivity extends DatabaseHelper {
 		ProgressBar pb = (ProgressBar)findViewById(R.id.splash_loading);
 		pb.setVisibility(View.GONE);
 		ConnectivityManager cm =
-		        (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-		 
+				(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
 		NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 		boolean isConnected = activeNetwork != null &&
-		                      activeNetwork.isConnectedOrConnecting();
-		if (isConnected)
-		{
-			CustomReverseGeocoder geocoder = new CustomReverseGeocoder(this);
-			geocoder.getState();
-			Intent intent= new Intent(getApplicationContext(), MainActivity.class);
-			startActivity(intent);
-			finish();
-		}
-		else 
+				activeNetwork.isConnectedOrConnecting();
+		if (!isConnected)
 		{
 			TextView tvMsg = (TextView)findViewById(R.id.splash_msg);
 			tvMsg.setText("Error: Your device is not connected to internet");
 			tvMsg.setVisibility(View.VISIBLE);
 			pb.setVisibility(View.GONE);
+		}
+		else
+		{
+			new GetCountryList().execute();
 		}
 	}
 
@@ -85,5 +90,43 @@ public class SplashActivity extends DatabaseHelper {
 		}	
 		return super.onOptionsItemSelected(item);
 	}
+	
+	public class GetCountryList extends AsyncTask<Void, Void, Void>
+	{
+		ArrayList<String> countryList;
+		@Override
+		protected Void doInBackground(Void... arg0) {
+			Database db =  new Database(getApplicationContext());
+			countryList = db.countryList();
+			Collections.sort(countryList);
+			TinyDB pref = new TinyDB(getApplicationContext());
+			ArrayList<String> temp = pref.getList("COUNTRY");
+			if(temp.size() == 0)
+			{
+				Log.e("SHARED PRED", "Init");
+				pref.putList("COUNTRY", countryList);
+				ArrayList<Integer> tempScore = new ArrayList<Integer>(); 
+				for(int i=0; i<countryList.size(); i++)
+				{
+					tempScore.add(0);
+				}
+				pref.putListInt("COUNTRY_TOTAL", tempScore, getApplicationContext());
+				pref.putListInt("COUNTRY_ANS", tempScore, getApplicationContext());
+			}
+			
+			db.close();
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			super.onPostExecute(result);
+			Intent intent= new Intent(getApplicationContext(), MainActivity.class);
+			startActivity(intent);
+			finish();
+
+		}
+	}
+
 
 }

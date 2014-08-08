@@ -33,8 +33,202 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="7dp"
-                android:layout_weight="0.17"
+                android:layout_weight="0.33"
+                android:background="#60000000"
                 android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.15" >
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_action_important" />
+
+                    <org.buildmlearn.learnfrommap.helper.TextViewPlus
+                        android:id="@+id/question"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="3dp"
+                        android:text="@string/most_successful_answers"
+                        android:textColor="@android:color/white"
+                        foo:customFont="Roboto_Black.ttf" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="0.65"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <org.buildmlearn.learnfrommap.helper.TextViewPlus
+                        android:id="@+id/main_no_country_msg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:paddingLeft="3dp"
+                        android:text="@string/no_data"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:visibility="gone"
+                        foo:customFont="Roboto_ThinItalic.ttf" />
+
+                    <LinearLayout
+                        android:id="@+id/main_top_countries"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical" >
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight=".44"
+                            android:gravity="center" >
+
+                            <org.buildmlearn.learnfrommap.helper.TextViewPlus
+                                android:id="@+id/c1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toLeftOf="@+id/p1"
+                                android:layout_toRightOf="@+id/imageView1"
+                                android:paddingLeft="3dp"
+                                android:text="@string/india"
+                                android:textColor="@android:color/white"
+                                android:textSize="24sp"
+                                foo:customFont="Roboto_Light.ttf" />
+
+                            <org.buildmlearn.learnfrommap.helper.TextViewPlus
+                                android:id="@+id/p1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentTop="true"
+                                android:gravity="center"
+                                android:paddingLeft="3dp"
+                                android:text="@string/per95"
+                                android:textColor="@android:color/white"
+                                android:textSize="24sp"
+                                foo:customFont="Roboto_Light.ttf" />
+
+                            <ImageView
+                                android:id="@+id/imageView1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:adjustViewBounds="true"
+                                android:padding="2dp"
+                                android:src="@drawable/flag" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight=".28"
+                            android:gravity="center" >
+
+                            <ImageView
+                                android:id="@+id/imageView1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:adjustViewBounds="true"
+                                android:padding="2dp"
+                                android:src="@drawable/flag" />
+
+                            <org.buildmlearn.learnfrommap.helper.TextViewPlus
+                                android:id="@+id/c2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toLeftOf="@+id/p2"
+                                android:layout_toRightOf="@+id/imageView1"
+                                android:paddingLeft="3dp"
+                                android:text="@string/india"
+                                android:textColor="@android:color/white"
+                                android:textSize="16sp"
+                                foo:customFont="Roboto_Light.ttf" />
+
+                            <org.buildmlearn.learnfrommap.helper.TextViewPlus
+                                android:id="@+id/p2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentTop="true"
+                                android:gravity="center"
+                                android:paddingLeft="3dp"
+                                android:text="@string/per95"
+                                android:textColor="@android:color/white"
+                                android:textSize="16sp"
+                                foo:customFont="Roboto_Light.ttf" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight=".28"
+                            android:gravity="center" >
+
+                            <ImageView
+                                android:id="@+id/imageView1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:adjustViewBounds="true"
+                                android:padding="2dp"
+                                android:src="@drawable/flag" />
+
+                            <org.buildmlearn.learnfrommap.helper.TextViewPlus
+                                android:id="@+id/c3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toLeftOf="@+id/p3"
+                                android:layout_toRightOf="@+id/imageView1"
+                                android:paddingLeft="3dp"
+                                android:text="@string/india"
+                                android:textColor="@android:color/white"
+                                android:textSize="16sp"
+                                foo:customFont="Roboto_Light.ttf" />
+
+                            <org.buildmlearn.learnfrommap.helper.TextViewPlus
+                                android:id="@+id/p3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentTop="true"
+                                android:gravity="center"
+                                android:paddingLeft="3dp"
+                                android:text="@string/per95"
+                                android:textColor="@android:color/white"
+                                android:textSize="16sp"
+                                foo:customFont="Roboto_Light.ttf" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.2"
+                    android:gravity="bottom|right"
+                    android:orientation="vertical" >
+
+                    <org.buildmlearn.learnfrommap.helper.TextViewPlus
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custom_tile_color_no_bg"
+                        android:clickable="true"
+                        android:onClick="loadStats"
+                        android:padding="3dp"
+                        android:text="@string/more_info"
+                        android:textColor="@android:color/white"
+                        foo:customFont="Roboto_ThinItalic.ttf" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -73,7 +267,7 @@
                             android:padding="3dp"
                             android:src="@drawable/globe" />
 
-                        <org.buildmlearn.learnfrommap.TextViewPlus
+                        <org.buildmlearn.learnfrommap.helper.TextViewPlus
                             android:id="@+id/question"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -102,7 +296,7 @@
                             android:padding="3dp"
                             android:src="@drawable/classic" />
 
-                        <org.buildmlearn.learnfrommap.TextViewPlus
+                        <org.buildmlearn.learnfrommap.helper.TextViewPlus
                             android:id="@+id/question"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -139,7 +333,7 @@
                             android:padding="3dp"
                             android:src="@drawable/category_mode" />
 
-                        <org.buildmlearn.learnfrommap.TextViewPlus
+                        <org.buildmlearn.learnfrommap.helper.TextViewPlus
                             android:id="@+id/question"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -169,7 +363,7 @@
                             android:padding="3dp"
                             android:src="@drawable/settings" />
 
-                        <org.buildmlearn.learnfrommap.TextViewPlus
+                        <org.buildmlearn.learnfrommap.helper.TextViewPlus
                             android:id="@+id/question"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -179,14 +373,6 @@
                             foo:customFont="Roboto_Light.ttf" />
                     </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_margin="7dp"
-                android:layout_weight="0.16"
-                android:orientation="vertical" >
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

@@ -1,17 +1,9 @@
 package org.buildmlearn.learnfrommap.questionmodule;
 
-import java.io.IOException;
 import java.io.Serializable;
-import java.util.List;
-import java.util.Locale;
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion.Type;
 import uk.ac.shef.wit.simmetrics.similaritymetrics.JaroWinkler;
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.location.Address;
-import android.location.Geocoder;
-import android.util.FloatMath;
-import android.util.Log;
 
 public class UserAnsweredData  implements Serializable{
 
@@ -27,10 +19,7 @@ public class UserAnsweredData  implements Serializable{
 	private String[] mOptions;
 	private boolean mIsAnswered;
 	private boolean mIsCorrect;
-	private transient Context mContext;
 	private int mPoints;
-	private double mLat;
-	private double mLog;
 	private String mState;
 	private String mCountry;
 
@@ -48,10 +37,6 @@ public class UserAnsweredData  implements Serializable{
 		{
 			if(mUserAnswer.length() > 0)
 			{
-				String[] coords = mUserAnswer.split(",");
-				this.mLat = Double.parseDouble(coords[0]);
-				this.mLog = Double.parseDouble(coords[1]);
-				this.mContext = mContext;
 			}
 			else
 			{
@@ -73,82 +58,22 @@ public class UserAnsweredData  implements Serializable{
 		}
 	}
 
-	public void evaluatePin()
+	public void evaluatePin(boolean isCorrect)
 	{
-
-		if(mAnswerType.equals("country"))
+		if(isCorrect)
 		{
-
-			//Country()
-			String country = getCountry();
-			Log.e("Country", country);
-			if(country.equals(mAnswer))
-			{
-				this.mPoints = 10;
-				mIsCorrect = true;
-			}
-			else
-			{
-				this.mPoints = 0;
-				mIsCorrect = false;
-			}
+			this.mPoints = 10;
+			mIsCorrect = true;
 		}
-		else if(mAnswerType.equals("state"))
+		else
 		{
-			//getState()
-			String state = getState();
-
-			if(state != null && state.equals(mAnswer))
-			{
-				Log.e("State", state);
-				this.mPoints = 10;
-				mIsCorrect = true;
-			}
-			else
-			{
-				this.mPoints = 0;
-				mIsCorrect = false;
-			}
-
-		}
-		else	
-		{
-
-			String[] coords = mAnswer.split(",");
-			float lat = Float.parseFloat(coords[0]);
-			float lng = Float.parseFloat(coords[1]);
-			double distance = distanceBetween(lat, lng, (float)mLat, (float)mLog);
-			distance /= 100000;
-			if(distance < 10)
-			{
-				this.mPoints = 10;
-				mIsCorrect = true;
-			}
-			else
-			{
-				this.mPoints = 0;
-				mIsCorrect = false;
-			}
+			this.mPoints = 0;
+			mIsCorrect = false;
 		}
 
 	}
 
-	@SuppressLint("FloatMath") 
-	private double distanceBetween(float lat1, float lng1, float lat2, float lng2) {
-		float x = (float) (180/3.14169);
 
-		float a1 = lat1 / x;
-		float a2 = lng1 / x;
-		float b1 = lat2 / x;
-		float b2 = lng2 / x;
-
-		float t1 = FloatMath.cos(a1)*FloatMath.cos(a2)*FloatMath.cos(b1)*FloatMath.cos(b2);
-		float t2 = FloatMath.cos(a1)*FloatMath.sin(a2)*FloatMath.cos(b1)*FloatMath.sin(b2);
-		float t3 = FloatMath.sin(a1)*FloatMath.sin(b1);
-		double tt = Math.acos(t1 + t2 + t3);
-
-		return 6366000*tt;
-	}
 
 	public UserAnsweredData(String mQuestion, String mAnswer,
 			String mUserAnswer, Type mQuestionType, String mAnswerType,
@@ -242,13 +167,10 @@ public class UserAnsweredData  implements Serializable{
 		this.mOptions = mOptions;
 	}
 
-
 	public boolean isAnswered()
 	{
 		return mIsAnswered;
 	}
-
-
 
 	public String getState() {
 		return mState;

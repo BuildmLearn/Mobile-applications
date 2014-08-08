@@ -227,7 +227,7 @@ public class ClassicModeActivity extends ActionBarActivity {
 		protected Void doInBackground(Void... arg0) {
 			Database db =  new Database(getApplicationContext());
 			countryList = db.countryList();
-			Collections.sort(countryList);
+			Collections.sort(countryList);			
 			db.close();
 			return null;
 		}

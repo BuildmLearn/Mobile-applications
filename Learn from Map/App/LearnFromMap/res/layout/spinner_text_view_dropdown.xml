@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<org.buildmlearn.learnfrommap.TextViewPlus xmlns:android="http://schemas.android.com/apk/res/android"
+<org.buildmlearn.learnfrommap.helper.TextViewPlus xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:foo="http://schemas.android.com/apk/res/org.buildmlearn.learnfrommap"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"

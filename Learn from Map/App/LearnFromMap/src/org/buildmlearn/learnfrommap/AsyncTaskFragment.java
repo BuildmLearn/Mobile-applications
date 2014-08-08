@@ -149,6 +149,10 @@ public class AsyncTaskFragment extends Fragment {
 				}
 
 			}
+			else
+			{
+				where = "1=1";
+			}
 			
 			//
 			//Main logic starts here//
@@ -171,6 +175,15 @@ public class AsyncTaskFragment extends Fragment {
 						if(questionRule.getCount().equals("unique"))
 						{
 							blackListRules.add(randomNo);
+						}
+					}
+					else if(mMode.equals("CATEGORY_MODE"))
+					{
+						if(!questionRule.getAlias().equals(mValue))
+						{
+							blackListRules.add(randomNo);
+							i--;
+							continue;
 						}
 					}
 					questionRule.printRule(); 
@@ -251,12 +264,6 @@ public class AsyncTaskFragment extends Fragment {
 						i--;
 						e.printStackTrace();
 					}
-
-					//					} catch (NoDbRowException e) {
-					//						// TODO Auto-generated catch block
-					//						e.printStackTrace();
-					//						cancel(true);
-					//					}
 				}
 				else
 				{

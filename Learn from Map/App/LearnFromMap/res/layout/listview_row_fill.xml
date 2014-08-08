@@ -13,7 +13,7 @@
         android:layout_weight="0.8"
         android:orientation="vertical" >
 
-        <org.buildmlearn.learnfrommap.TextViewPlus
+        <org.buildmlearn.learnfrommap.helper.TextViewPlus
             android:id="@+id/list_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
             android:textSize="16sp"
             foo:customFont="Roboto_Light.ttf" />
 
-        <org.buildmlearn.learnfrommap.TextViewPlus
+        <org.buildmlearn.learnfrommap.helper.TextViewPlus
             android:id="@+id/answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

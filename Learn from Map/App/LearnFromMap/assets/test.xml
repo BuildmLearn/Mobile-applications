@@ -1,103 +1,212 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <questions>
- 	<question>
-	    <code>PPLC</code>
-	    <type>FILL</type>
-	    <alias></alias>
-	    <relationship>country</relationship>
-	    <location>true</location>
-	    <format>Capital of :X: is _________</format>
-	    <count>unique</count>
-	    <answer>name</answer>
-	</question>
-	<question>
-	    <code>PPLC</code>
+<!--  	<question> -->
+<!-- 	    <code>PPLC</code> -->
+<!-- 	    <type>FILL</type> -->
+<!-- 	    <alias>Capital</alias> -->
+<!-- 	    <marker></marker> -->
+<!-- 	    <relationship>country</relationship> -->
+<!-- 	    <location>true</location> -->
+<!-- 	    <format>Capital of :X: is _________</format> -->
+<!-- 	    <count>unique</count> -->
+<!-- 	    <answer>name</answer> -->
+<!-- 	</question> -->
+<!-- 	<question> -->
+<!-- 	    <code>PPLC</code> -->
+<!-- 	    <type>PIN</type> -->
+<!-- 	    <alias>Capital</alias> -->
+<!-- 	    <marker>capital</marker> -->
+<!-- 	    <relationship>country</relationship> -->
+<!-- 	    <location>true</location> -->
+<!-- 	    <format>Pin the capital of :X:</format> -->
+<!-- 	    <count>unique</count> -->
+<!-- 	    <answer>location</answer> -->
+<!-- 	</question> -->
+<!--  	<question> -->
+<!-- 	    <code>PCLI</code> -->
+<!-- 	    <type>MCQ</type> -->
+<!-- 	    <alias>Country</alias> -->
+<!-- 	    <marker></marker> -->
+<!-- 	    <relationship>country</relationship> -->
+<!-- 	    <location>true</location> -->
+<!-- 	    <format>What is the capital of :X:</format> -->
+<!-- 	    <count>unique</count> -->
+<!-- 	    <answer>capital</answer> -->
+<!-- 	</question> -->
+<!-- 	<question> -->
+<!-- 	    <code>PPLC</code> -->
+<!-- 	    <type>MCQ</type> -->
+<!-- 	    <alias>Capital</alias> -->
+<!-- 	    <marker></marker> -->
+<!-- 	    <relationship>name</relationship> -->
+<!-- 	    <location>true</location> -->
+<!-- 	    <format>:X: is the capital of which country?</format> -->
+<!-- 	    <count>normal</count> -->
+<!-- 	    <answer>country</answer> -->
+<!-- 	</question> -->
+<!-- 	<question> -->
+<!-- 	    <code>MTS</code> -->
+<!-- 	    <type>MCQ</type> -->
+<!-- 	    <alias>Mountain</alias> -->
+<!-- 	    <marker></marker> -->
+<!-- 	    <relationship>name</relationship> -->
+<!-- 	    <location>true</location> -->
+<!-- 	    <format>Mountain :X: is located in ______________ country.</format> -->
+<!-- 	    <count>normal</count> -->
+<!-- 	    <answer>country</answer> -->
+<!-- 	</question> -->
+<!-- 	<question> -->
+<!-- 	    <code>VLC</code> -->
+<!-- 	    <type>MCQ</type> -->
+<!-- 	    <alias>Volcano</alias> -->
+<!-- 	    <marker></marker> -->
+<!-- 	    <relationship>name</relationship> -->
+<!-- 	    <location>true</location> -->
+<!-- 	    <format>Volcano :X: is located in ______________ country.</format> -->
+<!-- 	    <count>normal</count> -->
+<!-- 	    <answer>country</answer> -->
+<!-- 	</question> -->
+<!-- 	<question> -->
+<!-- 	    <code>PLN</code> -->
+<!-- 	    <type>FILL</type> -->
+<!-- 	    <alias>Plains</alias> -->
+<!-- 	    <marker></marker> -->
+<!-- 	    <relationship>name</relationship> -->
+<!-- 	    <location>true</location> -->
+<!-- 	    <format>:X: (plains) is located in ______________ country.</format> -->
+<!-- 	    <count>normal</count> -->
+<!-- 	    <answer>country</answer> -->
+<!-- 	</question> -->
+<!-- 	<question> -->
+<!-- 	    <code>PEN</code> -->
+<!-- 	    <type>FILL</type> -->
+<!-- 	    <marker></marker> -->
+<!-- 	    <alias>Peninsula</alias> -->
+<!-- 	    <relationship>name</relationship> -->
+<!-- 	    <location>true</location> -->
+<!-- 	    <format>:X: (peninsula) is located in ______________ country.</format> -->
+<!-- 	    <count>normal</count> -->
+<!-- 	    <answer>country</answer>  -->
+<!-- 	</question> -->
+<!-- 	<question> -->
+<!-- 	    <code>ADM1</code> -->
+<!-- 	    <type>PIN</type> -->
+<!-- 	    <alias>States</alias> -->
+<!-- 	    <marker>state</marker> -->
+<!-- 	    <relationship>state</relationship> -->
+<!-- 	    <location>true</location> -->
+<!-- 	    <format>Pin the :X: (state)</format> -->
+<!-- 	    <count>normal</count> -->
+<!-- 	    <answer>state</answer> -->
+<!-- 	</question> -->
+		<question>
+	    <code>VLC</code>
 	    <type>PIN</type>
-	    <alias></alias>
+	    <alias>Volcano</alias>
+	    <marker>country</marker>
 	    <relationship>name</relationship>
 	    <location>true</location>
-	    <format>Pin the capital of :X:</format>
-	    <count>unique</count>
-	    <answer>location</answer>
-	</question>
- 	<question>
-	    <code>PCLI</code>
-	    <type>MCQ</type>
-	    <alias></alias>
-	    <relationship>country</relationship>
-	    <location>true</location>
-	    <format>What is the capital of :X:</format>
-	    <count>unique</count>
-	    <answer>capital</answer>
-	</question>
-	<question>
-	    <code>PPLC</code>
-	    <type>MCQ</type>
-	    <alias></alias>
-	    <relationship>name</relationship>
-	    <location>true</location>
-	    <format>:X: is the capital of which country?</format>
+	    <format>Pin the country in which :X: (volcano) is located</format>
 	    <count>normal</count>
 	    <answer>country</answer>
 	</question>
 	<question>
-	    <code>PCLI</code>
-	    <type>MCQ</type>
-	    <alias></alias>
+	    <code>ADM1</code>
+	    <type>PIN</type>
+	    <alias>State</alias>
+	    <marker>country</marker>
 	    <relationship>name</relationship>
 	    <location>true</location>
-	    <format>What is the population of :X:?</format>
-	    <count>unique</count>
-	    <answer>population</answer>
-	</question>
-	<question>
-	    <code>MTS</code>
-	    <type>MCQ</type>
-	    <alias></alias>
-	    <relationship>name</relationship>
-	    <location>true</location>
-	    <format>Mountain :X: is located in ______________ country.</format>
+	    <format>Pin the country in which :X: (state) is located</format>
 	    <count>normal</count>
 	    <answer>country</answer>
 	</question>
 	<question>
 	    <code>VLC</code>
-	    <type>MCQ</type>
-	    <alias></alias>
-	    <relationship>name</relationship>
-	    <location>true</location>
-	    <format>Volcano :X: is located in ______________ country.</format>
-	    <count>normal</count>
-	    <answer>country</answer>
-	</question>
-	<question>
-	    <code>PLN</code>
-	    <type>FILL</type>
-	    <alias></alias>
-	    <relationship>name</relationship>
-	    <location>true</location>
-	    <format>:X: (plains) is located in ______________ country.</format>
-	    <count>normal</count>
-	    <answer>country</answer>
-	</question>
-	<question>
-	    <code>PEN</code>
-	    <type>FILL</type>
-	    <alias></alias>
-	    <relationship>name</relationship>
-	    <location>true</location>
-	    <format>:X: (peninsula) is located in ______________ country.</format>
-	    <count>normal</count>
-	    <answer>country</answer> 
-	</question>
-	<question>
-	    <code>ADM1</code>
 	    <type>PIN</type>
-	    <alias></alias>
+	    <alias>Volcano</alias>
+	    <marker>name</marker>
 	    <relationship>name</relationship>
 	    <location>true</location>
-	    <format>Pin the :X: (state)</format>
+	    <format>Pin the volcano: :X:</format>
 	    <count>normal</count>
-	    <answer>state</answer>
+	    <answer>location</answer>
+	</question>
+	<question>
+	    <code>DSRT</code>
+	    <type>PIN</type>
+	    <alias>Desert</alias>
+	    <marker>country</marker>
+	    <relationship>name</relationship>
+	    <location>true</location>
+	    <format>Pin the country in which :X: (desert) is located</format>
+	    <count>normal</count>
+	    <answer>country</answer>
+	</question>
+	<question>
+	    <code>FLLS</code>
+	    <type>PIN</type>
+	    <alias>Waterfall</alias>
+	    <marker>country</marker>
+	    <relationship>name</relationship>
+	    <location>true</location>
+	    <format>Pin the country in which :X: (waterfall) is located</format>
+	    <count>normal</count>
+	    <answer>country</answer>
+	</question>
+	<question>
+	    <code>FLLS</code>
+	    <type>PIN</type>
+	    <alias>Waterfall</alias>
+	    <marker>name</marker>
+	    <relationship>name</relationship>
+	    <location>true</location>
+	    <format>Pin the location of :X: (waterfall)</format>
+	    <count>normal</count>
+	    <answer>location</answer>
+	</question>
+	<question>
+	    <code>GLCR</code>
+	    <type>PIN</type>
+	    <alias>Glacier</alias>
+	    <marker>name</marker>
+	    <relationship>name</relationship>
+	    <location>true</location>
+	    <format>Pin the location of :X: (glacier)</format>
+	    <count>normal</count>
+	    <answer>location</answer>
+	</question>
+	<question>
+	    <code>GLCR</code>
+	    <type>PIN</type>
+	    <alias>Glacier</alias>
+	    <marker>country</marker>
+	    <relationship>name</relationship>
+	    <location>true</location>
+	    <format>Pin the country in which :X: (glacier) is located</format>
+	    <count>normal</count>
+	    <answer>country</answer>
+	</question>
+	<question>
+	    <code>MTS</code>
+	    <type>PIN</type>
+	    <alias>Mountain Range</alias>
+	    <marker>name</marker>
+	    <relationship>name</relationship>
+	    <location>true</location>
+	    <format>Pin the location of :X: (mountain range)</format>
+	    <count>normal</count>
+	    <answer>location</answer>
+	</question>
+	<question>
+	    <code>MTS</code>
+	    <type>PIN</type>
+	    <alias>Mountain Range</alias>
+	    <marker>country</marker>
+	    <relationship>name</relationship>
+	    <location>true</location>
+	    <format>Pin the country in which :X: (mountain range) is located</format>
+	    <count>normal</count>
+	    <answer>country</answer>
 	</question>
 </questions>

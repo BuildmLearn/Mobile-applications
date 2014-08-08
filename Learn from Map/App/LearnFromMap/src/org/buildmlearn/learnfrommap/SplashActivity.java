@@ -7,6 +7,10 @@ import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
 import org.buildmlearn.learnfrommap.helper.TinyDB;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -14,6 +18,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,6 +40,7 @@ public class SplashActivity extends DatabaseHelper {
 		TinyDB pref = new TinyDB(getApplicationContext());
 		ArrayList<String> list1 = pref.getList("NAME");
 		Log.e("SIZE", list1.size() + "");
+
 	}
 
 	@Override

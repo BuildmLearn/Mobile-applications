@@ -1,6 +1,7 @@
 package org.buildmlearn.learnfrommap;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import org.buildmlearn.learnfrommap.adapter.CategoryAdapter;
 import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
@@ -40,6 +41,7 @@ public class CategoryActivity extends DatabaseHelper {
 				mCList.add(temp.getAlias());
 			}
 		}
+		Collections.sort(mCList);
 		mAdapter = new CategoryAdapter(this, R.layout.listview_row_category_mode, mCList);
 		mCategoryList.setAdapter(mAdapter);
 		mCategoryList.setOnItemClickListener(new OnItemClickListener() {

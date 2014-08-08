@@ -16,6 +16,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -28,6 +29,15 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:theme="@style/CustomActionBarTheme" >
+        <receiver android:name="org.buildmlearn.learnfrommap.NotificationService" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="org.buildmlearn.learnfrommap.service.NotificationBarAlarm" >
+        </receiver>
+
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyCq8O-1lVOwqic6qx1GezTLXSpCtSYpee0" />
@@ -113,6 +123,23 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.buildmlearn.learnfrommap.MainActivity" />
         </activity>
+
+        <!--
+             <receiver android:name=".NotificationService" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        -->
+        <activity
+            android:name="org.buildmlearn.learnfrommap.Test"
+            android:label="@string/title_activity_test" >
+        </activity>
+
+        <service
+            android:name="org.buildmlearn.learnfrommap.service.AlarmService"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>

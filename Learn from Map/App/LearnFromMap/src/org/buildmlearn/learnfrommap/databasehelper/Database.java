@@ -105,6 +105,31 @@ public class Database extends SQLiteAssetHelper  {
 		}
 
 	}
+	
+	public String getNotificationMsg()
+	{
+		db = getReadableDatabase();
+		Cursor cursor = db.rawQuery("SELECT name, capital FROM country", null);
+		Random random = new Random(new Date().getTime());
+		if(cursor.moveToFirst())
+		{
+			int pos = random.nextInt(cursor.getCount());
+			cursor.move(pos);
+			String country = cursor.getString(0);
+			String capital = cursor.getString(1);
+			cursor.close();
+			db.close();
+			return "Did you know that the capital of "+ country + " is "+capital+"? Play challenges to brush up your geography knowledge.";
+		}
+		else
+		{
+			cursor.close();
+			db.close();
+			return "Play challenges to brush up your geography knowledge.";
+		}
+		
+		
+	}
 
 
 	public DbRow rawSelect(String query,String countQuery) throws QuestionModuleException

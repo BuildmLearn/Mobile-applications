@@ -153,7 +153,7 @@ public class ExploreMode extends ActionBarActivity {
 			if(continent.length() > 0 && !isClicked)
 			{
 
-				Toast.makeText(getApplicationContext(), "Double tap to select a continent", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "You may move the map sideways", Toast.LENGTH_SHORT).show();
 
 			}
 			return true;

@@ -30,7 +30,7 @@ public class AlarmService extends Service {
 		PendingIntent pi = PendingIntent.getBroadcast(this.getApplicationContext(), 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
 		// Repeat the notification every 15 seconds (15000)
 		AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-		am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 15000, pi);
+		am.setRepeating(AlarmManager.RTC_WAKEUP, 1407511828802l, 150000, pi);
 		Toast.makeText(this, "My Service started", Toast.LENGTH_LONG).show();
 		Log.d(TAG, "onStart");
 		return Service.START_NOT_STICKY;

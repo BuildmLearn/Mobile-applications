@@ -67,9 +67,10 @@
     <string name="select_a_category">Select a category</string>
     <string name="category_desc">"In this mode you can select the category (like country, states, mountains etc.) for which you want to play the challenge. Question will be particularly based on category selected. "</string>
     <string name="title_activity_statistics">Statistics</string>
-    <string name="no_data">Sorry, no data available</string>
+    <string name="no_data">Play challenges to see statistics here!</string>
     <string name="india">India</string>
     <string name="per95">95%</string>
     <string name="title_activity_settings">Settings</string>
+    <string name="rate_this_app">Rate this app</string>
 
 </resources>

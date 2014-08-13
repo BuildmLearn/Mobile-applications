@@ -26,26 +26,6 @@ public class NotificationBarAlarm extends BroadcastReceiver {
 		Intent intent1 = new Intent(context, SplashActivity.class);
 		PendingIntent pIntent = PendingIntent.getActivity(context, 0, intent1, 0);
 		Database db = new Database(context);
-//		NotificationCompat.Builder mBuilder =
-//				new NotificationCompat.Builder(context)
-//		.setSmallIcon(R.drawable.ic_launcher)
-//		.setContentTitle("Learn From Map")
-//		.setContentIntent(pIntent)
-//		.setContentText(db.getNotificationMsg());
-//		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
-//		.setSmallIcon(R.drawable.ic_launcher)
-//		.setContentTitle("Learn From Map")
-//		.setPriority(NotificationCompat.PRIORITY_MAX)
-//		.setContentIntent(pIntent)
-//		.setContentText("Events received");
-//		NotificationCompat.InboxStyle inboxStyle =
-//		new NotificationCompat.InboxStyle();
-//		// Sets a title for the Inbox style big view
-//		inboxStyle.setBigContentTitle("Learn From Map");
-//		inboxStyle.addLine(db.getNotificationMsg());
-//		inboxStyle.setSummaryText(db.getNotificationMsg());
-		// Moves the big view style object into the notification object.
-//		mBuilder.setStyle(inboxStyle);
 		String message = db.getNotificationMsg();
 		long[] pattern = {500,500,500,500,500,500,500,500,500};
 		NotificationCompat.Builder builder = new NotificationCompat.Builder(

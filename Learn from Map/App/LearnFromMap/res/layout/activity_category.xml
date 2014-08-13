@@ -30,22 +30,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="@string/select_a_category"
-                android:textColor="@android:color/white"
-                android:textSize="24sp"
-                foo:customFont="Roboto_Light.ttf" />
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:background="#ffffff" />
-
-            <org.buildmlearn.learnfrommap.helper.TextViewPlus
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
                 android:text="@string/category_desc"
                 android:textColor="@android:color/white"
                 foo:customFont="Roboto_Light.ttf" />

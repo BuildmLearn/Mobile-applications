@@ -130,7 +130,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
-        </receiver>
+        </receiver>
         -->
         <activity
             android:name="org.buildmlearn.learnfrommap.Test"
@@ -141,6 +141,13 @@
             android:name="org.buildmlearn.learnfrommap.service.AlarmService"
             android:enabled="true"
             android:exported="true" />
+
+        <activity
+            android:name="org.buildmlearn.learnfrommap.AppTutorial"
+            android:label="@string/title_activity_app_tutorial"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

@@ -127,7 +127,7 @@ public class SplashActivity extends DatabaseHelper {
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
-			Intent intent= new Intent(getApplicationContext(), MainActivity.class);
+			Intent intent= new Intent(getApplicationContext(), AppTutorial.class);
 			startActivity(intent);
 			finish();
 

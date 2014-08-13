@@ -2,12 +2,16 @@ package org.buildmlearn.learnfrommap;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 public class SettingsActivity extends ActionBarActivity {
 
@@ -18,6 +22,30 @@ public class SettingsActivity extends ActionBarActivity {
 
 	}
 
+	public void settingsClick(View v)
+	{
+		int id = v.getId();
+		switch (id) {
+		case R.id.sett_tutorial:
+			Intent intent = new Intent(getApplicationContext(), AppTutorial.class);
+			startActivity(intent);
+			finish();
+			break;
+		case R.id.sett_rate:
+			Uri uri = Uri.parse("market://details?id=" + getPackageName());
+		    Intent myAppLinkToMarket = new Intent(Intent.ACTION_VIEW, uri);
+		    try {
+		        startActivity(myAppLinkToMarket);
+		    } catch (ActivityNotFoundException e) {
+		        Toast.makeText(this, " unable to find market app", Toast.LENGTH_LONG).show();
+		    }
+		    break;
+
+		default:
+			break;
+		}
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -38,21 +66,6 @@ public class SettingsActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-	public static class PlaceholderFragment extends Fragment {
 
-		public PlaceholderFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.activity_settings,
-					container, false);
-			return rootView;
-		}
-	}
 
 }

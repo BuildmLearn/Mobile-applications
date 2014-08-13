@@ -114,7 +114,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 			mTaskFragment.setArguments(bundle);
 			//mTaskFragment.start();
 		}
-		mLoadingText = (TextViewPlus)findViewById(R.id.question);
+		mLoadingText = (TextViewPlus)findViewById(R.id.sett_tutorial);
 		mProgressBar = (ProgressBar)findViewById(R.id.game_progressbar);
 		mProgressBar.setMax(QUESTION_COUNT);
 		mProgressBar.setProgress(0);
@@ -586,7 +586,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 			mView = getLayoutInflater().inflate(R.layout.layout_fill, mMain,false);
 			mMain.removeAllViews();
 			mMain.addView(mView);
-			mDisplayQuestion = (TextViewPlus)findViewById(R.id.question);
+			mDisplayQuestion = (TextViewPlus)findViewById(R.id.sett_tutorial);
 			mDisplayQuestion.setText(genQuestion.getQuestion());
 			startTimer(60000);
 
@@ -597,7 +597,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 			mView = getLayoutInflater().inflate(R.layout.activity_mcq, mMain,false);
 			mMain.removeAllViews();
 			mMain.addView(mView);
-			mDisplayQuestion = (TextViewPlus)findViewById(R.id.question);
+			mDisplayQuestion = (TextViewPlus)findViewById(R.id.sett_tutorial);
 			mDisplayQuestion.setText(genQuestion.getQuestion());
 			mOption1 = (TextViewPlus)findViewById(R.id.mcq_option1);
 			mOption2 = (TextViewPlus)findViewById(R.id.mcq_option2);
@@ -618,7 +618,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 			mView = getLayoutInflater().inflate(R.layout.activity_map, mMain,false);
 			mMain.removeAllViews();
 			mMain.addView(mView);
-			mDisplayQuestion = (TextViewPlus)findViewById(R.id.question);
+			mDisplayQuestion = (TextViewPlus)findViewById(R.id.sett_tutorial);
 			mDisplayQuestion.setText(genQuestion.getQuestion());
 			new Handler().post(new Runnable() {
 

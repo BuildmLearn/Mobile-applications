@@ -1,63 +1,87 @@
-	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	    xmlns:foo="http://schemas.android.com/apk/res/org.buildmlearn.learnfrommap"
-	    xmlns:tools="http://schemas.android.com/tools"
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	    tools:context="org.buildmlearn.learnfrommap.MainActivity" >
-	
-	    <RelativeLayout
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent" >
-	
-	        <ImageView
-	            android:id="@+id/explore_world_map"
-	            android:layout_width="match_parent"
-	            android:layout_height="match_parent"
-	            android:adjustViewBounds="true"
-	            android:scaleType="centerCrop"
-	            android:src="@drawable/bg_nexus" />
-	    </RelativeLayout>
-	
-	    <RelativeLayout
-	        android:id="@+id/main_layout"
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
-	        android:layout_marginTop="?attr/actionBarSize" >
-	
-	        <ScrollView
-	            android:layout_width="match_parent"
-	            android:layout_height="match_parent"
-	            android:layout_margin="7dp"
-	            android:background="#80000000" >
-	
-	            <LinearLayout
-	                android:layout_width="match_parent"
-	                android:layout_height="match_parent"
-	                android:orientation="vertical" >
-	
-	                <org.buildmlearn.learnfrommap.helper.TextViewPlus
-	                    android:id="@+id/question"
-	                    android:layout_width="match_parent"
-	                    android:layout_height="wrap_content"
-	                    android:layout_margin="3dp"
-	                    android:padding="4dp"
-	                    android:background="@drawable/custom_tile_color_no_bg"
-	                    android:clickable="true"
-	                    android:text="@string/rate_this_app"
-	                    android:textColor="@android:color/white"
-	                    android:textSize="20sp"
-	                    foo:customFont="Roboto_Light.ttf" />
-	
-	                <View
-	                    android:layout_width="fill_parent"
-	                    android:layout_height="1dp"
-	                    android:layout_marginLeft="3dp"
-	                    android:layout_marginRight="3dp"
-	                    android:layout_marginBottom="1dp"
-	                    android:layout_marginTop="1dp"
-	                    android:background="#ffffff" />
-	            </LinearLayout>
-	        </ScrollView>
-	    </RelativeLayout>
-	
-	</RelativeLayout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:foo="http://schemas.android.com/apk/res/org.buildmlearn.learnfrommap"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.buildmlearn.learnfrommap.MainActivity" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/explore_world_map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_nexus" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize" >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="7dp"
+            android:background="#80000000" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <org.buildmlearn.learnfrommap.helper.TextViewPlus
+                    android:id="@+id/sett_rate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:background="@drawable/custom_tile_color_no_bg"
+                    android:clickable="true"
+                    android:onClick="settingsClick"
+                    android:padding="4dp"
+                    android:text="@string/rate_this_app"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    foo:customFont="Roboto_Light.ttf" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginTop="1dp"
+                    android:background="#ffffff" />
+
+                <org.buildmlearn.learnfrommap.helper.TextViewPlus
+                    android:id="@+id/sett_tutorial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:background="@drawable/custom_tile_color_no_bg"
+                    android:clickable="true"
+                    android:onClick="settingsClick"
+                    android:padding="4dp"
+                    android:text="@string/show_app_tut"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    foo:customFont="Roboto_Light.ttf" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginTop="1dp"
+                    android:background="#ffffff" />
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+</RelativeLayout>

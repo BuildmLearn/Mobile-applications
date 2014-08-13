@@ -73,5 +73,6 @@
     <string name="title_activity_settings">Settings</string>
     <string name="rate_this_app">Rate this app</string>
     <string name="title_activity_app_tutorial">AppTutorial</string>
+    <string name="show_app_tut">Show App tutorial</string>
 
 </resources>

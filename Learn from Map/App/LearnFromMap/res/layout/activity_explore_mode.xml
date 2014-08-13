@@ -27,7 +27,7 @@
             android:padding="10dp" >
 
             <org.buildmlearn.learnfrommap.helper.TextViewPlus
-                android:id="@+id/question"
+                android:id="@+id/sett_tutorial"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -46,7 +46,7 @@
                 android:background="#ffffff" />
 
             <org.buildmlearn.learnfrommap.helper.TextViewPlus
-                android:id="@+id/question"
+                android:id="@+id/sett_tutorial"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"

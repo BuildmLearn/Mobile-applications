@@ -28,6 +28,8 @@ import android.widget.TextView;
 
 public class SplashActivity extends DatabaseHelper {
 
+	private int mData;
+	private TinyDB pref;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +39,12 @@ public class SplashActivity extends DatabaseHelper {
 		BitmapFactory.Options options = new BitmapFactory.Options();
 		options.inJustDecodeBounds = true;
 		BitmapFactory.decodeResource(getResources(), R.id.explore_world_map, options);
-		TinyDB pref = new TinyDB(getApplicationContext());
+		pref = new TinyDB(getApplicationContext());
 		ArrayList<String> list1 = pref.getList("NAME");
 		Log.e("SIZE", list1.size() + "");
+		mData = pref.getInt("TUTORIAL");
+		Log.e("CHECK", "Data: " + pref.getInt("TUTORIAL"));
+		
 
 	}
 
@@ -127,7 +132,16 @@ public class SplashActivity extends DatabaseHelper {
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
-			Intent intent= new Intent(getApplicationContext(), AppTutorial.class);
+			Intent intent;
+			if(mData == 0)
+			{
+				intent= new Intent(getApplicationContext(), AppTutorial.class);
+				pref.putInt("TUTORIAL", 1);
+			}
+			else
+			{
+				intent= new Intent(getApplicationContext(), MainActivity.class);
+			}
 			startActivity(intent);
 			finish();
 

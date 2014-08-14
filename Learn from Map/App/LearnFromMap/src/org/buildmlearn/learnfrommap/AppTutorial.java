@@ -74,7 +74,10 @@ public class AppTutorial extends ActionBarActivity {
 				resId = R.layout.swipe5;
 				break;
 			case 5:
-				resId = R.layout.swipe5;
+				resId = R.layout.swipe6;
+				break;
+			case 6:
+				resId = R.layout.swipe6;
 				Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 				startActivity(intent);
 				finish();
@@ -106,7 +109,7 @@ public class AppTutorial extends ActionBarActivity {
 
 		@Override
 		public int getCount() {
-			return 6;
+			return 7;
 		}
 
 	}

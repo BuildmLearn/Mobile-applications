@@ -35,7 +35,7 @@ public class AlarmService extends Service {
 		Calendar firingCal= Calendar.getInstance();
 		Calendar currentCal = Calendar.getInstance();
 
-		firingCal.set(Calendar.HOUR_OF_DAY, 17); // At the hour you wanna fire
+		firingCal.set(Calendar.HOUR_OF_DAY, 19); // At the hour you wanna fire
 		firingCal.set(Calendar.MINUTE, 30); // Particular minute
 		firingCal.set(Calendar.SECOND, 0); // particular second
 		//firingCal.set(Calendar.)
@@ -61,13 +61,13 @@ public class AlarmService extends Service {
 		
 		if(intendedTime >= currentTime) 
 		{
-			am.setRepeating(AlarmManager.RTC_WAKEUP, intendedTime, AlarmManager.INTERVAL_FIFTEEN_MINUTES, pi);
+			am.setRepeating(AlarmManager.RTC_WAKEUP, intendedTime, AlarmManager.INTERVAL_DAY, pi);
 
 		}
 		else{
 		   firingCal.add(Calendar.DAY_OF_MONTH, 1);
 		   intendedTime = firingCal.getTimeInMillis();
-		   am.setRepeating(AlarmManager.RTC_WAKEUP, intendedTime, AlarmManager.INTERVAL_FIFTEEN_MINUTES, pi);
+		   am.setRepeating(AlarmManager.RTC_WAKEUP, intendedTime, AlarmManager.INTERVAL_DAY, pi);
 		}
 		
 		//am.setRepeating(AlarmManager.RTC_WAKEUP, 1407511828802l, AlarmManager.INTERVAL_DAY, pi);

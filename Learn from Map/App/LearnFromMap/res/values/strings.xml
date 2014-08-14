@@ -74,5 +74,9 @@
     <string name="rate_this_app">Rate this app</string>
     <string name="title_activity_app_tutorial">AppTutorial</string>
     <string name="show_app_tut">Show App tutorial</string>
+    <string name="sound">Sound</string>
+    <string name="notifications">Notifications</string>
+    <string name="location_disabled">Location services are disabled, do you wish to enable location?</string>
+    <string name="not_now">Not now</string>
 
 </resources>

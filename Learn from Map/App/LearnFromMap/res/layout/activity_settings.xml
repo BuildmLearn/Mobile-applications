@@ -80,6 +80,70 @@
                     android:layout_marginRight="3dp"
                     android:layout_marginTop="1dp"
                     android:background="#ffffff" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <org.buildmlearn.learnfrommap.helper.TextViewPlus
+                        android:id="@+id/text_noti"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:layout_weight="0.77"
+                        android:background="@drawable/custom_tile_color_no_bg"
+                        android:padding="4dp"
+                        android:text="@string/sound"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
+                        foo:customFont="Roboto_Light.ttf" />
+
+                    <CheckBox
+                        android:id="@+id/sett_sound"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginTop="1dp"
+                    android:background="#ffffff" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <org.buildmlearn.learnfrommap.helper.TextViewPlus
+                        android:id="@+id/text_noti"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:layout_weight="0.77"
+                        android:background="@drawable/custom_tile_color_no_bg"
+                        android:padding="4dp"
+                        android:text="@string/notifications"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
+                        foo:customFont="Roboto_Light.ttf" />
+
+                    <CheckBox
+                        android:id="@+id/sett_noti"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginTop="1dp"
+                    android:background="#ffffff" />
             </LinearLayout>
         </ScrollView>
     </RelativeLayout>

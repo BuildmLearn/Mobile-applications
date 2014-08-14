@@ -5,6 +5,7 @@ import java.util.Collections;
 
 import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.helper.CustomDialog;
+import org.buildmlearn.learnfrommap.helper.TextViewPlus;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,17 +18,21 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import android.support.v7.app.ActionBarActivity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -43,6 +48,7 @@ public class ClassicModeActivity extends ActionBarActivity {
 	private RelativeLayout mLoading;
 	private RelativeLayout mMain;
 	private ArrayAdapter<String> adapter;
+	private Dialog dialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -69,15 +75,12 @@ public class ClassicModeActivity extends ActionBarActivity {
 			}
 
 			public void onStatusChanged(String provider, int status, Bundle extras) {
-				Toast.makeText(getApplicationContext(), "onStatusChanged", Toast.LENGTH_LONG).show();
 			}
 
 			public void onProviderEnabled(String provider) {
-				Toast.makeText(getApplicationContext(), "onProviderEnabled", Toast.LENGTH_LONG).show();
 			}
 
 			public void onProviderDisabled(String provider) {
-				Toast.makeText(getApplicationContext(), "Location Services are disabled", Toast.LENGTH_LONG).show();
 				mLoading.setVisibility(View.GONE);
 				mMain.setVisibility(View.VISIBLE);
 			}
@@ -109,30 +112,39 @@ public class ClassicModeActivity extends ActionBarActivity {
 	public void loadLocation(View v)
 	{
 		// Register the listener with the Location Manager to receive location updates
-
-		mLoading.setVisibility(View.VISIBLE);
-		mMain.setVisibility(View.GONE);
-		if(location != null)
+		if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER))
 		{
-			getCountry(location.getLatitude(), location.getLongitude());
+
+
+
+			mLoading.setVisibility(View.VISIBLE);
+			mMain.setVisibility(View.GONE);
+			if(location != null)
+			{
+				getCountry(location.getLatitude(), location.getLongitude());
+			}
+			else
+			{		
+
+				try 
+				{
+					locationManager.requestLocationUpdates(LocationManager.PASSIVE_PROVIDER, 0, 0, locationListener);
+					locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+					locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+				}
+				catch(IllegalArgumentException e)
+				{
+					Toast.makeText(getApplicationContext(), "There was some error fetching your location\nError: " + e.getMessage(), Toast.LENGTH_LONG).show();
+					mLoading.setVisibility(View.GONE);
+					mMain.setVisibility(View.VISIBLE);
+					e.printStackTrace();
+				}
+
+			}
 		}
 		else
-		{		
-
-			try 
-			{
-				locationManager.requestLocationUpdates(LocationManager.PASSIVE_PROVIDER, 0, 0, locationListener);
-				locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
-				locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-			}
-			catch(IllegalArgumentException e)
-			{
-				Toast.makeText(getApplicationContext(), "There was some error fetching your location\nError: " + e.getMessage(), Toast.LENGTH_LONG).show();
-				mLoading.setVisibility(View.GONE);
-				mMain.setVisibility(View.VISIBLE);
-				e.printStackTrace();
-			}
-
+		{
+			showConfirmDialog();
 		}
 
 	}
@@ -246,5 +258,31 @@ public class ClassicModeActivity extends ActionBarActivity {
 
 	}
 
+
+	protected void showConfirmDialog() {
+		dialog = new Dialog(ClassicModeActivity.this);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+		dialog.setContentView(R.layout.dialog_location);   
+		dialog.show();
+		TextViewPlus yes = (TextViewPlus)dialog.findViewById(R.id.confirm_yes);
+		yes.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+				Intent myIntent = new Intent( Settings.ACTION_LOCATION_SOURCE_SETTINGS );
+                startActivity(myIntent);
+			}
+		});
+		TextViewPlus no = (TextViewPlus)dialog.findViewById(R.id.confirm_no);
+		no.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+	}
 
 }

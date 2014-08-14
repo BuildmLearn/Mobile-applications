@@ -1,5 +1,7 @@
 package org.buildmlearn.learnfrommap;
 
+import org.buildmlearn.learnfrommap.helper.TinyDB;
+
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.content.ActivityNotFoundException;
@@ -10,15 +12,43 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 public class SettingsActivity extends ActionBarActivity {
+	
+	private CheckBox notification;
+	private CheckBox sound;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
+		notification = (CheckBox)findViewById(R.id.sett_noti);
+		sound= (CheckBox)findViewById(R.id.sett_sound);
+		final TinyDB pref = new TinyDB(getApplicationContext());
+		boolean sound_pref = pref.getBoolean("SOUND");
+		boolean noti_pref = pref.getBoolean("NOTI");
+		notification.setChecked(noti_pref);
+		sound.setChecked(sound_pref);
+		
+		notification.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				pref.putBoolean("NOTI", notification.isChecked());
+			}
+		});
+		
+		sound.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				pref.putBoolean("SOUND", sound.isChecked());
+			}
+		});
 
 	}
 
@@ -66,6 +96,8 @@ public class SettingsActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	
+	
 
 
 }

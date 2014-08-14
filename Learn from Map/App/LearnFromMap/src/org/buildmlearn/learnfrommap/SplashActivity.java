@@ -135,6 +135,8 @@ public class SplashActivity extends DatabaseHelper {
 			Intent intent;
 			if(mData == 0)
 			{
+				pref.putBoolean("NOTI", true);
+				pref.putBoolean("SOUND", true);
 				intent= new Intent(getApplicationContext(), AppTutorial.class);
 				pref.putInt("TUTORIAL", 1);
 			}

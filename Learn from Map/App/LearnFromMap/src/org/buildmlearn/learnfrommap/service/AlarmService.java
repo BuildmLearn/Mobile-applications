@@ -1,5 +1,7 @@
 package org.buildmlearn.learnfrommap.service;
 
+import java.util.Calendar;
+
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -30,7 +32,29 @@ public class AlarmService extends Service {
 		PendingIntent pi = PendingIntent.getBroadcast(this.getApplicationContext(), 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
 		// Repeat the notification every 15 seconds (15000)
 		AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-		am.setRepeating(AlarmManager.RTC_WAKEUP, 1407511828802l, 150000, pi);
+		Calendar firingCal= Calendar.getInstance();
+		Calendar currentCal = Calendar.getInstance();
+
+		firingCal.set(Calendar.HOUR, 2); // At the hour you wanna fire
+		firingCal.set(Calendar.MINUTE, 0); // Particular minute
+		firingCal.set(Calendar.SECOND, 0); // particular second
+		//firingCal.set(Calendar.)
+
+		long intendedTime = firingCal.getTimeInMillis();
+		long currentTime = currentCal.getTimeInMillis();
+
+		if(intendedTime >= currentTime) 
+		{
+			am.setRepeating(AlarmManager.RTC_WAKEUP, intendedTime, AlarmManager.INTERVAL_DAY, pi);
+
+		}
+		else{
+		   firingCal.add(Calendar.DAY_OF_MONTH, 1);
+		   intendedTime = firingCal.getTimeInMillis();
+		   am.setRepeating(AlarmManager.RTC_WAKEUP, intendedTime, AlarmManager.INTERVAL_DAY, pi);
+		}
+		
+		//am.setRepeating(AlarmManager.RTC_WAKEUP, 1407511828802l, AlarmManager.INTERVAL_DAY, pi);
 		Toast.makeText(this, "My Service started", Toast.LENGTH_LONG).show();
 		Log.d(TAG, "onStart");
 		return Service.START_NOT_STICKY;

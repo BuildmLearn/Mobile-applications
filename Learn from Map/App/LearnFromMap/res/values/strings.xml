@@ -57,7 +57,7 @@
     <string name="question_answer_count">18/20</string>
     <string name="title_activity_test_db">TestDb</string>
     <string name="fetching_location">Please Wait...\nFetching Your Location</string>
-    <string name="version">Version: 1.0.0</string>
+    <string name="version">Version: 2.0.0</string>
     <string name="confirm_exit">Are you sure you want to quit this challenge?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>

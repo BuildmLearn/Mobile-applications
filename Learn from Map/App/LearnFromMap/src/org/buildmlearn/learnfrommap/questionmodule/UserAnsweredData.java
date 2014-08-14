@@ -1,8 +1,10 @@
 package org.buildmlearn.learnfrommap.questionmodule;
 
 import java.io.Serializable;
+import java.util.Locale;
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion.Type;
 import uk.ac.shef.wit.simmetrics.similaritymetrics.JaroWinkler;
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 public class UserAnsweredData  implements Serializable{
@@ -207,7 +209,10 @@ public class UserAnsweredData  implements Serializable{
 
 	}
 
+	@SuppressLint("DefaultLocale")
 	public static double CompareStrings(String stringA, String stringB) {
+		stringA = stringA.toLowerCase(Locale.getDefault());
+		stringB = stringB.toLowerCase(Locale.getDefault());
 		JaroWinkler algorithm = new JaroWinkler();
 		return algorithm.getSimilarity(stringA, stringB);
 	}

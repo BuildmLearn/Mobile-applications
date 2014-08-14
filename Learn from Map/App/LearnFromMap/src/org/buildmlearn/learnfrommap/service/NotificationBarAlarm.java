@@ -24,7 +24,7 @@ public class NotificationBarAlarm extends BroadcastReceiver {
 	public void onReceive(Context context, Intent intent) {
 
 		Log.d("NotificationAlarm", "onReceive");
-		Toast.makeText(context, "Notification Manager", Toast.LENGTH_SHORT).show();
+//		Toast.makeText(context, "Notification Manager", Toast.LENGTH_SHORT).show();
 		Intent intent1 = new Intent(context, SplashActivity.class);
 		PendingIntent pIntent = PendingIntent.getActivity(context, 0, intent1, 0);
 		Database db = new Database(context);

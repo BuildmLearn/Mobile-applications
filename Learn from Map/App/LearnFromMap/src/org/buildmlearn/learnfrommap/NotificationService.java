@@ -9,13 +9,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-import android.widget.Toast;
 
 public class NotificationService extends BroadcastReceiver {
 
 	public void onReceive(Context context, Intent arg1) {
 		Log.d("Autostart", "BOOT_COMPLETED broadcast received. Executing starter service.");
-		Toast.makeText(context, "Learn From Map", Toast.LENGTH_SHORT).show();
+//		Toast.makeText(context, "Learn From Map", Toast.LENGTH_SHORT).show();
 		Intent intent = new Intent(context, AlarmService.class);
 		context.startService(intent);
 	}

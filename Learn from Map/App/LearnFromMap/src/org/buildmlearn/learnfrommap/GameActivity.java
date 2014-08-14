@@ -79,6 +79,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 	private String mDisplatMsg;
 	protected long timeLeft;
 	private Dialog dialog;
+	private LatLng mMapLocation;
 	private Marker userMarker;
 	private AsyncTaskFragment mTaskFragment;
 
@@ -93,6 +94,8 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 		mQuestionCounter = 0;
 		Intent intent = getIntent();
 		mode = intent.getStringExtra("MODE");
+		String mapLocation = intent.getStringExtra("LOCATION");
+		mMapLocation = HelperFunctions.locationFromString(mapLocation);
 		mDisplatMsg = intent.getStringExtra("DISPLAY");
 		mSelection = intent.getStringExtra("SELECTION");
 		mValue = intent.getStringExtra("VALUE");
@@ -624,7 +627,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 
 				@Override
 				public void run() {
-					getMapView((SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.mapFragment));
+					getMapView((SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.mapFragment), mMapLocation);
 
 				}
 			});	

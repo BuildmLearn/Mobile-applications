@@ -34,6 +34,7 @@ public class ExploreMode extends ActionBarActivity {
 		worldMap = (ImageView)findViewById(R.id.explore_world_map);
 		gestureDetector = new GestureDetector(this, new GestureListener(worldMap));
 		worldMap.setOnTouchListener(worldMapTouchListener);
+		Toast.makeText(getApplicationContext(), "You may move the map sideways", Toast.LENGTH_SHORT).show();
 
 	}
 
@@ -95,67 +96,6 @@ public class ExploreMode extends ActionBarActivity {
 
 		@Override
 		public boolean onDown(MotionEvent event) {
-			float eventX = event.getX();
-			float eventY = event.getY();
-			float[] eventXY = new float[] {eventX, eventY};
-
-			Matrix invertMatrix = new Matrix();
-			((ImageView)v).getImageMatrix().invert(invertMatrix);
-
-			invertMatrix.mapPoints(eventXY);
-			int x = Integer.valueOf((int)eventXY[0]);
-			int y = Integer.valueOf((int)eventXY[1]);
-			Drawable imgDrawable = ((ImageView)v).getDrawable();
-			Bitmap bitmap = ((BitmapDrawable)imgDrawable).getBitmap();
-			if(x < 0){
-				x = 0;
-			}else if(x > bitmap.getWidth()-1){
-				x = bitmap.getWidth()-1;
-			}
-
-			if(y < 0){
-				y = 0;
-			}else if(y > bitmap.getHeight()-1){
-				y = bitmap.getHeight()-1;
-			}
-
-			int touchedRGB = bitmap.getPixel(x, y);
-			String color = Integer.toHexString(touchedRGB);
-			String continent = "";
-			if(color.equals("ffeeeeee"))
-			{
-				continent = "2";
-			}
-			else if(color.equals("ff333333"))
-			{
-				continent = "4";
-			}
-			else if(color.equals("ff999999"))
-			{
-				continent = "6";
-			}
-			else if(color.equals("ff777777"))
-			{
-				continent = "1";
-			}
-			else if(color.equals("ffaaaaaa"))
-			{
-				continent = "3";
-			}
-			else if(color.equals("ffffffff"))
-			{
-				continent = "7";
-			}
-			else if(color.equals("ff555555"))
-			{
-				continent = "5";
-			}
-			if(continent.length() > 0 && !isClicked)
-			{
-
-				Toast.makeText(getApplicationContext(), "You may move the map sideways", Toast.LENGTH_SHORT).show();
-
-			}
 			return true;
 		}
 
@@ -202,40 +142,48 @@ public class ExploreMode extends ActionBarActivity {
 			String color = Integer.toHexString(touchedRGB);
 			String continent = "";
 			String s = "";
+			String loc = "0,0";
 			if(color.equals("ffeeeeee"))
 			{
 				continent = "2";
 				s = "Asia";
+				loc = "46.2,86.6";
 			}
 			else if(color.equals("ff333333"))
 			{
 				continent = "4";
 				s = "North America";
+				loc = "48.1667,-100.1667";
 			}
 			else if(color.equals("ff999999"))
 			{
 				continent = "6";
 				s = "South America";
+				loc = "-13,-59.40";
 			}
 			else if(color.equals("ff777777"))
 			{
 				continent = "1";
 				s = "Africa";
+				loc = "7.1881,21.0936";
 			}
 			else if(color.equals("ffaaaaaa"))
 			{
 				continent = "3";
 				s = "Europe";
+				loc = "71.1333,27.7000";
 			}
 			else if(color.equals("ffffffff"))
 			{
 				continent = "7";
 				s = "Antarctica";
+				loc = "-90,-0";
 			}
 			else if(color.equals("ff555555"))
 			{
 				continent = "5";
 				s = "Oceania";
+				loc = "-30,140";
 			}			
 			if(continent.length() > 0 && !isClicked)
 			{
@@ -245,6 +193,7 @@ public class ExploreMode extends ActionBarActivity {
 				intent.putExtra("DISPLAY", "Continent: " + s);
 				intent.putExtra("MODE", "EXPLORE_MODE");
 				intent.putExtra("SELECTION", "CONTINENT");
+				intent.putExtra("LOCATION", loc);
 				intent.putExtra("VALUE", continent);
 				startActivity(intent);
 				return true;

@@ -5,6 +5,7 @@ import org.buildmlearn.learnfrommap.maphelper.CustomTileProvider;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -98,10 +99,10 @@ public class Helper extends ActionBarActivity {
 
 	// ////////////////Public Function //////////////////
 
-	public void getMapView(SupportMapFragment mapFragment) {
+	public void getMapView(SupportMapFragment mapFragment, LatLng loc) {
 		this.handler = new Handler();
 		this.mapFragment = mapFragment;
-		CheckMap();
+		CheckMap(loc);
 	}
 
 	public void queryDatabase(String where, String[] whereArgs, String orderBy,
@@ -177,7 +178,7 @@ public class Helper extends ActionBarActivity {
 
 	// ////////////////Private Function //////////////////
 
-	private void setUpMap() {
+	private void setUpMap(final LatLng loc) {
 		handler.post(new Runnable() {
 
 
@@ -192,8 +193,10 @@ public class Helper extends ActionBarActivity {
 					mapView.addTileOverlay(new TileOverlayOptions()
 							.tileProvider(new CustomTileProvider(getResources()
 									.getAssets(), mapView)));
-					markerOptions = new MarkerOptions().draggable(true).position(new LatLng(0, 0)).flat(true).title("Your Answer");
+					markerOptions = new MarkerOptions().draggable(true).position(loc).flat(true).title("Your Answer");
 					marker = mapView.addMarker(markerOptions);
+					CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(loc, 2);
+					mapView.animateCamera(yourLocation);
 					//marker = null;
 					if (getApplicationContext() != null) {
 						runOnUiThread(new Runnable() {
@@ -212,7 +215,7 @@ public class Helper extends ActionBarActivity {
 
 	}
 
-	private void CheckMap() {
+	private void CheckMap(final LatLng loc) {
 
 		new Thread(new Runnable() {
 
@@ -223,7 +226,7 @@ public class Helper extends ActionBarActivity {
 
 				if (playServiceStatus == ConnectionResult.SUCCESS) {
 					if (getVersionFromPackageManager(getApplicationContext()) >= 2) {
-						setUpMap();
+						setUpMap(loc);
 						if (getApplicationContext() != null) {
 							runOnUiThread(new Runnable() {
 								@Override

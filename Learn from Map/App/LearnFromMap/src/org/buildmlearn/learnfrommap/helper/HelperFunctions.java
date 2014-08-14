@@ -3,6 +3,8 @@ package org.buildmlearn.learnfrommap.helper;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import android.content.Context;
 import android.util.Log;
 
@@ -78,7 +80,7 @@ public class HelperFunctions {
 			stat.putListInt("COUNTRY_ANS", ans, context);
 		}
 	}
-	
+
 	public static ArrayList<StatHolder> bindStat(Context context)
 	{
 		TinyDB stat = new TinyDB(context);
@@ -92,7 +94,16 @@ public class HelperFunctions {
 			data.add(temp);
 		}
 		return data;
-		
+
+	}
+
+	public static LatLng locationFromString(String location)
+	{
+		String[] latlng = location.split(",");
+		double lat = Double.parseDouble(latlng[0]);
+		double lng = Double.parseDouble(latlng[1]);
+		LatLng loc = new LatLng(lat, lng);
+		return loc;
 	}
 
 

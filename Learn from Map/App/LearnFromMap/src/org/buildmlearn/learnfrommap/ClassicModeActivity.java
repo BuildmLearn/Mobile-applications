@@ -103,8 +103,12 @@ public class ClassicModeActivity extends ActionBarActivity {
 	public void customCountry(View v)
 	{
 		String country = spinner.getSelectedItem().toString();
+		Database db =  new Database(getApplicationContext());
+		String locat = db.getCountryCoordinates(country);
+		db.close();
 		intent.putExtra("VALUE", country);
 		intent.putExtra("DISPLAY", "Country: " + country);
+		intent.putExtra("LOCATION", locat);
 		startActivity(intent);
 
 	}
@@ -179,8 +183,13 @@ public class ClassicModeActivity extends ActionBarActivity {
 						{
 							String country = obj.getString("long_name");
 							Log.e("Country", country);
+							Database db =  new Database(getApplicationContext());
+							String locat = db.getCountryCoordinates(country);
+							db.close();
+							intent.putExtra("LOCATION", locat);
 							intent.putExtra("VALUE", country);
 							intent.putExtra("DISPLAY", "Country: " + country);
+							
 							startActivity(intent);
 							locationManager.removeUpdates(locationListener);
 						}

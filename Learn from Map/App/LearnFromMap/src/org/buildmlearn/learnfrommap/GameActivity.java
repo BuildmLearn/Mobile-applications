@@ -17,6 +17,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -82,6 +83,8 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 	private LatLng mMapLocation;
 	private Marker userMarker;
 	private AsyncTaskFragment mTaskFragment;
+	private MediaPlayer mpCorrect;
+	private MediaPlayer mpWrong;
 
 	@Override	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +102,9 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 		mDisplatMsg = intent.getStringExtra("DISPLAY");
 		mSelection = intent.getStringExtra("SELECTION");
 		mValue = intent.getStringExtra("VALUE");
+		mpCorrect = MediaPlayer.create(this, R.raw.correct_answer);
+		mpWrong = MediaPlayer.create(this, R.raw.wrong_answer);
+
 
 		FragmentManager fm = getSupportFragmentManager();
 		mTaskFragment = (AsyncTaskFragment) fm.findFragmentByTag(TAG_TASK_FRAGMENT);
@@ -171,6 +177,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 					{
 						if(options[i].getText().toString().equals(answer))
 						{
+							mpCorrect.start();
 							mTimer.setText("That's the correct answer!");
 							isCorrect = true;
 							HelperFunctions.updateStats(getApplicationContext(), true, genQuestion.getDbRow().getCountry());
@@ -179,6 +186,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 						{
 							HelperFunctions.updateStats(getApplicationContext(), false, genQuestion.getDbRow().getCountry());
 							mTimer.setText("Sorry, wrong answer!");
+							mpWrong.start();
 							if(mSdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
 								options[i].setBackgroundDrawable(getResources().getDrawable(R.drawable.wrong_answer));
 
@@ -206,11 +214,13 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 				String userAnswer  = fillAnswer.getText().toString();
 				if(UserAnsweredData.CompareStrings(userAnswer, genQuestion.getAnswer()) > 0.95)
 				{
+					mpCorrect.start();
 					mTimer.setText("That's the correct answer!");
 					isCorrect = true;
 				}
 				else
 				{
+					mpWrong.start();
 					mTimer.setText("Sorry, wrong answer!");
 				}
 				if(userAnswer.length() == 0)
@@ -285,6 +295,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 							{
 								if(distance < 600)
 								{
+									mpCorrect.start();
 									mIsCorrect = true;
 									marker.setPosition(new LatLng(ansLat, andLng));
 									marker.setTitle(markerTitle);
@@ -294,6 +305,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 								}
 								else
 								{
+									mpWrong.start();
 									mTimer.setText("Wrong answer!\nCorrect answer is shown below");
 									mapView.addMarker(markerOption).showInfoWindow();;
 								}
@@ -304,6 +316,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 							{
 								if(reGeoData.getState().equals(genQuestion.getDbRow().getState()))
 								{
+									mpCorrect.start();
 									mIsCorrect = true;
 									marker.setTitle(markerTitle);
 									marker.showInfoWindow();
@@ -312,6 +325,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 								}
 								else if(distance < 600)
 								{
+									mpCorrect.start();
 									mIsCorrect = true;
 									marker.setPosition(new LatLng(ansLat, andLng));
 									marker.setTitle(markerTitle);
@@ -323,6 +337,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 								}
 								else
 								{
+									mpWrong.start();
 									mTimer.setText("Wrong answer!\nCorrect answer is shown below");
 									mapView.addMarker(markerOption).showInfoWindow();;
 									marker.setTitle(reGeoData.getState());
@@ -334,6 +349,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 							{
 								if(reGeoData.getCountry().equals(genQuestion.getDbRow().getCountry()))
 								{
+									mpCorrect.start();
 									mIsCorrect = true;
 									marker.setTitle(markerTitle);
 									marker.showInfoWindow();
@@ -342,6 +358,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 								}
 								else if(distance < 600)
 								{
+									mpCorrect.start();
 									mIsCorrect = true;
 									marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 									marker.setPosition(new LatLng(ansLat, andLng));
@@ -353,6 +370,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 								}
 								else
 								{
+									mpWrong.start();
 									mTimer.setText("Wrong answer!\nCorrect answer is shown below");
 									marker.setTitle(reGeoData.getCountry());
 									mapView.addMarker(markerOption).showInfoWindow();;
@@ -371,6 +389,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 							MarkerOptions markerOption = new MarkerOptions().draggable(false).position(ansPosition).flat(true).title(genQuestion.getDbRow().getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 							if(distance < 600)
 							{
+								mpCorrect.start();
 								mIsCorrect = true;
 								marker.setPosition(new LatLng(ansLat, andLng));
 								marker.setTitle(markerTitle);
@@ -380,6 +399,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 							}
 							else
 							{
+								mpWrong.start();
 								mTimer.setText("Wrong answer!\nCorrect answer is shown below");
 								mapView.addMarker(markerOption).showInfoWindow();;
 							}
@@ -412,6 +432,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 								MarkerOptions markerOption = new MarkerOptions().draggable(false).position(ansPosition).flat(true).title(genQuestion.getDbRow().getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 								if(distance < 600)
 								{
+									mpCorrect.start();
 									mIsCorrect = true;
 									marker.setPosition(new LatLng(ansLat, andLng));
 									marker.setTitle(markerTitle);
@@ -421,6 +442,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 								}
 								else
 								{
+									mpWrong.start();
 									mTimer.setText("Wrong answer!\nCorrect answer is shown below");
 									mapView.addMarker(markerOption).showInfoWindow();
 								}

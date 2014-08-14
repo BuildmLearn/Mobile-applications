@@ -36,7 +36,7 @@ public class AlarmService extends Service {
 		Calendar currentCal = Calendar.getInstance();
 
 		firingCal.set(Calendar.HOUR_OF_DAY, 17); // At the hour you wanna fire
-		firingCal.set(Calendar.MINUTE, 30		); // Particular minute
+		firingCal.set(Calendar.MINUTE, 30); // Particular minute
 		firingCal.set(Calendar.SECOND, 0); // particular second
 		//firingCal.set(Calendar.)
 

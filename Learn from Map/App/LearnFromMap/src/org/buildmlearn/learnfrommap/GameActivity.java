@@ -7,6 +7,7 @@ import org.buildmlearn.learnfrommap.helper.CustomDialog;
 import org.buildmlearn.learnfrommap.helper.HelperFunctions;
 import org.buildmlearn.learnfrommap.helper.ReverseGeoCodeJson;
 import org.buildmlearn.learnfrommap.helper.TextViewPlus;
+import org.buildmlearn.learnfrommap.helper.TinyDB;
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion;
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion.Type;
 import org.buildmlearn.learnfrommap.questionmodule.QuestionModuleException;
@@ -85,7 +86,8 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 	private AsyncTaskFragment mTaskFragment;
 	private MediaPlayer mpCorrect;
 	private MediaPlayer mpWrong;
-
+	private TinyDB pref;
+	
 	@Override	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -104,6 +106,13 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 		mValue = intent.getStringExtra("VALUE");
 		mpCorrect = MediaPlayer.create(this, R.raw.correct_answer);
 		mpWrong = MediaPlayer.create(this, R.raw.wrong_answer);
+		pref = new TinyDB(getApplicationContext());
+		
+		if(!pref.getBoolean("SOUND"))
+		{
+			mpCorrect.setVolume(0, 0);
+			mpWrong.setVolume(0, 0);
+		}
 
 
 		FragmentManager fm = getSupportFragmentManager();

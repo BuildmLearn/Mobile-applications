@@ -113,7 +113,7 @@
 	<question>
 	    <code>ADM1</code>
 	    <type>PIN</type>
-	    <alias>State</alias>
+	    <alias>States</alias>
 	    <marker>country</marker>
 	    <relationship>name</relationship>
 	    <location>true</location>

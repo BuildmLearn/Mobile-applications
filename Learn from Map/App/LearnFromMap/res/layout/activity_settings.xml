@@ -26,7 +26,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="7dp"
             android:background="#80000000" >
 
@@ -46,7 +46,7 @@
                     android:padding="4dp"
                     android:text="@string/rate_this_app"
                     android:textColor="@android:color/white"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     foo:customFont="Roboto_Light.ttf" />
 
                 <View
@@ -69,7 +69,7 @@
                     android:padding="4dp"
                     android:text="@string/show_app_tut"
                     android:textColor="@android:color/white"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     foo:customFont="Roboto_Light.ttf" />
 
                 <View
@@ -95,7 +95,7 @@
                         android:padding="4dp"
                         android:text="@string/sound"
                         android:textColor="@android:color/white"
-                        android:textSize="20sp"
+                        android:textSize="16sp"
                         foo:customFont="Roboto_Light.ttf" />
 
                     <CheckBox
@@ -127,7 +127,7 @@
                         android:padding="4dp"
                         android:text="@string/notifications"
                         android:textColor="@android:color/white"
-                        android:textSize="20sp"
+                        android:textSize="16sp"
                         foo:customFont="Roboto_Light.ttf" />
 
                     <CheckBox
@@ -136,14 +136,7 @@
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="1dp"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginRight="3dp"
-                    android:layout_marginTop="1dp"
-                    android:background="#ffffff" />
+
             </LinearLayout>
         </ScrollView>
     </RelativeLayout>

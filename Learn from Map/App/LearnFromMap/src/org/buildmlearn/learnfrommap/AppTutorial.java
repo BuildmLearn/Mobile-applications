@@ -1,12 +1,9 @@
 package org.buildmlearn.learnfrommap;
 
-import org.xmlpull.v1.XmlPullParser;
-
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -14,22 +11,30 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.os.Build;
 
+/**
+ * Activity used for displaying the App tutorial
+ * 
+ * This activity uses a ViewPager to display static views defined the res/layout folder. 
+ * 
+ * @author Abhishek	
+ *
+ */
 public class AppTutorial extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_app_tutorial);
-	    MyPagerAdapter adapter = new MyPagerAdapter();
+	    CustomPagerAdapter adapter = new CustomPagerAdapter();
 	    ViewPager myPager = (ViewPager) findViewById(R.id.myfivepanelpager);
 	    myPager.setAdapter(adapter);
 	    myPager.setCurrentItem(0);
 	}
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -38,24 +43,33 @@ public class AppTutorial extends ActionBarActivity {
 		return true;
 	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+	 */
+		@Override
+		public boolean onOptionsItemSelected(MenuItem item) {
+			// Handle action bar item clicks here. The action bar will
+			// automatically handle clicks on the Home/Up button, so long
+			// as you specify a parent activity in AndroidManifest.xml.
+			int id = item.getItemId();
+			if (id == R.id.action_settings) {
+				return true;
+			}
+			return super.onOptionsItemSelected(item);
 		}
-		return super.onOptionsItemSelected(item);
-	}
 
-	class MyPagerAdapter extends PagerAdapter {
+	/**
+	 * Custom Page Adapter used by View Pager
+	 * 
+	 * @author Abhishek
+	 */
+	class CustomPagerAdapter extends PagerAdapter {
 
 		public Object instantiateItem(View collection, int position) {
+			getApplicationContext();
 			//layout = inflater.inflate(R.layout.layout_evaluation, null);
 			LayoutInflater inflater = (LayoutInflater) collection.getContext()
-                    .getSystemService(getApplicationContext().LAYOUT_INFLATER_SERVICE);
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			int resId = 0;
 			switch (position) {
 			case 0:

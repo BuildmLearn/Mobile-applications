@@ -12,8 +12,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
-import android.widget.Toast;
 
 public class NotificationBarAlarm extends BroadcastReceiver {
 
@@ -23,8 +21,6 @@ public class NotificationBarAlarm extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 
-		Log.d("NotificationAlarm", "onReceive");
-//		Toast.makeText(context, "Notification Manager", Toast.LENGTH_SHORT).show();
 		Intent intent1 = new Intent(context, SplashActivity.class);
 		PendingIntent pIntent = PendingIntent.getActivity(context, 0, intent1, 0);
 		Database db = new Database(context);

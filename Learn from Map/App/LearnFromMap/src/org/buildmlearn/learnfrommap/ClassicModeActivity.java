@@ -28,7 +28,6 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -176,20 +175,20 @@ public class ClassicModeActivity extends ActionBarActivity {
 	 */
 	private void getCountry(double lat, double lng) {
 		String googleurl = "https://maps.google.com/maps/api/geocode/json?key=AIzaSyACYVxd_d-49UnhqibCI6F9f7b5Gw1qTSc&";
-		Log.v("HTTP" , "Latitude is: " + lat + "Longitude is:" + lng);
+//		Log.v("HTTP" , "Latitude is: " + lat + "Longitude is:" + lng);
 		StringBuilder sbuilder = new StringBuilder();
 		sbuilder.append(googleurl);
 
 		sbuilder.append("latlng=" + lat + "," + lng);
 		sbuilder.append("&sensor=true");
 		String url = sbuilder.toString();
-		Log.v("URL", url);
+//		Log.v("URL", url);
 		StringRequest myReq = new StringRequest(Method.GET, 
 				url,
 				new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
-				Log.d("VOLLEY", response);
+//				Log.d("VOLLEY", response);
 				try {
 					JSONObject main = new JSONObject(response);
 					JSONArray array = main.getJSONArray("results");
@@ -198,12 +197,12 @@ public class ClassicModeActivity extends ActionBarActivity {
 					for(int i=0; i<array.length(); i++)
 					{
 						obj = array.getJSONObject(i);
-						Log.d("JSON" + i, obj.toString());	
+//						Log.d("JSON" + i, obj.toString());	
 						JSONArray tempArray = obj.getJSONArray("types");
 						if(tempArray.getString(0).equals("country"))
 						{
 							String country = obj.getString("long_name");
-							Log.e("Country", country);
+//							Log.e("Country", country);
 							Database db =  new Database(getApplicationContext());
 							String locat = db.getCountryCoordinates(country);
 							db.close();

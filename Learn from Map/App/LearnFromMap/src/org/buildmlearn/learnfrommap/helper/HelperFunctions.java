@@ -6,7 +6,6 @@ import java.util.Random;
 import com.google.android.gms.maps.model.LatLng;
 
 import android.content.Context;
-import android.util.Log;
 
 public class HelperFunctions {
 
@@ -85,7 +84,7 @@ public class HelperFunctions {
 	public static String geoCoderUrlBuilder(double lat, double lng)
 	{
 		String googleurl = "https://maps.google.com/maps/api/geocode/json?key=AIzaSyACYVxd_d-49UnhqibCI6F9f7b5Gw1qTSc&";
-		Log.v("HTTP" , "Latitude is: " + lat + "Longitude is:" + lng);
+//		Log.v("HTTP" , "Latitude is: " + lat + "Longitude is:" + lng);
 		StringBuilder sbuilder = new StringBuilder();
 		sbuilder.append(googleurl);
 		sbuilder.append("latlng=" + lat + "," + lng);
@@ -106,12 +105,12 @@ public class HelperFunctions {
 		TinyDB stat = new TinyDB(context);
 		ArrayList<String> countryList = stat.getList("COUNTRY");
 		int index = countryList.indexOf(country);
-		Log.e("INDEX", "Index: " + index);
+//		Log.e("INDEX", "Index: " + index);
 		ArrayList<Integer> total = stat.getListInt("COUNTRY_TOTAL", context);
 		int iTotal = total.get(index);
 		iTotal++;
 		total.set(index, iTotal);
-		Log.e("TOTAL", "Total: " + iTotal);
+//		Log.e("TOTAL", "Total: " + iTotal);
 		stat.putListInt("COUNTRY_TOTAL", total, context);
 		if(isCorrect)
 		{

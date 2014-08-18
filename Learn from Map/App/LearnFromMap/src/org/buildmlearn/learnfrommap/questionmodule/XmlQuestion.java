@@ -1,6 +1,5 @@
 package org.buildmlearn.learnfrommap.questionmodule;
 
-import android.util.Log;
 
 public class XmlQuestion {
 	
@@ -109,7 +108,7 @@ public class XmlQuestion {
 	
 	public void printRule()
 	{
-		Log.e("Rule", this.getFormat());
+//		Log.e("Rule", this.getFormat());
 	}
 
 	public XmlQuestion(String code, String type, String format, String answer,

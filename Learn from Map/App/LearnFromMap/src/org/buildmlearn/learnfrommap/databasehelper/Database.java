@@ -12,7 +12,6 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 public class Database extends SQLiteAssetHelper  {
 
@@ -30,7 +29,7 @@ public class Database extends SQLiteAssetHelper  {
 
 	public Database(Context context,  int i , String path) {
 		super(context, DB_NAME, path, null, DATABASE_VERSION);
-		Log.d("Database", "Opening readable database");
+//		Log.d("Database", "Opening readable database");
 		db = getReadableDatabase();
 	}
 
@@ -40,7 +39,7 @@ public class Database extends SQLiteAssetHelper  {
 
 	public void closeReadableDatabase()
 	{
-		Log.d("Database", "Cloasing database");
+//		Log.d("Database", "Cloasing database");
 		db.close();
 	}
 
@@ -100,14 +99,14 @@ public class Database extends SQLiteAssetHelper  {
 		if(cursor.moveToFirst())
 		{
 			code = cursor.getString(0);
-			Log.e("Country Code", code);
+//			Log.e("Country Code", code);
 			query = "SELECT lat, lng FROM pcli WHERE country=" + code;
 			Cursor cursor1 = db.rawQuery(query, null);
 			if(cursor1.moveToFirst())
 			{
 				String lat = cursor1.getString(0);
 				String lng = cursor1.getString(1);
-				Log.e("Location", lat + "," + lng);
+//				Log.e("Location", lat + "," + lng);
 				cursor1.close();
 				return lat + "," + lng;
 			}

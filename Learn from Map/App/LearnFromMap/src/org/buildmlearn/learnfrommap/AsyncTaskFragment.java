@@ -17,7 +17,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 
 /**
  * This class extends the Fragment class and is used to generate questions in a separate fragment.
@@ -28,7 +27,6 @@ import android.util.Log;
  */
 public class AsyncTaskFragment extends Fragment {
 
-	private static final String TAG = AsyncTaskFragment.class.getSimpleName();
 	public static long lastSeed;
 
 	private Context mContext;
@@ -95,7 +93,7 @@ public class AsyncTaskFragment extends Fragment {
 	@Override
 	public void onDestroy() 
 	{
-		Log.i(TAG, "onDestroy()");
+//		Log.i(TAG, "onDestroy()");
 		super.onDestroy();
 		cancel();
 	}
@@ -181,7 +179,7 @@ public class AsyncTaskFragment extends Fragment {
 			for(int i = 1; i<= mQuestionCount; i++)
 			{
 				int randomNo = random.nextInt(questionRules.size());
-				Log.d("Random", randomNo + "");
+//				Log.d("Random", randomNo + "");
 				XmlQuestion questionRule = questionRules.get(randomNo);
 				if(!blackListRules.contains(randomNo))
 				{
@@ -208,7 +206,7 @@ public class AsyncTaskFragment extends Fragment {
 						}
 					}
 					questionRule.printRule(); 
-					Log.e("COUNT", i+ "");
+//					Log.e("COUNT", i+ "");
 
 
 					String tableName = questionRule.getCode();
@@ -236,11 +234,11 @@ public class AsyncTaskFragment extends Fragment {
 							if(isPresent)
 							{
 								counter++;
-								Log.d("DUPLICATE", "Duplicate");
+//								Log.d("DUPLICATE", "Duplicate");
 							}
 							else
 							{
-								Log.d("RESET GLOBAL COUNT", "0");
+//								Log.d("RESET GLOBAL COUNT", "0");
 								globalCount = 0;
 								dbRows.add(temp);
 								loop = false;
@@ -255,7 +253,7 @@ public class AsyncTaskFragment extends Fragment {
 						if(removeLoop)
 						{
 							blackListRules.add(randomNo);
-							Log.d("REMOVED", "removed");
+//							Log.d("REMOVED", "removed");
 							i--;
 							continue;
 						}
@@ -290,7 +288,7 @@ public class AsyncTaskFragment extends Fragment {
 				{
 					i--;
 					globalCount++;
-					Log.d("GLOBAL COUNT", globalCount + "");
+//					Log.d("GLOBAL COUNT", globalCount + "");
 					if(globalCount == 200)
 					{
 						return null;

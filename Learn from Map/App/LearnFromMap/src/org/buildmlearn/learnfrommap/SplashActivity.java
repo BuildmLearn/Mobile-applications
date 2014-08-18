@@ -7,10 +7,6 @@ import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
 import org.buildmlearn.learnfrommap.helper.TinyDB;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -18,8 +14,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -47,9 +41,9 @@ public class SplashActivity extends DatabaseHelper {
 		BitmapFactory.decodeResource(getResources(), R.id.explore_world_map, options);
 		pref = new TinyDB(getApplicationContext());
 		ArrayList<String> list1 = pref.getList("NAME");
-		Log.e("SIZE", list1.size() + "");
+//		Log.e("SIZE", list1.size() + "");
 		mData = pref.getInt("TUTORIAL");
-		Log.e("CHECK", "Data: " + pref.getInt("TUTORIAL"));
+//		Log.e("CHECK", "Data: " + pref.getInt("TUTORIAL"));
 		
 
 	}
@@ -130,7 +124,7 @@ public class SplashActivity extends DatabaseHelper {
 			ArrayList<String> temp = pref.getList("COUNTRY");
 			if(temp.size() == 0)
 			{
-				Log.e("SHARED PRED", "Init");
+//				Log.e("SHARED PRED", "Init");
 				pref.putList("COUNTRY", countryList);
 				ArrayList<Integer> tempScore = new ArrayList<Integer>(); 
 				for(int i=0; i<countryList.size(); i++)

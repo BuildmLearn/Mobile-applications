@@ -12,13 +12,10 @@ import org.buildmlearn.learnfrommap.helper.TextViewPlus;
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 /**
  * This activity is the home screen consisting of all the modes and options
@@ -48,7 +45,7 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		Log.e("Called", "OnResume");
+//		Log.e("Called", "OnResume");
 		data = HelperFunctions.bindStat(getApplicationContext());
 
 		Collections.sort(data, new Comparator<StatHolder>(){

@@ -25,7 +25,6 @@ import android.os.Handler;
 import android.os.Parcelable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -281,12 +280,12 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 				marker.setDraggable(false);
 				progress.setVisibility(View.VISIBLE);
 				String url = HelperFunctions.geoCoderUrlBuilder(getPosition().latitude, getPosition().longitude);
-				Log.v("URL", url);
+//				Log.v("URL", url);
 				StringRequest myReq = new StringRequest(Method.GET, url, new Response.Listener<String>() 
 						{
 					@Override
 					public void onResponse(String response) {
-						Log.d("RESPONSE", response);
+//						Log.d("RESPONSE", response);
 						button.setVisibility(View.VISIBLE);
 						progress.setVisibility(View.INVISIBLE);
 						ReverseGeoCodeJson reGeoData = new ReverseGeoCodeJson(response);
@@ -296,7 +295,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 						double ansLat = genQuestion.getDbRow().getLat();
 						double andLng = genQuestion.getDbRow().getLng();
 						double distance = HelperFunctions.distance(userLat, userLng, ansLat, andLng, 'K');
-						Log.e("Distance", "Distance between: " + distance);
+//						Log.e("Distance", "Distance between: " + distance);
 						if(!reGeoData.isHasError())
 						{
 							
@@ -439,7 +438,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 							public void onErrorResponse(VolleyError error) {
 								button.setVisibility(View.VISIBLE);
 								progress.setVisibility(View.INVISIBLE);
-								Log.d("VOLLEY ERROR", error.getMessage() + "");
+//								Log.d("VOLLEY ERROR", error.getMessage() + "");
 								double ansLat = genQuestion.getDbRow().getLat();
 								double andLng = genQuestion.getDbRow().getLng();
 								LatLng ansPosition = new LatLng(ansLat, andLng);
@@ -453,7 +452,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 								double userLat = marker.getPosition().latitude;
 								double userLng = marker.getPosition().longitude;
 								double distance = HelperFunctions.distance(userLat, userLng, ansLat, andLng, 'K');
-								Log.e("Distance", "Distance between: " + distance);
+//								Log.e("Distance", "Distance between: " + distance);
 								MarkerOptions markerOption = new MarkerOptions().draggable(false).position(ansPosition).flat(true).title(genQuestion.getDbRow().getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 								if(distance < 600)
 								{
@@ -474,7 +473,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 								CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(ansLat, andLng), 3);
 								getMaps().animateCamera(cameraUpdate);
 								Toast.makeText(getApplicationContext(), "Network Error", Toast.LENGTH_SHORT).show();
-								Log.e("Volley Error", "Error :" + error.getMessage());
+//								Log.e("Volley Error", "Error :" + error.getMessage());
 							}
 						});
 				RequestQueue mQueue = Volley.newRequestQueue(this);

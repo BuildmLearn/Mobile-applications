@@ -26,6 +26,12 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+/**
+ * Starting activity of the app. Handles database loading and internet check
+ * 
+ * @author Abhishek
+ *
+ */
 public class SplashActivity extends DatabaseHelper {
 
 	private int mData;
@@ -48,6 +54,9 @@ public class SplashActivity extends DatabaseHelper {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper#onDatabaseLoad(java.lang.String)
+	 */
 	@Override
 	public void onDatabaseLoad(String msg) {
 		super.onDatabaseLoad(msg);
@@ -72,6 +81,9 @@ public class SplashActivity extends DatabaseHelper {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper#onDatabaseLoadError(java.lang.String)
+	 */
 	@Override
 	public void onDatabaseLoadError(String msg) {
 		super.onDatabaseLoadError(msg);
@@ -102,6 +114,10 @@ public class SplashActivity extends DatabaseHelper {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	/**
+	 * @author Abhishek
+	 *
+	 */
 	public class GetCountryList extends AsyncTask<Void, Void, Void>
 	{
 		ArrayList<String> countryList;

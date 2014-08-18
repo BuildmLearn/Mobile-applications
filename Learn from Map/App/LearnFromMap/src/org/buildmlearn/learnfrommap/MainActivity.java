@@ -20,6 +20,12 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+/**
+ * This activity is the home screen consisting of all the modes and options
+ * 
+ * @author Abhishek
+ *
+ */
 public class MainActivity extends ActionBarActivity {
 
 	private TextViewPlus c1;
@@ -74,6 +80,11 @@ public class MainActivity extends ActionBarActivity {
 		}    
 	}
 
+	/**
+	 * Called whenever any button is clicked
+	 * 
+	 * @param v
+	 */
 	public void loadMode(View v)
 	{
 		int id = v.getId();
@@ -101,6 +112,11 @@ public class MainActivity extends ActionBarActivity {
 		}
 	}
 
+	/**
+	 * Called whenever user clicks "more info" and starts the stat activity.
+	 * 
+	 * @param v
+	 */
 	public void loadStats(View v)
 	{
 		Intent intent = new Intent(getApplicationContext(), StatisticsActivity.class);

@@ -19,6 +19,13 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 
+/**
+ * This class extends the Fragment class and is used to generate questions in a separate fragment.
+ * The main aim of generating questions in a different fragment is retain the state
+ * 
+ * @author Abhishek
+ *
+ */
 public class AsyncTaskFragment extends Fragment {
 
 	private static final String TAG = AsyncTaskFragment.class.getSimpleName();
@@ -41,6 +48,9 @@ public class AsyncTaskFragment extends Fragment {
 	public int mQuestionCount;
 	private String mMode;
 
+	/* (non-Javadoc)
+	 * @see android.support.v4.app.Fragment#onAttach(android.app.Activity)
+	 */
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -48,6 +58,9 @@ public class AsyncTaskFragment extends Fragment {
 		mContext = getActivity().getApplicationContext();
 	}
 
+	/* (non-Javadoc)
+	 * @see android.support.v4.app.Fragment#onCreate(android.os.Bundle)
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -115,6 +128,14 @@ public class AsyncTaskFragment extends Fragment {
 		return mRunning;
 	}
 
+	/**
+	 * Following Async Task contains the question generation module
+	 * 
+	 * 
+	 * 
+	 * @author Abhishek
+	 *
+	 */
 	public class GenerateQuestions extends AsyncTask<Void, Integer, Object>
 	{
 		private ArrayList<GeneratedQuestion> questionList;
@@ -303,17 +324,30 @@ public class AsyncTaskFragment extends Fragment {
 
 }
 
+/**
+ * Key Holder is used as a holder class for code, relation and answer. The main purpose of this holder class is
+ * to find and delete duplicates in generated question.
+ * 
+ * @author Abhishek
+ *
+ */
 class KeyHolder
 {
 	public String code;
 	public String relation;
 	public String answer;
+	
 	public KeyHolder(String code, String relation, String answer) {
 		super();
 		this.code = code;
 		this.relation = relation;
 		this.answer = answer;
 	}
+	
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object o) {
 		KeyHolder x = (KeyHolder)o;

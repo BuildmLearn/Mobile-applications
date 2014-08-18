@@ -17,6 +17,12 @@ import android.view.MenuItem;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ListView;
 
+/**
+ * This activity shows the statistics screen
+ * 
+ * @author Abhishek
+ *
+ */
 public class StatisticsActivity extends ActionBarActivity {
 
 	private ArrayList<StatHolder> mData;

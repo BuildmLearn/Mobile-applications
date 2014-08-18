@@ -10,6 +10,11 @@ import android.util.Log;
 
 public class HelperFunctions {
 
+	/**
+	 * Shuffles the content of the array
+	 * 
+	 * @param ar
+	 */
 	public static void ShuffleArray(String[] ar)
 	{
 		Random rnd = new Random();
@@ -22,7 +27,17 @@ public class HelperFunctions {
 		}
 	}
 
-	//Calculates the distance between two geo-coordinates
+	
+	/**
+	 * Calculates the distance between two geo-coordinates
+	 * 
+	 * @param lat1
+	 * @param lon1
+	 * @param lat2
+	 * @param lon2
+	 * @param unit
+	 * @return distance between two geo coordinates
+	 */
 	public static double distance(double lat1, double lon1, double lat2, double lon2, char unit) {
 		double theta = lon1 - lon2;
 		double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
@@ -38,15 +53,35 @@ public class HelperFunctions {
 	}
 
 
+	/**
+	 * Converts degree to radian
+	 * 
+	 * @param deg
+	 * @return radian
+	 */
 	private static double deg2rad(double deg) {
 		return (deg * Math.PI / 180.0);
 	}
 
 
+	/**
+	 * Converts radian to degree
+	 * 
+	 * @param rad
+	 * @return degree
+	 */
 	private static double rad2deg(double rad) {
 		return (rad * 180 / Math.PI);
 	}
 
+	/**
+	 * 
+	 * Builds a url for google api for the given parameters
+	 * 
+	 * @param lat
+	 * @param lng
+	 * @return url
+	 */
 	public static String geoCoderUrlBuilder(double lat, double lng)
 	{
 		String googleurl = "https://maps.google.com/maps/api/geocode/json?key=AIzaSyACYVxd_d-49UnhqibCI6F9f7b5Gw1qTSc&";
@@ -59,6 +94,13 @@ public class HelperFunctions {
 		return url;
 	}
 
+	/**
+	 * Updates the statistics data stored in shared preference
+	 * 
+	 * @param context
+	 * @param isCorrect
+	 * @param country
+	 */
 	public static void updateStats(Context context, boolean isCorrect, String country)
 	{
 		TinyDB stat = new TinyDB(context);
@@ -97,6 +139,12 @@ public class HelperFunctions {
 
 	}
 
+	/**
+	 * Converts comma separated coordinates to latitude longitiude
+	 * 
+	 * @param location
+	 * @return latitude longitude
+	 */
 	public static LatLng locationFromString(String location)
 	{
 		String[] latlng = location.split(",");

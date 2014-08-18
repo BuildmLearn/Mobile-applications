@@ -17,6 +17,12 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+/**
+ * This activty shows the settings of the screen
+ * 
+ * @author Abhishek
+ *
+ */
 public class SettingsActivity extends ActionBarActivity {
 	
 	private CheckBox notification;

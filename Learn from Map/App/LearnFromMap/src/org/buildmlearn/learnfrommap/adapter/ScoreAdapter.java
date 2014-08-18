@@ -16,6 +16,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
+/**
+ * Adapter for the question displayed in a listview in score activity
+ * 
+ * @author Abhishek
+ *
+ */
 public class ScoreAdapter extends ArrayAdapter<UserAnsweredData> {
 
 

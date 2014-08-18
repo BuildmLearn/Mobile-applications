@@ -19,6 +19,13 @@ import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+
+/**
+ * This activity is shown for the explore mode. 
+ * 
+ * @author Abhishek
+ *
+ */
 public class ExploreMode extends ActionBarActivity {
 
 
@@ -75,8 +82,10 @@ public class ExploreMode extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+    /**
+     *  Shows about dialog box
+     */
     protected void showCustomDialog() {
-        // TODO Auto-generated method stub
         final Dialog dialog = new Dialog(ExploreMode.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
@@ -84,33 +93,54 @@ public class ExploreMode extends ActionBarActivity {
         dialog.show();
     }
 	
+	/**
+	 * This class listens to various gestures performed on the world image, to select continents.
+	 * 
+	 * @author Abhishek
+	 *
+	 */
 	public class GestureListener extends
 	GestureDetector.SimpleOnGestureListener {
 
 		private View v;
+		/**
+		 * @param v
+		 */
 		public GestureListener(View v)
 		{
 			this.v = v;
 
 		}
 
+		/* (non-Javadoc)
+		 * @see android.view.GestureDetector.SimpleOnGestureListener#onDown(android.view.MotionEvent)
+		 */
 		@Override
 		public boolean onDown(MotionEvent event) {
 			return true;
 		}
 
+		/* (non-Javadoc)
+		 * @see android.view.GestureDetector.SimpleOnGestureListener#onFling(android.view.MotionEvent, android.view.MotionEvent, float, float)
+		 */
 		@Override
 		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
 				float velocityY) {
 			return true;
 		}
 
+		/* (non-Javadoc)
+		 * @see android.view.GestureDetector.SimpleOnGestureListener#onScroll(android.view.MotionEvent, android.view.MotionEvent, float, float)
+		 */
 		@Override
 		public boolean onScroll(MotionEvent e1, MotionEvent e2,
 				float distanceX, float distanceY) {
 			return true;
 		}
 
+		/* (non-Javadoc)
+		 * @see android.view.GestureDetector.SimpleOnGestureListener#onDoubleTap(android.view.MotionEvent)
+		 */
 		@Override
 		public boolean onDoubleTap(MotionEvent event) {
 

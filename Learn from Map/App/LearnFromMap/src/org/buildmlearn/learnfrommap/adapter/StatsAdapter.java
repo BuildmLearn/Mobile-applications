@@ -14,6 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+/**
+ * Adapter for the countries displayed in a list in statistics activity
+ * 
+ * @author Abhishek
+ *
+ */
 public class StatsAdapter extends ArrayAdapter<StatHolder> {
 
 	private Context mContext;

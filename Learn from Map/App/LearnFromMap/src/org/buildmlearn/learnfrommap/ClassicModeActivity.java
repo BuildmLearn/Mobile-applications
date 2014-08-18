@@ -38,6 +38,12 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+/**
+ * This activity shows the screen for classic mode
+ * 
+ * @author Abhishek
+ *
+ */
 public class ClassicModeActivity extends ActionBarActivity {
 
 	private LocationManager locationManager;
@@ -93,13 +99,17 @@ public class ClassicModeActivity extends ActionBarActivity {
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
 		super.onResume();
 		mLoading.setVisibility(View.GONE);
 		mMain.setVisibility(View.VISIBLE);
 	}
 
 
+	/**
+	 * Starts a new intent for the selected country from the drop down list.
+	 * 
+	 * @param v
+	 */
 	public void customCountry(View v)
 	{
 		String country = spinner.getSelectedItem().toString();
@@ -113,14 +123,16 @@ public class ClassicModeActivity extends ActionBarActivity {
 
 	}
 
+	/**
+	 * Shows a progress bar and tries to get user current location or displays a dialog box if location is disabled
+	 * 
+	 * @param v
+	 */
 	public void loadLocation(View v)
 	{
 		// Register the listener with the Location Manager to receive location updates
 		if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER))
 		{
-
-
-
 			mLoading.setVisibility(View.VISIBLE);
 			mMain.setVisibility(View.GONE);
 			if(location != null)
@@ -153,6 +165,15 @@ public class ClassicModeActivity extends ActionBarActivity {
 
 	}
 
+	/**
+	 * 
+	 * Get country name from Geo coordinates
+	 * 
+	 * @param lat
+	 * @param lng
+	 * 
+	 * 
+	 */
 	private void getCountry(double lat, double lng) {
 		String googleurl = "https://maps.google.com/maps/api/geocode/json?key=AIzaSyACYVxd_d-49UnhqibCI6F9f7b5Gw1qTSc&";
 		Log.v("HTTP" , "Latitude is: " + lat + "Longitude is:" + lng);
@@ -241,6 +262,12 @@ public class ClassicModeActivity extends ActionBarActivity {
 	}
 
 
+	/**
+	 * Fetch the country list from the database
+	 * 
+	 * @author Abhishek
+	 *
+	 */
 	public class GetCountryList extends AsyncTask<Void, Void, Void>
 	{
 		ArrayList<String> countryList;
@@ -268,6 +295,9 @@ public class ClassicModeActivity extends ActionBarActivity {
 	}
 
 
+	/**
+	 *  Shows a dialog box asking to enable location service from the settings
+	 */
 	protected void showConfirmDialog() {
 		dialog = new Dialog(ClassicModeActivity.this);
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

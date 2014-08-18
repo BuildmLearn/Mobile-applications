@@ -5,6 +5,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.util.Log;
 
+/**
+ * This class reverse geo code coordinates to get country and state
+ * 
+ * @author Abhishek
+ *
+ */
 public class ReverseGeoCodeJson {
 
 	private String State;

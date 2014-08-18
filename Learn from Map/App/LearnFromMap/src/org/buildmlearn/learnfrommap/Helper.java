@@ -34,9 +34,11 @@ public class Helper extends ActionBarActivity {
 	private MarkerOptions markerOptions;
 	public Marker marker;
 
-	// ////////////////
-	// Override these function
 
+
+	/**
+	 * Called whenever the maps are successfully loaded
+	 */
 	public void onMapReady() {
 		mapView.setOnCameraChangeListener(new OnCameraChangeListener() {
 			@Override
@@ -65,12 +67,18 @@ public class Helper extends ActionBarActivity {
 
 	}
 	
+	/**
+	 * @return GoogleMap
+	 */
 	public GoogleMap getMaps()
 	{
 		return mapView;
 		
 	}
 	
+	/**
+	 * @return Marker position
+	 */
 	public LatLng getPosition()
 	{
 		if(marker != null)
@@ -81,18 +89,39 @@ public class Helper extends ActionBarActivity {
 		
 	}
 
+	/**
+	 * Check if the map is ready
+	 * 
+	 * @return true if map is ready
+	 * 
+	 */
 	public boolean isMapReady() {
 		return mapView != null;
 	}
 
+	/**
+	 * Error message if map is not successfully loaded
+	 * 
+	 * @param msg
+	 */
 	public void showErrorMessage(String msg) {
 
 	}
 
+	/**
+	 * Called when database is successfully opened
+	 * 
+	 * @param msg
+	 */
 	public void onDatabaseLoad(String msg) {
 
 	}
 
+	/**
+	 * Called if there is any database error
+	 * 
+	 * @param msg
+	 */
 	public void onDatabaseLoadError(String msg) {
 
 	}

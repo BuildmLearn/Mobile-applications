@@ -65,6 +65,9 @@ public class Database extends SQLiteAssetHelper  {
 		return getId(query, 0);
 	}
 
+	/**
+	 * @return ArrayList containing countries
+	 */
 	public ArrayList<String> countryList()
 	{
 		ArrayList<String> list = new ArrayList<String>();
@@ -84,6 +87,10 @@ public class Database extends SQLiteAssetHelper  {
 
 	}
 
+	/**
+	 * @param country
+	 * @return country coordinates
+	 */
 	public String getCountryCoordinates(String country)
 	{
 		String query = "SELECT _id FROM country WHERE name='" + country + "'";
@@ -118,6 +125,12 @@ public class Database extends SQLiteAssetHelper  {
 		}
 	}
 
+	/**
+	 * @param query
+	 * @param columnIndex
+	 * @return id for a country or state
+	 * @throws QuestionModuleException
+	 */
 	public String getId(String query, int columnIndex) throws QuestionModuleException
 	{
 		Cursor cursor =db.rawQuery(query, null);
@@ -140,6 +153,9 @@ public class Database extends SQLiteAssetHelper  {
 
 	}
 
+	/**
+	 * @return String to be displayed in Notification panel
+	 */
 	public String getNotificationMsg()
 	{
 		db = getReadableDatabase();
@@ -166,6 +182,12 @@ public class Database extends SQLiteAssetHelper  {
 	}
 
 
+	/**
+	 * @param query
+	 * @param countQuery
+	 * @return Database row for the given query
+	 * @throws QuestionModuleException
+	 */
 	public DbRow rawSelect(String query,String countQuery) throws QuestionModuleException
 	{
 		int randomNo = 0;
@@ -315,6 +337,15 @@ public class Database extends SQLiteAssetHelper  {
 	}
 
 
+	/**
+	 * Creates options for the MCQ type of questions
+	 * 
+	 * @param columnName
+	 * @param answer
+	 * @param table
+	 * @return String array consisting of options
+	 * @throws QuestionModuleException
+	 */
 	public String[] createOptions(String columnName, String answer, String table) throws QuestionModuleException
 	{
 		String tableName;

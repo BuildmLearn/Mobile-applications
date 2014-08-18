@@ -1,5 +1,11 @@
 package org.buildmlearn.learnfrommap.helper;
 
+/**
+ * Holder class to hold statistics data
+ * 
+ * @author Abhishek
+ *
+ */
 public class StatHolder implements Comparable<StatHolder>{
 	
 	private String country;

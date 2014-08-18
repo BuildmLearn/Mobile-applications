@@ -50,6 +50,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+/**
+ * This activity is the backbone of the app and performs the question generation operation. 
+ * 
+ * @author Abhishek
+ *
+ */
 public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallbacks {
 
 	private static final String TAG_TASK_FRAGMENT = "task_fragment";
@@ -152,12 +158,22 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 		mView = getLayoutInflater().inflate(R.layout.layout_play_game, mMain,false);
 	}
 
+	/**
+	 * Called when user clicks the start challenge button
+	 * 
+	 * @param v
+	 */
 	public void startGame(View v)
 	{
 		loadQuestion();
 
 	}
 
+	/**
+	 * Called to load the next question
+	 * 
+	 * @param v
+	 */
 	@SuppressLint("NewApi") 
 	public void nextQuestion(View v)
 	{
@@ -473,6 +489,9 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 		}
 	}
 
+	/**
+	 * Loads the next question
+	 */
 	public void loadNextQuestion()
 	{
 
@@ -490,6 +509,11 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 		loadQuestion();
 	}
 
+	/**
+	 * Handles the UI changes whenever any option is clicked in MCQ type questions.
+	 * 
+	 * @param v
+	 */
 	@SuppressLint("NewApi") 
 	public void onOptionClick(View v)
 	{
@@ -703,6 +727,11 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 		timeLeft = savedInstanceState.getLong("TIME");
 	}
 
+	/**
+	 * Starts a new timer for every question.
+	 * 
+	 * @param timer
+	 */
 	private void startTimer(int timer)
 	{
 		mTimer = (TextViewPlus)findViewById(R.id.timer);
@@ -719,6 +748,9 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 		}.start();
 	}
 
+	/* (non-Javadoc)
+	 * @see org.buildmlearn.learnfrommap.Helper#onMapReady()
+	 */
 	@Override
 	public void onMapReady() {
 		super.onMapReady();
@@ -756,11 +788,17 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 		return super.onOptionsItemSelected(item);
 	}
 
+	/**
+	 * Called on back button pressed
+	 */
 	public void customBackPressed()
 	{
 		super.onBackPressed();
 	}
 
+	/**
+	 * Shows a confirmation dialog box whenever the user tries to leave the current challenge.
+	 */
 	protected void showConfirmDialog() {
 		dialog = new Dialog(GameActivity.this);
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

@@ -12,6 +12,12 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.TextView;
 
+/**
+ * Custom implementation of textview with fonts
+ * 
+ * @author Abhishek
+ *
+ */
 public class TextViewPlus extends TextView {
 
 	public TextViewPlus(Context context, AttributeSet attrs, int defStyle) {

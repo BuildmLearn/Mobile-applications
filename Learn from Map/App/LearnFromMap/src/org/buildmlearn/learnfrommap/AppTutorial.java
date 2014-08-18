@@ -65,6 +65,9 @@ public class AppTutorial extends ActionBarActivity {
 	 */
 	class CustomPagerAdapter extends PagerAdapter {
 
+		/* (non-Javadoc)
+		 * @see android.support.v4.view.PagerAdapter#instantiateItem(android.view.View, int)
+		 */
 		public Object instantiateItem(View collection, int position) {
 			getApplicationContext();
 			//layout = inflater.inflate(R.layout.layout_evaluation, null);
@@ -103,6 +106,9 @@ public class AppTutorial extends ActionBarActivity {
 			return view;
 		}
 
+        /* (non-Javadoc)
+         * @see android.support.v4.view.PagerAdapter#destroyItem(android.view.View, int, java.lang.Object)
+         */
         @Override
         public void destroyItem(View arg0, int arg1, Object arg2) {
             ((ViewPager) arg0).removeView((View) arg2);
@@ -110,17 +116,26 @@ public class AppTutorial extends ActionBarActivity {
         }
  
  
+        /* (non-Javadoc)
+         * @see android.support.v4.view.PagerAdapter#isViewFromObject(android.view.View, java.lang.Object)
+         */
         @Override
         public boolean isViewFromObject(View arg0, Object arg1) {
             return arg0 == ((View) arg1);
  
         }
  
+        /* (non-Javadoc)
+         * @see android.support.v4.view.PagerAdapter#saveState()
+         */
         @Override
         public Parcelable saveState() {
             return null;
         }
 
+		/* (non-Javadoc)
+		 * @see android.support.v4.view.PagerAdapter#getCount()
+		 */
 		@Override
 		public int getCount() {
 			return 7;

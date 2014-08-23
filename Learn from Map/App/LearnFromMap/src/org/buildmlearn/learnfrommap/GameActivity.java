@@ -7,6 +7,7 @@ import org.buildmlearn.learnfrommap.helper.CustomDialog;
 import org.buildmlearn.learnfrommap.helper.HelperFunctions;
 import org.buildmlearn.learnfrommap.helper.ReverseGeoCodeJson;
 import org.buildmlearn.learnfrommap.helper.TextViewPlus;
+import org.buildmlearn.learnfrommap.helper.TinyDB;
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion;
 import org.buildmlearn.learnfrommap.questionmodule.GeneratedQuestion.Type;
 import org.buildmlearn.learnfrommap.questionmodule.QuestionModuleException;
@@ -17,13 +18,13 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Parcelable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -48,6 +49,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+/**
+ * This activity is the backbone of the app and performs the question generation operation. 
+ * 
+ * @author Abhishek
+ *
+ */
 public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallbacks {
 
 	private static final String TAG_TASK_FRAGMENT = "task_fragment";
@@ -79,9 +86,13 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 	private String mDisplatMsg;
 	protected long timeLeft;
 	private Dialog dialog;
+	private LatLng mMapLocation;
 	private Marker userMarker;
 	private AsyncTaskFragment mTaskFragment;
-
+	private MediaPlayer mpCorrect;
+	private MediaPlayer mpWrong;
+	private TinyDB pref;
+	
 	@Override	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -93,9 +104,21 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 		mQuestionCounter = 0;
 		Intent intent = getIntent();
 		mode = intent.getStringExtra("MODE");
+		String mapLocation = intent.getStringExtra("LOCATION");
+		mMapLocation = HelperFunctions.locationFromString(mapLocation);
 		mDisplatMsg = intent.getStringExtra("DISPLAY");
 		mSelection = intent.getStringExtra("SELECTION");
 		mValue = intent.getStringExtra("VALUE");
+		mpCorrect = MediaPlayer.create(this, R.raw.correct_answer);
+		mpWrong = MediaPlayer.create(this, R.raw.wrong_answer);
+		pref = new TinyDB(getApplicationContext());
+		
+		if(!pref.getBoolean("SOUND"))
+		{
+			mpCorrect.setVolume(0, 0);
+			mpWrong.setVolume(0, 0);
+		}
+
 
 		FragmentManager fm = getSupportFragmentManager();
 		mTaskFragment = (AsyncTaskFragment) fm.findFragmentByTag(TAG_TASK_FRAGMENT);
@@ -114,7 +137,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 			mTaskFragment.setArguments(bundle);
 			//mTaskFragment.start();
 		}
-		mLoadingText = (TextViewPlus)findViewById(R.id.question);
+		mLoadingText = (TextViewPlus)findViewById(R.id.sett_tutorial);
 		mProgressBar = (ProgressBar)findViewById(R.id.game_progressbar);
 		mProgressBar.setMax(QUESTION_COUNT);
 		mProgressBar.setProgress(0);
@@ -134,12 +157,22 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 		mView = getLayoutInflater().inflate(R.layout.layout_play_game, mMain,false);
 	}
 
+	/**
+	 * Called when user clicks the start challenge button
+	 * 
+	 * @param v
+	 */
 	public void startGame(View v)
 	{
 		loadQuestion();
 
 	}
 
+	/**
+	 * Called to load the next question
+	 * 
+	 * @param v
+	 */
 	@SuppressLint("NewApi") 
 	public void nextQuestion(View v)
 	{
@@ -168,6 +201,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 					{
 						if(options[i].getText().toString().equals(answer))
 						{
+							mpCorrect.start();
 							mTimer.setText("That's the correct answer!");
 							isCorrect = true;
 							HelperFunctions.updateStats(getApplicationContext(), true, genQuestion.getDbRow().getCountry());
@@ -176,6 +210,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 						{
 							HelperFunctions.updateStats(getApplicationContext(), false, genQuestion.getDbRow().getCountry());
 							mTimer.setText("Sorry, wrong answer!");
+							mpWrong.start();
 							if(mSdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
 								options[i].setBackgroundDrawable(getResources().getDrawable(R.drawable.wrong_answer));
 
@@ -203,11 +238,13 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 				String userAnswer  = fillAnswer.getText().toString();
 				if(UserAnsweredData.CompareStrings(userAnswer, genQuestion.getAnswer()) > 0.95)
 				{
+					mpCorrect.start();
 					mTimer.setText("That's the correct answer!");
 					isCorrect = true;
 				}
 				else
 				{
+					mpWrong.start();
 					mTimer.setText("Sorry, wrong answer!");
 				}
 				if(userAnswer.length() == 0)
@@ -243,12 +280,12 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 				marker.setDraggable(false);
 				progress.setVisibility(View.VISIBLE);
 				String url = HelperFunctions.geoCoderUrlBuilder(getPosition().latitude, getPosition().longitude);
-				Log.v("URL", url);
+//				Log.v("URL", url);
 				StringRequest myReq = new StringRequest(Method.GET, url, new Response.Listener<String>() 
 						{
 					@Override
 					public void onResponse(String response) {
-						Log.d("RESPONSE", response);
+//						Log.d("RESPONSE", response);
 						button.setVisibility(View.VISIBLE);
 						progress.setVisibility(View.INVISIBLE);
 						ReverseGeoCodeJson reGeoData = new ReverseGeoCodeJson(response);
@@ -258,7 +295,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 						double ansLat = genQuestion.getDbRow().getLat();
 						double andLng = genQuestion.getDbRow().getLng();
 						double distance = HelperFunctions.distance(userLat, userLng, ansLat, andLng, 'K');
-						Log.e("Distance", "Distance between: " + distance);
+//						Log.e("Distance", "Distance between: " + distance);
 						if(!reGeoData.isHasError())
 						{
 							
@@ -282,6 +319,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 							{
 								if(distance < 600)
 								{
+									mpCorrect.start();
 									mIsCorrect = true;
 									marker.setPosition(new LatLng(ansLat, andLng));
 									marker.setTitle(markerTitle);
@@ -291,6 +329,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 								}
 								else
 								{
+									mpWrong.start();
 									mTimer.setText("Wrong answer!\nCorrect answer is shown below");
 									mapView.addMarker(markerOption).showInfoWindow();;
 								}
@@ -301,6 +340,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 							{
 								if(reGeoData.getState().equals(genQuestion.getDbRow().getState()))
 								{
+									mpCorrect.start();
 									mIsCorrect = true;
 									marker.setTitle(markerTitle);
 									marker.showInfoWindow();
@@ -309,6 +349,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 								}
 								else if(distance < 600)
 								{
+									mpCorrect.start();
 									mIsCorrect = true;
 									marker.setPosition(new LatLng(ansLat, andLng));
 									marker.setTitle(markerTitle);
@@ -320,6 +361,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 								}
 								else
 								{
+									mpWrong.start();
 									mTimer.setText("Wrong answer!\nCorrect answer is shown below");
 									mapView.addMarker(markerOption).showInfoWindow();;
 									marker.setTitle(reGeoData.getState());
@@ -331,6 +373,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 							{
 								if(reGeoData.getCountry().equals(genQuestion.getDbRow().getCountry()))
 								{
+									mpCorrect.start();
 									mIsCorrect = true;
 									marker.setTitle(markerTitle);
 									marker.showInfoWindow();
@@ -339,6 +382,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 								}
 								else if(distance < 600)
 								{
+									mpCorrect.start();
 									mIsCorrect = true;
 									marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 									marker.setPosition(new LatLng(ansLat, andLng));
@@ -350,6 +394,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 								}
 								else
 								{
+									mpWrong.start();
 									mTimer.setText("Wrong answer!\nCorrect answer is shown below");
 									marker.setTitle(reGeoData.getCountry());
 									mapView.addMarker(markerOption).showInfoWindow();;
@@ -368,6 +413,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 							MarkerOptions markerOption = new MarkerOptions().draggable(false).position(ansPosition).flat(true).title(genQuestion.getDbRow().getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 							if(distance < 600)
 							{
+								mpCorrect.start();
 								mIsCorrect = true;
 								marker.setPosition(new LatLng(ansLat, andLng));
 								marker.setTitle(markerTitle);
@@ -377,6 +423,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 							}
 							else
 							{
+								mpWrong.start();
 								mTimer.setText("Wrong answer!\nCorrect answer is shown below");
 								mapView.addMarker(markerOption).showInfoWindow();;
 							}
@@ -391,7 +438,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 							public void onErrorResponse(VolleyError error) {
 								button.setVisibility(View.VISIBLE);
 								progress.setVisibility(View.INVISIBLE);
-								Log.d("VOLLEY ERROR", error.getMessage() + "");
+//								Log.d("VOLLEY ERROR", error.getMessage() + "");
 								double ansLat = genQuestion.getDbRow().getLat();
 								double andLng = genQuestion.getDbRow().getLng();
 								LatLng ansPosition = new LatLng(ansLat, andLng);
@@ -405,10 +452,11 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 								double userLat = marker.getPosition().latitude;
 								double userLng = marker.getPosition().longitude;
 								double distance = HelperFunctions.distance(userLat, userLng, ansLat, andLng, 'K');
-								Log.e("Distance", "Distance between: " + distance);
+//								Log.e("Distance", "Distance between: " + distance);
 								MarkerOptions markerOption = new MarkerOptions().draggable(false).position(ansPosition).flat(true).title(genQuestion.getDbRow().getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 								if(distance < 600)
 								{
+									mpCorrect.start();
 									mIsCorrect = true;
 									marker.setPosition(new LatLng(ansLat, andLng));
 									marker.setTitle(markerTitle);
@@ -418,13 +466,14 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 								}
 								else
 								{
+									mpWrong.start();
 									mTimer.setText("Wrong answer!\nCorrect answer is shown below");
 									mapView.addMarker(markerOption).showInfoWindow();
 								}
 								CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(ansLat, andLng), 3);
 								getMaps().animateCamera(cameraUpdate);
 								Toast.makeText(getApplicationContext(), "Network Error", Toast.LENGTH_SHORT).show();
-								Log.e("Volley Error", "Error :" + error.getMessage());
+//								Log.e("Volley Error", "Error :" + error.getMessage());
 							}
 						});
 				RequestQueue mQueue = Volley.newRequestQueue(this);
@@ -439,6 +488,9 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 		}
 	}
 
+	/**
+	 * Loads the next question
+	 */
 	public void loadNextQuestion()
 	{
 
@@ -456,6 +508,11 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 		loadQuestion();
 	}
 
+	/**
+	 * Handles the UI changes whenever any option is clicked in MCQ type questions.
+	 * 
+	 * @param v
+	 */
 	@SuppressLint("NewApi") 
 	public void onOptionClick(View v)
 	{
@@ -586,7 +643,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 			mView = getLayoutInflater().inflate(R.layout.layout_fill, mMain,false);
 			mMain.removeAllViews();
 			mMain.addView(mView);
-			mDisplayQuestion = (TextViewPlus)findViewById(R.id.question);
+			mDisplayQuestion = (TextViewPlus)findViewById(R.id.sett_tutorial);
 			mDisplayQuestion.setText(genQuestion.getQuestion());
 			startTimer(60000);
 
@@ -597,7 +654,7 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 			mView = getLayoutInflater().inflate(R.layout.activity_mcq, mMain,false);
 			mMain.removeAllViews();
 			mMain.addView(mView);
-			mDisplayQuestion = (TextViewPlus)findViewById(R.id.question);
+			mDisplayQuestion = (TextViewPlus)findViewById(R.id.sett_tutorial);
 			mDisplayQuestion.setText(genQuestion.getQuestion());
 			mOption1 = (TextViewPlus)findViewById(R.id.mcq_option1);
 			mOption2 = (TextViewPlus)findViewById(R.id.mcq_option2);
@@ -618,13 +675,13 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 			mView = getLayoutInflater().inflate(R.layout.activity_map, mMain,false);
 			mMain.removeAllViews();
 			mMain.addView(mView);
-			mDisplayQuestion = (TextViewPlus)findViewById(R.id.question);
+			mDisplayQuestion = (TextViewPlus)findViewById(R.id.sett_tutorial);
 			mDisplayQuestion.setText(genQuestion.getQuestion());
 			new Handler().post(new Runnable() {
 
 				@Override
 				public void run() {
-					getMapView((SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.mapFragment));
+					getMapView((SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.mapFragment), mMapLocation);
 
 				}
 			});	
@@ -669,6 +726,11 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 		timeLeft = savedInstanceState.getLong("TIME");
 	}
 
+	/**
+	 * Starts a new timer for every question.
+	 * 
+	 * @param timer
+	 */
 	private void startTimer(int timer)
 	{
 		mTimer = (TextViewPlus)findViewById(R.id.timer);
@@ -685,6 +747,9 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 		}.start();
 	}
 
+	/* (non-Javadoc)
+	 * @see org.buildmlearn.learnfrommap.Helper#onMapReady()
+	 */
 	@Override
 	public void onMapReady() {
 		super.onMapReady();
@@ -722,11 +787,17 @@ public class GameActivity extends Helper implements AsyncTaskFragment.TaskCallba
 		return super.onOptionsItemSelected(item);
 	}
 
+	/**
+	 * Called on back button pressed
+	 */
 	public void customBackPressed()
 	{
 		super.onBackPressed();
 	}
 
+	/**
+	 * Shows a confirmation dialog box whenever the user tries to leave the current challenge.
+	 */
 	protected void showConfirmDialog() {
 		dialog = new Dialog(GameActivity.this);
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

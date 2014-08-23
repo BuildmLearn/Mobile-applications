@@ -1,5 +1,11 @@
 package org.buildmlearn.learnfrommap.databasehelper;
 
+/**
+ * This class holds the result, question data, answer data for every user answered question
+ * 
+ * @author Abhishek
+ *
+ */
 public class ResultHolder {
 
 	private String country;

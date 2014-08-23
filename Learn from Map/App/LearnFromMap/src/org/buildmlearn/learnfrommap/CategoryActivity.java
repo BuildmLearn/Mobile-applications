@@ -19,6 +19,13 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+/**
+ * 
+ * This activity shows the categories.
+ * 
+ * @author Abhishek
+ *
+ */
 public class CategoryActivity extends DatabaseHelper {
 
 	ListView mCategoryList;
@@ -56,6 +63,7 @@ public class CategoryActivity extends DatabaseHelper {
 				intent.putExtra("MODE", "CATEGORY_MODE");
 				intent.putExtra("SELECTION", "CATEGORY");
 				intent.putExtra("VALUE", categoryName.getText());
+				intent.putExtra("LOCATION", "0,0");
 				intent.putExtra("DISPLAY", "Category: " + categoryName.getText());
 				startActivity(intent);
 			}

@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="en-us" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>How to use</title>
+</head>
+
+<body>
+
+<h2>Creating Dataset from Data Source</h2>
+<p>For creating dataset, geographical data provided by
+<a href="http://www.geonames.org/">http://www.geonames.org/</a> is used. The 
+project for creating the dataset is located at Learn from Map / Data Set / 
+sqlite3 / . This project is a netbeans project. There are few prior requirements 
+before the project is runnable.</p>
+<p><strong>Requirements</strong></p>
+<p>The following files must be downloaded and placed in the project folder.</p>
+<p><a href="http://download.geonames.org/export/dump/allCountries.zip">
+http://download.geonames.org/export/dump/allCountries.zip</a><br/>
+<a href="http://download.geonames.org/export/dump/admin2Codes.txt">
+http://download.geonames.org/export/dump/admin2Codes.txt</a><br />
+<a href="http://download.geonames.org/export/dump/admin1CodesASCII.txt">
+http://download.geonames.org/export/dump/admin1CodesASCII.txt</a></p>
+<p>On sucessfull running the project, a new database file will be created 
+containing clean and knowledge data that will be required for the Learn From Map 
+app.</p>
+<p>You can view the content of the database file using
+<a href="http://sourceforge.net/projects/sqlitebrowser/"><strong>SQLite Database 
+Browser</strong></a></p>
+<h2>XML Question Rules</h2>
+<p>Question rules are stored in an XML file. All the rules are unders the parent 
+questions. Each question rule is within question tag and consist of various 
+eleemnts.</p>
+<p>&nbsp;&lt;question&gt;<br />
+&lt;code&gt;PPLC&lt;/code&gt;<br />
+&lt;type&gt;FILL&lt;/type&gt;<br />
+&lt;alias&gt;Capital&lt;/alias&gt;<br />
+&lt;marker&gt;&lt;/marker&gt;<br />
+&lt;relationship&gt;country&lt;/relationship&gt;<br />
+&lt;location&gt;true&lt;/location&gt;<br />
+&lt;format&gt;Capital of :X: is _________&lt;/format&gt;<br />
+&lt;count&gt;unique&lt;/count&gt;<br />
+&lt;answer&gt;name&lt;/answer&gt;<br />
+&lt;/question&gt;</p>
+<p><strong>Each element is explained here</strong></p>
+<ol>
+	<li>Code: code represents the category of questions</li>
+	<li>Type: type represents the type of question. Possible values : FILL, PIN, 
+	MCQ</li>
+	<li>Alias: Alias name is used to store the category name of the question</li>
+	<li>Marker: marker stores the column name. The value stored in the column 
+	name is displayed when the correct answer is shown.</li>
+	<li>Relationship: It is used in the question generation logic.</li>
+	<li>Format: The question format. :X: replaces the value stored in 
+	relationship column</li>
+	<li>Count: unique means the rule will be used only once in a particular 
+	challenge</li>
+	<li>Answer: stores the answer stored in column name specified.</li>
+</ol>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

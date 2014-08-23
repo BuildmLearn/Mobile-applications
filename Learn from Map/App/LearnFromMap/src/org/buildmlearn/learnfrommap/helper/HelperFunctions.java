@@ -3,11 +3,17 @@ package org.buildmlearn.learnfrommap.helper;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import android.content.Context;
-import android.util.Log;
 
 public class HelperFunctions {
 
+	/**
+	 * Shuffles the content of the array
+	 * 
+	 * @param ar
+	 */
 	public static void ShuffleArray(String[] ar)
 	{
 		Random rnd = new Random();
@@ -20,7 +26,17 @@ public class HelperFunctions {
 		}
 	}
 
-	//Calculates the distance between two geo-coordinates
+	
+	/**
+	 * Calculates the distance between two geo-coordinates
+	 * 
+	 * @param lat1
+	 * @param lon1
+	 * @param lat2
+	 * @param lon2
+	 * @param unit
+	 * @return distance between two geo coordinates
+	 */
 	public static double distance(double lat1, double lon1, double lat2, double lon2, char unit) {
 		double theta = lon1 - lon2;
 		double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
@@ -36,19 +52,39 @@ public class HelperFunctions {
 	}
 
 
+	/**
+	 * Converts degree to radian
+	 * 
+	 * @param deg
+	 * @return radian
+	 */
 	private static double deg2rad(double deg) {
 		return (deg * Math.PI / 180.0);
 	}
 
 
+	/**
+	 * Converts radian to degree
+	 * 
+	 * @param rad
+	 * @return degree
+	 */
 	private static double rad2deg(double rad) {
 		return (rad * 180 / Math.PI);
 	}
 
+	/**
+	 * 
+	 * Builds a url for google api for the given parameters
+	 * 
+	 * @param lat
+	 * @param lng
+	 * @return url
+	 */
 	public static String geoCoderUrlBuilder(double lat, double lng)
 	{
 		String googleurl = "https://maps.google.com/maps/api/geocode/json?key=AIzaSyACYVxd_d-49UnhqibCI6F9f7b5Gw1qTSc&";
-		Log.v("HTTP" , "Latitude is: " + lat + "Longitude is:" + lng);
+//		Log.v("HTTP" , "Latitude is: " + lat + "Longitude is:" + lng);
 		StringBuilder sbuilder = new StringBuilder();
 		sbuilder.append(googleurl);
 		sbuilder.append("latlng=" + lat + "," + lng);
@@ -57,17 +93,24 @@ public class HelperFunctions {
 		return url;
 	}
 
+	/**
+	 * Updates the statistics data stored in shared preference
+	 * 
+	 * @param context
+	 * @param isCorrect
+	 * @param country
+	 */
 	public static void updateStats(Context context, boolean isCorrect, String country)
 	{
 		TinyDB stat = new TinyDB(context);
 		ArrayList<String> countryList = stat.getList("COUNTRY");
 		int index = countryList.indexOf(country);
-		Log.e("INDEX", "Index: " + index);
+//		Log.e("INDEX", "Index: " + index);
 		ArrayList<Integer> total = stat.getListInt("COUNTRY_TOTAL", context);
 		int iTotal = total.get(index);
 		iTotal++;
 		total.set(index, iTotal);
-		Log.e("TOTAL", "Total: " + iTotal);
+//		Log.e("TOTAL", "Total: " + iTotal);
 		stat.putListInt("COUNTRY_TOTAL", total, context);
 		if(isCorrect)
 		{
@@ -78,7 +121,7 @@ public class HelperFunctions {
 			stat.putListInt("COUNTRY_ANS", ans, context);
 		}
 	}
-	
+
 	public static ArrayList<StatHolder> bindStat(Context context)
 	{
 		TinyDB stat = new TinyDB(context);
@@ -92,7 +135,22 @@ public class HelperFunctions {
 			data.add(temp);
 		}
 		return data;
-		
+
+	}
+
+	/**
+	 * Converts comma separated coordinates to latitude longitiude
+	 * 
+	 * @param location
+	 * @return latitude longitude
+	 */
+	public static LatLng locationFromString(String location)
+	{
+		String[] latlng = location.split(",");
+		double lat = Double.parseDouble(latlng[0]);
+		double lng = Double.parseDouble(latlng[1]);
+		LatLng loc = new LatLng(lat, lng);
+		return loc;
 	}
 
 

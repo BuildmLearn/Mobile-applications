@@ -17,11 +17,16 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 
+/**
+ * This class extends the Fragment class and is used to generate questions in a separate fragment.
+ * The main aim of generating questions in a different fragment is retain the state
+ * 
+ * @author Abhishek
+ *
+ */
 public class AsyncTaskFragment extends Fragment {
 
-	private static final String TAG = AsyncTaskFragment.class.getSimpleName();
 	public static long lastSeed;
 
 	private Context mContext;
@@ -41,6 +46,9 @@ public class AsyncTaskFragment extends Fragment {
 	public int mQuestionCount;
 	private String mMode;
 
+	/* (non-Javadoc)
+	 * @see android.support.v4.app.Fragment#onAttach(android.app.Activity)
+	 */
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -48,6 +56,9 @@ public class AsyncTaskFragment extends Fragment {
 		mContext = getActivity().getApplicationContext();
 	}
 
+	/* (non-Javadoc)
+	 * @see android.support.v4.app.Fragment#onCreate(android.os.Bundle)
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -82,7 +93,7 @@ public class AsyncTaskFragment extends Fragment {
 	@Override
 	public void onDestroy() 
 	{
-		Log.i(TAG, "onDestroy()");
+//		Log.i(TAG, "onDestroy()");
 		super.onDestroy();
 		cancel();
 	}
@@ -115,6 +126,14 @@ public class AsyncTaskFragment extends Fragment {
 		return mRunning;
 	}
 
+	/**
+	 * Following Async Task contains the question generation module
+	 * 
+	 * 
+	 * 
+	 * @author Abhishek
+	 *
+	 */
 	public class GenerateQuestions extends AsyncTask<Void, Integer, Object>
 	{
 		private ArrayList<GeneratedQuestion> questionList;
@@ -160,7 +179,7 @@ public class AsyncTaskFragment extends Fragment {
 			for(int i = 1; i<= mQuestionCount; i++)
 			{
 				int randomNo = random.nextInt(questionRules.size());
-				Log.d("Random", randomNo + "");
+//				Log.d("Random", randomNo + "");
 				XmlQuestion questionRule = questionRules.get(randomNo);
 				if(!blackListRules.contains(randomNo))
 				{
@@ -187,7 +206,7 @@ public class AsyncTaskFragment extends Fragment {
 						}
 					}
 					questionRule.printRule(); 
-					Log.e("COUNT", i+ "");
+//					Log.e("COUNT", i+ "");
 
 
 					String tableName = questionRule.getCode();
@@ -215,11 +234,11 @@ public class AsyncTaskFragment extends Fragment {
 							if(isPresent)
 							{
 								counter++;
-								Log.d("DUPLICATE", "Duplicate");
+//								Log.d("DUPLICATE", "Duplicate");
 							}
 							else
 							{
-								Log.d("RESET GLOBAL COUNT", "0");
+//								Log.d("RESET GLOBAL COUNT", "0");
 								globalCount = 0;
 								dbRows.add(temp);
 								loop = false;
@@ -234,7 +253,7 @@ public class AsyncTaskFragment extends Fragment {
 						if(removeLoop)
 						{
 							blackListRules.add(randomNo);
-							Log.d("REMOVED", "removed");
+//							Log.d("REMOVED", "removed");
 							i--;
 							continue;
 						}
@@ -269,7 +288,7 @@ public class AsyncTaskFragment extends Fragment {
 				{
 					i--;
 					globalCount++;
-					Log.d("GLOBAL COUNT", globalCount + "");
+//					Log.d("GLOBAL COUNT", globalCount + "");
 					if(globalCount == 200)
 					{
 						return null;
@@ -303,17 +322,30 @@ public class AsyncTaskFragment extends Fragment {
 
 }
 
+/**
+ * Key Holder is used as a holder class for code, relation and answer. The main purpose of this holder class is
+ * to find and delete duplicates in generated question.
+ * 
+ * @author Abhishek
+ *
+ */
 class KeyHolder
 {
 	public String code;
 	public String relation;
 	public String answer;
+	
 	public KeyHolder(String code, String relation, String answer) {
 		super();
 		this.code = code;
 		this.relation = relation;
 		this.answer = answer;
 	}
+	
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object o) {
 		KeyHolder x = (KeyHolder)o;

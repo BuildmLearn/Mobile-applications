@@ -7,8 +7,19 @@ import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Window;
 
+/**
+ * This class contains various custom dialogs
+ * 
+ * @author Abhishek
+ *
+ */
 public class CustomDialog {
 	
+	/**
+	 * This functions displays the about dialog box
+	 * 
+	 * @param context
+	 */
 	public static void AboutDialog(Context context)
 	{
         final Dialog dialog = new Dialog(context);

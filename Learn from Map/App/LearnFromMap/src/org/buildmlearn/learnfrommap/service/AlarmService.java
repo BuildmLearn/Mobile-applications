@@ -1,17 +1,16 @@
 package org.buildmlearn.learnfrommap.service;
 
+import java.util.Calendar;
+
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
-import android.util.Log;
-import android.widget.Toast;
 
 public class AlarmService extends Service {
 	
-	private static final String TAG = "AlarmService";
 
 
 	@Override
@@ -26,20 +25,52 @@ public class AlarmService extends Service {
 
 		Intent i = new Intent(getApplicationContext(), NotificationBarAlarm.class);
 		i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		Toast.makeText(getApplicationContext(), "In Alarm Service", Toast.LENGTH_LONG).show();
 		PendingIntent pi = PendingIntent.getBroadcast(this.getApplicationContext(), 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
 		// Repeat the notification every 15 seconds (15000)
 		AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-		am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 15000, pi);
-		Toast.makeText(this, "My Service started", Toast.LENGTH_LONG).show();
-		Log.d(TAG, "onStart");
+		Calendar firingCal= Calendar.getInstance();
+		Calendar currentCal = Calendar.getInstance();
+
+		firingCal.set(Calendar.HOUR_OF_DAY, 19); // At the hour you wanna fire
+		firingCal.set(Calendar.MINUTE, 30); // Particular minute
+		firingCal.set(Calendar.SECOND, 0); // particular second
+		//firingCal.set(Calendar.)
+
+		long intendedTime = firingCal.getTimeInMillis();
+		long currentTime = currentCal.getTimeInMillis();
+
+//		Toast.makeText(this, "Intended Time: " + firingCal.getTime() + "\nCurrent Time: " + currentCal.getTime(), Toast.LENGTH_SHORT).show();
+//		Toast.makeText(this, "Intended Time: " + firingCal.getTime() + "\nCurrent Time: " + currentCal.getTime(), Toast.LENGTH_SHORT).show();
+//		Toast.makeText(this, "Intended Time: " + firingCal.getTime() + "\nCurrent Time: " + currentCal.getTime(), Toast.LENGTH_SHORT).show();
+//		Toast.makeText(this, "Intended Time: " + firingCal.getTime() + "\nCurrent Time: " + currentCal.getTime(), Toast.LENGTH_SHORT).show();
+//		Toast.makeText(this, "Intended Time: " + firingCal.getTime() + "\nCurrent Time: " + currentCal.getTime(), Toast.LENGTH_SHORT).show();
+//		Toast.makeText(this, "Intended Time: " + firingCal.getTime() + "\nCurrent Time: " + currentCal.getTime(), Toast.LENGTH_SHORT).show();
+//		Toast.makeText(this, "Intended Time: " + firingCal.getTime() + "\nCurrent Time: " + currentCal.getTime(), Toast.LENGTH_SHORT).show();
+//		Toast.makeText(this, "Intended Time: " + intendedTime + "\nCurrent Time: " + currentTime, Toast.LENGTH_SHORT).show();
+//		Toast.makeText(this, "Intended Time: " + intendedTime + "\nCurrent Time: " + currentTime, Toast.LENGTH_SHORT).show();
+//		Toast.makeText(this, "Intended Time: " + intendedTime + "\nCurrent Time: " + currentTime, Toast.LENGTH_SHORT).show();
+//		Toast.makeText(this, "Intended Time: " + intendedTime + "\nCurrent Time: " + currentTime, Toast.LENGTH_SHORT).show();
+//		Toast.makeText(this, "Intended Time: " + intendedTime + "\nCurrent Time: " + currentTime, Toast.LENGTH_SHORT).show();
+//		Toast.makeText(this, "Intended Time: " + intendedTime + "\nCurrent Time: " + currentTime, Toast.LENGTH_SHORT).show();
+//		Toast.makeText(this, "Intended Time: " + intendedTime + "\nCurrent Time: " + currentTime, Toast.LENGTH_SHORT).show();
+		
+		
+		if(intendedTime >= currentTime) 
+		{
+			am.setRepeating(AlarmManager.RTC_WAKEUP, intendedTime, AlarmManager.INTERVAL_DAY, pi);
+
+		}
+		else{
+		   firingCal.add(Calendar.DAY_OF_MONTH, 1);
+		   intendedTime = firingCal.getTimeInMillis();
+		   am.setRepeating(AlarmManager.RTC_WAKEUP, intendedTime, AlarmManager.INTERVAL_DAY, pi);
+		}
+		
 		return Service.START_NOT_STICKY;
 	}
 	
 	@Override
 	public void onDestroy() {
-	Toast.makeText(this, TAG + " stopped", Toast.LENGTH_LONG).show();
-	Log.d(TAG, "onDestroy");
 	}
 	
 	

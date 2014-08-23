@@ -38,7 +38,7 @@
                 android:orientation="vertical" >
 
                 <org.buildmlearn.learnfrommap.helper.TextViewPlus
-                    android:id="@+id/question"
+                    android:id="@+id/sett_tutorial"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#80000000"
@@ -70,7 +70,7 @@
                         android:src="@drawable/ic_action_location_found" />
 
                     <org.buildmlearn.learnfrommap.helper.TextViewPlus
-                        android:id="@+id/question"
+                        android:id="@+id/sett_tutorial"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -96,7 +96,7 @@
                     android:orientation="vertical" >
 
                     <org.buildmlearn.learnfrommap.helper.TextViewPlus
-                        android:id="@+id/question"
+                        android:id="@+id/sett_tutorial"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -113,7 +113,7 @@
 
 
                     <org.buildmlearn.learnfrommap.helper.TextViewPlus
-                        android:id="@+id/question"
+                        android:id="@+id/sett_tutorial"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="10dp"

@@ -47,7 +47,7 @@
                     foo:customFont="Roboto_Thin.ttf" />
 
                 <org.buildmlearn.learnfrommap.helper.TextViewPlus
-                    android:id="@+id/question"
+                    android:id="@+id/sett_tutorial"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/your_score"

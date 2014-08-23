@@ -7,10 +7,6 @@ import org.buildmlearn.learnfrommap.databasehelper.Database;
 import org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper;
 import org.buildmlearn.learnfrommap.helper.TinyDB;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -18,16 +14,22 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+/**
+ * Starting activity of the app. Handles database loading and internet check
+ * 
+ * @author Abhishek
+ *
+ */
 public class SplashActivity extends DatabaseHelper {
 
+	private int mData;
+	private TinyDB pref;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +39,18 @@ public class SplashActivity extends DatabaseHelper {
 		BitmapFactory.Options options = new BitmapFactory.Options();
 		options.inJustDecodeBounds = true;
 		BitmapFactory.decodeResource(getResources(), R.id.explore_world_map, options);
-		TinyDB pref = new TinyDB(getApplicationContext());
+		pref = new TinyDB(getApplicationContext());
 		ArrayList<String> list1 = pref.getList("NAME");
-		Log.e("SIZE", list1.size() + "");
+//		Log.e("SIZE", list1.size() + "");
+		mData = pref.getInt("TUTORIAL");
+//		Log.e("CHECK", "Data: " + pref.getInt("TUTORIAL"));
+		
 
 	}
 
+	/* (non-Javadoc)
+	 * @see org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper#onDatabaseLoad(java.lang.String)
+	 */
 	@Override
 	public void onDatabaseLoad(String msg) {
 		super.onDatabaseLoad(msg);
@@ -67,6 +75,9 @@ public class SplashActivity extends DatabaseHelper {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.buildmlearn.learnfrommap.databasehelper.DatabaseHelper#onDatabaseLoadError(java.lang.String)
+	 */
 	@Override
 	public void onDatabaseLoadError(String msg) {
 		super.onDatabaseLoadError(msg);
@@ -97,6 +108,10 @@ public class SplashActivity extends DatabaseHelper {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	/**
+	 * @author Abhishek
+	 *
+	 */
 	public class GetCountryList extends AsyncTask<Void, Void, Void>
 	{
 		ArrayList<String> countryList;
@@ -109,7 +124,7 @@ public class SplashActivity extends DatabaseHelper {
 			ArrayList<String> temp = pref.getList("COUNTRY");
 			if(temp.size() == 0)
 			{
-				Log.e("SHARED PRED", "Init");
+//				Log.e("SHARED PRED", "Init");
 				pref.putList("COUNTRY", countryList);
 				ArrayList<Integer> tempScore = new ArrayList<Integer>(); 
 				for(int i=0; i<countryList.size(); i++)
@@ -127,7 +142,18 @@ public class SplashActivity extends DatabaseHelper {
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
-			Intent intent= new Intent(getApplicationContext(), MainActivity.class);
+			Intent intent;
+			if(mData == 0)
+			{
+				pref.putBoolean("NOTI", true);
+				pref.putBoolean("SOUND", true);
+				intent= new Intent(getApplicationContext(), AppTutorial.class);
+				pref.putInt("TUTORIAL", 1);
+			}
+			else
+			{
+				intent= new Intent(getApplicationContext(), MainActivity.class);
+			}
 			startActivity(intent);
 			finish();
 

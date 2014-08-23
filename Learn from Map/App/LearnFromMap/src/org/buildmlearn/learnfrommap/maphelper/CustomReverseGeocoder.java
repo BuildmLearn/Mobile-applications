@@ -12,7 +12,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import android.content.Context;
-import android.util.Log;
 
 public class CustomReverseGeocoder {
 
@@ -30,20 +29,20 @@ public class CustomReverseGeocoder {
 		String latitude = "38.89";
 		String longitude  = "-77.03";
 		String googleurl = "http://maps.google.com/maps/api/geocode/json?";
-		Log.v("HTTP" , "Latitude is: " + latitude + "Longitude is:" + longitude);
+//		Log.v("H`TTP" , "Latitude is: " + latitude + "Longitude is:" + longitude);
 		StringBuilder sbuilder = new StringBuilder();
 		sbuilder.append(googleurl);
 
 		sbuilder.append("latlng=" + latitude + "," + longitude);
 		sbuilder.append("&sensor=true");
 		String url = sbuilder.toString();
-		Log.v("URL", url);
+//		Log.v("URL", url);
 		StringRequest myReq = new StringRequest(Method.GET, 
 				url,
 				new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
-				Log.d("VOLLEY", response);
+//				Log.d("VOLLEY", response);
 				try {
 					JSONObject main = new JSONObject(response);
 					JSONArray array = main.getJSONArray("results");
@@ -52,16 +51,16 @@ public class CustomReverseGeocoder {
 					for(int i=0; i<array.length(); i++)
 					{
 						obj = array.getJSONObject(i);
-						Log.d("JSON" + i, obj.toString());	
+//						Log.d("JSON" + i, obj.toString());	
 						JSONArray tempArray = obj.getJSONArray("types");
 						if(tempArray.getString(0).equals("administrative_area_level_1"))
 						{
-							Log.e("State", obj.getString("long_name"));
+//							Log.e("State", obj.getString("long_name"));
 
 						}
 						else if(tempArray.getString(0).equals("country"))
 						{
-							Log.e("Country", obj.getString("long_name"));
+//							Log.e("Country", obj.getString("long_name"));
 						}
 					}
 
@@ -75,7 +74,7 @@ public class CustomReverseGeocoder {
 		new Response.ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
-				Log.d("VOLLEY ERROR", error.getMessage());
+//				Log.d("VOLLEY ERROR", error.getMessage());
 			}
 		});
 

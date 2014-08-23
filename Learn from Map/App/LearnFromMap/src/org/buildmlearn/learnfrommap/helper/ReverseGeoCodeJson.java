@@ -3,8 +3,13 @@ package org.buildmlearn.learnfrommap.helper;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import android.util.Log;
 
+/**
+ * This class reverse geo code coordinates to get country and state
+ * 
+ * @author Abhishek
+ *
+ */
 public class ReverseGeoCodeJson {
 
 	private String State;
@@ -25,12 +30,12 @@ public class ReverseGeoCodeJson {
 				if(tempArray.getString(0).equals("country"))
 				{
 					Country = obj.getString("long_name");
-					Log.e("Country", Country);
+//					Log.e("Country", Country);
 				}
 				if(tempArray.getString(0).equals("administrative_area_level_1"))
 				{
 					State = obj.getString("long_name");
-					Log.e("State", State);
+//					Log.e("State", State);
 				}
 			}
 			HasError = false;

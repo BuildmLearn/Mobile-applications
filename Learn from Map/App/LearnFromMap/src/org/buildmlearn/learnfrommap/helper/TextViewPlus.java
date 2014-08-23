@@ -1,17 +1,20 @@
 package org.buildmlearn.learnfrommap.helper;
 
 import org.buildmlearn.learnfrommap.R;
-import org.buildmlearn.learnfrommap.R.styleable;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.TextView;
 
+/**
+ * Custom implementation of textview with fonts
+ * 
+ * @author Abhishek
+ *
+ */
 public class TextViewPlus extends TextView {
 
 	public TextViewPlus(Context context, AttributeSet attrs, int defStyle) {
@@ -40,7 +43,7 @@ public class TextViewPlus extends TextView {
         try {
         tf = Typeface.createFromAsset(ctx.getAssets(), asset);  
         } catch (Exception e) {
-            Log.e("TextViewPlus Error", "Could not get typeface: "+e.getMessage());
+//            Log.e("TextViewPlus Error", "Could not get typeface: "+e.getMessage());
             return false;
         }
 

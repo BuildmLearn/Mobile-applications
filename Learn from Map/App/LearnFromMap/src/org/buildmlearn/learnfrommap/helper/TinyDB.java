@@ -32,7 +32,6 @@ import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.util.Log;
 
 public class TinyDB {
 	Context mContext;
@@ -92,9 +91,9 @@ public class TinyDB {
 		mFolder = new File(sdcard_path, DEFAULT_APP_IMAGEDATA_DIRECTORY);
 		if (!mFolder.exists()) {
 			if (!mFolder.mkdirs()) {
-				Log.e("While creatingsave path",
-						"Default Save Path Creation Error");
-				// Toast("Default Save Path Creation Error");
+//				Log.e("While creatingsave path",
+//						"Default Save Path Creation Error");
+//				// Toast("Default Save Path Creation Error");
 			}
 		}
 		String savePath = mFolder.getPath() + '/' + imageName;

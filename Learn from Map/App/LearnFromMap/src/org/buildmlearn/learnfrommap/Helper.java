@@ -5,6 +5,7 @@ import org.buildmlearn.learnfrommap.maphelper.CustomTileProvider;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -33,9 +34,11 @@ public class Helper extends ActionBarActivity {
 	private MarkerOptions markerOptions;
 	public Marker marker;
 
-	// ////////////////
-	// Override these function
 
+
+	/**
+	 * Called whenever the maps are successfully loaded
+	 */
 	public void onMapReady() {
 		mapView.setOnCameraChangeListener(new OnCameraChangeListener() {
 			@Override
@@ -64,12 +67,18 @@ public class Helper extends ActionBarActivity {
 
 	}
 	
+	/**
+	 * @return GoogleMap
+	 */
 	public GoogleMap getMaps()
 	{
 		return mapView;
 		
 	}
 	
+	/**
+	 * @return Marker position
+	 */
 	public LatLng getPosition()
 	{
 		if(marker != null)
@@ -80,28 +89,49 @@ public class Helper extends ActionBarActivity {
 		
 	}
 
+	/**
+	 * Check if the map is ready
+	 * 
+	 * @return true if map is ready
+	 * 
+	 */
 	public boolean isMapReady() {
 		return mapView != null;
 	}
 
+	/**
+	 * Error message if map is not successfully loaded
+	 * 
+	 * @param msg
+	 */
 	public void showErrorMessage(String msg) {
 
 	}
 
+	/**
+	 * Called when database is successfully opened
+	 * 
+	 * @param msg
+	 */
 	public void onDatabaseLoad(String msg) {
 
 	}
 
+	/**
+	 * Called if there is any database error
+	 * 
+	 * @param msg
+	 */
 	public void onDatabaseLoadError(String msg) {
 
 	}
 
 	// ////////////////Public Function //////////////////
 
-	public void getMapView(SupportMapFragment mapFragment) {
+	public void getMapView(SupportMapFragment mapFragment, LatLng loc) {
 		this.handler = new Handler();
 		this.mapFragment = mapFragment;
-		CheckMap();
+		CheckMap(loc);
 	}
 
 	public void queryDatabase(String where, String[] whereArgs, String orderBy,
@@ -177,7 +207,7 @@ public class Helper extends ActionBarActivity {
 
 	// ////////////////Private Function //////////////////
 
-	private void setUpMap() {
+	private void setUpMap(final LatLng loc) {
 		handler.post(new Runnable() {
 
 
@@ -192,8 +222,10 @@ public class Helper extends ActionBarActivity {
 					mapView.addTileOverlay(new TileOverlayOptions()
 							.tileProvider(new CustomTileProvider(getResources()
 									.getAssets(), mapView)));
-					markerOptions = new MarkerOptions().draggable(true).position(new LatLng(0, 0)).flat(true).title("Your Answer");
+					markerOptions = new MarkerOptions().draggable(true).position(loc).flat(true).title("Your Answer");
 					marker = mapView.addMarker(markerOptions);
+					CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(loc, 2);
+					mapView.animateCamera(yourLocation);
 					//marker = null;
 					if (getApplicationContext() != null) {
 						runOnUiThread(new Runnable() {
@@ -212,7 +244,7 @@ public class Helper extends ActionBarActivity {
 
 	}
 
-	private void CheckMap() {
+	private void CheckMap(final LatLng loc) {
 
 		new Thread(new Runnable() {
 
@@ -223,7 +255,7 @@ public class Helper extends ActionBarActivity {
 
 				if (playServiceStatus == ConnectionResult.SUCCESS) {
 					if (getVersionFromPackageManager(getApplicationContext()) >= 2) {
-						setUpMap();
+						setUpMap(loc);
 						if (getApplicationContext() != null) {
 							runOnUiThread(new Runnable() {
 								@Override

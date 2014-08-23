@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.6" icons="true" automaticImage="JPEG" always-add-relationships="true" generalizations="true" 
+  realizations="true" associations="true" dependencies="true" nesting-relationships="true">  
+  <class id="1" language="java" name="org.buildmlearn.learnfrommap.AppTutorial" project="LearnFromMap" 
+    file="/LearnFromMap/src/org/buildmlearn/learnfrommap/AppTutorial.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="230" x="1321" y="1241"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="org.buildmlearn.learnfrommap.AppTutorial.CustomPagerAdapter" 
+    project="LearnFromMap" file="/LearnFromMap/src/org/buildmlearn/learnfrommap/AppTutorial.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="223" x="1260" y="1722"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="3" language="java" name="org.buildmlearn.learnfrommap.AsyncTaskFragment.TaskCallbacks" 
+    project="LearnFromMap" file="/LearnFromMap/src/org/buildmlearn/learnfrommap/AsyncTaskFragment.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="160" x="916" y="3381"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="4" language="java" name="org.buildmlearn.learnfrommap.AsyncTaskFragment.GenerateQuestions" 
+    project="LearnFromMap" file="/LearnFromMap/src/org/buildmlearn/learnfrommap/AsyncTaskFragment.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="293" x="581" y="3188"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="org.buildmlearn.learnfrommap.AsyncTaskFragment" project="LearnFromMap" 
+    file="/LearnFromMap/src/org/buildmlearn/learnfrommap/AsyncTaskFragment.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="315" width="140" x="787" y="2833"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="org.buildmlearn.learnfrommap.KeyHolder" project="LearnFromMap" 
+    file="/LearnFromMap/src/org/buildmlearn/learnfrommap/AsyncTaskFragment.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="174" x="581" y="3381"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="org.buildmlearn.learnfrommap.CategoryActivity" project="LearnFromMap" 
+    file="/LearnFromMap/src/org/buildmlearn/learnfrommap/CategoryActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="230" x="739" y="814"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="org.buildmlearn.learnfrommap.ClassicModeActivity.GetCountryList" 
+    project="LearnFromMap" file="/LearnFromMap/src/org/buildmlearn/learnfrommap/ClassicModeActivity.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="170" x="1009" y="1241"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="org.buildmlearn.learnfrommap.ClassicModeActivity" project="LearnFromMap" 
+    file="/LearnFromMap/src/org/buildmlearn/learnfrommap/ClassicModeActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="387" width="230" x="1009" y="814"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="org.buildmlearn.learnfrommap.ExploreMode.GestureListener" project="LearnFromMap" 
+    file="/LearnFromMap/src/org/buildmlearn/learnfrommap/ExploreMode.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="281" x="646" y="1241"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="org.buildmlearn.learnfrommap.ExploreMode" project="LearnFromMap" 
+    file="/LearnFromMap/src/org/buildmlearn/learnfrommap/ExploreMode.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="230" x="469" y="814"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="org.buildmlearn.learnfrommap.GameActivity" project="LearnFromMap" 
+    file="/LearnFromMap/src/org/buildmlearn/learnfrommap/GameActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1071" width="262" x="948" y="1722"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="org.buildmlearn.learnfrommap.Helper" project="LearnFromMap" 
+    file="/LearnFromMap/src/org/buildmlearn/learnfrommap/Helper.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="441" width="258" x="46" y="1241"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="org.buildmlearn.learnfrommap.MainActivity" project="LearnFromMap" 
+    file="/LearnFromMap/src/org/buildmlearn/learnfrommap/MainActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="315" width="230" x="1009" y="459"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="org.buildmlearn.learnfrommap.NotificationService" project="LearnFromMap" 
+    file="/LearnFromMap/src/org/buildmlearn/learnfrommap/NotificationService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="174" x="576" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="org.buildmlearn.learnfrommap.ScoreActivity" project="LearnFromMap" 
+    file="/LearnFromMap/src/org/buildmlearn/learnfrommap/ScoreActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="262" x="344" y="1241"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="org.buildmlearn.learnfrommap.SettingsActivity" project="LearnFromMap" 
+    file="/LearnFromMap/src/org/buildmlearn/learnfrommap/SettingsActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="230" x="1300" y="814"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="org.buildmlearn.learnfrommap.SplashActivity" project="LearnFromMap" 
+    file="/LearnFromMap/src/org/buildmlearn/learnfrommap/SplashActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="230" x="1321" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="org.buildmlearn.learnfrommap.SplashActivity.GetCountryList" 
+    project="LearnFromMap" file="/LearnFromMap/src/org/buildmlearn/learnfrommap/SplashActivity.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="170" x="1358" y="284"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="org.buildmlearn.learnfrommap.StatisticsActivity" project="LearnFromMap" 
+    file="/LearnFromMap/src/org/buildmlearn/learnfrommap/StatisticsActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="230" x="199" y="814"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="21">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="22" name="mTaskFragment"/>      
+      <multiplicity id="23" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="24">    
+    <bendpoint x="1269" y="1241"/>    
+    <bendpoint x="1269" y="814"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <nesting id="25">    
+    <bendpoint x="925" y="3188"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="3"/>  
+  </nesting>  
+  <dependency id="26">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <nesting id="27">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="4"/>  
+  </nesting>  
+  <dependency id="28">    
+    <bendpoint x="957" y="1241"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="29">    
+    <bendpoint x="1560" y="459"/>    
+    <bendpoint x="1560" y="814"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="30">    
+    <bendpoint x="978" y="1241"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <generalization id="31">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
+  <nesting id="32">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </nesting>  
+  <dependency id="33">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <dependency id="34">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <association id="35">    
+    <bendpoint x="904" y="3188"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="36" name="mCallbacks"/>      
+      <multiplicity id="37" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="38">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <nesting id="39">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="8"/>  
+  </nesting>  
+  <dependency id="40">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <nesting id="41">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="10"/>  
+  </nesting>  
+  <dependency id="42">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <dependency id="43">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="44">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <dependency id="45">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="46">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="47">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="48" name="genQuesAsync"/>      
+      <multiplicity id="49" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="50">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="19"/>  
+  </nesting>  
+  <dependency id="51">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <realization id="52">    
+    <bendpoint x="957" y="2833"/>    
+    <bendpoint x="957" y="3188"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="3"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

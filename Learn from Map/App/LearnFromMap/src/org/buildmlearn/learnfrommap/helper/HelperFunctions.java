@@ -6,6 +6,7 @@ import java.util.Random;
 import com.google.android.gms.maps.model.LatLng;
 
 import android.content.Context;
+import android.util.Log;
 
 public class HelperFunctions {
 
@@ -146,6 +147,7 @@ public class HelperFunctions {
 	 */
 	public static LatLng locationFromString(String location)
 	{
+		//Log.e("Location", location);
 		String[] latlng = location.split(",");
 		double lat = Double.parseDouble(latlng[0]);
 		double lng = Double.parseDouble(latlng[1]);

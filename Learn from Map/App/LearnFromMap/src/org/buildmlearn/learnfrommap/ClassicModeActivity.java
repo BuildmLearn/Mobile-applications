@@ -114,7 +114,13 @@ public class ClassicModeActivity extends ActionBarActivity {
 		String country = spinner.getSelectedItem().toString();
 		Database db =  new Database(getApplicationContext());
 		String locat = db.getCountryCoordinates(country);
+
 		db.close();
+		if(locat.equals(""))
+		{
+			Toast.makeText(getApplicationContext(), "Sorry, no questions in database for " + country, Toast.LENGTH_LONG).show();
+			return;
+		}
 		intent.putExtra("VALUE", country);
 		intent.putExtra("DISPLAY", "Country: " + country);
 		intent.putExtra("LOCATION", locat);

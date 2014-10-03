@@ -66,13 +66,14 @@ public class Stage5Controller : MonoBehaviour {
 		else{
 			circle.active = false;
 			cross.active = false;
+			//generate new question
+			day = (int)Random.Range (1, 30);
+			question = "Which Day is \nDay " + day;
+			choosePuzzle ();
+			answerInput = "";
 		}
 		
-		//generate new question
-		day = (int)Random.Range (1, 30);
-		question = "Which Day is \nDay " + day;
-		choosePuzzle ();
-		answerInput = "";
+	
 		
 		//new round
 		
@@ -165,13 +166,12 @@ public class Stage5Controller : MonoBehaviour {
 	void OnGUI()
 	{
 		GUI.Label (new Rect (Screen.width/6,Screen.height/20, Screen.width, Screen.height /6), "<color=white><size=60>" + question + "</size></color>");
-		answerInput = GUI.TextField(new Rect(Screen.width/2-200, Screen.height/2, 400, 100), answerInput, 8,textStyle);
+		answerInput = GUI.TextField(new Rect(Screen.width/2-200, 3*Screen.height/4, 400, 100), answerInput, 8,textStyle);
 		
-		if (GUI.Button (new Rect (Screen.width/2.0f - (Screen.width/6) , (6.8f / 9f) * Screen.height, Screen.width / 3, Screen.height / 12), "<color=white><size=45>" + "Submit" + "</size></color>")&&touchEnabled==true) {
+		if (GUI.Button (new Rect (Screen.width/2.0f - (Screen.width/6) , (8f / 9f) * Screen.height, Screen.width / 3, Screen.height / 12), "<color=white><size=45>" + "Submit" + "</size></color>")&&touchEnabled==true) {
 			touchEnabled = false;
 			//GUI.Label (new Rect ( Screen.width / 2, Screen.height / 2, Screen.width / 3, Screen.height / 12), "<color=black><size=80>" + hourOneInput+hourTwoInput+minuteOneInput+minuteTwoInput  + "</size></color>");
 			StartCoroutine(checkWin (answerInput));
-			
 		}
 	}
 }

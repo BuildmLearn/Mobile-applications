@@ -3,7 +3,9 @@ using System.Collections;
 
 public class GameController : MonoBehaviour {
 	public GameObject longHand,shortHand;
+	public GUIStyle clockTimeStyle;
 	public GUIText time;
+	public GUIStyle submitButtonStyle;
 	public GameObject circle;
 	public GameObject cross;
 	public GameObject pauseMenu;
@@ -23,6 +25,19 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		if (Screen.width > 720) {
+					clockTimeStyle.fontSize = 90;	
+					submitButtonStyle.fontSize = 70;
+				} else if (Screen.width > 540) {
+					clockTimeStyle.fontSize = 60;
+					submitButtonStyle.fontSize = 50;
+
+				} else {
+			clockTimeStyle.fontSize = 40;
+			submitButtonStyle.fontSize = 30;
+
+
+		}
 		circle.active = false;
 		cross.active = false;
 
@@ -119,18 +134,17 @@ public class GameController : MonoBehaviour {
 	void  OnGUI(){
 		if (currentMinute == 0) 
 		{
-				GUI.Label (new Rect (2 * Screen.width / 3-20, Screen.height / 20, Screen.width / 3, Screen.height / 12), "<color=white><size=80>" + currentTime + ":00" + "</size></color>");
+				GUI.Label (new Rect (Screen.width - (Screen.width/2.5f + 20), 30, Screen.width / 2.5f, Screen.height / 10), currentTime + ":00", clockTimeStyle);
 		} 
 		else if (currentMinute == 5) 
 		{
-				GUI.Label (new Rect (2 * Screen.width / 3-20, Screen.height / 20, Screen.width / 3, Screen.height / 12), "<color=white><size=80>" + currentTime + ":05" + "</size></color>");
+				GUI.Label (new Rect (Screen.width - (Screen.width/2.5f+20), 30, Screen.width / 2.5f, Screen.height / 10), currentTime + ":05", clockTimeStyle);
 		} 
 		else 
 		{
-				GUI.Label (new Rect (2 * Screen.width / 3-20, Screen.height / 20, Screen.width / 3, Screen.height / 12), "<color=white><size=80>" + currentTime + ":" + currentMinute + "</size></color>");
+				GUI.Label (new Rect (Screen.width - (Screen.width/2.5f+20) , 30, Screen.width / 2.5f, Screen.height / 10), currentTime + ":" + currentMinute,clockTimeStyle);
 		}
-		GUI.backgroundColor = new Color(0,0,0,0);
-		if (GUI.Button (new Rect (Screen.width/2.0f - (Screen.width/6) , (6.8f / 9f) * Screen.height, Screen.width / 3, Screen.height / 12), "<color=white><size=45>" + "Submit" + "</size></color>")&&touchEnabled==true) {
+		if (GUI.Button (new Rect (Screen.width/2.0f - (Screen.width/6.0f) , (6.5f / 9f) * Screen.height, Screen.width / 3.0f, Screen.height / 10), "Submit", submitButtonStyle)&&touchEnabled==true) {
 			touchEnabled = false;
 			StartCoroutine(checkWin ());
 
@@ -164,9 +178,10 @@ public class GameController : MonoBehaviour {
 		else{
 				circle.active = false;
 				cross.active = false;
+			currentTime = (int)Random.Range (1.0F, 11.0F);
+			currentMinute = (int)Random.Range(0,11)*5;
 		}
-		currentTime = (int)Random.Range (1.0F, 11.0F);
-		currentMinute = (int)Random.Range(0,11)*5;;
+
 		touchEnabled = true;
 	}
 

@@ -8,7 +8,16 @@ public class Stage3Controller : MonoBehaviour {
 
 	int nWin=0;
 	int currentRound=0;
+	public GUIStyle submitButtonStyle;
 	public GUIStyle textStyle;
+
+
+	public GUIStyle DayStyle;
+	public GUIStyle MonthStyle;
+	public GUIStyle YearStyle;
+
+
+	public GUIStyle questionStyle;
 	public string dayInput,monthInput,yearInput;
 	public bool touchEnabled = true;
 	public GameObject cross,circle;
@@ -21,6 +30,27 @@ public class Stage3Controller : MonoBehaviour {
 	private bool keyboard3 = false;
 	// Use this for initialization
 	void Start () {
+		if (Screen.width > 720) {
+						questionStyle.fontSize = 120;
+						submitButtonStyle.fontSize = 90;
+						DayStyle.fontSize = 90;
+						MonthStyle.fontSize = 90;
+						YearStyle.fontSize = 90;
+
+				} else if (Screen.width > 540) {
+						questionStyle.fontSize = 90;
+						submitButtonStyle.fontSize = 60;
+						DayStyle.fontSize = 60;
+						MonthStyle.fontSize = 60;
+						YearStyle.fontSize = 60;
+				} else {
+					questionStyle.fontSize = 50;
+					submitButtonStyle.fontSize = 40;
+					DayStyle.fontSize = 40;
+					MonthStyle.fontSize = 40;
+					YearStyle.fontSize = 40;
+				}
+		
 		cross.active = false;
 		circle.active = false;
 		randomDate ();
@@ -34,12 +64,13 @@ public class Stage3Controller : MonoBehaviour {
 	}
 	void OnGUI()
 	{
-		GUI.Label (new Rect (Screen.width/6,Screen.height/20, Screen.width, Screen.height /6), "<color=white><size=90>" + day + "-" + month +"-"+ year + "</size></color>");
+		//GUI.Label (new Rect (Screen.width/6,Screen.height/20, Screen.width, Screen.height /6), "<color=white><size=90>" + day + "-" + month +"-"+ year + "</size></color>");
+		GUI.Label (new Rect (0,Screen.height/100, Screen.width, Screen.height /10), day + "-" + month +"-"+ year,questionStyle);
 		/*dayInput = GUI.TextField(new Rect(8*Screen.width/10-90, 11*Screen.height/20, 100, 100), dayInput, 2,textStyle);
 		monthInput = GUI.TextField(new Rect(2*Screen.width/10-25, 11*Screen.height/20, 140, 100), monthInput, 3,textStyle);
 		yearInput = GUI.TextField(new Rect(Screen.width/2-95, Screen.height/5+70, 200, 100), yearInput, 4,textStyle);*/
 
-		if (GUI.Button (new Rect(8*Screen.width/10-90, 11*Screen.height/20, 100, 100), dayInput,textStyle)&&keyboard1==false) {
+		/*if (GUI.Button (new Rect(8*Screen.width/10-90, 13*Screen.height/20, 100, 100), dayInput,textStyle)&&keyboard1==false) {
 			keyboard = TouchScreenKeyboard.Open (dayInput, TouchScreenKeyboardType.NumberPad, false, false, false, false, "Enter Day");
 			keyboard1=true;
 		}
@@ -52,7 +83,7 @@ public class Stage3Controller : MonoBehaviour {
 			keyboard1=false;
 		}
 
-		if (GUI.Button (new Rect(2*Screen.width/10-25, 11*Screen.height/20, 140, 100), monthInput,textStyle)&&keyboard1==false) {
+		if (GUI.Button (new Rect(2*Screen.width/10-25, 13*Screen.height/20, 140, 100), monthInput,textStyle)&&keyboard1==false) {
 			keyboard = TouchScreenKeyboard.Open (monthInput, TouchScreenKeyboardType.ASCIICapable, false, false, false, false, "Enter Month: eg. Jan");
 			keyboard2=true;
 		}
@@ -65,7 +96,47 @@ public class Stage3Controller : MonoBehaviour {
 			keyboard2=false;
 		}
 
-		if (GUI.Button (new Rect(Screen.width/2-95, Screen.height/5+70, 200, 100), yearInput,textStyle)&&keyboard1==false) {
+		if (GUI.Button (new Rect(Screen.width/2-100, Screen.height/5+80, 200, 100), yearInput,textStyle)&&keyboard1==false) {
+			keyboard = TouchScreenKeyboard.Open (yearInput, TouchScreenKeyboardType.NumberPad, false, false, false, false, "Enter Year");
+			keyboard3=true;
+		}
+		
+		if (keyboard != null && keyboard.done&&keyboard3==true) {
+			if(keyboard.text.Length>4)
+				yearInput = keyboard.text.Substring(0,4);
+			else
+				yearInput = keyboard.text;
+			keyboard3=false;
+		}*/
+
+
+		
+		if (GUI.Button (new Rect(Screen.width/2+20, Screen.height/2+40, Screen.width/2-40, Screen.height/3), dayInput,DayStyle)&&keyboard1==false) {
+			keyboard = TouchScreenKeyboard.Open (dayInput, TouchScreenKeyboardType.NumberPad, false, false, false, false, "Enter Day");
+			keyboard1=true;
+		}
+		
+		if (keyboard != null && keyboard.done&&keyboard1==true) {
+			if(keyboard.text.Length>2)
+				dayInput = keyboard.text.Substring(0,2);
+			else
+				dayInput = keyboard.text;
+			keyboard1=false;
+		}
+		
+		if (GUI.Button (new Rect(10, Screen.height/2+40, Screen.width/2-40, Screen.height/3), monthInput,MonthStyle)&&keyboard1==false) {
+			keyboard = TouchScreenKeyboard.Open (monthInput, TouchScreenKeyboardType.ASCIICapable, false, false, false, false, "Enter Month: eg. Jan");
+			keyboard2=true;
+		}
+		
+		if (keyboard != null && keyboard.done&&keyboard2==true) {
+			if(keyboard.text.Length>2)
+				monthInput = keyboard.text.Substring(0,3).ToUpper();
+			else
+				monthInput = keyboard.text.ToUpper();
+			keyboard2=false;
+		}
+		if (GUI.Button (new Rect(Screen.width/2-((Screen.width/2-40)/2), Screen.height/10+Screen.height/100, Screen.width/2-40, Screen.height/3), yearInput,YearStyle)&&keyboard1==false) {
 			keyboard = TouchScreenKeyboard.Open (yearInput, TouchScreenKeyboardType.NumberPad, false, false, false, false, "Enter Year");
 			keyboard3=true;
 		}
@@ -78,8 +149,9 @@ public class Stage3Controller : MonoBehaviour {
 			keyboard3=false;
 		}
 
-		if (GUI.Button (new Rect (Screen.width/2.0f - (Screen.width/6) , (6.8f / 9f) * Screen.height, Screen.width / 3, Screen.height / 12), "<color=white><size=45>" + "Submit" + "</size></color>")&&touchEnabled==true) {
+		if (GUI.Button (new Rect (Screen.width/2.0f - (Screen.width/6) , (8f / 9f) * Screen.height, Screen.width / 3, Screen.height / 10),"Submit",submitButtonStyle)&&touchEnabled==true) {
 			touchEnabled = false;
+
 			//GUI.Label (new Rect ( Screen.width / 2, Screen.height / 2, Screen.width / 3, Screen.height / 12), "<color=black><size=80>" + hourOneInput+hourTwoInput+minuteOneInput+minuteTwoInput  + "</size></color>");
 			StartCoroutine(checkWin (dayInput,monthInput,yearInput));
 			
@@ -117,12 +189,13 @@ public class Stage3Controller : MonoBehaviour {
 		else{
 			circle.active = false;
 			cross.active = false;
+			monthInput = "";
+			dayInput = "";
+			yearInput = "";
+			//new round
+			randomDate();
 		}
-		monthInput = "";
-		dayInput = "";
-		yearInput = "";
-		//new round
-		randomDate();
+	
 		touchEnabled = true;
 	}
 
@@ -135,43 +208,44 @@ public class Stage3Controller : MonoBehaviour {
 
 	int convertMonthStrToInt(string month)
 	{
-		string monthStr = month.ToLowerInvariant ();
+		string monthStr = month;
+		Debug.Log ("MonthString " + monthStr);
 		int answer = 0;
 		switch (month) {
-		case "jan":
+		case "JAN":
 			answer = 1;
 			break;
-		case "feb":
+		case "FEB":
 			answer = 2;
 			break;
-		case "mar":
+		case "MAR":
 			answer = 3;
 			break;
-		case "apr":
+		case "APR":
 				answer = 4;
 			break;
-		case "may":
+		case "MAY":
 			answer = 5;
 			break;
-		case "jun":
+		case "JUN":
 			answer = 6;
 			break;
-		case "jul":
+		case "JUL":
 				answer = 7;
 			break;
-		case "aug":
+		case "AUG":
 			answer = 8;
 			break;
-		case "sep":
+		case "SEP":
 			answer = 9;
 			break;
-		case "oct":
+		case "OCT":
 			answer = 10;
 			break;
-		case "nov":
+		case "NOV":
 			answer = 11;
 			break;
-		case "dec":
+		case "DEC":
 			answer = 12;
 			break;
 		}

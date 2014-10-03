@@ -28,8 +28,32 @@ public class StageSelectButtonControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		//PlayerPrefs.SetInt("Stage2HighScore",2);
 
-	}
+		if (Screen.width > 720) {
+						stage0text.fontSize = 200;	
+						stage1text.fontSize = 200;	
+						stage2text.fontSize = 200;	
+						stage3text.fontSize = 200;	
+						stage4text.fontSize = 200;	
+
+				} else if (Screen.width > 540) {
+						stage0text.fontSize = 140;	
+						stage1text.fontSize = 140;	
+						stage2text.fontSize = 140;	
+						stage3text.fontSize = 140;	
+						stage4text.fontSize = 140;	
+				}
+			else{
+				stage0text.fontSize = 100;	
+				stage1text.fontSize = 100;	
+				stage2text.fontSize = 100;	
+				stage3text.fontSize = 100;	
+				stage4text.fontSize = 100;
+			}
+		}
+
+
 	
 	// Update is called once per frame
 	void Update () {
@@ -97,7 +121,7 @@ public class StageSelectButtonControl : MonoBehaviour {
 				{
 					Application.LoadLevel ("stage5_loading");
 				}*/
-				Application.LoadLevel ("stage5_loading");
+				//Application.LoadLevel ("stage5_loading");
 
 				break;
 										}

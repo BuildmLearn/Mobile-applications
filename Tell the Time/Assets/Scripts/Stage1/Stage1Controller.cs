@@ -3,12 +3,12 @@ using System.Collections;
 
 public class Stage1Controller : MonoBehaviour {
 
-	public GUIStyle homeBtnStyle;
-	public GUIStyle resumeBtnStyle;
+	public GUIStyle answerButtonStyle;
+	public GUIStyle answerBoxStyle;
 
 	string[] clock = new string[4];
 
-	public int numStage;
+	public int numStage;	
 
 	public Texture clockTexture;
 
@@ -17,7 +17,6 @@ public class Stage1Controller : MonoBehaviour {
 	public GameObject answer3;
 	public GameObject answer4;
 	
-
 	public GameObject sun_rise;
 	public GameObject sun_set;
 	public GameObject night_time;
@@ -38,6 +37,14 @@ public class Stage1Controller : MonoBehaviour {
 	int nWin = 1;
 		// Use this for initialization
 	void Start () {
+		if (Screen.width > 720) {
+						answerButtonStyle.fontSize = 90;		
+				} else if (Screen.width > 540) {
+						answerButtonStyle.fontSize = 60;
+				} else {
+			answerButtonStyle.fontSize = 30;
+
+				}
 		circle.active = false;
 		cross.active = false;
 		answer1.active = false;
@@ -58,24 +65,24 @@ public class Stage1Controller : MonoBehaviour {
 
 	}
 	void OnGUI(){
-		GUI.backgroundColor = Color.clear;
+		//GUI.backgroundColor = Color.clear;
 
-		if (GUI.Button (new Rect (Screen.width / 2 - Screen.width / 2.5f, (4.3f / 6.5f) * Screen.height, Screen.width / 3, Screen.height / 12), "<color=white><size=45>" + clock [0] + "</size></color>")&&touchEnabled==true) {
+		if (GUI.Button (new Rect (Screen.width/14, (4.3f / 6.5f) * Screen.height, Screen.width/2-Screen.width/7, Screen.height / 10), clock [0],answerButtonStyle)&&touchEnabled==true) {
 			StartCoroutine(checkWin (0));
 		}
 		//GUI.Label (new Rect (Screen.width/2-Screen.width/2.5f, (4.3f/6.5f)*Screen.height, Screen.width/3,Screen.height/12),"<color=white><size=45>"+clock[0]+"</size></color>");
 
-		if (GUI.Button (new Rect (Screen.width / 2 + Screen.width / 11, (4.3f / 6.5f) * Screen.height, Screen.width / 3, Screen.height / 12), "<color=white><size=45>" + clock [1] + "</size></color>")&&touchEnabled==true) {
+		if (GUI.Button (new Rect (Screen.width/2+Screen.width/14, (4.3f / 6.5f) * Screen.height, Screen.width / 2-Screen.width/7, Screen.height / 10), clock [1],answerButtonStyle)&&touchEnabled==true) {
 			StartCoroutine(checkWin (1));
 		}
 		//GUI.Label (new Rect (Screen.width/2+Screen.width/11, (4.3f/6.5f)*Screen.height, Screen.width/3,Screen.height/12),"<color=white><size=45>"+clock[1]+"</size></color>");
 
-		if (GUI.Button (new Rect (Screen.width / 2 - Screen.width / 2.5f, (5.7f / 6.5f) * Screen.height, Screen.width / 3, Screen.height / 12), "<color=white><size=45>" + clock [2] + "</size></color>")&&touchEnabled==true) {
+		if (GUI.Button (new Rect (Screen.width/14, (5.7f / 6.5f) * Screen.height, Screen.width / 2-Screen.width/7, Screen.height / 10), clock [2],answerButtonStyle)&&touchEnabled==true) {
 			StartCoroutine(checkWin (2));
 		}
 		//GUI.Label (new Rect (Screen.width/2-Screen.width/2.5f, (5.7f/6.5f)*Screen.height, Screen.width/3,Screen.height/12),"<color=white><size=45>"+clock[2]+"</size></color>");
 
-		if (GUI.Button (new Rect (Screen.width / 2 + Screen.width / 11, (5.7f / 6.5f) * Screen.height, Screen.width / 3, Screen.height / 12), "<color=white><size=45>" + clock [3] + "</size></color>")&&touchEnabled==true) {
+		if (GUI.Button (new Rect (Screen.width / 2 +Screen.width/14, (5.7f / 6.5f) * Screen.height, Screen.width / 2-Screen.width/7, Screen.height / 10), clock [3],answerButtonStyle)&&touchEnabled==true) {
 			StartCoroutine(checkWin (3));
 		}
 
@@ -117,12 +124,16 @@ public class Stage1Controller : MonoBehaviour {
 			switch(answerPos)
 			{
 			case 0: answer1.active=true;
+				//GUI.Button (new Rect (5, (4.3f / 6.5f) * Screen.height, Screen.width/2-10, Screen.height / 10), "",answerBoxStyle);
 					break;
 			case 1: answer2.active=true;
+				//GUI.Button (new Rect (Screen.width/2+5, (4.3f / 6.5f) * Screen.height, Screen.width / 2-10, Screen.height / 10),"",answerBoxStyle);
 				break;
 			case 2: answer3.active=true;
+				//GUI.Button (new Rect (5, (5.7f / 6.5f) * Screen.height, Screen.width / 2-10, Screen.height / 10), "",answerBoxStyle);
 				break;
 			case 3: answer4.active=true;
+				//GUI.Button (new Rect (Screen.width / 2 +5, (5.7f / 6.5f) * Screen.height, Screen.width / 2-10, Screen.height / 10), "",answerBoxStyle);
 				break;
 		
 			}
@@ -146,8 +157,10 @@ public class Stage1Controller : MonoBehaviour {
 			answer2.active = false;
 			answer3.active = false;
 			answer4.active = false;
+
+			createPuzzle ();
+
 		}
-		createPuzzle ();
 		//currentTime = (int)Random.Range (1.0F, 11.0F);
 		touchEnabled = true;
 	}

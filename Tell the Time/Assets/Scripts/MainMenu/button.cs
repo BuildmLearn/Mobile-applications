@@ -14,21 +14,24 @@ public class button : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Escape)) 
 			Application.Quit(); 
 
-		Vector3 pos = Camera.main.ScreenToWorldPoint (Input.GetTouch(0).position);
-		RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
-		if (hit != null && hit.collider != null) 
-		{
-			switch(hit.collider.name)
-			{
-			case "PlayButton":
-				hit.collider.name = "";
-				Application.LoadLevel ("StageSelect");
-				break;
-			case "AboutButton":
-				hit.collider.name = "";
-				Application.LoadLevel ("About");
-				break;
-			/*case "RankButton":
+
+		if (Input.touchCount > 0) {
+						if (Input.GetTouch (0).phase == TouchPhase.Began) {			
+				
+								Vector3 pos = Camera.main.ScreenToWorldPoint (Input.GetTouch (0).position);
+								//Debug.Log (Input.mousePosition);
+								RaycastHit2D hit = Physics2D.Raycast (pos, Vector2.zero);
+								if (hit != null && hit.collider != null) {
+										switch (hit.collider.name) {
+										case "PlayButton":
+												hit.collider.name = "";
+												Application.LoadLevel ("StageSelect");
+												break;
+										case "AboutButton":
+												hit.collider.name = "";
+												Application.LoadLevel ("About");
+												break;
+										/*case "RankButton":
 				hit.collider.name = "";
 				Application.LoadLevel ("highScore");
 				break;
@@ -36,7 +39,9 @@ public class button : MonoBehaviour {
 				hit.collider.name = "";
 				//Application.LoadLevel ("configScene");
 				break;*/
-			}
-		}
+										}
+								}
+						}
+				}
 		}
 }

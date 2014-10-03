@@ -3,13 +3,14 @@ using System.Collections;
 
 public class Stage2Controller : MonoBehaviour {
 	public GameObject longHand,shortHand;	
+	public GUIStyle questionTextStyle;
 	int time;
 	int minute;
 	int nWin=0;
 	int currentRound=0;
 	string answer = "";
 
-
+	public GUIStyle submitBtnStyle;
 	public string kBoardString = "";
 	
 	private string tempString = "";
@@ -32,13 +33,32 @@ public class Stage2Controller : MonoBehaviour {
 	public GUIStyle style;
 	public bool touchEnabled = true;
 
+    Hashtable questionHash;
 	public GameObject cross,circle;
+
+	int questionAnswerBoxpadding = 30;
 	// Use this for initialization
 	void Start () {
+        questionHash = new Hashtable();
+
 		cross.active = false;
 		circle.active = false;
-		time = (int)Random.Range (1.0F, 11.0F);
-		minute = 0;
+        time = setQuestionTime();
+        minute = 0;
+		if (Screen.width > 720) {
+						questionTextStyle.fontSize = 90;
+						textStyle.fontSize = 120;
+						submitBtnStyle.fontSize = 60;
+				} else if (Screen.width > 540) {
+						questionTextStyle.fontSize = 70;
+						textStyle.fontSize = 80;
+						submitBtnStyle.fontSize = 50;
+				} else {
+					questionTextStyle.fontSize = 70;
+					textStyle.fontSize = 80;
+					submitBtnStyle.fontSize = 30;
+				
+				}
 
 		//shortHand.transform.Rotate (0, 0, time*-30);
 		shortHand.transform.eulerAngles = new Vector3(0,0,time*-30); 
@@ -75,11 +95,17 @@ public class Stage2Controller : MonoBehaviour {
 
 	void OnGUI() {
 
-		if (GUI.Button (new Rect (1 * Screen.width / 10, Screen.height / 7, 60, 100), hourOneInput, textStyle)&&keyboard1==false) {
+		//GUI.Label (new Rect (Screen.width/6,Screen.height/20, Screen.width, Screen.height /6), "<color=white><size=60>" + "Enter the time \ninto the boxes" + "</size></color>");
+
+		//Text label for question
+		GUI.Label (new Rect (10,20, Screen.width-10, Screen.height /6), "Enter the time into the boxes", questionTextStyle);
+		GUI.Label (new Rect (Screen.width/2-30, Screen.height/6 +questionAnswerBoxpadding, 60, Screen.height/8),":",questionTextStyle);
+
+		//first hour input box
+		if (GUI.Button (new Rect (10, Screen.height / 6 +questionAnswerBoxpadding, (Screen.width-60)/4, Screen.height/8), hourOneInput, textStyle)&&keyboard1==false) {
 			hourOneKeyboard = TouchScreenKeyboard.Open (tempString, TouchScreenKeyboardType.NumberPad, false, false, false, false, "Enter Hour");
 						keyboard1=true;
 				}
-
 		if (hourOneKeyboard != null && hourOneKeyboard.done&&keyboard1==true) {
 			if(hourOneKeyboard.text.Length>1)
 			hourOneInput = hourOneKeyboard.text.Substring(0,1);
@@ -89,11 +115,11 @@ public class Stage2Controller : MonoBehaviour {
 			keyboard1=false;
 		}
 
-		if (GUI.Button (new Rect (3 * Screen.width / 10, Screen.height / 7, 60, 100), hourTwoInput, textStyle)&&keyboard2==false) {
+		//second hour input box
+		if (GUI.Button (new Rect ((Screen.width-60)/4+20, Screen.height / 6 +questionAnswerBoxpadding, (Screen.width-60)/4, Screen.height/8), hourTwoInput, textStyle)&&keyboard2==false) {
 			hourTwoKeyboard = TouchScreenKeyboard.Open (tempString, TouchScreenKeyboardType.NumberPad, false, false, false, false, "Enter Hour");
 				keyboard2=true;
 		}
-		
 		if (hourTwoKeyboard != null && hourTwoKeyboard.done&&keyboard2==true) {
 			if(hourTwoKeyboard.text.Length>1)
 			hourTwoInput = hourTwoKeyboard.text.Substring(0,1);	
@@ -104,11 +130,11 @@ public class Stage2Controller : MonoBehaviour {
 			keyboard2 = false;
 		}
 
-		if (GUI.Button (new Rect (6 * Screen.width / 10, Screen.height / 7, 60, 100), minuteOneInput, textStyle)&&keyboard3==false) {
+		//third minute input box
+		if (GUI.Button (new Rect (2*(Screen.width-60)/4+40, Screen.height / 6 + questionAnswerBoxpadding, (Screen.width-60)/4, Screen.height/8), minuteOneInput, textStyle)&&keyboard3==false) {
 			minuteOneKeyboard = TouchScreenKeyboard.Open (tempString, TouchScreenKeyboardType.NumberPad, false, false, false, false, "Enter Minute");
 						keyboard3 = true;
 				}
-
 		if (minuteOneKeyboard != null && minuteOneKeyboard.done && keyboard3==true) {
 			if(minuteOneKeyboard.text.Length>1)
 				minuteOneInput = minuteOneKeyboard.text.Substring(0,1);
@@ -117,7 +143,8 @@ public class Stage2Controller : MonoBehaviour {
 			tempString="";
 			keyboard3 = false;
 		}
-		if (GUI.Button (new Rect (8 * Screen.width / 10, Screen.height / 7, 60, 100), minuteTwoInput, textStyle)&&keyboard4==false) {
+		//forth minute input box
+		if (GUI.Button (new Rect (3*(Screen.width-60)/4+50, Screen.height / 6 + questionAnswerBoxpadding, (Screen.width-60)/4, Screen.height/8), minuteTwoInput, textStyle)&&keyboard4==false) {
 			minuteTwoKeyboard = TouchScreenKeyboard.Open (tempString, TouchScreenKeyboardType.NumberPad, false, false, false, false, "Enter Minute");
 			keyboard4=true;
 		}
@@ -136,11 +163,11 @@ public class Stage2Controller : MonoBehaviour {
 		minuteOneInput = GUI.TextArea(new Rect(6*Screen.width/10, Screen.height/7, 60, 100), minuteOneInput, 1,textStyle);
 		minuteTwoInput = GUI.TextArea(new Rect(8*Screen.width/10, Screen.height/7, 60, 100), minuteTwoInput, 1,textStyle);*/
 
+		//create answer string
 		answer = hourOneInput + hourTwoInput + minuteOneInput + minuteTwoInput;
 
-		GUI.Label (new Rect (Screen.width/2-30, Screen.height/7, 60, 100),":",style);
-
-		if (GUI.Button (new Rect (Screen.width/2.0f - (Screen.width/6) , (6.8f / 9f) * Screen.height, Screen.width / 3, Screen.height / 12), "<color=white><size=45>" + "Submit" + "</size></color>")&&touchEnabled==true) {
+		//check answer when submit button pressed
+		if (GUI.Button (new Rect (Screen.width/2.0f - (Screen.width/6) , (6.8f / 9f) * Screen.height, Screen.width / 3, Screen.height / 9), "Submit",submitBtnStyle)&&touchEnabled==true) {
 			touchEnabled = false;
 			//GUI.Label (new Rect ( Screen.width / 2, Screen.height / 2, Screen.width / 3, Screen.height / 12), "<color=black><size=80>" + hourOneInput+hourTwoInput+minuteOneInput+minuteTwoInput  + "</size></color>");
 			StartCoroutine(checkWin (answer));
@@ -174,15 +201,16 @@ public class Stage2Controller : MonoBehaviour {
 		else{
 			circle.active = false;
 			cross.active = false;
+			hourOneInput = "";
+			hourTwoInput = "";
+			minuteOneInput = "";
+			minuteTwoInput = "";
+			//new round
+            time = setQuestionTime();
+			minute = 0;
+			shortHand.transform.eulerAngles = new Vector3(0,0,time*-30); 
 		}
-		hourOneInput = "";
-		hourTwoInput = "";
-		minuteOneInput = "";
-		minuteTwoInput = "";
-		//new round
-		time = (int)Random.Range (1.0F, 11.0F);
-		minute = 0;
-		shortHand.transform.eulerAngles = new Vector3(0,0,time*-30); 
+	
 		//shortHand.transform.Rotate (0, 0, time*-30);
 
 		touchEnabled = true;
@@ -214,5 +242,18 @@ public class Stage2Controller : MonoBehaviour {
 			kBoardString = keyboard.text;
 		}
 	}
+
+    int setQuestionTime()
+    {
+        int qTime;
+        qTime = (int)Random.Range(1, 12);
+
+        while (questionHash.ContainsValue(qTime))
+        {
+            qTime = (int)Random.Range(1, 12);
+        }
+        questionHash.Add("q" + currentRound, qTime);
+        return qTime;
+    }
 
 }

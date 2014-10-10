@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Sensor Management</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="sensor_button_text">View All Sensors</string>
+    <string name="title_activity_sensor">SensorActivity</string>
+    <string name="title_activity_view_sensor_data">ViewSensorDataActivity</string>
+    <string name="no_information_text">No information</string>
+    <string name="title_activity_sensor_data_graph">SensorDataGraphActivity</string>
+    <string name="graph_data_text">Graphical View</string>
+    <string name="click_text">"Sensor Mangement "</string>
+    <string name="sensor_available_text">Sensors On Your Device</string>
+
+</resources>

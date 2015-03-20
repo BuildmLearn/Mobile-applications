@@ -103,6 +103,7 @@ public class MainActivity extends ActionBarActivity {
 			intent = new Intent(getApplicationContext(), SettingsActivity.class);
 			startActivity(intent);
 			break;
+			
 
 		default:
 			break;
@@ -137,6 +138,13 @@ public class MainActivity extends ActionBarActivity {
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			CustomDialog.AboutDialog(MainActivity.this);
+			return true;
+		}else if (id == R.id.action_share) {
+			Intent sendIntent = new Intent();
+       	 sendIntent.setAction(Intent.ACTION_SEND);
+       	 sendIntent.putExtra(Intent.EXTRA_TEXT, "Hi I am using Learn From Maps - An initiative by BuildmLearn .");
+       	 sendIntent.setType("text/plain");
+       	 startActivity(sendIntent);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

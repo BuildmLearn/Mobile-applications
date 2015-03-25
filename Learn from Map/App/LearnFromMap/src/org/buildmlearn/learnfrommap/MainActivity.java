@@ -142,7 +142,7 @@ public class MainActivity extends ActionBarActivity {
 		}else if (id == R.id.action_share) {
 			Intent sendIntent = new Intent();
        	 sendIntent.setAction(Intent.ACTION_SEND);
-       	 sendIntent.putExtra(Intent.EXTRA_TEXT, "Hi I am using Learn From Maps - An initiative by BuildmLearn .");
+       	 sendIntent.putExtra(Intent.EXTRA_TEXT, "Hi I am using Learn From Maps - An initiative by BuildmLearn .You must also try https://play.google.com/store/apps/details?id=org.buildmlearn.learnfrommap");
        	 sendIntent.setType("text/plain");
        	 startActivity(sendIntent);
 			return true;

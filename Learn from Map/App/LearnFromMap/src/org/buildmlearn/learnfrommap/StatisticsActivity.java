@@ -12,8 +12,10 @@ import com.echo.holographlibrary.PieSlice;
 import android.support.v7.app.ActionBarActivity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ListView;
 
@@ -53,11 +55,13 @@ public class StatisticsActivity extends ActionBarActivity {
 			mData.set(i, temp);	
 
 		}
-
+		Log.e("total", ""+total);
+		
 		mStatList = (ListView)findViewById(R.id.listView_stats);
 		mAdapter = new StatsAdapter(this, R.layout.listview_row_stat, mData);
 		mStatList.setAdapter(mAdapter);
-
+		if(total!=0)
+		{
 		PieGraph pg = (PieGraph)findViewById(R.id.graph);
 		PieSlice slice = new PieSlice();
 		slice.setColor(Color.parseColor(colors[0]));
@@ -91,6 +95,14 @@ public class StatisticsActivity extends ActionBarActivity {
 		pg.setInterpolator(new AccelerateDecelerateInterpolator());//default if unspecified is linear; constant speed
 		//pg.setAnimationListener(getAnimationListener());//optional
 		pg.animateToGoalValues();
+		}
+		else
+		{
+			PieGraph pg = (PieGraph)findViewById(R.id.graph);
+			View view=(View)findViewById(R.id.divider);
+			pg.setVisibility(View.GONE);
+			view.setVisibility(View.GONE);
+		}
 	}
 
 	@Override

@@ -39,7 +39,8 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="10dp"
-                android:background="#ffffff" />
+                android:background="#ffffff"
+                android:id="@+id/divider" />
 
             <ListView
                 android:id="@+id/listView_stats"

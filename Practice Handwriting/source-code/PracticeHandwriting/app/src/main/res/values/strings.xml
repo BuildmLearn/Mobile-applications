@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">PracticeHandwriting</string>
 
+    <string name="English">English</string>
+    <string name="Hindi">हिंदी</string>
+    <string name="Arabic">العربية</string>
+
     <string-array name="English_characters">
         <item>A</item>
         <item>B</item>

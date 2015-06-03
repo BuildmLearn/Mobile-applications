@@ -1,9 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="ActionBarTheme"
+        parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="android:background">@color/AppBg</item>
+        <!-- Support library compatibility -->
+        <item name="actionBarStyle">@style/MyActionBar</item>
+
+    </style>
+
+    <style name="MyActionBar"
+        parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/ActionbarBg</item>
+
+        <!-- Support library compatibility -->
+        <item name="background">@color/ActionbarBg</item>
     </style>
 
 </resources>

@@ -1,0 +1,79 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/AppBg"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="org.buildmlearn.practicehandwriting.LanguageActivity"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto">
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.565"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.42"
+        android:weightSum="2"
+        android:gravity="center">
+    <info.hoang8f.widget.FButton
+        android:id="@+id/english_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        fbutton:buttonColor="@color/ButtonBg"
+        android:textColor="@color/White"
+        android:textSize="20sp"
+        android:text="@string/English"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.565"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.42"
+        android:weightSum="2"
+        android:gravity="center">
+        <info.hoang8f.widget.FButton
+            android:id="@+id/hindi_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            fbutton:buttonColor="@color/ButtonBg"
+            android:textColor="@color/White"
+            android:text="@string/Hindi"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.565"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.42"
+        android:weightSum="2"
+        android:gravity="center">
+        <info.hoang8f.widget.FButton
+            android:id="@+id/arabic_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            fbutton:buttonColor="@color/ButtonBg"
+            android:textColor="@color/White"
+            android:text="@string/Arabic"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.565"/>
+</LinearLayout>

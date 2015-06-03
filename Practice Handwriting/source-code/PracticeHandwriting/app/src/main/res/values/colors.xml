@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="AppBg">#BBEEEE</color>
-    <color name="ToolbarBg">#4D4D99</color>
+    <color name="ActionbarBg">#4D4D99</color>
     <color name="ButtonBg">#FF6600</color>
     
     <color name="Green">#00FF00</color>
@@ -10,6 +10,11 @@
     <color name="Pink">#FFB6C1</color>
     <color name="Red">#FF0000</color>
     <color name="Yellow">#FFFF00</color>
+    <color name="White">#FFFFFF</color>
+    <color name="Black">#000000</color>
+
+
+    <color name="Transparent">#00FFFFFF</color>
 
     <color name="CorrectTrace">#00FF00</color>
     <color name="WrongTrace">#FF0000</color>

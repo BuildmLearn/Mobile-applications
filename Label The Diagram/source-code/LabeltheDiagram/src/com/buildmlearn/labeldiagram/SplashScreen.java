@@ -17,13 +17,14 @@ public class SplashScreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
         
+        // Calling NavigationHandler to wait and dispatch to MainMenu
         Handler handler=new Handler();
-		handler.postDelayed(new MyHandler(),3000);
+		handler.postDelayed(new NavigationHandler(),3000);
         
         
     }
     
-    class MyHandler implements Runnable{
+    class NavigationHandler implements Runnable{
 
 		@Override
 		public void run() {

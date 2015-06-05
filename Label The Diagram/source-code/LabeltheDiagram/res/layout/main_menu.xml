@@ -10,7 +10,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="6dp"
-        android:background="#009688" >
+        android:background="@color/appBg_color" >
 
         <ImageView
             android:id="@+id/diagramIcon"
@@ -63,7 +63,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/diagrams"
         android:layout_marginRight="20dp"
-        android:background="#009688" >
+        android:background="@color/appBg_color" >
 
         <ImageView
             android:id="@+id/scoreboardicon"
@@ -116,7 +116,7 @@
         android:layout_alignLeft="@+id/diagrams"
         android:layout_below="@+id/diagrams"
         android:layout_marginTop="10dp"
-        android:background="#009688" >
+        android:background="@color/appBg_color" >
 
         <ImageView
             android:id="@+id/lessonIcon"
@@ -168,7 +168,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/scoreboard"
         android:layout_alignTop="@+id/lessons"
-        android:background="#009688" >
+        android:background="@color/appBg_color" >
 
         <ImageView
             android:id="@+id/badgeIcon"
@@ -221,7 +221,7 @@
         android:layout_alignLeft="@+id/lessons"
         android:layout_below="@+id/lessons"
         android:layout_marginTop="10dp"
-        android:background="#009688" >
+        android:background="@color/appBg_color" >
 
         <ImageView
             android:id="@+id/settingsIcon"
@@ -273,7 +273,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/badges"
         android:layout_alignTop="@+id/settings"
-        android:background="#009688" >
+        android:background="@color/appBg_color" >
 
         <ImageView
             android:id="@+id/helpIcon"

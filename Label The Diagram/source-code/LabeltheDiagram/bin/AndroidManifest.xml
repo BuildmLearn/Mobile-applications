@@ -23,8 +23,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.buildmlearn.labeldiagram.MainMenu"
-            android:label="@string/title_activity_main_menu" >
+            android:name="com.buildmlearn.labeldiagram.MainMenu"           
+            android:label="@string/title_activity_main_menu"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

@@ -2,6 +2,7 @@ package com.buildmlearn.labeldiagram;
 
 import com.example.labelthediagram.R;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +22,9 @@ public class SplashScreen extends Activity {
         Handler handler=new Handler();
 		handler.postDelayed(new NavigationHandler(),3000);
         
+		// Disable the ActionBar
+		ActionBar bar=getActionBar();
+		bar.hide();
         
     }
     
@@ -28,7 +32,14 @@ public class SplashScreen extends Activity {
 
 		@Override
 		public void run() {
+			
 			startActivity(new Intent(getApplication(),MainMenu.class));
+			/*Intent launchNextActivity;
+			launchNextActivity = new Intent(getApplication(), MainMenu.class);
+			launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);                  
+			launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+			startActivity(launchNextActivity);*/
 			
 		}
 				

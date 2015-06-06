@@ -1,17 +1,22 @@
 package org.buildmlearn.practicehandwriting;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.view.View;
 
 
-public class LanguageActivity extends ActionBarActivity {
+public class LanguageActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
-        getSupportActionBar().setDisplayOptions(0, ActionBar.DISPLAY_SHOW_TITLE);
-        //TODO add functionality and animation for buttons
+        //TODO add animation for buttons
+    }
+
+    public void gotoMenu(View v) {
+        Intent intent = new Intent(this,MainMenuActivity.class);
+        startActivity(intent);
     }
 }

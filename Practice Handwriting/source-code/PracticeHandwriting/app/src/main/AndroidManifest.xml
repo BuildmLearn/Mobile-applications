@@ -20,6 +20,10 @@
             android:name=".LanguageActivity"
             android:label="@string/title_activity_language" >
         </activity>
+        <activity
+            android:name=".MainMenuActivity"
+            android:label="@string/title_activity_main_menu" >
+        </activity>
     </application>
 
 </manifest>

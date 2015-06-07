@@ -24,7 +24,11 @@
         </activity>
         <activity
             android:name="com.buildmlearn.labeldiagram.MainMenu"
-            android:label="@string/title_activity_main_menu" >
+            android:configChanges="orientation"
+            android:label="@string/title_activity_main_menu"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name="com.buildmlearn.labeldiagram.DiagramCategory" >
         </activity>
     </application>
 

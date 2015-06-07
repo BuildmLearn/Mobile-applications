@@ -1,5 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -9,12 +10,10 @@
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/ActionbarBg">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher"/>
-    </android.support.v7.widget.Toolbar>
+        android:background="@color/ActionbarBg"
+        app:title="@string/app_name"
+        app:titleTextAppearance="@style/AppTheme.Toolbar.Title"
+        app:navigationIcon="@drawable/ic_launcher"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,6 +23,7 @@
         >
 
         <RelativeLayout
+            android:id="@+id/practice_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
@@ -33,7 +33,8 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:background="@color/ButtonBg"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:onClick="mainMenuActivityOnClick">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -53,6 +54,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/timetrial_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
@@ -62,7 +64,8 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:background="@color/ButtonBg"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:onClick="mainMenuActivityOnClick">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -91,6 +94,7 @@
         android:orientation="horizontal"
         >
         <RelativeLayout
+            android:id="@+id/freehand_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
@@ -100,7 +104,8 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:background="@color/ButtonBg"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:onClick="mainMenuActivityOnClick">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -120,6 +125,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/settings_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
@@ -129,7 +135,8 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:background="@color/ButtonBg"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:onClick="mainMenuActivityOnClick">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

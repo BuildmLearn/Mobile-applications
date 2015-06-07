@@ -3,9 +3,10 @@
     <style name="ActionBarTheme"
         parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
-
+        <!--<item name="android:windowActionBar">false</item>-->
         <!-- Support library compatibility -->
         <item name="actionBarStyle">@style/MyActionBar</item>
+        <!--<item name="windowActionBar">false</item>-->
 
     </style>
 
@@ -14,9 +15,14 @@
         <item name="android:background">@color/ActionbarBg</item>
         <item name="android:icon">@drawable/ic_launcher</item>
 
+
         <!-- Support library compatibility -->
         <item name="background">@color/ActionbarBg</item>
         <item name="icon">@drawable/ic_launcher</item>
+    </style>
+
+    <style name="AppTheme.Toolbar.Title" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColor">@color/White</item>
     </style>
 
 </resources>

@@ -663,13 +663,29 @@
         <item>working</item>
         <item>yesterday</item>
     </string-array>
-    <string name="title_activity_language">LanguageActivity</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_language">LanguageActivity</string>
     <string name="title_activity_main_menu">MainMenuActivity</string>
+    <string name="title_activity_incomplete">IncompleteActivity</string>
+
+    <string name="incomplete">We are still working on this.</string>
 
     <string name="Practice">Practice</string>
     <string name="Time_trial">Time Trial</string>
     <string name="Freehand">Freehand</string>
     <string name="Settings">Settings</string>
+    <string name="title_activity_mode_selection">ModeSelectionActivity</string>
+
+    <string name="characters">Characters</string>
+    <string name="words">Words</string>
+    <string name="title_activity_character_selection">CharacterSelectionActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_practice">PracticeActivity</string>
+
+    <string name="practice_string">PRACTICE_STRING</string>
+
+
+
 </resources>

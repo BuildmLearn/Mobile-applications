@@ -15,8 +15,21 @@ public class LanguageActivity extends Activity {
         //TODO add animation for buttons
     }
 
-    public void gotoMenu(View v) {
-        Intent intent = new Intent(this,MainMenuActivity.class);
+    public void languageActivityOnClick(View v) {
+        Intent intent = null;
+        switch (v.getId()) {
+            case R.id.english_button:
+                intent = new Intent(this,MainMenuActivity.class);
+                break;
+
+            case R.id.hindi_button:
+                intent = new Intent(this,IncompleteActivity.class);
+                break;
+
+            case R.id.arabic_button:
+                intent = new Intent(this,IncompleteActivity.class);
+                break;
+        }
         startActivity(intent);
     }
 }

@@ -24,4 +24,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:21.0.0'
     compile 'com.android.support:support-v4:21.0.0'
     compile 'info.hoang8f:fbutton:1.0.5'
+    compile 'com.github.shell-software:fab:1.1.0'
 }

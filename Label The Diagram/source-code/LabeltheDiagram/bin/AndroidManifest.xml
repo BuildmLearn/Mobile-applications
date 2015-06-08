@@ -30,6 +30,11 @@
         </activity>
         <activity android:name="com.buildmlearn.labeldiagram.DiagramCategory" >
         </activity>
+        <activity
+            android:name="com.buildmlearn.labeldiagram.DiagramPlay"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>

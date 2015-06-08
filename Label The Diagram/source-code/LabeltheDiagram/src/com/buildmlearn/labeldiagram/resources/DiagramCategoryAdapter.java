@@ -2,11 +2,15 @@ package com.buildmlearn.labeldiagram.resources;
 
 import java.util.List;
 
+import com.buildmlearn.labeldiagram.DiagramCategory;
+import com.buildmlearn.labeldiagram.DiagramPlay;
 import com.example.labelthediagram.R;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.sax.StartElementListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,6 +19,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+/*
+ *Adapter class to generate custom view of DiagramCategory list items
+ * 
+ */
 
 public class DiagramCategoryAdapter extends ArrayAdapter<DiagramCategoryRawItem> {
 
@@ -33,6 +42,10 @@ public class DiagramCategoryAdapter extends ArrayAdapter<DiagramCategoryRawItem>
 				"fonts/Roboto-Light.ttf");
 	}
 
+	/*
+	 * Holder class for single row item view
+	 * 
+	 */
 	private class ViewHolder {
 
 		ImageView categoryIcon;
@@ -47,7 +60,7 @@ public class DiagramCategoryAdapter extends ArrayAdapter<DiagramCategoryRawItem>
 		// TODO Auto-generated method stub
 
 		final int index = position;
-		ViewHolder holder = null;
+		final ViewHolder holder;
 		DiagramCategoryRawItem rawItem = getItem(position);
 
 		LayoutInflater inflater = (LayoutInflater) context
@@ -80,8 +93,19 @@ public class DiagramCategoryAdapter extends ArrayAdapter<DiagramCategoryRawItem>
 			@Override
 			public void onClick(View v) {
 				
-				Toast.makeText(getContext(), "Dispatching to Diagram Play screen", Toast.LENGTH_LONG).show();;
 				
+				if(index==0){
+					Toast.makeText(getContext(), "Dispatching to Human Body Diagram Play screen", Toast.LENGTH_LONG).show();
+					Intent intent = new Intent(v.getContext(), DiagramPlay.class);
+					v.getContext().startActivity(intent);
+					
+				}else if(index==1){
+					Toast.makeText(getContext(), "Dispatching to Plants Play screen", Toast.LENGTH_LONG).show();
+				}else if(index==2){
+					Toast.makeText(getContext(), "Dispatching to Micro-organisms Play screen", Toast.LENGTH_LONG).show();
+				}else{
+					Toast.makeText(getContext(), "Dispatching to Natural Cycles Play screen", Toast.LENGTH_LONG).show();
+				} 
 			}
 		});
 		

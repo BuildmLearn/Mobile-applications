@@ -18,7 +18,7 @@ public class DrawingView extends View {
     //drawing and canvas paint
     private Paint drawPaint, canvasPaint;
     //colour
-    private int touch_colour = 0xFFFF0000;
+    private int touch_colour = 0xFF00FF00;
     //canvas
     private Canvas drawCanvas;
     //canvas bitmap
@@ -77,13 +77,8 @@ public class DrawingView extends View {
         int x= (int) (touchX);// * canvasBitmap.getWidth() / width);
         int y= (int) (touchY);// * canvasBitmap.getHeight()/ height);
 
-        //Vibrating if the current pixel is white
-        if (x >= (width - canvasBitmap.getWidth()) / 2 && x < ((width - canvasBitmap.getWidth()) / 2) + canvasBitmap.getWidth()) {
-            if (canvasBitmap.getPixel(x - (width - canvasBitmap.getWidth()) / 2, y) == 0)
-                vibrator.vibrate(100);
-        } else {
+        if (canvasBitmap.getPixel(x, y) == 0)
             vibrator.vibrate(100);
-        }
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:

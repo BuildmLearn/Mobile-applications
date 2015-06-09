@@ -3,37 +3,47 @@ package com.buildmlearn.labeldiagram;
 import com.example.labelthediagram.R;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.graphics.Canvas;
+import android.graphics.Point;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.DragEvent;
+import android.view.TextureView;
+import android.view.View;
+import android.view.View.OnDragListener;
+import android.view.View.OnLongClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DiagramPlay extends Activity {
-	
+public class DiagramPlay extends Activity implements OnDragListener,
+		OnLongClickListener {
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.diagram_play);
-		
+
 		// Score board textViews
 		TextView completeTxt = (TextView) findViewById(R.id.complatedTxt);
 		TextView compeleteRatio = (TextView) findViewById(R.id.complete_ratio);
 		TextView scoreTxt = (TextView) findViewById(R.id.scoreTxt);
 		TextView score = (TextView) findViewById(R.id.score);
-		
+
 		Typeface tfThin = Typeface.createFromAsset(getAssets(),
 				"fonts/Roboto-Thin.ttf");
 		Typeface tfLight = Typeface.createFromAsset(getAssets(),
 				"fonts/Roboto-Light.ttf");
-		
+
 		// Setting up font face to Roboto Light/Thin
 		completeTxt.setTypeface(tfThin);
 		scoreTxt.setTypeface(tfThin);
 		compeleteRatio.setTypeface(tfThin);
 		score.setTypeface(tfThin);
-		
-		// Placeholder imageViews		
+
+		// Placeholder imageViews
 		ImageView irisView = (ImageView) findViewById(R.id.irisBlb);
 		ImageView pupilView = (ImageView) findViewById(R.id.pupilBlb);
 		ImageView lensView = (ImageView) findViewById(R.id.lensBlb);
@@ -44,25 +54,114 @@ public class DiagramPlay extends Activity {
 		ImageView blindspotView = (ImageView) findViewById(R.id.blindSpotBlb);
 		ImageView foveaView = (ImageView) findViewById(R.id.foveaBlb);
 		ImageView retinaView = (ImageView) findViewById(R.id.retinaBlb);
-		
-		
+
 		// Draggable Tags imageViews
-		TextView irisTag =(TextView) findViewById(R.id.irisTag);
-		TextView pupilTag =(TextView) findViewById(R.id.pupilTag);
-		TextView lensTag =(TextView) findViewById(R.id.lensTag);
-		TextView corneaTag =(TextView) findViewById(R.id.corneaTag);
-		TextView vitreousTag =(TextView) findViewById(R.id.vitreousTag);
-		TextView ciliaryTag =(TextView) findViewById(R.id.ciliaryTag);
-		TextView nerveTag =(TextView) findViewById(R.id.nerveTag);
-		TextView blindspotTag =(TextView) findViewById(R.id.opticdiskTag);
-		TextView foveaTag =(TextView) findViewById(R.id.foveaTag);
-		TextView retinaTag =(TextView) findViewById(R.id.retinaTag);
+		TextView irisTag = (TextView) findViewById(R.id.irisTag);
+		TextView pupilTag = (TextView) findViewById(R.id.pupilTag);
+		TextView lensTag = (TextView) findViewById(R.id.lensTag);
+		TextView corneaTag = (TextView) findViewById(R.id.corneaTag);
+		TextView vitreousTag = (TextView) findViewById(R.id.vitreousTag);
+		TextView ciliaryTag = (TextView) findViewById(R.id.ciliaryTag);
+		TextView nerveTag = (TextView) findViewById(R.id.nerveTag);
+		TextView blindspotTag = (TextView) findViewById(R.id.opticdiskTag);
+		TextView foveaTag = (TextView) findViewById(R.id.foveaTag);
+		TextView retinaTag = (TextView) findViewById(R.id.retinaTag);
+
+		// Register draggable views to receive drag events
+		irisView.setOnDragListener(this);
+		pupilView.setOnDragListener(this);
+		lensView.setOnDragListener(this);
+		corneaView.setOnDragListener(this);
+		vitreousView.setOnDragListener(this);
+		ciliaryView.setOnDragListener(this);
+		nerveView.setOnDragListener(this);
+		blindspotView.setOnDragListener(this);
+		foveaView.setOnDragListener(this);
+		retinaView.setOnDragListener(this);
+
+		// Register place holders to receive onlongclick events
+		irisTag.setOnLongClickListener(this);
+		pupilTag.setOnLongClickListener(this);
+		lensTag.setOnLongClickListener(this);
+		corneaTag.setOnLongClickListener(this);
+		vitreousTag.setOnLongClickListener(this);
+		ciliaryTag.setOnLongClickListener(this);
+		nerveTag.setOnLongClickListener(this);
+		blindspotTag.setOnLongClickListener(this);
+		foveaTag.setOnLongClickListener(this);
+		retinaTag.setOnLongClickListener(this);
+
+	}
+
+	@Override
+	public boolean onLongClick(View textview) {
+		ClipData clipData = ClipData.newPlainText("", "");
+
+		View.DragShadowBuilder shadowBuilder = new TagDragShadowBuilder(textview);
 		
-		
-		
-		
-		
-		
+		 // Start the drag - contains the data to be dragged, metadata for this
+		 // data and callback for drawing shadow
+		 
+		textview.startDrag(clipData, shadowBuilder, textview, 0);
+		// Dragging the shadow so make the view invisible
+		textview.setVisibility(View.INVISIBLE);
+		return true;
+	}
+
+	@Override
+	public boolean onDrag(View v, DragEvent event) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private static class TagDragShadowBuilder extends View.DragShadowBuilder {
+
+		private Point mScaleFactor;
+
+		// Defines the constructor for TagDragShadowBuilder
+		public TagDragShadowBuilder(View v) {
+
+			// Stores the View parameter passed to TagDragShadowBuilder.
+			super(v);
+
+		}
+
+		// Defines a callback that sends the drag shadow dimensions and touch
+		// point back to the
+		// system.
+		@Override
+		public void onProvideShadowMetrics(Point size, Point touch) {
+			// Defines local variables
+			int width;
+			int height;
+
+			// Sets the width of the shadow same as the width of the original
+			// View
+			width = getView().getWidth();
+
+			// Sets the height of the shadow same as the height of the original
+			// View
+			height = getView().getHeight();
+
+			// Sets the size parameter's width and height values. These get back
+			// to the system
+			// through the size parameter.
+			size.set(width, height);
+
+			// Sets the touch point's position to the right middle point visual clarity
+			touch.set(width, height / 2);
+		}
+
+		// Defines a callback that draws the drag shadow in a Canvas that the
+		// system constructs
+		// from the dimensions passed in onProvideShadowMetrics().
+		@Override
+		public void onDrawShadow(Canvas canvas) {
+
+			// Draws the ColorDrawable in the Canvas passed in from the system.
+
+            getView().draw(canvas);
+		}
 	}
 
 }

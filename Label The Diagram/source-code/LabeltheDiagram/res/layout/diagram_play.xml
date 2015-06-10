@@ -79,8 +79,8 @@
 
     <ImageView
         android:id="@+id/blindSpotBlb"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_alignTop="@+id/pupilBlb"
         android:layout_marginTop="9dp"
         android:layout_toRightOf="@+id/opticNerveBlb"
@@ -88,24 +88,24 @@
 
     <ImageView
         android:id="@+id/opticNerveBlb"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_alignLeft="@+id/retinaBlb"
         android:layout_alignTop="@+id/vitreousBlb"
         android:src="@drawable/marker" />
 
     <ImageView
         android:id="@+id/corneaBlb"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_alignLeft="@+id/pupilBlb"
         android:layout_below="@+id/pupilBlb"
         android:src="@drawable/marker" />
 
     <ImageView
         android:id="@+id/retinaBlb"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_alignRight="@+id/mainDiagram"
         android:layout_alignTop="@+id/mainDiagram"
         android:layout_marginRight="37dp"
@@ -114,51 +114,33 @@
 
     <ImageView
         android:id="@+id/ciliaryBodyBlb"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_alignTop="@+id/retinaBlb"
         android:layout_marginLeft="16dp"
         android:layout_toRightOf="@+id/lensBlb"
         android:src="@drawable/marker" />
 
     <ImageView
-        android:id="@+id/pupilBlb"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/foveaBlb"
-        android:layout_marginLeft="42dp"
-        android:src="@drawable/marker" />
-
-    <ImageView
-        android:id="@+id/irisBlb"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
-        android:layout_alignLeft="@+id/pupilBlb"
-        android:layout_below="@+id/ciliaryBodyBlb"
-        android:layout_marginTop="25dp"
-        android:src="@drawable/marker" />
-
-    <ImageView
         android:id="@+id/lensBlb"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_above="@+id/vitreousBlb"
         android:layout_alignLeft="@+id/corneaBlb"
         android:src="@drawable/marker" />
 
     <ImageView
         android:id="@+id/vitreousBlb"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_alignLeft="@+id/ciliaryBodyBlb"
         android:layout_centerVertical="true"
         android:src="@drawable/marker" />
 
     <ImageView
         android:id="@+id/foveaBlb"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_alignRight="@+id/blindSpotBlb"
         android:layout_alignTop="@+id/irisBlb"
         android:layout_marginTop="13dp"
@@ -325,5 +307,22 @@
         android:paddingTop="3dp"
         android:text="blind spot"
         android:textColor="#ffff" />
+
+    <ImageView
+        android:id="@+id/irisBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/ciliaryBodyBlb"
+        android:layout_marginTop="17dp"
+        android:layout_toLeftOf="@+id/ciliaryBodyBlb"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/pupilBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/lensTag"
+        android:layout_below="@+id/foveaBlb"
+        android:src="@drawable/marker" />
 
 </RelativeLayout>

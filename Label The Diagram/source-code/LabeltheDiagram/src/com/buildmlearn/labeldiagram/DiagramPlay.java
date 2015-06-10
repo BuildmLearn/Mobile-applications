@@ -4,11 +4,14 @@ import com.example.labelthediagram.R;
 
 import android.app.Activity;
 import android.content.ClipData;
+import android.content.ClipDescription;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.DragEvent;
 import android.view.TextureView;
 import android.view.View;
@@ -16,9 +19,12 @@ import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DiagramPlay extends Activity implements OnDragListener,
 		OnLongClickListener {
+	
+	private static final String TAG = "InfoTag";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -97,11 +103,12 @@ public class DiagramPlay extends Activity implements OnDragListener,
 	public boolean onLongClick(View textview) {
 		ClipData clipData = ClipData.newPlainText("", "");
 
-		View.DragShadowBuilder shadowBuilder = new TagDragShadowBuilder(textview);
-		
-		 // Start the drag - contains the data to be dragged, metadata for this
-		 // data and callback for drawing shadow
-		 
+		View.DragShadowBuilder shadowBuilder = new TagDragShadowBuilder(
+				textview);
+
+		// Start the drag - contains the data to be dragged, metadata for this
+		// data and callback for drawing shadow
+
 		textview.startDrag(clipData, shadowBuilder, textview, 0);
 		// Dragging the shadow so make the view invisible
 		textview.setVisibility(View.INVISIBLE);
@@ -110,13 +117,107 @@ public class DiagramPlay extends Activity implements OnDragListener,
 
 	@Override
 	public boolean onDrag(View v, DragEvent event) {
-		// TODO Auto-generated method stub
+		// Defines a variable to store the action type for the incoming event
+		final int action = event.getAction();
+		View draggedImageTag = (View) event.getLocalState();
+
+		// Handles each of the expected events
+		switch (action) {
+
+		case DragEvent.ACTION_DRAG_STARTED:
+
+			// Determines if this View can accept the dragged data
+			if (event.getClipDescription().hasMimeType(
+					ClipDescription.MIMETYPE_TEXT_PLAIN)) {
+
+				// As an example of what your application might do,
+				// applies a blue color tint to the View to indicate that it can
+				// accept
+				// data.
+				((ImageView) v).setColorFilter(Color.BLUE);
+
+				// Invalidate the view to force a redraw in the new tint
+				v.invalidate();
+
+				// returns true to indicate that the View can accept the dragged
+				// data.
+				return true;
+
+			}
+
+			// Returns false. During the current drag and drop operation, this
+			// View will
+			// not receive events again until ACTION_DRAG_ENDED is sent.
+			return false;
+
+		case DragEvent.ACTION_DRAG_ENTERED:
+
+			/*float dropPosX=event.getX();
+			float dropPosY=event.getY();
+			
+			Log.i("Drag image", dropPosX+" & "+dropPosY+"");
+			Log.i("Droppable image", v.getX()+ " & "+v.getY()+"");
+			
+			if(dropPosX-30 <= v.getX() || dropPosX+30 >= v.getX() ){
+				if(dropPosY-30 <= v.getY() || dropPosX+30 >= v.getY() ){
+					Log.i("Entered MSG", "Success Entered");
+					return true;
+				}
+			}*/
+			Toast.makeText(getApplicationContext(), "Ready to drop !", Toast.LENGTH_SHORT).show();
+			Log.i(TAG, "drag action entered");
+			return true;
+
+			
+
+		case DragEvent.ACTION_DRAG_LOCATION:
+			Log.i(TAG, "drag action location");
+			// Ignore the event
+			return true;
+
+		case DragEvent.ACTION_DRAG_EXITED:
+			Log.i(TAG, "drag action exited");
+			//Calls when the Tag exited the place holder imageView
+			return true;
+
+		case DragEvent.ACTION_DROP:
+						
+			Log.i(TAG, "Success drop");
+			return true;
+			
+
+		case DragEvent.ACTION_DRAG_ENDED:
+
+			// Turns off any color tinting
+			((ImageView) v).clearColorFilter();
+
+			// Invalidates the view to force a redraw
+			v.invalidate();
+
+			// Does a getResult(), and displays what happened.
+			if (event.getResult()) {
+				Toast.makeText(this, "The drop was handled.", Toast.LENGTH_LONG);
+
+			} else {
+				Toast.makeText(this, "The drop didn't work.", Toast.LENGTH_LONG);
+
+			}
+
+			// returns true; the value is ignored.
+			return true;
+
+			// An unknown action type was received.
+		default:
+			Log.e("DragDrop Example",
+					"Unknown action type received by OnDragListener.");
+			break;
+		}
+
 		return false;
+
 	}
 
 	private static class TagDragShadowBuilder extends View.DragShadowBuilder {
-
-		private Point mScaleFactor;
 
 		// Defines the constructor for TagDragShadowBuilder
 		public TagDragShadowBuilder(View v) {
@@ -135,21 +236,19 @@ public class DiagramPlay extends Activity implements OnDragListener,
 			int width;
 			int height;
 
-			// Sets the width of the shadow same as the width of the original
-			// View
-			width = getView().getWidth();
+			// Sets the width of the shadow with respect to original View
+			width = (getView().getWidth())*3;
 
-			// Sets the height of the shadow same as the height of the original
-			// View
-			height = getView().getHeight();
+			// Sets the height of the shadow with respect to original View
+			height = (getView().getHeight())*3;
 
 			// Sets the size parameter's width and height values. These get back
-			// to the system
-			// through the size parameter.
+			// to the system through the size parameter.
 			size.set(width, height);
 
-			// Sets the touch point's position to the right middle point visual clarity
-			touch.set(width, height / 2);
+			// Sets the touch point's position to the middle point visual
+			// clarity
+			touch.set((width/4),(height/4));
 		}
 
 		// Defines a callback that draws the drag shadow in a Canvas that the
@@ -159,8 +258,9 @@ public class DiagramPlay extends Activity implements OnDragListener,
 		public void onDrawShadow(Canvas canvas) {
 
 			// Draws the ColorDrawable in the Canvas passed in from the system.
-
-            getView().draw(canvas);
+			// Scale the canvas 1.5x
+			canvas.scale(1.5f, 1.5f);
+			getView().draw(canvas);
 		}
 	}
 

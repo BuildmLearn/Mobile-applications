@@ -150,20 +150,16 @@ public class DiagramPlay extends Activity implements OnDragListener,
 			// Determines if this View can accept the dragged data
 			if (event.getClipDescription().hasMimeType(
 					ClipDescription.MIMETYPE_TEXT_PLAIN)) {
+		
+				Log.i(TAG, "Can accept this data");
 
-				
-				// Applies a blue color tint to the View to indicate that it can 
-				// accept data
-				((ImageView) droppableView).setColorFilter(Color.BLUE);
+                // returns true to indicate that the View can accept the dragged data.
+                return true;
 
-				// Invalidate the view to force a redraw in the new tint
-				droppableView.invalidate();
+            } else {
+                Log.i(TAG, "Can not accept this data");
 
-				// returns true to indicate that the View can accept the dragged
-				// data.
-				return true;
-
-			}
+            }
 
 			// Returns false. During the current drag and drop operation, this
 			// View will

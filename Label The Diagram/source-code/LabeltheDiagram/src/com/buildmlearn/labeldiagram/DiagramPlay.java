@@ -1,5 +1,10 @@
 package com.buildmlearn.labeldiagram;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import com.buildmlearn.labeldiagram.resources.PlaceHolderContainer;
 import com.example.labelthediagram.R;
 
 import android.app.Activity;
@@ -17,14 +22,22 @@ import android.view.TextureView;
 import android.view.View;
 import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class DiagramPlay extends Activity implements OnDragListener,
 		OnLongClickListener {
-	
+
 	private static final String TAG = "InfoTag";
+	private static final String TAG_ERROR = "Error";
+	/*
+	 * private static final List<ImageView> leftPlaceHolderList = new
+	 * ArrayList<ImageView>(); private static final List<ImageView>
+	 * rightPlaceHolderList = new ArrayList<ImageView>();
+	 */
+	List<Integer[]> placeHolderlist = new ArrayList<Integer[]>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +110,9 @@ public class DiagramPlay extends Activity implements OnDragListener,
 		foveaTag.setOnLongClickListener(this);
 		retinaTag.setOnLongClickListener(this);
 
+		PlaceHolderContainer container = new PlaceHolderContainer();
+		placeHolderlist = container.diagramCaller("HumanEye");
+
 	}
 
 	@Override
@@ -116,7 +132,7 @@ public class DiagramPlay extends Activity implements OnDragListener,
 	}
 
 	@Override
-	public boolean onDrag(View v, DragEvent event) {
+	public boolean onDrag(View droppableView, DragEvent event) {
 		// Defines a variable to store the action type for the incoming event
 		final int action = event.getAction();
 		View draggedImageTag = (View) event.getLocalState();
@@ -130,14 +146,13 @@ public class DiagramPlay extends Activity implements OnDragListener,
 			if (event.getClipDescription().hasMimeType(
 					ClipDescription.MIMETYPE_TEXT_PLAIN)) {
 
-				// As an example of what your application might do,
-				// applies a blue color tint to the View to indicate that it can
-				// accept
-				// data.
-				((ImageView) v).setColorFilter(Color.BLUE);
+				
+				// Applies a blue color tint to the View to indicate that it can 
+				// accept data
+				((ImageView) droppableView).setColorFilter(Color.BLUE);
 
 				// Invalidate the view to force a redraw in the new tint
-				v.invalidate();
+				droppableView.invalidate();
 
 				// returns true to indicate that the View can accept the dragged
 				// data.
@@ -152,23 +167,10 @@ public class DiagramPlay extends Activity implements OnDragListener,
 
 		case DragEvent.ACTION_DRAG_ENTERED:
 
-			/*float dropPosX=event.getX();
-			float dropPosY=event.getY();
-			
-			Log.i("Drag image", dropPosX+" & "+dropPosY+"");
-			Log.i("Droppable image", v.getX()+ " & "+v.getY()+"");
-			
-			if(dropPosX-30 <= v.getX() || dropPosX+30 >= v.getX() ){
-				if(dropPosY-30 <= v.getY() || dropPosX+30 >= v.getY() ){
-					Log.i("Entered MSG", "Success Entered");
-					return true;
-				}
-			}*/
-			Toast.makeText(getApplicationContext(), "Ready to drop !", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), "Ready to drop !",
+					Toast.LENGTH_SHORT).show();
 			Log.i(TAG, "drag action entered");
 			return true;
-
-			
 
 		case DragEvent.ACTION_DRAG_LOCATION:
 			Log.i(TAG, "drag action location");
@@ -177,22 +179,44 @@ public class DiagramPlay extends Activity implements OnDragListener,
 
 		case DragEvent.ACTION_DRAG_EXITED:
 			Log.i(TAG, "drag action exited");
-			//Calls when the Tag exited the place holder imageView
+			// Calls when the Tag exited the place holder imageView
 			return true;
 
 		case DragEvent.ACTION_DROP:
-						
-			Log.i(TAG, "Success drop");
-			return true;
+
+			boolean side;
+			Log.i(TAG, "drag action dropped");
 			
+			// Set place holder imageViews invisible
+			droppableView.setVisibility(View.INVISIBLE);
+			
+			// Get the positioning side(within diagram) of the currently entered place holder 
+			side = getPlaceHolderSide(droppableView);
+
+			// If placeholder is on left side, set X coordinate of the draggedImageTag 
+			// to right top corner
+			if (side == true) {
+				draggedImageTag.setX(droppableView.getX() + droppableView.getWidth()
+								- draggedImageTag.getWidth());
+				draggedImageTag.setY(droppableView.getY());
+			} 
+			// If placeholder is on left side, set X coordinate of the draggedImageTag 
+			// to left top corner
+			else if (side == false) {
+				draggedImageTag.setX(droppableView.getX());
+				draggedImageTag.setY(droppableView.getY());
+			}
+
+			draggedImageTag.setVisibility(View.VISIBLE);
+			return true;
 
 		case DragEvent.ACTION_DRAG_ENDED:
 
 			// Turns off any color tinting
-			((ImageView) v).clearColorFilter();
+			((ImageView) droppableView).clearColorFilter();
 
 			// Invalidates the view to force a redraw
-			v.invalidate();
+			droppableView.invalidate();
 
 			// Does a getResult(), and displays what happened.
 			if (event.getResult()) {
@@ -217,6 +241,35 @@ public class DiagramPlay extends Activity implements OnDragListener,
 
 	}
 
+	/*
+	 * Indicate whether the placeholder is on left side or right side of the
+	 * diagram
+	 */
+	private boolean getPlaceHolderSide(View droppableView) {
+
+		boolean isOnLeftSide = false;
+
+		// Check whether the place holder(droppableView) is in left side
+		if (Arrays.asList(placeHolderlist.get(0)).contains(
+				(Integer) droppableView.getId())) {
+
+			isOnLeftSide = true;
+
+		}
+		// Check whether the place holder(droppableView) is in right side
+		else if (Arrays.asList(placeHolderlist.get(1)).contains(
+				droppableView.getId())) {
+
+			isOnLeftSide = false;
+
+		} else {
+			Log.e(TAG_ERROR,
+					"Position is undefined of the place holder imageView !");
+		}
+
+		return isOnLeftSide;
+	}
+
 	private static class TagDragShadowBuilder extends View.DragShadowBuilder {
 
 		// Defines the constructor for TagDragShadowBuilder
@@ -237,10 +290,10 @@ public class DiagramPlay extends Activity implements OnDragListener,
 			int height;
 
 			// Sets the width of the shadow with respect to original View
-			width = (getView().getWidth())*3;
+			width = (getView().getWidth()) * 3;
 
 			// Sets the height of the shadow with respect to original View
-			height = (getView().getHeight())*3;
+			height = (getView().getHeight()) * 3;
 
 			// Sets the size parameter's width and height values. These get back
 			// to the system through the size parameter.
@@ -248,7 +301,7 @@ public class DiagramPlay extends Activity implements OnDragListener,
 
 			// Sets the touch point's position to the middle point visual
 			// clarity
-			touch.set((width/4),(height/4));
+			touch.set((width / 4), (height / 4));
 		}
 
 		// Defines a callback that draws the drag shadow in a Canvas that the

@@ -14,9 +14,7 @@
         android:background="@color/ActionbarBg"
         app:title="@string/app_name"
         app:titleTextAppearance="@style/AppTheme.Toolbar.Title"
-        app:navigationIcon="@drawable/ic_launcher"
-        />
-
+        app:navigationIcon="@drawable/ic_launcher"/>
 
     <View
         android:layout_width="match_parent"
@@ -30,15 +28,15 @@
         android:weightSum="2"
         android:gravity="center">
         <info.hoang8f.widget.FButton
-            android:id="@+id/characters_button"
+            android:id="@+id/easy_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             fbutton:buttonColor="@color/ButtonBg"
             android:textColor="@color/White"
             android:textSize="20sp"
-            android:text="@string/characters"
-            android:onClick="modeSelectionOnClick"/>
+            android:text="@string/easy"
+            android:onClick="wordSelectionOnClick"/>
     </LinearLayout>
 
     <View
@@ -53,15 +51,38 @@
         android:weightSum="2"
         android:gravity="center">
         <info.hoang8f.widget.FButton
-            android:id="@+id/words_button"
+            android:id="@+id/medium_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20sp"
             fbutton:buttonColor="@color/ButtonBg"
             android:textColor="@color/White"
-            android:text="@string/words"
-            android:onClick="modeSelectionOnClick"/>
+            android:text="@string/medium"
+            android:onClick="wordSelectionOnClick"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.565"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.42"
+        android:weightSum="2"
+        android:gravity="center">
+        <info.hoang8f.widget.FButton
+            android:id="@+id/hard_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            fbutton:buttonColor="@color/ButtonBg"
+            android:textColor="@color/White"
+            android:text="@string/hard"
+            android:onClick="wordSelectionOnClick"/>
     </LinearLayout>
 
     <View

@@ -7,7 +7,7 @@
     android:gravity="center"
     tools:context="org.buildmlearn.practicehandwriting.practice.PracticeActivity">
 
-    <android.support.v7.widget.Toolbar
+<!--    <android.support.v7.widget.Toolbar
         android:id="@+id/PracticeToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,22 +15,19 @@
         android:background="@color/ActionbarBg"
         app:title="@string/app_name"
         app:titleTextAppearance="@style/AppTheme.Toolbar.Title"
-        app:navigationIcon="@drawable/ic_launcher"/>
+        app:navigationIcon="@drawable/ic_launcher"/>-->
 
     <TextView
         android:id="@+id/canvas"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/PracticeToolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="400sp"
         android:textColor="#000000"/>
 
     <org.buildmlearn.practicehandwriting.practice.DrawingView
         android:id="@+id/drawing"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/PracticeToolbar"
         android:gravity="center"/>
 
     <com.software.shell.fab.ActionButton

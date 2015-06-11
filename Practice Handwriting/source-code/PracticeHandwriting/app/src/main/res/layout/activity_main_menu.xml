@@ -19,11 +19,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
-        <RelativeLayout
-            android:id="@+id/practice_button"
+        <LinearLayout
+            android:id="@+id/character_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
@@ -33,27 +32,60 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:background="@color/ButtonBg"
-            android:layout_gravity="center"
+            android:gravity="center"
             android:onClick="mainMenuActivityOnClick">
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/pencil"
-                android:layout_centerHorizontal="true"
-                />
+                android:layout_height="0dp"
+                android:src="@drawable/characters"
+                android:layout_weight="0.7"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/White"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
                 android:textSize="30sp"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
                 android:text="@string/Practice"/>
-        </RelativeLayout>
+        </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/word_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:background="@color/ButtonBg"
+            android:gravity="center"
+            android:onClick="mainMenuActivityOnClick">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:src="@drawable/words"
+                android:layout_weight="0.7"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/White"
+                android:textSize="30sp"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:text="@string/words"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:orientation="horizontal">
+        <LinearLayout
             android:id="@+id/timetrial_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -64,36 +96,24 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:background="@color/ButtonBg"
-            android:layout_gravity="center"
+            android:gravity="center"
             android:onClick="mainMenuActivityOnClick">
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:src="@drawable/timer"
-                android:layout_centerHorizontal="true"
-                />
+                android:layout_weight="0.7"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/White"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
                 android:textSize="30sp"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
                 android:text="@string/Time_trial"/>
-        </RelativeLayout>
+        </LinearLayout>
 
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:orientation="horizontal"
-        >
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/freehand_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -104,56 +124,22 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:background="@color/ButtonBg"
-            android:layout_gravity="center"
+            android:gravity="center"
             android:onClick="mainMenuActivityOnClick">
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:src="@drawable/writing"
-                android:layout_centerHorizontal="true"
-                />
+                android:layout_weight="0.7"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/White"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
                 android:textSize="30sp"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
                 android:text="@string/Freehand"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/settings_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:orientation="vertical"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:background="@color/ButtonBg"
-            android:layout_gravity="center"
-            android:onClick="mainMenuActivityOnClick">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/settings"
-                android:layout_centerHorizontal="true"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/White"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:textSize="30sp"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:text="@string/Settings"/>
-        </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

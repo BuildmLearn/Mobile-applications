@@ -32,18 +32,18 @@ public class PracticeActivity extends Activity {//implements TextToSpeech.OnInit
         TextView canvasText = (TextView) findViewById(R.id.canvas);
 
         canvasText.setText(practice_string);
+        if(practice_string.length()==1)
+            canvasText.setTextSize(500);
+        else
+            canvasText.setTextSize(700 / practice_string.length());
         drawViewBitmap = takeScreenshot(R.id.canvas);
         drawView.setBitmap(drawViewBitmap);
         canvasText.setVisibility(View.INVISIBLE);
 
         if(Build.VERSION.SDK_INT>=21)
-            SplashActivity.TTSobj.speak(practice_string,
-                TextToSpeech.QUEUE_FLUSH,  // Drop all pending entries in the playback queue.
-                null, null);
+            SplashActivity.TTSobj.speak(practice_string,TextToSpeech.QUEUE_FLUSH,null, null);
         else
-            SplashActivity.TTSobj.speak(practice_string,
-                    TextToSpeech.QUEUE_FLUSH,  // Drop all pending entries in the playback queue.
-                    null);
+            SplashActivity.TTSobj.speak(practice_string,TextToSpeech.QUEUE_FLUSH,null);
     }
 
     private Bitmap takeScreenshot(int ResourceID) {

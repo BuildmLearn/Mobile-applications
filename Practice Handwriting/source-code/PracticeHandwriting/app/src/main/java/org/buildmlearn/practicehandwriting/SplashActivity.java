@@ -11,7 +11,7 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
     private static int SPLASH_TIME_OUT = 1500;
     private static final int MY_DATA_CHECK_CODE = 100;
 
-    public  static TextToSpeech TTSobj;
+    public static TextToSpeech TTSobj;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

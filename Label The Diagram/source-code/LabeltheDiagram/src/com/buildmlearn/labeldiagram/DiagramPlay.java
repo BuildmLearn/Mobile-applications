@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.buildmlearn.labeldiagram.resources.PlaceHolderContainer;
+import com.buildmlearn.labeldiagram.resources.TagPlaceholderMapper;
 import com.example.labelthediagram.R;
 
 import android.app.Activity;
@@ -17,6 +18,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.SparseIntArray;
 import android.view.DragEvent;
 import android.view.TextureView;
 import android.view.View;
@@ -38,6 +40,7 @@ public class DiagramPlay extends Activity implements OnDragListener,
 	 * rightPlaceHolderList = new ArrayList<ImageView>();
 	 */
 	List<Integer[]> placeHolderlist = new ArrayList<Integer[]>();
+	SparseIntArray tagPlaceHolderMap = new SparseIntArray();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +115,9 @@ public class DiagramPlay extends Activity implements OnDragListener,
 
 		PlaceHolderContainer container = new PlaceHolderContainer();
 		placeHolderlist = container.diagramCaller("HumanEye");
-
+		
+		TagPlaceholderMapper tagPlaceholdermapper= new TagPlaceholderMapper();
+		tagPlaceHolderMap=tagPlaceholdermapper.diagramMapper("HumanEye");
 	}
 
 	@Override
@@ -193,20 +198,35 @@ public class DiagramPlay extends Activity implements OnDragListener,
 			// Get the positioning side(within diagram) of the currently entered place holder 
 			side = getPlaceHolderSide(droppableView);
 
-			// If placeholder is on left side, set X coordinate of the draggedImageTag 
+			// If placeholder is on left side, set XY coordinates of the draggedImageTag 
 			// to right top corner
 			if (side == true) {
 				draggedImageTag.setX(droppableView.getX() + droppableView.getWidth()
 								- draggedImageTag.getWidth());
 				draggedImageTag.setY(droppableView.getY());
 			} 
-			// If placeholder is on left side, set X coordinate of the draggedImageTag 
+			// If placeholder is on right side, set XY coordinates of the draggedImageTag 
 			// to left top corner
 			else if (side == false) {
 				draggedImageTag.setX(droppableView.getX());
 				draggedImageTag.setY(droppableView.getY());
 			}
-
+						
+			// Obtain the correct Tag id corresponding to place holder id
+			int desiredTagId=tagPlaceHolderMap.get(droppableView.getId());
+			
+			//Get Tag id of currently moving tag
+			int currentTagId = draggedImageTag.getId();
+			
+			//If currently moving tag id doesn't match actual tag id change the tag color to RED
+			if(currentTagId!=desiredTagId){
+				draggedImageTag.setBackgroundResource(R.drawable.custom_textview_incorrect);
+			}
+			//If currently moving tag id does match actual tag id change the tag color to light green
+			else if(currentTagId==desiredTagId){
+				draggedImageTag.setBackgroundResource(R.drawable.custom_textview_correct);
+			}
+			
 			draggedImageTag.setVisibility(View.VISIBLE);
 			return true;
 

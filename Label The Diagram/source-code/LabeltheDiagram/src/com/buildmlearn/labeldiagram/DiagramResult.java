@@ -15,7 +15,6 @@ public class DiagramResult extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.diagram_result);
 		
@@ -32,18 +31,7 @@ public class DiagramResult extends Activity {
 		reulstheader2.setTypeface(tfThin);
 		
 		final RatingBar minimumRating = (RatingBar)findViewById(R.id.resultBar);
-	    minimumRating.setOnTouchListener(new OnTouchListener()
-	    { 
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				float touchPositionX = event.getX();
-	            float width = minimumRating.getWidth();
-	            float starsf = (touchPositionX / width) * 5.0f;
-	            int stars = (int)starsf + 1;
-	            minimumRating.setRating(stars);
-	            return true; 
-			} 
-	    });
+	   
 		
 	}
 

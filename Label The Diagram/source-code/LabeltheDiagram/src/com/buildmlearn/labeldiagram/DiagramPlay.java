@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.buildmlearn.labeldiagram.resources.PlaceHolderContainer;
-import com.buildmlearn.labeldiagram.resources.TagPlaceholderMapper;
+import com.buildmlearn.labeldiagram.helper.PlaceHolderContainer;
+import com.buildmlearn.labeldiagram.helper.TagPlaceholderMapper;
 import com.example.labelthediagram.R;
 
 import android.app.ActionBar;
@@ -28,30 +28,31 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class DiagramPlay extends Activity implements OnDragListener,
+/**
+ * This class is for handle DiagramPlay activity of Human Eye diagram
+ * 
+ * @author Akilaz
+ *
+ */
+ public class DiagramPlay extends Activity implements OnDragListener,
 		OnLongClickListener {
 
 	private static final String TAG = "InfoTag";
 	private static final String TAG_ERROR = "Error";
-	/*
-	 * private static final List<ImageView> leftPlaceHolderList = new
-	 * ArrayList<ImageView>(); private static final List<ImageView>
-	 * rightPlaceHolderList = new ArrayList<ImageView>();
-	 */
-	List<Integer[]> placeHolderlist = new ArrayList<Integer[]>();
-	SparseIntArray tagPlaceHolderMap = new SparseIntArray();
-	int correctLabeledCount=0;
-	int totalLabeledCount=0;
-	int tagListSize;
-	TextView compeleteRatio;
-	TextView score;
+	private List<Integer[]> placeHolderlist = new ArrayList<Integer[]>();
+	private SparseIntArray tagPlaceHolderMap = new SparseIntArray();
+	private int correctLabeledCount = 0;
+	private int totalLabeledCount = 0;
+	private int tagListSize;
+	private TextView compeleteRatio;
+	private TextView score;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.diagram_play);
-		
+
 		// Enabling ActionBar
 		ActionBar actionBar = getActionBar();
 		actionBar.setTitle("Human Eye");
@@ -129,10 +130,12 @@ public class DiagramPlay extends Activity implements OnDragListener,
 
 		TagPlaceholderMapper tagPlaceholdermapper = new TagPlaceholderMapper();
 		tagPlaceHolderMap = tagPlaceholdermapper.diagramMapper("HumanEye");
-		
-		tagListSize=tagPlaceHolderMap.size();
+
+		tagListSize = tagPlaceHolderMap.size();
 	}
 
+	
+	
 	@Override
 	public boolean onLongClick(View textview) {
 		ClipData clipData = ClipData.newPlainText("", "");
@@ -151,7 +154,7 @@ public class DiagramPlay extends Activity implements OnDragListener,
 
 	@Override
 	public boolean onDrag(View droppableView, DragEvent event) {
-		
+
 		// Defines a variable to store the action type for the incoming event
 		final int action = event.getAction();
 		final View draggedImageTag = (View) event.getLocalState();
@@ -161,7 +164,7 @@ public class DiagramPlay extends Activity implements OnDragListener,
 
 		case DragEvent.ACTION_DRAG_STARTED:
 
-			// Determines if this View can accept the dragged data
+			// Determines if the View can accept the dragged data
 			if (event.getClipDescription().hasMimeType(
 					ClipDescription.MIMETYPE_TEXT_PLAIN)) {
 
@@ -176,9 +179,6 @@ public class DiagramPlay extends Activity implements OnDragListener,
 
 			}
 
-			// Returns false. During the current drag and drop operation, this
-			// View will
-			// not receive events again until ACTION_DRAG_ENDED is sent.
 			return false;
 
 		case DragEvent.ACTION_DRAG_ENTERED:
@@ -211,17 +211,16 @@ public class DiagramPlay extends Activity implements OnDragListener,
 			side = getPlaceHolderSide(droppableView);
 
 			// If placeholder is on left side, set XY coordinates of the
-			// draggedImageTag
-			// to right top corner
+			// draggedImageTag to right top corner
 			if (side == true) {
 				draggedImageTag
 						.setX(droppableView.getX() + droppableView.getWidth()
 								- draggedImageTag.getWidth());
 				draggedImageTag.setY(droppableView.getY());
 			}
+
 			// If placeholder is on right side, set XY coordinates of the
-			// draggedImageTag
-			// to left top corner
+			// draggedImageTag to left top corner
 			else if (side == false) {
 				draggedImageTag.setX(droppableView.getX());
 				draggedImageTag.setY(droppableView.getY());
@@ -233,31 +232,32 @@ public class DiagramPlay extends Activity implements OnDragListener,
 			// Get Tag id of currently moving tag
 			int currentTagId = draggedImageTag.getId();
 
-			
 			if (currentTagId != desiredTagId) {
-				
-				// If currently moving tag id doesn't match, actual tag id change the
+
+				// If currently moving tag id doesn't match, actual tag id
+				// change the
 				// tag color to RED
 				draggedImageTag
 						.setBackgroundResource(R.drawable.custom_textview_incorrect);
-				
-				totalLabeledCount+=1;
-				
+
+				totalLabeledCount += 1;
+
 				// Update score and progress
-				updateProgress(correctLabeledCount,totalLabeledCount);
-				
-			}else if (currentTagId == desiredTagId) {
-				
-				// If currently moving tag id does match, actual tag id change the
+				updateProgress(correctLabeledCount, totalLabeledCount);
+
+			} else if (currentTagId == desiredTagId) {
+
+				// If currently moving tag id does match, actual tag id change
+				// the
 				// tag color to light green
 				draggedImageTag
 						.setBackgroundResource(R.drawable.custom_textview_correct);
-				
-				totalLabeledCount+=1;
-				correctLabeledCount+=1;
-				
+
+				totalLabeledCount += 1;
+				correctLabeledCount += 1;
+
 				// Update score and progress
-				updateProgress(correctLabeledCount,totalLabeledCount);
+				updateProgress(correctLabeledCount, totalLabeledCount);
 			}
 
 			draggedImageTag.setVisibility(View.VISIBLE);
@@ -266,8 +266,8 @@ public class DiagramPlay extends Activity implements OnDragListener,
 		case DragEvent.ACTION_DRAG_ENDED:
 
 			Log.i(TAG, "getResult: " + event.getResult());
-			
-			// if the drop was not+ successful, set the ball to visible
+
+			// if the drop was not successful, set the tag to original place
 			if (!event.getResult()) {
 				draggedImageTag.post(new Runnable() {
 
@@ -276,11 +276,11 @@ public class DiagramPlay extends Activity implements OnDragListener,
 
 						Log.i(TAG, "setting visible");
 						draggedImageTag.setVisibility(View.VISIBLE);
-						
+
 					}
 				});
 			}
-			
+
 			return true;
 
 			// An unknown action type was received.
@@ -294,39 +294,45 @@ public class DiagramPlay extends Activity implements OnDragListener,
 
 	}
 
-	// Update score and progress
-	private void updateProgress(int correcTries,int totalTries) {
-		
-		float progress=0;
-		float totalScore=0;
-		
-		totalScore = (float)correcTries/tagListSize*100;
-		progress = (float)totalTries/tagListSize*100;
-		
-		score.setText((int)totalScore + "%");
-		compeleteRatio.setText((int)progress+ "%");
-		
-		if((int)progress==100){
-			
-			new Handler().postDelayed(new Runnable() {
-	            @Override
-	            public void run() {
+	/**
+	 * Update score and progress
+	 * 
+	 * @param correcTries
+	 * @param totalTries
+	 */
+	private void updateProgress(int correcTries, int totalTries) {
 
-	                Intent i=new Intent(getApplicationContext(),DiagramResult.class);
-	                startActivity(i);
-	            }
-	        }, 3000);
-			
+		float progress = 0;
+		float totalScore = 0;
+
+		totalScore = (float) correcTries / tagListSize * 100;
+		progress = (float) totalTries / tagListSize * 100;
+
+		score.setText((int) totalScore + "%");
+		compeleteRatio.setText((int) progress + "%");
+
+		if ((int) progress == 100) {
+
+			new Handler().postDelayed(new Runnable() {
+				@Override
+				public void run() {
+
+					Intent i = new Intent(getApplicationContext(),
+							DiagramResult.class);
+					startActivity(i);
+				}
+			}, 3000);
+
 		}
-		
-		
-		
-			
+
 	}
 
-	/*
+	/**
 	 * Indicate whether the placeholder is on left side or right side of the
 	 * diagram
+	 * 
+	 * @param droppableView
+	 * @return
 	 */
 	private boolean getPlaceHolderSide(View droppableView) {
 
@@ -353,6 +359,10 @@ public class DiagramPlay extends Activity implements OnDragListener,
 		return isOnLeftSide;
 	}
 
+	
+	/**
+	 * Helper class for generating drag shadow 
+	 */	
 	private static class TagDragShadowBuilder extends View.DragShadowBuilder {
 
 		// Defines the constructor for TagDragShadowBuilder
@@ -363,12 +373,13 @@ public class DiagramPlay extends Activity implements OnDragListener,
 
 		}
 
-		// Defines a callback that sends the drag shadow dimensions and touch
-		// point back to the
-		// system.
+		/*
+		 * Defines a callback that sends the drag shadow dimensions and touch
+		 * point back to the system.
+		 */
 		@Override
 		public void onProvideShadowMetrics(Point size, Point touch) {
-			// Defines local variables
+		
 			int width;
 			int height;
 
@@ -387,9 +398,11 @@ public class DiagramPlay extends Activity implements OnDragListener,
 			touch.set((width / 4), (height / 4));
 		}
 
-		// Defines a callback that draws the drag shadow in a Canvas that the
-		// system constructs
-		// from the dimensions passed in onProvideShadowMetrics().
+		/*
+		 * Defines a callback that draws the drag shadow in a Canvas that the
+		 * system constructs from the dimensions passed in
+		 * onProvideShadowMetrics().
+		 */
 		@Override
 		public void onDrawShadow(Canvas canvas) {
 

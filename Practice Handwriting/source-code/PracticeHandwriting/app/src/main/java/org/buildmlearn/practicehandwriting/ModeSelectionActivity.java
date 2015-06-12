@@ -17,14 +17,15 @@ public class ModeSelectionActivity extends Activity {
     public void modeSelectionOnClick(View view) {
         Intent intent = null;
         switch (view.getId()) {
-            case R.id.character_button:
+            case R.id.characters_button:
                 intent = new Intent(this, CharacterSelectionActivity.class);
                 break;
 
-            case R.id.word_button:
-                intent = new Intent(this, IncompleteActivity.class);
+            case R.id.words_button:
+                intent = new Intent(this, WordSelectionActivity.class);
                 break;
         }
         startActivity(intent);
+        //overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
 }

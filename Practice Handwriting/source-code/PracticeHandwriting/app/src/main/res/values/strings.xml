@@ -685,6 +685,11 @@
     <string name="title_activity_practice">PracticeActivity</string>
 
     <string name="practice_string">PRACTICE_STRING</string>
+    <string name="title_activity_word_selection">WordSelectionActivity</string>
+
+    <string name="easy">Easy</string>
+    <string name="medium">Medium</string>
+    <string name="hard">Hard</string>
 
 
 

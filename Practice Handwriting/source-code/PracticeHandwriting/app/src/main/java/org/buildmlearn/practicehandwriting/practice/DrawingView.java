@@ -18,37 +18,28 @@ public class DrawingView extends View {
     //drawing and canvas paint
     private Paint drawPaint, canvasPaint;
     //colour
-    private int touch_colour = 0xFF00FF00;
+    private int touch_colour = 0xFFFF0000; //Red is more visible against the background
     //canvas
     private Canvas drawCanvas;
     //canvas bitmap
     private Bitmap canvasBitmap;
-    //Context
-    private Context context;
     //Canvas width and height
     private int width;
     private int height;
-
-    private long[] vibration_pattern;
 
     private Vibrator vibrator;
 
 
 
-    public DrawingView(Context c,AttributeSet attrs) {
-        super(c,attrs);
-        context=c;	//setting current context
-        vibration_pattern = new long[100];
+    public DrawingView(Context context,AttributeSet attrs) {
+        super(context,attrs);
         vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-        for(int i=0;i<100;i++)
-            vibration_pattern[i]=i;
+
         //getting height and width of the current display
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
         width = metrics.widthPixels;
         height = metrics.heightPixels;
 
-        // Initializing an empty canvas
-        canvasBitmap = Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888);
         setupDrawing();
     }
 
@@ -56,7 +47,7 @@ public class DrawingView extends View {
     public void setBitmap(Bitmap b) {
         canvasBitmap = Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888);
         drawCanvas = new Canvas(canvasBitmap);
-        drawCanvas.drawBitmap(b, (width - b.getWidth()) / 2,0, canvasPaint);
+        drawCanvas.drawBitmap(b, (width - b.getWidth()) / 2,(height - b.getHeight()) / 2, canvasPaint);
         invalidate();
     }
 
@@ -74,10 +65,10 @@ public class DrawingView extends View {
         float touchY = event.getY();
 
         // mapping screen touch co-ordinates to image pixel co-ordinates
-        int x= (int) (touchX);// * canvasBitmap.getWidth() / width);
-        int y= (int) (touchY);// * canvasBitmap.getHeight()/ height);
+        int x= (int) (touchX * canvasBitmap.getWidth() / width);
+        int y= (int) (touchY * canvasBitmap.getHeight()/ height);
 
-        if (canvasBitmap.getPixel(x, y) == 0)
+        if ((x>=0 && x<width && y>=0 && y<height && canvasBitmap.getPixel(x, y) == 0) || (x<0 || x>=width || y<0 || y>=height))
             vibrator.vibrate(100);
 
         switch (event.getAction()) {
@@ -110,7 +101,4 @@ public class DrawingView extends View {
         drawPaint.setStrokeCap(Paint.Cap.ROUND);
         canvasPaint = new Paint(Paint.DITHER_FLAG);
     }
-
-
-
 }

@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 
 public class LanguageActivity extends Activity {
@@ -12,7 +14,17 @@ public class LanguageActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
-        //TODO add animation for buttons
+        Animation animation_1 = AnimationUtils.loadAnimation(this, R.anim.slide_in);
+
+        Animation animation_2 = AnimationUtils.loadAnimation(this, R.anim.slide_in);
+        animation_2.setStartOffset(500);
+
+        Animation animation_3 = AnimationUtils.loadAnimation(this, R.anim.slide_in);
+        animation_3.setStartOffset(1000);
+
+        findViewById(R.id.english_button).startAnimation(animation_1);
+        findViewById(R.id.hindi_button).startAnimation(animation_2);
+        findViewById(R.id.arabic_button).startAnimation(animation_3);
     }
 
     public void languageActivityOnClick(View v) {

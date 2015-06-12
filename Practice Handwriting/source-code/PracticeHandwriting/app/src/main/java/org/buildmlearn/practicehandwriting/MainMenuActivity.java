@@ -23,19 +23,19 @@ public class MainMenuActivity extends Activity {
     public void mainMenuActivityOnClick(View view) {
         Intent intent = null;
         switch(view.getId()) {
-            case R.id.practice_button:
-                intent = new Intent(this, ModeSelectionActivity.class);
+            case R.id.character_button:
+                intent = new Intent(this, CharacterSelectionActivity.class);
                 break;
 
-            case R.id.timetrial_button:
-                intent = new Intent(this, IncompleteActivity.class);
+            case R.id.word_button:
+                intent = new Intent(this, WordSelectionActivity.class);
                 break;
 
             case R.id.freehand_button:
                 intent = new Intent(this, IncompleteActivity.class);
                 break;
 
-            case R.id.settings_button:
+            case R.id.timetrial_button:
                 intent = new Intent(this, IncompleteActivity.class);
                 break;
         }

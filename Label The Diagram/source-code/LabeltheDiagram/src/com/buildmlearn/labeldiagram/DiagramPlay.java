@@ -12,19 +12,15 @@ import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.DragEvent;
-import android.view.TextureView;
 import android.view.View;
 import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +37,11 @@ public class DiagramPlay extends Activity implements OnDragListener,
 	 */
 	List<Integer[]> placeHolderlist = new ArrayList<Integer[]>();
 	SparseIntArray tagPlaceHolderMap = new SparseIntArray();
+	int correctLabeledCount=0;
+	int totalLabeledCount=0;
+	int tagListSize;
+	TextView compeleteRatio;
+	TextView score;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +51,9 @@ public class DiagramPlay extends Activity implements OnDragListener,
 
 		// Score board textViews
 		TextView completeTxt = (TextView) findViewById(R.id.complatedTxt);
-		TextView compeleteRatio = (TextView) findViewById(R.id.complete_ratio);
+		compeleteRatio = (TextView) findViewById(R.id.complete_ratio);
 		TextView scoreTxt = (TextView) findViewById(R.id.scoreTxt);
-		TextView score = (TextView) findViewById(R.id.score);
+		score = (TextView) findViewById(R.id.score);
 
 		Typeface tfThin = Typeface.createFromAsset(getAssets(),
 				"fonts/Roboto-Thin.ttf");
@@ -115,9 +116,11 @@ public class DiagramPlay extends Activity implements OnDragListener,
 
 		PlaceHolderContainer container = new PlaceHolderContainer();
 		placeHolderlist = container.diagramCaller("HumanEye");
+
+		TagPlaceholderMapper tagPlaceholdermapper = new TagPlaceholderMapper();
+		tagPlaceHolderMap = tagPlaceholdermapper.diagramMapper("HumanEye");
 		
-		TagPlaceholderMapper tagPlaceholdermapper= new TagPlaceholderMapper();
-		tagPlaceHolderMap=tagPlaceholdermapper.diagramMapper("HumanEye");
+		tagListSize=tagPlaceHolderMap.size();
 	}
 
 	@Override
@@ -138,9 +141,10 @@ public class DiagramPlay extends Activity implements OnDragListener,
 
 	@Override
 	public boolean onDrag(View droppableView, DragEvent event) {
+		
 		// Defines a variable to store the action type for the incoming event
 		final int action = event.getAction();
-		View draggedImageTag = (View) event.getLocalState();
+		final View draggedImageTag = (View) event.getLocalState();
 
 		// Handles each of the expected events
 		switch (action) {
@@ -150,16 +154,17 @@ public class DiagramPlay extends Activity implements OnDragListener,
 			// Determines if this View can accept the dragged data
 			if (event.getClipDescription().hasMimeType(
 					ClipDescription.MIMETYPE_TEXT_PLAIN)) {
-		
+
 				Log.i(TAG, "Can accept this data");
 
-                // returns true to indicate that the View can accept the dragged data.
-                return true;
+				// returns true to indicate that the View can accept the dragged
+				// data.
+				return true;
 
-            } else {
-                Log.i(TAG, "Can not accept this data");
+			} else {
+				Log.i(TAG, "Can not accept this data");
 
-            }
+			}
 
 			// Returns false. During the current drag and drop operation, this
 			// View will
@@ -187,63 +192,85 @@ public class DiagramPlay extends Activity implements OnDragListener,
 
 			boolean side;
 			Log.i(TAG, "drag action dropped");
-			
+
 			// Set place holder imageViews invisible
 			droppableView.setVisibility(View.INVISIBLE);
-			
-			// Get the positioning side(within diagram) of the currently entered place holder 
+
+			// Get the positioning side(within diagram) of the currently entered
+			// place holder
 			side = getPlaceHolderSide(droppableView);
 
-			// If placeholder is on left side, set XY coordinates of the draggedImageTag 
+			// If placeholder is on left side, set XY coordinates of the
+			// draggedImageTag
 			// to right top corner
 			if (side == true) {
-				draggedImageTag.setX(droppableView.getX() + droppableView.getWidth()
+				draggedImageTag
+						.setX(droppableView.getX() + droppableView.getWidth()
 								- draggedImageTag.getWidth());
 				draggedImageTag.setY(droppableView.getY());
-			} 
-			// If placeholder is on right side, set XY coordinates of the draggedImageTag 
+			}
+			// If placeholder is on right side, set XY coordinates of the
+			// draggedImageTag
 			// to left top corner
 			else if (side == false) {
 				draggedImageTag.setX(droppableView.getX());
 				draggedImageTag.setY(droppableView.getY());
 			}
-						
+
 			// Obtain the correct Tag id corresponding to place holder id
-			int desiredTagId=tagPlaceHolderMap.get(droppableView.getId());
-			
-			//Get Tag id of currently moving tag
+			int desiredTagId = tagPlaceHolderMap.get(droppableView.getId());
+
+			// Get Tag id of currently moving tag
 			int currentTagId = draggedImageTag.getId();
+
 			
-			//If currently moving tag id doesn't match actual tag id change the tag color to RED
-			if(currentTagId!=desiredTagId){
-				draggedImageTag.setBackgroundResource(R.drawable.custom_textview_incorrect);
+			if (currentTagId != desiredTagId) {
+				
+				// If currently moving tag id doesn't match, actual tag id change the
+				// tag color to RED
+				draggedImageTag
+						.setBackgroundResource(R.drawable.custom_textview_incorrect);
+				
+				totalLabeledCount+=1;
+				
+				// Update score and progress
+				updateProgress(correctLabeledCount,totalLabeledCount);
+				
+			}else if (currentTagId == desiredTagId) {
+				
+				// If currently moving tag id does match, actual tag id change the
+				// tag color to light green
+				draggedImageTag
+						.setBackgroundResource(R.drawable.custom_textview_correct);
+				
+				totalLabeledCount+=1;
+				correctLabeledCount+=1;
+				
+				// Update score and progress
+				updateProgress(correctLabeledCount,totalLabeledCount);
 			}
-			//If currently moving tag id does match actual tag id change the tag color to light green
-			else if(currentTagId==desiredTagId){
-				draggedImageTag.setBackgroundResource(R.drawable.custom_textview_correct);
-			}
-			
+
 			draggedImageTag.setVisibility(View.VISIBLE);
 			return true;
 
 		case DragEvent.ACTION_DRAG_ENDED:
 
-			// Turns off any color tinting
-			((ImageView) droppableView).clearColorFilter();
+			Log.i(TAG, "getResult: " + event.getResult());
+			
+			// if the drop was not+ successful, set the ball to visible
+			if (!event.getResult()) {
+				draggedImageTag.post(new Runnable() {
 
-			// Invalidates the view to force a redraw
-			droppableView.invalidate();
+					@Override
+					public void run() {
 
-			// Does a getResult(), and displays what happened.
-			if (event.getResult()) {
-				Toast.makeText(this, "The drop was handled.", Toast.LENGTH_LONG);
-
-			} else {
-				Toast.makeText(this, "The drop didn't work.", Toast.LENGTH_LONG);
-
+						Log.i(TAG, "setting visible");
+						draggedImageTag.setVisibility(View.VISIBLE);
+						
+					}
+				});
 			}
-
-			// returns true; the value is ignored.
+			
 			return true;
 
 			// An unknown action type was received.
@@ -253,8 +280,23 @@ public class DiagramPlay extends Activity implements OnDragListener,
 			break;
 		}
 
-		return false;
+		return true;
 
+	}
+
+	// Update score and progress
+	private void updateProgress(int correcTries,int totalTries) {
+		
+		float progress=0;
+		float totalScore=0;
+		
+		totalScore = (float)correcTries/tagListSize*100;
+		progress = (float)totalTries/tagListSize*100;
+		
+		score.setText((int)totalScore + "%");
+		compeleteRatio.setText((int)progress+ "%");
+		
+			
 	}
 
 	/*

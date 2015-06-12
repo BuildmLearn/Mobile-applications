@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 
+import org.buildmlearn.practicehandwriting.practice.PracticeActivity;
+
 
 public class SplashActivity extends Activity implements TextToSpeech.OnInitListener{
 
@@ -17,7 +19,7 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        //TODO pre processing if any
+        //TODO change variables in activities to follow specified coding conventions
 
         Intent checkIntent = new Intent();
         checkIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);

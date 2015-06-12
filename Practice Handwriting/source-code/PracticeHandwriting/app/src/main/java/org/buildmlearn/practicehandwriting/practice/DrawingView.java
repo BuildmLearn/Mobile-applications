@@ -29,6 +29,10 @@ public class DrawingView extends View {
 
     private Vibrator vibrator;
 
+    private long wrongTouches;
+    private long correctTouches;
+
+    private boolean mDraw;
 
 
     public DrawingView(Context context,AttributeSet attrs) {
@@ -39,10 +43,10 @@ public class DrawingView extends View {
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
         width = metrics.widthPixels;
         height = metrics.heightPixels;
-
+        canvasBitmap = Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888);
+        drawCanvas = new Canvas(canvasBitmap);
         setupDrawing();
     }
-
 
     public void setBitmap(Bitmap b) {
         canvasBitmap = Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888);
@@ -60,36 +64,43 @@ public class DrawingView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        //detect user touch
-        float touchX = event.getX();
-        float touchY = event.getY();
+        if(mDraw) {
+            //detect user touch
+            float touchX = event.getX();
+            float touchY = event.getY();
 
-        // mapping screen touch co-ordinates to image pixel co-ordinates
-        int x= (int) (touchX * canvasBitmap.getWidth() / width);
-        int y= (int) (touchY * canvasBitmap.getHeight()/ height);
+            // mapping screen touch co-ordinates to image pixel co-ordinates
+            int x = (int) (touchX * canvasBitmap.getWidth() / width);
+            int y = (int) (touchY * canvasBitmap.getHeight() / height);
 
-        if ((x>=0 && x<width && y>=0 && y<height && canvasBitmap.getPixel(x, y) == 0) || (x<0 || x>=width || y<0 || y>=height))
-            vibrator.vibrate(100);
+            if ((x >= 0 && x < width && y >= 0 && y < height && canvasBitmap.getPixel(x, y) == 0) || (x < 0 || x >= width || y < 0 || y >= height)) {
+                vibrator.vibrate(100);
+                wrongTouches++;
+            } else {
+                correctTouches++;
+            }
 
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                drawPath.moveTo(touchX, touchY);
-                break;
-            case MotionEvent.ACTION_MOVE:
-                drawPath.lineTo(touchX, touchY);
-                break;
-            case MotionEvent.ACTION_UP:
-                drawCanvas.drawPath(drawPath, drawPaint);
-                drawPath.reset();
-                break;
-            default:
-                return false;
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    drawPath.moveTo(touchX, touchY);
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    drawPath.lineTo(touchX, touchY);
+                    break;
+                case MotionEvent.ACTION_UP:
+                    drawCanvas.drawPath(drawPath, drawPaint);
+                    drawPath.reset();
+                    break;
+                default:
+                    return false;
+            }
+            invalidate();
+            return true;
         }
-        invalidate();
-        return true;
+        return false;
     }
 
-    private void setupDrawing(){
+    public void setupDrawing() {
         //get drawing area setup for interaction
         drawPath = new Path();
         drawPaint = new Paint();
@@ -100,5 +111,16 @@ public class DrawingView extends View {
         drawPaint.setStrokeJoin(Paint.Join.ROUND);
         drawPaint.setStrokeCap(Paint.Cap.ROUND);
         canvasPaint = new Paint(Paint.DITHER_FLAG);
+        correctTouches = 0;
+        wrongTouches = 0;
+        mDraw = true;
+    }
+
+    public void canDraw(boolean draw) {
+        mDraw = draw;
+    }
+
+    public float score() {
+        return (correctTouches+wrongTouches!=0)?100*correctTouches/(correctTouches+wrongTouches):0;
     }
 }

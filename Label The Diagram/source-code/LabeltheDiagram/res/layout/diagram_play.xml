@@ -27,7 +27,7 @@
             android:layout_alignBottom="@+id/scoreTxt"
             android:layout_marginLeft="18dp"
             android:layout_toRightOf="@+id/scoreTxt"
-            android:text="100"
+            android:text="0"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffff" />
 
@@ -40,7 +40,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@+id/complatedTxt"
-            android:text="100%"
+            android:text=" 0%"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffff" />
 

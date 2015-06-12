@@ -7,11 +7,17 @@ import com.buildmlearn.labeldiagram.resources.DiagramCategoryAdapter;
 import com.buildmlearn.labeldiagram.resources.DiagramCategoryRawItem;
 import com.example.labelthediagram.R;
 
+import android.app.ActionBar;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 
 public class DiagramCategory extends ListActivity {
+	
+	
+	/*actionBar.setDisplayShowHomeEnabled(false);
+	 actionBar.setDisplayShowTitleEnabled(false);*/
+
 
 	ArrayList<DiagramCategoryRawItem> categories = new ArrayList<DiagramCategoryRawItem>();
 	
@@ -20,6 +26,12 @@ public class DiagramCategory extends ListActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 				
+		ActionBar actionBar = getActionBar();
+		actionBar.setTitle("Diagram Categories");
+		actionBar.setDisplayShowTitleEnabled(true);
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.show();
+		
 		createModel();
 		
 		ArrayAdapter<DiagramCategoryRawItem> categryAdapter = new DiagramCategoryAdapter(this, R.layout.category_row_item, categories);

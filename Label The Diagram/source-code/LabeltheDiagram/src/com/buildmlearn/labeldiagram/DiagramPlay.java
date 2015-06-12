@@ -8,6 +8,7 @@ import com.buildmlearn.labeldiagram.resources.PlaceHolderContainer;
 import com.buildmlearn.labeldiagram.resources.TagPlaceholderMapper;
 import com.example.labelthediagram.R;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipDescription;
@@ -48,6 +49,12 @@ public class DiagramPlay extends Activity implements OnDragListener,
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.diagram_play);
+		
+		ActionBar actionBar = getActionBar();
+		actionBar.setTitle("Human Eye");
+		actionBar.setDisplayShowTitleEnabled(true);
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.show();
 
 		// Score board textViews
 		TextView completeTxt = (TextView) findViewById(R.id.complatedTxt);

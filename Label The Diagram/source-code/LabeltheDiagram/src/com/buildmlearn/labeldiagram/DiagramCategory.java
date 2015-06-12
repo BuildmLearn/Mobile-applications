@@ -14,10 +14,6 @@ import android.widget.ArrayAdapter;
 
 public class DiagramCategory extends ListActivity {
 	
-	
-	/*actionBar.setDisplayShowHomeEnabled(false);
-	 actionBar.setDisplayShowTitleEnabled(false);*/
-
 
 	ArrayList<DiagramCategoryRawItem> categories = new ArrayList<DiagramCategoryRawItem>();
 	
@@ -25,7 +21,8 @@ public class DiagramCategory extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-				
+						
+		// Enabling ActionBar
 		ActionBar actionBar = getActionBar();
 		actionBar.setTitle("Diagram Categories");
 		actionBar.setDisplayShowTitleEnabled(true);

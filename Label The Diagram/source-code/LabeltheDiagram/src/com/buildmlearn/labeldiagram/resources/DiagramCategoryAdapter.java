@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.buildmlearn.labeldiagram.DiagramCategory;
 import com.buildmlearn.labeldiagram.DiagramPlay;
+import com.buildmlearn.labeldiagram.DiagramResult;
 import com.example.labelthediagram.R;
 
 import android.app.Activity;
@@ -96,7 +97,7 @@ public class DiagramCategoryAdapter extends ArrayAdapter<DiagramCategoryRawItem>
 				
 				if(index==0){
 					Toast.makeText(getContext(), "Dispatching to Human Body Diagram Play screen", Toast.LENGTH_LONG).show();
-					Intent intent = new Intent(v.getContext(), DiagramPlay.class);
+					Intent intent = new Intent(v.getContext(), DiagramResult.class);
 					v.getContext().startActivity(intent);
 					
 				}else if(index==1){

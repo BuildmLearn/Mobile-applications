@@ -46,6 +46,10 @@
                 android:value="com.buildmlearn.labeldiagram.DiagramCategory" >
             </meta-data>
         </activity>
+        <activity
+            android:name="com.buildmlearn.labeldiagram.DiagramResult"           
+            android:parentActivityName="com.buildmlearn.labeldiagram.DiagramCategory" >                    
+        </activity>
     </application>
 
 </manifest>

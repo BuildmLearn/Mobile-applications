@@ -12,10 +12,12 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipDescription;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.DragEvent;
@@ -50,6 +52,7 @@ public class DiagramPlay extends Activity implements OnDragListener,
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.diagram_play);
 		
+		// Enabling ActionBar
 		ActionBar actionBar = getActionBar();
 		actionBar.setTitle("Human Eye");
 		actionBar.setDisplayShowTitleEnabled(true);
@@ -302,6 +305,21 @@ public class DiagramPlay extends Activity implements OnDragListener,
 		
 		score.setText((int)totalScore + "%");
 		compeleteRatio.setText((int)progress+ "%");
+		
+		if((int)progress==100){
+			
+			new Handler().postDelayed(new Runnable() {
+	            @Override
+	            public void run() {
+
+	                Intent i=new Intent(getApplicationContext(),DiagramResult.class);
+	                startActivity(i);
+	            }
+	        }, 3000);
+			
+		}
+		
+		
 		
 			
 	}

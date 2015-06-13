@@ -1,5 +1,6 @@
 package com.buildmlearn.labeldiagram;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -41,11 +42,14 @@ import android.widget.Toast;
 	private static final String TAG_ERROR = "Error";
 	private List<Integer[]> placeHolderlist = new ArrayList<Integer[]>();
 	private SparseIntArray tagPlaceHolderMap = new SparseIntArray();
+	private List<TextView> correctTagList = new ArrayList<TextView>();
+	private List<TextView> incorrectTagList = new ArrayList<TextView>();
 	private int correctLabeledCount = 0;
 	private int totalLabeledCount = 0;
-	private int tagListSize;
+	private int tagListSize = 0;
 	private TextView compeleteRatio;
 	private TextView score;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +72,7 @@ import android.widget.Toast;
 
 		Typeface tfThin = Typeface.createFromAsset(getAssets(),
 				"fonts/Roboto-Thin.ttf");
-		Typeface tfLight = Typeface.createFromAsset(getAssets(),
+		Typeface.createFromAsset(getAssets(),
 				"fonts/Roboto-Light.ttf");
 
 		// Setting up font face to Roboto Light/Thin
@@ -233,10 +237,11 @@ import android.widget.Toast;
 			int currentTagId = draggedImageTag.getId();
 
 			if (currentTagId != desiredTagId) {
-
-				// If currently moving tag id doesn't match, actual tag id
-				// change the
-				// tag color to RED
+				
+				incorrectTagList.add((TextView)draggedImageTag);
+				
+				// If currently moving tag id doesn't match actual tag id
+				// change the tag color to RED
 				draggedImageTag
 						.setBackgroundResource(R.drawable.custom_textview_incorrect);
 
@@ -246,10 +251,11 @@ import android.widget.Toast;
 				updateProgress(correctLabeledCount, totalLabeledCount);
 
 			} else if (currentTagId == desiredTagId) {
+				
+				correctTagList.add((TextView)draggedImageTag);
 
 				// If currently moving tag id does match, actual tag id change
-				// the
-				// tag color to light green
+				// the tag color to light greenS
 				draggedImageTag
 						.setBackgroundResource(R.drawable.custom_textview_correct);
 
@@ -317,9 +323,14 @@ import android.widget.Toast;
 				@Override
 				public void run() {
 
-					Intent i = new Intent(getApplicationContext(),
+					TagContainer tagContainer = new TagContainer(correctTagList, incorrectTagList);
+					
+					Intent intent = new Intent(getApplicationContext(),
 							DiagramResult.class);
-					startActivity(i);
+					
+					intent.putExtra("CORRECT_TAG_LIST", tagContainer);
+					
+					startActivity(intent);
 				}
 			}, 3000);
 
@@ -327,6 +338,39 @@ import android.widget.Toast;
 
 	}
 
+	public static class TagContainer implements Serializable{
+		
+
+		public static final long serialVersionUID = 1L;
+		
+		public transient  List<TextView> correctLabelList;
+		public transient List<TextView> incorrectLabelList;
+		
+		
+		public TagContainer(List<TextView> correctLabelList,
+				List<TextView> incorrectLabelList) {
+			super();
+			this.correctLabelList = correctLabelList;
+			this.incorrectLabelList = incorrectLabelList;
+		}
+		
+		public List<TextView> getCorrectLabelList() {
+			return correctLabelList;
+		}
+		
+		public void setCorrectLabelList(ArrayList<TextView> correctLabelList) {
+			this.correctLabelList = correctLabelList;
+		}
+		
+		public List<TextView> getIncorrectLabelList() {
+			return incorrectLabelList;
+		}
+		
+		public void setIncorrectLabelList(ArrayList<TextView> incorrectLabelList) {
+			this.incorrectLabelList = incorrectLabelList;
+		}
+			
+	}
 	/**
 	 * Indicate whether the placeholder is on left side or right side of the
 	 * diagram

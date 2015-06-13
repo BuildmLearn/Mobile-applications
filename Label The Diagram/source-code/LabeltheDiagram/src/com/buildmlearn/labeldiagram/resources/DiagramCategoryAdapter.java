@@ -2,7 +2,6 @@ package com.buildmlearn.labeldiagram.resources;
 
 import java.util.List;
 
-import com.buildmlearn.labeldiagram.DiagramCategory;
 import com.buildmlearn.labeldiagram.DiagramPlay;
 import com.buildmlearn.labeldiagram.DiagramResult;
 import com.example.labelthediagram.R;
@@ -11,7 +10,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.sax.StartElementListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -58,7 +56,6 @@ public class DiagramCategoryAdapter extends ArrayAdapter<DiagramCategoryRawItem>
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
 
 		final int index = position;
 		final ViewHolder holder;
@@ -96,16 +93,16 @@ public class DiagramCategoryAdapter extends ArrayAdapter<DiagramCategoryRawItem>
 				
 				
 				if(index==0){
-					Toast.makeText(getContext(), "Dispatching to Human Body Diagram Play screen", Toast.LENGTH_LONG).show();
-					Intent intent = new Intent(v.getContext(), DiagramResult.class);
+					Toast.makeText(getContext(), "Dispatching to Human Body Diagram Play screen", Toast.LENGTH_SHORT).show();
+					Intent intent = new Intent(v.getContext(), DiagramPlay.class);
 					v.getContext().startActivity(intent);
 					
 				}else if(index==1){
-					Toast.makeText(getContext(), "Dispatching to Plants Play screen", Toast.LENGTH_LONG).show();
+					Toast.makeText(getContext(), "Dispatching to Plants Play screen", Toast.LENGTH_SHORT).show();
 				}else if(index==2){
-					Toast.makeText(getContext(), "Dispatching to Micro-organisms Play screen", Toast.LENGTH_LONG).show();
+					Toast.makeText(getContext(), "Dispatching to Micro-organisms Play screen", Toast.LENGTH_SHORT).show();
 				}else{
-					Toast.makeText(getContext(), "Dispatching to Natural Cycles Play screen", Toast.LENGTH_LONG).show();
+					Toast.makeText(getContext(), "Dispatching to Natural Cycles Play screen", Toast.LENGTH_SHORT).show();
 				} 
 			}
 		});

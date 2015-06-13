@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.buildmlearn.labeldiagram.helper.PlaceHolderContainer;
+import com.buildmlearn.labeldiagram.helper.TagContainerSingleton;
 import com.buildmlearn.labeldiagram.helper.TagPlaceholderMapper;
 import com.example.labelthediagram.R;
 
@@ -49,6 +50,7 @@ import android.widget.Toast;
 	private int tagListSize = 0;
 	private TextView compeleteRatio;
 	private TextView score;
+	private TextView irisTag;
 	
 
 	@Override
@@ -94,7 +96,7 @@ import android.widget.Toast;
 		ImageView retinaView = (ImageView) findViewById(R.id.retinaBlb);
 
 		// Draggable Tags imageViews
-		TextView irisTag = (TextView) findViewById(R.id.irisTag);
+		irisTag = (TextView) findViewById(R.id.irisTag);
 		TextView pupilTag = (TextView) findViewById(R.id.pupilTag);
 		TextView lensTag = (TextView) findViewById(R.id.lensTag);
 		TextView corneaTag = (TextView) findViewById(R.id.corneaTag);
@@ -307,7 +309,7 @@ import android.widget.Toast;
 	 * @param totalTries
 	 */
 	private void updateProgress(int correcTries, int totalTries) {
-
+		final int PICK_CONTACT_REQUEST = 1;
 		float progress = 0;
 		float totalScore = 0;
 
@@ -323,14 +325,16 @@ import android.widget.Toast;
 				@Override
 				public void run() {
 
-					TagContainer tagContainer = new TagContainer(correctTagList, incorrectTagList);
+					TagContainerSingleton container=TagContainerSingleton.getInstance();
+					container.setCorrectLabelList(correctTagList);
+					container.setIncorrectLabelList(incorrectTagList);
 					
 					Intent intent = new Intent(getApplicationContext(),
 							DiagramResult.class);
 					
-					intent.putExtra("CORRECT_TAG_LIST", tagContainer);
-					
 					startActivity(intent);
+				
+					
 				}
 			}, 3000);
 
@@ -338,39 +342,7 @@ import android.widget.Toast;
 
 	}
 
-	public static class TagContainer implements Serializable{
-		
-
-		public static final long serialVersionUID = 1L;
-		
-		public transient  List<TextView> correctLabelList;
-		public transient List<TextView> incorrectLabelList;
-		
-		
-		public TagContainer(List<TextView> correctLabelList,
-				List<TextView> incorrectLabelList) {
-			super();
-			this.correctLabelList = correctLabelList;
-			this.incorrectLabelList = incorrectLabelList;
-		}
-		
-		public List<TextView> getCorrectLabelList() {
-			return correctLabelList;
-		}
-		
-		public void setCorrectLabelList(ArrayList<TextView> correctLabelList) {
-			this.correctLabelList = correctLabelList;
-		}
-		
-		public List<TextView> getIncorrectLabelList() {
-			return incorrectLabelList;
-		}
-		
-		public void setIncorrectLabelList(ArrayList<TextView> incorrectLabelList) {
-			this.incorrectLabelList = incorrectLabelList;
-		}
-			
-	}
+	
 	/**
 	 * Indicate whether the placeholder is on left side or right side of the
 	 * diagram

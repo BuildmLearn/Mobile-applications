@@ -15,12 +15,14 @@ import android.widget.Toast;
 
 public class MainMenu extends Activity implements OnClickListener {
 
+	TextView diagramView;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_menu);
 
-		TextView diagramView = (TextView) findViewById(R.id.title_diagram);
+		diagramView = (TextView) findViewById(R.id.title_diagram);
 		TextView startDigrm = (TextView) findViewById(R.id.start_diagram);
 		TextView scoreboardView = (TextView) findViewById(R.id.title_scoreboard);
 		TextView startScore = (TextView) findViewById(R.id.start_screboard);

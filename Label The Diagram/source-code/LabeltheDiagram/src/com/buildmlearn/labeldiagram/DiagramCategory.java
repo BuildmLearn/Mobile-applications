@@ -11,6 +11,7 @@ import android.app.ActionBar;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 public class DiagramCategory extends ListActivity {
 	

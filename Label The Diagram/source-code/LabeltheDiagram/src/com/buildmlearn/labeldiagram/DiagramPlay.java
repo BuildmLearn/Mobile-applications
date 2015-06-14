@@ -309,9 +309,10 @@ import android.widget.Toast;
 	 * @param totalTries
 	 */
 	private void updateProgress(int correcTries, int totalTries) {
-		final int PICK_CONTACT_REQUEST = 1;
-		float progress = 0;
-		float totalScore = 0;
+
+		final float progress;
+		final float totalScore;
+		final int MAX_PROGRESS=100;
 
 		totalScore = (float) correcTries / tagListSize * 100;
 		progress = (float) totalTries / tagListSize * 100;
@@ -319,19 +320,22 @@ import android.widget.Toast;
 		score.setText((int) totalScore + "%");
 		compeleteRatio.setText((int) progress + "%");
 
-		if ((int) progress == 100) {
+		if ((int) progress == MAX_PROGRESS) {
 
 			new Handler().postDelayed(new Runnable() {
 				@Override
 				public void run() {
 
+					// Initialize singleton class 
 					TagContainerSingleton container=TagContainerSingleton.getInstance();
+					
+					// set correct and incorrect tag lists
 					container.setCorrectLabelList(correctTagList);
 					container.setIncorrectLabelList(incorrectTagList);
 					
 					Intent intent = new Intent(getApplicationContext(),
 							DiagramResult.class);
-					
+					intent.putExtra("SCORE", totalScore);
 					startActivity(intent);
 				
 					

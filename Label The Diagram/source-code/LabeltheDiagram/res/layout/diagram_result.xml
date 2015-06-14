@@ -46,9 +46,9 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/scoreLayout"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_height="290dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/linearLayout1"
         android:weightSum="1" >
@@ -75,10 +75,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal|center"
-                android:text="80/100"
+                android:text="100/100"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/appBg_color"
-                android:textSize="40sp" />
+                android:textSize="36sp" />
 
             <RatingBar
                 android:id="@+id/resultBar"
@@ -91,9 +91,10 @@
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:isIndicator="true"
+                android:progressDrawable="@drawable/custom_ratingbar_full"
                 android:numStars="5"
-                android:rating="4.0"
-                android:stepSize="0.2" />
+                android:rating="0.0"
+                android:stepSize="0.5" />
         </LinearLayout>
 
         <ListView
@@ -104,8 +105,48 @@
             android:layout_alignParentTop="true"
             android:layout_weight="0.4"
             android:divider="@android:color/transparent"
-            android:dividerHeight="5dp" >
+            android:dividerHeight="5dp" 
+            android:paddingBottom="5dp">
         </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@color/appBg_color"
+        android:orientation="horizontal"
+        android:paddingTop="10dp" >
+
+        <Button
+            android:id="@+id/againButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/tab_color"
+            android:gravity="center"
+          
+            android:layout_weight="1"
+            android:text="Try Again"
+            android:textColor="#ffff"
+            android:layout_marginBottom="5dp" />
+
+        <Button
+            android:id="@+id/nextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           	android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp"
+            android:background="@color/tab_color"
+            android:gravity="center"
+            
+            android:textColor="#ffff" 
+            android:text="Go Next" 
+            android:layout_marginBottom="5dp"/>
+
     </LinearLayout>
 
 </RelativeLayout>

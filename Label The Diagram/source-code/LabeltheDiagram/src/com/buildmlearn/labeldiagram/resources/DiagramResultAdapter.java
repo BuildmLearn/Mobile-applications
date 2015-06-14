@@ -2,6 +2,7 @@ package com.buildmlearn.labeldiagram.resources;
 
 import java.util.List;
 
+import com.buildmlearn.labeldiagram.helper.TagContainerSingleton;
 import com.example.labelthediagram.R;
 
 import android.app.Activity;
@@ -60,8 +61,18 @@ public class DiagramResultAdapter extends ArrayAdapter<DiagramResultRawItem> {
 		}
 		
 		holder.tagLabel.setText(rawItem.getTagLabel().getText());
-		holder.resultIcon.setImageResource(rawItem.getResultIconId());
 		
+		holder.tagLabel.getWidth();
+		
+		TagContainerSingleton container = TagContainerSingleton.getInstance();
+			
+		if(container.getCorrectLabelList().contains(rawItem.getTagLabel())){
+			holder.resultIcon.setImageResource(R.drawable.correct_btn);
+		}else if(container.getIncorrectLabelList().contains(rawItem.getTagLabel())){
+			holder.resultIcon.setImageResource(R.drawable.incorrect_btn);
+		}
+		
+	
 		
 		
 		return convertView;

@@ -13,13 +13,13 @@
 
         <TextView
             android:id="@+id/resultTagTxt"
-            android:layout_width="wrap_content"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/custom_textview_result"
             android:paddingBottom="3dp"
@@ -27,6 +27,7 @@
             android:paddingRight="12dp"
             android:paddingTop="3dp"
             android:text="Tag Title"
+            android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#ffff" />
 

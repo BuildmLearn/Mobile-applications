@@ -447,23 +447,23 @@ public class DiagramPlay extends Activity implements OnDragListener,
 		// TODO Auto-generated method stub
 		switch (tagView.getId()) {
 		case R.id.irisTag:
-			InfoTooltip popup = new InfoTooltip(getApplicationContext(), "Your message here.. Your message here..  Your message here..  Your message here.. ");
+			InfoTooltip popup = new InfoTooltip(getApplicationContext(), "Iris has spesialized muscles that changes the size of the pupil");
 			popup.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.pupilTag:
-			InfoTooltip popup1 = new InfoTooltip(getApplicationContext(), "Your message here.. Your message here..  Your message here..  Your message here.. ");
+			InfoTooltip popup1 = new InfoTooltip(getApplicationContext(), "As the light continues it passes through the pupil \n a round opening of the center of the iris.");
 			popup1.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.lensTag:
-			InfoTooltip popup2 = new InfoTooltip(getApplicationContext(), "Your message here.. Your message here..  Your message here..  Your message here.. ");
+			InfoTooltip popup2 = new InfoTooltip(getApplicationContext(), "It attached to muscles which contract or\n relax inorder to change the lens shape.  ");
 			popup2.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.corneaTag:
-			InfoTooltip popup3 = new InfoTooltip(getApplicationContext(), "Your message here.. Your message here.. \n Your message here..  Your message here.. ");
+			InfoTooltip popup3 = new InfoTooltip(getApplicationContext(), "Light first passes through cornea \n Let light comes into the eye.. ");
 			popup3.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.vitreousTag:
-			InfoTooltip popup4 = new InfoTooltip(getApplicationContext(), "Your message here.. Your message here..  Your message here..  Your message here.. ");
+			InfoTooltip popup4 = new InfoTooltip(getApplicationContext(), "back portion of the eye that is filled\n with a clear, jelly-like substance");
 			popup4.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.ciliaryTag:
@@ -483,7 +483,7 @@ public class DiagramPlay extends Activity implements OnDragListener,
 			popup8.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.retinaTag:
-			InfoTooltip popup9 = new InfoTooltip(getApplicationContext(), "Your message here.. Your message here..  Your message here..  Your message here.. ");
+			InfoTooltip popup9 = new InfoTooltip(getApplicationContext(), "The light finally reaches the retina where \n rod and cone cells are stimulated  converting the light to electrical impulese.");
 			popup9.show(tagView, AlignMode.BOTTOM);
 			break;
 		default:

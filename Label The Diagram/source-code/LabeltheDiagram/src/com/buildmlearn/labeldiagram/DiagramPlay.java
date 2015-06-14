@@ -1,6 +1,5 @@
 package com.buildmlearn.labeldiagram;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +15,6 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipDescription;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Point;
@@ -444,10 +442,10 @@ public class DiagramPlay extends Activity implements OnDragListener,
 
 	@Override
 	public void onClick(View tagView) {
-		// TODO Auto-generated method stub
+		// TODO Extract messages to separate container
 		switch (tagView.getId()) {
 		case R.id.irisTag:
-			InfoTooltip popup = new InfoTooltip(getApplicationContext(), "Iris has spesialized muscles that changes the size of the pupil ");
+			InfoTooltip popup = new InfoTooltip(getApplicationContext(), "Iris has spesialized muscles that \n changes the size of the pupil ");
 			popup.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.pupilTag:
@@ -471,7 +469,7 @@ public class DiagramPlay extends Activity implements OnDragListener,
 			popup5.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.nerveTag:
-			InfoTooltip popup6 = new InfoTooltip(getApplicationContext(), "nerve that transmits visual information from the retina to the brain.  ");
+			InfoTooltip popup6 = new InfoTooltip(getApplicationContext(), "nerve that transmits visual information \n from the retina to the brain.  ");
 			popup6.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.opticdiskTag:

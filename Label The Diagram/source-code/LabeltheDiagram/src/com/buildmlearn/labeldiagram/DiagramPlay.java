@@ -8,12 +8,15 @@ import java.util.List;
 import com.buildmlearn.labeldiagram.helper.PlaceHolderContainer;
 import com.buildmlearn.labeldiagram.helper.TagContainerSingleton;
 import com.buildmlearn.labeldiagram.helper.TagPlaceholderMapper;
+import com.buildmlearn.labeldiagram.tooltipkit.InfoTooltip;
+import com.buildmlearn.labeldiagram.tooltipkit.CustomTooltip.AlignMode;
 import com.example.labelthediagram.R;
 
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipDescription;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Point;
@@ -24,6 +27,7 @@ import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.DragEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
 import android.widget.ImageView;
@@ -36,8 +40,8 @@ import android.widget.Toast;
  * @author Akilaz
  *
  */
- public class DiagramPlay extends Activity implements OnDragListener,
-		OnLongClickListener {
+public class DiagramPlay extends Activity implements OnDragListener,
+		OnLongClickListener, OnClickListener {
 
 	private static final String TAG = "InfoTag";
 	private static final String TAG_ERROR = "Error";
@@ -50,8 +54,6 @@ import android.widget.Toast;
 	private int tagListSize = 0;
 	private TextView compeleteRatio;
 	private TextView score;
-	private TextView irisTag;
-	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +76,7 @@ import android.widget.Toast;
 
 		Typeface tfThin = Typeface.createFromAsset(getAssets(),
 				"fonts/Roboto-Thin.ttf");
-		Typeface.createFromAsset(getAssets(),
-				"fonts/Roboto-Light.ttf");
+		Typeface.createFromAsset(getAssets(), "fonts/Roboto-Light.ttf");
 
 		// Setting up font face to Roboto Light/Thin
 		completeTxt.setTypeface(tfThin);
@@ -96,7 +97,7 @@ import android.widget.Toast;
 		ImageView retinaView = (ImageView) findViewById(R.id.retinaBlb);
 
 		// Draggable Tags imageViews
-		irisTag = (TextView) findViewById(R.id.irisTag);
+		TextView irisTag = (TextView) findViewById(R.id.irisTag);
 		TextView pupilTag = (TextView) findViewById(R.id.pupilTag);
 		TextView lensTag = (TextView) findViewById(R.id.lensTag);
 		TextView corneaTag = (TextView) findViewById(R.id.corneaTag);
@@ -119,7 +120,7 @@ import android.widget.Toast;
 		foveaView.setOnDragListener(this);
 		retinaView.setOnDragListener(this);
 
-		// Register place holders to receive onlongclick events
+		// Register place holders to receive onLongclick events
 		irisTag.setOnLongClickListener(this);
 		pupilTag.setOnLongClickListener(this);
 		lensTag.setOnLongClickListener(this);
@@ -131,6 +132,18 @@ import android.widget.Toast;
 		foveaTag.setOnLongClickListener(this);
 		retinaTag.setOnLongClickListener(this);
 
+		// Register place holders to receive onClick events
+		irisTag.setOnClickListener(this);
+		pupilTag.setOnClickListener(this);
+		lensTag.setOnClickListener(this);
+		corneaTag.setOnClickListener(this);
+		vitreousTag.setOnClickListener(this);
+		ciliaryTag.setOnClickListener(this);
+		nerveTag.setOnClickListener(this);
+		blindspotTag.setOnClickListener(this);
+		foveaTag.setOnClickListener(this);
+		retinaTag.setOnClickListener(this);
+
 		PlaceHolderContainer container = new PlaceHolderContainer();
 		placeHolderlist = container.diagramCaller("HumanEye");
 
@@ -140,8 +153,6 @@ import android.widget.Toast;
 		tagListSize = tagPlaceHolderMap.size();
 	}
 
-	
-	
 	@Override
 	public boolean onLongClick(View textview) {
 		ClipData clipData = ClipData.newPlainText("", "");
@@ -239,9 +250,9 @@ import android.widget.Toast;
 			int currentTagId = draggedImageTag.getId();
 
 			if (currentTagId != desiredTagId) {
-				
-				incorrectTagList.add((TextView)draggedImageTag);
-				
+
+				incorrectTagList.add((TextView) draggedImageTag);
+
 				// If currently moving tag id doesn't match actual tag id
 				// change the tag color to RED
 				draggedImageTag
@@ -253,8 +264,8 @@ import android.widget.Toast;
 				updateProgress(correctLabeledCount, totalLabeledCount);
 
 			} else if (currentTagId == desiredTagId) {
-				
-				correctTagList.add((TextView)draggedImageTag);
+
+				correctTagList.add((TextView) draggedImageTag);
 
 				// If currently moving tag id does match, actual tag id change
 				// the tag color to light greenS
@@ -312,7 +323,7 @@ import android.widget.Toast;
 
 		final float progress;
 		final float totalScore;
-		final int MAX_PROGRESS=100;
+		final int MAX_PROGRESS = 100;
 
 		totalScore = (float) correcTries / tagListSize * 100;
 		progress = (float) totalTries / tagListSize * 100;
@@ -326,19 +337,19 @@ import android.widget.Toast;
 				@Override
 				public void run() {
 
-					// Initialize singleton class 
-					TagContainerSingleton container=TagContainerSingleton.getInstance();
-					
+					// Initialize singleton class
+					TagContainerSingleton container = TagContainerSingleton
+							.getInstance();
+
 					// set correct and incorrect tag lists
 					container.setCorrectLabelList(correctTagList);
 					container.setIncorrectLabelList(incorrectTagList);
-					
+
 					Intent intent = new Intent(getApplicationContext(),
 							DiagramResult.class);
 					intent.putExtra("SCORE", totalScore);
 					startActivity(intent);
-				
-					
+
 				}
 			}, 3000);
 
@@ -346,7 +357,6 @@ import android.widget.Toast;
 
 	}
 
-	
 	/**
 	 * Indicate whether the placeholder is on left side or right side of the
 	 * diagram
@@ -379,10 +389,9 @@ import android.widget.Toast;
 		return isOnLeftSide;
 	}
 
-	
 	/**
-	 * Helper class for generating drag shadow 
-	 */	
+	 * Helper class for generating drag shadow
+	 */
 	private static class TagDragShadowBuilder extends View.DragShadowBuilder {
 
 		// Defines the constructor for TagDragShadowBuilder
@@ -399,7 +408,7 @@ import android.widget.Toast;
 		 */
 		@Override
 		public void onProvideShadowMetrics(Point size, Point touch) {
-		
+
 			int width;
 			int height;
 
@@ -430,6 +439,55 @@ import android.widget.Toast;
 			// Scale the canvas 1.5x
 			canvas.scale(1.5f, 1.5f);
 			getView().draw(canvas);
+		}
+	}
+
+	@Override
+	public void onClick(View tagView) {
+		// TODO Auto-generated method stub
+		switch (tagView.getId()) {
+		case R.id.irisTag:
+			InfoTooltip popup = new InfoTooltip(getApplicationContext(), "Your message here.. Your message here..  Your message here..  Your message here.. ");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.pupilTag:
+			InfoTooltip popup1 = new InfoTooltip(getApplicationContext(), "Your message here.. Your message here..  Your message here..  Your message here.. ");
+			popup1.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.lensTag:
+			InfoTooltip popup2 = new InfoTooltip(getApplicationContext(), "Your message here.. Your message here..  Your message here..  Your message here.. ");
+			popup2.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.corneaTag:
+			InfoTooltip popup3 = new InfoTooltip(getApplicationContext(), "Your message here.. Your message here.. \n Your message here..  Your message here.. ");
+			popup3.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.vitreousTag:
+			InfoTooltip popup4 = new InfoTooltip(getApplicationContext(), "Your message here.. Your message here..  Your message here..  Your message here.. ");
+			popup4.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.ciliaryTag:
+			InfoTooltip popup5 = new InfoTooltip(getApplicationContext(), "Your message here.. Your message here..  Your message here..  Your message here.. ");
+			popup5.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.nerveTag:
+			InfoTooltip popup6 = new InfoTooltip(getApplicationContext(), "Your message here.. Your message here..\nYour message here..  Your message here.. ");
+			popup6.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.opticdiskTag:
+			InfoTooltip popup7 = new InfoTooltip(getApplicationContext(), "Your message here.. Your message here..  Your message here..  Your message here.. ");
+			popup7.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.foveaTag:
+			InfoTooltip popup8 = new InfoTooltip(getApplicationContext(), "Your message here.. Your message her..\n ANd yit hfsdun hadsfh isdi");
+			popup8.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.retinaTag:
+			InfoTooltip popup9 = new InfoTooltip(getApplicationContext(), "Your message here.. Your message here..  Your message here..  Your message here.. ");
+			popup9.show(tagView, AlignMode.BOTTOM);
+			break;
+		default:
+			break;
 		}
 	}
 

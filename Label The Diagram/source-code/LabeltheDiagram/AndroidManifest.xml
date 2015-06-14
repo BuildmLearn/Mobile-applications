@@ -50,6 +50,10 @@
             android:name="com.buildmlearn.labeldiagram.DiagramResult"           
             android:parentActivityName="com.buildmlearn.labeldiagram.DiagramCategory" >                    
         </activity>
+        <activity
+            android:name="com.buildmlearn.labeldiagram.tooltipkit.PopupActivity"           
+            >                    
+        </activity>
     </application>
 
 </manifest>

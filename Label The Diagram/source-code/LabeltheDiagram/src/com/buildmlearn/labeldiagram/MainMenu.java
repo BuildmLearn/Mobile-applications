@@ -1,5 +1,6 @@
 package com.buildmlearn.labeldiagram;
 
+import com.buildmlearn.labeldiagram.tooltipkit.PopupActivity;
 import com.example.labelthediagram.R;
 
 import android.app.Activity;
@@ -105,6 +106,8 @@ public class MainMenu extends Activity implements OnClickListener {
 		case R.id.start_screboard:
 			Toast.makeText(getApplication(), "Dispatching to scoreboard", 2000)
 					.show();
+			Intent intent1 = new Intent(getApplicationContext(), PopupActivity.class);
+			startActivity(intent1);
 			break;
 		case R.id.start_lesson:
 			Toast.makeText(getApplication(), "Dispatching to lessons", 2000)

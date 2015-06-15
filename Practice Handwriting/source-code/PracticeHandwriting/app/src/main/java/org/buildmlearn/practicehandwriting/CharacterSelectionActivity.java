@@ -41,7 +41,7 @@ public class CharacterSelectionActivity extends Activity {
         params.setMargins(horizontal_padding, vertical_padding, horizontal_padding, vertical_padding);
 
         int count = 0;
-        String[] charSet = getResources().getStringArray(R.array.English_characters);
+        String[] charSet = SplashActivity.CHARACTER_LIST;
         for(String s: charSet) {
 
             FButton fb = new FButton(this);

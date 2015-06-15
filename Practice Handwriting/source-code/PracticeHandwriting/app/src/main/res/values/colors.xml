@@ -3,6 +3,7 @@
     <color name="AppBg">#BBEEEE</color>
     <color name="ActionbarBg">#4D4D99</color>
     <color name="ButtonBg">#FF6600</color>
+    <color name="ToastBg">#99222222</color>
     
     <color name="Green">#00FF00</color>
     <color name="Orange">#FF8000</color>
@@ -12,7 +13,6 @@
     <color name="Yellow">#FFFF00</color>
     <color name="White">#FFFFFF</color>
     <color name="Black">#000000</color>
-
 
     <color name="Transparent">#00FFFFFF</color>
 

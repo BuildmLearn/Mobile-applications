@@ -74,7 +74,8 @@ public class DiagramPlay extends Activity implements OnDragListener,
 
 		Typeface tfThin = Typeface.createFromAsset(getAssets(),
 				"fonts/Roboto-Thin.ttf");
-		Typeface.createFromAsset(getAssets(), "fonts/Roboto-Light.ttf");
+		Typeface.createFromAsset(getAssets(), 
+				"fonts/Roboto-Light.ttf");
 
 		// Setting up font face to Roboto Light/Thin
 		completeTxt.setTypeface(tfThin);

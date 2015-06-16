@@ -3,6 +3,8 @@ package com.buildmlearn.labeldiagram.resources;
 import java.util.List;
 
 import com.buildmlearn.labeldiagram.DiagramPlay;
+import com.buildmlearn.labeldiagram.DiagramPlayBase;
+import com.buildmlearn.labeldiagram.DiagramPlayHumanEye;
 import com.buildmlearn.labeldiagram.DiagramResult;
 import com.example.labelthediagram.R;
 
@@ -94,7 +96,7 @@ public class DiagramCategoryAdapter extends ArrayAdapter<DiagramCategoryRawItem>
 				
 				if(index==0){
 					Toast.makeText(getContext(), "Dispatching to Human Body Diagram Play screen", Toast.LENGTH_SHORT).show();
-					Intent intent = new Intent(v.getContext(), DiagramPlay.class);
+					Intent intent = new Intent(v.getContext(), DiagramPlayHumanEye.class);
 					v.getContext().startActivity(intent);
 					
 				}else if(index==1){

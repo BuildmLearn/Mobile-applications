@@ -36,7 +36,7 @@
                 android:value="com.buildmlearn.labeldiagram.MainMenu" >
             </meta-data>
         </activity>
-        <activity
+       <!-- <activity
             android:name="com.buildmlearn.labeldiagram.DiagramPlay"
             android:configChanges="orientation"
             android:parentActivityName="com.buildmlearn.labeldiagram.DiagramCategory"
@@ -45,14 +45,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.buildmlearn.labeldiagram.DiagramCategory" >
             </meta-data>
+        </activity> -->
+        <activity
+            android:name="com.buildmlearn.labeldiagram.DiagramResult"
+            android:parentActivityName="com.buildmlearn.labeldiagram.DiagramCategory" >
+        </activity>
+        <activity android:name="com.buildmlearn.labeldiagram.tooltipkit.PopupActivity" >
         </activity>
         <activity
-            android:name="com.buildmlearn.labeldiagram.DiagramResult"           
-            android:parentActivityName="com.buildmlearn.labeldiagram.DiagramCategory" >                    
+            android:name="com.buildmlearn.labeldiagram.DiagramPlayBase"
+            android:configChanges="orientation"
+            android:parentActivityName="com.buildmlearn.labeldiagram.DiagramCategory"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.buildmlearn.labeldiagram.DiagramCategory" >
+            </meta-data>
         </activity>
-        <activity
-            android:name="com.buildmlearn.labeldiagram.tooltipkit.PopupActivity"           
-            >                    
+        <activity android:name="com.buildmlearn.labeldiagram.DiagramPlayHumanEye" >
         </activity>
     </application>
 

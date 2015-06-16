@@ -64,6 +64,8 @@
         </activity>
         <activity android:name="com.buildmlearn.labeldiagram.DiagramPlayHumanEye" >
         </activity>
+        <activity android:name="com.buildmlearn.labeldiagram.DiagramMenu" >
+        </activity>
     </application>
 
 </manifest>

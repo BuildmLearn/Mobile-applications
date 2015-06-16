@@ -28,7 +28,7 @@
             android:src="@drawable/ic_launcher" />
 
         <LinearLayout
-            android:id="@+id/linearLayout1"
+            android:id="@+id/innerLayout1"
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:layout_alignTop="@+id/categoryIcon"

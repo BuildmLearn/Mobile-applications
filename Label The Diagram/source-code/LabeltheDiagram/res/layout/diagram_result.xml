@@ -4,7 +4,7 @@
     android:layout_height="wrap_content" >
 
     <LinearLayout
-        android:id="@+id/linearLayout1"
+        android:id="@+id/innerLayout1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/appBg_color"
@@ -50,7 +50,7 @@
         android:layout_width="fill_parent"
         android:layout_height="290dp"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/linearLayout1"
+        android:layout_below="@+id/innerLayout1"
         android:weightSum="1" >
 
         <LinearLayout

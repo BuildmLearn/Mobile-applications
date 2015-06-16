@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="ActionBarTheme"
-        parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
-        <!--<item name="android:windowActionBar">false</item>-->
+        <item name="android:windowActionBar">false</item>
         <!-- Support library compatibility -->
         <item name="actionBarStyle">@style/MyActionBar</item>
-        <!--<item name="windowActionBar">false</item>-->
+        <item name="windowActionBar">false</item>
 
     </style>
 

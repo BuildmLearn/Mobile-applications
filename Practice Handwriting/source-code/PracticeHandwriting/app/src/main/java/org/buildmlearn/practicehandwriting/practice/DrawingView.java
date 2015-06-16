@@ -8,8 +8,16 @@ import android.graphics.Path;
 import android.os.Vibrator;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
+import org.buildmlearn.practicehandwriting.R;
+
+import java.util.Date;
 
 
 public class DrawingView extends View {
@@ -34,6 +42,10 @@ public class DrawingView extends View {
 
     private boolean mDraw;
 
+    private long vibrationStartTime;
+
+    private Toast errorToast;
+
 
     public DrawingView(Context context,AttributeSet attrs) {
         super(context,attrs);
@@ -45,6 +57,13 @@ public class DrawingView extends View {
         height = metrics.heightPixels;
         canvasBitmap = Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888);
         drawCanvas = new Canvas(canvasBitmap);
+
+        errorToast = new Toast(context);
+        errorToast.setGravity(Gravity.CENTER_HORIZONTAL, 0, height/4);
+        errorToast.setDuration(Toast.LENGTH_SHORT);
+        errorToast.setView(((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.toast,
+                (ViewGroup) findViewById(R.id.toast_layout_root)));
+
         setupDrawing();
     }
 
@@ -76,7 +95,14 @@ public class DrawingView extends View {
             if ((x >= 0 && x < width && y >= 0 && y < height && canvasBitmap.getPixel(x, y) == 0) || (x < 0 || x >= width || y < 0 || y >= height)) {
                 vibrator.vibrate(100);
                 wrongTouches++;
+                if(vibrationStartTime == 0) {
+                    vibrationStartTime = new Date().getTime();
+                    errorToast.cancel();
+                } else if(new Date().getTime() - vibrationStartTime > 1000 && errorToast.getView().getWindowVisibility() != View.VISIBLE) {
+                    errorToast.show();
+                }
             } else {
+                vibrationStartTime = 0;
                 correctTouches++;
             }
 
@@ -88,6 +114,7 @@ public class DrawingView extends View {
                     drawPath.lineTo(touchX, touchY);
                     break;
                 case MotionEvent.ACTION_UP:
+                    vibrationStartTime = 0;
                     drawCanvas.drawPath(drawPath, drawPaint);
                     drawPath.reset();
                     break;
@@ -114,6 +141,7 @@ public class DrawingView extends View {
         correctTouches = 0;
         wrongTouches = 0;
         mDraw = true;
+        vibrationStartTime = 0;
     }
 
     public void canDraw(boolean draw) {

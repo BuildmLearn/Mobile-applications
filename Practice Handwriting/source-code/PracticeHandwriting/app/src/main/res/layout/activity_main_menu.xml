@@ -19,7 +19,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin">
 
         <LinearLayout
             android:id="@+id/character_button"
@@ -27,11 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:orientation="vertical"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:background="@color/ButtonBg"
+            android:background="@drawable/rounded_bg"
             android:gravity="center"
             android:onClick="mainMenuActivityOnClick">
             <ImageView
@@ -46,7 +46,7 @@
                 android:textColor="@color/White"
                 android:textSize="30sp"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:text="@string/Practice"/>
+                android:text="@string/practice"/>
         </LinearLayout>
 
         <LinearLayout
@@ -55,11 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:orientation="vertical"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:background="@color/ButtonBg"
+            android:background="@drawable/rounded_bg"
             android:gravity="center"
             android:onClick="mainMenuActivityOnClick">
             <ImageView
@@ -84,19 +80,21 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin">
+
         <LinearLayout
             android:id="@+id/timetrial_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:orientation="vertical"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:background="@color/ButtonBg"
+            android:background="@drawable/rounded_bg"
             android:gravity="center"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:onClick="mainMenuActivityOnClick">
             <ImageView
                 android:layout_width="wrap_content"
@@ -110,7 +108,7 @@
                 android:textColor="@color/White"
                 android:textSize="30sp"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:text="@string/Time_trial"/>
+                android:text="@string/time_trial"/>
         </LinearLayout>
 
         <LinearLayout
@@ -119,11 +117,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:orientation="vertical"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:background="@color/ButtonBg"
+            android:background="@drawable/rounded_bg"
             android:gravity="center"
             android:onClick="mainMenuActivityOnClick">
             <ImageView
@@ -138,7 +132,7 @@
                 android:textColor="@color/White"
                 android:textSize="30sp"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:text="@string/Freehand"/>
+                android:text="@string/freehand"/>
         </LinearLayout>
     </LinearLayout>
 

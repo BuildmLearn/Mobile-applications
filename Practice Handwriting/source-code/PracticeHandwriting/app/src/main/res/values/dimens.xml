@@ -1,4 +1,8 @@
 <resources>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="menu_button_radius">20dp</dimen>
+
+    <dimen name="toast_radius">40dp</dimen>
 </resources>

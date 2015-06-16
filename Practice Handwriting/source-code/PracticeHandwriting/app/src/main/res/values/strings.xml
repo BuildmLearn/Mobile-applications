@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PracticeHandwriting</string>
+    <string name="app_name">Practice Handwriting</string>
 
     <string name="English">English</string>
     <string name="Hindi">हिंदी</string>
@@ -667,30 +667,26 @@
     <string name="title_activity_language">LanguageActivity</string>
     <string name="title_activity_main_menu">MainMenuActivity</string>
     <string name="title_activity_incomplete">IncompleteActivity</string>
+    <string name="title_activity_character_selection">CharacterSelectionActivity</string>
+    <string name="title_activity_mode_selection">ModeSelectionActivity</string>
+    <string name="title_activity_practice">PracticeActivity</string>
+    <string name="title_activity_word_selection">WordSelectionActivity</string>
 
     <string name="incomplete">We are still working on this.</string>
 
-    <string name="Practice">Practice</string>
-    <string name="Time_trial">Time Trial</string>
-    <string name="Freehand">Freehand</string>
-    <string name="Settings">Settings</string>
-    <string name="title_activity_mode_selection">ModeSelectionActivity</string>
-
+    <string name="practice">Practice</string>
+    <string name="time_trial">Time Trial</string>
+    <string name="freehand">Freehand</string>
+    <string name="settings">Settings</string>
     <string name="characters">Characters</string>
     <string name="words">Words</string>
-    <string name="title_activity_character_selection">CharacterSelectionActivity</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_practice">PracticeActivity</string>
-
-    <string name="practice_string">PRACTICE_STRING</string>
-    <string name="title_activity_word_selection">WordSelectionActivity</string>
-
     <string name="easy">Easy</string>
     <string name="medium">Medium</string>
     <string name="hard">Hard</string>
 
+    <string name="practice_string">PRACTICE_STRING</string>
 
-
+    <string name="action_settings">Settings</string>
+    <string name="action_next">Next</string>
+    <string name="action_previous">Previous</string>
 </resources>

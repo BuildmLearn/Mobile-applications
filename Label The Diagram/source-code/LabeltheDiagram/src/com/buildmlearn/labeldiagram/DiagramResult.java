@@ -8,6 +8,7 @@ import com.buildmlearn.labeldiagram.resources.DiagramResultAdapter;
 import com.buildmlearn.labeldiagram.resources.DiagramResultRawItem;
 import com.example.labelthediagram.R;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -32,11 +33,20 @@ public class DiagramResult extends Activity implements OnClickListener {
 	TextView reulstTxt;
 	TextView reulstheader1;
 	TextView reulstheader2;
+	String source;
+	float rating;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.diagram_result);
+
+		// Enabling ActionBar
+		ActionBar actionBar = getActionBar();
+		actionBar.setTitle("Result");
+		actionBar.setDisplayShowTitleEnabled(true);
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.show();
 
 		// Get the correctly and incorrectly labeled tag-list
 		correctTagList = TagContainerSingleton.getInstance()
@@ -45,7 +55,8 @@ public class DiagramResult extends Activity implements OnClickListener {
 				.getIncorrectLabelList();
 
 		// Capture intent values passed by DiagramPlay activity
-		float rating = getIntent().getExtras().getFloat("SCORE");
+		rating = getIntent().getExtras().getFloat("SCORE");
+		source = getIntent().getExtras().getString("SOURCE");
 
 		// Set the score on the ratingbar
 		RatingBar scoreRater = (RatingBar) findViewById(R.id.resultBar);
@@ -85,7 +96,6 @@ public class DiagramResult extends Activity implements OnClickListener {
 		list.setAdapter(resultAdapter);
 	}
 
-	
 	// Populate data for the use of Array adapter
 	private void fillDataModel() {
 
@@ -108,21 +118,25 @@ public class DiagramResult extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View view) {
 
-
 		switch (view.getId()) {
 		case R.id.againButton:
+
+			if(source.equals("DiagramPlayHumanEye")){
+				Intent intent = new Intent(getApplicationContext(),
+						DiagramPlayHumanEye.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+				startActivity(intent);
+			}
 			
-			Intent intent = new Intent(getApplicationContext(), DiagramPlay.class);
-			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);                  
-			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-			startActivity(intent);
-			
+
 			break;
 
 		case R.id.nextButton:
-			
-			Toast.makeText(getApplicationContext(), "Dispatching to Diagram Menu", 1000).show();
+
+			Toast.makeText(getApplicationContext(),
+					"Dispatching to Diagram Menu", 1000).show();
 			// TODO Dispatching to Diagram menu goes here
 			break;
 		default:

@@ -71,7 +71,7 @@ public class MainMenu extends Activity implements OnClickListener {
 				.setIcon(android.R.drawable.ic_dialog_alert)
 				.setTitle("Exit")
 				.setMessage("Are you sure?")
-				.setPositiveButton("yes",
+				.setPositiveButton("Yes",
 						new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog,
@@ -87,7 +87,7 @@ public class MainMenu extends Activity implements OnClickListener {
 								// finish(); // finish activity
 
 							}
-						}).setNegativeButton("no", null).show();
+						}).setNegativeButton("No", null).show();
 	}
 
 	@Override

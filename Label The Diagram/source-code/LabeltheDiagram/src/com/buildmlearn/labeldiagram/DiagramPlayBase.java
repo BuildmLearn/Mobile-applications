@@ -2,9 +2,11 @@ package com.buildmlearn.labeldiagram;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import com.buildmlearn.labeldiagram.helper.PlaceHolderContainer;
+import com.buildmlearn.labeldiagram.helper.ResultContainer;
 import com.buildmlearn.labeldiagram.helper.TagContainerSingleton;
 import com.buildmlearn.labeldiagram.helper.TagPlaceholderMapper;
 import com.example.labelthediagram.R;
@@ -29,17 +31,23 @@ import android.view.View.OnLongClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public abstract class DiagramPlayBase extends Activity implements OnDragListener,
-		OnLongClickListener, OnClickListener {
+/**
+ * @author Akilaz
+ *
+ */
+public abstract class DiagramPlayBase extends Activity implements
+		OnDragListener, OnLongClickListener, OnClickListener {
 
 	static final String TAG = "InfoTag";
 	static final String TAG_ERROR = "Error";
 	List<Integer[]> placeHolderlist;
 	SparseIntArray tagPlaceHolderMap;
+	SparseIntArray incompleteTagList;
 	List<TextView> correctTagList;
 	List<TextView> incorrectTagList;
 	PlaceHolderContainer container;
 	TagPlaceholderMapper tagPlaceholdermapper;
+
 	int correctLabeledCount = 0;
 	int totalLabeledCount = 0;
 	int tagListSize = 0;
@@ -48,16 +56,14 @@ public abstract class DiagramPlayBase extends Activity implements OnDragListener
 	ActionBar actionBar;
 	Typeface tfThin;
 	Typeface tfLight;
-	
-	
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(getResourcesId());
-		
+
 		// Enabling ActionBar
 		actionBar = getActionBar();
 		actionBar.setDisplayShowTitleEnabled(true);
@@ -68,23 +74,22 @@ public abstract class DiagramPlayBase extends Activity implements OnDragListener
 		tfThin = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Thin.ttf");
 		tfLight = Typeface.createFromAsset(getAssets(),
 				"fonts/Roboto-Light.ttf");
-		
+
 		// Initializing object lists and classes
 		placeHolderlist = new ArrayList<Integer[]>();
 		tagPlaceHolderMap = new SparseIntArray();
+		incompleteTagList = new SparseIntArray();
 		correctTagList = new ArrayList<TextView>();
 		incorrectTagList = new ArrayList<TextView>();
 		container = new PlaceHolderContainer();
 		tagPlaceholdermapper = new TagPlaceholderMapper();
-		
+
 		tagListSize = tagPlaceHolderMap.size();
-		
-		
+
 	}
-	
+
 	protected abstract int getResourcesId();
-	
-	
+
 	@Override
 	public boolean onLongClick(View textview) {
 
@@ -104,7 +109,7 @@ public abstract class DiagramPlayBase extends Activity implements OnDragListener
 
 	@Override
 	public boolean onDrag(View droppableView, DragEvent event) {
-		
+
 		// Defines a variable to store the action type for the incoming event
 		final int action = event.getAction();
 		final View draggedImageTag = (View) event.getLocalState();
@@ -178,7 +183,7 @@ public abstract class DiagramPlayBase extends Activity implements OnDragListener
 
 			// Obtain the correct Tag id corresponding to place holder id
 			int desiredTagId = tagPlaceHolderMap.get(droppableView.getId());
-
+			incompleteTagList.delete(droppableView.getId());
 			// Get Tag id of currently moving tag
 			int currentTagId = draggedImageTag.getId();
 
@@ -244,7 +249,7 @@ public abstract class DiagramPlayBase extends Activity implements OnDragListener
 
 		return true;
 	}
-	
+
 	/**
 	 * Update score and progress
 	 * 
@@ -260,7 +265,7 @@ public abstract class DiagramPlayBase extends Activity implements OnDragListener
 		totalScore = (float) correcTries / tagListSize * 100;
 		progress = (float) totalTries / tagListSize * 100;
 
-		score.setText((int) totalScore + "%");
+		score.setText((int) totalScore + "");
 		compeleteRatio.setText((int) progress + "%");
 
 		if ((int) progress == MAX_PROGRESS) {
@@ -277,16 +282,60 @@ public abstract class DiagramPlayBase extends Activity implements OnDragListener
 					container.setCorrectLabelList(correctTagList);
 					container.setIncorrectLabelList(incorrectTagList);
 
-					Intent intent = new Intent(getApplicationContext(),
-							DiagramResult.class);
-					intent.putExtra("SCORE", totalScore);
-					startActivity(intent);
+					HashMap<String, HashMap<String, Integer>> mylist = new HashMap<String, HashMap<String, Integer>>();
+
+					ResultContainer resultcontainer = ResultContainer
+							.getInstance();
+					// resultcontainer.setResults(results);
+
+					dispatch(totalScore);
+					
+					
 
 				}
 			}, 3000);
 
 		}
 
+	}
+
+	protected abstract void dispatch(float totalScore); 
+
+	/**
+	 * Update score and progress if quit playing
+	 * without completing all the tags
+	 *
+	 */
+	public void quitPlayUpdataProgress() {
+
+		final float progress;
+		final float totalScore;
+
+		totalScore = (float) correctLabeledCount / tagListSize * 100;
+		progress = (float) totalLabeledCount / tagListSize * 100;
+
+		score.setText((int) totalScore + "");
+		compeleteRatio.setText((int) progress + "%");
+
+		TagContainerSingleton container = TagContainerSingleton.getInstance();
+
+		for (int i = 0; i < incompleteTagList.size(); i++) {
+
+			TextView incompleteView = (TextView) findViewById(incompleteTagList
+					.valueAt(i));
+			incorrectTagList.add(incompleteView);
+		}
+
+		container.setCorrectLabelList(correctTagList);
+		container.setIncorrectLabelList(incorrectTagList);
+		
+		
+		dispatch(totalScore);
+		/*Intent intent = new Intent(getApplicationContext(),
+				DiagramResult.class);
+		intent.putExtra("SCORE", totalScore);
+		startActivity(intent);*/
+		
 	}
 
 	/**
@@ -376,9 +425,7 @@ public abstract class DiagramPlayBase extends Activity implements OnDragListener
 
 	@Override
 	public void onClick(View tagView) {
-		
+
 	}
-
-
 
 }

@@ -2,11 +2,13 @@ package com.buildmlearn.labeldiagram;
 
 import com.example.labelthediagram.R;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
@@ -43,11 +45,24 @@ public class DiagramFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, 
             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.diagram_fragment_view, container, false);
-        //populate layout here
+        
+        //Set font-face
         TextView diagramTxt=(TextView) view.findViewById(R.id.txt_diagram);
         Button startBtn=(Button) view.findViewById(R.id.go_diagram_btn);
         diagramTxt.setTypeface(tfThin);
         startBtn.setTypeface(tfThin);
+        
+        startBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				Intent intent = new Intent(getActivity(), DiagramPlayHumanEye.class);
+				startActivity(intent);
+			}
+		});
+        
+        
         return view;
     }
 }

@@ -142,9 +142,10 @@
             android:layout_marginRight="5dp"
             android:background="@color/tab_color"
             android:gravity="center"
-            
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:textColor="#ffff" 
-            android:text="Go Next" 
+            android:text="Next" 
             android:layout_marginBottom="5dp"/>
 
     </LinearLayout>

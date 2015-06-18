@@ -65,9 +65,19 @@ public class TagPlaceholderMapper {
 	 * Map correct draggable Tags(TextViews) to droppable place holders(ImageViews
 	 * in HumanHeart diagram
 	 */
-	private void getHumanHeartTagMap() {
-		// TODO Here goes the tag and place holder mapping of Human heart
+	private SparseIntArray getHumanHeartTagMap() {
 		
+		tagMapper.put(R.id.sup_vena_cavaBlb, R.id.sup_vena_cavaTag);
+		tagMapper.put(R.id.right_atriumBlb, R.id.right_atriunTag);
+		tagMapper.put(R.id.inf_vena_cavaBlb, R.id.inf_vena_cavaTag);
+		tagMapper.put(R.id.right_ventricleBlb, R.id.right_ventricleTag);
+		tagMapper.put(R.id.left_ventricleBlb, R.id.left_ventricleTag);
+		tagMapper.put(R.id.left_atriumBlb, R.id.left_atriumTag);
+		tagMapper.put(R.id.pul_arteryBulb, R.id.pul_arteryTag);
+		tagMapper.put(R.id.aortaBlb, R.id.aortaTag);
+		tagMapper.put(R.id.pul_veinBlb, R.id.pul_veinTag);
+		
+		return tagMapper;
 	}
 
 	/*

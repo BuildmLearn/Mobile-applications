@@ -38,6 +38,8 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
             android:layout_marginTop="4dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:src="@drawable/incorrect_btn" />
     </RelativeLayout>
 

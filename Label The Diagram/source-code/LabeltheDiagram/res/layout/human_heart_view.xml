@@ -54,7 +54,7 @@
                             android:textSize="16sp" />
 
                         <TextView
-                            android:id="@+id/textView1"
+                            android:id="@+id/score_saved"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.5"
@@ -104,7 +104,7 @@
                     android:layout_margin="2dp"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:text="Human Eye"
+                    android:text="Human Heart"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="#fff"
                     android:textSize="26sp" />
@@ -121,8 +121,8 @@
                 <ImageView
                     android:id="@+id/diagram_toselect"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/human_eye_unlabel" 
+                    android:layout_height="fill_parent"
+                    android:src="@drawable/human_heart_unlabel" 
                     android:layout_centerInParent="true"/>
 
             </RelativeLayout>

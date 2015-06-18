@@ -44,7 +44,7 @@ public class DiagramFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, 
             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.diagram_fragment_view, container, false);
+        View view = inflater.inflate(R.layout.human_eye_view, container, false);
         
         //Set font-face
         TextView diagramTxt=(TextView) view.findViewById(R.id.txt_diagram);

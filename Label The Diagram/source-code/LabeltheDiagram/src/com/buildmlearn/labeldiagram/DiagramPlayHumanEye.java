@@ -25,6 +25,7 @@ public class DiagramPlayHumanEye extends DiagramPlayBase {
 		setContentView(getResourcesId());
 
 		actionBar.setTitle("Human Eye");
+		setDiagramName("HumanEye");
 
 		// Score board textViews
 		TextView completeTxt = (TextView) findViewById(R.id.complatedTxt);

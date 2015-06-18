@@ -15,15 +15,19 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipDescription;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.DragEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
@@ -47,10 +51,12 @@ public abstract class DiagramPlayBase extends Activity implements
 	List<TextView> incorrectTagList;
 	PlaceHolderContainer container;
 	TagPlaceholderMapper tagPlaceholdermapper;
+	SharedPreferences preferences;
 
 	int correctLabeledCount = 0;
 	int totalLabeledCount = 0;
 	int tagListSize = 0;
+	String diagramName;
 	TextView compeleteRatio;
 	TextView score;
 	ActionBar actionBar;
@@ -85,10 +91,12 @@ public abstract class DiagramPlayBase extends Activity implements
 		tagPlaceholdermapper = new TagPlaceholderMapper();
 
 		tagListSize = tagPlaceHolderMap.size();
+		
+		preferences = getApplicationContext().getSharedPreferences(
+			      "com.buildmlearn.labeldiagram.PREFERENCE_FILE_KEY", Context.MODE_PRIVATE);
 
 	}
 
-	protected abstract int getResourcesId();
 
 	@Override
 	public boolean onLongClick(View textview) {
@@ -262,7 +270,7 @@ public abstract class DiagramPlayBase extends Activity implements
 		final float totalScore;
 		final int MAX_PROGRESS = 100;
 
-		totalScore = (float) correcTries / tagListSize * 100;
+		totalScore = (float) correcTries * 10;
 		progress = (float) totalTries / tagListSize * 100;
 
 		score.setText((int) totalScore + "");
@@ -282,11 +290,13 @@ public abstract class DiagramPlayBase extends Activity implements
 					container.setCorrectLabelList(correctTagList);
 					container.setIncorrectLabelList(incorrectTagList);
 
-					HashMap<String, HashMap<String, Integer>> mylist = new HashMap<String, HashMap<String, Integer>>();
-
-					ResultContainer resultcontainer = ResultContainer
-							.getInstance();
-					// resultcontainer.setResults(results);
+					float previousScore=preferences.getFloat(getDiagramName(), 0);
+					if(previousScore<totalScore){
+						SharedPreferences.Editor editor = preferences.edit();
+						editor.putFloat(getDiagramName(), totalScore);
+						editor.commit();
+					}
+					
 
 					dispatch(totalScore);
 					
@@ -311,7 +321,7 @@ public abstract class DiagramPlayBase extends Activity implements
 		final float progress;
 		final float totalScore;
 
-		totalScore = (float) correctLabeledCount / tagListSize * 100;
+		totalScore = (float) correctLabeledCount * 10;
 		progress = (float) totalLabeledCount / tagListSize * 100;
 
 		score.setText((int) totalScore + "");
@@ -329,6 +339,12 @@ public abstract class DiagramPlayBase extends Activity implements
 		container.setCorrectLabelList(correctTagList);
 		container.setIncorrectLabelList(incorrectTagList);
 		
+		float previousScore=preferences.getFloat(getDiagramName(), 0);
+		if(previousScore<totalScore){
+			SharedPreferences.Editor editor = preferences.edit();
+			editor.putFloat(getDiagramName(), totalScore);
+			editor.commit();
+		}
 		
 		dispatch(totalScore);
 		/*Intent intent = new Intent(getApplicationContext(),
@@ -427,5 +443,27 @@ public abstract class DiagramPlayBase extends Activity implements
 	public void onClick(View tagView) {
 
 	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	    // Respond to the action bar's Up/Home button
+	    case android.R.id.home:
+	        NavUtils.navigateUpFromSameTask(this);
+	        return true;
+	    }
+	    return super.onOptionsItemSelected(item);
+	}
 
+	protected abstract int getResourcesId();
+	
+	public String getDiagramName() {
+		return diagramName;
+	}
+
+	public void setDiagramName(String diagramName) {
+		this.diagramName = diagramName;
+	}
+
+	
 }

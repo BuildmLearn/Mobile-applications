@@ -128,6 +128,13 @@ public class DiagramResult extends Activity implements OnClickListener {
 				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 				startActivity(intent);
+			}else if(source.equals("DiagramPlayHumanHeart")){
+				Intent intent = new Intent(getApplicationContext(),
+						DiagramPlayHumanHeart.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+				startActivity(intent);
 			}
 			
 
@@ -136,8 +143,14 @@ public class DiagramResult extends Activity implements OnClickListener {
 		case R.id.nextButton:
 
 			Toast.makeText(getApplicationContext(),
-					"Dispatching to Diagram Menu", 1000).show();
-			// TODO Dispatching to Diagram menu goes here
+					"Dispatching to Diagram Menu", 200).show();
+			Intent intent = new Intent(getApplicationContext(),
+					DiagramCategory.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+			startActivity(intent);
+			
 			break;
 		default:
 			break;

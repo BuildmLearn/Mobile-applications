@@ -36,6 +36,9 @@ public class PlaceHolderContainer {
 				case "HumanEye":
 					getHumanEyeMarkerList();
 					break;
+				case "HumanHeart":
+					getHumanHeartMarkerList();
+					break;
 				case "HumanEar":
 					getHumanEarMarkerList();
 					break;
@@ -46,6 +49,25 @@ public class PlaceHolderContainer {
 		}else {
 			return null;
 		}
+	}
+
+	private List<Integer[]> getHumanHeartMarkerList() {
+
+		leftPlaceHolderList = new Integer[] { 
+				R.id.sup_vena_cavaBlb, R.id.right_atriumBlb,
+				R.id.inf_vena_cavaBlb
+		};
+		
+		rightPlaceHolderList = new Integer[]{
+				R.id.right_ventricleBlb,R.id.left_ventricleBlb,R.id.left_atriumBlb,
+				R.id.pul_arteryBulb,R.id.aortaBlb,R.id.pul_veinBlb,
+		};
+		
+		listHolder.add(leftPlaceHolderList);
+		listHolder.add(rightPlaceHolderList);
+		
+		return listHolder;
+		
 	}
 
 	/*
@@ -65,7 +87,7 @@ public class PlaceHolderContainer {
 
 		leftPlaceHolderList = new Integer[] { 
 				R.id.corneaBlb, R.id.ciliaryBodyBlb,
-				R.id.irisBlb,R.id.pupilBlb,R.id.lensBlb,R.id.vitreousBlb
+				R.id.pul_arteryBulb,R.id.pupilBlb,R.id.lensBlb,R.id.vitreousBlb
 		};
 		
 		rightPlaceHolderList = new Integer[]{

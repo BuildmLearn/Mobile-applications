@@ -84,7 +84,7 @@ public class DiagramPlay extends Activity implements OnDragListener,
 		score.setTypeface(tfThin);
 
 		// Placeholder imageViews
-		ImageView irisView = (ImageView) findViewById(R.id.irisBlb);
+		ImageView irisView = (ImageView) findViewById(R.id.pul_arteryBulb);
 		ImageView pupilView = (ImageView) findViewById(R.id.pupilBlb);
 		ImageView lensView = (ImageView) findViewById(R.id.lensBlb);
 		ImageView corneaView = (ImageView) findViewById(R.id.corneaBlb);

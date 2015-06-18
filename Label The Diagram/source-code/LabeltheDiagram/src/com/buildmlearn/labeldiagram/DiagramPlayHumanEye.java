@@ -176,7 +176,7 @@ public class DiagramPlayHumanEye extends DiagramPlayBase {
 	@Override
 	protected int getResourcesId() {
 
-		return R.layout.diagram_play;
+		return R.layout.diagram_play_eye;
 	}
 
 	@Override

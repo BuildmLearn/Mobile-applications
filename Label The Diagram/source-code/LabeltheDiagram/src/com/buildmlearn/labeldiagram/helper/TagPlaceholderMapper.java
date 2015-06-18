@@ -84,8 +84,20 @@ public class TagPlaceholderMapper {
 	 * Map correct draggable Tags(TextViews) to droppable place holders(ImageViews
 	 * in HumanEar diagram
 	 */
-	private void getHumanEarTagMap() {
-		// TODO Here goes the tag and place holder mapping of Human Ear
+	private SparseIntArray getHumanEarTagMap() {
+
+		tagMapper.put(R.id.pinnaBlb, R.id.pinnaTag);
+		tagMapper.put(R.id.earcanalBlb, R.id.ear_canalTag);
+		tagMapper.put(R.id.eardrumBlb, R.id.eardrumTag);
+		tagMapper.put(R.id.cochleaBlb, R.id.cochleaTag);
+		tagMapper.put(R.id.earnerveBlb, R.id.earnerveTag);
+		tagMapper.put(R.id.malleusBlb, R.id.malleusTag);
+		tagMapper.put(R.id.incusBlb, R.id.incusTag);
+		tagMapper.put(R.id.outerearBlb, R.id.outerearTag);
+		tagMapper.put(R.id.stapesBlb, R.id.stapesTag);
+		tagMapper.put(R.id.canalsBlb, R.id.canalsTag);
+		
+		return tagMapper;
 		
 	}
 

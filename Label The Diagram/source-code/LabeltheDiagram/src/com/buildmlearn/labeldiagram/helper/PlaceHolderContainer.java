@@ -75,8 +75,22 @@ public class PlaceHolderContainer {
 	 * of HumanEar diagram
 	 */
 	private List<Integer[]> getHumanEarMarkerList() {
-		// TODO Human Ear place holder list goes here
-		return null;
+		
+		leftPlaceHolderList = new Integer[] { 
+				R.id.pinnaBlb, R.id.malleusBlb,
+				R.id.outerearBlb
+		};
+		
+		rightPlaceHolderList = new Integer[]{
+				R.id.earcanalBlb,R.id.eardrumBlb,R.id.cochleaBlb,
+				R.id.earnerveBlb,R.id.incusBlb,R.id.stapesBlb,
+				R.id.canalsBlb
+		};
+		
+		listHolder.add(leftPlaceHolderList);
+		listHolder.add(rightPlaceHolderList);
+		
+		return listHolder;
 	}
 
 	/*

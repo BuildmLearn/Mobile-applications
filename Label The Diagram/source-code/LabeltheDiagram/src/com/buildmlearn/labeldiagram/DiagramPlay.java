@@ -57,7 +57,7 @@ public class DiagramPlay extends Activity implements OnDragListener,
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.diagram_play);
+		setContentView(R.layout.diagram_play_eye);
 
 		// Enabling ActionBar
 		ActionBar actionBar = getActionBar();

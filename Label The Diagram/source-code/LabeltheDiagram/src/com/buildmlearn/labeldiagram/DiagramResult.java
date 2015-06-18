@@ -135,6 +135,13 @@ public class DiagramResult extends Activity implements OnClickListener {
 				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 				startActivity(intent);
+			}else if(source.equals("DiagramPlayHumanEar")){
+				Intent intent = new Intent(getApplicationContext(),
+						DiagramPlayHumanEar.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+				startActivity(intent);
 			}
 			
 

@@ -1,5 +1,6 @@
 package com.buildmlearn.labeldiagram;
 
+import com.buildmlearn.labeldiagram.resources.HumanEarFragment;
 import com.buildmlearn.labeldiagram.resources.HumanEyeFragment;
 import com.buildmlearn.labeldiagram.resources.HumanHeartFragment;
 import com.example.labelthediagram.R;
@@ -19,11 +20,14 @@ public class DiagramMenuHuman extends FragmentActivity {
 	FragmentPagerAdapter adapterViewPager;
 	static float scoreHumanEye;
 	static float scoreHumanHeart;
+	static float scoreHumanEar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.diagram_menu);
+		
 		ViewPager vpPager = (ViewPager) findViewById(R.id.diagrampager);
 		adapterViewPager = new HumanBodyPagerAdapter(
 				getSupportFragmentManager());
@@ -42,6 +46,7 @@ public class DiagramMenuHuman extends FragmentActivity {
 				Context.MODE_PRIVATE);
 		scoreHumanEye = pref.getFloat("HumanEye", 0);
 		scoreHumanHeart = pref.getFloat("HumanHeart", 0);
+		scoreHumanEar = pref.getFloat("HumanEar", 0);
 	}
 
 	public static class HumanBodyPagerAdapter extends FragmentPagerAdapter {
@@ -77,7 +82,10 @@ public class DiagramMenuHuman extends FragmentActivity {
 				heartFrag.setArguments(bundle);
 				return heartFrag;
 			case 2:
-				return DiagramFragment.getInstance(3);
+				HumanEarFragment earFrag = new HumanEarFragment();
+				bundle.putFloat("SCORE_SAVED", scoreHumanEar);
+				earFrag.setArguments(bundle);
+				return earFrag;
 			default:
 				return null;
 			}

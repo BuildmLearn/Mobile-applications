@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.buildmlearn.labeldiagram.DiagramMenu;
 import com.buildmlearn.labeldiagram.DiagramMenuHuman;
+import com.buildmlearn.labeldiagram.DiagramMenuMicroogranisms;
 import com.buildmlearn.labeldiagram.DiagramMenuPlants;
 import com.buildmlearn.labeldiagram.DiagramPlay;
 import com.buildmlearn.labeldiagram.DiagramPlayBase;
@@ -103,11 +104,13 @@ public class DiagramCategoryAdapter extends ArrayAdapter<DiagramCategoryRawItem>
 					v.getContext().startActivity(intent);
 					
 				}else if(index==1){
-					Toast.makeText(getContext(), "Dispatching to Plants Play screen", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getContext(), "Dispatching to Plants screen", Toast.LENGTH_SHORT).show();
 					Intent intent = new Intent(v.getContext(), DiagramMenuPlants.class);
 					v.getContext().startActivity(intent);
 				}else if(index==2){
-					Toast.makeText(getContext(), "Comming soon...", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getContext(), "Dispatching to  Microorganisms screen", Toast.LENGTH_SHORT).show();
+					Intent intent = new Intent(v.getContext(), DiagramMenuMicroogranisms.class);
+					v.getContext().startActivity(intent);
 				}else{
 					Toast.makeText(getContext(), "Comming soon...", Toast.LENGTH_SHORT).show();
 				} 

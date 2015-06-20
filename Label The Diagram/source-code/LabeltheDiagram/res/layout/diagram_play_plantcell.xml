@@ -87,7 +87,7 @@
         android:src="@drawable/holder" />
 
     <ImageView
-        android:id="@+id/ribosomeBlb"
+        android:id="@+id/ribosomesBlb"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignLeft="@+id/mainDiagramPlantCell"
@@ -100,8 +100,8 @@
         android:id="@+id/smootherBlb"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_alignLeft="@+id/ribosomeBlb"
-        android:layout_below="@+id/ribosomeBlb"
+        android:layout_alignLeft="@+id/ribosomesBlb"
+        android:layout_below="@+id/ribosomesBlb"
         android:layout_marginTop="27dp"
         android:src="@drawable/marker" />
 
@@ -155,7 +155,7 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignRight="@+id/mainDiagramPlantCell"
-        android:layout_below="@+id/ribosomeBlb"
+        android:layout_below="@+id/ribosomesBlb"
         android:layout_marginRight="10dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/marker" />

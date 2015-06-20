@@ -37,7 +37,10 @@ public class TagPlaceholderMapper {
 				getPlantCellTagMap();
 				break;
 			case "PlantFlower":
-				getPlantFloweragMap();
+				getPlantFlowerTagMap();
+				break;
+			case "Bacteria":
+				getBacteriaTagMap();
 				break;
 			
 			}
@@ -48,9 +51,31 @@ public class TagPlaceholderMapper {
 	
 	/*
 	 * Map correct draggable Tags(TextViews) to droppable place holders(ImageViews
+	 * in Bacteria diagram
+	 */
+	private SparseIntArray getBacteriaTagMap() {
+
+		tagMapper.put(R.id.chromosomeBlb, R.id.chromosomeTag);
+		tagMapper.put(R.id.ribosomesBlb, R.id.ribosomesTag);
+		tagMapper.put(R.id.food_granuleBlb, R.id.food_granuleTag);
+		tagMapper.put(R.id.piliBlb, R.id.piliTag);
+		tagMapper.put(R.id.flagellumBlb, R.id.flagellumTag);
+		tagMapper.put(R.id.plasmidBlb, R.id.plasmidTag);
+		tagMapper.put(R.id.capsuleBlb, R.id.capsuleTag);
+		tagMapper.put(R.id.cellwallBlb, R.id.cellwallTag);
+		tagMapper.put(R.id.cytoplasmBlb, R.id.cytoplasmTag);
+		tagMapper.put(R.id.plasma_membraneBlb, R.id.plasma_membraneTag);
+		
+		return tagMapper;
+
+		
+	}
+
+	/*
+	 * Map correct draggable Tags(TextViews) to droppable place holders(ImageViews
 	 * in PlantFlower diagram
 	 */
-	private SparseIntArray getPlantFloweragMap() {
+	private SparseIntArray getPlantFlowerTagMap() {
 
 		tagMapper.put(R.id.antherBlb, R.id.antherTag);
 		tagMapper.put(R.id.petalBlb, R.id.petalTag);
@@ -73,7 +98,7 @@ public class TagPlaceholderMapper {
 	 */
 	private SparseIntArray getPlantCellTagMap() {
 
-		tagMapper.put(R.id.ribosomeBlb, R.id.ribosomeTag);
+		tagMapper.put(R.id.ribosomesBlb, R.id.ribosomeTag);
 		tagMapper.put(R.id.smootherBlb, R.id.smootherTag);
 		tagMapper.put(R.id.rougherBlb, R.id.rougherTag);
 		tagMapper.put(R.id.nucleusBlb, R.id.nucleusTag);

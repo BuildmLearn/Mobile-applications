@@ -48,6 +48,9 @@ public class PlaceHolderContainer {
 				case "PlantFlower":
 					getPlantFlowerMarkerList();
 					break;
+				case "Bacteria":
+					getBacteriaMarkerList();
+					break;
 				// TODO The other diagrams goes here
 
 			}
@@ -55,6 +58,24 @@ public class PlaceHolderContainer {
 		}else {
 			return null;
 		}
+	}
+
+	private List<Integer[]> getBacteriaMarkerList() {
+		
+		leftPlaceHolderList = new Integer[] { 
+				R.id.piliBlb, R.id.food_granuleBlb,
+				R.id.ribosomesBlb,R.id.chromosomeBlb
+		};
+		
+		rightPlaceHolderList = new Integer[]{
+				R.id.flagellumBlb,R.id.plasmidBlb,R.id.cytoplasmBlb,
+				R.id.plasma_membraneBlb,R.id.cellwallBlb,R.id.capsuleBlb
+		};
+		
+		listHolder.add(leftPlaceHolderList);
+		listHolder.add(rightPlaceHolderList);
+		
+		return listHolder;
 	}
 
 	private List<Integer[]> getPlantFlowerMarkerList() {
@@ -79,7 +100,7 @@ public class PlaceHolderContainer {
 	private List<Integer[]> getPlantCellMarkerList() {
 		
 		leftPlaceHolderList = new Integer[] { 
-				R.id.ribosomeBlb, R.id.smootherBlb,
+				R.id.ribosomesBlb, R.id.smootherBlb,
 				R.id.rougherBlb,R.id.nucleusBlb,R.id.golgi_complexBlb
 		};
 		

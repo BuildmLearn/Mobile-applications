@@ -40,7 +40,7 @@ public class DiagramPlayPlantCell extends DiagramPlayBase{
 		score.setTypeface(tfThin);
 		
 		// Placeholder imageViews
-		ImageView ribosomeView = (ImageView) findViewById(R.id.ribosomeBlb);
+		ImageView ribosomeView = (ImageView) findViewById(R.id.ribosomesBlb);
 		ImageView smootherView = (ImageView) findViewById(R.id.smootherBlb);
 		ImageView rougherView = (ImageView) findViewById(R.id.rougherBlb);
 		ImageView nucleusView = (ImageView) findViewById(R.id.nucleusBlb);

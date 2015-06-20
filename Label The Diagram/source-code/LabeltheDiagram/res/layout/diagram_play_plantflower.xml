@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/scoreTab"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/tab_color" >
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/appBg_color" />
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/scoreTxt"
+            android:layout_alignBottom="@+id/scoreTxt"
+            android:layout_marginLeft="18dp"
+            android:layout_toRightOf="@+id/scoreTxt"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/complete_ratio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complatedTxt"
+            android:layout_alignBottom="@+id/complatedTxt"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/complatedTxt"
+            android:text=" 0%"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/complatedTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="Complete :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/scoreTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complete_ratio"
+            android:layout_alignBottom="@+id/complete_ratio"
+            android:layout_marginLeft="24dp"
+            android:layout_toRightOf="@+id/view1"
+            android:text="Score   :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/tagHolder"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/holder" />
+
+    <ImageView
+        android:id="@+id/mainDiagramPlantCell"
+        android:layout_width="320dp"
+        android:layout_height="300dp"
+        android:layout_above="@+id/tagHolder"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/plant_flower" />
+
+    <ImageView
+        android:id="@+id/antherBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramPlantCell"
+        android:layout_below="@+id/scoreTab"
+        android:layout_marginLeft="73dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/petalBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/mainDiagramPlantCell"
+        android:layout_alignLeft="@+id/mainDiagramPlantCell"
+        android:layout_marginBottom="97dp"
+        android:layout_marginLeft="35dp"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/receptacleBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignTop="@+id/petalBlb"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="47dp"
+        android:layout_toRightOf="@+id/antherBlb"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/pedicelBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/receptacleBlb"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/stigmaBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/scoreTab"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_toRightOf="@+id/receptacleBlb"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/styleBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/antherBlb"
+        android:layout_marginBottom="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_toRightOf="@+id/pedicelBlb"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/overyBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/styleBlb"
+        android:layout_marginLeft="11dp"
+        android:layout_toRightOf="@+id/styleBlb"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/filamentBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_above="@+id/receptacleBlb"
+        android:layout_marginBottom="7dp"
+        android:layout_toRightOf="@+id/overyBlb"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/sepalBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/filamentBlb"
+        android:layout_alignTop="@+id/petalBlb"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="7dp"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/ovuleBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_above="@+id/pedicelBlb"
+        android:layout_alignLeft="@+id/styleBlb"
+        android:layout_marginLeft="8dp"
+        android:src="@drawable/marker" />
+
+    <TextView
+        android:id="@+id/receptacleTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/sepalTag"
+        android:layout_alignLeft="@+id/filamentTag"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="receptacle"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/ovuleTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/receptacleTag"
+        android:layout_alignBottom="@+id/receptacleTag"
+        android:layout_alignRight="@+id/pedicelTag"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="ovule"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/overyTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/petalTag"
+        android:layout_below="@+id/petalTag"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="ovary"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/stigmaTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/sepalTag"
+        android:layout_alignLeft="@+id/antherTag"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="stigma"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/styleTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/sepalTag"
+        android:layout_alignBottom="@+id/sepalTag"
+        android:layout_alignLeft="@+id/stigmaTag"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="style"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/antherTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/petalBlb"
+        android:layout_alignTop="@+id/tagHolder"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="anther"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/pedicelTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/overyTag"
+        android:layout_toRightOf="@+id/receptacleTag"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="pedicel"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/petalTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/antherTag"
+        android:layout_alignBottom="@+id/antherTag"
+        android:layout_toLeftOf="@+id/stigmaBlb"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="petal"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/filamentTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/overyTag"
+        android:layout_alignLeft="@+id/pedicelBlb"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="filament"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/sepalTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/overyTag"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@+id/stigmaTag"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="sepal"
+        android:textColor="#ffff" />
+
+</RelativeLayout>

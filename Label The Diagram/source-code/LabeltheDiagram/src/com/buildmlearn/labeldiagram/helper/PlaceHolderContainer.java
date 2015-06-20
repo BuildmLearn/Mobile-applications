@@ -42,6 +42,12 @@ public class PlaceHolderContainer {
 				case "HumanEar":
 					getHumanEarMarkerList();
 					break;
+				case "PlantCell":
+					getPlantCellMarkerList();
+					break;
+				case "PlantFlower":
+					getPlantFlowerMarkerList();
+					break;
 				// TODO The other diagrams goes here
 
 			}
@@ -49,6 +55,43 @@ public class PlaceHolderContainer {
 		}else {
 			return null;
 		}
+	}
+
+	private List<Integer[]> getPlantFlowerMarkerList() {
+		
+		leftPlaceHolderList = new Integer[] { 
+				R.id.stigmaBlb, R.id.antherBlb,
+				R.id.petalBlb,R.id.receptacleBlb,R.id.pedicelBlb
+		};
+		
+		rightPlaceHolderList = new Integer[]{
+				R.id.styleBlb,R.id.overyBlb,R.id.filamentBlb,
+				R.id.sepalBlb,R.id.ovuleBlb
+		};
+		
+		listHolder.add(leftPlaceHolderList);
+		listHolder.add(rightPlaceHolderList);
+		
+		return listHolder;
+		
+	}
+
+	private List<Integer[]> getPlantCellMarkerList() {
+		
+		leftPlaceHolderList = new Integer[] { 
+				R.id.ribosomeBlb, R.id.smootherBlb,
+				R.id.rougherBlb,R.id.nucleusBlb,R.id.golgi_complexBlb
+		};
+		
+		rightPlaceHolderList = new Integer[]{
+				R.id.vacuoleTag,R.id.cellwallTag,R.id.cell_membraneTag,
+				R.id.mitochondiumTag,R.id.chloroplastTag
+		};
+		
+		listHolder.add(leftPlaceHolderList);
+		listHolder.add(rightPlaceHolderList);
+		
+		return listHolder;
 	}
 
 	private List<Integer[]> getHumanHeartMarkerList() {

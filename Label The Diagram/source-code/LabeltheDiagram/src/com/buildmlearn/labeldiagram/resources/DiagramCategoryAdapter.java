@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.buildmlearn.labeldiagram.DiagramMenu;
 import com.buildmlearn.labeldiagram.DiagramMenuHuman;
+import com.buildmlearn.labeldiagram.DiagramMenuPlants;
 import com.buildmlearn.labeldiagram.DiagramPlay;
 import com.buildmlearn.labeldiagram.DiagramPlayBase;
 import com.buildmlearn.labeldiagram.DiagramPlayHumanEye;
@@ -103,10 +104,12 @@ public class DiagramCategoryAdapter extends ArrayAdapter<DiagramCategoryRawItem>
 					
 				}else if(index==1){
 					Toast.makeText(getContext(), "Dispatching to Plants Play screen", Toast.LENGTH_SHORT).show();
+					Intent intent = new Intent(v.getContext(), DiagramMenuPlants.class);
+					v.getContext().startActivity(intent);
 				}else if(index==2){
-					Toast.makeText(getContext(), "Dispatching to Micro-organisms Play screen", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getContext(), "Comming soon...", Toast.LENGTH_SHORT).show();
 				}else{
-					Toast.makeText(getContext(), "Dispatching to Natural Cycles Play screen", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getContext(), "Comming soon...", Toast.LENGTH_SHORT).show();
 				} 
 			}
 		});

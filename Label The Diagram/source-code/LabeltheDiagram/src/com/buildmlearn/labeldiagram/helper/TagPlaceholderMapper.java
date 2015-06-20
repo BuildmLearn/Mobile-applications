@@ -33,6 +33,12 @@ public class TagPlaceholderMapper {
 			case "HumanHeart":
 				getHumanHeartTagMap();
 				break;
+			case "PlantCell":
+				getPlantCellTagMap();
+				break;
+			case "PlantFlower":
+				getPlantFloweragMap();
+				break;
 			
 			}
 		}
@@ -40,6 +46,48 @@ public class TagPlaceholderMapper {
 		return tagMapper;
 	}
 	
+	/*
+	 * Map correct draggable Tags(TextViews) to droppable place holders(ImageViews
+	 * in PlantFlower diagram
+	 */
+	private SparseIntArray getPlantFloweragMap() {
+
+		tagMapper.put(R.id.antherBlb, R.id.antherTag);
+		tagMapper.put(R.id.petalBlb, R.id.petalTag);
+		tagMapper.put(R.id.receptacleBlb, R.id.receptacleTag);
+		tagMapper.put(R.id.pedicelBlb, R.id.pedicelTag);
+		tagMapper.put(R.id.stigmaBlb, R.id.stigmaTag);
+		tagMapper.put(R.id.styleBlb, R.id.styleTag);
+		tagMapper.put(R.id.overyBlb, R.id.overyTag);
+		tagMapper.put(R.id.filamentBlb, R.id.filamentTag);
+		tagMapper.put(R.id.sepalBlb, R.id.sepalTag);
+		tagMapper.put(R.id.ovuleBlb, R.id.ovuleTag);
+		
+		return tagMapper;
+		
+	}
+
+	/*
+	 * Map correct draggable Tags(TextViews) to droppable place holders(ImageViews
+	 * in PlantCell diagram
+	 */
+	private SparseIntArray getPlantCellTagMap() {
+
+		tagMapper.put(R.id.ribosomeBlb, R.id.ribosomeTag);
+		tagMapper.put(R.id.smootherBlb, R.id.smootherTag);
+		tagMapper.put(R.id.rougherBlb, R.id.rougherTag);
+		tagMapper.put(R.id.nucleusBlb, R.id.nucleusTag);
+		tagMapper.put(R.id.vacuoleBlb, R.id.vacuoleTag);
+		tagMapper.put(R.id.cellwallBlb, R.id.cellwallTag);
+		tagMapper.put(R.id.cell_membraneBlb, R.id.cell_membraneTag);
+		tagMapper.put(R.id.mitochondriumBlb, R.id.mitochondiumTag);
+		tagMapper.put(R.id.chloroplastBlb, R.id.chloroplastTag);
+		tagMapper.put(R.id.golgi_complexBlb, R.id.golgi_complexTag);
+		
+		return tagMapper;
+		
+	}
+
 	/*
 	 * Map correct draggable Tags(TextViews) to droppable place holders(ImageViews
 	 * in HumanEye diagram

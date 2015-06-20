@@ -97,7 +97,7 @@ public class DiagramMenuHuman extends FragmentActivity {
 
 		@Override
 		public float getPageWidth(int position) {
-			return 0.90f;
+			return 1.0f;
 		}
 
 	}

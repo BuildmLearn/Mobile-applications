@@ -36,7 +36,6 @@
                 android:value="com.buildmlearn.labeldiagram.MainMenu" >
             </meta-data>
         </activity>
-        
         <activity
             android:name="com.buildmlearn.labeldiagram.DiagramPlay"
             android:configChanges="orientation"
@@ -47,7 +46,6 @@
                 android:value="com.buildmlearn.labeldiagram.DiagramCategory" >
             </meta-data>
         </activity>
-        
         <activity
             android:name="com.buildmlearn.labeldiagram.DiagramResult"
             android:parentActivityName="com.buildmlearn.labeldiagram.DiagramCategory" >
@@ -83,8 +81,28 @@
                 android:value="com.buildmlearn.labeldiagram.DiagramMenu" >
             </meta-data>
         </activity>
-         <activity
+        <activity
             android:name="com.buildmlearn.labeldiagram.DiagramPlayHumanEar"
+            android:configChanges="orientation"
+            android:parentActivityName="com.buildmlearn.labeldiagram.DiagramMenu"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.buildmlearn.labeldiagram.DiagramMenu" >
+            </meta-data>
+        </activity>
+        <activity
+            android:name="com.buildmlearn.labeldiagram.DiagramPlayPlantCell"
+            android:configChanges="orientation"
+            android:parentActivityName="com.buildmlearn.labeldiagram.DiagramMenu"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.buildmlearn.labeldiagram.DiagramMenu" >
+            </meta-data>
+        </activity>
+        <activity
+            android:name="com.buildmlearn.labeldiagram.DiagramPlayPlantFlower"
             android:configChanges="orientation"
             android:parentActivityName="com.buildmlearn.labeldiagram.DiagramMenu"
             android:screenOrientation="portrait" >
@@ -101,14 +119,17 @@
                 android:value="com.buildmlearn.labeldiagram.DiagramCategory" >
             </meta-data>
         </activity>
-        <activity android:name="com.buildmlearn.labeldiagram.DiagramMenuHuman"
-            android:parentActivityName="com.buildmlearn.labeldiagram.DiagramCategory"
-            android:launchMode="standard" >
+        <activity
+            android:name="com.buildmlearn.labeldiagram.DiagramMenuHuman"
+            android:launchMode="standard"
+            android:parentActivityName="com.buildmlearn.labeldiagram.DiagramCategory" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.buildmlearn.labeldiagram.DiagramCategory" >
-            </meta-data>>
-            </activity>      "
+            </meta-data>
+        </activity>
+        <activity android:name="com.buildmlearn.labeldiagram.DiagramMenuPlants" >
+        </activity>
     </application>
 
 </manifest>

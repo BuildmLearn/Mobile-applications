@@ -17,68 +17,87 @@ import android.widget.Toast;
 
 import org.buildmlearn.practicehandwriting.R;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 
 public class DrawingView extends View {
+    //TODO add comments
+
     //drawing path
-    private Path drawPath;
+    private Path mDrawPath;
     //drawing and canvas paint
-    private Paint drawPaint, canvasPaint;
-    //colour
-    private int touch_colour = 0xFFFF0000; //Red is more visible against the background
+    private Paint mDrawPaint, mCanvasPaint;
     //canvas
-    private Canvas drawCanvas;
+    private Canvas mDrawCanvas;
     //canvas bitmap
-    private Bitmap canvasBitmap;
+    private Bitmap mCanvasBitmap;
     //Canvas width and height
-    private int width;
-    private int height;
+    private int mWidth;
+    private int mHeight;
 
-    private Vibrator vibrator;
+    private Vibrator mVibrator;
 
-    private long wrongTouches;
-    private long correctTouches;
+    private long mWrongTouches;
+    private long mCorrectTouches;
 
-    private boolean mDraw;
+    private boolean mDraw, mVibrate;
 
-    private long vibrationStartTime;
+    private long mVibrationStartTime;
 
-    private Toast errorToast;
+    private Toast mErrorToast;
+
+    private int minX, minY, maxX, maxY;
+
+    private ArrayList<ArrayList<Integer>> mTouches;
 
 
     public DrawingView(Context context,AttributeSet attrs) {
         super(context,attrs);
-        vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-
-        //getting height and width of the current display
+        mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+        //Getting display width and height
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-        width = metrics.widthPixels;
-        height = metrics.heightPixels;
-        canvasBitmap = Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888);
-        drawCanvas = new Canvas(canvasBitmap);
+        mWidth = metrics.widthPixels;
+        mHeight = metrics.heightPixels;
+        clearCanvas();
 
-        errorToast = new Toast(context);
-        errorToast.setGravity(Gravity.CENTER_HORIZONTAL, 0, height/4);
-        errorToast.setDuration(Toast.LENGTH_SHORT);
-        errorToast.setView(((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.toast,
+        mErrorToast = new Toast(context);
+        mErrorToast.setGravity(Gravity.CENTER_HORIZONTAL, 0, mHeight / 4);
+        mErrorToast.setDuration(Toast.LENGTH_SHORT);
+        mErrorToast.setView(((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.toast,
                 (ViewGroup) findViewById(R.id.toast_layout_root)));
 
         setupDrawing();
     }
 
     public void setBitmap(Bitmap b) {
-        canvasBitmap = Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888);
-        drawCanvas = new Canvas(canvasBitmap);
-        drawCanvas.drawBitmap(b, (width - b.getWidth()) / 2,(height - b.getHeight()) / 2, canvasPaint);
+        clearCanvas();
+        mDrawCanvas.drawBitmap(b, (mWidth - b.getWidth()) / 2, (mHeight - b.getHeight()) / 2, mCanvasPaint);
+        invalidate();
+    }
+
+    public ArrayList getTouchesList() {
+        return mTouches;
+    }
+
+    public Bitmap getTouchesBitmap() {
+        if(minX!=mWidth && minY!=mHeight && maxX!=-1 && maxY!=-1)
+            return Bitmap.createBitmap(mCanvasBitmap,Math.max(minX - 30, 0),Math.max(minY -30,0),Math.min(maxX - minX +40, mWidth - minX),Math.min(maxY - minY +40, mHeight - minY));
+        else
+            return Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_8888);
+    }
+
+    public void clearCanvas() {
+        mCanvasBitmap = Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_8888);
+        mDrawCanvas = new Canvas(mCanvasBitmap);
         invalidate();
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         //draw view
-        canvas.drawBitmap(canvasBitmap, 0,0, canvasPaint);
-        canvas.drawPath(drawPath, drawPaint);
+        canvas.drawBitmap(mCanvasBitmap, 0,0, mCanvasPaint);
+        canvas.drawPath(mDrawPath, mDrawPaint);
     }
 
     @Override
@@ -89,34 +108,47 @@ public class DrawingView extends View {
             float touchY = event.getY();
 
             // mapping screen touch co-ordinates to image pixel co-ordinates
-            int x = (int) (touchX * canvasBitmap.getWidth() / width);
-            int y = (int) (touchY * canvasBitmap.getHeight() / height);
+            int x = (int) (touchX * mCanvasBitmap.getWidth() / mWidth);
+            int y = (int) (touchY * mCanvasBitmap.getHeight() / mHeight);
+            mTouches.get(0).add(x);
+            mTouches.get(1).add(y);
 
-            if ((x >= 0 && x < width && y >= 0 && y < height && canvasBitmap.getPixel(x, y) == 0) || (x < 0 || x >= width || y < 0 || y >= height)) {
-                vibrator.vibrate(100);
-                wrongTouches++;
-                if(vibrationStartTime == 0) {
-                    vibrationStartTime = new Date().getTime();
-                    errorToast.cancel();
-                } else if(new Date().getTime() - vibrationStartTime > 1000 && errorToast.getView().getWindowVisibility() != View.VISIBLE) {
-                    errorToast.show();
+            if(x < minX)
+                minX = x;
+            if(x > maxX)
+                maxX = x;
+            if(y < minY)
+                minY = y;
+            if(y > maxY)
+                maxY = y;
+
+            if(mVibrate) {
+                if ((x >= 0 && x < mWidth && y >= 0 && y < mHeight && mCanvasBitmap.getPixel(x, y) == 0) || (x < 0 || x >= mWidth || y < 0 || y >= mHeight)) {
+                    mVibrator.vibrate(100);
+                    mWrongTouches++;
+                    if (mVibrationStartTime == 0) {
+                        mVibrationStartTime = new Date().getTime();
+                        mErrorToast.cancel();
+                    } else if (new Date().getTime() - mVibrationStartTime > 1000 && mErrorToast.getView().getWindowVisibility() != View.VISIBLE) {
+                        mErrorToast.show();
+                    }
+                } else {
+                    mVibrationStartTime = 0;
+                    mCorrectTouches++;
                 }
-            } else {
-                vibrationStartTime = 0;
-                correctTouches++;
             }
 
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
-                    drawPath.moveTo(touchX, touchY);
+                    mDrawPath.moveTo(touchX, touchY);
                     break;
                 case MotionEvent.ACTION_MOVE:
-                    drawPath.lineTo(touchX, touchY);
+                    mDrawPath.lineTo(touchX, touchY);
                     break;
                 case MotionEvent.ACTION_UP:
-                    vibrationStartTime = 0;
-                    drawCanvas.drawPath(drawPath, drawPaint);
-                    drawPath.reset();
+                    mVibrationStartTime = 0;
+                    mDrawCanvas.drawPath(mDrawPath, mDrawPaint);
+                    mDrawPath.reset();
                     break;
                 default:
                     return false;
@@ -129,19 +161,32 @@ public class DrawingView extends View {
 
     public void setupDrawing() {
         //get drawing area setup for interaction
-        drawPath = new Path();
-        drawPaint = new Paint();
-        drawPaint.setColor(touch_colour);
-        drawPaint.setAntiAlias(true);
-        drawPaint.setStrokeWidth(15);
-        drawPaint.setStyle(Paint.Style.STROKE);
-        drawPaint.setStrokeJoin(Paint.Join.ROUND);
-        drawPaint.setStrokeCap(Paint.Cap.ROUND);
-        canvasPaint = new Paint(Paint.DITHER_FLAG);
-        correctTouches = 0;
-        wrongTouches = 0;
+        mDrawPath = new Path();
+        mDrawPaint = new Paint();
+        mDrawPaint.setColor(getResources().getColor(R.color.Red));
+        mDrawPaint.setAntiAlias(true);
+        mDrawPaint.setStrokeWidth(15);
+        mDrawPaint.setStyle(Paint.Style.STROKE);
+        mDrawPaint.setStrokeJoin(Paint.Join.ROUND);
+        mDrawPaint.setStrokeCap(Paint.Cap.ROUND);
+        mCanvasPaint = new Paint(Paint.DITHER_FLAG);
+        mCorrectTouches = 0;
+        mWrongTouches = 0;
         mDraw = true;
-        vibrationStartTime = 0;
+        mVibrationStartTime = 0;
+
+        minX = mWidth;
+        maxX = -1;
+        minY = mHeight;
+        maxY = -1;
+
+        mTouches = new ArrayList<>(2);
+        mTouches.add(new ArrayList<Integer>());
+        mTouches.add(new ArrayList<Integer>());
+    }
+
+    public void canVibrate(boolean vibrate){
+        mVibrate = vibrate;
     }
 
     public void canDraw(boolean draw) {
@@ -149,6 +194,6 @@ public class DrawingView extends View {
     }
 
     public float score() {
-        return (correctTouches+wrongTouches!=0)?100*correctTouches/(correctTouches+wrongTouches):0;
+        return (mCorrectTouches + mWrongTouches !=0)?100* mCorrectTouches /(mCorrectTouches + mWrongTouches):0;
     }
 }

@@ -25,14 +25,17 @@ public class MainMenuActivity extends Activity {
         switch(view.getId()) {
             case R.id.character_button:
                 intent = new Intent(this, CharacterSelectionActivity.class);
+                intent.putExtra(getResources().getString(R.string.practice_mode),getResources().getString(R.string.practice));
                 break;
 
             case R.id.word_button:
                 intent = new Intent(this, WordSelectionActivity.class);
+                intent.putExtra(getResources().getString(R.string.practice_mode),getResources().getString(R.string.practice));
                 break;
 
             case R.id.freehand_button:
-                intent = new Intent(this, IncompleteActivity.class);
+                intent = new Intent(this, CharacterSelectionActivity.class);
+                intent.putExtra(getResources().getString(R.string.practice_mode),getResources().getString(R.string.freehand));
                 break;
 
             case R.id.timetrial_button:

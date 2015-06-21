@@ -38,7 +38,7 @@
         android:id="@+id/drawing"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/AppBg"/>
+        android:background="@color/Transparent"/>
 
     <com.software.shell.fab.ActionButton
         android:id="@+id/done_save_button"

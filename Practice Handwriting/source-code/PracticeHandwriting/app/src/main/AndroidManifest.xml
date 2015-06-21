@@ -3,8 +3,8 @@
     package="org.buildmlearn.practicehandwriting" >
 
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -31,10 +31,6 @@
         <activity
             android:name=".IncompleteActivity"
             android:label="@string/title_activity_incomplete" >
-        </activity>
-        <activity
-            android:name=".ModeSelectionActivity"
-            android:label="@string/title_activity_mode_selection" >
         </activity>
         <activity
             android:name=".CharacterSelectionActivity"

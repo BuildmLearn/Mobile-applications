@@ -48,7 +48,7 @@ public class WordSelectionActivity extends Activity {
                 break;
         }
         intent.putExtra(getResources().getString(R.string.practice_string), wordList[new Random().nextInt(wordList.length)]);
-
+        intent.putExtra(getResources().getString(R.string.practice_mode),getIntent().getStringExtra(getResources().getString(R.string.practice_mode)));
         startActivity(intent);
     }
 }

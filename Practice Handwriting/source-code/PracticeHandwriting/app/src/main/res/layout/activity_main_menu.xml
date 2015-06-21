@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/AppBg"
-    tools:context="org.buildmlearn.practicehandwriting.MainMenuActivity">
+    tools:context="org.buildmlearn.practicehandwriting.activities.MainMenuActivity">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"

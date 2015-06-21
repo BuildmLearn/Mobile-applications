@@ -1,7 +1,9 @@
-package org.buildmlearn.practicehandwriting;
+package org.buildmlearn.practicehandwriting.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+
+import org.buildmlearn.practicehandwriting.R;
 
 
 public class IncompleteActivity extends ActionBarActivity {

@@ -1,4 +1,4 @@
-package org.buildmlearn.practicehandwriting;
+package org.buildmlearn.practicehandwriting.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import org.buildmlearn.practicehandwriting.practice.PracticeActivity;
+import org.buildmlearn.practicehandwriting.R;
 
 import java.util.Random;
 

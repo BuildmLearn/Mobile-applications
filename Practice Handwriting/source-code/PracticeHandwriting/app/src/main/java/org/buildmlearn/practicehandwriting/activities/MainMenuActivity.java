@@ -1,9 +1,11 @@
-package org.buildmlearn.practicehandwriting;
+package org.buildmlearn.practicehandwriting.activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import org.buildmlearn.practicehandwriting.R;
 
 
 public class MainMenuActivity extends Activity {

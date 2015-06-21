@@ -1,12 +1,7 @@
-package org.buildmlearn.practicehandwriting.practice;
+package org.buildmlearn.practicehandwriting.activities;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -21,9 +16,10 @@ import android.widget.Toast;
 
 import com.software.shell.fab.ActionButton;
 
-import org.buildmlearn.practicehandwriting.Animator;
+import org.buildmlearn.practicehandwriting.helper.Animator;
+import org.buildmlearn.practicehandwriting.helper.CalculateFreehandScore;
 import org.buildmlearn.practicehandwriting.R;
-import org.buildmlearn.practicehandwriting.SplashActivity;
+import org.buildmlearn.practicehandwriting.helper.DrawingView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -31,9 +27,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 import java.util.Random;
 
@@ -120,7 +114,7 @@ public class PracticeActivity extends ActionBarActivity {
             case R.id.done_save_button:
                 if (!mDone) {
                     if(practice_mode.equals(getResources().getString(R.string.freehand))) {
-                        new CalculateFreehandScore().execute();
+                        new CalculateFreehandScore(this, mDrawView,mDrawViewBitmap).execute();
 
                     } else if(practice_mode.equals(getResources().getString(R.string.practice))) {
                         mDrawView.startAnimation(Animator.createScaleDownAnimation());
@@ -168,82 +162,6 @@ public class PracticeActivity extends ActionBarActivity {
         }
     }
 
-    private float[] scoreBitmapForFreehand(ArrayList<ArrayList<Integer>> touches, Bitmap canvasBitmap, int centerX, int centerY) {
-        int size = touches.get(0).size();
-        if(size!=0) {
-            int minx = Math.max(Collections.min(touches.get(0)) - 30, 0);
-            int miny = Math.max(Collections.min(touches.get(1)) - 30, 0);
-            int correctTouches, wrongTouches;
-            float score, maxScore = 0, scaleXForMaxScore = 1, scaleYForMaxScore = 1, cxForMaxScore = centerX, cyForMaxScore = centerY;
-            ArrayList<Integer> xTouches = touches.get(0), yTouches = touches.get(1);
-            outerloop:
-            for (float scaleX = 0.8f; scaleX < 1.4f; scaleX += 0.1f)
-                for (float scaleY = 0.8f; scaleY < 1.4f; scaleY += 0.1f) {
-                    for (int cx = centerX - 20; cx <= centerX + 20; cx += 2)
-                        for (int cy = centerY - 20; cy <= centerY + 20; cy += 2) {
-                            correctTouches = 0;
-                            wrongTouches = 0;
-                            for (int i = 0; i < size; i++) {
-                                int x = (int) ((xTouches.get(i) - minx) * scaleX) + cx;
-                                int y = (int) ((yTouches.get(i) - miny) * scaleY) + cy;
-                                try {
-                                    if (canvasBitmap.getPixel(x, y) == getResources().getColor(R.color.Black))
-                                        correctTouches++;
-                                    else
-                                        wrongTouches++;
-                                } catch (IllegalArgumentException e) { // instead of if conditions for boundary cases
-                                    wrongTouches++;
-                                }
-                            }
-                            score = 100 * correctTouches / (correctTouches + wrongTouches);
-                            if (score > maxScore) {
-                                maxScore = score;
-                                scaleXForMaxScore = scaleX;
-                                scaleYForMaxScore = scaleY;
-                                cxForMaxScore = cx;
-                                cyForMaxScore = cy;
-                            }
-                            if (score == 100)
-                                break outerloop;
-                        }
-                }
-            return new float[]{maxScore, scaleXForMaxScore, scaleYForMaxScore, cxForMaxScore, cyForMaxScore};
-        } else {
-            return new float[]{0, 1, 1, centerX, centerY};
-        }
-    }
-
-    private Bitmap scaleBitmap(Bitmap originalImage, float scaleX, float scaleY) {
-        float width = originalImage.getWidth() * scaleX;
-        float height = originalImage.getHeight() * scaleY;
-
-        Bitmap background = Bitmap.createBitmap((int) width, (int) height, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(background);
-
-        float xTranslation = 0.0f, yTranslation = (height - originalImage.getHeight() * scaleY)/2.0f;
-        Matrix transformation = new Matrix();
-        transformation.postTranslate(xTranslation, yTranslation);
-        transformation.preScale(scaleX, scaleY);
-        Paint paint = new Paint();
-        paint.setFilterBitmap(true);
-        canvas.drawBitmap(originalImage, transformation, paint);
-        return background;
-    }
-
-    private Bitmap bitmapOverlay(Bitmap bitmap1, Bitmap bitmap2, int xOffset, int yOffset) {
-        Bitmap resultBitmap = Bitmap.createBitmap(bitmap1.getWidth(), bitmap1.getHeight(), Bitmap.Config.ARGB_8888);
-
-        Canvas c = new Canvas(resultBitmap);
-
-        c.drawBitmap(bitmap1, 0, 0, null);
-
-        Paint p = new Paint();
-        p.setAlpha(255);
-
-        c.drawBitmap(bitmap2, xOffset, yOffset, p);
-        return resultBitmap;
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = getIntent();
@@ -283,53 +201,5 @@ public class PracticeActivity extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
-    }
-
-    private class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
-        Bitmap touchImg, savedImg;
-        ArrayList touches;
-        ProgressDialog ringProgressDialog;
-
-        @Override
-        protected void onPreExecute() {
-            touchImg = mDrawView.getTouchesBitmap();
-            touches = mDrawView.getTouchesList();
-
-            mDrawView.clearCanvas();
-            mDrawView.setupDrawing();
-            mDrawView.setBitmap(mDrawViewBitmap);
-
-            mDrawView.setDrawingCacheEnabled(true);
-            savedImg = Bitmap.createBitmap(mDrawView.getDrawingCache());
-            mDrawView.destroyDrawingCache();
-
-            ringProgressDialog = new ProgressDialog(PracticeActivity.this);
-            ringProgressDialog.setTitle("Please wait ...");
-            ringProgressDialog.setMessage("Calculating...");
-            ringProgressDialog.setIndeterminate(true);
-            ringProgressDialog.setCancelable(false);
-            ringProgressDialog.show();
-        }
-
-        @Override
-        protected float[] doInBackground(Void... voids) {
-            return scoreBitmapForFreehand(touches, savedImg, (savedImg.getWidth() - touchImg.getWidth())/2, (savedImg.getHeight() - touchImg.getHeight())/2);
-        }
-
-        @Override
-        protected void onPostExecute(float[] result) {
-            ringProgressDialog.dismiss();
-            mDrawView.clearCanvas();
-            mDrawView.setupDrawing();
-            mDrawView.setBitmap(bitmapOverlay(savedImg,scaleBitmap(touchImg,result[1],result[2]),(int)result[3],(int)result[4]));
-            mDrawView.startAnimation(Animator.createScaleDownAnimation());
-
-            ((TextView) findViewById(R.id.scoreView)).setText("Score: " + String.valueOf(result[0]));
-            findViewById(R.id.scoreView).setAnimation(Animator.createFadeInAnimation());
-
-            Animator.createYFlipForwardAnimation(findViewById(R.id.done_save_button));
-            ((ActionButton) findViewById(R.id.done_save_button)).setImageResource(R.drawable.ic_save);
-            Animator.createYFlipBackwardAnimation(findViewById(R.id.done_save_button));
-        }
     }
 }

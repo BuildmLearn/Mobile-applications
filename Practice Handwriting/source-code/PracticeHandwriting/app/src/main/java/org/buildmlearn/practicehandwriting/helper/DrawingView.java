@@ -1,4 +1,4 @@
-package org.buildmlearn.practicehandwriting.practice;
+package org.buildmlearn.practicehandwriting.helper;
 
 import android.content.Context;
 import android.graphics.Bitmap;

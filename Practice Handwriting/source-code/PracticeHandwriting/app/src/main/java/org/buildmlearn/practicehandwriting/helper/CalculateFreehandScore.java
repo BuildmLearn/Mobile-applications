@@ -77,42 +77,45 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
         if(size!=0) {
             int minx = Math.max(Collections.min(touches.get(0)) - 30, 0);
             int miny = Math.max(Collections.min(touches.get(1)) - 30, 0);
-            int correctTouches, wrongTouches;
+            int correctTouches;
+            int i, cx, cy;
+            float scaleX, scaleY;
+            int textColour = mContext.getResources().getColor(R.color.Black);
             float score, maxScore = 0, scaleXForMaxScore = 1, scaleYForMaxScore = 1, cxForMaxScore = centerX, cyForMaxScore = centerY;
-            ArrayList<Integer> xTouches = touches.get(0), yTouches = touches.get(1);
+            Integer[] xTouches = new Integer[size];
+            Integer[] yTouches = new Integer[size];
+            xTouches = touches.get(0).toArray(xTouches);
+            yTouches = touches.get(1).toArray(yTouches);
 
-            outerloop:
-            for (float scaleX = 0.8f; scaleX < 1.4f; scaleX += 0.1f)
-                for (float scaleY = 0.8f; scaleY < 1.4f; scaleY += 0.1f) {
-                    for (int cx = centerX - 20; cx <= centerX + 20; cx += 2)
-                        for (int cy = centerY - 20; cy <= centerY + 20; cy += 2) {
+            for (i = 0; i < size; i++) {
+                xTouches[i] = xTouches[i] - minx;
+                yTouches[i] = yTouches[i] - miny;
+            }
+            outerLoop:
+            for (scaleX = 0.8f; scaleX < 1.4f; scaleX += 0.1f)
+                for (scaleY = 0.8f; scaleY < 1.4f; scaleY += 0.1f) {
+                    for (cx = centerX - 20; cx <= centerX + 20; cx += 2)
+                        for (cy = centerY - 20; cy <= centerY + 20; cy += 2) {
                             correctTouches = 0;
-                            wrongTouches = 0;
-                            for (int i = 0; i < size; i++) {
-                                int x = (int) ((xTouches.get(i) - minx) * scaleX) + cx;
-                                int y = (int) ((yTouches.get(i) - miny) * scaleY) + cy;
-                                try {
-                                    if (canvasBitmap.getPixel(x, y) == mContext.getResources().getColor(R.color.Black))
-                                        correctTouches++;
-                                    else
-                                        wrongTouches++;
-                                } catch (IllegalArgumentException e) { // instead of if conditions for boundary cases
-                                    wrongTouches++;
-                                }
+                            for (i = 0; i < size; i++) {
+                                int x = (int) (xTouches[i] * scaleX) + cx;
+                                int y = (int) (yTouches[i] * scaleY) + cy;
+                                if (x >= 0 && x < canvasBitmap.getWidth() && y >= 0 && y < canvasBitmap.getHeight() && canvasBitmap.getPixel(x, y) == textColour)
+                                    correctTouches++;
                             }
-                            score = 100 * correctTouches / (correctTouches + wrongTouches);
+                            score = ((float) correctTouches) / ((float) size);
                             if (score > maxScore) {
                                 maxScore = score;
                                 scaleXForMaxScore = scaleX;
                                 scaleYForMaxScore = scaleY;
                                 cxForMaxScore = cx;
                                 cyForMaxScore = cy;
+                                if (score == 1)
+                                    break outerLoop;
                             }
-                            if (score == 100)
-                                break outerloop;
                         }
                 }
-            return new float[]{maxScore, scaleXForMaxScore, scaleYForMaxScore, cxForMaxScore, cyForMaxScore};
+            return new float[]{100 * maxScore, scaleXForMaxScore, scaleYForMaxScore, cxForMaxScore, cyForMaxScore};
         } else {
             return new float[]{0, 1, 1, centerX, centerY};
         }

@@ -42,6 +42,9 @@ public class TagPlaceholderMapper {
 			case "Bacteria":
 				getBacteriaTagMap();
 				break;
+			case "Virus":
+				getVirusTagMap();
+				break;
 			
 			}
 		}
@@ -49,6 +52,26 @@ public class TagPlaceholderMapper {
 		return tagMapper;
 	}
 	
+	
+	/*
+	 * Map correct draggable Tags(TextViews) to droppable place holders(ImageViews
+	 * in Virus diagram
+	 */
+	private SparseIntArray getVirusTagMap() {
+		
+		tagMapper.put(R.id.headBlb, R.id.headTag);
+		tagMapper.put(R.id.collarBlb, R.id.collarTag);
+		tagMapper.put(R.id.neckBlb, R.id.neckTag);
+		tagMapper.put(R.id.sheathBlb, R.id.sheathTag);
+		tagMapper.put(R.id.tailfibreBlb, R.id.tailfibreTag);
+		tagMapper.put(R.id.tailpinsBlb, R.id.tailpinsTag);
+		tagMapper.put(R.id.baseplateBlb, R.id.baseplateTag);
+		tagMapper.put(R.id.dnaBlb, R.id.dnaTag);
+		
+		return tagMapper;
+		
+	}
+
 	/*
 	 * Map correct draggable Tags(TextViews) to droppable place holders(ImageViews
 	 * in Bacteria diagram

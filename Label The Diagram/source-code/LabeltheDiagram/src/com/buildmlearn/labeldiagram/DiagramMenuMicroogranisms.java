@@ -1,8 +1,7 @@
 package com.buildmlearn.labeldiagram;
 
-import com.buildmlearn.labeldiagram.DiagramMenuPlants.PlantPagerAdapter;
 import com.buildmlearn.labeldiagram.resources.BacteriaFragment;
-import com.buildmlearn.labeldiagram.resources.PlantFlowerFragment;
+import com.buildmlearn.labeldiagram.resources.VirusFragment;
 import com.example.labelthediagram.R;
 
 import android.app.ActionBar;
@@ -80,7 +79,7 @@ public class DiagramMenuMicroogranisms extends FragmentActivity {
 
 			case 1:
 
-				BacteriaFragment virusFrag = new BacteriaFragment();
+				VirusFragment virusFrag = new VirusFragment();
 				bundle.putFloat("SCORE_SAVED", virus);
 				virusFrag.setArguments(bundle);
 				return virusFrag;

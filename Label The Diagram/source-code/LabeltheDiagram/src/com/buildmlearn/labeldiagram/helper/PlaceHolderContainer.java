@@ -51,6 +51,9 @@ public class PlaceHolderContainer {
 				case "Bacteria":
 					getBacteriaMarkerList();
 					break;
+				case "Virus":
+					getVirusMarkerList();
+					break;
 				// TODO The other diagrams goes here
 
 			}
@@ -58,6 +61,24 @@ public class PlaceHolderContainer {
 		}else {
 			return null;
 		}
+	}
+
+	private List<Integer[]> getVirusMarkerList() {
+		
+		leftPlaceHolderList = new Integer[] { 
+				R.id.headBlb, R.id.collarBlb,
+				R.id.sheathBlb,R.id.tailpinsBlb
+		};
+		
+		rightPlaceHolderList = new Integer[]{
+				R.id.tailfibreBlb,R.id.baseplateBlb,R.id.dnaBlb,
+				R.id.neckBlb
+		};
+		
+		listHolder.add(leftPlaceHolderList);
+		listHolder.add(rightPlaceHolderList);
+		
+		return listHolder;
 	}
 
 	private List<Integer[]> getBacteriaMarkerList() {

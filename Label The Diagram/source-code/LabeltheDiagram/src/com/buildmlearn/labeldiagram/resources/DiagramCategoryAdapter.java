@@ -5,6 +5,7 @@ import java.util.List;
 import com.buildmlearn.labeldiagram.DiagramMenu;
 import com.buildmlearn.labeldiagram.DiagramMenuHuman;
 import com.buildmlearn.labeldiagram.DiagramMenuMicroogranisms;
+import com.buildmlearn.labeldiagram.DiagramMenuNaturalCycles;
 import com.buildmlearn.labeldiagram.DiagramMenuPlants;
 import com.buildmlearn.labeldiagram.DiagramPlay;
 import com.buildmlearn.labeldiagram.DiagramPlayBase;
@@ -112,7 +113,9 @@ public class DiagramCategoryAdapter extends ArrayAdapter<DiagramCategoryRawItem>
 					Intent intent = new Intent(v.getContext(), DiagramMenuMicroogranisms.class);
 					v.getContext().startActivity(intent);
 				}else{
-					Toast.makeText(getContext(), "Comming soon...", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getContext(), "Dispatching to  Natural Cycles screen", Toast.LENGTH_SHORT).show();
+					Intent intent = new Intent(v.getContext(), DiagramMenuNaturalCycles.class);
+					v.getContext().startActivity(intent);
 				} 
 			}
 		});

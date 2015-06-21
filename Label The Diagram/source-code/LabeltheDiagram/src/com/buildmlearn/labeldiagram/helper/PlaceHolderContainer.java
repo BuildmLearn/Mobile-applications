@@ -54,6 +54,9 @@ public class PlaceHolderContainer {
 				case "Virus":
 					getVirusMarkerList();
 					break;
+				case "WaterCycle":
+					getWaterCycleMarkerList();
+					break;
 				// TODO The other diagrams goes here
 
 			}
@@ -61,6 +64,24 @@ public class PlaceHolderContainer {
 		}else {
 			return null;
 		}
+	}
+
+	private List<Integer[]> getWaterCycleMarkerList() {
+		
+		leftPlaceHolderList = new Integer[] { 
+				R.id.oceanBlb, R.id.infiltrationBlb,R.id.precipitationBlb, R.id.surface_runBlb,
+				R.id.condensationBlb,R.id.underground_waterBlb,R.id.transpirationBlb
+		};
+		
+		rightPlaceHolderList = new Integer[]{
+				R.id.eveporationBlb
+			
+		};
+		
+		listHolder.add(leftPlaceHolderList);
+		listHolder.add(rightPlaceHolderList);
+		
+		return listHolder;
 	}
 
 	private List<Integer[]> getVirusMarkerList() {

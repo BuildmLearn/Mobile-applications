@@ -45,6 +45,9 @@ public class TagPlaceholderMapper {
 			case "Virus":
 				getVirusTagMap();
 				break;
+			case "WaterCycle":
+				getWaterCycleTagMap();
+				break;
 			
 			}
 		}
@@ -52,7 +55,25 @@ public class TagPlaceholderMapper {
 		return tagMapper;
 	}
 	
-	
+	/*
+	 * Map correct draggable Tags(TextViews) to droppable place holders(ImageViews
+	 * in Water Cycle diagram
+	 */
+	private SparseIntArray getWaterCycleTagMap() {
+		
+		tagMapper.put(R.id.oceanBlb, R.id.oceanTag);
+		tagMapper.put(R.id.precipitationBlb, R.id.preciptationTag);
+		tagMapper.put(R.id.infiltrationBlb, R.id.infiltratoinTag);
+		tagMapper.put(R.id.condensationBlb, R.id.condensationTag);
+		tagMapper.put(R.id.eveporationBlb, R.id.eveporationTag);
+		tagMapper.put(R.id.transpirationBlb, R.id.transpirationTag);
+		tagMapper.put(R.id.underground_waterBlb, R.id.underground_waterTag);
+		tagMapper.put(R.id.surface_runBlb, R.id.surface_runTag);
+		
+		return tagMapper;
+		
+	}
+
 	/*
 	 * Map correct draggable Tags(TextViews) to droppable place holders(ImageViews
 	 * in Virus diagram

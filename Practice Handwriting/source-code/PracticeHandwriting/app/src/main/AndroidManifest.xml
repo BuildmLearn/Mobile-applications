@@ -3,8 +3,8 @@
     package="org.buildmlearn.practicehandwriting" >
 
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:theme="@style/ActionBarTheme" >
         <activity
-            android:name=".SplashActivity"
+            android:name=".activities.SplashActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,31 +21,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LanguageActivity"
+            android:name=".activities.LanguageActivity"
             android:label="@string/title_activity_language" >
         </activity>
         <activity
-            android:name=".MainMenuActivity"
+            android:name=".activities.MainMenuActivity"
             android:label="@string/title_activity_main_menu" >
         </activity>
         <activity
-            android:name=".IncompleteActivity"
+            android:name=".activities.IncompleteActivity"
             android:label="@string/title_activity_incomplete" >
         </activity>
         <activity
-            android:name=".ModeSelectionActivity"
-            android:label="@string/title_activity_mode_selection" >
-        </activity>
-        <activity
-            android:name=".CharacterSelectionActivity"
+            android:name=".activities.CharacterSelectionActivity"
             android:label="@string/title_activity_character_selection" >
         </activity>
         <activity
-            android:name=".practice.PracticeActivity"
+            android:name=".activities.PracticeActivity"
             android:label="@string/title_activity_practice" >
         </activity>
         <activity
-            android:name=".WordSelectionActivity"
+            android:name=".activities.WordSelectionActivity"
             android:label="@string/title_activity_word_selection" >
         </activity>
     </application>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/AppBg"
     android:gravity="center"
-    tools:context="org.buildmlearn.practicehandwriting.practice.PracticeActivity">
+    tools:context="org.buildmlearn.practicehandwriting.activities.PracticeActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/PracticeToolbar"
@@ -34,11 +34,11 @@
         android:layout_height="wrap_content"
         android:textColor="#000000"/>
 
-    <org.buildmlearn.practicehandwriting.practice.DrawingView
+    <org.buildmlearn.practicehandwriting.helper.DrawingView
         android:id="@+id/drawing"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/AppBg"/>
+        android:background="@color/Transparent"/>
 
     <com.software.shell.fab.ActionButton
         android:id="@+id/done_save_button"

@@ -1,4 +1,4 @@
-package org.buildmlearn.practicehandwriting;
+package org.buildmlearn.practicehandwriting.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import org.buildmlearn.practicehandwriting.practice.PracticeActivity;
+import org.buildmlearn.practicehandwriting.R;
 
 import java.util.Random;
 
@@ -41,7 +41,7 @@ public class CharacterSelectionActivity extends Activity {
         params.setMargins(horizontal_padding, vertical_padding, horizontal_padding, vertical_padding);
 
         int count = 0;
-        String[] charSet = SplashActivity.CHARACTER_LIST;
+        String[] charSet = getResources().getStringArray(R.array.English_characters);
         for(String s: charSet) {
 
             FButton fb = new FButton(this);
@@ -57,6 +57,7 @@ public class CharacterSelectionActivity extends Activity {
                 public void onClick(View view) {
                     Intent intent = new Intent(CharacterSelectionActivity.this, PracticeActivity.class);
                     intent.putExtra(getResources().getString(R.string.practice_string),((Button) view).getText());
+                    intent.putExtra(getResources().getString(R.string.practice_mode),getIntent().getStringExtra(getResources().getString(R.string.practice_mode)));
                     startActivity(intent);
                 }
             });

@@ -671,6 +671,7 @@
     <string name="title_activity_mode_selection">ModeSelectionActivity</string>
     <string name="title_activity_practice">PracticeActivity</string>
     <string name="title_activity_word_selection">WordSelectionActivity</string>
+    <string name="title_activity_borderless">BorderlessActivity</string>
 
     <string name="incomplete">We are still working on this.</string>
 
@@ -685,6 +686,7 @@
     <string name="hard">Hard</string>
 
     <string name="practice_string">PRACTICE_STRING</string>
+    <string name="practice_mode">MODE</string>
 
     <string name="action_settings">Settings</string>
     <string name="action_next">Next</string>

@@ -57,20 +57,20 @@ public class WaterCycleFragment extends Fragment {
 
 		diagramTxt.setTypeface(tfThin);
 		startBtn.setTypeface(tfThin);
-		savedScoreTxt.setText((int) score + "% Sucess");
+		savedScoreTxt.setText((int)score + "% Sucess");
 
 		startBtn.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 
-				Intent eyeIntent = new Intent(getActivity(),
+				Intent waterCycIntent = new Intent(getActivity(),
 						DiagramPlayWaterCycle.class);
-				eyeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				eyeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				eyeIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+				waterCycIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				waterCycIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				waterCycIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 				// getActivity().finish();
-				startActivity(eyeIntent);
+				startActivity(waterCycIntent);
 
 			}
 		});

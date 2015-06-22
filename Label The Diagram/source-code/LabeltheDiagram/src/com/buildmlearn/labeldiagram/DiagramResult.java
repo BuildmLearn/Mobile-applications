@@ -124,52 +124,41 @@ public class DiagramResult extends Activity implements OnClickListener {
 			if(source.equals("DiagramPlayHumanEye")){
 				Intent intent = new Intent(getApplicationContext(),
 						DiagramPlayHumanEye.class);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-				startActivity(intent);
+				intentBuilder(intent);
 			}else if(source.equals("DiagramPlayHumanHeart")){
 				Intent intent = new Intent(getApplicationContext(),
 						DiagramPlayHumanHeart.class);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-				startActivity(intent);
+				intentBuilder(intent);
 			}else if(source.equals("DiagramPlayHumanEar")){
 				Intent intent = new Intent(getApplicationContext(),
 						DiagramPlayHumanEar.class);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-				startActivity(intent);
+				intentBuilder(intent);
 			}else if(source.equals("DiagramPlayPlantCell")){
 				Intent intent = new Intent(getApplicationContext(),
 						DiagramPlayPlantCell.class);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-				startActivity(intent);
+				intentBuilder(intent);
 			}else if(source.equals("DiagramPlayPlantFlower")){
 				Intent intent = new Intent(getApplicationContext(),
 						DiagramPlayPlantFlower.class);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-				startActivity(intent);
+				intentBuilder(intent);
 			}else if(source.equals("DiagramPlayBacteria")){
 				Intent intent = new Intent(getApplicationContext(),
 						DiagramPlayBacteria.class);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-				startActivity(intent);
+				intentBuilder(intent);
 			}else if(source.equals("DiagramPlayVirus")){
 				Intent intent = new Intent(getApplicationContext(),
 						DiagramPlayVirus.class);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-				startActivity(intent);
+				intentBuilder(intent);
+			}else if(source.equals("DiagramPlayWaterCycle")){
+				Intent intent = new Intent(getApplicationContext(),
+						DiagramPlayWaterCycle.class);
+				intentBuilder(intent);
+			}else if(source.equals("DiagramPlayCarbonCycle")){
+				Intent intent = new Intent(getApplicationContext(),
+						DiagramPlayCarbonCycle.class);
+				intentBuilder(intent);
+			}else{
+				Log.e("Unknown sorce exception", "Unknown source of intent");
 			}
 			
 			
@@ -182,16 +171,21 @@ public class DiagramResult extends Activity implements OnClickListener {
 					"Dispatching to Diagram Menu", 200).show();
 			Intent intent = new Intent(getApplicationContext(),
 					DiagramCategory.class);
-			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-			startActivity(intent);
+			intentBuilder(intent);
 			
 			break;
 		default:
 			break;
 		}
 
+	}
+
+	// Populate intent and start activity
+	private void intentBuilder(Intent intent) {
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+		startActivity(intent);
 	}
 
 }

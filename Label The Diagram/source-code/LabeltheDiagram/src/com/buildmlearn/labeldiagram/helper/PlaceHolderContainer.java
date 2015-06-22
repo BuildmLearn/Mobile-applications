@@ -57,6 +57,9 @@ public class PlaceHolderContainer {
 				case "WaterCycle":
 					getWaterCycleMarkerList();
 					break;
+				case "CarbonCycle":
+					getCarbonCycleMarkerList();
+					break;
 				// TODO The other diagrams goes here
 
 			}
@@ -64,6 +67,26 @@ public class PlaceHolderContainer {
 		}else {
 			return null;
 		}
+	}
+
+	private List<Integer[]> getCarbonCycleMarkerList() {
+		
+		leftPlaceHolderList = new Integer[] { 
+				R.id.organic_carbonBlb, R.id.dead_organismsBlb,R.id.fossilsBlb
+				
+		};
+		
+		rightPlaceHolderList = new Integer[]{
+				R.id.sunlightBlb,R.id.vehicle_emissionsBlb,R.id.plant_respirationBlb,
+				R.id.animal_respirationBlb,R.id.ocean_uptakeBlb,R.id.photosynthesisBlb,
+			
+		};
+		
+		listHolder.add(leftPlaceHolderList);
+		listHolder.add(rightPlaceHolderList);
+		
+		return listHolder;
+		
 	}
 
 	private List<Integer[]> getWaterCycleMarkerList() {

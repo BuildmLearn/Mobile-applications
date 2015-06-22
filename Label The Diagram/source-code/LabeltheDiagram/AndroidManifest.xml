@@ -111,7 +111,7 @@
                 android:value="com.buildmlearn.labeldiagram.DiagramMenu" >
             </meta-data>
         </activity>
-         <activity
+        <activity
             android:name="com.buildmlearn.labeldiagram.DiagramPlayBacteria"
             android:configChanges="orientation"
             android:parentActivityName="com.buildmlearn.labeldiagram.DiagramMenu"
@@ -121,7 +121,7 @@
                 android:value="com.buildmlearn.labeldiagram.DiagramMenu" >
             </meta-data>
         </activity>
-         <activity
+        <activity
             android:name="com.buildmlearn.labeldiagram.DiagramPlayVirus"
             android:configChanges="orientation"
             android:parentActivityName="com.buildmlearn.labeldiagram.DiagramMenu"
@@ -133,6 +133,16 @@
         </activity>
         <activity
             android:name="com.buildmlearn.labeldiagram.DiagramPlayWaterCycle"
+            android:configChanges="orientation"
+            android:parentActivityName="com.buildmlearn.labeldiagram.DiagramMenu"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.buildmlearn.labeldiagram.DiagramMenu" >
+            </meta-data>
+        </activity>
+        <activity
+            android:name="com.buildmlearn.labeldiagram.DiagramPlayCarbonCycle"
             android:configChanges="orientation"
             android:parentActivityName="com.buildmlearn.labeldiagram.DiagramMenu"
             android:screenOrientation="portrait" >
@@ -158,7 +168,14 @@
                 android:value="com.buildmlearn.labeldiagram.DiagramCategory" >
             </meta-data>
         </activity>
-        <activity android:name="com.buildmlearn.labeldiagram.DiagramMenuPlants" >
+        <activity
+            android:name="com.buildmlearn.labeldiagram.DiagramMenuPlants"
+            android:launchMode="standard"
+            android:parentActivityName="com.buildmlearn.labeldiagram.DiagramCategory" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.buildmlearn.labeldiagram.DiagramCategory" >
+            </meta-data>
         </activity>
         <activity
             android:name="com.buildmlearn.labeldiagram.DiagramMenuMicroogranisms"

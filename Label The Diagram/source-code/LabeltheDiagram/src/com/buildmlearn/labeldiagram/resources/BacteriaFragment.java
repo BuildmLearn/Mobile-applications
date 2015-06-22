@@ -17,26 +17,21 @@ import android.widget.TextView;
 public class BacteriaFragment extends Fragment {
 
 	private Typeface tfThin;
-	private Typeface tfLight;
 	private float score;
 
 	// newInstance constructor for creating fragment with arguments
 	public static Fragment getInstance(int id) {
+		
 		BacteriaFragment frag = new BacteriaFragment();
-		// insert data to passs
-		// Bundle args = new Bundle();
-		// args.putInt("diagram_id", id);
-		// frag.setArguments(args);
 		return frag;
+		
 	}
 
 	// Store instance variables based on arguments passed
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// id = getArguments().getInt("diagram_id", 0);
-		tfLight = Typeface.createFromAsset(getActivity().getAssets(),
-				"fonts/Roboto-Light.ttf");
+	
 		tfThin = Typeface.createFromAsset(getActivity().getAssets(),
 				"fonts/Roboto-Thin.ttf");
 
@@ -60,20 +55,20 @@ public class BacteriaFragment extends Fragment {
 
 		diagramTxt.setTypeface(tfThin);
 		startBtn.setTypeface(tfThin);
-		savedScoreTxt.setText((int) score + "% Sucess");
+		savedScoreTxt.setText((int)score + "% Sucess");
 
 		startBtn.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 
-				Intent eyeIntent = new Intent(getActivity(),
+				Intent bactIntent = new Intent(getActivity(),
 						DiagramPlayBacteria.class);
-				eyeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				eyeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				eyeIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+				bactIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				bactIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				bactIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 				// getActivity().finish();
-				startActivity(eyeIntent);
+				startActivity(bactIntent);
 
 			}
 		});

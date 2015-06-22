@@ -1,8 +1,6 @@
 package com.buildmlearn.labeldiagram;
 
-import com.buildmlearn.labeldiagram.DiagramMenuMicroogranisms.BacteriaAdapter;
-import com.buildmlearn.labeldiagram.resources.BacteriaFragment;
-import com.buildmlearn.labeldiagram.resources.VirusFragment;
+import com.buildmlearn.labeldiagram.resources.CarbonCycleFragment;
 import com.buildmlearn.labeldiagram.resources.WaterCycleFragment;
 import com.example.labelthediagram.R;
 
@@ -81,7 +79,7 @@ public class DiagramMenuNaturalCycles extends FragmentActivity{
 
 			case 1:
 
-				WaterCycleFragment carboncycFrag = new WaterCycleFragment();
+				CarbonCycleFragment carboncycFrag = new CarbonCycleFragment();
 				bundle.putFloat("SCORE_SAVED", carbonCycle);
 				carboncycFrag.setArguments(bundle);
 				return carboncycFrag;

@@ -1,6 +1,5 @@
 package com.buildmlearn.labeldiagram.resources;
 
-import com.buildmlearn.labeldiagram.DiagramPlayPlantCell;
 import com.buildmlearn.labeldiagram.DiagramPlayPlantFlower;
 import com.example.labelthediagram.R;
 
@@ -18,7 +17,6 @@ import android.widget.TextView;
 public class PlantFlowerFragment extends Fragment {
 
 	private Typeface tfThin;
-	private Typeface tfLight;
 	private float score;
 
 	
@@ -26,8 +24,7 @@ public class PlantFlowerFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //id = getArguments().getInt("diagram_id", 0);
-        tfLight = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Light.ttf");
+       
         tfThin = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Thin.ttf");
         
         if(getArguments()!=null){
@@ -59,12 +56,12 @@ public class PlantFlowerFragment extends Fragment {
    			@Override
    			public void onClick(View v) {
 
-   				Intent eyeIntent = new Intent(getActivity(), DiagramPlayPlantFlower.class);
-   				eyeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-   				eyeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-   				eyeIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+   				Intent flowerIntent = new Intent(getActivity(), DiagramPlayPlantFlower.class);
+   				flowerIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+   				flowerIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+   				flowerIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
    				//getActivity().finish();
-   				startActivity(eyeIntent);
+   				startActivity(flowerIntent);
    			
    				
    			}

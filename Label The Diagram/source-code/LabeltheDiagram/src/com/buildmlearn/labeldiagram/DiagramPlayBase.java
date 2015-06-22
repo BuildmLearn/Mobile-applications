@@ -65,7 +65,7 @@ public abstract class DiagramPlayBase extends Activity implements
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+
 		super.onCreate(savedInstanceState);
 
 		setContentView(getResourcesId());
@@ -270,10 +270,10 @@ public abstract class DiagramPlayBase extends Activity implements
 		final float totalScore;
 		final int MAX_PROGRESS = 100;
 
-		totalScore = (float) correcTries * 10;
+		totalScore = correcTries * 10;
 		progress = (float) totalTries / tagListSize * 100;
 
-		score.setText((int) totalScore + "");
+		score.setText((int)totalScore + "");
 		compeleteRatio.setText((int) progress + "%");
 
 		if ((int) progress == MAX_PROGRESS) {
@@ -321,10 +321,10 @@ public abstract class DiagramPlayBase extends Activity implements
 		final float progress;
 		final float totalScore;
 
-		totalScore = (float) correctLabeledCount * 10;
+		totalScore = correctLabeledCount * 10;
 		progress = (float) totalLabeledCount / tagListSize * 100;
 
-		score.setText((int) totalScore + "");
+		score.setText((int)totalScore + "");
 		compeleteRatio.setText((int) progress + "%");
 
 		TagContainerSingleton container = TagContainerSingleton.getInstance();
@@ -439,10 +439,10 @@ public abstract class DiagramPlayBase extends Activity implements
 		}
 	}
 
+	
 	@Override
-	public void onClick(View tagView) {
-
-	}
+	public void onClick(View tagView) {}
+	
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

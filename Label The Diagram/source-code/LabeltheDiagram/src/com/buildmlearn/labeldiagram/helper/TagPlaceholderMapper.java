@@ -48,6 +48,9 @@ public class TagPlaceholderMapper {
 			case "WaterCycle":
 				getWaterCycleTagMap();
 				break;
+			case "CarbonCycle":
+				getCarbonCycleTagMap();
+				break;
 			
 			}
 		}
@@ -55,6 +58,21 @@ public class TagPlaceholderMapper {
 		return tagMapper;
 	}
 	
+	private SparseIntArray getCarbonCycleTagMap() {
+		
+		tagMapper.put(R.id.ocean_uptakeBlb, R.id.ocean_uptakeTag);
+		tagMapper.put(R.id.plant_respirationBlb, R.id.plant_respirationTag);
+		tagMapper.put(R.id.animal_respirationBlb, R.id.animal_respirationTag);
+		tagMapper.put(R.id.dead_organismsBlb, R.id.dead_organismsTag);
+		tagMapper.put(R.id.fossilsBlb, R.id.fossilsTag);
+		tagMapper.put(R.id.sunlightBlb, R.id.sunlightTag);
+		tagMapper.put(R.id.organic_carbonBlb, R.id.organic_carbonTag);
+		tagMapper.put(R.id.vehicle_emissionsBlb, R.id.vehicle_emissionsTag);
+		tagMapper.put(R.id.photosynthesisBlb, R.id.photosynthesisTag);
+		
+		return tagMapper;
+	}
+
 	/*
 	 * Map correct draggable Tags(TextViews) to droppable place holders(ImageViews
 	 * in Water Cycle diagram

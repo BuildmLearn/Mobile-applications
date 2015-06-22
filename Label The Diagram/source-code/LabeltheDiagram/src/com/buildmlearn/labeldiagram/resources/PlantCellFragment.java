@@ -17,26 +17,22 @@ import android.widget.TextView;
 public class PlantCellFragment extends Fragment {
 	
 	private Typeface tfThin;
-    private Typeface tfLight;
     private float score;
     
     
  // newInstance constructor for creating fragment with arguments
     public static Fragment getInstance(int id) {
+    	
     	PlantCellFragment frag = new PlantCellFragment();
-    	//insert data to passs
-        //Bundle args = new Bundle();
-        //args.putInt("diagram_id", id);
-        //frag.setArguments(args);
         return frag;
+        
     }
     
  // Store instance variables based on arguments passed
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //id = getArguments().getInt("diagram_id", 0);
-        tfLight = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Light.ttf");
+
         tfThin = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Thin.ttf");
         
         if(getArguments()!=null){
@@ -67,12 +63,12 @@ public class PlantCellFragment extends Fragment {
    			@Override
    			public void onClick(View v) {
 
-   				Intent eyeIntent = new Intent(getActivity(), DiagramPlayPlantCell.class);
-   				eyeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-   				eyeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-   				eyeIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+   				Intent cellIntent = new Intent(getActivity(), DiagramPlayPlantCell.class);
+   				cellIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+   				cellIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+   				cellIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
    				//getActivity().finish();
-   				startActivity(eyeIntent);
+   				startActivity(cellIntent);
    			
    				
    			}

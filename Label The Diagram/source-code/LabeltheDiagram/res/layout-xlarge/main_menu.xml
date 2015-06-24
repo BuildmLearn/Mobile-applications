@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/badges"
+        android:layout_width="340dp"
+        android:layout_height="360dp"
+        android:layout_alignLeft="@+id/scoreboard"
+        android:layout_alignTop="@+id/lessons"
+        android:background="@color/appBg_color" >
+
+        <ImageView
+            android:id="@+id/badgeIcon"
+            android:layout_width="160dp"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/medle" />
+
+        <TextView
+            android:id="@+id/title_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/badgeIcon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:text="Badges"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#fff"
+            android:textSize="54sp" />
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/title_badge"
+            android:layout_marginTop="30dp"
+            android:background="#c0c0c0" />
+
+        <TextView
+            android:id="@+id/start_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view4"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:text="Start Here"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#fff"
+            android:textSize="40sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/help"
+        android:layout_width="340dp"
+        android:layout_height="360dp"
+        android:layout_alignLeft="@+id/badges"
+        android:layout_alignTop="@+id/settings"
+        android:background="@color/appBg_color" >
+
+        <ImageView
+            android:id="@+id/helpIcon"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/help" />
+
+        <TextView
+            android:id="@+id/title_help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/helpIcon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:text="Help"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#fff"
+            android:textSize="54sp" />
+
+        <View
+            android:id="@+id/view6"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/title_help"
+            android:layout_marginTop="30dp"
+            android:background="#c0c0c0" />
+
+        <TextView
+            android:id="@+id/start_help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view6"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:text="Start Here"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#fff"
+            android:textSize="40sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/scoreboard"
+        android:layout_width="340dp"
+        android:layout_height="370dp"
+        android:layout_above="@+id/lessons"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/diagrams"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:background="@color/appBg_color"
+        >
+
+        <ImageView
+            android:id="@+id/scoreboardicon"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/score_board" />
+
+        <TextView
+            android:id="@+id/start_screboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:text="Start Here"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#fff"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/title_scoreboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/scoreboardicon"
+            android:layout_centerHorizontal="true"
+            android:text="Scoreboard"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#fff"
+            android:textSize="54sp" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_above="@+id/start_screboard"
+            android:layout_alignParentLeft="true"
+            android:background="#c0c0c0" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/lessons"
+        android:layout_width="340dp"
+        android:layout_height="360dp"
+        android:layout_alignLeft="@+id/diagrams"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="20dp"
+        android:background="@color/appBg_color" >
+
+        <ImageView
+            android:id="@+id/lessonIcon"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/lesson" />
+
+        <TextView
+            android:id="@+id/title_lesson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lessonIcon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:text="Lessons"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#fff"
+            android:textSize="54sp" />
+
+        <TextView
+            android:id="@+id/start_lesson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:text="Start Here"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#fff"
+            android:textSize="40sp" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/title_lesson"
+            android:layout_marginTop="30dp"
+            android:background="#c0c0c0" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/settings"
+        android:layout_width="340dp"
+        android:layout_height="360dp"
+        android:layout_alignLeft="@+id/lessons"
+        android:layout_below="@+id/lessons"
+        android:layout_marginTop="20dp"
+        android:background="@color/appBg_color" >
+
+        <ImageView
+            android:id="@+id/settingsIcon"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/settings" />
+
+        <TextView
+            android:id="@+id/title_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/settingsIcon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:text="Settings"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#fff"
+            android:textSize="54sp" />
+
+        <View
+            android:id="@+id/view5"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/title_settings"
+            android:layout_marginTop="30dp"
+            android:background="#c0c0c0" />
+
+        <TextView
+            android:id="@+id/start_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view5"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:text="Start Here"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#fff"
+            android:textSize="40sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/diagrams"
+        android:layout_width="340dp"
+        android:layout_height="360dp"
+        android:layout_above="@+id/lessons"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="35dp"
+        android:background="@color/appBg_color" >
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_above="@+id/start_diagram"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="30dp"
+            android:background="#c0c0c0" />
+
+        <TextView
+            android:id="@+id/start_diagram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:text="Start Here"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#fff"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/title_diagram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/view1"
+            android:layout_centerHorizontal="true"
+
+            android:text="Diagrams"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#fff"
+            android:textSize="54sp" />
+
+        <ImageView
+            android:id="@+id/diagramIcon"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/diagrams" />
+    </RelativeLayout>
+
+</RelativeLayout>

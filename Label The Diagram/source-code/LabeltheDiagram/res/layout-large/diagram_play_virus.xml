@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/scoreTab"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/tab_color" >
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/appBg_color" />
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/scoreTxt"
+            android:layout_alignBottom="@+id/scoreTxt"
+            android:layout_marginLeft="18dp"
+            android:layout_toRightOf="@+id/scoreTxt"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/complete_ratio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complatedTxt"
+            android:layout_alignBottom="@+id/complatedTxt"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/complatedTxt"
+            android:text=" 0%"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/complatedTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="Complete :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/scoreTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complete_ratio"
+            android:layout_alignBottom="@+id/complete_ratio"
+            android:layout_marginLeft="24dp"
+            android:layout_toRightOf="@+id/view1"
+            android:text="Score   :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/mainDiagramHeart"
+        android:layout_width="350dp"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/tagHolder"
+        android:layout_below="@+id/scoreTab"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/virus" />
+
+    <ImageView
+        android:id="@+id/tagHolder"
+        android:layout_width="fill_parent"
+        android:layout_height="240dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/holder" />
+
+    <ImageView
+        android:id="@+id/headBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramHeart"
+        android:layout_alignTop="@+id/mainDiagramHeart"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="45dp"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/collarBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/headBlb"
+        android:layout_marginTop="71dp"
+        android:layout_toRightOf="@+id/headBlb"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/sheathBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/collarBlb"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/headBlb"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/dnaBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramHeart"
+        android:layout_below="@+id/headBlb"
+        android:layout_marginRight="46dp"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/neckBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/dnaBlb"
+        android:layout_below="@+id/dnaBlb"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/tailfibreBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/neckBlb"
+        android:layout_below="@+id/sheathBlb"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/tailpinsBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramHeart"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/sheathBlb"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/baseplateBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_above="@+id/tagHolder"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/tailpinsBlb"
+        android:src="@drawable/marker" />
+
+    <TextView
+        android:id="@+id/headTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/tagHolder"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="head"
+        android:textColor="#ffff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/baseplateTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/neckTag"
+        android:layout_alignBottom="@+id/neckTag"
+        android:layout_alignLeft="@+id/tailfibreBlb"
+        android:layout_marginLeft="7dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="baseplate"
+        android:textColor="#ffff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/neckTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/sheathTag"
+        android:layout_alignBottom="@+id/sheathTag"
+        android:layout_alignLeft="@+id/baseplateBlb"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="neck"
+        android:textColor="#ffff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/sheathTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/headTag"
+        android:layout_alignBottom="@+id/headTag"
+        android:layout_alignRight="@+id/tailpinsBlb"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="shealth"
+        android:textColor="#ffff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/collarTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/headTag"
+        android:layout_below="@+id/headTag"
+        android:layout_marginTop="31dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="collar"
+        android:textColor="#ffff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/dnaTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/collarTag"
+        android:layout_alignBottom="@+id/collarTag"
+        android:layout_alignLeft="@+id/sheathTag"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="DNA"
+        android:textColor="#ffff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tailfibreTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dnaTag"
+        android:layout_alignBottom="@+id/dnaTag"
+        android:layout_alignLeft="@+id/baseplateBlb"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="tail fibre"
+        android:textColor="#ffff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tailpinsTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tailfibreTag"
+        android:layout_alignRight="@+id/baseplateTag"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="tail pins"
+        android:textColor="#ffff"
+        android:textSize="18sp" />
+
+</RelativeLayout>

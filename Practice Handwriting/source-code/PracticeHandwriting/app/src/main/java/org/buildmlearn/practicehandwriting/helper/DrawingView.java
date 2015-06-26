@@ -113,7 +113,6 @@ public class DrawingView extends View {
         }
         if(str.length()==1 && (scale>1.4f))
             scale = 1.4f;
-        System.out.println(scale + " " + str);
         textView.setTextSize(scale * base);
         setBitmap(takeScreenshot(textView));
     }
@@ -124,7 +123,6 @@ public class DrawingView extends View {
         view.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
         //selecting the part to be saved
         view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
-        System.out.println(view.getMeasuredWidth()<mWidth);
         Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache()); // actually taking the screen shot
         view.setDrawingCacheEnabled(false);
         return bitmap;

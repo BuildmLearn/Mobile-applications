@@ -29,7 +29,6 @@ public class TimeTrialResultActivity extends ActionBarActivity {
 
         for(int i = 0;i<SplashActivity.mTimeTrialResults.size();i++) {
             final int index = i;
-            System.out.println("NEW VIEW " + SplashActivity.mTimeTrialResults.get(index).getPracticeString());
             final View result = getLayoutInflater().inflate(R.layout.layout_result,resultMainLL,false);
             final DrawingView drawingView = ((DrawingView)  result.findViewById(R.id.resultDrawingView));//width and height of this are zero if not hardcoded in the xml
             drawingView.setLayoutParams(new RelativeLayout.LayoutParams(getResources().getDisplayMetrics().widthPixels, ViewGroup.LayoutParams.WRAP_CONTENT));

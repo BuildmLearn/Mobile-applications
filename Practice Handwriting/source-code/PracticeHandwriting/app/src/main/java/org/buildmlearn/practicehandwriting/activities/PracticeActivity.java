@@ -38,7 +38,7 @@ import java.util.Random;
 public class PracticeActivity extends ActionBarActivity {
 
     //TODO time dependant vibrations, make practice string width wider, add comments
-    
+
     private DrawingView mDrawView;
     private boolean mDone;
     private String mPracticeString;
@@ -71,8 +71,6 @@ public class PracticeActivity extends ActionBarActivity {
                     int index = Arrays.asList(SplashActivity.CHARACTER_LIST).indexOf(mPracticeString);
                     mDrawView.canDraw(false);
                     SplashActivity.mTimeTrialResults.add(new TimeTrialResult(mPracticeString, mDrawView.getTouchesList()));
-                    if(SplashActivity.mTimeTrialResults.get(index) ==null)
-                        System.out.println("NULL 1");
                     Intent intent = new Intent(PracticeActivity.this,TimeTrialResultActivity.class);
                     startActivity(intent);
                 }

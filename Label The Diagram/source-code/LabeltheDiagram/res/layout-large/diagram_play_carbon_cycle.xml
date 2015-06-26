@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/scoreTab"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/tab_color" >
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/appBg_color" />
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/scoreTxt"
+            android:layout_alignBottom="@+id/scoreTxt"
+            android:layout_marginLeft="18dp"
+            android:layout_toRightOf="@+id/scoreTxt"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/complete_ratio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complatedTxt"
+            android:layout_alignBottom="@+id/complatedTxt"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/complatedTxt"
+            android:text=" 0%"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/complatedTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="Complete :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/scoreTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complete_ratio"
+            android:layout_alignBottom="@+id/complete_ratio"
+            android:layout_marginLeft="24dp"
+            android:layout_toRightOf="@+id/view1"
+            android:text="Score   :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/mainDiagramWaterCycle"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_above="@+id/tagHolder"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/scoreTab"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/carbon_cycle" />
+
+    <ImageView
+        android:id="@+id/tagHolder"
+        android:layout_width="fill_parent"
+        android:layout_height="240dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/holder" />
+
+    <ImageView
+        android:id="@+id/photosynthesisBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/mainDiagramWaterCycle"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/vehicle_emissionsBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramWaterCycle"
+        android:layout_alignTop="@+id/photosynthesisBlb"
+        android:layout_marginRight="154dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/sunlightBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/vehicle_emissionsBlb"
+        android:layout_marginRight="95dp"
+        android:layout_toLeftOf="@+id/vehicle_emissionsBlb"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/plant_respirationBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/vehicle_emissionsBlb"
+        android:layout_below="@+id/sunlightBlb"
+        android:layout_marginTop="91dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/organic_carbonBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/plant_respirationBlb"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="50dp"
+        android:layout_toRightOf="@+id/photosynthesisBlb"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/dead_organismsBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/organic_carbonBlb"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="22dp"
+        android:layout_toRightOf="@+id/organic_carbonBlb"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/fossilsBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramWaterCycle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="18dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/ocean_uptakeBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignTop="@+id/dead_organismsBlb"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_toRightOf="@+id/plant_respirationBlb"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/animal_respirationBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramWaterCycle"
+        android:layout_alignLeft="@+id/plant_respirationBlb"
+        android:layout_alignRight="@+id/ocean_uptakeBlb"
+        android:src="@drawable/marker_white" />
+
+    <TextView
+        android:id="@+id/photosynthesisTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/mainDiagramWaterCycle"
+        android:layout_alignTop="@+id/tagHolder"
+        android:layout_marginTop="65dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="photosynthesis"
+        android:textColor="#ffff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/organic_carbonTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/photosynthesisTag"
+        android:layout_alignBottom="@+id/photosynthesisTag"
+        android:layout_alignLeft="@+id/dead_organismsBlb"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="photosynthesis"
+        android:textColor="#ffff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/fossilsTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/organic_carbonTag"
+        android:layout_alignBottom="@+id/organic_carbonTag"
+        android:layout_toRightOf="@+id/animal_respirationBlb"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="fossils"
+        android:textColor="#ffff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/ocean_uptakeTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/photosynthesisTag"
+        android:layout_below="@+id/photosynthesisTag"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="ocean uptake"
+        android:textColor="#ffff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/sunlightTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/ocean_uptakeTag"
+        android:layout_alignBottom="@+id/ocean_uptakeTag"
+        android:layout_toRightOf="@+id/photosynthesisTag"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="sunlight"
+        android:textColor="#ffff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/dead_organismsTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/sunlightTag"
+        android:layout_alignBottom="@+id/sunlightTag"
+        android:layout_alignRight="@+id/fossilsTag"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="dead organisms"
+        android:textColor="#ffff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/animal_respirationTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ocean_uptakeTag"
+        android:layout_below="@+id/ocean_uptakeTag"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="animal respiration"
+        android:textColor="#ffff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/vehicle_emissionsTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/animal_respirationTag"
+        android:layout_alignBottom="@+id/animal_respirationTag"
+        android:layout_alignLeft="@+id/fossilsBlb"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="vehicle emissions"
+        android:textColor="#ffff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/plant_respirationTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/animal_respirationTag"
+        android:layout_below="@+id/animal_respirationTag"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="plant respiration"
+        android:textColor="#ffff"
+        android:textSize="18sp" />
+
+</RelativeLayout>

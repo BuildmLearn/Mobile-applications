@@ -71,13 +71,10 @@
     <ImageView
         android:id="@+id/mainDiagramVirus"
         android:layout_width="350dp"
-        android:layout_height="fill_parent"
+        android:layout_height="450dp"
         android:layout_above="@+id/tagHolder"
-        android:layout_below="@+id/scoreTab"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
         android:src="@drawable/virus" />
 
     <ImageView
@@ -105,8 +102,8 @@
         android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramVirus"
         android:layout_alignTop="@+id/mainDiagramVirus"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="160dp"
         android:src="@drawable/marker" />
 
     <ImageView
@@ -116,7 +113,7 @@
         android:layout_alignLeft="@+id/mainDiagramVirus"
         android:layout_alignTop="@+id/mainDiagramVirus"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="195dp"
+        android:layout_marginTop="210dp"
         android:src="@drawable/marker" />
 
     <ImageView
@@ -135,8 +132,8 @@
         android:layout_height="35dp"
         android:layout_alignRight="@+id/mainDiagramVirus"
         android:layout_alignTop="@+id/mainDiagramVirus"
-        android:layout_marginRight="48dp"
-        android:layout_marginTop="135dp"
+        android:layout_marginRight="42dp"
+        android:layout_marginTop="145dp"
         android:src="@drawable/marker" />
 
     <ImageView
@@ -146,7 +143,7 @@
         android:layout_alignRight="@+id/mainDiagramVirus"
         android:layout_alignTop="@+id/mainDiagramVirus"
         android:layout_marginRight="50dp"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="250dp"
         android:src="@drawable/marker" />
 
     <ImageView
@@ -165,7 +162,7 @@
         android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramVirus"
         android:layout_alignTop="@+id/mainDiagramVirus"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="425dp"
          android:layout_marginLeft="165dp"
         android:src="@drawable/marker" />
 

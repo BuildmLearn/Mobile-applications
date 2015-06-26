@@ -672,6 +672,7 @@
     <string name="title_activity_practice">PracticeActivity</string>
     <string name="title_activity_word_selection">WordSelectionActivity</string>
     <string name="title_activity_borderless">BorderlessActivity</string>
+    <string name="title_activity_time_trial_result">TimeTrialResultActivity</string>
 
     <string name="incomplete">We are still working on this.</string>
 

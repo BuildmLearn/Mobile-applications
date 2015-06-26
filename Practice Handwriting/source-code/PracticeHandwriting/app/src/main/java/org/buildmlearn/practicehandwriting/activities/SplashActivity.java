@@ -1,11 +1,16 @@
 package org.buildmlearn.practicehandwriting.activities;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.widget.Toast;
 
 import org.buildmlearn.practicehandwriting.R;
+import org.buildmlearn.practicehandwriting.helper.TimeTrialResult;
+
+import java.util.ArrayList;
 
 
 public class SplashActivity extends Activity implements TextToSpeech.OnInitListener{
@@ -19,6 +24,8 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
 
     private boolean mTtsInitDone, mListsDone;
 
+    public static ArrayList<TimeTrialResult> mTimeTrialResults;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,14 +34,20 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
         mTtsInitDone = false;
         mListsDone = false;
 
-        Intent checkIntent = new Intent();
-        checkIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
-        startActivityForResult(checkIntent, MY_DATA_CHECK_CODE);
-
+        try {
+            Intent checkIntent = new Intent();
+            checkIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+            startActivityForResult(checkIntent, MY_DATA_CHECK_CODE);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(this,"App will not speak out as no TTS Engine was found",Toast.LENGTH_LONG).show();
+            TTSobj = null;
+            onInit(0);
+        }
         CHARACTER_LIST = getResources().getStringArray(R.array.English_characters);
         EASY_WORD_LIST = getResources().getStringArray(R.array.English_words_easy);
         MEDIUM_WORD_LIST = getResources().getStringArray(R.array.English_words_medium);
         HARD_WORD_LIST = getResources().getStringArray(R.array.English_words_hard);
+        mTimeTrialResults = new ArrayList<TimeTrialResult>(CHARACTER_LIST.length);
         mListsDone = true;
 
         new Thread(new Runnable() {
@@ -57,10 +70,16 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
             }
             else {
                 // missing data, install it
-                Intent installIntent = new Intent();
-                installIntent.setAction(
-                        TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
-                startActivity(installIntent);
+                try {
+                    Intent installIntent = new Intent();
+                    installIntent.setAction(
+                            TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+                    startActivity(installIntent);
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(this,"App will not speak out as no TTS Engine was found",Toast.LENGTH_LONG).show();
+                    TTSobj = null;
+                    onInit(0);
+                }
             }
         }
     }

@@ -42,7 +42,9 @@ public class MainMenuActivity extends Activity {
 
             case R.id.timetrial_button:
                 intent = new Intent(this, IncompleteActivity.class);
-                break;
+                /*intent = new Intent(this, CharacterSelectionActivity.class);
+                intent.putExtra(getResources().getString(R.string.practice_mode),getResources().getString(R.string.time_trial));
+                */break;
         }
 
         startActivity(intent);

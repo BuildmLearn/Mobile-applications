@@ -19,7 +19,7 @@
         app:navigationIcon="@drawable/ic_launcher"/>
 
     <TextView
-        android:id="@+id/scoreView"
+        android:id="@+id/score_and_timer_View"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -30,8 +30,8 @@
 
     <TextView
         android:id="@+id/canvas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:textColor="#000000"/>
 
     <org.buildmlearn.practicehandwriting.helper.DrawingView

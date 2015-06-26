@@ -44,6 +44,10 @@
             android:name=".activities.WordSelectionActivity"
             android:label="@string/title_activity_word_selection" >
         </activity>
+        <activity
+            android:name=".activities.TimeTrialResultActivity"
+            android:label="@string/title_activity_time_trial_result" >
+        </activity>
     </application>
 
 </manifest>

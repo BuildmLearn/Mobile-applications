@@ -18,16 +18,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
-    Bitmap mTouchImg, mSavedImg, mDrawViewBitmap;
-    ArrayList mTouches;
-    ProgressDialog mProgressDialog;
-    DrawingView mDrawView;
-    Context mContext;
+    private Bitmap mTouchImg, mSavedImg;
+    private ArrayList mTouches;
+    private ProgressDialog mProgressDialog;
+    private DrawingView mDrawView;
+    private Context mContext;
+    private String mPracticeString;
 
-    public CalculateFreehandScore(Context context, DrawingView drawView, Bitmap drawViewBitmap) {
+    public CalculateFreehandScore(Context context, DrawingView drawView, String practiceString) {
         mContext = context;
         mDrawView = drawView;
-        mDrawViewBitmap = drawViewBitmap;
+        mPracticeString = practiceString;
     }
 
     @Override
@@ -37,7 +38,7 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
 
         mDrawView.clearCanvas();
         mDrawView.setupDrawing();
-        mDrawView.setBitmap(mDrawViewBitmap);
+        mDrawView.setBitmapFromText(mPracticeString);
 
         mDrawView.setDrawingCacheEnabled(true);
         mSavedImg = Bitmap.createBitmap(mDrawView.getDrawingCache());
@@ -64,8 +65,8 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
         mDrawView.setBitmap(bitmapOverlay(mSavedImg,scaleBitmap(mTouchImg,result[1],result[2]),(int)result[3],(int)result[4]));
         mDrawView.startAnimation(Animator.createScaleDownAnimation());
 
-        ((TextView) ((Activity) mContext).findViewById(R.id.scoreView)).setText("Score: " + String.valueOf(result[0]));
-        ((Activity) mContext).findViewById(R.id.scoreView).setAnimation(Animator.createFadeInAnimation());
+        ((TextView) ((Activity) mContext).findViewById(R.id.score_and_timer_View)).setText("Score: " + String.valueOf(result[0]));
+        ((Activity) mContext).findViewById(R.id.score_and_timer_View).setAnimation(Animator.createFadeInAnimation());
 
         Animator.createYFlipForwardAnimation(((Activity) mContext).findViewById(R.id.done_save_button));
         ((ActionButton) ((Activity) mContext).findViewById(R.id.done_save_button)).setImageResource(R.drawable.ic_save);

@@ -3,10 +3,12 @@ package org.buildmlearn.practicehandwriting.helper;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Rect;
 import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
@@ -21,6 +23,7 @@ import android.widget.Toast;
 
 import org.buildmlearn.practicehandwriting.R;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -50,6 +53,8 @@ public class DrawingView extends View {
     private Toast mErrorToast;
 
     private int minX, minY, maxX, maxY;
+
+    private int mTouchColour;
 
     private ArrayList<ArrayList<Integer>> mTouches;
     private ArrayList<MotionEvent> mMotionEvents;
@@ -96,41 +101,28 @@ public class DrawingView extends View {
     }
 
     public void setBitmapFromText(String str) {
-        TextView textView = new TextView(mContext);
-        textView.setText(str);
-        textView.setTextColor(Color.BLACK);
-        float scale = 1.0f;
-        float base = getResources().getDisplayMetrics().densityDpi / (str.length());
-        while(textView.getMeasuredWidth()<mWidth*0.9 && textView.getMeasuredHeight()<mHeight*0.9) {
-            try {
-                textView.setTextSize(scale * base);
-                takeScreenshot(textView);
-                scale += 0.1f;
-            } catch (NullPointerException npe) {
-                scale -= 0.1f;
-                break;
-            }
-        }
-        if(str.length()==1 && (scale>1.4f))
-            scale = 1.4f;
-        textView.setTextSize(scale * base);
-        setBitmap(takeScreenshot(textView));
-    }
+        clearCanvas();
 
-    private Bitmap takeScreenshot(View view) {
-        view.setDrawingCacheEnabled(true);
-        //getting size of view
-        view.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-        //selecting the part to be saved
-        view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
-        Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache()); // actually taking the screen shot
-        view.setDrawingCacheEnabled(false);
-        return bitmap;
+        Paint paintText = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paintText.setColor(Color.BLACK);
+        int size = getResources().getDisplayMetrics().densityDpi/str.length();
+        float textHeight;
+        do {
+            paintText.setTextSize(++size);
+            textHeight = paintText.descent() - paintText.ascent();
+
+        } while(paintText.measureText(str) < mWidth * 0.9 && textHeight < mHeight *0.9);
+        paintText.setStyle(Paint.Style.FILL);
+
+        float textOffset = textHeight/ 2 - paintText.descent();
+
+        mDrawCanvas.drawText(str, (mWidth - paintText.measureText(str))/2, (mHeight / 2) + textOffset, paintText);
+        invalidate();
     }
 
     public void setBitmap(Bitmap b) {
         clearCanvas();
-        mDrawCanvas.drawBitmap(b, (mWidth - b.getWidth()) / 2, (mHeight - b.getHeight()) / 2, mCanvasPaint);
+        mDrawCanvas.drawBitmap(b, (mWidth - b.getWidth())/2, (mHeight - b.getHeight())/2, mCanvasPaint);
         invalidate();
     }
 
@@ -182,7 +174,7 @@ public class DrawingView extends View {
             if(y > maxY)
                 maxY = y;
 
-            if ((x >= 0 && x < mWidth && y >= 0 && y < mHeight && mCanvasBitmap.getPixel(x, y) == Color.TRANSPARENT) || (x < 0 || x >= mWidth || y < 0 || y >= mHeight)) {
+            if ((x >= 0 && x < mWidth && y >= 0 && y < mHeight && mCanvasBitmap.getPixel(x, y) != getResources().getColor(R.color.Black)  && mCanvasBitmap.getPixel(x, y) != mTouchColour) || (x < 0 || x >= mWidth || y < 0 || y >= mHeight)) {
                 mWrongTouches++;
                 if(mVibrate) {
                     mVibrator.vibrate(100);
@@ -221,15 +213,17 @@ public class DrawingView extends View {
 
     public void setupDrawing() {
         //get drawing area setup for interaction
+        mTouchColour = getResources().getColor(R.color.Red);
+
         mDrawPath = new Path();
         mDrawPaint = new Paint();
-        mDrawPaint.setColor(getResources().getColor(R.color.Red));
+        mDrawPaint.setColor(mTouchColour);
         mDrawPaint.setAntiAlias(true);
         mDrawPaint.setStrokeWidth(15);
         mDrawPaint.setStyle(Paint.Style.STROKE);
         mDrawPaint.setStrokeJoin(Paint.Join.ROUND);
         mDrawPaint.setStrokeCap(Paint.Cap.ROUND);
-        mCanvasPaint = new Paint(Paint.DITHER_FLAG);
+        mCanvasPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mCorrectTouches = 0;
         mWrongTouches = 0;
         mDraw = true;
@@ -258,7 +252,11 @@ public class DrawingView extends View {
     }
 
     public Bitmap getCanvasBitmap() {
-        return mCanvasBitmap;
+        Bitmap overlayBitmap = Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_8888);
+        overlayBitmap.eraseColor(getResources().getColor(R.color.AppBg));
+        Canvas canvas = new Canvas(overlayBitmap);
+        canvas.drawBitmap(mCanvasBitmap,0,0,null);
+        return overlayBitmap;
     }
 
     public ArrayList<MotionEvent> getMotionEvents() {

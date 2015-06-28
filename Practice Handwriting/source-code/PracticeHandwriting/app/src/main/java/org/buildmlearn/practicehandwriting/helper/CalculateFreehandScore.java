@@ -33,6 +33,7 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
 
     @Override
     protected void onPreExecute() {
+        mDrawView.canDraw(false);
         mTouchImg = mDrawView.getTouchesBitmap();
         mTouches = mDrawView.getTouchesList();
 
@@ -81,7 +82,7 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
             int correctTouches;
             int i, cx, cy;
             float scaleX, scaleY;
-            int textColour = mContext.getResources().getColor(R.color.Black);
+            int bgColour = mContext.getResources().getColor(R.color.AppBg);
             float score, maxScore = 0, scaleXForMaxScore = 1, scaleYForMaxScore = 1, cxForMaxScore = centerX, cyForMaxScore = centerY;
             Integer[] xTouches = new Integer[size];
             Integer[] yTouches = new Integer[size];
@@ -101,7 +102,7 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
                             for (i = 0; i < size; i++) {
                                 int x = (int) (xTouches[i] * scaleX) + cx;
                                 int y = (int) (yTouches[i] * scaleY) + cy;
-                                if (x >= 0 && x < canvasBitmap.getWidth() && y >= 0 && y < canvasBitmap.getHeight() && canvasBitmap.getPixel(x, y) == textColour)
+                                if (x >= 0 && x < canvasBitmap.getWidth() && y >= 0 && y < canvasBitmap.getHeight() && canvasBitmap.getPixel(x, y) != bgColour)
                                     correctTouches++;
                             }
                             score = ((float) correctTouches) / ((float) size);

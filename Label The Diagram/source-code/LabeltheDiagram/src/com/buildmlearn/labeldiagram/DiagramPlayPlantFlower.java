@@ -4,11 +4,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.buildmlearn.labeldiagram.tooltipkit.InfoTooltip;
@@ -98,15 +100,37 @@ public class DiagramPlayPlantFlower extends DiagramPlayBase {
 		filamentTag.setOnClickListener(this);
 		sepalTag.setOnClickListener(this);
 		ovuleTag.setOnClickListener(this);
-		
+
 		placeHolderlist = container.diagramCaller("PlantFlower");
 		tagPlaceHolderMap = tagPlaceholdermapper.diagramMapper("PlantFlower");
 		incompleteTagList = tagPlaceholdermapper.diagramMapper("PlantFlower");
 		tagListSize = tagPlaceHolderMap.size();
 
 	}
-	
-	
+
+	/*@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+		// TODO Auto-generated method stub
+		super.onWindowFocusChanged(hasFocus);
+		// Here you can get the size!
+
+		RelativeLayout scorePos = (RelativeLayout) findViewById(R.id.scoreTab);
+		ImageView holderPos = (ImageView) findViewById(R.id.tagHolder);
+		RelativeLayout container = (RelativeLayout) findViewById(R.id.imageContainer);
+		
+		
+		container.getLayoutParams().height= holderPos.getTop()-scorePos.getBottom();
+
+		int conTop = scorePos.getTop();
+		int conBot = scorePos.getBottom();
+
+		int mainTop = holderPos.getTop();
+		int mainBot = holderPos.getBottom();
+		addition = (conTop-mainTop)+(mainBot-conBot);
+
+		Log.i("Height", mainTop + " " + conTop + "");
+	}*/
+
 	@Override
 	public void onClick(View tagView) {
 		// TODO Extract messages to separate container
@@ -122,8 +146,7 @@ public class DiagramPlayPlantFlower extends DiagramPlayBase {
 			popup1.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.receptacleTag:
-			InfoTooltip popup2 = new InfoTooltip(
-					getApplicationContext(),
+			InfoTooltip popup2 = new InfoTooltip(getApplicationContext(),
 					" Base of the flower ");
 			popup2.show(tagView, AlignMode.BOTTOM);
 			break;
@@ -135,20 +158,20 @@ public class DiagramPlayPlantFlower extends DiagramPlayBase {
 		case R.id.stigmaTag:
 			InfoTooltip popup4 = new InfoTooltip(getApplicationContext(),
 					"Sticky portion at the top of the style\n"
-					+ " where pollen grains usually land ");
+							+ " where pollen grains usually land ");
 			popup4.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.styleTag:
 			InfoTooltip popup5 = new InfoTooltip(
 					getApplicationContext(),
 					"The narrow elongated part of the pistil\n"
-					+ " between the ovary and the stigma,\n grows pollen tube ");
+							+ " between the ovary and the stigma,\n grows pollen tube ");
 			popup5.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.overyTag:
 			InfoTooltip popup6 = new InfoTooltip(getApplicationContext(),
 					"Contains ovules. After fetilisation,\n"
-					+ " the ovary swells to produce fruit");
+							+ " the ovary swells to produce fruit");
 			popup6.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.filamentTag:
@@ -164,7 +187,7 @@ public class DiagramPlayPlantFlower extends DiagramPlayBase {
 		case R.id.ovuleTag:
 			InfoTooltip popup9 = new InfoTooltip(getApplicationContext(),
 					"In seed plants, the female reproductive\n"
-					+ " part that produces the gamete - egg");
+							+ " part that produces the gamete - egg");
 			popup9.show(tagView, AlignMode.BOTTOM);
 			break;
 		default:
@@ -178,7 +201,6 @@ public class DiagramPlayPlantFlower extends DiagramPlayBase {
 		return R.layout.diagram_play_plantflower;
 	}
 
-	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
@@ -199,7 +221,7 @@ public class DiagramPlayPlantFlower extends DiagramPlayBase {
 			return super.onOptionsItemSelected(item);
 		}
 	}
-	
+
 	private void quitPlay() {
 
 		new AlertDialog.Builder(this)
@@ -218,7 +240,7 @@ public class DiagramPlayPlantFlower extends DiagramPlayBase {
 						}).setNegativeButton("No", null).show();
 
 	}
-	
+
 	@Override
 	protected void dispatch(float totalScore) {
 		Intent intent = new Intent(getBaseContext(), DiagramResult.class);

@@ -91,12 +91,12 @@ public abstract class DiagramPlayBase extends Activity implements
 		tagPlaceholdermapper = new TagPlaceholderMapper();
 
 		tagListSize = tagPlaceHolderMap.size();
-		
+
 		preferences = getApplicationContext().getSharedPreferences(
-			      "com.buildmlearn.labeldiagram.PREFERENCE_FILE_KEY", Context.MODE_PRIVATE);
+				"com.buildmlearn.labeldiagram.PREFERENCE_FILE_KEY",
+				Context.MODE_PRIVATE);
 
 	}
-
 
 	@Override
 	public boolean onLongClick(View textview) {
@@ -273,7 +273,7 @@ public abstract class DiagramPlayBase extends Activity implements
 		totalScore = correcTries * 10;
 		progress = (float) totalTries / tagListSize * 100;
 
-		score.setText((int)totalScore + "");
+		score.setText((int) totalScore + "");
 		compeleteRatio.setText((int) progress + "%");
 
 		if ((int) progress == MAX_PROGRESS) {
@@ -290,17 +290,15 @@ public abstract class DiagramPlayBase extends Activity implements
 					container.setCorrectLabelList(correctTagList);
 					container.setIncorrectLabelList(incorrectTagList);
 
-					float previousScore=preferences.getFloat(getDiagramName(), 0);
-					if(previousScore<totalScore){
+					float previousScore = preferences.getFloat(
+							getDiagramName(), 0);
+					if (previousScore < totalScore) {
 						SharedPreferences.Editor editor = preferences.edit();
 						editor.putFloat(getDiagramName(), totalScore);
 						editor.commit();
 					}
-					
 
 					dispatch(totalScore);
-					
-					
 
 				}
 			}, 3000);
@@ -309,11 +307,10 @@ public abstract class DiagramPlayBase extends Activity implements
 
 	}
 
-	protected abstract void dispatch(float totalScore); 
+	protected abstract void dispatch(float totalScore);
 
 	/**
-	 * Update score and progress if quit playing
-	 * without completing all the tags
+	 * Update score and progress if quit playing without completing all the tags
 	 *
 	 */
 	public void quitPlayUpdataProgress() {
@@ -324,7 +321,7 @@ public abstract class DiagramPlayBase extends Activity implements
 		totalScore = correctLabeledCount * 10;
 		progress = (float) totalLabeledCount / tagListSize * 100;
 
-		score.setText((int)totalScore + "");
+		score.setText((int) totalScore + "");
 		compeleteRatio.setText((int) progress + "%");
 
 		TagContainerSingleton container = TagContainerSingleton.getInstance();
@@ -338,20 +335,21 @@ public abstract class DiagramPlayBase extends Activity implements
 
 		container.setCorrectLabelList(correctTagList);
 		container.setIncorrectLabelList(incorrectTagList);
-		
-		float previousScore=preferences.getFloat(getDiagramName(), 0);
-		if(previousScore<totalScore){
+
+		float previousScore = preferences.getFloat(getDiagramName(), 0);
+		if (previousScore < totalScore) {
 			SharedPreferences.Editor editor = preferences.edit();
 			editor.putFloat(getDiagramName(), totalScore);
 			editor.commit();
 		}
-		
+
 		dispatch(totalScore);
-		/*Intent intent = new Intent(getApplicationContext(),
-				DiagramResult.class);
-		intent.putExtra("SCORE", totalScore);
-		startActivity(intent);*/
-		
+		/*
+		 * Intent intent = new Intent(getApplicationContext(),
+		 * DiagramResult.class); intent.putExtra("SCORE", totalScore);
+		 * startActivity(intent);
+		 */
+
 	}
 
 	/**
@@ -439,24 +437,23 @@ public abstract class DiagramPlayBase extends Activity implements
 		}
 	}
 
-	
 	@Override
-	public void onClick(View tagView) {}
-	
-	
+	public void onClick(View tagView) {
+	}
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    switch (item.getItemId()) {
-	    // Respond to the action bar's Up/Home button
-	    case android.R.id.home:
-	        NavUtils.navigateUpFromSameTask(this);
-	        return true;
-	    }
-	    return super.onOptionsItemSelected(item);
+		switch (item.getItemId()) {
+		// Respond to the action bar's Up/Home button
+		case android.R.id.home:
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	protected abstract int getResourcesId();
-	
+
 	public String getDiagramName() {
 		return diagramName;
 	}
@@ -465,5 +462,4 @@ public abstract class DiagramPlayBase extends Activity implements
 		this.diagramName = diagramName;
 	}
 
-	
 }

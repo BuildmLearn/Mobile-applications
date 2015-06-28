@@ -169,7 +169,7 @@
     <ImageView
         android:id="@+id/innerTagHolder"
         android:layout_width="340dp"
-        android:layout_height="115dp"
+        android:layout_height="125dp"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/tagHolder"
         android:layout_marginLeft="5dp"

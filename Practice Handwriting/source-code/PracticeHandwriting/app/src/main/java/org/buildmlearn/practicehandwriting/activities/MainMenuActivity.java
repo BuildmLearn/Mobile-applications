@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import org.buildmlearn.practicehandwriting.R;
 
@@ -32,7 +33,6 @@ public class MainMenuActivity extends Activity {
 
             case R.id.word_button:
                 intent = new Intent(this, WordSelectionActivity.class);
-                intent.putExtra(getResources().getString(R.string.practice_mode),getResources().getString(R.string.practice));
                 break;
 
             case R.id.freehand_button:
@@ -42,9 +42,9 @@ public class MainMenuActivity extends Activity {
 
             case R.id.timetrial_button:
                 intent = new Intent(this, IncompleteActivity.class);
+                intent.putExtra(getResources().getString(R.string.practice_string),SplashActivity.CHARACTER_LIST[0]);
                 break;
         }
-
         startActivity(intent);
     }
 }

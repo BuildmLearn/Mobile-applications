@@ -18,26 +18,28 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
-    Bitmap mTouchImg, mSavedImg, mDrawViewBitmap;
-    ArrayList mTouches;
-    ProgressDialog mProgressDialog;
-    DrawingView mDrawView;
-    Context mContext;
+    private Bitmap mTouchImg, mSavedImg;
+    private ArrayList mTouches;
+    private ProgressDialog mProgressDialog;
+    private DrawingView mDrawView;
+    private Context mContext;
+    private String mPracticeString;
 
-    public CalculateFreehandScore(Context context, DrawingView drawView, Bitmap drawViewBitmap) {
+    public CalculateFreehandScore(Context context, DrawingView drawView, String practiceString) {
         mContext = context;
         mDrawView = drawView;
-        mDrawViewBitmap = drawViewBitmap;
+        mPracticeString = practiceString;
     }
 
     @Override
     protected void onPreExecute() {
+        mDrawView.canDraw(false);
         mTouchImg = mDrawView.getTouchesBitmap();
         mTouches = mDrawView.getTouchesList();
 
         mDrawView.clearCanvas();
         mDrawView.setupDrawing();
-        mDrawView.setBitmap(mDrawViewBitmap);
+        mDrawView.setBitmapFromText(mPracticeString);
 
         mDrawView.setDrawingCacheEnabled(true);
         mSavedImg = Bitmap.createBitmap(mDrawView.getDrawingCache());
@@ -64,8 +66,8 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
         mDrawView.setBitmap(bitmapOverlay(mSavedImg,scaleBitmap(mTouchImg,result[1],result[2]),(int)result[3],(int)result[4]));
         mDrawView.startAnimation(Animator.createScaleDownAnimation());
 
-        ((TextView) ((Activity) mContext).findViewById(R.id.scoreView)).setText("Score: " + String.valueOf(result[0]));
-        ((Activity) mContext).findViewById(R.id.scoreView).setAnimation(Animator.createFadeInAnimation());
+        ((TextView) ((Activity) mContext).findViewById(R.id.score_and_timer_View)).setText("Score: " + String.valueOf(result[0]));
+        ((Activity) mContext).findViewById(R.id.score_and_timer_View).setAnimation(Animator.createFadeInAnimation());
 
         Animator.createYFlipForwardAnimation(((Activity) mContext).findViewById(R.id.done_save_button));
         ((ActionButton) ((Activity) mContext).findViewById(R.id.done_save_button)).setImageResource(R.drawable.ic_save);
@@ -80,7 +82,7 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
             int correctTouches;
             int i, cx, cy;
             float scaleX, scaleY;
-            int textColour = mContext.getResources().getColor(R.color.Black);
+            int bgColour = mContext.getResources().getColor(R.color.AppBg);
             float score, maxScore = 0, scaleXForMaxScore = 1, scaleYForMaxScore = 1, cxForMaxScore = centerX, cyForMaxScore = centerY;
             Integer[] xTouches = new Integer[size];
             Integer[] yTouches = new Integer[size];
@@ -100,7 +102,7 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
                             for (i = 0; i < size; i++) {
                                 int x = (int) (xTouches[i] * scaleX) + cx;
                                 int y = (int) (yTouches[i] * scaleY) + cy;
-                                if (x >= 0 && x < canvasBitmap.getWidth() && y >= 0 && y < canvasBitmap.getHeight() && canvasBitmap.getPixel(x, y) == textColour)
+                                if (x >= 0 && x < canvasBitmap.getWidth() && y >= 0 && y < canvasBitmap.getHeight() && canvasBitmap.getPixel(x, y) != bgColour)
                                     correctTouches++;
                             }
                             score = ((float) correctTouches) / ((float) size);

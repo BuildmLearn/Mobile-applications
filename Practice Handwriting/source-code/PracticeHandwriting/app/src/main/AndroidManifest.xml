@@ -37,12 +37,28 @@
             android:label="@string/title_activity_character_selection" >
         </activity>
         <activity
-            android:name=".activities.PracticeActivity"
+            android:name=".activities.PracticeBaseActivity"
             android:label="@string/title_activity_practice" >
         </activity>
         <activity
             android:name=".activities.WordSelectionActivity"
             android:label="@string/title_activity_word_selection" >
+        </activity>
+        <activity
+            android:name=".activities.TimeTrialResultActivity"
+            android:label="@string/title_activity_time_trial_result" >
+        </activity>
+        <activity
+            android:name=".activities.PracticeActivity"
+            android:label="@string/title_activity_practice" >
+        </activity>
+        <activity
+            android:name=".activities.FreehandActivity"
+            android:label="@string/title_activity_freehand" >
+        </activity>
+        <activity
+            android:name=".activities.TimeTrialActivity"
+            android:label="@string/title_activity_time_trial" >
         </activity>
     </application>
 

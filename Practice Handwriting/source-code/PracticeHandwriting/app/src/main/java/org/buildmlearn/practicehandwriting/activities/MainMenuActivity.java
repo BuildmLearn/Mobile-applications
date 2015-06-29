@@ -4,17 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import org.buildmlearn.practicehandwriting.R;
 
 
 public class MainMenuActivity extends Activity {
-
-    private int PRACTICE_MODE = 0;
-    private int TIME_TRIAL_MODE = 0;
-    private int FREEHAND_MODE = 0;
-    private int _MODE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +35,16 @@ public class MainMenuActivity extends Activity {
                 break;
 
             case R.id.timetrial_button:
-                intent = new Intent(this, IncompleteActivity.class);
+                intent = new Intent(this, TimeTrialActivity.class);
                 intent.putExtra(getResources().getString(R.string.practice_string),SplashActivity.CHARACTER_LIST[0]);
                 break;
         }
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        startActivity(new Intent(MainMenuActivity.this, LanguageActivity.class));
     }
 }

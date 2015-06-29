@@ -20,6 +20,7 @@ public class FreehandActivity extends PracticeBaseActivity {
         switch (v.getId()) {
             case R.id.reset_button:
                 mDrawView.clearCanvas();
+                mDrawView.canVibrate(false);
                 break;
             case R.id.done_save_button:
                 if(!mDone) {

@@ -1,15 +1,15 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/AppBg"
     android:id="@+id/resultMainLL"
     tools:context="org.buildmlearn.practicehandwriting.activities.TimeTrialResultActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/PracticeToolbar"
+        android:id="@+id/TimeTrialToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/ActionbarBg"
@@ -18,6 +18,7 @@
         app:navigationIcon="@drawable/ic_launcher"/>
 
     <ScrollView
+        android:layout_below="@+id/TimeTrialToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
@@ -27,5 +28,15 @@
             android:layout_height="wrap_content"/>
     </ScrollView>
 
+    <com.software.shell.fab.ActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="saveTimeTrial"
+        fab:button_color="@color/ButtonBg"
+        fab:image="@drawable/ic_save"
+        fab:show_animation="@anim/fab_jump_from_down"/>
 
-</LinearLayout>
+</RelativeLayout>

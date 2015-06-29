@@ -90,9 +90,10 @@ public class PracticeBaseActivity extends ActionBarActivity {
 
             case R.id.done_save_button:
                 if(mDone) {
+                    String toastText;
                     File mediaStorageDir = new File(Environment.getExternalStorageDirectory() + File.separator + getResources().getString(R.string.app_name));
                     if (!mediaStorageDir.exists() && !mediaStorageDir.mkdir()) {
-                        Toast.makeText(getApplicationContext(), "Could not save trace. Unable to create directory", Toast.LENGTH_SHORT).show();
+                        toastText = "Could not save trace. Unable to create directory";
                     } else {
                         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
                         File file = new File(mediaStorageDir.getPath() + File.separator + "IMG_" + timeStamp + "_" + mPracticeString + ".jpg");
@@ -104,15 +105,16 @@ public class PracticeBaseActivity extends ActionBarActivity {
                             savedImg.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
                             fOut.flush();
                             fOut.close();
-                            Toast.makeText(getApplicationContext(), "Trace saved", Toast.LENGTH_SHORT).show();
+                            toastText = "Traces saved";
                         } catch (FileNotFoundException e) {
-                            Toast.makeText(getApplicationContext(), "Could not save trace. Unable to open file", Toast.LENGTH_SHORT).show();
+                            toastText = "Could not save trace. Unable to open file";
                             file.delete();
                         } catch (IOException e) {
-                            Toast.makeText(getApplicationContext(), "Could not save trace. Unable to save file", Toast.LENGTH_SHORT).show();
+                            toastText = "Could not save trace. Unable to save file";
                             file.delete();
                         }
                     }
+                    Toast.makeText(this,toastText,Toast.LENGTH_SHORT).show();
                 }
                 break;
         }

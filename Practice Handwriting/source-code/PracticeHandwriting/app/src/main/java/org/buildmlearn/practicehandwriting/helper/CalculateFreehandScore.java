@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.os.AsyncTask;
 import android.widget.TextView;
 
@@ -15,15 +16,15 @@ import com.software.shell.fab.ActionButton;
 import org.buildmlearn.practicehandwriting.R;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
     private Bitmap mTouchImg, mSavedImg;
-    private ArrayList mTouches;
+    private ArrayList<ArrayList<Point>> mTouches;
     private ProgressDialog mProgressDialog;
     private DrawingView mDrawView;
     private Context mContext;
     private String mPracticeString;
+    private int[] mTouchBounds;
 
     public CalculateFreehandScore(Context context, DrawingView drawView, String practiceString) {
         mContext = context;
@@ -36,6 +37,7 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
         mDrawView.canDraw(false);
         mTouchImg = mDrawView.getTouchesBitmap();
         mTouches = mDrawView.getTouchesList();
+        mTouchBounds = mDrawView.getTouchBounds();
 
         mDrawView.clearCanvas();
         mDrawView.setupDrawing();
@@ -74,25 +76,26 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
         Animator.createYFlipBackwardAnimation(((Activity) mContext).findViewById(R.id.done_save_button));
     }
 
-    private float[] scoreBitmapForFreehand(ArrayList<ArrayList<Integer>> touches, Bitmap canvasBitmap, int centerX, int centerY) {
-        int size = touches.get(0).size();
+    private float[] scoreBitmapForFreehand(ArrayList<ArrayList<Point>> touches, Bitmap canvasBitmap, int centerX, int centerY) {
+        ArrayList<Point> points = new ArrayList<>();
+        for(int i = 0; i < touches.size() ; i++)
+            for (int j = 0; j < touches.get(i).size(); j++)
+                points.add(touches.get(i).get(j));
+        float size = points.size();
         if(size!=0) {
-            int minx = Math.max(Collections.min(touches.get(0)) - 30, 0);
-            int miny = Math.max(Collections.min(touches.get(1)) - 30, 0);
-            int correctTouches;
+            float correctTouches;
             int i, cx, cy;
             float scaleX, scaleY;
             int bgColour = mContext.getResources().getColor(R.color.AppBg);
             float score, maxScore = 0, scaleXForMaxScore = 1, scaleYForMaxScore = 1, cxForMaxScore = centerX, cyForMaxScore = centerY;
-            Integer[] xTouches = new Integer[size];
-            Integer[] yTouches = new Integer[size];
-            xTouches = touches.get(0).toArray(xTouches);
-            yTouches = touches.get(1).toArray(yTouches);
+            int[] xTouches = new int[(int)size];
+            int[] yTouches = new int[(int)size];
 
             for (i = 0; i < size; i++) {
-                xTouches[i] = xTouches[i] - minx;
-                yTouches[i] = yTouches[i] - miny;
+                xTouches[i] = (points.get(i).x * mDrawView.getBitmapWidth() / mDrawView.mWidth) - mTouchBounds[0];
+                yTouches[i] = (points.get(i).y * mDrawView.getBitmapHeight() / mDrawView.mHeight) - mTouchBounds[1];
             }
+
             outerLoop:
             for (scaleX = 0.8f; scaleX < 1.4f; scaleX += 0.1f)
                 for (scaleY = 0.8f; scaleY < 1.4f; scaleY += 0.1f) {
@@ -102,10 +105,11 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
                             for (i = 0; i < size; i++) {
                                 int x = (int) (xTouches[i] * scaleX) + cx;
                                 int y = (int) (yTouches[i] * scaleY) + cy;
+
                                 if (x >= 0 && x < canvasBitmap.getWidth() && y >= 0 && y < canvasBitmap.getHeight() && canvasBitmap.getPixel(x, y) != bgColour)
-                                    correctTouches++;
+                                    correctTouches += 1;
                             }
-                            score = ((float) correctTouches) / ((float) size);
+                            score = correctTouches / size;
                             if (score > maxScore) {
                                 maxScore = score;
                                 scaleXForMaxScore = scaleX;

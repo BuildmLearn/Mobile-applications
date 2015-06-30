@@ -3,12 +3,11 @@ package org.buildmlearn.practicehandwriting.helper;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.Rect;
+import android.graphics.Point;
 import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
@@ -18,12 +17,10 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.buildmlearn.practicehandwriting.R;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -40,7 +37,7 @@ public class DrawingView extends View {
     //canvas bitmap
     private Bitmap mCanvasBitmap;
     //Canvas width and height
-    public int mWidth, mHeight;
+    public int mWidth, mHeight, mTextWidth, mTextHeight;
 
     private Vibrator mVibrator;
 
@@ -56,8 +53,7 @@ public class DrawingView extends View {
 
     private int mTouchColour;
 
-    private ArrayList<ArrayList<Integer>> mTouches;
-    private ArrayList<MotionEvent> mMotionEvents;
+    private ArrayList<ArrayList<Point>> mTouchPoints;
 
     private Context mContext;
 
@@ -115,26 +111,16 @@ public class DrawingView extends View {
         paintText.setStyle(Paint.Style.FILL);
 
         float textOffset = textHeight/ 2 - paintText.descent();
-
-        mDrawCanvas.drawText(str, (mWidth - paintText.measureText(str))/2, (mHeight / 2) + textOffset, paintText);
+        mTextWidth = (int) paintText.measureText(str);
+        mTextHeight = (int) textHeight;
+        mDrawCanvas.drawText(str, (mWidth - paintText.measureText(str)) / 2, (mHeight / 2) + textOffset, paintText);
         invalidate();
     }
 
     public void setBitmap(Bitmap b) {
         clearCanvas();
-        mDrawCanvas.drawBitmap(b, (mWidth - b.getWidth())/2, (mHeight - b.getHeight())/2, mCanvasPaint);
+        mDrawCanvas.drawBitmap(b, (mWidth - b.getWidth()) / 2, (mHeight - b.getHeight()) / 2, mCanvasPaint);
         invalidate();
-    }
-
-    public ArrayList getTouchesList() {
-        return mTouches;
-    }
-
-    public Bitmap getTouchesBitmap() {
-        if(minX!=mWidth && minY!=mHeight && maxX!=-1 && maxY!=-1)
-            return Bitmap.createBitmap(mCanvasBitmap,Math.max(minX - 30, 0),Math.max(minY -30,0),Math.min(maxX - minX +40, mWidth - minX),Math.min(maxY - minY +40, mHeight - minY));
-        else
-            return Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_8888);
     }
 
     public void clearCanvas() {
@@ -154,7 +140,7 @@ public class DrawingView extends View {
     @Override
     public boolean onTouchEvent(@NonNull MotionEvent event) {
         if(mDraw) {
-            mMotionEvents.add(event);
+
             //detect user touch
             float touchX = event.getX();
             float touchY = event.getY();
@@ -162,8 +148,6 @@ public class DrawingView extends View {
             // mapping screen touch co-ordinates to image pixel co-ordinates
             int x = (int) (touchX * mCanvasBitmap.getWidth() / mWidth);
             int y = (int) (touchY * mCanvasBitmap.getHeight() / mHeight);
-            mTouches.get(0).add(x);
-            mTouches.get(1).add(y);
 
             if(x < minX)
                 minX = x;
@@ -193,6 +177,7 @@ public class DrawingView extends View {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     mDrawPath.moveTo(touchX, touchY);
+                    mTouchPoints.add(new ArrayList<Point>());
                     break;
                 case MotionEvent.ACTION_MOVE:
                     mDrawPath.lineTo(touchX, touchY);
@@ -205,6 +190,7 @@ public class DrawingView extends View {
                 default:
                     return false;
             }
+            mTouchPoints.get(mTouchPoints.size() - 1).add(new Point((int) touchX, (int) touchY));
             invalidate();
             return true;
         }
@@ -236,11 +222,7 @@ public class DrawingView extends View {
 
         mVibrate = true;
 
-        mTouches = new ArrayList<>(2);
-        mTouches.add(new ArrayList<Integer>());
-        mTouches.add(new ArrayList<Integer>());
-
-        mMotionEvents = new ArrayList<MotionEvent>();
+        mTouchPoints = new ArrayList<>();
     }
 
     public void canVibrate(boolean vibrate){
@@ -259,11 +241,38 @@ public class DrawingView extends View {
         return overlayBitmap;
     }
 
-    public ArrayList<MotionEvent> getMotionEvents() {
-        return mMotionEvents;
+    public int getBitmapWidth() {
+        return mCanvasBitmap.getWidth();
+    }
+
+    public int getBitmapHeight() {
+        return mCanvasBitmap.getHeight();
+    }
+
+    public int getTextWidth() {
+        return mTextWidth;
+    }
+
+    public int getTextHeight() {
+        return mTextHeight;
+    }
+
+    public int[] getTouchBounds() {
+        return new int[] {minX,minY,maxX,maxY};
     }
 
     public float score() {
         return (mCorrectTouches + mWrongTouches !=0)?100* mCorrectTouches /(mCorrectTouches + mWrongTouches):0;
+    }
+
+    public ArrayList<ArrayList<Point>> getTouchesList() {
+        return mTouchPoints;
+    }
+
+    public Bitmap getTouchesBitmap() {
+        if(minX!=mWidth && minY!=mHeight && maxX!=-1 && maxY!=-1)
+            return Bitmap.createBitmap(mCanvasBitmap,Math.max(minX - 30, 0),Math.max(minY -30,0),Math.min(maxX - minX +40, mWidth - minX),Math.min(maxY - minY +40, mHeight - minY));
+        else
+            return Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_8888);
     }
 }

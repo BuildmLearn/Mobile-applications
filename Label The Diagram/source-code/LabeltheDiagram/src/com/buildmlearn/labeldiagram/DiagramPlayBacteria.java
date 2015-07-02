@@ -1,5 +1,7 @@
 package com.buildmlearn.labeldiagram;
 
+import com.buildmlearn.labeldiagram.tooltipkit.InfoTooltip;
+import com.buildmlearn.labeldiagram.tooltipkit.CustomTooltip.AlignMode;
 import com.example.labelthediagram.R;
 
 import android.app.AlertDialog;
@@ -9,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -49,7 +52,7 @@ public class DiagramPlayBacteria extends DiagramPlayBase {
 		ImageView plasmaMembraneView = (ImageView) findViewById(R.id.plasma_membraneBlb);
 		
 		// Draggable Tags imageViews
-		TextView pinnaTag = (TextView) findViewById(R.id.chromosomeTag);
+		TextView chromosomeTag = (TextView) findViewById(R.id.chromosomeTag);
 		TextView ribosomesTag = (TextView) findViewById(R.id.ribosomesTag);
 		TextView foodGranuleTag = (TextView) findViewById(R.id.food_granuleTag);
 		TextView piliTag = (TextView) findViewById(R.id.piliTag);
@@ -75,7 +78,7 @@ public class DiagramPlayBacteria extends DiagramPlayBase {
 		
 		
 		// Register place holders to receive onLongclick events
-		pinnaTag.setOnLongClickListener(this);
+		chromosomeTag.setOnLongClickListener(this);
 		ribosomesTag.setOnLongClickListener(this);
 		foodGranuleTag.setOnLongClickListener(this);
 		piliTag.setOnLongClickListener(this);
@@ -88,7 +91,7 @@ public class DiagramPlayBacteria extends DiagramPlayBase {
 		
 		
 		// Register place holders to receive onClick events
-		pinnaTag.setOnClickListener(this);
+		chromosomeTag.setOnClickListener(this);
 		ribosomesTag.setOnClickListener(this);
 		foodGranuleTag.setOnClickListener(this);
 		piliTag.setOnClickListener(this);
@@ -104,6 +107,77 @@ public class DiagramPlayBacteria extends DiagramPlayBase {
 		incompleteTagList = tagPlaceholdermapper.diagramMapper("Bacteria");
 		tagListSize = tagPlaceHolderMap.size();
 		
+	}
+	
+	@Override
+	public void onClick(View tagView) {
+		// TODO Extract messages to separate container
+		switch (tagView.getId()) {
+		case R.id.chromosomeTag:
+			InfoTooltip popup = new InfoTooltip(getApplicationContext(),
+					"This is situated within nucleoid region \n"
+					+ "and contain a circular DNA molecule");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.ribosomesTag:
+			InfoTooltip popup1 = new InfoTooltip(getApplicationContext(),
+					"Structures that assemble proteins ");
+			popup1.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.food_granuleTag:
+			InfoTooltip popup2 = new InfoTooltip(getApplicationContext(),
+					"They occur as small granules of lipids or glycogen\n"
+					+ " held in sacs formed from lipid membrane");
+			popup2.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.piliTag:
+			InfoTooltip popup3 = new InfoTooltip(getApplicationContext(),
+					"Short, thin, straight, hair like projections form surface  ");
+			popup3.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.flagellumTag:
+			InfoTooltip popup4 = new InfoTooltip(getApplicationContext(),
+					"This is a lash-like appendage that begins\n"
+					+ " from the cell body which is important for locomotion");
+			popup4.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.plasmidTag:
+			InfoTooltip popup5 = new InfoTooltip(
+					getApplicationContext(),
+					"Located in cytosol of bacterial cells which\n"
+					+ " contains supplemental genetic information");
+			popup5.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.capsuleTag:
+			InfoTooltip popup6 = new InfoTooltip(getApplicationContext(),
+					"A layer that lies outside the cell envelope\n"
+					+ "of bacteria which can be the cause of \n"
+					+ "various diseases");
+			popup6.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.cellwallTag:
+			InfoTooltip popup7 = new InfoTooltip(getApplicationContext(),
+					"This protects the cell from shock,\n "
+					+ "physical damage,confers rigidity \n"
+					+ "and shape of bacterial cells ");
+			popup7.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.cytoplasmTag:
+			InfoTooltip popup8 = new InfoTooltip(getApplicationContext(),
+					"The fluid (cytosol) and all its dissolved\n"
+					+ " particles is called the cytoplasm of the cell");
+
+			popup8.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.plasma_membraneTag:
+			InfoTooltip popup9 = new InfoTooltip(getApplicationContext(),
+					"This is a biological membrane that separates\n"
+					+ " the interior of all cells from the outside environment ");
+			popup9.show(tagView, AlignMode.BOTTOM);
+			break;
+		default:
+			break;
+		}
 	}
 
 

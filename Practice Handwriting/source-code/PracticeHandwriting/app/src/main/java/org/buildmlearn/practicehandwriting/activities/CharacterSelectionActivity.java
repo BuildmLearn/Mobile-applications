@@ -41,9 +41,8 @@ public class CharacterSelectionActivity extends Activity {
         params.setMargins(horizontal_padding, vertical_padding, horizontal_padding, vertical_padding);
 
         int count = 0;
-        String[] charSet = getResources().getStringArray(R.array.English_characters);
-        for(String s: charSet) {
-
+        for(int i=0;i<SplashActivity.CHARACTER_LIST.length;i++) {
+            String s = SplashActivity.CHARACTER_LIST[i];
             FButton fb = new FButton(this);
             fb.setText(s);
             fb.setTextSize(40);
@@ -56,15 +55,14 @@ public class CharacterSelectionActivity extends Activity {
                 @Override
                 public void onClick(View view) {
                     Intent intent;
-                    if(getIntent().getStringExtra(getResources().getString(R.string.practice_mode)).equals(getResources().getString(R.string.practice)))
+                    if (getIntent().getStringExtra(getResources().getString(R.string.practice_mode)).equals(getResources().getString(R.string.practice)))
                         intent = new Intent(CharacterSelectionActivity.this, PracticeActivity.class);
                     else
                         intent = new Intent(CharacterSelectionActivity.this, FreehandActivity.class);
-                    intent.putExtra(getResources().getString(R.string.practice_string),((Button) view).getText());
+                    intent.putExtra(getResources().getString(R.string.practice_string), ((Button) view).getText());
                     startActivity(intent);
                 }
             });
-
             child.addView(fb);
 
             count++;

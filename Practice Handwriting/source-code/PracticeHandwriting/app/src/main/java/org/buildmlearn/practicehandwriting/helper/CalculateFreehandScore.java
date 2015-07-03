@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.software.shell.fab.ActionButton;
 
 import org.buildmlearn.practicehandwriting.R;
+import org.buildmlearn.practicehandwriting.activities.SplashActivity;
 
 import java.util.ArrayList;
 
@@ -35,12 +36,13 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
     @Override
     protected void onPreExecute() {
         mDrawView.canDraw(false);
+        mDrawView.canVibrate(false);
         mTouchImg = mDrawView.getTouchesBitmap();
         mTouches = mDrawView.getTouchesList();
         mTouchBounds = mDrawView.getTouchBounds();
 
         mDrawView.clearCanvas();
-        mDrawView.setupDrawing();
+        mDrawView.init();
         mDrawView.setBitmapFromText(mPracticeString);
 
         mDrawView.setDrawingCacheEnabled(true);
@@ -63,13 +65,20 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
     @Override
     protected void onPostExecute(float[] result) {
         mProgressDialog.dismiss();
+        float best = SplashActivity.mDbHelper.getScore(mPracticeString);
+        if (best < result[0]) {
+            best = result[0];
+            SplashActivity.mDbHelper.writeScore(mPracticeString,best);
+        }
         mDrawView.clearCanvas();
-        mDrawView.setupDrawing();
-        mDrawView.setBitmap(bitmapOverlay(mSavedImg,scaleBitmap(mTouchImg,result[1],result[2]),(int)result[3],(int)result[4]));
+        mDrawView.init();
+        mDrawView.setBitmap(bitmapOverlay(mSavedImg, scaleBitmap(mTouchImg, result[1], result[2]), (int) result[3], (int) result[4]));
         mDrawView.startAnimation(Animator.createScaleDownAnimation());
 
         ((TextView) ((Activity) mContext).findViewById(R.id.score_and_timer_View)).setText("Score: " + String.valueOf(result[0]));
         ((Activity) mContext).findViewById(R.id.score_and_timer_View).setAnimation(Animator.createFadeInAnimation());
+        ((TextView) ((Activity) mContext).findViewById(R.id.best_score_View)).setText("Best: " + String.valueOf(best));
+        ((Activity) mContext).findViewById(R.id.best_score_View).setAnimation(Animator.createFadeInAnimation());
 
         Animator.createYFlipForwardAnimation(((Activity) mContext).findViewById(R.id.done_save_button));
         ((ActionButton) ((Activity) mContext).findViewById(R.id.done_save_button)).setImageResource(R.drawable.ic_save);

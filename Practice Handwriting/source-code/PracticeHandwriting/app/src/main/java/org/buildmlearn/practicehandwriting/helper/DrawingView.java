@@ -73,6 +73,7 @@ public class DrawingView extends View {
     }
 
     private void init(Context context) {
+        //context based init goes here
         mContext = context;
         mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         //Getting display width and height
@@ -92,8 +93,35 @@ public class DrawingView extends View {
             }
         });
 
+        //initializing without context
+        init();
+    }
 
-        setupDrawing();
+    public void init() {
+        //get drawing area setup for interaction
+        mTouchColour = getResources().getColor(R.color.Red);
+
+        mDrawPath = new Path();
+        mDrawPaint = new Paint();
+        mDrawPaint.setColor(mTouchColour);
+        mDrawPaint.setAntiAlias(true);
+        mDrawPaint.setStyle(Paint.Style.STROKE);
+        mDrawPaint.setStrokeJoin(Paint.Join.ROUND);
+        mDrawPaint.setStrokeCap(Paint.Cap.ROUND);
+        mCanvasPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mCorrectTouches = 0;
+        mWrongTouches = 0;
+        mDraw = true;
+        mVibrationStartTime = 0;
+
+        minX = mWidth;
+        maxX = -1;
+        minY = mHeight;
+        maxY = -1;
+
+        mVibrate = true;
+
+        mTouchPoints = new ArrayList<>();
     }
 
     public void setBitmapFromText(String str) {
@@ -101,6 +129,7 @@ public class DrawingView extends View {
 
         Paint paintText = new Paint(Paint.ANTI_ALIAS_FLAG);
         paintText.setColor(Color.BLACK);
+        paintText.setStyle(Paint.Style.FILL);
         int size = getResources().getDisplayMetrics().densityDpi/str.length();
         float textHeight;
         do {
@@ -108,7 +137,7 @@ public class DrawingView extends View {
             textHeight = paintText.descent() - paintText.ascent();
 
         } while(paintText.measureText(str) < mWidth * 0.9 && textHeight < mHeight *0.9);
-        paintText.setStyle(Paint.Style.FILL);
+        mDrawPaint.setStrokeWidth(size * 3 / 182); //values got from experimenting
 
         float textOffset = textHeight/ 2 - paintText.descent();
         mTextWidth = (int) paintText.measureText(str);
@@ -126,7 +155,7 @@ public class DrawingView extends View {
     public void clearCanvas() {
         mCanvasBitmap = Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_8888);
         mDrawCanvas = new Canvas(mCanvasBitmap);
-        setupDrawing();
+        init();
         invalidate();
     }
 
@@ -197,34 +226,6 @@ public class DrawingView extends View {
         return false;
     }
 
-    public void setupDrawing() {
-        //get drawing area setup for interaction
-        mTouchColour = getResources().getColor(R.color.Red);
-
-        mDrawPath = new Path();
-        mDrawPaint = new Paint();
-        mDrawPaint.setColor(mTouchColour);
-        mDrawPaint.setAntiAlias(true);
-        mDrawPaint.setStrokeWidth(15);
-        mDrawPaint.setStyle(Paint.Style.STROKE);
-        mDrawPaint.setStrokeJoin(Paint.Join.ROUND);
-        mDrawPaint.setStrokeCap(Paint.Cap.ROUND);
-        mCanvasPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mCorrectTouches = 0;
-        mWrongTouches = 0;
-        mDraw = true;
-        mVibrationStartTime = 0;
-
-        minX = mWidth;
-        maxX = -1;
-        minY = mHeight;
-        maxY = -1;
-
-        mVibrate = true;
-
-        mTouchPoints = new ArrayList<>();
-    }
-
     public void canVibrate(boolean vibrate){
         mVibrate = vibrate;
     }
@@ -234,7 +235,7 @@ public class DrawingView extends View {
     }
 
     public Bitmap getCanvasBitmap() {
-        Bitmap overlayBitmap = Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_8888);
+        Bitmap overlayBitmap = Bitmap.createBitmap(mTextWidth, mTextHeight, Bitmap.Config.ARGB_8888);
         overlayBitmap.eraseColor(getResources().getColor(R.color.AppBg));
         Canvas canvas = new Canvas(overlayBitmap);
         canvas.drawBitmap(mCanvasBitmap,0,0,null);

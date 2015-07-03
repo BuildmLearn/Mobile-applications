@@ -13,7 +13,8 @@ public class Animator {
 
     private static long DEFAULT_DURATION = 500;
 
-    private static float MIN_SCALE = 0.6f;
+    private static float MIN_SCALE = 0.0f;
+    private static float MID_SCALE = 0.6f;
     private static float MAX_SCALE = 1.0f;
     private static float SCALE_PIVOT = 0.5f;
 
@@ -57,7 +58,15 @@ public class Animator {
     }
 
     public static Animation createScaleUpAnimation(long duration) {
-        ScaleAnimation scaleAnimation = new ScaleAnimation(MIN_SCALE, MAX_SCALE, MIN_SCALE, MAX_SCALE, Animation.RELATIVE_TO_SELF, SCALE_PIVOT, Animation.RELATIVE_TO_SELF, SCALE_PIVOT);
+        return createScaleAnimation(MID_SCALE, MAX_SCALE, duration);
+    }
+
+    public static Animation createScaleUpCompleteAnimation() {
+        return createScaleAnimation(MIN_SCALE, MAX_SCALE, DEFAULT_DURATION);
+    }
+
+    public static Animation createScaleAnimation(float from, float to, long duration) {
+        ScaleAnimation scaleAnimation = new ScaleAnimation(from, to, from, to, Animation.RELATIVE_TO_SELF, SCALE_PIVOT, Animation.RELATIVE_TO_SELF, SCALE_PIVOT);
         scaleAnimation.setDuration(duration);
         scaleAnimation.setFillAfter(true);
         return scaleAnimation;
@@ -68,10 +77,7 @@ public class Animator {
     }
 
     public static Animation createScaleDownAnimation(long duration) {
-        ScaleAnimation scaleAnimation = new ScaleAnimation(MAX_SCALE, MIN_SCALE, MAX_SCALE, MIN_SCALE, Animation.RELATIVE_TO_SELF, SCALE_PIVOT, Animation.RELATIVE_TO_SELF, SCALE_PIVOT);
-        scaleAnimation.setDuration(duration);
-        scaleAnimation.setFillAfter(true);
-        return scaleAnimation;
+        return createScaleAnimation(MAX_SCALE, MID_SCALE,duration);
     }
 
     public static Animation createSlideInFromBottom() {

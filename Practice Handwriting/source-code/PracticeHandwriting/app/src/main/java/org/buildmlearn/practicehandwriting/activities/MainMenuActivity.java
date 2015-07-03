@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
 
 import org.buildmlearn.practicehandwriting.R;
+import org.buildmlearn.practicehandwriting.helper.Animator;
 
 
 public class MainMenuActivity extends Activity {
@@ -15,6 +17,12 @@ public class MainMenuActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         //TODO add animation
+        int[] buttons = new int[] {R.id.character_button,R.id.word_button,R.id.timetrial_button,R.id.freehand_button};
+        for(int i=0;i<buttons.length;i++) {
+            Animation animation = Animator.createScaleUpCompleteAnimation();
+            animation.setStartOffset(500 * i);
+            findViewById(buttons[i]).startAnimation(animation);
+        }
     }
 
     public void mainMenuActivityOnClick(View view) {
@@ -36,7 +44,7 @@ public class MainMenuActivity extends Activity {
 
             case R.id.timetrial_button:
                 intent = new Intent(this, TimeTrialActivity.class);
-                intent.putExtra(getResources().getString(R.string.practice_string),SplashActivity.CHARACTER_LIST[0]);
+                //intent.putExtra(getResources().getString(R.string.practice_string),SplashActivity.CHARACTER_LIST[0]);
                 break;
         }
         startActivity(intent);

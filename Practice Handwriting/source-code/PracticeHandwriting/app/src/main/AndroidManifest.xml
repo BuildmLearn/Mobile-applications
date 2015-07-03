@@ -37,7 +37,7 @@
             android:label="@string/title_activity_character_selection" >
         </activity>
         <activity
-            android:name=".activities.PracticeBaseActivity"
+            android:name=".helper.PracticeBaseActivity"
             android:label="@string/title_activity_practice" >
         </activity>
         <activity

@@ -9,6 +9,7 @@ import android.os.Environment;
 import android.os.SystemClock;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -28,25 +29,38 @@ import java.util.Date;
 
 public class TimeTrialResultActivity extends Activity {
 
+    private float mScore;
+    private int mThreadsDone = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_trial_result);
-        LinearLayout resultLL = (LinearLayout) findViewById(R.id.resultLL);
         findViewById(R.id.TimeTrialToolbar).bringToFront();
+
+        mScore = 0;
+        final LinearLayout resultLL = (LinearLayout) findViewById(R.id.resultLL);
+
+        final TextView scoreView = new TextView(this);
+        scoreView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        scoreView.setTextSize(35);
+        resultLL.addView(scoreView);
 
         for(int i = 0;i<SplashActivity.mTimeTrialResults.size();i++) {
             final int index = i;
             final View result = View.inflate(this,R.layout.layout_result,null);
+            resultLL.addView(result,i+1);
             final DrawingView drawingView = ((DrawingView)  result.findViewById(R.id.resultDrawingView));
             drawingView.setBitmapFromText(SplashActivity.mTimeTrialResults.get(index).getPracticeString());
-            drawingView.setLayoutParams(new RelativeLayout.LayoutParams(getResources().getDisplayMetrics().widthPixels, drawingView.getTextHeight()));
+            drawingView.setLayoutParams(new RelativeLayout.LayoutParams(getResources().getDisplayMetrics().widthPixels, getResources().getDisplayMetrics().heightPixels));
             drawingView.canVibrate(false);
-            resultLL.addView(result);
+
 
             new Thread(new Runnable() {
                 @Override
                 public void run() {
+                    View result = resultLL.getChildAt(index+1);
+                    DrawingView drawingView = ((DrawingView)  result.findViewById(R.id.resultDrawingView));
                     int size = SplashActivity.mTimeTrialResults.get(index).getTouches().size();
                     for(int j = 0; j < size;j++) {
                         ArrayList<Point> touchPoints = SplashActivity.mTimeTrialResults.get(index).getTouches().get(j);
@@ -64,6 +78,9 @@ public class TimeTrialResultActivity extends Activity {
                     }
                     drawingView.canDraw(false);
                     ((TextView) result.findViewById(R.id.resultTextView)).setText(String.valueOf(drawingView.score()));
+                    mScore += drawingView.score();
+                    mThreadsDone++;
+                    scoreView.setText("Overall: " + String.valueOf(mScore/mThreadsDone));
                 }
             }).start();
         }

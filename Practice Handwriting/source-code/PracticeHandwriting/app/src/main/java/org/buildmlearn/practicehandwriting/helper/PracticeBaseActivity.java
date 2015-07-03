@@ -1,4 +1,4 @@
-package org.buildmlearn.practicehandwriting.activities;
+package org.buildmlearn.practicehandwriting.helper;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -21,8 +21,7 @@ import android.widget.Toast;
 import com.software.shell.fab.ActionButton;
 
 import org.buildmlearn.practicehandwriting.R;
-import org.buildmlearn.practicehandwriting.helper.Animator;
-import org.buildmlearn.practicehandwriting.helper.DrawingView;
+import org.buildmlearn.practicehandwriting.activities.SplashActivity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -35,12 +34,12 @@ import java.util.Random;
 
 public class PracticeBaseActivity extends ActionBarActivity {
 
-    //TODO time dependant vibrations, make practice string width wider, add comments
+    //TODO time dependant vibrations, add comments
 
     protected DrawingView mDrawView;
     protected boolean mDone;
     protected String mPracticeString;
-    protected TextView mScoreTimerView;
+    protected TextView mScoreTimerView, mBestScoreView;
     protected CountDownTimer mCountDownTimer;
 
     @Override
@@ -50,12 +49,15 @@ public class PracticeBaseActivity extends ActionBarActivity {
             setContentView(R.layout.activity_practice);
 
             Toolbar toolbar = (Toolbar) findViewById(R.id.PracticeToolbar);
+            mBestScoreView = (TextView) findViewById(R.id.best_score_View);
             mScoreTimerView = (TextView) findViewById(R.id.score_and_timer_View);
             mDrawView = (DrawingView) findViewById(R.id.drawing);
             mPracticeString = getIntent().getStringExtra(getResources().getString(R.string.practice_string));
             mDone = false;
             mCountDownTimer = null;
 
+            findViewById(R.id.reset_button).setAnimation(Animator.createSlideInFromBottom());
+            findViewById(R.id.done_save_button).setAnimation(Animator.createSlideInFromBottom());
             setSupportActionBar(toolbar);
             toolbar.bringToFront();
             toolbar.setNavigationIcon(R.drawable.ic_launcher);
@@ -72,10 +74,11 @@ public class PracticeBaseActivity extends ActionBarActivity {
         }
     }
 
-    public void practiceActivityOnClick(View v) {
+    public void practiceOnClick(View v) {
         switch (v.getId()) {
             case R.id.reset_button:
                 if(mDone) {
+                    mBestScoreView.setAnimation(Animator.createFadeOutAnimation());
                     mDrawView.startAnimation(Animator.createScaleUpAnimation());
                     mScoreTimerView.setAnimation(Animator.createFadeOutAnimation());
 
@@ -85,7 +88,7 @@ public class PracticeBaseActivity extends ActionBarActivity {
 
                     mDone = false;
                 }
-                mDrawView.setupDrawing();
+                mDrawView.init();
                 break;
 
             case R.id.done_save_button:

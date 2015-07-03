@@ -16,17 +16,12 @@ public class LanguageActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
-        Animation animation_1 = AnimationUtils.loadAnimation(this, R.anim.slide_in);
-
-        Animation animation_2 = AnimationUtils.loadAnimation(this, R.anim.slide_in);
-        animation_2.setStartOffset(500);
-
-        Animation animation_3 = AnimationUtils.loadAnimation(this, R.anim.slide_in);
-        animation_3.setStartOffset(1000);
-
-        findViewById(R.id.english_button).startAnimation(animation_1);
-        findViewById(R.id.hindi_button).startAnimation(animation_2);
-        findViewById(R.id.arabic_button).startAnimation(animation_3);
+        int[] buttons = new int[] {R.id.english_button,R.id.hindi_button,R.id.arabic_button};
+        for(int i=0;i<buttons.length;i++) {
+            Animation animation = AnimationUtils.loadAnimation(this, R.anim.slide_in);
+            animation.setStartOffset(500 * i);
+            findViewById(buttons[i]).startAnimation(animation);
+        }
     }
 
     public void languageActivityOnClick(View v) {

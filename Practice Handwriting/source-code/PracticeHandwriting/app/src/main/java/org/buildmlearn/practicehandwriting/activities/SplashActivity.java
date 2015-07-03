@@ -8,6 +8,7 @@ import android.speech.tts.TextToSpeech;
 import android.widget.Toast;
 
 import org.buildmlearn.practicehandwriting.R;
+import org.buildmlearn.practicehandwriting.helper.ScoreDbHelper;
 import org.buildmlearn.practicehandwriting.helper.TimeTrialResult;
 
 import java.util.ArrayList;
@@ -26,6 +27,8 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
 
     public static ArrayList<TimeTrialResult> mTimeTrialResults;
 
+    public static ScoreDbHelper mDbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,8 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
             TTSobj = null;
             onInit(0);
         }
+
+        mDbHelper = new ScoreDbHelper(this);
         CHARACTER_LIST = getResources().getStringArray(R.array.English_characters);
         EASY_WORD_LIST = getResources().getStringArray(R.array.English_words_easy);
         MEDIUM_WORD_LIST = getResources().getStringArray(R.array.English_words_medium);

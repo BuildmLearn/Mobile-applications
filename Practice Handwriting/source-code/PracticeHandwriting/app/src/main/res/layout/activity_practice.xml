@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/AppBg"
     android:gravity="center"
-    tools:context="org.buildmlearn.practicehandwriting.activities.PracticeBaseActivity">
+    tools:context="org.buildmlearn.practicehandwriting.helper.PracticeBaseActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/PracticeToolbar"
@@ -29,9 +29,13 @@
         android:textColor="#000000"/>
 
     <TextView
-        android:id="@+id/canvas"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/best_score_View"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/score_and_timer_View"
+        android:textSize="25sp"
         android:textColor="#000000"/>
 
     <org.buildmlearn.practicehandwriting.helper.DrawingView
@@ -47,10 +51,9 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:onClick="practiceActivityOnClick"
+        android:onClick="practiceOnClick"
         fab:button_color="@color/ButtonBg"
-        fab:image="@drawable/ic_done"
-        fab:show_animation="@anim/fab_jump_from_down"/>
+        fab:image="@drawable/ic_done"/>
 
     <com.software.shell.fab.ActionButton
         android:id="@+id/reset_button"
@@ -59,9 +62,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="practiceActivityOnClick"
+        android:onClick="practiceOnClick"
         fab:button_color="@color/ButtonBg"
-        fab:image="@drawable/ic_reset"
-        fab:show_animation="@anim/fab_jump_from_down"/>
+        fab:image="@drawable/ic_reset"/>
 
 </RelativeLayout>

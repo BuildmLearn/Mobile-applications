@@ -5,6 +5,7 @@ import android.view.View;
 
 import org.buildmlearn.practicehandwriting.R;
 import org.buildmlearn.practicehandwriting.helper.CalculateFreehandScore;
+import org.buildmlearn.practicehandwriting.helper.PracticeBaseActivity;
 
 public class FreehandActivity extends PracticeBaseActivity {
 
@@ -15,8 +16,8 @@ public class FreehandActivity extends PracticeBaseActivity {
     }
 
     @Override
-    public void practiceActivityOnClick(View v) {
-        super.practiceActivityOnClick(v);
+    public void practiceOnClick(View v) {
+        super.practiceOnClick(v);
         switch (v.getId()) {
             case R.id.reset_button:
                 mDrawView.clearCanvas();

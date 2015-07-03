@@ -107,49 +107,61 @@ public class DiagramPlayHumanHeart extends DiagramPlayBase {
 		switch (tagView.getId()) {
 		case R.id.aortaTag:
 			InfoTooltip popup = new InfoTooltip(getApplicationContext(),
-					" Aorta description ");
+					"Main artery which distributes oxygenated blood\n"
+					+ " to all parts of the human body ");
 			popup.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.sup_vena_cavaTag:
 			InfoTooltip popup1 = new InfoTooltip(getApplicationContext(),
-					"sup_vena_cavaTag description.");
+					"Vein that carries deoxygenated blood \n"
+					+ "from the upper half of the body \n"
+					+ "to the heart's right atrium");
 			popup1.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.inf_vena_cavaTag:
 			InfoTooltip popup2 = new InfoTooltip(
 					getApplicationContext(),
-					"inf_vena_cavaTag description ");
+					"This is a large vein that carries de-oxygenated\n"
+					+ " blood from the lower body to the heart ");
 			popup2.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.left_atriumTag:
 			InfoTooltip popup3 = new InfoTooltip(getApplicationContext(),
-					"left_atriumTag description ");
+					"This is one of the four chambers of the heart,\n"
+					+ " located on the left posterior side ");
 			popup3.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.left_ventricleTag:
 			InfoTooltip popup4 = new InfoTooltip(getApplicationContext(),
-					"left_ventricleTag description ");
+					"One of four chambers of the heart which is located\n"
+					+ " in the bottom left portion of the heart ");
 			popup4.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.right_atriunTag:
 			InfoTooltip popup5 = new InfoTooltip(
 					getApplicationContext(),
-					" right_atriunTag description ");
+					"This is located in the upper portion of right side \n"
+					+ "of heart consisting of the right atrial appendage ");
 			popup5.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.right_ventricleTag:
 			InfoTooltip popup6 = new InfoTooltip(getApplicationContext(),
-					"right_ventricleTag description  ");
+					"This is the chamber within the heart that is\n"
+					+ "responsible for pumping oxygen-depleted blood \n"
+					+ "to the lungs  ");
 			popup6.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.pul_arteryTag:
 			InfoTooltip popup7 = new InfoTooltip(getApplicationContext(),
-					"pul_arteryTag description ");
+					"The artery carrying blood from the right ventricle\n"
+					+ " of the heart to the lungs for oxygenation");
 			popup7.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.pul_veinTag:
 			InfoTooltip popup8 = new InfoTooltip(getApplicationContext(),
-					"pul_veinTag description ");
+					"Large blood vessels that receive oxygenated blood\n"
+					+ " from the lungs and drain into the left atrium\n"
+					+ " of the heart ");
 			popup8.show(tagView, AlignMode.BOTTOM);
 			break;
 		default:

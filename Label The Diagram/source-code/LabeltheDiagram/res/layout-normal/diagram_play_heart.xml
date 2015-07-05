@@ -69,6 +69,15 @@
     </RelativeLayout>
 
     <ImageView
+        android:id="@+id/mainDiagramHeart"
+        android:layout_width="250dp"
+        android:layout_height="260dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/scoreTab"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/human_heart1" />
+
+    <ImageView
         android:id="@+id/tagHolder"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -78,15 +87,14 @@
         android:src="@drawable/holder" />
 
     <ImageView
-            android:id="@+id/innerTagHolder"
-            android:layout_width="340dp"
-            android:layout_height="130dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/tagHolder"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="5dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/inner_holder" />
+        android:id="@+id/innerTagHolder"
+        android:layout_width="340dp"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="5dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/trans_inner_holder" />
 
     <ImageView
         android:id="@+id/sup_vena_cavaBlb"
@@ -175,21 +183,12 @@
         android:layout_marginTop="220dp"
         android:src="@drawable/marker_white" />
 
-    <ImageView
-        android:id="@+id/mainDiagramHeart"
-        android:layout_width="250dp"
-        android:layout_height="260dp"
-        android:layout_below="@+id/scoreTab"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/human_heart1" />
-
     <TextView
         android:id="@+id/aortaTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/sup_vena_cavaTag"
-        android:layout_below="@+id/sup_vena_cavaTag"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"      
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -197,118 +196,136 @@
         android:paddingTop="3dp"
         android:text="aorta"
         android:textColor="#ffff" />
-
+    
     <TextView
         android:id="@+id/pul_arteryTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/pul_arteryBulb"
-        android:layout_below="@+id/sup_vena_cavaTag"
+        android:layout_alignLeft="@id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="70dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
         android:text="pulmonary artery"
-        android:textColor="#ffff" />
+        android:textColor="#ffff"/>
 
-    <TextView
+     <TextView
         android:id="@+id/right_atriunTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/pul_veinTag"
-        android:layout_toRightOf="@+id/pul_arteryTag"
+        android:layout_alignLeft="@id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="213dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
         android:text="right atrium"
-        android:textColor="#ffff" />
-
-    <TextView
-        android:id="@+id/inf_vena_cavaTag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/pul_arteryTag"
-        android:layout_alignRight="@+id/right_atriunTag"
-        android:background="@drawable/custom_textview"
-        android:paddingBottom="3dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="3dp"
-        android:text="inferior vena cava"
-        android:textColor="#ffff" />
-
-    <TextView
-        android:id="@+id/pul_veinTag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/aortaTag"
-        android:layout_below="@+id/aortaTag"
-        android:background="@drawable/custom_textview"
-        android:paddingBottom="3dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="3dp"
-        android:text="pulmonary vein"
-        android:textColor="#ffff" />
-
-    <TextView
-        android:id="@+id/left_ventricleTag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/left_atriumTag"
-        android:layout_toRightOf="@+id/pul_veinTag"
-        android:background="@drawable/custom_textview"
-        android:paddingBottom="3dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="3dp"
-        android:text="left ventricle"
-        android:textColor="#ffff" />
-
-    <TextView
+        android:textColor="#ffff"/>
+     
+     <TextView
         android:id="@+id/right_ventricleTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/sup_vena_cavaBlb"
-        android:layout_below="@+id/pul_veinTag"
+        android:layout_alignLeft="@id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginTop="30dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
         android:text="right ventricle"
-        android:textColor="#ffff" />
-
-    <TextView
-        android:id="@+id/sup_vena_cavaTag"
+        android:textColor="#ffff"/>
+     
+     <TextView
+        android:id="@+id/left_ventricleTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignLeft="@id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="115dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
-        android:text="Superior vena cava"
-        android:textColor="#ffff" />
-
-    <TextView
+        android:text="left ventricle"
+        android:textColor="#ffff"/>
+     
+     <TextView
         android:id="@+id/left_atriumTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/right_ventricleTag"
-        android:layout_alignBottom="@+id/right_ventricleTag"
-        android:layout_alignLeft="@+id/left_ventricleTag"
+        android:layout_alignLeft="@id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
         android:text="left atrium"
-        android:textColor="#ffff" />
+        android:textColor="#ffff"/>
+     
+     <TextView
+        android:id="@+id/sup_vena_cavaTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="superior vena cava"
+        android:textColor="#ffff"/>
+     
+     <TextView
+        android:id="@+id/inf_vena_cavaTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="inferior vena cava"
+        android:textColor="#ffff"/>
+     
+   <TextView
+        android:id="@+id/pul_veinTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="pulmonary vein"
+        android:textColor="#ffff"/>
+ 
+    
 
+  
+
+  
+ 
+
+   
 </RelativeLayout>

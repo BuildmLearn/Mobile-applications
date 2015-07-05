@@ -81,7 +81,6 @@
         android:id="@+id/mainDiagramCarbonCycle"
         android:layout_width="300dp"
         android:layout_height="260dp"
-        android:layout_marginTop="5dp"
         android:layout_above="@+id/tagHolder"
         android:layout_centerHorizontal="true"
         android:src="@drawable/carbon_cycle" />

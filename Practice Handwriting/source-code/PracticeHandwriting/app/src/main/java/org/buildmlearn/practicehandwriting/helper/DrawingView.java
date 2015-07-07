@@ -24,38 +24,24 @@ import org.buildmlearn.practicehandwriting.R;
 import java.util.ArrayList;
 import java.util.Date;
 
-
+//Custom View implementing the trace engine.
 public class DrawingView extends View {
-    //TODO add comments
 
-    //drawing path
-    private Path mDrawPath;
-    //drawing and canvas paint
-    private Paint mDrawPaint, mCanvasPaint;
-    //canvas
-    private Canvas mDrawCanvas;
-    //canvas bitmap
-    private Bitmap mCanvasBitmap;
-    //Canvas width and height
-    public int mWidth, mHeight, mTextWidth, mTextHeight;
+    private Path mDrawPath; //The drawing path
+    private Paint mDrawPaint, mCanvasPaint; //The paints used to draw on the canvas
+    private Canvas mDrawCanvas; //The canvas of the view
+    private Bitmap mCanvasBitmap; //The bitmap that is set
+    private Vibrator mVibrator; //Vibrator instance to vibrate if the user traces outside the boundary of the string
+    private long mWrongTouches, mCorrectTouches; //number of correct/wrong touches
+    private boolean mDraw, mVibrate; //Boolean variables that allow the view to be redrawn and to vibrate
+    private long mVibrationStartTime; //The start time of the vibration
+    private Toast mErrorToast; //Toast to display if user has been tracing wrongly for a long time
+    private int minX, minY, maxX, maxY; //bounds of the touches
+    private int mTouchColour; //colour of the touch
+    private ArrayList<ArrayList<Point>> mTouchPoints; //List of strokes. Each ArrayList<Point> is the touches from one MOTION_DOWN even to a MOTION_UP even
+    private Context mContext;// The context of the view
 
-    private Vibrator mVibrator;
-
-    private long mWrongTouches, mCorrectTouches;
-
-    private boolean mDraw, mVibrate;
-
-    private long mVibrationStartTime;
-
-    private Toast mErrorToast;
-
-    private int minX, minY, maxX, maxY;
-
-    private int mTouchColour;
-
-    private ArrayList<ArrayList<Point>> mTouchPoints;
-
-    private Context mContext;
+    public int mWidth, mHeight, mTextWidth, mTextHeight; //View dimensions and text dimensions
 
     public DrawingView(Context context) {
         super(context);
@@ -105,6 +91,7 @@ public class DrawingView extends View {
         mDrawPaint = new Paint();
         mDrawPaint.setColor(mTouchColour);
         mDrawPaint.setAntiAlias(true);
+        //Setting the paint to draw round strokes
         mDrawPaint.setStyle(Paint.Style.STROKE);
         mDrawPaint.setStrokeJoin(Paint.Join.ROUND);
         mDrawPaint.setStrokeCap(Paint.Cap.ROUND);
@@ -119,39 +106,43 @@ public class DrawingView extends View {
         minY = mHeight;
         maxY = -1;
 
-        mVibrate = true;
+        mVibrate = true; //Vibration on by default
 
-        mTouchPoints = new ArrayList<>();
+        mTouchPoints = new ArrayList<>(); //Empty list as no touches yet
     }
 
+    //function to set text to be traced to the view
     public void setBitmapFromText(String str) {
         clearCanvas();
 
         Paint paintText = new Paint(Paint.ANTI_ALIAS_FLAG);
         paintText.setColor(Color.BLACK);
         paintText.setStyle(Paint.Style.FILL);
-        int size = getResources().getDisplayMetrics().densityDpi/str.length();
+        int size = getResources().getDisplayMetrics().densityDpi/str.length();//Starting size of the text
         float textHeight;
         do {
             paintText.setTextSize(++size);
             textHeight = paintText.descent() - paintText.ascent();
 
-        } while(paintText.measureText(str) < mWidth * 0.9 && textHeight < mHeight *0.9);
+        } while(paintText.measureText(str) < mWidth * 0.9 && textHeight < mHeight *0.9);//setting the max size of the text for the given screen
         mDrawPaint.setStrokeWidth(size * 3 / 182); //values got from experimenting
 
         float textOffset = textHeight/ 2 - paintText.descent();
         mTextWidth = (int) paintText.measureText(str);
         mTextHeight = (int) textHeight;
+        //Drawing the text at the center of the view
         mDrawCanvas.drawText(str, (mWidth - paintText.measureText(str)) / 2, (mHeight / 2) + textOffset, paintText);
         invalidate();
     }
 
     public void setBitmap(Bitmap b) {
         clearCanvas();
+        //Drawing the bitmap at the center of the view
         mDrawCanvas.drawBitmap(b, (mWidth - b.getWidth()) / 2, (mHeight - b.getHeight()) / 2, mCanvasPaint);
         invalidate();
     }
 
+    //Clearing the canvas
     public void clearCanvas() {
         mCanvasBitmap = Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_8888);
         mDrawCanvas = new Canvas(mCanvasBitmap);
@@ -168,7 +159,7 @@ public class DrawingView extends View {
 
     @Override
     public boolean onTouchEvent(@NonNull MotionEvent event) {
-        if(mDraw) {
+        if(mDraw) {//Draws the touches only if mDraw is true
 
             //detect user touch
             float touchX = event.getX();
@@ -178,6 +169,7 @@ public class DrawingView extends View {
             int x = (int) (touchX * mCanvasBitmap.getWidth() / mWidth);
             int y = (int) (touchY * mCanvasBitmap.getHeight() / mHeight);
 
+            //updating the touch bounds
             if(x < minX)
                 minX = x;
             if(x > maxX)
@@ -187,9 +179,10 @@ public class DrawingView extends View {
             if(y > maxY)
                 maxY = y;
 
+            //checking if the touches are correct or wrong (inside or outside the boundary
             if ((x >= 0 && x < mWidth && y >= 0 && y < mHeight && mCanvasBitmap.getPixel(x, y) != getResources().getColor(R.color.Black)  && mCanvasBitmap.getPixel(x, y) != mTouchColour) || (x < 0 || x >= mWidth || y < 0 || y >= mHeight)) {
                 mWrongTouches++;
-                if(mVibrate) {
+                if(mVibrate) {//Device will vibrate only if mVibrate is true
                     mVibrator.vibrate(100);
                     if (mVibrationStartTime == 0) {
                         mVibrationStartTime = new Date().getTime();
@@ -206,7 +199,7 @@ public class DrawingView extends View {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     mDrawPath.moveTo(touchX, touchY);
-                    mTouchPoints.add(new ArrayList<Point>());
+                    mTouchPoints.add(new ArrayList<Point>());//ACTION_DOWN event means a new stroke so a new ArrayList
                     break;
                 case MotionEvent.ACTION_MOVE:
                     mDrawPath.lineTo(touchX, touchY);
@@ -214,11 +207,12 @@ public class DrawingView extends View {
                 case MotionEvent.ACTION_UP:
                     mVibrationStartTime = 0;
                     mDrawCanvas.drawPath(mDrawPath, mDrawPaint);
-                    mDrawPath.reset();
+                    mDrawPath.reset();//End of the current stroke
                     break;
                 default:
                     return false;
             }
+            //Adding the touch point to the last ArrayList
             mTouchPoints.get(mTouchPoints.size() - 1).add(new Point((int) touchX, (int) touchY));
             invalidate();
             return true;
@@ -235,6 +229,7 @@ public class DrawingView extends View {
     }
 
     public Bitmap getCanvasBitmap() {
+        //Get the image of the view
         Bitmap overlayBitmap = Bitmap.createBitmap(mTextWidth, mTextHeight, Bitmap.Config.ARGB_8888);
         overlayBitmap.eraseColor(getResources().getColor(R.color.AppBg));
         Canvas canvas = new Canvas(overlayBitmap);
@@ -248,14 +243,6 @@ public class DrawingView extends View {
 
     public int getBitmapHeight() {
         return mCanvasBitmap.getHeight();
-    }
-
-    public int getTextWidth() {
-        return mTextWidth;
-    }
-
-    public int getTextHeight() {
-        return mTextHeight;
     }
 
     public int[] getTouchBounds() {
@@ -273,7 +260,7 @@ public class DrawingView extends View {
     public Bitmap getTouchesBitmap() {
         if(minX!=mWidth && minY!=mHeight && maxX!=-1 && maxY!=-1)
             return Bitmap.createBitmap(mCanvasBitmap,Math.max(minX - 30, 0),Math.max(minY -30,0),Math.min(maxX - minX +40, mWidth - minX),Math.min(maxY - minY +40, mHeight - minY));
-        else
+        else//This implies no touch events were received
             return Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_8888);
     }
 }

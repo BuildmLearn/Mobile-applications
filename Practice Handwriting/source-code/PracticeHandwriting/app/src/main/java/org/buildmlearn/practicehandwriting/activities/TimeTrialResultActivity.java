@@ -27,6 +27,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+//Activity to display the results of the Time Trial session
 public class TimeTrialResultActivity extends Activity {
 
     private float mScore;
@@ -49,29 +50,37 @@ public class TimeTrialResultActivity extends Activity {
         for(int i = 0;i<SplashActivity.mTimeTrialResults.size();i++) {
             final int index = i;
             final View result = View.inflate(this,R.layout.layout_result,null);
-            resultLL.addView(result,i+1);
+            resultLL.addView(result,i+1); //The first view is the overall score TextView
             final DrawingView drawingView = ((DrawingView)  result.findViewById(R.id.resultDrawingView));
             drawingView.setBitmapFromText(SplashActivity.mTimeTrialResults.get(index).getPracticeString());
+            //match_parent gave a 0 height and width to the view
             drawingView.setLayoutParams(new RelativeLayout.LayoutParams(getResources().getDisplayMetrics().widthPixels, getResources().getDisplayMetrics().heightPixels));
             drawingView.canVibrate(false);
 
-
+            //Performing the touches in a separate thread otherwise the UI thead will hang in case there are a lot of letters
             new Thread(new Runnable() {
                 @Override
                 public void run() {
                     View result = resultLL.getChildAt(index+1);
                     DrawingView drawingView = ((DrawingView)  result.findViewById(R.id.resultDrawingView));
+                    //size is the number of strokes that the user has traced
                     int size = SplashActivity.mTimeTrialResults.get(index).getTouches().size();
+
                     for(int j = 0; j < size;j++) {
                         ArrayList<Point> touchPoints = SplashActivity.mTimeTrialResults.get(index).getTouches().get(j);
+                        //The first touch is at index zero
                         drawingView.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(),
                                 MotionEvent.ACTION_DOWN,
                                 touchPoints.get(0).x, touchPoints.get(0).y, 0));
+
+                        //All the points touched as the finger was dragged are traced
                         for (int k = 1; k < touchPoints.size() -1 ; k++) {
                             drawingView.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(),SystemClock.uptimeMillis(),
                                     MotionEvent.ACTION_MOVE,
                                     touchPoints.get(k).x,touchPoints.get(k).y, 0));
                         }
+
+                        //The last point where the finger was lifted to finish the stroke is traced
                         drawingView.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(),SystemClock.uptimeMillis(),
                                 MotionEvent.ACTION_UP,
                                 touchPoints.get(touchPoints.size() - 1).x,touchPoints.get(touchPoints.size() - 1).y, 0));
@@ -80,6 +89,8 @@ public class TimeTrialResultActivity extends Activity {
                     ((TextView) result.findViewById(R.id.resultTextView)).setText(String.valueOf(drawingView.score()));
                     mScore += drawingView.score();
                     mThreadsDone++;
+
+                    //Overall score is the average of all individual scores.
                     scoreView.setText("Overall: " + String.valueOf(mScore/mThreadsDone));
                 }
             }).start();
@@ -120,8 +131,10 @@ public class TimeTrialResultActivity extends Activity {
 
     @Override
     public void onBackPressed() {
+        //Emptying the List of results for the next use
         SplashActivity.mTimeTrialResults = new ArrayList<TimeTrialResult>(SplashActivity.CHARACTER_LIST.length);
         finish();
+        //Going back to the main menu instead of the Tracing screen
         startActivity(new Intent(TimeTrialResultActivity.this, MainMenuActivity.class));
     }
 }

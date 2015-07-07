@@ -14,14 +14,16 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class TimeTrialActivity extends PracticeBaseActivity {
+    private CountDownTimer mCountDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         try {
             super.onCreate(savedInstanceState);
-            mCountDownTimer = new CountDownTimer(5000, 1000) {
+            mCountDownTimer = new CountDownTimer(120000, 1000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
+                    //Showing the user how much time he/she has left
                     mScoreTimerView.setText(String.format("%02d", millisUntilFinished / 60000) + ":" + String.format("%02d", (millisUntilFinished / 1000) % 60));
                 }
 
@@ -35,7 +37,7 @@ public class TimeTrialActivity extends PracticeBaseActivity {
                     startActivity(intent);
                 }
             };
-            mPracticeString = randomStringGenerator();
+            mPracticeString = randomStringGenerator(); //practice session with random strings
             mDrawView.setBitmapFromText(mPracticeString);
             mDrawView.canVibrate(true);
             mCountDownTimer.start();
@@ -45,6 +47,7 @@ public class TimeTrialActivity extends PracticeBaseActivity {
     }
 
     private String randomStringGenerator() {
+        //Returns character or word with 50% probability
         int char_or_word = new Random().nextInt(2);
         switch (char_or_word) {
             case 0:
@@ -76,26 +79,29 @@ public class TimeTrialActivity extends PracticeBaseActivity {
 
             case R.id.done_save_button:
                 if(!mDone) {
-                    int index = Arrays.asList(SplashActivity.CHARACTER_LIST).indexOf(mPracticeString);
-                    //mResults.add(new TimeTrialResult(mPracticeString,mDrawView.getTouchesList()));
+                    //Saving the string and the touches to be redrawn in the result
                     mDrawView.canDraw(false);
                     SplashActivity.mTimeTrialResults.add(new TimeTrialResult(mPracticeString, mDrawView.getTouchesList()));
-
                     mDrawView.canDraw(true);
-                    if(index == SplashActivity.CHARACTER_LIST.length - 1) {
-                        Intent intent = new Intent(TimeTrialActivity.this, TimeTrialResultActivity.class);
-                        startActivity(intent);
-                    } else {
-                        mPracticeString = randomStringGenerator();
-                        mDrawView.setBitmapFromText(mPracticeString);
-                    }
+
+                    mPracticeString = randomStringGenerator();
+                    mDrawView.setBitmapFromText(mPracticeString);
                 }
                 break;
         }
     }
 
+    //overriding this function to allow only the done button to go to the next string
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return false;
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        if(mCountDownTimer!=null)
+            mCountDownTimer.cancel();//cancel the timer if the user decides to go back
+        super.onBackPressed();
     }
 }

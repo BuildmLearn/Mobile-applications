@@ -32,15 +32,16 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Random;
 
+//Base class for practicing
 public class PracticeBaseActivity extends ActionBarActivity {
 
     //TODO time dependant vibrations, add comments
 
     protected DrawingView mDrawView;
-    protected boolean mDone;
-    protected String mPracticeString;
+    protected boolean mDone; //Boolean variable set if the user has finished tracing
+    protected String mPracticeString; //String to be practiced
     protected TextView mScoreTimerView, mBestScoreView;
-    protected CountDownTimer mCountDownTimer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,25 +49,28 @@ public class PracticeBaseActivity extends ActionBarActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_practice);
 
+            //Initializing all the variables
             Toolbar toolbar = (Toolbar) findViewById(R.id.PracticeToolbar);
             mBestScoreView = (TextView) findViewById(R.id.best_score_View);
             mScoreTimerView = (TextView) findViewById(R.id.score_and_timer_View);
             mDrawView = (DrawingView) findViewById(R.id.drawing);
             mPracticeString = getIntent().getStringExtra(getResources().getString(R.string.practice_string));
             mDone = false;
-            mCountDownTimer = null;
 
             findViewById(R.id.reset_button).setAnimation(Animator.createSlideInFromBottom());
             findViewById(R.id.done_save_button).setAnimation(Animator.createSlideInFromBottom());
+            //Setting the toolbar as the actionbar
             setSupportActionBar(toolbar);
             toolbar.bringToFront();
             toolbar.setNavigationIcon(R.drawable.ic_launcher);
+
             mScoreTimerView.bringToFront();
 
+            //speaking the string to be practiced
             if(SplashActivity.TTSobj!=null) {
-                if (Build.VERSION.SDK_INT >= 21)
+                if (Build.VERSION.SDK_INT >= 21) //This function works only on devices with SDK version greater that 20
                     SplashActivity.TTSobj.speak(mPracticeString, TextToSpeech.QUEUE_FLUSH, null, null);
-                else
+                else //if the device is running an older version of android, use the previous speaking function
                     SplashActivity.TTSobj.speak(mPracticeString, TextToSpeech.QUEUE_FLUSH, null);
             }
         } catch (Exception e) {
@@ -78,6 +82,7 @@ public class PracticeBaseActivity extends ActionBarActivity {
         switch (v.getId()) {
             case R.id.reset_button:
                 if(mDone) {
+                    //Undo the animations performed when the user was done
                     mBestScoreView.setAnimation(Animator.createFadeOutAnimation());
                     mDrawView.startAnimation(Animator.createScaleUpAnimation());
                     mScoreTimerView.setAnimation(Animator.createFadeOutAnimation());
@@ -86,13 +91,13 @@ public class PracticeBaseActivity extends ActionBarActivity {
                     ((ActionButton) findViewById(R.id.done_save_button)).setImageResource(R.drawable.ic_done);
                     Animator.createYFlipBackwardAnimation(findViewById(R.id.done_save_button));
 
-                    mDone = false;
+                    mDone = false; //implies that the user isn't done
                 }
-                mDrawView.init();
+                mDrawView.init();//reinitialize the view
                 break;
 
             case R.id.done_save_button:
-                if(mDone) {
+                if(mDone) {//if the user is done then save the trace
                     String toastText;
                     File mediaStorageDir = new File(Environment.getExternalStorageDirectory() + File.separator + getResources().getString(R.string.app_name));
                     if (!mediaStorageDir.exists() && !mediaStorageDir.mkdir()) {
@@ -117,7 +122,7 @@ public class PracticeBaseActivity extends ActionBarActivity {
                             file.delete();
                         }
                     }
-                    Toast.makeText(this,toastText,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,toastText,Toast.LENGTH_SHORT).show();//Toast displayed with the status of saving the trace
                 }
                 break;
         }
@@ -126,14 +131,14 @@ public class PracticeBaseActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = getIntent();
-        if (mPracticeString.length() > 1) {
+        if (mPracticeString.length() > 1) {//if the string is a word then give a random when the for the previous/next button is clicked
             if (mPracticeString.length() < 5)
                 intent.putExtra(getResources().getString(R.string.practice_string), SplashActivity.EASY_WORD_LIST[new Random().nextInt(SplashActivity.EASY_WORD_LIST.length)]);
             else if (mPracticeString.length() >= 5 && mPracticeString.length() < 7)
                 intent.putExtra(getResources().getString(R.string.practice_string), SplashActivity.MEDIUM_WORD_LIST[new Random().nextInt(SplashActivity.MEDIUM_WORD_LIST.length)]);
             else if (mPracticeString.length() >= 7)
                 intent.putExtra(getResources().getString(R.string.practice_string), SplashActivity.HARD_WORD_LIST[new Random().nextInt(SplashActivity.HARD_WORD_LIST.length)]);
-        } else {
+        } else { //If the string is a character, return the next or previous character in a circular manner (next of the last character is the first character and vice versa)
             int next = Arrays.asList(SplashActivity.CHARACTER_LIST).indexOf(mPracticeString);
             switch (item.getItemId()) {
                 case R.id.action_next:
@@ -151,6 +156,7 @@ public class PracticeBaseActivity extends ActionBarActivity {
         return true;
     }
 
+    //function to show the error that occurred while starting the practice session
     protected void showErrorDialog(final Exception e) {
         new AlertDialog.Builder(this)
                 .setTitle("ERROR")
@@ -187,13 +193,6 @@ public class PracticeBaseActivity extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        if(mCountDownTimer!=null)
-            mCountDownTimer.cancel();
-        super.onBackPressed();
     }
 
 }

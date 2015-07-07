@@ -9,6 +9,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 
+//Helper class to provide animations
 public class Animator {
 
     private static long DEFAULT_DURATION = 500;

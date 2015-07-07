@@ -26,6 +26,7 @@ public class FreehandActivity extends PracticeBaseActivity {
             case R.id.done_save_button:
                 if(!mDone) {
                     mDone = true;
+                    //Using an asyncTask to calculate the score inorder to reduce the amount of computation done on UI thread
                     new CalculateFreehandScore(this, mDrawView, mPracticeString).execute();
                 }
                 break;

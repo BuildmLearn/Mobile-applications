@@ -43,11 +43,10 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
 
         mDrawView.clearCanvas();
         mDrawView.init();
-        mDrawView.setBitmapFromText(mPracticeString);
+        mDrawView.setBitmapFromText(mPracticeString); //setting the text to calculate the score
 
-        mDrawView.setDrawingCacheEnabled(true);
-        mSavedImg = Bitmap.createBitmap(mDrawView.getDrawingCache());
-        mDrawView.destroyDrawingCache();
+        //Image of the text to calculate the score on
+        mSavedImg = mDrawView.getCanvasBitmap();
 
         mProgressDialog = new ProgressDialog(mContext);
         mProgressDialog.setTitle("Please wait ...");
@@ -65,14 +64,19 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
     @Override
     protected void onPostExecute(float[] result) {
         mProgressDialog.dismiss();
+        // getting the best score for the given letter and updating it if the current score is better
         float best = SplashActivity.mDbHelper.getScore(mPracticeString);
         if (best < result[0]) {
             best = result[0];
             SplashActivity.mDbHelper.writeScore(mPracticeString,best);
         }
+
         mDrawView.clearCanvas();
         mDrawView.init();
+        //Overlaying the touches bitmap on the text at the best scale and position and setting it to the DrawingView
         mDrawView.setBitmap(bitmapOverlay(mSavedImg, scaleBitmap(mTouchImg, result[1], result[2]), (int) result[3], (int) result[4]));
+
+        //Animations for when the user is done with the trace
         mDrawView.startAnimation(Animator.createScaleDownAnimation());
 
         ((TextView) ((Activity) mContext).findViewById(R.id.score_and_timer_View)).setText("Score: " + String.valueOf(result[0]));
@@ -87,19 +91,22 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
 
     private float[] scoreBitmapForFreehand(ArrayList<ArrayList<Point>> touches, Bitmap canvasBitmap, int centerX, int centerY) {
         ArrayList<Point> points = new ArrayList<>();
+        //Converting 2-D arraylist to a 1-D arraylist
         for(int i = 0; i < touches.size() ; i++)
             for (int j = 0; j < touches.get(i).size(); j++)
                 points.add(touches.get(i).get(j));
         float size = points.size();
-        if(size!=0) {
+        if(size!=0) { //Computs score only if the view has been touched
             float correctTouches;
             int i, cx, cy;
             float scaleX, scaleY;
-            int bgColour = mContext.getResources().getColor(R.color.AppBg);
+            int bgColour = mContext.getResources().getColor(R.color.AppBg); //Storing locally for faster access inside the loop
             float score, maxScore = 0, scaleXForMaxScore = 1, scaleYForMaxScore = 1, cxForMaxScore = centerX, cyForMaxScore = centerY;
             int[] xTouches = new int[(int)size];
             int[] yTouches = new int[(int)size];
 
+            //Top corner of the touch bounds set as origin. Doing this outside the score calculation loop to prevent excess computation in the loop
+            //Converting from arraylist to int array as array access is faster
             for (i = 0; i < size; i++) {
                 xTouches[i] = (points.get(i).x * mDrawView.getBitmapWidth() / mDrawView.mWidth) - mTouchBounds[0];
                 yTouches[i] = (points.get(i).y * mDrawView.getBitmapHeight() / mDrawView.mHeight) - mTouchBounds[1];
@@ -112,6 +119,7 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
                         for (cy = centerY - 20; cy <= centerY + 20; cy += 2) {
                             correctTouches = 0;
                             for (i = 0; i < size; i++) {
+                                //The transformed touch points at the new scale and center
                                 int x = (int) (xTouches[i] * scaleX) + cx;
                                 int y = (int) (yTouches[i] * scaleY) + cy;
 
@@ -120,13 +128,14 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
                             }
                             score = correctTouches / size;
                             if (score > maxScore) {
+                                //updating the values for a maximum score
                                 maxScore = score;
                                 scaleXForMaxScore = scaleX;
                                 scaleYForMaxScore = scaleY;
                                 cxForMaxScore = cx;
                                 cyForMaxScore = cy;
                                 if (score == 1)
-                                    break outerLoop;
+                                    break outerLoop; //as best score possible has been obtained
                             }
                         }
                 }
@@ -137,12 +146,15 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
     }
 
     private Bitmap scaleBitmap(Bitmap originalImage, float scaleX, float scaleY) {
+        //new dimensions
         float width = originalImage.getWidth() * scaleX;
         float height = originalImage.getHeight() * scaleY;
 
+        //initializing an empty canvas
         Bitmap background = Bitmap.createBitmap((int) width, (int) height, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(background);
 
+        //Transformation matrix for the given scale
         float xTranslation = 0.0f, yTranslation = (height - originalImage.getHeight() * scaleY)/2.0f;
         Matrix transformation = new Matrix();
         transformation.postTranslate(xTranslation, yTranslation);
@@ -151,19 +163,22 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
         Paint paint = new Paint();
         paint.setFilterBitmap(true);
 
+        //Drawing the bitmap at the given scale
         canvas.drawBitmap(originalImage, transformation, paint);
         return background;
     }
 
+    //function to place a bitmap over another
     private Bitmap bitmapOverlay(Bitmap bitmap1, Bitmap bitmap2, int xOffset, int yOffset) {
+        //initializing an empty canvas and drawing the first bitmap on top
         Bitmap resultBitmap = Bitmap.createBitmap(bitmap1.getWidth(), bitmap1.getHeight(), Bitmap.Config.ARGB_8888);
-
         Canvas c = new Canvas(resultBitmap);
         c.drawBitmap(bitmap1, 0, 0, null);
 
         Paint p = new Paint();
         p.setAlpha(255);
 
+        //Drawing the second bitmap over the first with the given offset
         c.drawBitmap(bitmap2, xOffset, yOffset, p);
         return resultBitmap;
     }

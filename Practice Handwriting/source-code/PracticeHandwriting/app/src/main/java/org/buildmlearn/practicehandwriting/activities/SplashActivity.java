@@ -13,8 +13,9 @@ import org.buildmlearn.practicehandwriting.helper.TimeTrialResult;
 
 import java.util.ArrayList;
 
-
+//Splash Screen Activity
 public class SplashActivity extends Activity implements TextToSpeech.OnInitListener{
+    //All the public static fields are going to be used throughout the app. They are initialized here to prevent recurring initialization while using the app.
 
     private static int SPLASH_TIME_OUT = 1500;
     private static final int MY_DATA_CHECK_CODE = 100;
@@ -36,7 +37,7 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
         //TODO change variables in activities to follow specified coding conventions
         mTtsInitDone = false;
         mListsDone = false;
-
+        //try catch block as action TextToSpeech.Engine.ACTION_CHECK_TTS_DATA might not be present if no TTS engine is present
         try {
             Intent checkIntent = new Intent();
             checkIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
@@ -48,13 +49,18 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
         }
 
         mDbHelper = new ScoreDbHelper(this);
+        mTimeTrialResults = new ArrayList<TimeTrialResult>(CHARACTER_LIST.length);
+
+        //Loading the lists from Resources instead of loading them multiple times at runtime.
+        //Need to put this after selecting the language.
         CHARACTER_LIST = getResources().getStringArray(R.array.English_characters);
         EASY_WORD_LIST = getResources().getStringArray(R.array.English_words_easy);
         MEDIUM_WORD_LIST = getResources().getStringArray(R.array.English_words_medium);
         HARD_WORD_LIST = getResources().getStringArray(R.array.English_words_hard);
-        mTimeTrialResults = new ArrayList<TimeTrialResult>(CHARACTER_LIST.length);
+
         mListsDone = true;
 
+        //Starts the next activity only after all the inits ar done.
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -91,6 +97,7 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
 
     public void onInit(int i) {
         try {
+            //show the splash screen for sometime before proceeding.
             Thread.sleep(SPLASH_TIME_OUT);
             mTtsInitDone = true;
         } catch (InterruptedException e) {
@@ -100,7 +107,7 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
 
     @Override
     public void onDestroy() {
-        // Don't forget to shutdown!
+        //releasing the TTS resources
         if (TTSobj != null) {
             TTSobj.stop();
             TTSobj.shutdown();

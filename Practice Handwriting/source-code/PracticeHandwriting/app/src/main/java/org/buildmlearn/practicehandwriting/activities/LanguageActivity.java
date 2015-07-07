@@ -16,6 +16,7 @@ public class LanguageActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
+        //adding slide in animation for the buttons
         int[] buttons = new int[] {R.id.english_button,R.id.hindi_button,R.id.arabic_button};
         for(int i=0;i<buttons.length;i++) {
             Animation animation = AnimationUtils.loadAnimation(this, R.anim.slide_in);
@@ -44,6 +45,7 @@ public class LanguageActivity extends Activity {
 
     @Override
     public void onBackPressed() {
+        //exiting the app instead of going back to the splash screen
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

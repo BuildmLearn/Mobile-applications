@@ -16,7 +16,7 @@ public class MainMenuActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-        //TODO add animation
+        //adding zoom in animation for the buttons
         int[] buttons = new int[] {R.id.character_button,R.id.word_button,R.id.timetrial_button,R.id.freehand_button};
         for(int i=0;i<buttons.length;i++) {
             Animation animation = Animator.createScaleUpCompleteAnimation();

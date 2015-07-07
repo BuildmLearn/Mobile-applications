@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+//Database helper class to retrieve/update the maximum score for a string
 public class ScoreDbHelper extends SQLiteOpenHelper {
     public static String TABLE_NAME = "SCORES",
             COLUMN_NAME_STRING = "STRING",
@@ -18,6 +19,7 @@ public class ScoreDbHelper extends SQLiteOpenHelper {
 
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + TABLE_NAME;
+
     // If you change the database schema, you must increment the database version.
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "Score.db";
@@ -27,7 +29,6 @@ public class ScoreDbHelper extends SQLiteOpenHelper {
     }
 
     public void onCreate(SQLiteDatabase db) {
-        System.out.println("DB");
         db.execSQL(SQL_CREATE_ENTRIES);
     }
 
@@ -53,7 +54,7 @@ public class ScoreDbHelper extends SQLiteOpenHelper {
                 null,
                 null
         );
-        if(cursor!=null && cursor.moveToFirst()) {
+        if(cursor!=null && cursor.moveToFirst()) {//if an entry exists
             return cursor.getFloat(cursor.getColumnIndexOrThrow(COLUMN_NAME_SCORE));
         } else {
             return 0;
@@ -63,9 +64,9 @@ public class ScoreDbHelper extends SQLiteOpenHelper {
     public void writeScore(String practiceString, float score) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_NAME_STRING, practiceString);
-        values.put(COLUMN_NAME_SCORE, score);
-        if(getScore(practiceString)==0) {
+        values.put(COLUMN_NAME_STRING, practiceString);//String that is practiced
+        values.put(COLUMN_NAME_SCORE, score);//Score obtained
+        if(getScore(practiceString)==0) {//if no entry exists then insert a new value, otherwise update the previous value
             db.insert(TABLE_NAME, null, values);
         }else {
             db.update(TABLE_NAME,values,COLUMN_NAME_STRING + " = ?",new String[]{practiceString});

@@ -18,6 +18,9 @@ public class WordSelectionActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_selection);
+
+        //slide in animation for the buttons.
+        //TODO Need to put this is a for loop
         Animation animation_1 = AnimationUtils.loadAnimation(this, R.anim.slide_in);
 
         Animation animation_2 = AnimationUtils.loadAnimation(this, R.anim.slide_in);

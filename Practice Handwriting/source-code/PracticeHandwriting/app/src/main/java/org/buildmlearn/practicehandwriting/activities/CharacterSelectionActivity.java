@@ -17,7 +17,9 @@ import info.hoang8f.widget.FButton;
 
 
 public class CharacterSelectionActivity extends Activity {
+    //TODO add dynamic text size for the button text
 
+    //colours for the buttons
     private int[] colours = {R.color.Green,
             R.color.Orange,
             R.color.Pink,
@@ -37,6 +39,7 @@ public class CharacterSelectionActivity extends Activity {
 
         int horizontal_padding = (int) getResources().getDimension(R.dimen.activity_horizontal_margin);
         int vertical_padding = (int) getResources().getDimension(R.dimen.activity_vertical_margin);
+        //width and height to fit 4 buttons on the screen.
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams((size.x-8*horizontal_padding)/4,(size.x-8*horizontal_padding)/4);
         params.setMargins(horizontal_padding, vertical_padding, horizontal_padding, vertical_padding);
 
@@ -45,11 +48,11 @@ public class CharacterSelectionActivity extends Activity {
             String s = SplashActivity.CHARACTER_LIST[i];
             FButton fb = new FButton(this);
             fb.setText(s);
-            fb.setTextSize(40);
+            fb.setTextSize(40); // need to change this to make it dynamic
             fb.setAllCaps(false);
-            fb.setButtonColor(getResources().getColor(colours[new Random().nextInt(colours.length)]));
+            fb.setButtonColor(getResources().getColor(colours[new Random().nextInt(colours.length)])); //setting a random colour
             fb.setShadowEnabled(false);
-            fb.setCornerRadius((size.x - 8 * horizontal_padding) / 4);
+            fb.setCornerRadius((size.x - 8 * horizontal_padding) / 4); //radius to fit 4 buttons on the screen
             fb.setLayoutParams(params);
             fb.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -57,7 +60,7 @@ public class CharacterSelectionActivity extends Activity {
                     Intent intent;
                     if (getIntent().getStringExtra(getResources().getString(R.string.practice_mode)).equals(getResources().getString(R.string.practice)))
                         intent = new Intent(CharacterSelectionActivity.this, PracticeActivity.class);
-                    else
+                    else //only else and not else if as the value of getIntent().getStringExtra(getResources().getString(R.string.practice_mode)) could take only 2 values
                         intent = new Intent(CharacterSelectionActivity.this, FreehandActivity.class);
                     intent.putExtra(getResources().getString(R.string.practice_string), ((Button) view).getText());
                     startActivity(intent);

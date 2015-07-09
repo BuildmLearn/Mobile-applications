@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.buildmlearn.labeldiagram.helper.PlaceHolderContainer;
-import com.buildmlearn.labeldiagram.helper.ResultContainer;
+import com.buildmlearn.labeldiagram.helper.DiagramResultContainer;
 import com.buildmlearn.labeldiagram.helper.TagContainerSingleton;
 import com.buildmlearn.labeldiagram.helper.TagPlaceholderMapper;
 import com.example.labelthediagram.R;

@@ -2,23 +2,23 @@ package com.buildmlearn.labeldiagram.helper;
 
 import java.util.HashMap;
 
-public class ResultContainer {
+public class DiagramResultContainer {
 
-	private static ResultContainer resultcontainer;
+	private static DiagramResultContainer resultcontainer;
 	
 	private HashMap<String, HashMap<String, Integer>> results;
 	
-	private ResultContainer(){
+	private DiagramResultContainer(){
 		
 		results = new HashMap<String, HashMap<String,Integer>>();
 		
 	}
 	
-	public static ResultContainer getInstance(){
+	public static DiagramResultContainer getInstance(){
 		
 		if(resultcontainer== null){
 			
-			resultcontainer = new ResultContainer();
+			resultcontainer = new DiagramResultContainer();
 			
 		}
 		

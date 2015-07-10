@@ -3,6 +3,8 @@ package com.buildmlearn.labeldiagram;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.buildmlearn.labeldiagram.entity.Result;
+import com.buildmlearn.labeldiagram.helper.DiagramResultContainer;
 import com.buildmlearn.labeldiagram.helper.TagContainerSingleton;
 import com.buildmlearn.labeldiagram.resources.DiagramResultAdapter;
 import com.buildmlearn.labeldiagram.resources.DiagramResultRawItem;
@@ -29,7 +31,7 @@ public class DiagramResult extends Activity implements OnClickListener {
 
 	ArrayList<DiagramResultRawItem> reultList = new ArrayList<DiagramResultRawItem>();
 	List<TextView> correctTagList = new ArrayList<TextView>();
-	List<TextView> incorrectTagList = new ArrayList<TextView>();;
+	List<TextView> incorrectTagList = new ArrayList<TextView>();
 	TextView reulstTxt;
 	TextView reulstheader1;
 	TextView reulstheader2;
@@ -57,6 +59,15 @@ public class DiagramResult extends Activity implements OnClickListener {
 		// Capture intent values passed by DiagramPlay activity
 		rating = getIntent().getExtras().getFloat("SCORE");
 		source = getIntent().getExtras().getString("SOURCE");
+		
+		// Save diagram result for viewing on the scoreboard
+		Result resultObj = new Result(source);
+		resultObj.setScore(rating);
+		resultObj.setCorrectTagList(correctTagList);
+		resultObj.setIncorrectTagList(incorrectTagList);
+		//resultObj.setGameScore(gameScore);
+		
+		DiagramResultContainer resultcontainer = DiagramResultContainer.getInstance();
 
 		// Set the score on the ratingbar
 		RatingBar scoreRater = (RatingBar) findViewById(R.id.resultBar);

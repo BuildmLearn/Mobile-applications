@@ -2,15 +2,17 @@ package com.buildmlearn.labeldiagram.helper;
 
 import java.util.HashMap;
 
+import com.buildmlearn.labeldiagram.entity.Result;
+
 public class DiagramResultContainer {
 
 	private static DiagramResultContainer resultcontainer;
 	
-	private HashMap<String, HashMap<String, Integer>> results;
+	private HashMap<String, Result> results;
 	
 	private DiagramResultContainer(){
 		
-		results = new HashMap<String, HashMap<String,Integer>>();
+		results = new HashMap<String, Result>();
 		
 	}
 	
@@ -25,11 +27,11 @@ public class DiagramResultContainer {
 		return resultcontainer;
 	}
 
-	public HashMap<String, HashMap<String, Integer>> getResults() {
+	public HashMap<String, Result> getResults() {
 		return results;
 	}
 
-	public void setResults(HashMap<String, HashMap<String, Integer>> results) {
+	public void setResults(HashMap<String, Result> results) {
 		this.results = results;
 	}
 	

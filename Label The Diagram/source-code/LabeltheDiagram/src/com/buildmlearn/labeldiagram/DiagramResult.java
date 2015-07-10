@@ -1,6 +1,7 @@
 package com.buildmlearn.labeldiagram;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.buildmlearn.labeldiagram.entity.Result;
@@ -68,6 +69,9 @@ public class DiagramResult extends Activity implements OnClickListener {
 		//resultObj.setGameScore(gameScore);
 		
 		DiagramResultContainer resultcontainer = DiagramResultContainer.getInstance();
+		HashMap<String, Result> resultMap = new HashMap<String, Result>();
+		resultMap.put(source, resultObj);
+		
 
 		// Set the score on the ratingbar
 		RatingBar scoreRater = (RatingBar) findViewById(R.id.resultBar);

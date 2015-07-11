@@ -73,7 +73,6 @@ public class DBAdapter {
 		initialValues.put(KEY_DIAGRAM_NAME, diagramName);
 		initialValues.put(KEY_RESULT, result);
 
-		// Insert it into the database.
 		return db.insert(DATABASE_TABLE, null, initialValues);
 		
 	}
@@ -91,7 +90,7 @@ public class DBAdapter {
 		
 	}
 
-	// Get a specific row (by rowId)
+	// Get a specific row (by diagramName)
 	public Cursor getRow(String diagramName) {
 		
 		String where = KEY_DIAGRAM_NAME + "=" + diagramName;
@@ -113,7 +112,6 @@ public class DBAdapter {
 		newValues.put(KEY_DIAGRAM_NAME, diagramName);
 		newValues.put(KEY_RESULT, result);
 
-		// Insert it into the database.
 		return db.update(DATABASE_TABLE, newValues, where, null) != 0;
 		
 	}

@@ -32,10 +32,10 @@ public class ScoreboardBioFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		final View view = inflater.inflate(R.layout.scoreboard_biology, container,
+		final View view = inflater.inflate(R.layout.scoreboard_page, container,
 				false);
-		TextView biologyTxt = (TextView) view.findViewById(R.id.biologyTxt);
-		ListView bioList = (ListView) view.findViewById(R.id.bioListview);
+		TextView biologyTxt = (TextView) view.findViewById(R.id.subjectTxt);
+		ListView bioList = (ListView) view.findViewById(R.id.diagramListItemsView);
 		
 		biorawItems = new ArrayList<ScoreboardRawItem>();
 		biologyTxt.setTypeface(tfThin);

@@ -1,6 +1,8 @@
 package com.buildmlearn.labeldiagram;
 
 import com.buildmlearn.labeldiagram.resources.ScoreboardBioFragment;
+import com.buildmlearn.labeldiagram.resources.ScoreboardPhysicsFragment;
+import com.buildmlearn.labeldiagram.resources.ScoreboardScienceFragment;
 import com.example.labelthediagram.R;
 
 import android.app.ActionBar;
@@ -55,11 +57,11 @@ public class ScoreboardViewer extends FragmentActivity{
 				ScoreboardBioFragment bioFrag = new ScoreboardBioFragment();
 				return bioFrag;
 			case 1:
-				ScoreboardBioFragment bioFrag1 = new ScoreboardBioFragment();
-				return bioFrag1;
+				ScoreboardPhysicsFragment phyFrag = new ScoreboardPhysicsFragment();
+				return phyFrag;
 			case 2:
-				ScoreboardBioFragment bioFrag2 = new ScoreboardBioFragment();
-				return bioFrag2;
+				ScoreboardScienceFragment chemFrag = new ScoreboardScienceFragment();
+				return chemFrag;
 			default:
 				return null;
 			}

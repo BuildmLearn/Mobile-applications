@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@color/tab_color"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/subjectTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Biology"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#ffff"
+                    android:textSize="38sp" />
+
+                <View
+                    android:id="@+id/view1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#cccccc" />
+
+                <ListView
+                    android:id="@+id/diagramListItemsView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="5dp"
+                    android:paddingBottom="5dp" >
+                </ListView>
+            </LinearLayout>
+
+           
+        </LinearLayout>
+
+</LinearLayout>

@@ -39,15 +39,15 @@ public class WordSelectionActivity extends Activity {
         Intent intent = new Intent(this, PracticeActivity.class);
         switch (view.getId()) {
             case R.id.easy_button:
-                wordList = getResources().getStringArray(R.array.English_words_easy);
+                wordList = getResources().getStringArray(R.array.Words_easy);
                 break;
 
             case R.id.medium_button:
-                wordList = getResources().getStringArray(R.array.English_words_medium);
+                wordList = getResources().getStringArray(R.array.Words_medium);
                 break;
 
             case R.id.hard_button:
-                wordList = getResources().getStringArray(R.array.English_words_hard);
+                wordList = getResources().getStringArray(R.array.Words_hard);
                 break;
         }
         intent.putExtra(getResources().getString(R.string.practice_string), wordList[new Random().nextInt(wordList.length)]);

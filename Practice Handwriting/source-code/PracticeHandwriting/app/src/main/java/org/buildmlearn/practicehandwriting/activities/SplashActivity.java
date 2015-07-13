@@ -24,7 +24,7 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
 
     public static String[] CHARACTER_LIST, EASY_WORD_LIST, MEDIUM_WORD_LIST, HARD_WORD_LIST;
 
-    private boolean mTtsInitDone, mListsDone;
+    private boolean mTtsInitDone;
 
     public static ArrayList<TimeTrialResult> mTimeTrialResults;
 
@@ -34,9 +34,8 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        //TODO change variables in activities to follow specified coding conventions
         mTtsInitDone = false;
-        mListsDone = false;
+
         //try catch block as action TextToSpeech.Engine.ACTION_CHECK_TTS_DATA might not be present if no TTS engine is present
         try {
             Intent checkIntent = new Intent();
@@ -49,24 +48,13 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
         }
 
         mDbHelper = new ScoreDbHelper(this);
-        mTimeTrialResults = new ArrayList<TimeTrialResult>(CHARACTER_LIST.length);
-
-        //Loading the lists from Resources instead of loading them multiple times at runtime.
-        //Need to put this after selecting the language.
-        CHARACTER_LIST = getResources().getStringArray(R.array.English_characters);
-        EASY_WORD_LIST = getResources().getStringArray(R.array.English_words_easy);
-        MEDIUM_WORD_LIST = getResources().getStringArray(R.array.English_words_medium);
-        HARD_WORD_LIST = getResources().getStringArray(R.array.English_words_hard);
-
-        mListsDone = true;
 
         //Starts the next activity only after all the inits ar done.
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while(!(mTtsInitDone && mListsDone));
-                Intent intent = new Intent(SplashActivity.this, LanguageActivity.class);
-                startActivity(intent);
+                while(!(mTtsInitDone));
+                startActivity(new Intent(SplashActivity.this, LanguageActivity.class));
             }
         }).start();
     }
@@ -95,7 +83,7 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
         }
     }
 
-    public void onInit(int i) {
+    public void onInit(int status) {
         try {
             //show the splash screen for sometime before proceeding.
             Thread.sleep(SPLASH_TIME_OUT);

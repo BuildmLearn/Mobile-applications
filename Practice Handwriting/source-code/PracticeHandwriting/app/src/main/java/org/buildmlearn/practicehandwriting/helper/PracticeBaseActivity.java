@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Environment;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.ActionBarActivity;
@@ -35,7 +34,7 @@ import java.util.Random;
 //Base class for practicing
 public class PracticeBaseActivity extends ActionBarActivity {
 
-    //TODO time dependant vibrations, add comments
+    //TODO time dependant vibrations
 
     protected DrawingView mDrawView;
     protected boolean mDone; //Boolean variable set if the user has finished tracing
@@ -105,7 +104,7 @@ public class PracticeBaseActivity extends ActionBarActivity {
                     } else {
                         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
                         File file = new File(mediaStorageDir.getPath() + File.separator + "IMG_" + timeStamp + "_" + mPracticeString + ".jpg");
-                        Bitmap savedImg = mDrawView.getCanvasBitmap();
+                        Bitmap savedImg = mDrawView.getBitmap();
                         FileOutputStream fOut;
 
                         try {

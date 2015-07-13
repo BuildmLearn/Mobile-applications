@@ -91,6 +91,7 @@ public class DrawingView extends View {
         mDrawPaint = new Paint();
         mDrawPaint.setColor(mTouchColour);
         mDrawPaint.setAntiAlias(true);
+        mDrawPaint.setStrokeWidth(15);
         //Setting the paint to draw round strokes
         mDrawPaint.setStyle(Paint.Style.STROKE);
         mDrawPaint.setStrokeJoin(Paint.Join.ROUND);
@@ -228,21 +229,17 @@ public class DrawingView extends View {
         mDraw = draw;
     }
 
-    public Bitmap getCanvasBitmap() {
+    public Bitmap getBitmap() {
         //Get the image of the view
-        Bitmap overlayBitmap = Bitmap.createBitmap(mTextWidth, mTextHeight, Bitmap.Config.ARGB_8888);
+        Bitmap overlayBitmap = Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_8888);
         overlayBitmap.eraseColor(getResources().getColor(R.color.AppBg));
         Canvas canvas = new Canvas(overlayBitmap);
         canvas.drawBitmap(mCanvasBitmap,0,0,null);
         return overlayBitmap;
     }
 
-    public int getBitmapWidth() {
-        return mCanvasBitmap.getWidth();
-    }
-
-    public int getBitmapHeight() {
-        return mCanvasBitmap.getHeight();
+    public Bitmap getCanvasBitmap() {
+        return mCanvasBitmap;
     }
 
     public int[] getTouchBounds() {

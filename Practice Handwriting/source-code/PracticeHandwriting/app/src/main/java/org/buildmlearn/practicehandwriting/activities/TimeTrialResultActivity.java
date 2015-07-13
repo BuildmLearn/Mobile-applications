@@ -108,7 +108,7 @@ public class TimeTrialResultActivity extends Activity {
             for(int i = 0; i < resultLL.getChildCount(); i++) {
 
                 File file = new File(mediaStorageDir.getPath() + File.separator + SplashActivity.mTimeTrialResults.get(i).getPracticeString() + ".jpg");
-                Bitmap savedImg = ((DrawingView)  resultLL.getChildAt(i).findViewById(R.id.resultDrawingView)).getCanvasBitmap();
+                Bitmap savedImg = ((DrawingView)  resultLL.getChildAt(i).findViewById(R.id.resultDrawingView)).getBitmap();
                 FileOutputStream fOut;
 
                 try {
@@ -133,7 +133,6 @@ public class TimeTrialResultActivity extends Activity {
     public void onBackPressed() {
         //Emptying the List of results for the next use
         SplashActivity.mTimeTrialResults = new ArrayList<TimeTrialResult>(SplashActivity.CHARACTER_LIST.length);
-        finish();
         //Going back to the main menu instead of the Tracing screen
         startActivity(new Intent(TimeTrialResultActivity.this, MainMenuActivity.class));
     }

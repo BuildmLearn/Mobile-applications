@@ -44,7 +44,6 @@ public class MainMenuActivity extends Activity {
 
             case R.id.timetrial_button:
                 intent = new Intent(this, TimeTrialActivity.class);
-                //intent.putExtra(getResources().getString(R.string.practice_string),SplashActivity.CHARACTER_LIST[0]);
                 break;
         }
         startActivity(intent);

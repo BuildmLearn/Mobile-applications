@@ -2,6 +2,7 @@ package com.buildmlearn.labeldiagram.helper;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Typeface;
 
 public class HelperClass {
@@ -15,8 +16,10 @@ public class HelperClass {
 		actionBar.show();
 	}
 	
-	public static void customFontManager(Typeface tf, Activity context){
-		
+	// Set custom fonts
+	public static Typeface customFontManager(Typeface tf, Context context){		
+		Typeface mTypeface = Typeface.createFromAsset(context.getAssets(), "fonts/"+tf);
+		return mTypeface;
 	}
 	
 

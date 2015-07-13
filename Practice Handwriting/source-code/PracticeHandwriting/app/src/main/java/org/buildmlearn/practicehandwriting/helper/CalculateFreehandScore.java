@@ -19,13 +19,13 @@ import org.buildmlearn.practicehandwriting.activities.SplashActivity;
 import java.util.ArrayList;
 
 public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
-    private Bitmap mTouchImg, mSavedImg;
-    private ArrayList<ArrayList<Point>> mTouches;
-    private ProgressDialog mProgressDialog;
-    private DrawingView mDrawView;
-    private Context mContext;
-    private String mPracticeString;
-    private int[] mTouchBounds;
+    Bitmap mTouchImg, mSavedImg;
+    String mPracticeString;
+    ArrayList<ArrayList<Point>> mTouches;
+    ProgressDialog mProgressDialog;
+    DrawingView mDrawView;
+    Context mContext;
+    int[] mTouchBounds;
 
     public CalculateFreehandScore(Context context, DrawingView drawView, String practiceString) {
         mContext = context;
@@ -35,15 +35,14 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
 
     @Override
     protected void onPreExecute() {
-        mDrawView.canDraw(false);
-        mDrawView.canVibrate(false);
         mTouchImg = mDrawView.getTouchesBitmap();
         mTouches = mDrawView.getTouchesList();
         mTouchBounds = mDrawView.getTouchBounds();
 
         mDrawView.clearCanvas();
         mDrawView.init();
-        mDrawView.setBitmapFromText(mPracticeString); //setting the text to calculate the score
+        mDrawView.setBitmapFromText(mPracticeString);//setting the text to calculate the score
+        mDrawView.canDraw(false);
 
         //Image of the text to calculate the score on
         mSavedImg = mDrawView.getCanvasBitmap();
@@ -58,7 +57,66 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
 
     @Override
     protected float[] doInBackground(Void... voids) {
-        return scoreBitmapForFreehand(mTouches, mSavedImg, (mSavedImg.getWidth() - mTouchImg.getWidth())/2, (mSavedImg.getHeight() - mTouchImg.getHeight())/2);
+        float size = 0;
+        for (int i = 0; i < mTouches.size(); i++)
+            size += mTouches.get(i).size();
+        if(size!=0) {//Computes score only if the view has been touched
+            int centerX = (mSavedImg.getWidth() - mTouchImg.getWidth())/2, centerY = (mSavedImg.getHeight() - mTouchImg.getHeight())/2;
+            int minx = mTouchBounds[0], miny = mTouchBounds[1];
+            float correctTouches;
+            int i, j, cx, cy, x ,y, count = 0;
+            float scaleX, scaleY;
+            int textColour = mContext.getResources().getColor(R.color.Black); //Storing locally for faster access inside the loop
+            float score, maxScore = 0, scaleXForMaxScore = 1, scaleYForMaxScore = 1, cxForMaxScore = centerX, cyForMaxScore = centerY;
+            int[] xTouches = new int[(int)size], yTouches = new int[(int)size];
+            //Storing the bitmap height and width locally for faster access
+            int width = mSavedImg.getWidth(), height = mSavedImg.getHeight();
+            int[][] bitmap = new int[width][height];
+
+            //Top corner of the touch bounds set as origin. Doing this outside the score calculation loop to prevent excess computation in the loop
+            //Converting from ArrayList to int array as array access is faster
+            for (i = 0; i < mTouches.size(); i++)
+                for(j=0;j<mTouches.get(i).size();j++) {
+                    xTouches[count] = mTouches.get(i).get(j).x - minx;
+                    yTouches[count] = mTouches.get(i).get(j).y - miny;
+                    count++;
+                }
+
+            //Getting the bitmap as a 2D int array for faster access
+            for(i=0;i<width;i++)
+                for(j=0;j<height;j++)
+                    bitmap[i][j] = mSavedImg.getPixel(i, j);
+
+            outerLoop:
+            for (scaleX = 0.8f; scaleX < 1.4f; scaleX += 0.1f)
+                for (scaleY = 0.8f; scaleY < 1.4f; scaleY += 0.1f) {
+                    for (cx = centerX - 20; cx <= centerX + 20; cx += 2)
+                        for (cy = centerY - 20; cy <= centerY + 20; cy += 2) {
+                            correctTouches = 0;
+                            for (i = 0; i < size; i++) {
+                                //The transformed touch points at the new scale and center
+                                x = (int) (xTouches[i] * scaleX) + cx;
+                                y = (int) (yTouches[i] * scaleY) + cy;
+
+                                if (x >= 0 && x < width && y >= 0 && y < height && bitmap[x][y] == textColour)
+                                        correctTouches += 1;
+                            }
+                            score = correctTouches / size;
+                            if (score > maxScore) { //updating the values for a maximum score
+                                maxScore = score;
+                                scaleXForMaxScore = scaleX;
+                                scaleYForMaxScore = scaleY;
+                                cxForMaxScore = cx;
+                                cyForMaxScore = cy;
+                                if (score == 1)
+                                    break outerLoop;//as best score possible has been obtained
+                            }
+                        }
+                }
+            return new float[]{100 * maxScore, scaleXForMaxScore, scaleYForMaxScore, cxForMaxScore, cyForMaxScore};
+        } else {
+            return new float[]{0, 1, 1, (mSavedImg.getWidth() - mTouchImg.getWidth())/2, (mSavedImg.getHeight() - mTouchImg.getHeight())/2};
+        }
     }
 
     @Override
@@ -75,7 +133,7 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
         mDrawView.init();
         //Overlaying the touches bitmap on the text at the best scale and position and setting it to the DrawingView
         mDrawView.setBitmap(bitmapOverlay(mSavedImg, scaleBitmap(mTouchImg, result[1], result[2]), (int) result[3], (int) result[4]));
-
+        mDrawView.canDraw(false);
         //Animations for when the user is done with the trace
         mDrawView.startAnimation(Animator.createScaleDownAnimation());
 
@@ -87,62 +145,6 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
         Animator.createYFlipForwardAnimation(((Activity) mContext).findViewById(R.id.done_save_button));
         ((ActionButton) ((Activity) mContext).findViewById(R.id.done_save_button)).setImageResource(R.drawable.ic_save);
         Animator.createYFlipBackwardAnimation(((Activity) mContext).findViewById(R.id.done_save_button));
-    }
-
-    private float[] scoreBitmapForFreehand(ArrayList<ArrayList<Point>> touches, Bitmap canvasBitmap, int centerX, int centerY) {
-        ArrayList<Point> points = new ArrayList<>();
-        //Converting 2-D arraylist to a 1-D arraylist
-        for(int i = 0; i < touches.size() ; i++)
-            for (int j = 0; j < touches.get(i).size(); j++)
-                points.add(touches.get(i).get(j));
-        float size = points.size();
-        if(size!=0) { //Computs score only if the view has been touched
-            float correctTouches;
-            int i, cx, cy;
-            float scaleX, scaleY;
-            int bgColour = mContext.getResources().getColor(R.color.AppBg); //Storing locally for faster access inside the loop
-            float score, maxScore = 0, scaleXForMaxScore = 1, scaleYForMaxScore = 1, cxForMaxScore = centerX, cyForMaxScore = centerY;
-            int[] xTouches = new int[(int)size];
-            int[] yTouches = new int[(int)size];
-
-            //Top corner of the touch bounds set as origin. Doing this outside the score calculation loop to prevent excess computation in the loop
-            //Converting from arraylist to int array as array access is faster
-            for (i = 0; i < size; i++) {
-                xTouches[i] = (points.get(i).x * mDrawView.getBitmapWidth() / mDrawView.mWidth) - mTouchBounds[0];
-                yTouches[i] = (points.get(i).y * mDrawView.getBitmapHeight() / mDrawView.mHeight) - mTouchBounds[1];
-            }
-
-            outerLoop:
-            for (scaleX = 0.8f; scaleX < 1.4f; scaleX += 0.1f)
-                for (scaleY = 0.8f; scaleY < 1.4f; scaleY += 0.1f) {
-                    for (cx = centerX - 20; cx <= centerX + 20; cx += 2)
-                        for (cy = centerY - 20; cy <= centerY + 20; cy += 2) {
-                            correctTouches = 0;
-                            for (i = 0; i < size; i++) {
-                                //The transformed touch points at the new scale and center
-                                int x = (int) (xTouches[i] * scaleX) + cx;
-                                int y = (int) (yTouches[i] * scaleY) + cy;
-
-                                if (x >= 0 && x < canvasBitmap.getWidth() && y >= 0 && y < canvasBitmap.getHeight() && canvasBitmap.getPixel(x, y) != bgColour)
-                                    correctTouches += 1;
-                            }
-                            score = correctTouches / size;
-                            if (score > maxScore) {
-                                //updating the values for a maximum score
-                                maxScore = score;
-                                scaleXForMaxScore = scaleX;
-                                scaleYForMaxScore = scaleY;
-                                cxForMaxScore = cx;
-                                cyForMaxScore = cy;
-                                if (score == 1)
-                                    break outerLoop; //as best score possible has been obtained
-                            }
-                        }
-                }
-            return new float[]{100 * maxScore, scaleXForMaxScore, scaleYForMaxScore, cxForMaxScore, cyForMaxScore};
-        } else {
-            return new float[]{0, 1, 1, centerX, centerY};
-        }
     }
 
     private Bitmap scaleBitmap(Bitmap originalImage, float scaleX, float scaleY) {

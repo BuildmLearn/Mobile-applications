@@ -10,7 +10,6 @@ import org.buildmlearn.practicehandwriting.R;
 import org.buildmlearn.practicehandwriting.helper.PracticeBaseActivity;
 import org.buildmlearn.practicehandwriting.helper.TimeTrialResult;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class TimeTrialActivity extends PracticeBaseActivity {
@@ -19,6 +18,7 @@ public class TimeTrialActivity extends PracticeBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         try {
+            getIntent().putExtra(getResources().getString(R.string.practice_string), randomStringGenerator());//practice session with random strings, kept first since the string is spoken in super
             super.onCreate(savedInstanceState);
             mCountDownTimer = new CountDownTimer(120000, 1000) {
                 @Override
@@ -33,11 +33,9 @@ public class TimeTrialActivity extends PracticeBaseActivity {
                     mDone = true;
                     mDrawView.canDraw(false);
                     SplashActivity.mTimeTrialResults.add(new TimeTrialResult(mPracticeString, mDrawView.getTouchesList()));
-                    Intent intent = new Intent(TimeTrialActivity.this,TimeTrialResultActivity.class);
-                    startActivity(intent);
+                    startActivity(new Intent(TimeTrialActivity.this,TimeTrialResultActivity.class));
                 }
             };
-            mPracticeString = randomStringGenerator(); //practice session with random strings
             mDrawView.setBitmapFromText(mPracticeString);
             mDrawView.canVibrate(true);
             mCountDownTimer.start();
@@ -84,8 +82,9 @@ public class TimeTrialActivity extends PracticeBaseActivity {
                     SplashActivity.mTimeTrialResults.add(new TimeTrialResult(mPracticeString, mDrawView.getTouchesList()));
                     mDrawView.canDraw(true);
 
-                    mPracticeString = randomStringGenerator();
-                    mDrawView.setBitmapFromText(mPracticeString);
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
                 }
                 break;
         }

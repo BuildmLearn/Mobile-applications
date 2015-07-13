@@ -1,20 +1,25 @@
 package com.buildmlearn.labeldiagram;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.json.JSONObject;
+
+import com.buildmlearn.labeldiagram.database.DBAdapter;
 import com.buildmlearn.labeldiagram.entity.Result;
-import com.buildmlearn.labeldiagram.helper.DiagramResultContainer;
+import com.buildmlearn.labeldiagram.helper.HelperClass;
 import com.buildmlearn.labeldiagram.helper.TagContainerSingleton;
 import com.buildmlearn.labeldiagram.resources.DiagramResultAdapter;
 import com.buildmlearn.labeldiagram.resources.DiagramResultRawItem;
 import com.example.labelthediagram.R;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import android.app.ActionBar;
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,7 +29,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RatingBar;
-import android.widget.RatingBar.OnRatingBarChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,11 +37,11 @@ public class DiagramResult extends Activity implements OnClickListener {
 	ArrayList<DiagramResultRawItem> reultList = new ArrayList<DiagramResultRawItem>();
 	List<TextView> correctTagList = new ArrayList<TextView>();
 	List<TextView> incorrectTagList = new ArrayList<TextView>();
-	TextView reulstTxt;
-	TextView reulstheader1;
-	TextView reulstheader2;
+	List<String> correctTagTextList = new ArrayList<String>();
+	List<String> incorrectTagTextList = new ArrayList<String>();
 	String source;
 	float rating;
+	DBAdapter diagramDb;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +49,7 @@ public class DiagramResult extends Activity implements OnClickListener {
 		setContentView(R.layout.diagram_result);
 
 		// Enabling ActionBar
-		ActionBar actionBar = getActionBar();
-		actionBar.setTitle("Result");
-		actionBar.setDisplayShowTitleEnabled(true);
-		actionBar.setDisplayHomeAsUpEnabled(true);
-		actionBar.show();
+		HelperClass.setActionBar("Result", this);
 
 		// Get the correctly and incorrectly labeled tag-list
 		correctTagList = TagContainerSingleton.getInstance()
@@ -60,34 +60,10 @@ public class DiagramResult extends Activity implements OnClickListener {
 		// Capture intent values passed by DiagramPlay activity
 		rating = getIntent().getExtras().getFloat("SCORE");
 		source = getIntent().getExtras().getString("SOURCE");
-		
-		// Save diagram result for viewing on the scoreboard
-		Result resultObj = new Result(source);
-		resultObj.setScore(rating);
-		resultObj.setCorrectTagList(correctTagList);
-		resultObj.setIncorrectTagList(incorrectTagList);
-		//resultObj.setGameScore(gameScore);
-		
-		DiagramResultContainer resultcontainer = DiagramResultContainer.getInstance();
-		HashMap<String, Result> resultMap = new HashMap<String, Result>();
-		resultMap.put(source, resultObj);
-		
 
 		// Set the score on the ratingbar
 		RatingBar scoreRater = (RatingBar) findViewById(R.id.resultBar);
 		scoreRater.setRating((rating / 100.0f) * 5);
-
-		Typeface tfThin = Typeface.createFromAsset(getAssets(),
-				"fonts/Roboto-Thin.ttf");
-		Typeface tfLight = Typeface.createFromAsset(getAssets(),
-				"fonts/Roboto-Light.ttf");
-
-		reulstTxt = (TextView) findViewById(R.id.reulstTxt);
-		reulstTxt.setTypeface(tfThin);
-		reulstheader1 = (TextView) findViewById(R.id.resultHeaderTxt);
-		reulstheader1.setTypeface(tfThin);
-		reulstheader2 = (TextView) findViewById(R.id.resultHeaderTxt2);
-		reulstheader2.setTypeface(tfThin);
 
 		// Set score on the score TextView
 		TextView scoreTxt = (TextView) findViewById(R.id.resultScore);
@@ -100,15 +76,60 @@ public class DiagramResult extends Activity implements OnClickListener {
 		tryAgain.setOnClickListener(this);
 		nextButton.setOnClickListener(this);
 
-		ListView list = (ListView) findViewById(R.id.mylistview);
+		// Save diagram result for viewing on the Scoreboard
+		saveDiagramResult();
 
 		// Call for populating data for adapter
 		fillDataModel();
+
+		ListView list = (ListView) findViewById(R.id.mylistview);
 
 		// Set DiagramResult adapter
 		ArrayAdapter<DiagramResultRawItem> resultAdapter = new DiagramResultAdapter(
 				this, R.layout.diagram_result_row_item, reultList);
 		list.setAdapter(resultAdapter);
+	}
+
+	/**
+	 * 
+	 */
+	private void saveDiagramResult() {
+		
+		openDB();
+
+		extractTags(correctTagList, incorrectTagList);
+
+		Result resultObj = new Result(source);
+		resultObj.setScore(rating);
+		resultObj.setCorrectTagList(correctTagTextList);
+		resultObj.setIncorrectTagList(incorrectTagTextList);
+		// resultObj.setGameScore(gameScore);
+
+		HashMap<String, Result> resultMap = new HashMap<String, Result>();
+		resultMap.put(source, resultObj);
+
+		Gson gson = new Gson();
+		String resultData = gson.toJson(resultObj);
+		long id = diagramDb.insertRow(source, resultData);
+
+		Log.i("Database Status", "record id :" + id + "");
+
+		/*Cursor cursor = myDb.getAllRows();
+		displayRecordSet(cursor,gson);*/
+	}
+
+	// Extract text from tags to save
+	private void extractTags(List<TextView> correctTagList,
+			List<TextView> incorrectTagList) {
+
+		for (int i = 0; i < correctTagList.size(); i++) {
+			correctTagTextList.add(correctTagList.get(i).getText().toString());
+		}
+
+		for (int j = 0; j < incorrectTagList.size(); j++) {
+			incorrectTagTextList.add(incorrectTagList.get(j).getText()
+					.toString());
+		}
 	}
 
 	// Populate data for the use of Array adapter
@@ -130,53 +151,95 @@ public class DiagramResult extends Activity implements OnClickListener {
 
 	}
 
+	/*private void displayRecordSet(Cursor cursor,Gson gson) {
+		String message = "";
+		String testObj = "";
+		// populate the message from the cursor
+
+		// Reset cursor to start, checking to see if there's data:
+		if (cursor.moveToFirst()) {
+			do {
+				// Process the data:
+				String name = cursor.getString(DBAdapter.COL_DIAGRAM_NAME);
+				String result = cursor.getString(DBAdapter.COL_RESULT);
+				
+				Type type = new TypeToken<Result>() {}.getType();
+				Result finalResult = gson.fromJson(result, type);
+				// Append data to the message:
+				message += "name=" + name + ", result=" + result + "\n";
+				String outputDiagram = finalResult.getDiagramName();
+				float score = finalResult.getScore();
+				
+				testObj += "outputDiagram"+outputDiagram+"score"+score;
+			} while (cursor.moveToNext());
+		}
+
+		// Close the cursor to avoid a resource leak.
+		cursor.close();
+
+		Log.i("Retrieved Data", message+" +++ obj +++"+testObj);
+	}
+*/
+	private void openDB() {
+		diagramDb = new DBAdapter(this);
+		diagramDb.open();
+	}
+
+	private void closeDB() {
+		diagramDb.close();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		closeDB();
+	}
+
 	@Override
 	public void onClick(View view) {
 
 		switch (view.getId()) {
 		case R.id.againButton:
 
-			if(source.equals("DiagramPlayHumanEye")){
+			if (source.equals("DiagramPlayHumanEye")) {
 				Intent intent = new Intent(getApplicationContext(),
 						DiagramPlayHumanEye.class);
 				intentBuilder(intent);
-			}else if(source.equals("DiagramPlayHumanHeart")){
+			} else if (source.equals("DiagramPlayHumanHeart")) {
 				Intent intent = new Intent(getApplicationContext(),
 						DiagramPlayHumanHeart.class);
 				intentBuilder(intent);
-			}else if(source.equals("DiagramPlayHumanEar")){
+			} else if (source.equals("DiagramPlayHumanEar")) {
 				Intent intent = new Intent(getApplicationContext(),
 						DiagramPlayHumanEar.class);
 				intentBuilder(intent);
-			}else if(source.equals("DiagramPlayPlantCell")){
+			} else if (source.equals("DiagramPlayPlantCell")) {
 				Intent intent = new Intent(getApplicationContext(),
 						DiagramPlayPlantCell.class);
 				intentBuilder(intent);
-			}else if(source.equals("DiagramPlayPlantFlower")){
+			} else if (source.equals("DiagramPlayPlantFlower")) {
 				Intent intent = new Intent(getApplicationContext(),
 						DiagramPlayPlantFlower.class);
 				intentBuilder(intent);
-			}else if(source.equals("DiagramPlayBacteria")){
+			} else if (source.equals("DiagramPlayBacteria")) {
 				Intent intent = new Intent(getApplicationContext(),
 						DiagramPlayBacteria.class);
 				intentBuilder(intent);
-			}else if(source.equals("DiagramPlayVirus")){
+			} else if (source.equals("DiagramPlayVirus")) {
 				Intent intent = new Intent(getApplicationContext(),
 						DiagramPlayVirus.class);
 				intentBuilder(intent);
-			}else if(source.equals("DiagramPlayWaterCycle")){
+			} else if (source.equals("DiagramPlayWaterCycle")) {
 				Intent intent = new Intent(getApplicationContext(),
 						DiagramPlayWaterCycle.class);
 				intentBuilder(intent);
-			}else if(source.equals("DiagramPlayCarbonCycle")){
+			} else if (source.equals("DiagramPlayCarbonCycle")) {
 				Intent intent = new Intent(getApplicationContext(),
 						DiagramPlayCarbonCycle.class);
 				intentBuilder(intent);
-			}else{
+			} else {
 				Log.e("Unknown sorce exception", "Unknown source of intent");
 			}
-			
-			
 
 			break;
 
@@ -187,7 +250,7 @@ public class DiagramResult extends Activity implements OnClickListener {
 			Intent intent = new Intent(getApplicationContext(),
 					DiagramCategory.class);
 			intentBuilder(intent);
-			
+
 			break;
 		default:
 			break;

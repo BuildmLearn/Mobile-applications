@@ -32,12 +32,12 @@ public class DBAdapter {
 	public static final String DATABASE_NAME = "DiagramsInfo";
 	public static final String DATABASE_TABLE = "resultTable";
 	// Track DB version if a new version of the application changes the format.
-	public static final int DATABASE_VERSION = 1;
+	public static final int DATABASE_VERSION = 3;
 
 	private static final String DATABASE_CREATE_SQL = "create table "
 			+ DATABASE_TABLE + " (" + KEY_DIAGRAM_NAME + " text primary key, "
-			+ KEY_RESULT + " text not null "
-
+			+ KEY_RESULT + " text not null, "
+			+ "unique ("+ KEY_DIAGRAM_NAME + ") on conflict replace" 
 			+ ");";
 
 	// Context of application who uses us.
@@ -72,6 +72,8 @@ public class DBAdapter {
 		ContentValues initialValues = new ContentValues();
 		initialValues.put(KEY_DIAGRAM_NAME, diagramName);
 		initialValues.put(KEY_RESULT, result);
+		
+		Log.i("Json result", result);
 
 		return db.insert(DATABASE_TABLE, null, initialValues);
 		

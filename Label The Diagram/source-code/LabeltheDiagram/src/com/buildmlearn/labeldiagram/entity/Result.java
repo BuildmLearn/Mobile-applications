@@ -10,14 +10,17 @@ public class Result {
 	private String diagramName;
 	private float score;
 	private float gameScore;
-	private List<TextView> correctTagList;
-	private List<TextView> incorrectTagList;
+	private List<String> correctTagList;
+	private List<String> incorrectTagList;
 
 	public Result(String diagramName) {
 		super();
 		this.diagramName = diagramName;
-		this.correctTagList = new ArrayList<TextView>();
-		this.incorrectTagList = new ArrayList<TextView>();
+		this.correctTagList = new ArrayList<String>();
+		this.incorrectTagList = new ArrayList<String>();
+	}
+
+	public Result() {
 	}
 
 	public String getDiagramName() {
@@ -44,19 +47,19 @@ public class Result {
 		this.gameScore = gameScore;
 	}
 
-	public List<TextView> getCorrectTagList() {
+	public List<String> getCorrectTagList() {
 		return correctTagList;
 	}
 
-	public void setCorrectTagList(List<TextView> correctTagList) {
+	public void setCorrectTagList(List<String> correctTagList) {
 		this.correctTagList = correctTagList;
 	}
 
-	public List<TextView> getIncorrectTagList() {
+	public List<String> getIncorrectTagList() {
 		return incorrectTagList;
 	}
 
-	public void setIncorrectTagList(List<TextView> incorrectTagList) {
+	public void setIncorrectTagList(List<String> incorrectTagList) {
 		this.incorrectTagList = incorrectTagList;
 	}
 

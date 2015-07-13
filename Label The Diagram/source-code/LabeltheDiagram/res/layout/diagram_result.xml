@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
 
@@ -13,7 +14,7 @@
         android:paddingBottom="10dp"
         android:paddingTop="10dp" >
 
-        <TextView
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
             android:id="@+id/resultHeaderTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -22,9 +23,10 @@
             android:text="Awesome.!"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffff"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            app:typeface="roboto_thin" />
 
-        <TextView
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
             android:id="@+id/resultHeaderTxt2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,7 +35,8 @@
             android:text="you unlocked"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffff"
-            android:textSize="35sp" />
+            android:textSize="35sp"
+            app:typeface="roboto_thin" />
 
         <TextView
             android:id="@+id/resultHeaderTxt3"
@@ -59,7 +62,7 @@
             android:layout_weight="0.6"
             android:orientation="vertical" >
 
-            <TextView
+            <com.buildmlearn.labeldiagram.widget.CustomFontManager
                 android:id="@+id/reulstTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -68,7 +71,8 @@
                 android:text="SCORE"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/appBg_color"
-                android:textSize="40sp" />
+                android:textSize="40sp"
+                app:typeface="roboto_thin" />
 
             <TextView
                 android:id="@+id/resultScore"
@@ -91,8 +95,8 @@
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:isIndicator="true"
-                android:progressDrawable="@drawable/custom_ratingbar_full"
                 android:numStars="5"
+                android:progressDrawable="@drawable/custom_ratingbar_full"
                 android:rating="0.0"
                 android:stepSize="0.5" />
         </LinearLayout>
@@ -105,8 +109,8 @@
             android:layout_alignParentTop="true"
             android:layout_weight="0.4"
             android:divider="@android:color/transparent"
-            android:dividerHeight="5dp" 
-            android:paddingBottom="5dp">
+            android:dividerHeight="5dp"
+            android:paddingBottom="5dp" >
         </ListView>
     </LinearLayout>
 
@@ -123,31 +127,29 @@
             android:id="@+id/againButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:layout_weight="1"
             android:background="@color/tab_color"
             android:gravity="center"
-          
-            android:layout_weight="1"
             android:text="Try Again"
-            android:textColor="#ffff"
-            android:layout_marginBottom="5dp" />
+            android:textColor="#ffff" />
 
         <Button
             android:id="@+id/nextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-           	android:layout_marginLeft="5dp"
-            android:layout_weight="1"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:layout_weight="1"
             android:background="@color/tab_color"
             android:gravity="center"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textColor="#ffff" 
-            android:text="Next" 
-            android:layout_marginBottom="5dp"/>
-
+            android:text="Next"
+            android:textColor="#ffff" />
     </LinearLayout>
 
 </RelativeLayout>

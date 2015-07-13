@@ -26,4 +26,9 @@ public class ScoreboardScoreFragment extends Fragment {
         return v;
     }
 
+    @Override
+    public void onDestroy() {
+    	// TODO Auto-generated method stub
+    	super.onDestroy();
+    }
 }

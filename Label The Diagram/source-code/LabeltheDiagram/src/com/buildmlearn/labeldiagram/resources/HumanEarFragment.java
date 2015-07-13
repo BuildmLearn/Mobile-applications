@@ -17,15 +17,13 @@ import android.widget.TextView;
 public class HumanEarFragment extends Fragment {
 	
 	private Typeface tfThin;
-    private Typeface tfLight;
     private float score;
 
  // Store instance variables based on arguments passed
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //id = getArguments().getInt("diagram_id", 0);
-        tfLight = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Light.ttf");
+
         tfThin = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Thin.ttf");
         
         score = getArguments().getFloat("SCORE_SAVED");

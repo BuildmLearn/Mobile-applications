@@ -212,6 +212,14 @@
                 android:value="com.buildmlearn.labeldiagram.MainMenu" >
             </meta-data>
         </activity>
+        <activity
+            android:name="com.buildmlearn.labeldiagram.ScoreboardResult"
+            android:parentActivityName="com.buildmlearn.labeldiagram.ScoreboardViewer" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.buildmlearn.labeldiagram.ScoreboardViewer" >
+            </meta-data>
+        </activity>
     </application>
 
 </manifest>

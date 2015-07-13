@@ -1,20 +1,23 @@
 package com.buildmlearn.labeldiagram.helper;
 
-import java.util.Arrays;
-import java.util.List;
-
+import android.app.ActionBar;
+import android.app.Activity;
 import android.graphics.Typeface;
 
 public class HelperClass {
 	
-	public static List<Integer> convert(Object[] objectArray) {
-		Integer[] intArray = new Integer[objectArray.length];
-
-		for (int i = 0; i < objectArray.length; i++) {
-			intArray[i] = (Integer) objectArray[i];
-		}
-
-		return Arrays.asList(intArray);
+	// Set ActionBar
+	public static void setActionBar(String title,Activity context){
+		ActionBar actionBar = context.getActionBar();
+		actionBar.setTitle(title);
+		actionBar.setDisplayShowTitleEnabled(true);
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.show();
 	}
+	
+	public static void customFontManager(Typeface tf, Activity context){
+		
+	}
+	
 
 }

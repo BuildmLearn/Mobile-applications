@@ -1,5 +1,6 @@
 package com.buildmlearn.labeldiagram;
 
+import com.buildmlearn.labeldiagram.helper.HelperClass;
 import com.buildmlearn.labeldiagram.resources.ScoreboardBioFragment;
 import com.buildmlearn.labeldiagram.resources.ScoreboardPhysicsFragment;
 import com.buildmlearn.labeldiagram.resources.ScoreboardScienceFragment;
@@ -23,19 +24,14 @@ public class ScoreboardViewer extends FragmentActivity{
 		
 		setContentView(R.layout.scoreboard_view);
 		
+		HelperClass.setActionBar("Scoreboard", this);
+		
 		ViewPager vpPager = (ViewPager) findViewById(R.id.scoreboard_pager);
 		adapterViewPager = new ScoreboardPagerAdapter(
 				getSupportFragmentManager());
 		vpPager.setAdapter(adapterViewPager);
 		vpPager.setClipToPadding(false);
 		vpPager.setPageMargin(20);
-
-		ActionBar actionBar = getActionBar();
-		actionBar.setTitle("Diagram Menu");
-		actionBar.setDisplayShowTitleEnabled(true);
-		actionBar.setDisplayHomeAsUpEnabled(true);
-		actionBar.show();
-
 		
 	}
 	

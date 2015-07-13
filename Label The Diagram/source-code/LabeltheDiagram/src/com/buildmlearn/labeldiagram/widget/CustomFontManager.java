@@ -56,7 +56,9 @@ public class CustomFontManager extends TextView {
 	public CustomFontManager(Context context, AttributeSet attrs,
 			int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
-		parseAttributes(context, attrs);
+		if(!isInEditMode()){
+			parseAttributes(context, attrs);
+		}
 	}
 
 	/**
@@ -70,7 +72,9 @@ public class CustomFontManager extends TextView {
 	 */
 	public CustomFontManager(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		parseAttributes(context, attrs);
+		if(!isInEditMode()){
+			parseAttributes(context, attrs);
+		}
 	}
 
 	/**

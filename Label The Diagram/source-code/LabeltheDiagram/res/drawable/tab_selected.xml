@@ -13,7 +13,7 @@
                    android:top="15dp"
                 android:right="10dp"
                 android:bottom="15dp" />
-            <stroke android:width="6dp" android:color="@color/tab_color" />
+            <stroke android:width="6dp" android:color="#BDBDBD" />
             <solid android:color="#00000000" />
         </shape>
    </item>

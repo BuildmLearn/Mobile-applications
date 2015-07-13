@@ -27,8 +27,8 @@ public class ScoreboardResult extends FragmentActivity {
 	        
 	        HelperClass.setActionBar("Scoreboard", this);
 	        
-	        mTabHost = (FragmentTabHost) findViewById(R.id.tabhost);
-	        mTabHost.setup(this, getSupportFragmentManager(), R.id.tabFrameLayout);
+	        mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
+	        mTabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
 
 	        mTabHost.addTab(
 	                mTabHost.newTabSpec("tab1").setIndicator(getTabIndicator(mTabHost.getContext(), "LAST ATTEMPT")),

@@ -20,8 +20,9 @@ public class ScoreboardScoreFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.scoreboard_fragment_layout, container, false);
-        TextView tv = (TextView) v.findViewById(R.id.fontMangerView);
-        tv.setText(this.getTag() + " Content");
+        TextView score = (TextView) v.findViewById(R.id.resultScore);
+        TextView scoreTxt = (TextView) v.findViewById(R.id.resultScoreTxt);
+        
         return v;
     }
 

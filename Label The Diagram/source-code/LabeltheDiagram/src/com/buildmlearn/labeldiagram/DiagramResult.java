@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import com.buildmlearn.labeldiagram.database.DBAdapter;
 import com.buildmlearn.labeldiagram.entity.Result;
+import com.buildmlearn.labeldiagram.helper.ClassMapper;
 import com.buildmlearn.labeldiagram.helper.HelperClass;
 import com.buildmlearn.labeldiagram.helper.TagContainerSingleton;
 import com.buildmlearn.labeldiagram.resources.DiagramResultAdapter;
@@ -200,47 +201,9 @@ public class DiagramResult extends Activity implements OnClickListener {
 
 		switch (view.getId()) {
 		case R.id.againButton:
-
-			if (source.equals("DiagramPlayHumanEye")) {
-				Intent intent = new Intent(getApplicationContext(),
-						DiagramPlayHumanEye.class);
-				intentBuilder(intent);
-			} else if (source.equals("DiagramPlayHumanHeart")) {
-				Intent intent = new Intent(getApplicationContext(),
-						DiagramPlayHumanHeart.class);
-				intentBuilder(intent);
-			} else if (source.equals("DiagramPlayHumanEar")) {
-				Intent intent = new Intent(getApplicationContext(),
-						DiagramPlayHumanEar.class);
-				intentBuilder(intent);
-			} else if (source.equals("DiagramPlayPlantCell")) {
-				Intent intent = new Intent(getApplicationContext(),
-						DiagramPlayPlantCell.class);
-				intentBuilder(intent);
-			} else if (source.equals("DiagramPlayPlantFlower")) {
-				Intent intent = new Intent(getApplicationContext(),
-						DiagramPlayPlantFlower.class);
-				intentBuilder(intent);
-			} else if (source.equals("DiagramPlayBacteria")) {
-				Intent intent = new Intent(getApplicationContext(),
-						DiagramPlayBacteria.class);
-				intentBuilder(intent);
-			} else if (source.equals("DiagramPlayVirus")) {
-				Intent intent = new Intent(getApplicationContext(),
-						DiagramPlayVirus.class);
-				intentBuilder(intent);
-			} else if (source.equals("DiagramPlayWaterCycle")) {
-				Intent intent = new Intent(getApplicationContext(),
-						DiagramPlayWaterCycle.class);
-				intentBuilder(intent);
-			} else if (source.equals("DiagramPlayCarbonCycle")) {
-				Intent intent = new Intent(getApplicationContext(),
-						DiagramPlayCarbonCycle.class);
-				intentBuilder(intent);
-			} else {
-				Log.e("Unknown sorce exception", "Unknown source of intent");
-			}
-
+			
+			getDispatcingClass(source);
+			
 			break;
 
 		case R.id.nextButton:
@@ -266,4 +229,12 @@ public class DiagramResult extends Activity implements OnClickListener {
 		startActivity(intent);
 	}
 
+	private void getDispatcingClass(String source){
+		
+		HashMap<String, Class> destMap = ClassMapper.getInstance().getMap();
+		Class destinationClass = destMap.get(source);
+		Intent intent  = new Intent(getApplicationContext(),destinationClass);
+		intentBuilder(intent);
+		
+	}
 }

@@ -222,7 +222,7 @@ public class DiagramPlayHumanEar extends DiagramPlayBase {
 	protected void dispatch(float totalScore) {
 		Intent intent = new Intent(getBaseContext(), DiagramResult.class);
 		intent.putExtra("SCORE", totalScore);
-		intent.putExtra("SOURCE", "DiagramPlayHumanEar");
+		intent.putExtra("SOURCE", "Human Ear");
 		startActivity(intent);
 	}
 

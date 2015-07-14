@@ -1,5 +1,6 @@
 package com.buildmlearn.labeldiagram.resources;
 
+import com.buildmlearn.labeldiagram.database.DBAdapter;
 import com.example.labelthediagram.R;
 
 import android.os.Bundle;
@@ -11,9 +12,14 @@ import android.widget.TextView;
 
 public class ScoreboardScoreFragment extends Fragment {
 	
+	DBAdapter diagramDb;
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        openDB();
+        
     }
 
     @Override
@@ -23,12 +29,23 @@ public class ScoreboardScoreFragment extends Fragment {
         TextView score = (TextView) v.findViewById(R.id.resultScore);
         TextView scoreTxt = (TextView) v.findViewById(R.id.resultScoreTxt);
         
+        
+        
         return v;
     }
 
-    @Override
-    public void onDestroy() {
-    	// TODO Auto-generated method stub
-    	super.onDestroy();
-    }
+    private void openDB() {
+		diagramDb = new DBAdapter(getActivity());
+		diagramDb.open();
+	}
+
+	private void closeDB() {
+		diagramDb.close();
+	}
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		closeDB();
+	}
 }

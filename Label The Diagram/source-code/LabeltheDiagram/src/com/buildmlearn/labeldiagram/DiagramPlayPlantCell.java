@@ -225,7 +225,7 @@ public class DiagramPlayPlantCell extends DiagramPlayBase{
 	protected void dispatch(float totalScore) {
 		Intent intent = new Intent(getBaseContext(), DiagramResult.class);
 		intent.putExtra("SCORE", totalScore);
-		intent.putExtra("SOURCE", "DiagramPlayPlantCell");
+		intent.putExtra("SOURCE", "Plant Cell");
 		startActivity(intent);
 	}
 

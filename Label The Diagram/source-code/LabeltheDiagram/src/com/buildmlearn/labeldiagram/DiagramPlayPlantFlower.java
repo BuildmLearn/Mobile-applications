@@ -245,7 +245,7 @@ public class DiagramPlayPlantFlower extends DiagramPlayBase {
 	protected void dispatch(float totalScore) {
 		Intent intent = new Intent(getBaseContext(), DiagramResult.class);
 		intent.putExtra("SCORE", totalScore);
-		intent.putExtra("SOURCE", "DiagramPlayPlantFlower");
+		intent.putExtra("SOURCE", "Plant Flower");
 		startActivity(intent);
 	}
 

@@ -231,7 +231,7 @@ public class DiagramPlayBacteria extends DiagramPlayBase {
 	protected void dispatch(float totalScore) {
 		Intent intent = new Intent(getBaseContext(), DiagramResult.class);
 		intent.putExtra("SCORE", totalScore);
-		intent.putExtra("SOURCE", "DiagramPlayBacteria");
+		intent.putExtra("SOURCE", "Bacteria");
 		startActivity(intent);
 	}
 

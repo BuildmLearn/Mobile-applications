@@ -217,7 +217,7 @@ public class DiagramPlayCarbonCycle extends DiagramPlayBase {
 	protected void dispatch(float totalScore) {
 		Intent intent = new Intent(getBaseContext(), DiagramResult.class);
 		intent.putExtra("SCORE", totalScore);
-		intent.putExtra("SOURCE", "Carbon Cycle");
+		intent.putExtra("SOURCE", "CarbonCycle");
 		startActivity(intent);
 	}
 

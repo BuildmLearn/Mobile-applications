@@ -146,7 +146,7 @@ public class DiagramPlayWaterCycle extends DiagramPlayBase {
 	protected void dispatch(float totalScore) {
 		Intent intent = new Intent(getBaseContext(), DiagramResult.class);
 		intent.putExtra("SCORE", totalScore);
-		intent.putExtra("SOURCE", "Water Cycle");
+		intent.putExtra("SOURCE", "WaterCycle");
 		startActivity(intent);
 	}
 

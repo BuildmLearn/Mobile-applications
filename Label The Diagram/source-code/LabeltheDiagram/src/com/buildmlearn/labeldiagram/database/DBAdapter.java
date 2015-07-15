@@ -12,16 +12,15 @@ public class DBAdapter {
 	// ///////////////////////////////////////////////////////////////////
 	// Constants & Data
 	// ///////////////////////////////////////////////////////////////////
-	
+
 	// For logging:
 	private static final String TAG = "DBAdapter";
 
 	// DB Fields
-	public static final String KEY_ROWID = "id";
 	public static final String KEY_DIAGRAM_NAME = "name";
 	public static final String KEY_RESULT = "result";
 
-	// Field numbers 
+	// Field numbers
 	public static final int COL_DIAGRAM_NAME = 0;
 	public static final int COL_RESULT = 1;
 
@@ -32,13 +31,12 @@ public class DBAdapter {
 	public static final String DATABASE_NAME = "DiagramsInfo";
 	public static final String DATABASE_TABLE = "resultTable";
 	// Track DB version if a new version of the application changes the format.
-	public static final int DATABASE_VERSION = 3;
+	public static final int DATABASE_VERSION = 12;
 
 	private static final String DATABASE_CREATE_SQL = "create table "
 			+ DATABASE_TABLE + " (" + KEY_DIAGRAM_NAME + " text primary key, "
-			+ KEY_RESULT + " text not null, "
-			+ "unique ("+ KEY_DIAGRAM_NAME + ") on conflict replace" 
-			+ ");";
+			+ KEY_RESULT + " text not null, " + "unique (" + KEY_DIAGRAM_NAME
+			+ ") on conflict replace" + ") WITHOUT ROWID;";
 
 	// Context of application who uses us.
 	private final Context context;
@@ -72,16 +70,16 @@ public class DBAdapter {
 		ContentValues initialValues = new ContentValues();
 		initialValues.put(KEY_DIAGRAM_NAME, diagramName);
 		initialValues.put(KEY_RESULT, result);
-		
+
 		Log.i("Json result", result);
 
 		return db.insert(DATABASE_TABLE, null, initialValues);
-		
+
 	}
 
 	// Return all data in the database.
 	public Cursor getAllRows() {
-		
+
 		String where = null;
 		Cursor c = db.query(true, DATABASE_TABLE, ALL_KEYS, where, null, null,
 				null, null, null);
@@ -89,25 +87,29 @@ public class DBAdapter {
 			c.moveToFirst();
 		}
 		return c;
-		
+
 	}
 
 	// Get a specific row (by diagramName)
-	public Cursor getRow(String diagramName) {
-		
-		String where = KEY_DIAGRAM_NAME + "=" + diagramName;
-		Cursor c = db.query(true, DATABASE_TABLE, ALL_KEYS, where, null, null,
-				null, null, null);
+	public Cursor getRow(String name) {
+		/*
+		 * String where = KEY_DIAGRAM_NAME + "=" + name; Cursor c =
+		 * db.query(true, DATABASE_TABLE, ALL_KEYS, where, null, null, null,
+		 * null, null);
+		 */
+
+		Cursor c = db.rawQuery("SELECT * FROM '" + DATABASE_TABLE.trim()
+				+ "' WHERE name ='" + name.trim() + "'",
+				null);
 		if (c != null) {
 			c.moveToFirst();
 		}
 		return c;
-		
 	}
 
 	// Change an existing row to be equal to new data.
 	public boolean updateRow(String diagramName, String result) {
-		
+
 		String where = KEY_DIAGRAM_NAME + "=" + diagramName;
 
 		ContentValues newValues = new ContentValues();
@@ -115,7 +117,7 @@ public class DBAdapter {
 		newValues.put(KEY_RESULT, result);
 
 		return db.update(DATABASE_TABLE, newValues, where, null) != 0;
-		
+
 	}
 
 	// ///////////////////////////////////////////////////////////////////

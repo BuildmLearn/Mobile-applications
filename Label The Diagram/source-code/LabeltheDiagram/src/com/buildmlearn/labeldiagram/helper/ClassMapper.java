@@ -14,20 +14,46 @@ import com.buildmlearn.labeldiagram.DiagramPlayWaterCycle;
 
 public class ClassMapper {
 	
-	private HashMap<String, Class> map;
+	private HashMap<String, Class<?>> classMap;
+	private HashMap<String, String> tagMap;
 	private static ClassMapper classmapper;
 	
 	private ClassMapper(){
-		map = new HashMap<String, Class>();
-		map.put("Human Eye",DiagramPlayHumanEye.class);
-		map.put("Human Ear", DiagramPlayHumanEar.class);
-		map.put("Human Heart", DiagramPlayHumanHeart.class);
-		map.put("Bacteria", DiagramPlayBacteria.class);
-		map.put("Virus", DiagramPlayVirus.class);
-		map.put("Plant Cell", DiagramPlayPlantCell.class);
-		map.put("Plant Flower", DiagramPlayPlantFlower.class);
-		map.put("Water Cycle", DiagramPlayWaterCycle.class);
-		map.put("Carbon Cycle", DiagramPlayCarbonCycle.class);
+		classMap = new HashMap<String, Class<?>>();
+		tagMap = new HashMap<String, String>();
+		createClassMap();
+		//createTagMap();
+	}
+
+	private void createTagMap() {
+		tagMap.put("Human Eye", "HumanEye");
+		tagMap.put("Human Ear", "HumanEar");
+		tagMap.put("Human Heart", "HumanHeart");
+		tagMap.put("Bacteria", "Bacteria");
+		tagMap.put("Virus", "Virus");
+		tagMap.put("Plant Cell", "PlantCell");
+		tagMap.put("Plant Flower", "PlantFlower");
+		tagMap.put("Water Cycle", "WaterCycle");
+		tagMap.put("Carbon Cycle", "CarbonCycle");
+		tagMap.put("Light Spectrum", "LightSpectrum");
+		tagMap.put("Prism Refraction", "HumanEye");
+		tagMap.put("Lens Refraction", "HumanEye");
+		
+	}
+
+	/**
+	 * 
+	 */
+	private void createClassMap() {
+		classMap.put("HumanEye",DiagramPlayHumanEye.class);
+		classMap.put("HumanEar", DiagramPlayHumanEar.class);
+		classMap.put("HumanHeart", DiagramPlayHumanHeart.class);
+		classMap.put("Bacteria", DiagramPlayBacteria.class);
+		classMap.put("Virus", DiagramPlayVirus.class);
+		classMap.put("PlantCell", DiagramPlayPlantCell.class);
+		classMap.put("PlantFlower", DiagramPlayPlantFlower.class);
+		classMap.put("WaterCycle", DiagramPlayWaterCycle.class);
+		classMap.put("CarbonCycle", DiagramPlayCarbonCycle.class);
 	}
 
 	public static ClassMapper getInstance(){
@@ -39,12 +65,12 @@ public class ClassMapper {
 		
 	}
 	
-	public HashMap<String, Class> getMap() {
-		return map;
+	public HashMap<String, Class<?>> getMap() {
+		return classMap;
 	}
 
-	public void setMap(HashMap<String, Class> map) {
-		this.map = map;
+	public void setMap(HashMap<String, Class<?>> map) {
+		this.classMap = map;
 	}
 	
 	

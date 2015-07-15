@@ -63,4 +63,14 @@ public class Result {
 		this.incorrectTagList = incorrectTagList;
 	}
 
+	@Override
+	public String toString() {
+		return "Result [diagramName=" + diagramName + ", score=" + score
+				+ ", gameScore=" + gameScore + ", correctTagList="
+				+ correctTagList + ", incorrectTagList=" + incorrectTagList
+				+ "]";
+	}
+	
+	
+
 }

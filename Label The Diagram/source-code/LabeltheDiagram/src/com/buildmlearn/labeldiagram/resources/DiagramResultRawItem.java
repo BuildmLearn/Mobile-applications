@@ -1,6 +1,5 @@
 package com.buildmlearn.labeldiagram.resources;
 
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DiagramResultRawItem {

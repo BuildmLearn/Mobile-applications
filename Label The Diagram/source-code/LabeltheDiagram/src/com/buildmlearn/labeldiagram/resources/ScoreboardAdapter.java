@@ -3,12 +3,14 @@ package com.buildmlearn.labeldiagram.resources;
 import java.util.List;
 
 import com.buildmlearn.labeldiagram.ScoreboardResult;
+import com.buildmlearn.labeldiagram.helper.HelperClass;
 import com.example.labelthediagram.R;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +51,7 @@ public class ScoreboardAdapter extends ArrayAdapter<ScoreboardRawItem> {
 
 		final int index = position;
 		final ViewHolder holder;
-		ScoreboardRawItem rawItem = getItem(position);
+		final ScoreboardRawItem rawItem = getItem(position);
 
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
@@ -77,7 +79,9 @@ public class ScoreboardAdapter extends ArrayAdapter<ScoreboardRawItem> {
 
 			@Override
 			public void onClick(View v) {
+				
 				Intent intent = new Intent(v.getContext(),ScoreboardResult.class);
+				intent.putExtra("SOURCE", HelperClass.removeSpaces(rawItem.getDiagramTitle()));
 				v.getContext().startActivity(intent);
 
 			}

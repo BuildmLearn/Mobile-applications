@@ -22,5 +22,11 @@ public class HelperClass {
 		return mTypeface;
 	}
 	
+	// Remove whitespaces from tags
+	public static String removeSpaces(String tag){		
+		tag = tag.replaceAll("\\s+", "").trim();	
+		return tag;
+	}
+	
 
 }

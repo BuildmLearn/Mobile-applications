@@ -7,10 +7,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
         android:layout_marginTop="1dp"
-        android:background="#ffffff"
+        android:background="#E0E0E0"
         android:paddingBottom="3dp"
         android:paddingTop="3dp" >
 
@@ -23,13 +23,14 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="2.5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
             android:background="@drawable/custom_textview_scoreboard"
             android:gravity="center"
-            android:paddingBottom="2dp"
+            android:paddingBottom="5dp"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
-            android:paddingTop="3dp"
+            android:paddingTop="4dp"
             android:text="tag title"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#ffff" />

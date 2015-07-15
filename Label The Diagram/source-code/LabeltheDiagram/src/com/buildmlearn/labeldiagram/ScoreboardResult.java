@@ -1,6 +1,7 @@
 package com.buildmlearn.labeldiagram;
 
 import com.buildmlearn.labeldiagram.helper.HelperClass;
+import com.buildmlearn.labeldiagram.resources.ScoreboardBestScoreFragment;
 import com.buildmlearn.labeldiagram.resources.ScoreboardScoreFragment;
 import com.example.labelthediagram.R;
 
@@ -42,7 +43,7 @@ public class ScoreboardResult extends FragmentActivity {
 		mTabHost.addTab(
 				mTabHost.newTabSpec("tab2").setIndicator(
 						getTabIndicator(mTabHost.getContext(), "BEST SCORE")),
-				ScoreboardScoreFragment.class, setArgumentstoPass(source));
+				ScoreboardBestScoreFragment.class, setArgumentstoPass(source));
 
 	}
 

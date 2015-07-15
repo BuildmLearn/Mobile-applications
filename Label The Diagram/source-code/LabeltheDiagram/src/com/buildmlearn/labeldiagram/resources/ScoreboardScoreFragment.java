@@ -23,11 +23,18 @@ import android.widget.TextView;
 
 public class ScoreboardScoreFragment extends Fragment {
 
-	DBAdapter diagramDb;
-	Result result;
-	String source;
-	Gson gsonObj;
-	List<DiagramScoreboardResultRawItem> resultList;
+	private DBAdapter diagramDb;
+	private Result result;
+	private String source;
+	private Gson gsonObj;
+	private List<DiagramScoreboardResultRawItem> resultList;
+	private List<String> correctTagList;
+	private List<String> incorrectTagList;
+	private ArrayAdapter<DiagramScoreboardResultRawItem> diagramScoreResultAdapter;
+	private int score;
+	private int gameScore;
+	
+	private static final String TAG = "LOG MESSAGE";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -38,6 +45,20 @@ public class ScoreboardScoreFragment extends Fragment {
 		Log.i("Arguments", getArguments().getString("SOURCE").trim() + "  "
 				+ " source :" + source);
 		openDB();
+		loadData();
+
+		if (result != null) {
+			score = (int) result.getScore();
+			gameScore = (int) result.getGameScore();
+			correctTagList = result.getCorrectTagList();
+			incorrectTagList = result.getIncorrectTagList();
+			fillAdapterDataModel(correctTagList, incorrectTagList);
+		} else {
+			Log.i(TAG, "result is null");
+		}
+
+		diagramScoreResultAdapter = new DiagramScoreResultAdapter(
+				getActivity(), R.layout.scoreboard_result_row_view, resultList);
 
 	}
 
@@ -46,32 +67,19 @@ public class ScoreboardScoreFragment extends Fragment {
 			Bundle savedInstanceState) {
 
 		View v = inflater.inflate(R.layout.scoreboard_fragment_layout,
-				container, false);		
-		TextView score = (TextView) v.findViewById(R.id.scoreboardScore);
-		TextView outofScore = (TextView) v.findViewById(R.id.out_of_txt);
+				container, false);
+		TextView scoreTxt = (TextView) v.findViewById(R.id.scoreboardScore);
+		TextView gameScoreTxt = (TextView) v.findViewById(R.id.out_of_txt);
 		ListView itemList = (ListView) v
 				.findViewById(R.id.scoreboard_result_itemlist);
+
 		
-		loadData();
-
-		if (result != null) {
-			score.setText(Integer.toString((int) result.getScore()));
-			outofScore.setText("100");
-			List<String> correctTagList = result.getCorrectTagList();
-			List<String> incorrectTagList = result.getIncorrectTagList();
-			fillAdapterDataModel(correctTagList, incorrectTagList);
-		}else{
-			
-		}
-
+		scoreTxt.setText(Integer.toString(score));
+		gameScoreTxt.setText(Integer.toString(gameScore));
 		// Set DiagramResult adapter
-		ArrayAdapter<DiagramScoreboardResultRawItem> diagramScoreResultAdapter = new DiagramScoreResultAdapter(
-				getActivity(), R.layout.scoreboard_result_row_view, resultList);
-		
-		if(itemList.getAdapter()==null){
-			itemList.setAdapter(diagramScoreResultAdapter);
-		}
-		
+
+		itemList.setAdapter(diagramScoreResultAdapter);
+
 		return v;
 	}
 
@@ -84,7 +92,6 @@ public class ScoreboardScoreFragment extends Fragment {
 			DiagramScoreboardResultRawItem correctItem = new DiagramScoreboardResultRawItem(
 					tagLabel, R.drawable.correct_btn);
 			resultList.add(correctItem);
-			
 
 		}
 

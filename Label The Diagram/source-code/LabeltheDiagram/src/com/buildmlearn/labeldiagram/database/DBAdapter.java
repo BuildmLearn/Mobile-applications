@@ -29,12 +29,21 @@ public class DBAdapter {
 
 	// DB info: database name, and the table list .
 	public static final String DATABASE_NAME = "DiagramsInfo";
-	public static final String DATABASE_TABLE = "resultTable";
-	// Track DB version if a new version of the application changes the format.
-	public static final int DATABASE_VERSION = 12;
+	public static final String TABLE_DIAGRAM_SCORE = "score";
+	public static final String TABLE_DIAGRAM_BEST_SCORE = "best_score";
+	
+	// DB version if a new version of the application changes the format.
+	public static final int DATABASE_VERSION = 13;
+	
 
-	private static final String DATABASE_CREATE_SQL = "create table "
-			+ DATABASE_TABLE + " (" + KEY_DIAGRAM_NAME + " text primary key, "
+	// SQL create statements
+	private static final String SQL_CREATE_DIAGRAM_SCORE = "create table "
+			+ TABLE_DIAGRAM_SCORE + " (" + KEY_DIAGRAM_NAME + " text primary key, "
+			+ KEY_RESULT + " text not null, " + "unique (" + KEY_DIAGRAM_NAME
+			+ ") on conflict replace" + ") WITHOUT ROWID;";
+	
+	private static final String SQL_CREATE_DIAGRAM_BESTSCORE = "create table "
+			+ TABLE_DIAGRAM_BEST_SCORE + " (" + KEY_DIAGRAM_NAME + " text primary key, "
 			+ KEY_RESULT + " text not null, " + "unique (" + KEY_DIAGRAM_NAME
 			+ ") on conflict replace" + ") WITHOUT ROWID;";
 
@@ -64,8 +73,8 @@ public class DBAdapter {
 		diagramsDBHelper.close();
 	}
 
-	// Add a new set of values to the database.
-	public long insertRow(String diagramName, String result) {
+	// Add a new record of score details
+	public long insertScore(String diagramName, String result) {
 
 		ContentValues initialValues = new ContentValues();
 		initialValues.put(KEY_DIAGRAM_NAME, diagramName);
@@ -73,15 +82,41 @@ public class DBAdapter {
 
 		Log.i("Json result", result);
 
-		return db.insert(DATABASE_TABLE, null, initialValues);
+		return db.insert(TABLE_DIAGRAM_SCORE, null, initialValues);
 
 	}
+	
+	// Add a new record of best score details
+		public long insertBestScore(String diagramName, String result) {
 
-	// Return all data in the database.
-	public Cursor getAllRows() {
+			ContentValues initialValues = new ContentValues();
+			initialValues.put(KEY_DIAGRAM_NAME, diagramName);
+			initialValues.put(KEY_RESULT, result);
+
+			Log.i("Json result", result);
+
+			return db.insert(TABLE_DIAGRAM_BEST_SCORE, null, initialValues);
+
+		}
+
+	// Return all score details
+	public Cursor getAllScores() {
 
 		String where = null;
-		Cursor c = db.query(true, DATABASE_TABLE, ALL_KEYS, where, null, null,
+		Cursor c = db.query(true, TABLE_DIAGRAM_SCORE, ALL_KEYS, where, null, null,
+				null, null, null);
+		if (c != null) {
+			c.moveToFirst();
+		}
+		return c;
+
+	}
+	
+	// Return all best score details
+	public Cursor getAllBestScores() {
+
+		String where = null;
+		Cursor c = db.query(true, TABLE_DIAGRAM_BEST_SCORE, ALL_KEYS, where, null, null,
 				null, null, null);
 		if (c != null) {
 			c.moveToFirst();
@@ -90,15 +125,22 @@ public class DBAdapter {
 
 	}
 
-	// Get a specific row (by diagramName)
-	public Cursor getRow(String name) {
-		/*
-		 * String where = KEY_DIAGRAM_NAME + "=" + name; Cursor c =
-		 * db.query(true, DATABASE_TABLE, ALL_KEYS, where, null, null, null,
-		 * null, null);
-		 */
+	// Get a specific row from score (by diagramName)
+	public Cursor getRowScore(String name) {
 
-		Cursor c = db.rawQuery("SELECT * FROM '" + DATABASE_TABLE.trim()
+		Cursor c = db.rawQuery("SELECT * FROM '" + TABLE_DIAGRAM_SCORE.trim()
+				+ "' WHERE name ='" + name.trim() + "'",
+				null);
+		if (c != null) {
+			c.moveToFirst();
+		}
+		return c;
+	}
+	
+	// Get a specific row from best_score (by diagramName)
+	public Cursor getRowBestScore(String name) {
+
+		Cursor c = db.rawQuery("SELECT * FROM '" + TABLE_DIAGRAM_BEST_SCORE.trim()
 				+ "' WHERE name ='" + name.trim() + "'",
 				null);
 		if (c != null) {
@@ -108,7 +150,7 @@ public class DBAdapter {
 	}
 
 	// Change an existing row to be equal to new data.
-	public boolean updateRow(String diagramName, String result) {
+	public boolean updateScore(String diagramName, String result) {
 
 		String where = KEY_DIAGRAM_NAME + "=" + diagramName;
 
@@ -116,7 +158,7 @@ public class DBAdapter {
 		newValues.put(KEY_DIAGRAM_NAME, diagramName);
 		newValues.put(KEY_RESULT, result);
 
-		return db.update(DATABASE_TABLE, newValues, where, null) != 0;
+		return db.update(TABLE_DIAGRAM_SCORE, newValues, where, null) != 0;
 
 	}
 
@@ -135,7 +177,8 @@ public class DBAdapter {
 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
-			db.execSQL(DATABASE_CREATE_SQL);
+			db.execSQL(SQL_CREATE_DIAGRAM_SCORE);
+			db.execSQL(SQL_CREATE_DIAGRAM_BESTSCORE);
 		}
 
 		@Override
@@ -145,7 +188,7 @@ public class DBAdapter {
 					+ ", which will destroy all old data!");
 
 			// Destroy old database:
-			db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
+			db.execSQL("DROP TABLE IF EXISTS " + TABLE_DIAGRAM_SCORE);
 
 			// Recreate new database:
 			onCreate(db);

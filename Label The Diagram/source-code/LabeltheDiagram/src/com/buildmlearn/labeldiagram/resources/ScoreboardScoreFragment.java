@@ -6,10 +6,12 @@ import java.util.List;
 
 import com.buildmlearn.labeldiagram.database.DBAdapter;
 import com.buildmlearn.labeldiagram.entity.Result;
+import com.buildmlearn.labeldiagram.widget.DiagramAlertDialogFragment;
 import com.example.labelthediagram.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -47,14 +49,19 @@ public class ScoreboardScoreFragment extends Fragment {
 		openDB();
 		loadData();
 
-		if (result != null) {
+		if (result == null) {
+			
+			DiagramAlertDialogFragment alertdFragment = new DiagramAlertDialogFragment();
+			// Show Alert DialogFragment
+			alertdFragment.show(getFragmentManager(), "TAG");
+			alertdFragment.setCancelable(false);
+			
+		} else {
 			score = (int) result.getScore();
 			gameScore = (int) result.getGameScore();
 			correctTagList = result.getCorrectTagList();
 			incorrectTagList = result.getIncorrectTagList();
 			fillAdapterDataModel(correctTagList, incorrectTagList);
-		} else {
-			Log.i(TAG, "result is null");
 		}
 
 		diagramScoreResultAdapter = new DiagramScoreResultAdapter(
@@ -108,11 +115,14 @@ public class ScoreboardScoreFragment extends Fragment {
 
 	private void loadData() {
 
-		Cursor cursor = diagramDb.getRow(source);
+		Cursor cursor = diagramDb.getRowScore(source);
 		gsonObj = new Gson();
 		result = new Result();
+		if(cursor==null){
+			Log.i("..TAG.. ", "Hore ahuuna");
+		}
 		result = getResultRecord(cursor);
-		Log.i("Loaded reulst", result.toString());
+		//Log.i("Loaded reulst", result.toString());
 
 	}
 
@@ -132,24 +142,41 @@ public class ScoreboardScoreFragment extends Fragment {
 				}.getType();
 
 				currentResult = gsonObj.fromJson(result, type);
+				
+				if(currentResult.getDiagramName() == null){
+					
+					Log.i("NULL Pointer", "Null point");
+					
+				}else{
+					
+					String outputDiagram = currentResult.getDiagramName();
+					float score = currentResult.getScore();
+					List<String> correctTagList = currentResult.getCorrectTagList();
+					List<String> incorrectTagList = currentResult
+							.getIncorrectTagList();
+					Log.i("POJO Object :", outputDiagram + " " + score + " "
+							+ correctTagList + " " + incorrectTagList);
+					Log.i("REsult to string", currentResult.toString());
+				}
 
-				String outputDiagram = currentResult.getDiagramName();
-				float score = currentResult.getScore();
-				List<String> correctTagList = currentResult.getCorrectTagList();
-				List<String> incorrectTagList = currentResult
-						.getIncorrectTagList();
+				
 
-				Log.i("POJO Object :", outputDiagram + " " + score + " "
-						+ correctTagList + " " + incorrectTagList);
-				Log.i("REsult to string", currentResult.toString());
+				
 
 			} while (cursor.moveToNext());
+			
+			// Close the cursor to avoid a resource leak.
+			cursor.close();
+			return currentResult;
+
+			
+		}else{
+			
+			cursor.close();
+			return null;
 		}
 
-		// Close the cursor to avoid a resource leak.
-		cursor.close();
-		return currentResult;
-
+		
 	}
 
 	private void openDB() {

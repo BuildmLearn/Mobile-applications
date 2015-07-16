@@ -214,10 +214,12 @@ public class DiagramPlayCarbonCycle extends DiagramPlayBase {
 	}
 
 	@Override
-	protected void dispatch(float totalScore) {
+	protected void dispatch(float totalScore, int gameScore) {
 		Intent intent = new Intent(getBaseContext(), DiagramResult.class);
 		intent.putExtra("SCORE", totalScore);
+		intent.putExtra("GAME_SCORE", gameScore);
 		intent.putExtra("SOURCE", "CarbonCycle");
+		intent.putExtra("BEST_SCORE", achievedBestScore);
 		startActivity(intent);
 	}
 

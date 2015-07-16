@@ -48,13 +48,17 @@ public class ScoreboardBestScoreFragment extends Fragment {
 		loadData();
 
 		if (result != null) {
+			
 			score = (int) result.getScore();
 			gameScore = (int) result.getGameScore();
 			correctTagList = result.getCorrectTagList();
 			incorrectTagList = result.getIncorrectTagList();
 			fillAdapterDataModel(correctTagList, incorrectTagList);
+			
 		} else {
+			
 			Log.i(TAG, "result is null");
+			
 		}
 
 		diagramScoreResultAdapter = new DiagramScoreResultAdapter(
@@ -76,8 +80,8 @@ public class ScoreboardBestScoreFragment extends Fragment {
 		
 		scoreTxt.setText(Integer.toString(score));
 		gameScoreTxt.setText(Integer.toString(gameScore));
+		
 		// Set DiagramResult adapter
-
 		itemList.setAdapter(diagramScoreResultAdapter);
 
 		return v;
@@ -108,7 +112,7 @@ public class ScoreboardBestScoreFragment extends Fragment {
 
 	private void loadData() {
 
-		Cursor cursor = diagramDb.getRow(source);
+		Cursor cursor = diagramDb.getRowBestScore(source);
 		gsonObj = new Gson();
 		result = new Result();
 		result = getResultRecord(cursor);

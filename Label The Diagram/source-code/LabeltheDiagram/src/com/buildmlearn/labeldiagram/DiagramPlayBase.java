@@ -56,6 +56,7 @@ public abstract class DiagramPlayBase extends Activity implements
 	int correctLabeledCount = 0;
 	int totalLabeledCount = 0;
 	int tagListSize = 0;
+	boolean achievedBestScore = false;
 	String diagramName;
 	TextView compeleteRatio;
 	TextView score;
@@ -147,7 +148,7 @@ public abstract class DiagramPlayBase extends Activity implements
 		case DragEvent.ACTION_DRAG_ENTERED:
 
 			Toast.makeText(getApplicationContext(), "Ready to drop !",
-					Toast.LENGTH_SHORT).show();
+					100).show();
 			Log.i(TAG, "drag action entered");
 			return true;
 
@@ -269,9 +270,11 @@ public abstract class DiagramPlayBase extends Activity implements
 		final float progress;
 		final float totalScore;
 		final int MAX_PROGRESS = 100;
+		final int gameScore;
 
 		totalScore = correcTries * 10;
 		progress = (float) totalTries / tagListSize * 100;
+		gameScore = tagListSize * 10;
 
 		score.setText((int) totalScore + "");
 		compeleteRatio.setText((int) progress + "%");
@@ -296,9 +299,10 @@ public abstract class DiagramPlayBase extends Activity implements
 						SharedPreferences.Editor editor = preferences.edit();
 						editor.putFloat(getDiagramName(), totalScore);
 						editor.commit();
+						achievedBestScore = true;
 					}
 
-					dispatch(totalScore);
+					dispatch(totalScore,gameScore);
 
 				}
 			}, 3000);
@@ -307,7 +311,7 @@ public abstract class DiagramPlayBase extends Activity implements
 
 	}
 
-	protected abstract void dispatch(float totalScore);
+	protected abstract void dispatch(float totalScore, int gameScore);
 
 	/**
 	 * Update score and progress if quit playing without completing all the tags
@@ -317,11 +321,13 @@ public abstract class DiagramPlayBase extends Activity implements
 
 		final float progress;
 		final float totalScore;
+		final int gameScore;
 
 		totalScore = correctLabeledCount * 10;
 		progress = (float) totalLabeledCount / tagListSize * 100;
+		gameScore = tagListSize * 10;
 
-		score.setText((int) totalScore + "");
+		score.setText(Integer.toString((int) totalScore));
 		compeleteRatio.setText((int) progress + "%");
 
 		TagContainerSingleton container = TagContainerSingleton.getInstance();
@@ -341,16 +347,13 @@ public abstract class DiagramPlayBase extends Activity implements
 			SharedPreferences.Editor editor = preferences.edit();
 			editor.putFloat(getDiagramName(), totalScore);
 			editor.commit();
+			achievedBestScore = true;
 		}
 
-		dispatch(totalScore);
-		/*
-		 * Intent intent = new Intent(getApplicationContext(),
-		 * DiagramResult.class); intent.putExtra("SCORE", totalScore);
-		 * startActivity(intent);
-		 */
-
+		dispatch(totalScore,gameScore);
+	
 	}
+
 
 	/**
 	 * Indicate whether the placeholder is on left side or right side of the

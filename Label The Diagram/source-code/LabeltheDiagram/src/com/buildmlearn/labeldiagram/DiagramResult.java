@@ -44,8 +44,11 @@ public class DiagramResult extends Activity implements OnClickListener {
 	List<TextView> incorrectTagList = new ArrayList<TextView>();
 	List<String> correctTagTextList = new ArrayList<String>();
 	List<String> incorrectTagTextList = new ArrayList<String>();
-	String source;
+
+	boolean isBestScore;
+	int gameScore;
 	float rating;
+	String source;
 	DBAdapter diagramDb;
 
 	@Override
@@ -65,6 +68,8 @@ public class DiagramResult extends Activity implements OnClickListener {
 		// Capture intent values passed by DiagramPlay activity
 		rating = getIntent().getExtras().getFloat("SCORE");
 		source = getIntent().getExtras().getString("SOURCE");
+		isBestScore = getIntent().getExtras().getBoolean("BEST_SCORE");
+		gameScore = getIntent().getExtras().getInt("GAME_SCORE");
 
 		// Set the score on the ratingbar
 		RatingBar scoreRater = (RatingBar) findViewById(R.id.resultBar);
@@ -72,7 +77,7 @@ public class DiagramResult extends Activity implements OnClickListener {
 
 		// Set score on the score TextView
 		TextView scoreTxt = (TextView) findViewById(R.id.scoreboardScore);
-		scoreTxt.setText((int) rating + "/100");
+		scoreTxt.setText((int) rating + "/" +gameScore);
 
 		// Referencing action buttons and register for onClick event
 		Button tryAgain = (Button) findViewById(R.id.againButton);
@@ -82,7 +87,7 @@ public class DiagramResult extends Activity implements OnClickListener {
 		nextButton.setOnClickListener(this);
 
 		// Save diagram result for viewing on the Scoreboard
-		saveDiagramResult();
+		saveDiagramScore();
 
 		// Call for populating data for adapter
 		fillDataModel();
@@ -95,11 +100,12 @@ public class DiagramResult extends Activity implements OnClickListener {
 		list.setAdapter(resultAdapter);
 	}
 
+	
 	/**
 	 * save score for the diagram play action
 	 */
-	private void saveDiagramResult() {
-		
+	private void saveDiagramScore() {
+
 		openDB();
 
 		extractTags(correctTagList, incorrectTagList);
@@ -108,20 +114,35 @@ public class DiagramResult extends Activity implements OnClickListener {
 		resultObj.setScore(rating);
 		resultObj.setCorrectTagList(correctTagTextList);
 		resultObj.setIncorrectTagList(incorrectTagTextList);
-		// resultObj.setGameScore(gameScore);
-
-		
+		resultObj.setGameScore(gameScore);
 
 		Gson gson = new Gson();
 		String resultData = gson.toJson(resultObj);
-		long id = diagramDb.insertRow(source, resultData);
 
-		Log.i("Database Status", "record id :" + id + ""+ source);
-		
-		
-		Cursor cursor = diagramDb.getRow(source);
-		displayRecordSet(cursor,gson);
-		
+		if (isBestScore == true) {
+
+			long id1 = diagramDb.insertScore(source, resultData);
+			long id2 = diagramDb.insertBestScore(source, resultData);
+			Log.i("Database Status", "record id : " + id1 + " " + id2
+					+ "source :" + source);
+
+			Cursor cursor = diagramDb.getRowScore(source);
+			displayRecordSet(cursor, gson);
+
+			Cursor cursor1 = diagramDb.getRowBestScore(source);
+			displayRecordSet(cursor1, gson);
+
+		} else {
+
+			long id1 = diagramDb.insertScore(source, resultData);
+			Log.i("Database Status", "record id : " + id1 + " source :"
+					+ source);
+
+			Cursor cursor = diagramDb.getRowScore(source);
+			displayRecordSet(cursor, gson);
+
+		}
+
 	}
 
 	/**
@@ -142,7 +163,6 @@ public class DiagramResult extends Activity implements OnClickListener {
 					.toString());
 		}
 	}
-
 
 	/**
 	 * Populate data for the use of Array adapter
@@ -165,7 +185,7 @@ public class DiagramResult extends Activity implements OnClickListener {
 
 	}
 
-	private void displayRecordSet(Cursor cursor,Gson gson) {
+	private void displayRecordSet(Cursor cursor, Gson gson) {
 		String message = "";
 		String testObj = "";
 		// populate the message from the cursor
@@ -176,22 +196,23 @@ public class DiagramResult extends Activity implements OnClickListener {
 				// Process the data:
 				String name = cursor.getString(DBAdapter.COL_DIAGRAM_NAME);
 				String result = cursor.getString(DBAdapter.COL_RESULT);
-				
-				Type type = new TypeToken<Result>() {}.getType();
+
+				Type type = new TypeToken<Result>() {
+				}.getType();
 				Result finalResult = gson.fromJson(result, type);
 				// Append data to the message:
 				message += "name=" + name + ", result=" + result + "\n";
 				String outputDiagram = finalResult.getDiagramName();
 				float score = finalResult.getScore();
-				
-				testObj += "outputDiagram"+outputDiagram+"score"+score;
+
+				testObj += "outputDiagram" + outputDiagram + "score" + score;
 			} while (cursor.moveToNext());
 		}
 
 		// Close the cursor to avoid a resource leak.
 		cursor.close();
 
-		Log.i("Retrieved Data", message+" +++ obj +++"+testObj);
+		Log.i("Retrieved Data", message + " +++ obj +++" + testObj);
 	}
 
 	private void openDB() {
@@ -209,15 +230,14 @@ public class DiagramResult extends Activity implements OnClickListener {
 		closeDB();
 	}
 
-	
 	@Override
 	public void onClick(View view) {
 
 		switch (view.getId()) {
 		case R.id.againButton:
-			
+
 			getDispatcingClass(source);
-			
+
 			break;
 
 		case R.id.nextButton:
@@ -237,20 +257,20 @@ public class DiagramResult extends Activity implements OnClickListener {
 
 	// Populate intent and start activity
 	private void intentBuilder(Intent intent) {
-		
+
 		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 		startActivity(intent);
-		
+
 	}
 
-	private void getDispatcingClass(String source){
-		
+	private void getDispatcingClass(String source) {
+
 		HashMap<String, Class<?>> destMap = ClassMapper.getInstance().getMap();
 		Class<?> destinationClass = destMap.get(source);
-		Intent intent  = new Intent(getApplicationContext(),destinationClass);
+		Intent intent = new Intent(getApplicationContext(), destinationClass);
 		intentBuilder(intent);
-		
+
 	}
 }

@@ -295,7 +295,7 @@ public abstract class DiagramPlayBase extends Activity implements
 
 					float previousScore = preferences.getFloat(
 							getDiagramName(), 0);
-					if (previousScore < totalScore) {
+					if (previousScore <= totalScore) {
 						SharedPreferences.Editor editor = preferences.edit();
 						editor.putFloat(getDiagramName(), totalScore);
 						editor.commit();
@@ -343,7 +343,7 @@ public abstract class DiagramPlayBase extends Activity implements
 		container.setIncorrectLabelList(incorrectTagList);
 
 		float previousScore = preferences.getFloat(getDiagramName(), 0);
-		if (previousScore < totalScore) {
+		if (previousScore <= totalScore) {
 			SharedPreferences.Editor editor = preferences.edit();
 			editor.putFloat(getDiagramName(), totalScore);
 			editor.commit();

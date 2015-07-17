@@ -28,24 +28,24 @@ public class DBAdapter {
 			KEY_RESULT };
 
 	// DB info: database name, and the table list .
-	public static final String DATABASE_NAME = "DiagramsInfo";
+	public static final String DATABASE_NAME = "DiagramsInfo.db";
 	public static final String TABLE_DIAGRAM_SCORE = "score";
 	public static final String TABLE_DIAGRAM_BEST_SCORE = "best_score";
 	
 	// DB version if a new version of the application changes the format.
-	public static final int DATABASE_VERSION = 13;
+	public static final int DATABASE_VERSION = 2;
 	
 
 	// SQL create statements
 	private static final String SQL_CREATE_DIAGRAM_SCORE = "create table "
 			+ TABLE_DIAGRAM_SCORE + " (" + KEY_DIAGRAM_NAME + " text primary key, "
 			+ KEY_RESULT + " text not null, " + "unique (" + KEY_DIAGRAM_NAME
-			+ ") on conflict replace" + ") WITHOUT ROWID;";
+			+ ") on conflict replace" + ");";
 	
 	private static final String SQL_CREATE_DIAGRAM_BESTSCORE = "create table "
 			+ TABLE_DIAGRAM_BEST_SCORE + " (" + KEY_DIAGRAM_NAME + " text primary key, "
 			+ KEY_RESULT + " text not null, " + "unique (" + KEY_DIAGRAM_NAME
-			+ ") on conflict replace" + ") WITHOUT ROWID;";
+			+ ") on conflict replace" + ");";
 
 	// Context of application who uses us.
 	private final Context context;

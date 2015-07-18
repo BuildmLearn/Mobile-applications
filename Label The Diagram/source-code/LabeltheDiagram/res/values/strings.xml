@@ -6,5 +6,14 @@
     <string name="action_settings">Settings</string>
     <string name="action_done">Done</string>
     <string name="title_activity_main_menu">MainMenu</string>
+    
+    <string name="category_human_body">Human Body</string>
+    <string name="category_plants">Plants</string>
+    <string name="category_microbes">Micro-organisms</string>
+    <string name="category_natural_cycles">Natural Cycles</string>
+    <string name="category_human_body_desc">Diagrams of Human Body</string>
+    <string name="category_plants_desc">Diagrams of plants</string>
+    <string name="category_microbes_desc">Diagrams of microbes</string>
+    <string name="category_natural_cycles_desc">Diagrams of nature cycles</string>
 
 </resources>

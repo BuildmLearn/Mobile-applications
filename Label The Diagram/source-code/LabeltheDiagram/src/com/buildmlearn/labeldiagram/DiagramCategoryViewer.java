@@ -1,10 +1,7 @@
 package com.buildmlearn.labeldiagram;
 
-import com.buildmlearn.labeldiagram.DiagramMenuHuman.HumanBodyPagerAdapter;
 import com.buildmlearn.labeldiagram.helper.HelperClass;
-import com.buildmlearn.labeldiagram.resources.HumanEarFragment;
-import com.buildmlearn.labeldiagram.resources.HumanEyeFragment;
-import com.buildmlearn.labeldiagram.resources.HumanHeartFragment;
+import com.buildmlearn.labeldiagram.resources.BioCategoryFragment;
 import com.example.labelthediagram.R;
 
 import android.os.Bundle;
@@ -12,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 
 public class DiagramCategoryViewer extends FragmentActivity {
@@ -25,11 +23,13 @@ public class DiagramCategoryViewer extends FragmentActivity {
 		setContentView(R.layout.diagram_menu);
 
 		ViewPager vpPager = (ViewPager) findViewById(R.id.diagrampager);
-		adapterViewPager = new HumanBodyPagerAdapter(
+		adapterViewPager = new DiagramCategoryViewerAdapter(
 				getSupportFragmentManager());
 		vpPager.setAdapter(adapterViewPager);
 		vpPager.setClipToPadding(false);
 		vpPager.setPageMargin(20);
+		PagerTabStrip strip = (PagerTabStrip) vpPager.findViewById(R.id.pager_title_strip);
+		strip.setTabIndicatorColor(getResources().getColor(R.color.appBg_color));
 
 		HelperClass.setActionBar("Diagram Categories", this);
 
@@ -54,19 +54,19 @@ public class DiagramCategoryViewer extends FragmentActivity {
 
 			switch (position) {
 			case 0:
-				HumanEyeFragment eyeFrag = new HumanEyeFragment();
+				BioCategoryFragment eyeFrag = new BioCategoryFragment();
 				//bundle.putFloat("SCORE_SAVED", scoreHumanEye);
-				eyeFrag.setArguments(bundle);
+				//eyeFrag.setArguments(bundle);
 				return eyeFrag;
 			case 1:
-				HumanHeartFragment heartFrag = new HumanHeartFragment();
+				BioCategoryFragment heartFrag = new BioCategoryFragment();
 				//bundle.putFloat("SCORE_SAVED", scoreHumanHeart);
-				heartFrag.setArguments(bundle);
+				//heartFrag.setArguments(bundle);
 				return heartFrag;
 			case 2:
-				HumanEarFragment earFrag = new HumanEarFragment();
+				BioCategoryFragment earFrag = new BioCategoryFragment();
 				//bundle.putFloat("SCORE_SAVED", scoreHumanEar);
-				earFrag.setArguments(bundle);
+				//earFrag.setArguments(bundle);
 				return earFrag;
 			default:
 				return null;

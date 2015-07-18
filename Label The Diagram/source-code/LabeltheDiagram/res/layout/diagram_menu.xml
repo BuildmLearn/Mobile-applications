@@ -8,7 +8,7 @@
         android:id="@+id/diagrampager"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@color/appBg_color" >
+        android:background="#FFFFFF" >
 
         <android.support.v4.view.PagerTabStrip
             android:id="@+id/pager_title_strip"
@@ -18,7 +18,7 @@
             android:background="@color/tab_color"
             android:paddingBottom="6dp"
             android:paddingTop="6dp"
-            android:textColor="#ffff" />
+            android:textColor="#EEEEEE" />
     </android.support.v4.view.ViewPager>
     
 

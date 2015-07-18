@@ -98,7 +98,7 @@ public class MainMenu extends Activity implements OnClickListener {
 		case R.id.start_diagram:
 			Toast.makeText(getApplication(), "Dispatching to diagrams", 2000)
 					.show();
-			Intent diagramIntent = new Intent(v.getContext(), DiagramCategory.class);
+			Intent diagramIntent = new Intent(v.getContext(), DiagramCategoryViewer.class);
 			startActivity(diagramIntent);
 			
 			break;

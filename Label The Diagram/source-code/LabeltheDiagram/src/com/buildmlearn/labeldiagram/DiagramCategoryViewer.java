@@ -28,6 +28,7 @@ public class DiagramCategoryViewer extends FragmentActivity {
 		vpPager.setAdapter(adapterViewPager);
 		vpPager.setClipToPadding(false);
 		vpPager.setPageMargin(20);
+		vpPager.setBackgroundColor(getResources().getColor(R.color.appBg_color_white));
 		PagerTabStrip strip = (PagerTabStrip) vpPager.findViewById(R.id.pager_title_strip);
 		strip.setTabIndicatorColor(getResources().getColor(R.color.appBg_color));
 

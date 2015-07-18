@@ -33,7 +33,7 @@ public class DBAdapter {
 	public static final String TABLE_DIAGRAM_BEST_SCORE = "best_score";
 	
 	// DB version if a new version of the application changes the format.
-	public static final int DATABASE_VERSION = 2;
+	public static final int DATABASE_VERSION = 3;
 	
 
 	// SQL create statements

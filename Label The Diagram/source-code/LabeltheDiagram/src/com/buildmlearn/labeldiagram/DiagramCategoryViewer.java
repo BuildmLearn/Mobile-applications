@@ -2,6 +2,8 @@ package com.buildmlearn.labeldiagram;
 
 import com.buildmlearn.labeldiagram.helper.HelperClass;
 import com.buildmlearn.labeldiagram.resources.BioCategoryFragment;
+import com.buildmlearn.labeldiagram.resources.PhysicsCategoryFragment;
+import com.buildmlearn.labeldiagram.resources.ScienceCategoryFragment;
 import com.example.labelthediagram.R;
 
 import android.os.Bundle;
@@ -60,12 +62,12 @@ public class DiagramCategoryViewer extends FragmentActivity {
 				//eyeFrag.setArguments(bundle);
 				return eyeFrag;
 			case 1:
-				BioCategoryFragment heartFrag = new BioCategoryFragment();
+				PhysicsCategoryFragment heartFrag = new PhysicsCategoryFragment();
 				//bundle.putFloat("SCORE_SAVED", scoreHumanHeart);
 				//heartFrag.setArguments(bundle);
 				return heartFrag;
 			case 2:
-				BioCategoryFragment earFrag = new BioCategoryFragment();
+				ScienceCategoryFragment earFrag = new ScienceCategoryFragment();
 				//bundle.putFloat("SCORE_SAVED", scoreHumanEar);
 				//earFrag.setArguments(bundle);
 				return earFrag;

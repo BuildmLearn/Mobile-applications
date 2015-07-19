@@ -148,7 +148,7 @@ public abstract class DiagramPlayBase extends Activity implements
 		case DragEvent.ACTION_DRAG_ENTERED:
 
 			Toast.makeText(getApplicationContext(), "Ready to drop !",
-					100).show();
+					20).show();
 			Log.i(TAG, "drag action entered");
 			return true;
 

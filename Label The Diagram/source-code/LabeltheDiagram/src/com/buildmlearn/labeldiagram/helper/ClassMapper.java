@@ -9,6 +9,7 @@ import com.buildmlearn.labeldiagram.DiagramPlayHumanEye;
 import com.buildmlearn.labeldiagram.DiagramPlayHumanHeart;
 import com.buildmlearn.labeldiagram.DiagramPlayPlantCell;
 import com.buildmlearn.labeldiagram.DiagramPlayPlantFlower;
+import com.buildmlearn.labeldiagram.DiagramPlayPrism;
 import com.buildmlearn.labeldiagram.DiagramPlayVirus;
 import com.buildmlearn.labeldiagram.DiagramPlayWaterCycle;
 
@@ -54,6 +55,7 @@ public class ClassMapper {
 		classMap.put("PlantFlower", DiagramPlayPlantFlower.class);
 		classMap.put("WaterCycle", DiagramPlayWaterCycle.class);
 		classMap.put("CarbonCycle", DiagramPlayCarbonCycle.class);
+		classMap.put("Prism", DiagramPlayPrism.class);
 	}
 
 	public static ClassMapper getInstance(){

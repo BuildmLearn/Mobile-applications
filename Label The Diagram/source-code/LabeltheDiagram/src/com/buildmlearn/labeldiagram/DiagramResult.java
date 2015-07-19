@@ -245,7 +245,7 @@ public class DiagramResult extends Activity implements OnClickListener {
 			Toast.makeText(getApplicationContext(),
 					"Dispatching to Diagram Menu", 200).show();
 			Intent intent = new Intent(getApplicationContext(),
-					DiagramCategory.class);
+					DiagramCategoryViewer.class);
 			intentBuilder(intent);
 
 			break;

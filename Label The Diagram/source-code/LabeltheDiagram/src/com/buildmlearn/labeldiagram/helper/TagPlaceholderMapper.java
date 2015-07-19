@@ -51,6 +51,9 @@ public class TagPlaceholderMapper {
 			case "CarbonCycle":
 				getCarbonCycleTagMap();
 				break;
+			case "Prism":
+				getPrismTagMap();
+				break;
 			
 			}
 		}
@@ -58,6 +61,20 @@ public class TagPlaceholderMapper {
 		return tagMapper;
 	}
 	
+	private SparseIntArray getPrismTagMap() {
+
+		tagMapper.put(R.id.prismAngleBlb, R.id.prismAngleTag);
+		tagMapper.put(R.id.refAngleBlb, R.id.refAngleTag);
+		tagMapper.put(R.id.incAngleBlb, R.id.incAngleTag);
+		tagMapper.put(R.id.incRayBlb, R.id.incRayTag);
+		tagMapper.put(R.id.devAngleBlb, R.id.devAngleTag);
+		tagMapper.put(R.id.refRayBlb, R.id.refRayTag);
+		tagMapper.put(R.id.emergeAngleBlb, R.id.emergeAngleTag);
+		tagMapper.put(R.id.emergeRayBlb, R.id.emergeRayTag);
+		
+		return tagMapper;
+	}
+
 	private SparseIntArray getCarbonCycleTagMap() {
 		
 		tagMapper.put(R.id.ocean_uptakeBlb, R.id.ocean_uptakeTag);

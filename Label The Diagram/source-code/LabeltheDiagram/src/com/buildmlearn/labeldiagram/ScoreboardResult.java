@@ -23,6 +23,7 @@ public class ScoreboardResult extends FragmentActivity {
 	private FragmentTabHost mTabHost;
 	FragmentManager fm = getSupportFragmentManager();
 	Typeface tfThin;
+	String source;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +32,9 @@ public class ScoreboardResult extends FragmentActivity {
 		setContentView(R.layout.scoreboard_result);
 
 		HelperClass.setActionBar("Scoreboard", this);
-		
-		String source = getIntent().getExtras().getString("SOURCE");
-		
+
+		source = getIntent().getExtras().getString("SOURCE");
+
 		mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
 		mTabHost.setup(this, getSupportFragmentManager(),
 				android.R.id.tabcontent);
@@ -64,5 +65,5 @@ public class ScoreboardResult extends FragmentActivity {
 		tv.setTypeface(tfThin);
 		return view;
 	}
-	
+
 }

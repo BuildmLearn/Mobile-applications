@@ -1,7 +1,9 @@
 package com.buildmlearn.labeldiagram.widget;
 
 import com.buildmlearn.labeldiagram.DiagramCategory;
+import com.buildmlearn.labeldiagram.DiagramCategoryViewer;
 import com.buildmlearn.labeldiagram.ScoreboardResult;
+import com.buildmlearn.labeldiagram.ScoreboardViewer;
 import com.example.labelthediagram.R;
 
 import android.app.AlertDialog;
@@ -29,7 +31,7 @@ public class DiagramAlertDialogFragment extends DialogFragment {
 				.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						
-						launchIntent(DiagramCategory.class);
+						launchIntent(DiagramCategoryViewer.class);
 						
 					}
 				})
@@ -40,7 +42,7 @@ public class DiagramAlertDialogFragment extends DialogFragment {
 							public void onClick(DialogInterface dialog,
 									int which) {
 								
-								launchIntent(ScoreboardResult.class);
+								launchIntent(ScoreboardViewer.class);
 								
 							}
 						}).create();

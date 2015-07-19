@@ -32,7 +32,7 @@ public class DiagramCategoryViewer extends FragmentActivity {
 		vpPager.setPageMargin(20);
 		vpPager.setBackgroundColor(getResources().getColor(R.color.appBg_color_white));
 		PagerTabStrip strip = (PagerTabStrip) vpPager.findViewById(R.id.pager_title_strip);
-		strip.setTabIndicatorColor(getResources().getColor(R.color.appBg_color));
+		strip.setTabIndicatorColor(getResources().getColor(R.color.appBg_color_white));
 
 		HelperClass.setActionBar("Diagram Categories", this);
 
@@ -53,24 +53,16 @@ public class DiagramCategoryViewer extends FragmentActivity {
 		@Override
 		public Fragment getItem(int position) {
 			
-			Bundle bundle = new Bundle();
-
 			switch (position) {
 			case 0:
-				BioCategoryFragment eyeFrag = new BioCategoryFragment();
-				//bundle.putFloat("SCORE_SAVED", scoreHumanEye);
-				//eyeFrag.setArguments(bundle);
-				return eyeFrag;
+				BioCategoryFragment bioFrag = new BioCategoryFragment();
+				return bioFrag;
 			case 1:
-				PhysicsCategoryFragment heartFrag = new PhysicsCategoryFragment();
-				//bundle.putFloat("SCORE_SAVED", scoreHumanHeart);
-				//heartFrag.setArguments(bundle);
-				return heartFrag;
+				PhysicsCategoryFragment physicsFrag = new PhysicsCategoryFragment();
+				return physicsFrag;
 			case 2:
-				ScienceCategoryFragment earFrag = new ScienceCategoryFragment();
-				//bundle.putFloat("SCORE_SAVED", scoreHumanEar);
-				//earFrag.setArguments(bundle);
-				return earFrag;
+				ScienceCategoryFragment scienceFrag = new ScienceCategoryFragment();
+				return scienceFrag;
 			default:
 				return null;
 			}

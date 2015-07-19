@@ -7,5 +7,6 @@
     <color name="title_bar_color">#08AE9E</color>
     <color name="incorrect_color">#FD676A</color>
     <color name="correct_color">#6ACB9A</color>
+    <color name="tab_indicator_color">#01675B</color>
 
 </resources>

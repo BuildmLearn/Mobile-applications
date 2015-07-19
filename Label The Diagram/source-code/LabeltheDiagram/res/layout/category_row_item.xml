@@ -10,12 +10,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="3dp"
+        android:layout_marginBottom="1dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="1dp"
         android:background="@color/appBg_color"
-        android:divider="@android:color/transparent"
+        android:divider="@color/appBg_color_white"
         android:dividerHeight="0dp" >
 
         <ImageView

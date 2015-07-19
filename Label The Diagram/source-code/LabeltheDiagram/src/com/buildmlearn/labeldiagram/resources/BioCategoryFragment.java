@@ -24,7 +24,7 @@ public class BioCategoryFragment extends Fragment {
 
 		createModel();
 
-		categryAdapter = new DiagramCategoryAdapter(
+		categryAdapter = new BioCategoryAdapter(
 				getActivity(), R.layout.category_row_item, categories);
 		
 	}

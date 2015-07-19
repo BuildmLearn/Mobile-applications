@@ -24,7 +24,7 @@ public class PhysicsCategoryFragment extends Fragment {
 
 		createModel();
 
-		categryAdapter = new DiagramCategoryAdapter(
+		categryAdapter = new PhysicsCategoryAdapter(
 				getActivity(), R.layout.category_row_item, categories);
 		
 	}

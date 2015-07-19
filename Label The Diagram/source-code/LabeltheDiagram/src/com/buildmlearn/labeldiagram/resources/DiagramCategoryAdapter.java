@@ -34,6 +34,7 @@ import android.widget.Toast;
 public class DiagramCategoryAdapter extends ArrayAdapter<DiagramCategoryRawItem> {
 
 	Context context;
+	int nItems;
 	Typeface tfThin;
 	Typeface tfLight;
 
@@ -46,13 +47,17 @@ public class DiagramCategoryAdapter extends ArrayAdapter<DiagramCategoryRawItem>
 				"fonts/Roboto-Thin.ttf");
 		tfLight = Typeface.createFromAsset(context.getAssets(),
 				"fonts/Roboto-Light.ttf");
+		
+		
+		
+		Toast.makeText(context, "No of items in the list : "+nItems, 1000).show();
 	}
 
 	/*
 	 * Holder class for single row item view
 	 * 
 	 */
-	private class ViewHolder {
+	public class ViewHolder {
 
 		ImageView categoryIcon;
 		ImageView goIcon;
@@ -93,7 +98,9 @@ public class DiagramCategoryAdapter extends ArrayAdapter<DiagramCategoryRawItem>
 		holder.titleTxt.setTypeface(tfLight);
 		holder.descriptionTxt.setTypeface(tfThin);
 		
-		holder.goIcon.setOnClickListener(new OnClickListener() {
+		setDispatchClass(holder,index);
+		
+		/*holder.goIcon.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -118,10 +125,12 @@ public class DiagramCategoryAdapter extends ArrayAdapter<DiagramCategoryRawItem>
 					v.getContext().startActivity(intent);
 				} 
 			}
-		});
+		});*/
 		
 		return convertView;
 
 	}
+	
+	public void setDispatchClass(ViewHolder holder, int index){};
 
 }

@@ -33,16 +33,16 @@ public class DBAdapter {
 	public static final String TABLE_DIAGRAM_BEST_SCORE = "best_score";
 	
 	// DB version if a new version of the application changes the format.
-	public static final int DATABASE_VERSION = 3;
+	public static final int DATABASE_VERSION = 4;
 	
 
 	// SQL create statements
-	private static final String SQL_CREATE_DIAGRAM_SCORE = "create table "
+	private static final String SQL_CREATE_DIAGRAM_SCORE = "create table if not exists "
 			+ TABLE_DIAGRAM_SCORE + " (" + KEY_DIAGRAM_NAME + " text primary key, "
 			+ KEY_RESULT + " text not null, " + "unique (" + KEY_DIAGRAM_NAME
 			+ ") on conflict replace" + ");";
 	
-	private static final String SQL_CREATE_DIAGRAM_BESTSCORE = "create table "
+	private static final String SQL_CREATE_DIAGRAM_BESTSCORE = "create table if not exists "
 			+ TABLE_DIAGRAM_BEST_SCORE + " (" + KEY_DIAGRAM_NAME + " text primary key, "
 			+ KEY_RESULT + " text not null, " + "unique (" + KEY_DIAGRAM_NAME
 			+ ") on conflict replace" + ");";

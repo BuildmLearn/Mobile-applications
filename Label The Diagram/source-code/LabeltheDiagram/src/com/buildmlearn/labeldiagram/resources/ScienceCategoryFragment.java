@@ -24,7 +24,7 @@ public class ScienceCategoryFragment extends Fragment {
 
 		createModel();
 
-		categryAdapter = new DiagramCategoryAdapter(
+		categryAdapter = new ScienceCategoryAdapter(
 				getActivity(), R.layout.category_row_item, categories);
 		
 	}

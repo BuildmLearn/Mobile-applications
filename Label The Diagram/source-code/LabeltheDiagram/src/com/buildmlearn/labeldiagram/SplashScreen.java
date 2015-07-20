@@ -1,5 +1,6 @@
 package com.buildmlearn.labeldiagram;
 
+import com.crashlytics.android.Crashlytics;
 import com.example.labelthediagram.R;
 
 import android.app.ActionBar;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
+import io.fabric.sdk.android.Fabric;
 
 
 public class SplashScreen extends Activity {
@@ -16,6 +18,7 @@ public class SplashScreen extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+		Fabric.with(this, new Crashlytics());
         setContentView(R.layout.splash_screen);
         
         // Calling NavigationHandler to wait and dispatch to MainMenu

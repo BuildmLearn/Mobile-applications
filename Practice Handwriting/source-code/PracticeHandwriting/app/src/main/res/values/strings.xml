@@ -5,7 +5,7 @@
     <string name="Hindi">हिंदी</string>
     <string name="Arabic">العربية</string>
 
-    <string-array name="English_characters">
+    <string-array name="Characters">
         <item>A</item>
         <item>B</item>
         <item>C</item>
@@ -70,105 +70,7 @@
         <item>9</item>
     </string-array>
 
-    <string-array name="Hindi_characters">
-        <item>अ</item>
-        <item>आ</item>
-        <item>इ</item>
-        <item>ई</item>
-        <item>उ</item>
-        <item>ऊ</item>
-        <item>ऋ</item>
-        <item>ए</item>
-        <item>ऐ</item>
-        <item>ओ</item>
-        <item>औ</item>
-        <item>क</item>
-        <item>ख</item>
-        <item>ग</item>
-        <item>घ</item>
-        <item>ङ</item>
-        <item>च</item>
-        <item>छ</item>
-        <item>ज</item>
-        <item>झ</item>
-        <item>ञ</item>
-        <item>ट</item>
-        <item>ठ</item>
-        <item>ड</item>
-        <item>ढ</item>
-        <item>ण</item>
-        <item>त</item>
-        <item>थ</item>
-        <item>द</item>
-        <item>ध</item>
-        <item>न</item>
-        <item>प</item>
-        <item>फ</item>
-        <item>ब</item>
-        <item>भ</item>
-        <item>म</item>
-        <item>य</item>
-        <item>र</item>
-        <item>ल</item>
-        <item>व</item>
-        <item>श</item>
-        <item>ष</item>
-        <item>स</item>
-        <item>ह</item>
-        <item>०</item>
-        <item>१</item>
-        <item>२</item>
-        <item>३</item>
-        <item>४</item>
-        <item>५</item>
-        <item>६</item>
-        <item>७</item>
-        <item>८</item>
-        <item>९</item>
-    </string-array>
-
-    <string-array name="Arabic_characters">
-        <item>ا</item>
-        <item>ب</item>
-        <item>ت</item>
-        <item>ث</item>
-        <item>ج</item>
-        <item>ح</item>
-        <item>خ</item>
-        <item>د</item>
-        <item>ذ</item>
-        <item>ر</item>
-        <item>ز</item>
-        <item>س</item>
-        <item>ش</item>
-        <item>ص</item>
-        <item>ض</item>
-        <item>ط</item>
-        <item>ظ</item>
-        <item>ع</item>
-        <item>غ</item>
-        <item>ق</item>
-        <item>ف</item>
-        <item>ك</item>
-        <item>ل</item>
-        <item>م</item>
-        <item>ن</item>
-        <item>ه</item>
-        <item>و</item>
-        <item>ي</item>
-        <item>٠</item>
-        <item>١</item>
-        <item>٢</item>
-        <item>٣</item>
-        <item>٤</item>
-        <item>٥</item>
-        <item>٦</item>
-        <item>٧</item>
-        <item>٨</item>
-        <item>٩</item>
-    </string-array>
-
-    <string-array name="English_words_easy">
+    <string-array name="Words_easy">
         <item>all</item>
         <item>and</item>
         <item>ball</item>
@@ -536,7 +438,7 @@
 
     </string-array>
 
-    <string-array name="English_words_medium">
+    <string-array name="Words_medium">
         <item>before</item>
         <item>change</item>
         <item>coming</item>
@@ -613,7 +515,7 @@
         <item>winter</item>
     </string-array>
 
-    <string-array name="English_words_hard">
+    <string-array name="Words_hard">
         <item>brother</item>
         <item>little </item>
         <item>looking </item>
@@ -673,13 +575,14 @@
     <string name="title_activity_word_selection">WordSelectionActivity</string>
     <string name="title_activity_borderless">BorderlessActivity</string>
     <string name="title_activity_time_trial_result">TimeTrialResultActivity</string>
+    <string name="title_activity_freehand">FreehandActivity</string>
+    <string name="title_activity_time_trial">TimeTrialActivity</string>
 
     <string name="incomplete">We are still working on this.</string>
 
     <string name="practice">Practice</string>
     <string name="time_trial">Time Trial</string>
     <string name="freehand">Freehand</string>
-    <string name="settings">Settings</string>
     <string name="characters">Characters</string>
     <string name="words">Words</string>
     <string name="easy">Easy</string>
@@ -688,12 +591,10 @@
 
     <string name="practice_string">PRACTICE_STRING</string>
     <string name="practice_mode">MODE</string>
+    <string name="directory_name">DIRECTORY_NAME</string>
 
     <string name="action_settings">Settings</string>
     <string name="action_next">Next</string>
     <string name="action_previous">Previous</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_freehand">FreehandActivity</string>
-    <string name="title_activity_time_trial">TimeTrialActivity</string>
 </resources>

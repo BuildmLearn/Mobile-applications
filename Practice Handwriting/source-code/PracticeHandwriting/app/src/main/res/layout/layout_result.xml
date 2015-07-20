@@ -4,10 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <org.buildmlearn.practicehandwriting.helper.DrawingView
-        android:id="@+id/resultDrawingView"
+    <ImageView
+        android:id="@+id/resultImageView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/resultTextView"

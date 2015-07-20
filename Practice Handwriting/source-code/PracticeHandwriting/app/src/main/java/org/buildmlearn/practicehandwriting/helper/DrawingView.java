@@ -5,13 +5,14 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
+import android.os.Environment;
 import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -20,9 +21,17 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import org.buildmlearn.practicehandwriting.R;
+import org.buildmlearn.practicehandwriting.activities.SplashActivity;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 //Custom View implementing the trace engine.
 public class DrawingView extends View {
@@ -63,9 +72,8 @@ public class DrawingView extends View {
         mContext = context;
         mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         //Getting display width and height
-        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-        mWidth = metrics.widthPixels;
-        mHeight = metrics.heightPixels;
+        mWidth = SplashActivity.mDisplayMetrics.widthPixels;
+        mHeight = SplashActivity.mDisplayMetrics.heightPixels;
         clearCanvas();
 
         ((Activity)mContext).runOnUiThread(new Runnable() {
@@ -119,13 +127,13 @@ public class DrawingView extends View {
         Paint paintText = new Paint(Paint.ANTI_ALIAS_FLAG);
         paintText.setColor(Color.BLACK);
         paintText.setStyle(Paint.Style.FILL);
-        int size = getResources().getDisplayMetrics().densityDpi/str.length();//Starting size of the text
+        int size = SplashActivity.mDisplayMetrics.densityDpi/str.length();//Starting size of the text
         float textHeight;
         do {
             paintText.setTextSize(++size);
             textHeight = paintText.descent() - paintText.ascent();
 
-        } while(paintText.measureText(str) < mWidth * 0.9 && textHeight < mHeight *0.9);//setting the max size of the text for the given screen
+        } while(paintText.measureText(str) < mWidth * 0.8 && textHeight < mHeight *0.8);//setting the max size of the text for the given screen
         mDrawPaint.setStrokeWidth(size * 3 / 182); //values got from experimenting
 
         float textOffset = textHeight/ 2 - paintText.descent();
@@ -259,5 +267,73 @@ public class DrawingView extends View {
             return Bitmap.createBitmap(mCanvasBitmap,Math.max(minX - 30, 0),Math.max(minY -30,0),Math.min(maxX - minX +40, mWidth - minX),Math.min(maxY - minY +40, mHeight - minY));
         else//This implies no touch events were received
             return Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_8888);
+    }
+
+    public String saveBitmap(String practiceString, String dirExtra) {
+        File mediaStorageDir = new File(Environment.getExternalStorageDirectory() + File.separator + getResources().getString(R.string.app_name) + dirExtra);
+        if (!mediaStorageDir.exists() && !mediaStorageDir.mkdir()) {
+            return "Could not save trace. Unable to create directory";
+        } else {//Compress the bitmap and then store it
+            File file;
+            if (!dirExtra.equals(""))
+                file = new File(mediaStorageDir.getPath() + File.separator + practiceString + "_" + String.valueOf(score()) + ".jpg");
+            else
+                file = new File(mediaStorageDir.getPath() + File.separator + "IMG_" + new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date()) + "_" + practiceString + ".jpg");
+
+            int actualHeight = mHeight;
+            int actualWidth = mWidth;
+
+            float maxHeight = 800.0f;
+            float maxWidth = 600.0f;
+            float imgRatio = actualWidth / actualHeight;
+            float maxRatio = maxWidth/maxHeight;
+
+            if (actualHeight > maxHeight || actualWidth > maxWidth) {
+                if (imgRatio < maxRatio) {
+                    imgRatio = maxHeight / actualHeight;
+                    actualWidth = (int) (imgRatio * actualWidth);
+                    actualHeight = (int) maxHeight;
+                } else if (imgRatio > maxRatio) {
+                    imgRatio = maxWidth / actualWidth;
+                    actualHeight = (int) (imgRatio * actualHeight);
+                    actualWidth = (int) maxWidth;
+                } else {
+                    actualHeight = (int) maxHeight;
+                    actualWidth = (int) maxWidth;
+                }
+            }
+            Bitmap scaledBitmap = Bitmap.createBitmap(actualWidth, actualHeight, Bitmap.Config.ARGB_8888);
+
+            float ratioX = actualWidth / (float) mWidth;
+            float ratioY = actualHeight / (float) mHeight;
+            float middleX = actualWidth / 2.0f;
+            float middleY = actualHeight / 2.0f;
+
+            Matrix scaleMatrix = new Matrix();
+            scaleMatrix.setScale(ratioX, ratioY, middleX, middleY);
+
+            Canvas canvas = new Canvas(scaledBitmap);
+            canvas.setMatrix(scaleMatrix);
+            canvas.drawBitmap(getBitmap(), middleX - mWidth / 2, middleY - mHeight / 2, new Paint(Paint.FILTER_BITMAP_FLAG));
+
+            ByteArrayOutputStream tempStream = new ByteArrayOutputStream();
+            scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 80, tempStream);
+
+            scaledBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight());
+
+            try{
+                FileOutputStream fOut = new FileOutputStream(file);
+                scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
+                fOut.flush();
+                fOut.close();
+                return file.getPath();
+            } catch (FileNotFoundException e) {
+                file.delete();
+                return "Could not save trace. Unable to open file";
+            } catch (IOException e) {
+                file.delete();
+                return "Could not save trace. Unable to save file";
+            }
+        }
     }
 }

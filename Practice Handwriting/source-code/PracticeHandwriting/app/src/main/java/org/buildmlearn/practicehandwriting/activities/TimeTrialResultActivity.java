@@ -1,138 +1,152 @@
 package org.buildmlearn.practicehandwriting.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Point;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.SystemClock;
-import android.view.MotionEvent;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.buildmlearn.practicehandwriting.R;
-import org.buildmlearn.practicehandwriting.helper.DrawingView;
-import org.buildmlearn.practicehandwriting.helper.TimeTrialResult;
 
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 //Activity to display the results of the Time Trial session
 public class TimeTrialResultActivity extends Activity {
 
-    private float mScore;
-    private int mThreadsDone = 0;
-
+    private File mTempDir;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_time_trial_result);
-        findViewById(R.id.TimeTrialToolbar).bringToFront();
+        try {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_time_trial_result);
+            findViewById(R.id.TimeTrialToolbar).bringToFront();
+            mTempDir = new File(Environment.getExternalStorageDirectory() + File.separator + getString(R.string.app_name) + File.separator + getIntent().getStringExtra(getString(R.string.directory_name)));
+            File[] savedFiles = mTempDir.listFiles();
+            float mScore = 0;
 
-        mScore = 0;
-        final LinearLayout resultLL = (LinearLayout) findViewById(R.id.resultLL);
+            LinearLayout resultLL = (LinearLayout) findViewById(R.id.resultLL);
+            TextView scoreView = new TextView(this);
+            scoreView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            scoreView.setTextSize(35);
+            resultLL.addView(scoreView);
 
-        final TextView scoreView = new TextView(this);
-        scoreView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        scoreView.setTextSize(35);
-        resultLL.addView(scoreView);
+            for(int i = 0;i<savedFiles.length;i++) {
+                View result = View.inflate(this,R.layout.layout_result,null);
+                resultLL.addView(result, i + 1); //The first view is the overall score TextView
 
-        for(int i = 0;i<SplashActivity.mTimeTrialResults.size();i++) {
-            final int index = i;
-            final View result = View.inflate(this,R.layout.layout_result,null);
-            resultLL.addView(result,i+1); //The first view is the overall score TextView
-            final DrawingView drawingView = ((DrawingView)  result.findViewById(R.id.resultDrawingView));
-            drawingView.setBitmapFromText(SplashActivity.mTimeTrialResults.get(index).getPracticeString());
-            //match_parent gave a 0 height and width to the view
-            drawingView.setLayoutParams(new RelativeLayout.LayoutParams(getResources().getDisplayMetrics().widthPixels, getResources().getDisplayMetrics().heightPixels));
-            drawingView.canVibrate(false);
+                ((ImageView)  result.findViewById(R.id.resultImageView)).setImageURI(Uri.fromFile(savedFiles[i]));
 
-            //Performing the touches in a separate thread otherwise the UI thead will hang in case there are a lot of letters
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    View result = resultLL.getChildAt(index+1);
-                    DrawingView drawingView = ((DrawingView)  result.findViewById(R.id.resultDrawingView));
-                    //size is the number of strokes that the user has traced
-                    int size = SplashActivity.mTimeTrialResults.get(index).getTouches().size();
+                String score = savedFiles[i].getName().split("_")[1];
+                score = score.substring(0,score.length()-4);
+                ((TextView) result.findViewById(R.id.resultTextView)).setText(score);
 
-                    for(int j = 0; j < size;j++) {
-                        ArrayList<Point> touchPoints = SplashActivity.mTimeTrialResults.get(index).getTouches().get(j);
-                        //The first touch is at index zero
-                        drawingView.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(),
-                                MotionEvent.ACTION_DOWN,
-                                touchPoints.get(0).x, touchPoints.get(0).y, 0));
+                mScore += Float.parseFloat(score);
+                scoreView.setText("Overall: " + String.valueOf(mScore /(float) (i+1)));
 
-                        //All the points touched as the finger was dragged are traced
-                        for (int k = 1; k < touchPoints.size() -1 ; k++) {
-                            drawingView.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(),SystemClock.uptimeMillis(),
-                                    MotionEvent.ACTION_MOVE,
-                                    touchPoints.get(k).x,touchPoints.get(k).y, 0));
-                        }
-
-                        //The last point where the finger was lifted to finish the stroke is traced
-                        drawingView.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(),SystemClock.uptimeMillis(),
-                                MotionEvent.ACTION_UP,
-                                touchPoints.get(touchPoints.size() - 1).x,touchPoints.get(touchPoints.size() - 1).y, 0));
-                    }
-                    drawingView.canDraw(false);
-                    ((TextView) result.findViewById(R.id.resultTextView)).setText(String.valueOf(drawingView.score()));
-                    mScore += drawingView.score();
-                    mThreadsDone++;
-
-                    //Overall score is the average of all individual scores.
-                    scoreView.setText("Overall: " + String.valueOf(mScore/mThreadsDone));
-                }
-            }).start();
+                System.gc();
+            }
+        } catch (Exception e) {
+            showErrorDialog(e);
         }
+    }
+
+    //function to show the error that occurred while starting the practice session
+    protected void showErrorDialog(final Exception e) {
+        new AlertDialog.Builder(this)
+                .setTitle("ERROR")
+                .setMessage(Log.getStackTraceString(e))
+                .setPositiveButton("Save to File", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        try {
+                            File mediaStorageDir = new File(Environment.getExternalStorageDirectory() + File.separator + getResources().getString(R.string.app_name));
+                            File file = new File(mediaStorageDir.getPath() + File.separator + "error.txt");
+                            if(file.exists() || file.createNewFile()) {
+                                FileOutputStream fOut = new FileOutputStream(file, true);
+                                fOut.write(("\n\n" + new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(new Date()) + "\n\n").getBytes());
+                                fOut.write(Log.getStackTraceString(e).getBytes());
+                                fOut.flush();
+                                fOut.close();
+                            }
+                        } catch (Exception e1) {
+                            e1.printStackTrace();
+                        }
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 
     public void saveTimeTrial(View view) {
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        int i;
         String toastText = "";
-        File mediaStorageDir = new File(Environment.getExternalStorageDirectory() + File.separator + getResources().getString(R.string.app_name) + File.separator + "TIME_TRIAL_" + timeStamp );
-        if (!mediaStorageDir.exists() && !mediaStorageDir.mkdir()) {
+        File mediaStorageDir = new File(Environment.getExternalStorageDirectory() + File.separator + getString(R.string.app_name) + File.separator + "TIME_TRIAL_" + new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date()));
+        if (!mediaStorageDir.exists() && !mediaStorageDir.mkdir())
             toastText = "Could not save trace. Unable to create directory";
-        } else {
-            LinearLayout resultLL = (LinearLayout) findViewById(R.id.resultLL);
-            for(int i = 0; i < resultLL.getChildCount(); i++) {
-
-                File file = new File(mediaStorageDir.getPath() + File.separator + SplashActivity.mTimeTrialResults.get(i).getPracticeString() + ".jpg");
-                Bitmap savedImg = ((DrawingView)  resultLL.getChildAt(i).findViewById(R.id.resultDrawingView)).getBitmap();
-                FileOutputStream fOut;
-
+        else {
+            File[] savedFiles = mTempDir.listFiles();
+            for (i = 0; i < savedFiles.length; i++) {
                 try {
-                    fOut = new FileOutputStream(file);
-                    savedImg.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
-                    fOut.flush();
-                    fOut.close();
-                    toastText = "Traces saved";
-                } catch (FileNotFoundException e) {
-                    toastText = "Could not save trace. Unable to open file";
-                    file.delete();
+                    File file = new File(mediaStorageDir.getAbsolutePath() + File.separator + savedFiles[i].getName());
+                    InputStream inStream = new FileInputStream(savedFiles[i]);
+                    OutputStream outStream = new FileOutputStream(file);
+
+                    byte[] buffer = new byte[1024];
+                    int length;
+                    //copy the file content in bytes
+                    while ((length = inStream.read(buffer)) > 0)
+                        outStream.write(buffer, 0, length);
+
+                    inStream.close();
+                    outStream.close();
                 } catch (IOException e) {
-                    toastText = "Could not save trace. Unable to save file";
-                    file.delete();
+                    mediaStorageDir.delete();
+                    toastText = "Could not save traces. An unexpected error occurred";
+                    break;
                 }
             }
+            if (i == savedFiles.length)
+                toastText = "Traces Saved";
         }
-        Toast.makeText(this,toastText,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, toastText, Toast.LENGTH_SHORT).show();
     }
 
     @Override
+    public void onStop() {
+        super.onStop();
+        //Running Garbage Collection
+        System.gc();
+
+        //Deleting the files in the temp directory and the directory itself
+        for(File file : mTempDir.listFiles())
+            file.delete();
+        mTempDir.delete();
+    }
+
+
+    @Override
     public void onBackPressed() {
-        //Emptying the List of results for the next use
-        SplashActivity.mTimeTrialResults = new ArrayList<TimeTrialResult>(SplashActivity.CHARACTER_LIST.length);
         //Going back to the main menu instead of the Tracing screen
         startActivity(new Intent(TimeTrialResultActivity.this, MainMenuActivity.class));
     }

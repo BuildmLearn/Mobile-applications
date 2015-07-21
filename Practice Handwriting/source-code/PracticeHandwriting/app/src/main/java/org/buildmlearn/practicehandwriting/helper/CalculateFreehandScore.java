@@ -61,6 +61,7 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
         for (int i = 0; i < mTouches.size(); i++)
             size += mTouches.get(i).size();
         if(size!=0) {//Computes score only if the view has been touched
+
             int centerX = (mSavedImg.getWidth() - mTouchImg.getWidth())/2, centerY = (mSavedImg.getHeight() - mTouchImg.getHeight())/2;
             int minx = mTouchBounds[0], miny = mTouchBounds[1];
             float correctTouches;
@@ -86,10 +87,9 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
             for(i=0;i<width;i++)
                 for(j=0;j<height;j++)
                     bitmap[i][j] = mSavedImg.getPixel(i, j);
-
             outerLoop:
-            for (scaleX = 0.8f; scaleX < 1.4f; scaleX += 0.1f)
-                for (scaleY = 0.8f; scaleY < 1.4f; scaleY += 0.1f) {
+            for (scaleX = 0.8f;  scaleX < 1.4f; scaleX += 0.1f)
+                for (scaleY = 0.8f;scaleY < 1.4f; scaleY += 0.1f) {
                     for (cx = centerX - 20; cx <= centerX + 20; cx += 2)
                         for (cy = centerY - 20; cy <= centerY + 20; cy += 2) {
                             correctTouches = 0;

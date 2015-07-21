@@ -3,7 +3,6 @@ package org.buildmlearn.practicehandwriting.helper;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -23,12 +22,11 @@ import org.buildmlearn.practicehandwriting.R;
 import org.buildmlearn.practicehandwriting.activities.SplashActivity;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 
 //Base class for practicing
@@ -97,31 +95,10 @@ public class PracticeBaseActivity extends ActionBarActivity {
 
             case R.id.done_save_button:
                 if(mDone) {//if the user is done then save the trace
-                    String toastText;
-                    File mediaStorageDir = new File(Environment.getExternalStorageDirectory() + File.separator + getResources().getString(R.string.app_name));
-                    if (!mediaStorageDir.exists() && !mediaStorageDir.mkdir()) {
-                        toastText = "Could not save trace. Unable to create directory";
-                    } else {
-                        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-                        File file = new File(mediaStorageDir.getPath() + File.separator + "IMG_" + timeStamp + "_" + mPracticeString + ".jpg");
-                        Bitmap savedImg = mDrawView.getBitmap();
-                        FileOutputStream fOut;
-
-                        try {
-                            fOut = new FileOutputStream(file);
-                            savedImg.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
-                            fOut.flush();
-                            fOut.close();
-                            toastText = "Traces saved";
-                        } catch (FileNotFoundException e) {
-                            toastText = "Could not save trace. Unable to open file";
-                            file.delete();
-                        } catch (IOException e) {
-                            toastText = "Could not save trace. Unable to save file";
-                            file.delete();
-                        }
-                    }
-                    Toast.makeText(this,toastText,Toast.LENGTH_SHORT).show();//Toast displayed with the status of saving the trace
+                    String result = mDrawView.saveBitmap(mPracticeString,"");
+                    if(result.charAt(0)=='/')
+                        result = "Trace Saved";
+                    Toast.makeText(this,result,Toast.LENGTH_SHORT).show();//Toast displayed with the status of saving the trace
                 }
                 break;
         }
@@ -167,7 +144,7 @@ public class PracticeBaseActivity extends ActionBarActivity {
                             File file = new File(mediaStorageDir.getPath() + File.separator + "error.txt");
                             if(file.exists() || file.createNewFile()) {
                                 FileOutputStream fOut = new FileOutputStream(file, true);
-                                fOut.write(("\n\n" + new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date()) + "\n\n").getBytes());
+                                fOut.write(("\n\n" + new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(new Date()) + "\n\n").getBytes());
                                 fOut.write(Log.getStackTraceString(e).getBytes());
                                 fOut.flush();
                                 fOut.close();

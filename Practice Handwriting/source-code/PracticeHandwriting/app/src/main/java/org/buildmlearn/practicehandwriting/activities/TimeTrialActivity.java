@@ -1,19 +1,25 @@
 package org.buildmlearn.practicehandwriting.activities;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.speech.tts.TextToSpeech;
 import android.view.Menu;
 import android.view.View;
 
 import org.buildmlearn.practicehandwriting.R;
 import org.buildmlearn.practicehandwriting.helper.PracticeBaseActivity;
-import org.buildmlearn.practicehandwriting.helper.TimeTrialResult;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 
 public class TimeTrialActivity extends PracticeBaseActivity {
     private CountDownTimer mCountDownTimer;
+    private String mSaveDir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +37,13 @@ public class TimeTrialActivity extends PracticeBaseActivity {
                 public void onFinish() {
                     mScoreTimerView.setText("00:00");
                     mDone = true;
-                    mDrawView.canDraw(false);
-                    SplashActivity.mTimeTrialResults.add(new TimeTrialResult(mPracticeString, mDrawView.getTouchesList()));
-                    startActivity(new Intent(TimeTrialActivity.this,TimeTrialResultActivity.class));
+                    mDrawView.saveBitmap(mPracticeString, mSaveDir);
+                    Intent intent = new Intent(TimeTrialActivity.this,TimeTrialResultActivity.class);
+                    intent.putExtra(getString(R.string.directory_name),mSaveDir);
+                    startActivity(intent);
                 }
             };
+            mSaveDir = File.separator + "TIME_TRIAL_TEMP_" + new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
             mDrawView.setBitmapFromText(mPracticeString);
             mDrawView.canVibrate(true);
             mCountDownTimer.start();
@@ -78,13 +86,18 @@ public class TimeTrialActivity extends PracticeBaseActivity {
             case R.id.done_save_button:
                 if(!mDone) {
                     //Saving the string and the touches to be redrawn in the result
-                    mDrawView.canDraw(false);
-                    SplashActivity.mTimeTrialResults.add(new TimeTrialResult(mPracticeString, mDrawView.getTouchesList()));
-                    mDrawView.canDraw(true);
+                    mDrawView.saveBitmap(mPracticeString,mSaveDir);
 
-                    Intent intent = getIntent();
-                    finish();
-                    startActivity(intent);
+                    System.gc();
+                    mPracticeString = randomStringGenerator();
+                    mDrawView.destroyDrawingCache();
+                    mDrawView.setBitmapFromText(mPracticeString);
+                    if(SplashActivity.TTSobj!=null) {
+                        if (Build.VERSION.SDK_INT >= 21) //This function works only on devices with SDK version greater that 20
+                            SplashActivity.TTSobj.speak(mPracticeString, TextToSpeech.QUEUE_FLUSH, null, null);
+                        else //if the device is running an older version of android, use the previous speaking function
+                            SplashActivity.TTSobj.speak(mPracticeString, TextToSpeech.QUEUE_FLUSH, null);
+                    }
                 }
                 break;
         }

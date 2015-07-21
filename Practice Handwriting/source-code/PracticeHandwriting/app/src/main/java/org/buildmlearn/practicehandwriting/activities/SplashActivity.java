@@ -5,6 +5,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.util.DisplayMetrics;
 import android.widget.Toast;
 
 import org.buildmlearn.practicehandwriting.R;
@@ -30,6 +31,8 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
 
     public static ScoreDbHelper mDbHelper;
 
+    public static DisplayMetrics mDisplayMetrics;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +51,9 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
         }
 
         mDbHelper = new ScoreDbHelper(this);
+        mDisplayMetrics = getResources().getDisplayMetrics();
 
-        //Starts the next activity only after all the inits ar done.
+            //Starts the next activity only after all the inits ar done.
         new Thread(new Runnable() {
             @Override
             public void run() {

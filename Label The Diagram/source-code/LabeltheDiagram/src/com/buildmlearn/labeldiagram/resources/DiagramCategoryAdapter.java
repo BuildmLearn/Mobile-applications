@@ -50,7 +50,7 @@ public class DiagramCategoryAdapter extends ArrayAdapter<DiagramCategoryRawItem>
 		
 		
 		
-		Toast.makeText(context, "No of items in the list : "+nItems, 1000).show();
+		//Toast.makeText(context, "No of items in the list : "+nItems, 1000).show();
 	}
 
 	/*

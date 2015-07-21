@@ -96,6 +96,10 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.DiagramCategory">
             </meta-data>
         </activity>
+        <activity android:launchMode="standard" android:name="com.buildmlearn.labeldiagram.DiagramMenuOptics" android:parentActivityName="com.buildmlearn.labeldiagram.DiagramCategory">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.DiagramCategory">
+            </meta-data>
+        </activity>
         <activity android:name="com.buildmlearn.labeldiagram.ScoreboardViewer" android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu">
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.MainMenu">
             </meta-data>

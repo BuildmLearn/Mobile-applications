@@ -2,6 +2,7 @@ package com.buildmlearn.labeldiagram.resources;
 
 import java.util.List;
 
+import com.buildmlearn.labeldiagram.DiagramMenuOptics;
 import com.buildmlearn.labeldiagram.DiagramPlayPrism;
 
 import android.content.Context;
@@ -28,8 +29,8 @@ public class PhysicsCategoryAdapter extends DiagramCategoryAdapter {
 			public void onClick(View v) {
 
 				if(index==0){
-					Toast.makeText(getContext(), "Comming soon...", Toast.LENGTH_SHORT).show();
-					Intent intent = new Intent(v.getContext(), DiagramPlayPrism.class);
+					//Toast.makeText(getContext(), "Comming soon...", Toast.LENGTH_SHORT).show();
+					Intent intent = new Intent(v.getContext(), DiagramMenuOptics.class);
 					v.getContext().startActivity(intent);
 					
 				}else if(index==1){

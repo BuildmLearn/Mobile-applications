@@ -4,6 +4,7 @@ import com.buildmlearn.labeldiagram.helper.HelperClass;
 import com.buildmlearn.labeldiagram.resources.HumanEarFragment;
 import com.buildmlearn.labeldiagram.resources.HumanEyeFragment;
 import com.buildmlearn.labeldiagram.resources.HumanHeartFragment;
+import com.buildmlearn.labeldiagram.resources.LensFragment;
 import com.buildmlearn.labeldiagram.resources.PrismFragment;
 import com.example.labelthediagram.R;
 
@@ -81,7 +82,7 @@ public class DiagramMenuOptics extends FragmentActivity {
 				prismFrag.setArguments(bundle);
 				return prismFrag;
 			case 1:
-				PrismFragment prismFrag1 = new PrismFragment();
+				LensFragment prismFrag1 = new LensFragment();
 				bundle.putFloat("SCORE_SAVED", scorePrism);
 				prismFrag1.setArguments(bundle);
 				return prismFrag1;

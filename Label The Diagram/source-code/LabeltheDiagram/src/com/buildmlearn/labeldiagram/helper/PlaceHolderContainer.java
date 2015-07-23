@@ -59,6 +59,9 @@ public class PlaceHolderContainer {
 			case "Prism":
 				getPrismMarkerList();
 				break;
+			case "Lens":
+				getLensMarkerList();
+				break;
 			// TODO The other diagrams goes here
 
 			}
@@ -66,6 +69,24 @@ public class PlaceHolderContainer {
 		} else {
 			return null;
 		}
+	}
+
+	private List<Integer[]> getLensMarkerList() {
+
+		leftPlaceHolderList = new Integer[] { R.id.lensBlb, R.id.imageBlb
+
+		};
+
+		rightPlaceHolderList = new Integer[] { R.id.principalRayBlb,
+				R.id.centralRayBlb, R.id.focalRayBlb, R.id.objectBlb,
+				R.id.focusBlb, R.id.lensAxisBlb
+
+		};
+
+		listHolder.add(leftPlaceHolderList);
+		listHolder.add(rightPlaceHolderList);
+
+		return listHolder;
 	}
 
 	private List<Integer[]> getPrismMarkerList() {

@@ -54,6 +54,9 @@ public class TagPlaceholderMapper {
 			case "Prism":
 				getPrismTagMap();
 				break;
+			case "Lens":
+				getLensTagMap();
+				break;
 			
 			}
 		}
@@ -61,6 +64,20 @@ public class TagPlaceholderMapper {
 		return tagMapper;
 	}
 	
+	private SparseIntArray getLensTagMap() {
+		
+		tagMapper.put(R.id.principalRayBlb, R.id.principalRayTag);
+		tagMapper.put(R.id.centralRayBlb, R.id.centralRayTag);
+		tagMapper.put(R.id.focalRayBlb, R.id.focalRayTag);
+		tagMapper.put(R.id.focusBlb, R.id.focusTag);
+		tagMapper.put(R.id.objectBlb, R.id.objectTag);
+		tagMapper.put(R.id.imageBlb, R.id.imageTag);
+		tagMapper.put(R.id.lensBlb, R.id.lensTag);
+		tagMapper.put(R.id.lensAxisBlb, R.id.lensAxisTag);
+		
+		return tagMapper;
+	}
+
 	private SparseIntArray getPrismTagMap() {
 
 		tagMapper.put(R.id.prismAngleBlb, R.id.prismAngleTag);

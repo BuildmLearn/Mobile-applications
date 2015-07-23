@@ -7,6 +7,7 @@ import com.buildmlearn.labeldiagram.DiagramPlayCarbonCycle;
 import com.buildmlearn.labeldiagram.DiagramPlayHumanEar;
 import com.buildmlearn.labeldiagram.DiagramPlayHumanEye;
 import com.buildmlearn.labeldiagram.DiagramPlayHumanHeart;
+import com.buildmlearn.labeldiagram.DiagramPlayLens;
 import com.buildmlearn.labeldiagram.DiagramPlayPlantCell;
 import com.buildmlearn.labeldiagram.DiagramPlayPlantFlower;
 import com.buildmlearn.labeldiagram.DiagramPlayPrism;
@@ -37,8 +38,8 @@ public class ClassMapper {
 		tagMap.put("Water Cycle", "WaterCycle");
 		tagMap.put("Carbon Cycle", "CarbonCycle");
 		tagMap.put("Light Spectrum", "LightSpectrum");
-		tagMap.put("Prism Refraction", "HumanEye");
-		tagMap.put("Lens Refraction", "HumanEye");
+		tagMap.put("Prism Refraction", "Prism");
+		tagMap.put("Lens Refraction", "Lens");
 		
 	}
 
@@ -56,6 +57,7 @@ public class ClassMapper {
 		classMap.put("WaterCycle", DiagramPlayWaterCycle.class);
 		classMap.put("CarbonCycle", DiagramPlayCarbonCycle.class);
 		classMap.put("Prism", DiagramPlayPrism.class);
+		classMap.put("Lens", DiagramPlayLens.class);
 	}
 
 	public static ClassMapper getInstance(){

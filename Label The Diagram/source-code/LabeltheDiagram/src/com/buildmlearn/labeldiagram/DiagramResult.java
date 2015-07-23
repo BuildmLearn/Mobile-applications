@@ -73,7 +73,7 @@ public class DiagramResult extends Activity implements OnClickListener {
 
 		// Set the score on the ratingbar
 		RatingBar scoreRater = (RatingBar) findViewById(R.id.resultBar);
-		scoreRater.setRating((rating / 100.0f) * 5);
+		scoreRater.setRating((rating / gameScore) * 5);
 
 		// Set score on the score TextView
 		TextView scoreTxt = (TextView) findViewById(R.id.scoreboardScore);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram">
 
     <RelativeLayout
         android:id="@+id/scoreTab"
@@ -19,7 +19,7 @@
             android:layout_centerHorizontal="true"
             android:background="@color/appBg_color" />
 
-        <TextView
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
             android:id="@+id/score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,9 +29,10 @@
             android:layout_toRightOf="@+id/scoreTxt"
             android:text="0"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#ffff" />
+            android:textColor="#ffff"
+            app:typeface="roboto_thin" />
 
-        <TextView
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
             android:id="@+id/complete_ratio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,9 +43,10 @@
             android:layout_toRightOf="@+id/complatedTxt"
             android:text=" 0%"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#ffff" />
+            android:textColor="#ffff"
+            app:typeface="roboto_thin" />
 
-        <TextView
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
             android:id="@+id/complatedTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,9 +55,10 @@
             android:layout_marginLeft="10dp"
             android:text="Complete :"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#ffff" />
+            android:textColor="#ffff" 
+            app:typeface="roboto_thin"/>
 
-        <TextView
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
             android:id="@+id/scoreTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,12 +68,13 @@
             android:layout_toRightOf="@+id/view1"
             android:text="Score   :"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#ffff" />
+            android:textColor="#ffff" 
+            app:typeface="roboto_thin"/>
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/mainDiagramHeart"
-        android:layout_width="340dp"
+        android:id="@+id/mainDiagramLens"
+        android:layout_width="320dp"
         android:layout_height="300dp"
         android:layout_below="@+id/scoreTab"
         android:layout_centerHorizontal="true"
@@ -86,125 +90,121 @@
         android:src="@drawable/holder" />
 
     <ImageView
-        android:id="@+id/pinnaBlb"
+        android:id="@+id/principalRayBlb"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_alignLeft="@+id/mainDiagramHeart"
-        android:layout_alignTop="@+id/mainDiagramHeart"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="17dp"
-        android:src="@drawable/marker" />
+        android:layout_alignLeft="@+id/mainDiagramLens"
+        android:layout_alignTop="@+id/mainDiagramLens"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="18dp"
+        android:src="@drawable/marker_white" />
 
     <ImageView
-        android:id="@+id/malleusBlb"
+        android:id="@+id/centralRayBlb"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@+id/pinnaBlb"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/marker" />
+        android:layout_alignLeft="@+id/mainDiagramLens"
+        android:layout_alignTop="@+id/mainDiagramLens"
+        android:layout_marginLeft="105dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/marker_white" />
 
     <ImageView
-        android:id="@+id/incusBlb"
+        android:id="@+id/focalRayBlb"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@+id/pinnaBlb"
-        android:layout_marginLeft="9dp"
-        android:layout_toRightOf="@+id/malleusBlb"
-        android:src="@drawable/marker" />
+        android:layout_alignBottom="@+id/mainDiagramLens"
+        android:layout_alignLeft="@+id/mainDiagramLens"
+        android:layout_marginBottom="110dp"
+        android:layout_marginLeft="50dp"
+        android:src="@drawable/marker_white" />
 
     <ImageView
-        android:id="@+id/earnerveBlb"
+        android:id="@+id/objectBlb"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_below="@+id/canalsBlb"
-        android:layout_marginLeft="13dp"
-        android:layout_marginTop="7dp"
-        android:layout_toRightOf="@+id/canalsBlb"
-        android:src="@drawable/marker" />
+        android:layout_alignBottom="@+id/mainDiagramLens"
+        android:layout_alignLeft="@+id/mainDiagramLens"
+        android:layout_marginBottom="70dp"
+        android:layout_marginLeft="11dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/lensBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/mainDiagramLens"
+        android:layout_alignRight="@+id/mainDiagramLens"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="128dp"
+        android:src="@drawable/marker_white" />
 
     <ImageView
-        android:id="@+id/stapesBlb"
+        android:id="@+id/lensAxisBlb"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="7dp"
-        android:layout_toRightOf="@+id/incusBlb"
-        android:src="@drawable/marker" />
-
+        android:layout_alignBottom="@+id/mainDiagramLens"
+        android:layout_alignRight="@+id/mainDiagramLens"
+        android:layout_marginBottom="35dp"
+        android:layout_marginRight="65dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/focusBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignTop="@+id/mainDiagramLens"
+        android:layout_alignRight="@+id/mainDiagramLens"
+        android:layout_marginTop="72dp"
+        android:layout_marginRight="52dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/imageBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignTop="@+id/mainDiagramLens"
+        android:layout_alignRight="@+id/mainDiagramLens"
+        android:layout_marginTop="115dp"
+        android:layout_marginRight="0dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/innerTagHolder"
+        android:layout_width="345dp"
+        android:layout_height="125dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tagHolder"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="50dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/trans_inner_holder" />
+    
     <TextView
-        android:id="@+id/pinnaTag"
+        android:id="@+id/objectTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/mainDiagramHeart"
-        android:layout_below="@+id/mainDiagramHeart"
-        android:layout_marginTop="55dp"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
-        android:text="Pinna"
+        android:text="object"
         android:textColor="#ffff" />
-
+    
     <TextView
-        android:id="@+id/cochleaTag"
+        android:id="@+id/imageTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/canalsBlb"
-        android:layout_alignTop="@+id/eardrumTag"
-        android:background="@drawable/custom_textview"
-        android:paddingBottom="3dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="3dp"
-        android:text="cochlea"
-        android:textColor="#ffff" />
-
-    <TextView
-        android:id="@+id/eardrumTag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/ear_canalTag"
-        android:layout_alignBottom="@+id/ear_canalTag"
-        android:layout_alignRight="@+id/stapesBlb"
-        android:background="@drawable/custom_textview"
-        android:paddingBottom="3dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="3dp"
-        android:text="eardrum"
-        android:textColor="#ffff" />
-
-    <TextView
-        android:id="@+id/ear_canalTag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/pinnaTag"
-        android:layout_alignBottom="@+id/pinnaTag"
-        android:layout_toLeftOf="@+id/eardrumBlb"
-        android:background="@drawable/custom_textview"
-        android:paddingBottom="3dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="3dp"
-        android:text="convex lens"
-        android:textColor="#ffff" />
-
-    <ImageView
-        android:id="@+id/eardrumBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/stapesBlb"
-        android:layout_alignLeft="@+id/malleusBlb"
-        android:src="@drawable/marker" />
-
-    <TextView
-        android:id="@+id/incusTag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/earnerveTag"
-        android:layout_alignBottom="@+id/earnerveTag"
-        android:layout_alignLeft="@+id/eardrumTag"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -212,112 +212,102 @@
         android:paddingTop="3dp"
         android:text="image"
         android:textColor="#ffff" />
-
+    
     <TextView
-        android:id="@+id/outerearTag"
+        android:id="@+id/lensAxisTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/incusTag"
-        android:layout_alignBottom="@+id/incusTag"
-        android:layout_alignRight="@+id/cochleaTag"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
-        android:text="outer ear"
+        android:text="lens axis"
         android:textColor="#ffff" />
-
+    
     <TextView
-        android:id="@+id/canalsTag"
+        android:id="@+id/focalRayTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/stapesTag"
-        android:layout_alignBottom="@+id/stapesTag"
-        android:layout_toRightOf="@+id/outerearBlb"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="233dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
-        android:text="canals"
+        android:text="focal ray"
         android:textColor="#ffff" />
-
+    
     <TextView
-        android:id="@+id/malleusTag"
+        android:id="@+id/centralRayTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/canalsTag"
-        android:layout_below="@+id/ear_canalTag"
-        android:layout_marginTop="15dp"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
-        android:text="malleus"
+        android:text="central ray"
         android:textColor="#ffff" />
-
+    
     <TextView
-        android:id="@+id/earnerveTag"
+        android:id="@+id/lensTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/stapesTag"
-        android:layout_alignLeft="@+id/pinnaTag"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="105dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
-        android:text="nerve"
+        android:text="convex lens"
         android:textColor="#ffff" />
-
+    
     <TextView
-        android:id="@+id/stapesTag"
+        android:id="@+id/principalRayTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/earnerveTag"
-        android:layout_below="@+id/malleusTag"
-        android:layout_marginTop="14dp"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
-        android:text="stapes"
+        android:text="principal ray"
         android:textColor="#ffff" />
-
-    <ImageView
-        android:id="@+id/canalsBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/incusBlb"
-        android:layout_toRightOf="@+id/incusTag"
-        android:src="@drawable/marker" />
-
-    <ImageView
-        android:id="@+id/earcanalBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/stapesBlb"
-        android:layout_toRightOf="@+id/malleusTag"
-        android:src="@drawable/marker" />
-
-    <ImageView
-        android:id="@+id/outerearBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/stapesBlb"
-        android:src="@drawable/marker" />
-
-    <ImageView
-        android:id="@+id/cochleaBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_alignBottom="@+id/outerearBlb"
-        android:layout_alignLeft="@+id/earnerveBlb"
-        android:layout_marginBottom="12dp"
-        android:src="@drawable/marker" />
+    
+    <TextView
+        android:id="@+id/focusTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="75dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="focus"
+        android:textColor="#ffff" />
+    
 
 </RelativeLayout>

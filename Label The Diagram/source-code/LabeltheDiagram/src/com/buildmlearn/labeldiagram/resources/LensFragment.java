@@ -1,5 +1,6 @@
 package com.buildmlearn.labeldiagram.resources;
 
+import com.buildmlearn.labeldiagram.DiagramPlayLens;
 import com.buildmlearn.labeldiagram.DiagramPlayPrism;
 import com.example.labelthediagram.R;
 
@@ -52,7 +53,7 @@ public class LensFragment extends Fragment {
 			public void onClick(View v) {
 
 				Intent lensIntent = new Intent(getActivity(),
-						DiagramPlayPrism.class);
+						DiagramPlayLens.class);
 				lensIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				lensIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				lensIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

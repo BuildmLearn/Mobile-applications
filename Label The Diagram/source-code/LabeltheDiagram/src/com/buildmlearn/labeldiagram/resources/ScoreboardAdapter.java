@@ -3,6 +3,7 @@ package com.buildmlearn.labeldiagram.resources;
 import java.util.List;
 
 import com.buildmlearn.labeldiagram.ScoreboardResult;
+import com.buildmlearn.labeldiagram.helper.ClassMapper;
 import com.buildmlearn.labeldiagram.helper.HelperClass;
 import com.example.labelthediagram.R;
 
@@ -81,7 +82,8 @@ public class ScoreboardAdapter extends ArrayAdapter<ScoreboardRawItem> {
 			public void onClick(View v) {
 				
 				Intent intent = new Intent(v.getContext(),ScoreboardResult.class);
-				intent.putExtra("SOURCE", HelperClass.removeSpaces(rawItem.getDiagramTitle()));
+				intent.putExtra("SOURCE", ClassMapper.getInstance().getTagMap()
+						.get(rawItem.getDiagramTitle()));
 				v.getContext().startActivity(intent);
 
 			}

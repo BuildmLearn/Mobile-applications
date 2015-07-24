@@ -1,5 +1,7 @@
 package com.buildmlearn.labeldiagram;
 
+import io.fabric.sdk.android.Fabric;
+
 import com.crashlytics.android.Crashlytics;
 import com.example.labelthediagram.R;
 
@@ -10,7 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
-import io.fabric.sdk.android.Fabric;
+
 
 
 public class SplashScreen extends Activity {

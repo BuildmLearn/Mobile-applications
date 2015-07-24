@@ -50,8 +50,8 @@ public class DiagramMenuOptics extends FragmentActivity {
 				"com.buildmlearn.labeldiagram.PREFERENCE_FILE_KEY",
 				Context.MODE_PRIVATE);
 		scorePrism = pref.getFloat("Prism", 0);
-		/*scoreLens = pref.getFloat("Lens", 0);
-		scoreEMSpectrum = pref.getFloat("EMSpectrum", 0);*/
+		scoreLens = pref.getFloat("Lens", 0);
+		/*scoreEMSpectrum = pref.getFloat("EMSpectrum", 0);*/
 	}
 
 	public static class HumanBodyPagerAdapter extends FragmentPagerAdapter {
@@ -83,7 +83,7 @@ public class DiagramMenuOptics extends FragmentActivity {
 				return prismFrag;
 			case 1:
 				LensFragment prismFrag1 = new LensFragment();
-				bundle.putFloat("SCORE_SAVED", scorePrism);
+				bundle.putFloat("SCORE_SAVED", scoreLens);
 				prismFrag1.setArguments(bundle);
 				return prismFrag1;
 			case 2:

@@ -24,10 +24,11 @@ public class ClassMapper {
 		classMap = new HashMap<String, Class<?>>();
 		tagMap = new HashMap<String, String>();
 		createClassMap();
-		//createTagMap();
+		createTagMap();
 	}
 
 	private void createTagMap() {
+		
 		tagMap.put("Human Eye", "HumanEye");
 		tagMap.put("Human Ear", "HumanEar");
 		tagMap.put("Human Heart", "HumanHeart");
@@ -47,6 +48,7 @@ public class ClassMapper {
 	 * 
 	 */
 	private void createClassMap() {
+		
 		classMap.put("HumanEye",DiagramPlayHumanEye.class);
 		classMap.put("HumanEar", DiagramPlayHumanEar.class);
 		classMap.put("HumanHeart", DiagramPlayHumanHeart.class);
@@ -58,6 +60,7 @@ public class ClassMapper {
 		classMap.put("CarbonCycle", DiagramPlayCarbonCycle.class);
 		classMap.put("Prism", DiagramPlayPrism.class);
 		classMap.put("Lens", DiagramPlayLens.class);
+		
 	}
 
 	public static ClassMapper getInstance(){
@@ -76,6 +79,16 @@ public class ClassMapper {
 	public void setMap(HashMap<String, Class<?>> map) {
 		this.classMap = map;
 	}
+	
+	
+	public HashMap<String, String> getTagMap() {
+		return tagMap;
+	}
+
+	public void setTagMap(HashMap<String, String> tagMap) {
+		this.tagMap = tagMap;
+	}
+
 	
 	
 }

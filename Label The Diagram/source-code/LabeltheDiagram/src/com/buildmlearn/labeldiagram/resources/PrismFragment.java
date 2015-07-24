@@ -44,7 +44,7 @@ public class PrismFragment extends Fragment {
 		Button startBtn = (Button) view.findViewById(R.id.go_diagram_btn);
 
 		startBtn.setTypeface(tfThin);
-		savedScoreTxt.setText(((int) score / 80) * 100 + "% Sucess");
+		savedScoreTxt.setText((int)((score / 80 ) * 100) + "% Sucess");
 
 		startBtn.setOnClickListener(new OnClickListener() {
 

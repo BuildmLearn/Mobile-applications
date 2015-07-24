@@ -56,7 +56,7 @@ public class ScoreboardPhysicsFragment extends Fragment {
 	private void fillDataModel() {
 		// TODO Extract lists to database or separate class
 		String physicsListItem[] = new String[] { "Light Spectrum",
-				"Prism Refraction ", "Lens Refraction", "Electric Circuit",
+				"Prism Refraction", "Lens Refraction", "Electric Circuit",
 				"Electric Motor", "Dry Cell" };
 		
 		for (int i = 0; i < physicsListItem.length; i++) {

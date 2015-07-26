@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -85,6 +86,12 @@ public class DiagramPlayLens extends DiagramPlayBase {
 
 	}
 
+	@Override
+	public void onClick(View tagView) {
+		// TODO Auto-generated method stub
+		super.onClick(tagView);
+	}
+	
 	@Override
 	protected int getResourcesId() {
 		// TODO Auto-generated method stub

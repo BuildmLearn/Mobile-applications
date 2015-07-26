@@ -57,6 +57,9 @@ public class TagPlaceholderMapper {
 			case "Lens":
 				getLensTagMap();
 				break;
+			case "Motor":
+				getMotorTagMap();
+				break;
 			
 			}
 		}
@@ -64,6 +67,22 @@ public class TagPlaceholderMapper {
 		return tagMapper;
 	}
 	
+	private SparseIntArray getMotorTagMap() {
+		
+		tagMapper.put(R.id.northPoleBlb, R.id.northPoleTag);
+		tagMapper.put(R.id.southPoleBlb, R.id.southPoleTag);
+		tagMapper.put(R.id.magFieldBlb, R.id.magFieldTag);
+		tagMapper.put(R.id.forceBlb, R.id.forceTag);
+		tagMapper.put(R.id.axelBlb, R.id.axelTag);
+		tagMapper.put(R.id.batteryBlb, R.id.batteryTag);
+		tagMapper.put(R.id.commutatorBlb, R.id.commutatorTag);
+		tagMapper.put(R.id.brushBlb, R.id.brushTag);
+		tagMapper.put(R.id.armatureBlb, R.id.armatureTag);
+		
+		return tagMapper;
+		
+	}
+
 	private SparseIntArray getLensTagMap() {
 		
 		tagMapper.put(R.id.principalRayBlb, R.id.principalRayTag);

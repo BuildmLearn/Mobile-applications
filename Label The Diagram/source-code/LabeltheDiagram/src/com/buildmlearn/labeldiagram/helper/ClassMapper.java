@@ -8,6 +8,7 @@ import com.buildmlearn.labeldiagram.DiagramPlayHumanEar;
 import com.buildmlearn.labeldiagram.DiagramPlayHumanEye;
 import com.buildmlearn.labeldiagram.DiagramPlayHumanHeart;
 import com.buildmlearn.labeldiagram.DiagramPlayLens;
+import com.buildmlearn.labeldiagram.DiagramPlayMotor;
 import com.buildmlearn.labeldiagram.DiagramPlayPlantCell;
 import com.buildmlearn.labeldiagram.DiagramPlayPlantFlower;
 import com.buildmlearn.labeldiagram.DiagramPlayPrism;
@@ -41,6 +42,7 @@ public class ClassMapper {
 		tagMap.put("Light Spectrum", "LightSpectrum");
 		tagMap.put("Prism Refraction", "Prism");
 		tagMap.put("Lens Refraction", "Lens");
+		tagMap.put("Electric Motor", "Motor");
 		
 	}
 
@@ -60,6 +62,7 @@ public class ClassMapper {
 		classMap.put("CarbonCycle", DiagramPlayCarbonCycle.class);
 		classMap.put("Prism", DiagramPlayPrism.class);
 		classMap.put("Lens", DiagramPlayLens.class);
+		classMap.put("Motor", DiagramPlayMotor.class);
 		
 	}
 

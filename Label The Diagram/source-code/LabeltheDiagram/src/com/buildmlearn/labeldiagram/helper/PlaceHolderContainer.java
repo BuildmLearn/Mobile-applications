@@ -62,6 +62,9 @@ public class PlaceHolderContainer {
 			case "Lens":
 				getLensMarkerList();
 				break;
+			case "Motor":
+				getMotorMarkerList();
+				break;
 			// TODO The other diagrams goes here
 
 			}
@@ -69,6 +72,26 @@ public class PlaceHolderContainer {
 		} else {
 			return null;
 		}
+	}
+
+	private List<Integer[]> getMotorMarkerList() {
+
+		leftPlaceHolderList = new Integer[] { R.id.northPoleBlb,
+				R.id.southPoleBlb, R.id.magFieldBlb, R.id.forceBlb,
+				R.id.axelBlb
+
+		};
+
+		rightPlaceHolderList = new Integer[] { R.id.brushBlb,
+				R.id.batteryBlb, R.id.commutatorBlb, R.id.armatureBlb,
+
+		};
+
+		listHolder.add(leftPlaceHolderList);
+		listHolder.add(rightPlaceHolderList);
+
+		return listHolder;
+
 	}
 
 	private List<Integer[]> getLensMarkerList() {

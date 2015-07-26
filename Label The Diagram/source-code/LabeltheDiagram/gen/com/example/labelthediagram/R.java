@@ -128,19 +128,20 @@ public final class R {
         public static final int settings=0x7f02003c;
         public static final int sky_icon=0x7f02003d;
         public static final int spalsh=0x7f02003e;
-        public static final int star_empty=0x7f02003f;
-        public static final int star_filled=0x7f020040;
-        public static final int star_full_new=0x7f020041;
-        public static final int star_new=0x7f020042;
-        public static final int tab_indicator=0x7f020043;
-        public static final int tab_pressed=0x7f020044;
-        public static final int tab_selected=0x7f020045;
-        public static final int tab_unselected=0x7f020046;
-        public static final int tooltip_background=0x7f020047;
-        public static final int trans_inner_holder=0x7f020048;
-        public static final int view_btn=0x7f020049;
-        public static final int virus=0x7f02004a;
-        public static final int virus_unlabel=0x7f02004b;
+        public static final int spectrum_unlabel=0x7f02003f;
+        public static final int star_empty=0x7f020040;
+        public static final int star_filled=0x7f020041;
+        public static final int star_full_new=0x7f020042;
+        public static final int star_new=0x7f020043;
+        public static final int tab_indicator=0x7f020044;
+        public static final int tab_pressed=0x7f020045;
+        public static final int tab_selected=0x7f020046;
+        public static final int tab_unselected=0x7f020047;
+        public static final int tooltip_background=0x7f020048;
+        public static final int trans_inner_holder=0x7f020049;
+        public static final int view_btn=0x7f02004a;
+        public static final int virus=0x7f02004b;
+        public static final int virus_unlabel=0x7f02004c;
     }
     public static final class id {
         public static final int action_done=0x7f05013c;
@@ -501,11 +502,12 @@ public final class R {
         public static final int scoreboard_row_view=0x7f030023;
         public static final int scoreboard_tab=0x7f030024;
         public static final int scoreboard_view=0x7f030025;
-        public static final int splash_screen=0x7f030026;
-        public static final int tooltip_test_view=0x7f030027;
-        public static final int tooltip_view=0x7f030028;
-        public static final int virus_view=0x7f030029;
-        public static final int water_cycle_view=0x7f03002a;
+        public static final int spectrum_view=0x7f030026;
+        public static final int splash_screen=0x7f030027;
+        public static final int tooltip_test_view=0x7f030028;
+        public static final int tooltip_view=0x7f030029;
+        public static final int virus_view=0x7f03002a;
+        public static final int water_cycle_view=0x7f03002b;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;

@@ -6,6 +6,7 @@ import com.buildmlearn.labeldiagram.resources.HumanEyeFragment;
 import com.buildmlearn.labeldiagram.resources.HumanHeartFragment;
 import com.buildmlearn.labeldiagram.resources.LensFragment;
 import com.buildmlearn.labeldiagram.resources.PrismFragment;
+import com.buildmlearn.labeldiagram.resources.SpectrumFragment;
 import com.example.labelthediagram.R;
 
 import android.app.ActionBar;
@@ -82,15 +83,15 @@ public class DiagramMenuOptics extends FragmentActivity {
 				prismFrag.setArguments(bundle);
 				return prismFrag;
 			case 1:
-				LensFragment prismFrag1 = new LensFragment();
+				LensFragment lensFrag = new LensFragment();
 				bundle.putFloat("SCORE_SAVED", scoreLens);
-				prismFrag1.setArguments(bundle);
-				return prismFrag1;
+				lensFrag.setArguments(bundle);
+				return lensFrag;
 			case 2:
-				PrismFragment prismFrag2 = new PrismFragment();
-				bundle.putFloat("SCORE_SAVED", scorePrism);
-				prismFrag2.setArguments(bundle);
-				return prismFrag2;
+				SpectrumFragment spectrumFrag = new SpectrumFragment();
+				bundle.putFloat("SCORE_SAVED", scoreLens);
+				spectrumFrag.setArguments(bundle);
+				return spectrumFrag;
 			default:
 				return null;
 			}

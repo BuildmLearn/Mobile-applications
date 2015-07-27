@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.github.amlcurran.showcaseview.ShowcaseView;
+
 import org.buildmlearn.practicehandwriting.R;
 
 import java.util.Random;
@@ -76,5 +78,11 @@ public class CharacterSelectionActivity extends Activity {
             }
         }
         root.addView(child);
+
+        if(SplashActivity.isFirstRun)
+            new ShowcaseView.Builder(this)
+                    .setContentTitle(getString(R.string.character_selection))
+                    .setContentText("")
+                    .build();
     }
 }

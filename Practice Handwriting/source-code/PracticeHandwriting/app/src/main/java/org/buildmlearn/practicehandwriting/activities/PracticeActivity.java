@@ -1,9 +1,13 @@
 package org.buildmlearn.practicehandwriting.activities;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.TextView;
 
+import com.github.amlcurran.showcaseview.ShowcaseView;
+import com.github.amlcurran.showcaseview.targets.ViewTarget;
 import com.software.shell.fab.ActionButton;
 
 import org.buildmlearn.practicehandwriting.R;
@@ -16,9 +20,56 @@ public class PracticeActivity extends PracticeBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         try {
-        super.onCreate(savedInstanceState);
-        mDrawView.setBitmapFromText(mPracticeString);
-        mDrawView.canVibrate(true);
+            SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(this);
+            isFirstRun = wmbPreference.getBoolean("FIRSTPRACTICE", true);
+            if (isFirstRun) {
+                SharedPreferences.Editor editor = wmbPreference.edit();
+                editor.putBoolean("FIRSTPRACTICE", false);
+                editor.apply();
+            }
+
+            super.onCreate(savedInstanceState);
+            mDrawView.setBitmapFromText(mPracticeString);
+            mDrawView.canVibrate(true);
+            if(isFirstRun)
+                new ShowcaseView.Builder(PracticeActivity.this)
+                        .setTarget(new ViewTarget(R.id.drawing, PracticeActivity.this))
+                        .setContentTitle("")
+                        .setContentText(getString(R.string.traceHelp))
+                        .setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                ((ShowcaseView) view.getParent()).hide();
+                                new ShowcaseView.Builder(PracticeActivity.this)
+                                        .setTarget(new ViewTarget(R.id.done_save_button, PracticeActivity.this))
+                                        .setContentTitle("")
+                                        .setContentText(getString(R.string.doneHelp))
+                                        .setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                ((ShowcaseView) view.getParent()).hide();
+                                                new ShowcaseView.Builder(PracticeActivity.this)
+                                                        .setTarget(new ViewTarget(R.id.reset_button, PracticeActivity.this))
+                                                        .setContentTitle("")
+                                                        .setContentText(getString(R.string.resetHelp))
+                                                        .setOnClickListener(new View.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(View view) {
+                                                                ((ShowcaseView) view.getParent()).hide();
+                                                                new ShowcaseView.Builder(PracticeActivity.this)
+                                                                        .setTarget(new ViewTarget(R.id.action_next, PracticeActivity.this))
+                                                                        .setContentTitle("")
+                                                                        .setContentText(getString(R.string.actionbarHelp))
+                                                                        .build();
+                                                            }
+                                                        })
+                                                        .build();
+                                            }
+                                        })
+                                        .build();
+                            }
+                        })
+                        .build();
         } catch (Exception e) {
             showErrorDialog(e);
         }
@@ -55,6 +106,12 @@ public class PracticeActivity extends PracticeBaseActivity {
                     //User cannot draw anymore on the View
                     mDrawView.canDraw(false);
                     mDone = true;
+                    if(isFirstRun)
+                        new ShowcaseView.Builder(this)
+                                .setTarget(new ViewTarget(R.id.done_save_button, this))
+                                .setContentTitle("")
+                                .setContentText(getString(R.string.saveHelp))
+                                .build();
                 }
                 break;
         }

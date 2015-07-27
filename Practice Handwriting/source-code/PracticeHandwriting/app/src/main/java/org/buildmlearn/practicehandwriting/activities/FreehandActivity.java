@@ -1,7 +1,12 @@
 package org.buildmlearn.practicehandwriting.activities;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
+
+import com.github.amlcurran.showcaseview.ShowcaseView;
+import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
 import org.buildmlearn.practicehandwriting.R;
 import org.buildmlearn.practicehandwriting.helper.CalculateFreehandScore;
@@ -13,6 +18,24 @@ public class FreehandActivity extends PracticeBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mDrawView.canVibrate(false);
+        SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(this);
+        isFirstRun = wmbPreference.getBoolean("FIRSTFREEHAND", true);
+        if (isFirstRun) {
+            SharedPreferences.Editor editor = wmbPreference.edit();
+            editor.putBoolean("FIRSTFREEHAND", false);
+            editor.apply();
+            new ShowcaseView.Builder(this)
+                    .setTarget(new ViewTarget(R.id.drawing, this))
+                    .setContentTitle("")
+                    .setContentText(getString(R.string.freehandHelp))
+                    .setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            ((ShowcaseView) view.getParent()).hide();
+                        }
+                    })
+                    .build();
+        }
     }
 
     @Override

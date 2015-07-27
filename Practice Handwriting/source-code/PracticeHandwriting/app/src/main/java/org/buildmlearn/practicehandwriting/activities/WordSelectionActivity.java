@@ -2,10 +2,15 @@ package org.buildmlearn.practicehandwriting.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+
+import com.github.amlcurran.showcaseview.ShowcaseView;
+import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
 import org.buildmlearn.practicehandwriting.R;
 
@@ -20,18 +25,31 @@ public class WordSelectionActivity extends Activity {
         setContentView(R.layout.activity_word_selection);
 
         //slide in animation for the buttons.
-        //TODO Need to put this is a for loop
-        Animation animation_1 = AnimationUtils.loadAnimation(this, R.anim.slide_in);
+        final int[] buttons = new int[] {R.id.easy_button,R.id.medium_button,R.id.hard_button};
+        for(int i=0;i<buttons.length;i++) {
+            Animation animation = AnimationUtils.loadAnimation(this, R.anim.slide_in);
+            animation.setStartOffset(500 * i);
+            findViewById(buttons[i]).startAnimation(animation);
+        }
 
-        Animation animation_2 = AnimationUtils.loadAnimation(this, R.anim.slide_in);
-        animation_2.setStartOffset(500);
-
-        Animation animation_3 = AnimationUtils.loadAnimation(this, R.anim.slide_in);
-        animation_3.setStartOffset(1000);
-
-        findViewById(R.id.easy_button).startAnimation(animation_1);
-        findViewById(R.id.medium_button).startAnimation(animation_2);
-        findViewById(R.id.hard_button).startAnimation(animation_3);
+        SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean isFirstRun = wmbPreference.getBoolean("FIRSTWORD", true);
+        if (isFirstRun) {
+            SharedPreferences.Editor editor = wmbPreference.edit();
+            editor.putBoolean("FIRSTWORD", false);
+            editor.apply();
+            new ShowcaseView.Builder(this)
+                    .setTarget(new ViewTarget(R.id.easy_button, this))
+                    .setContentTitle("")
+                    .setContentText(getString(R.string.word_selection))
+                    .setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            ((ShowcaseView) view.getParent()).hide();
+                        }
+                    })
+                    .build();
+        }
     }
 
     public void wordSelectionOnClick(View view) {

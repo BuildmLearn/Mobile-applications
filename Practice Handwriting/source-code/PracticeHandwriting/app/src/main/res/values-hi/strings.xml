@@ -1311,4 +1311,14 @@
     <string name="action_next">Next</string>
     <string name="action_previous">Previous</string>
 
+    <string name="mode_selection">अभ्यास की विधा चुनो</string>
+    <string name="character_selection">अक्षर चुनो</string>
+    <string name="word_selection">शब्द की कठिनाई चुनो</string>
+    <string name="traceHelp">काले सीमा के बाहर मत जाना</string>
+    <string name="doneHelp">लिखने के बाद दबाऐं</string>
+    <string name="resetHelp">फिर से शुरु करने के लिए दबाऐं</string>
+    <string name="saveHelp">Press to save to memory</string>
+    <string name="actionbarHelp">अगला/पिछला अक्षर /शब्द पे जाने के लिए दबाऐं</string>
+    <string name="freehandHelp">सीमा के बिना लिखे</string>
+    <string name="timerHelp">समय समाप्त होने से पहले जितना लिख सकते हैं लिखे</string>
 </resources>

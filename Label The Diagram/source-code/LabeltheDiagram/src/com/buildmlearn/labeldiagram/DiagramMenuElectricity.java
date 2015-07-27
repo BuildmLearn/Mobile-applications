@@ -1,6 +1,7 @@
 package com.buildmlearn.labeldiagram;
 
 import com.buildmlearn.labeldiagram.helper.HelperClass;
+import com.buildmlearn.labeldiagram.resources.DryCellFragment;
 import com.buildmlearn.labeldiagram.resources.HumanEarFragment;
 import com.buildmlearn.labeldiagram.resources.HumanEyeFragment;
 import com.buildmlearn.labeldiagram.resources.HumanHeartFragment;
@@ -23,8 +24,8 @@ public class DiagramMenuElectricity extends FragmentActivity {
 
 	FragmentPagerAdapter adapterViewPager;
 	static float scoreMotor;
-	/*static float scoreLens;
-	static float scoreEMSpectrum;*/
+	static float scoreDryCell;
+	//static float scoreEMSpectrum;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +51,8 @@ public class DiagramMenuElectricity extends FragmentActivity {
 		SharedPreferences pref = getApplicationContext().getSharedPreferences(
 				"com.buildmlearn.labeldiagram.PREFERENCE_FILE_KEY",
 				Context.MODE_PRIVATE);
-		scoreMotor = pref.getFloat("Prism", 0);
-		//scoreLens = pref.getFloat("Lens", 0);
+		scoreMotor = pref.getFloat("Motor", 0);
+		scoreDryCell = pref.getFloat("DryCell", 0);
 		/*scoreEMSpectrum = pref.getFloat("EMSpectrum", 0);*/
 	}
 
@@ -83,12 +84,12 @@ public class DiagramMenuElectricity extends FragmentActivity {
 				motorFrag.setArguments(bundle);
 				return motorFrag;
 			case 1:
-				MotorFragment cellFrag = new MotorFragment();
-				bundle.putFloat("SCORE_SAVED", scoreMotor);
+				DryCellFragment cellFrag = new DryCellFragment();
+				bundle.putFloat("SCORE_SAVED", scoreDryCell);
 				cellFrag.setArguments(bundle);
 				return cellFrag;
 			case 2:
-				MotorFragment circuitFrag = new MotorFragment();
+				DryCellFragment circuitFrag = new DryCellFragment();
 				bundle.putFloat("SCORE_SAVED", scoreMotor);
 				circuitFrag.setArguments(bundle);
 				return circuitFrag;

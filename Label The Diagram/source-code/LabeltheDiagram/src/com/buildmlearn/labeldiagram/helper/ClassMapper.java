@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import com.buildmlearn.labeldiagram.DiagramPlayBacteria;
 import com.buildmlearn.labeldiagram.DiagramPlayCarbonCycle;
+import com.buildmlearn.labeldiagram.DiagramPlayDryCell;
 import com.buildmlearn.labeldiagram.DiagramPlayHumanEar;
 import com.buildmlearn.labeldiagram.DiagramPlayHumanEye;
 import com.buildmlearn.labeldiagram.DiagramPlayHumanHeart;
@@ -43,6 +44,7 @@ public class ClassMapper {
 		tagMap.put("Prism Refraction", "Prism");
 		tagMap.put("Lens Refraction", "Lens");
 		tagMap.put("Electric Motor", "Motor");
+		tagMap.put("Dry Cell", "DryCell");
 		
 	}
 
@@ -63,6 +65,7 @@ public class ClassMapper {
 		classMap.put("Prism", DiagramPlayPrism.class);
 		classMap.put("Lens", DiagramPlayLens.class);
 		classMap.put("Motor", DiagramPlayMotor.class);
+		classMap.put("DryCell", DiagramPlayDryCell.class);
 		
 	}
 

@@ -65,6 +65,9 @@ public class PlaceHolderContainer {
 			case "Motor":
 				getMotorMarkerList();
 				break;
+			case "DryCell":
+				getDryCellMarkerList();
+				break;
 			// TODO The other diagrams goes here
 
 			}
@@ -72,6 +75,26 @@ public class PlaceHolderContainer {
 		} else {
 			return null;
 		}
+	}
+
+	private List<Integer[]> getDryCellMarkerList() {
+
+		leftPlaceHolderList = new Integer[] { R.id.posTerminalBlb,
+				R.id.negTerminalBlb, R.id.airSpaceBlb, R.id.anodeBlb
+
+		};
+
+		rightPlaceHolderList = new Integer[] { R.id.chemPasteBlb,
+				R.id.cathodeBlb, R.id.sealBlb, R.id.insulatorBlb,
+				R.id.mJacketBlb
+
+		};
+
+		listHolder.add(leftPlaceHolderList);
+		listHolder.add(rightPlaceHolderList);
+
+		return listHolder;
+
 	}
 
 	private List<Integer[]> getMotorMarkerList() {
@@ -82,8 +105,8 @@ public class PlaceHolderContainer {
 
 		};
 
-		rightPlaceHolderList = new Integer[] { R.id.brushBlb,
-				R.id.batteryBlb, R.id.commutatorBlb, R.id.armatureBlb,
+		rightPlaceHolderList = new Integer[] { R.id.brushBlb, R.id.batteryBlb,
+				R.id.commutatorBlb, R.id.armatureBlb,
 
 		};
 

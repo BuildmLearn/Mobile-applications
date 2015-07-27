@@ -60,6 +60,9 @@ public class TagPlaceholderMapper {
 			case "Motor":
 				getMotorTagMap();
 				break;
+			case "DryCell":
+				getDryCellTagMap();
+				break;
 			
 			}
 		}
@@ -67,6 +70,22 @@ public class TagPlaceholderMapper {
 		return tagMapper;
 	}
 	
+	private SparseIntArray getDryCellTagMap() {
+		
+		tagMapper.put(R.id.posTerminalBlb, R.id.posTerminalTag);
+		tagMapper.put(R.id.negTerminalBlb, R.id.negTerminalTag);
+		tagMapper.put(R.id.chemPasteBlb, R.id.chemPasteTag);
+		tagMapper.put(R.id.anodeBlb, R.id.anodeTag);
+		tagMapper.put(R.id.cathodeBlb, R.id.cathodeTag);
+		tagMapper.put(R.id.airSpaceBlb, R.id.airSpaceTag);
+		tagMapper.put(R.id.sealBlb, R.id.sealTag);
+		tagMapper.put(R.id.mJacketBlb, R.id.mJacketTag);
+		tagMapper.put(R.id.insulatorBlb, R.id.insulatorTag);
+		
+		return tagMapper;
+		
+	}
+
 	private SparseIntArray getMotorTagMap() {
 		
 		tagMapper.put(R.id.northPoleBlb, R.id.northPoleTag);

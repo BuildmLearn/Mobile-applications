@@ -9,6 +9,7 @@
     xmlns:fbutton="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.widget.Toolbar
+        android:id="@+id/LanguageToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/ActionbarBg"
@@ -35,8 +36,7 @@
         fbutton:buttonColor="@color/ButtonBg"
         android:textColor="@color/White"
         android:textSize="20sp"
-        android:text="@string/English"
-        android:onClick="languageActivityOnClick"/>
+        android:text="@string/English" />
     </LinearLayout>
 
     <View
@@ -58,8 +58,7 @@
             fbutton:buttonColor="@color/ButtonBg"
             android:textColor="@color/White"
             android:textSize="20sp"
-            android:text="@string/Hindi"
-            android:onClick="languageActivityOnClick"/>
+            android:text="@string/Hindi"/>
     </LinearLayout>
 
     <View
@@ -81,8 +80,7 @@
             android:textSize="20sp"
             fbutton:buttonColor="@color/ButtonBg"
             android:textColor="@color/White"
-            android:text="@string/Arabic"
-            android:onClick="languageActivityOnClick"/>
+            android:text="@string/Arabic"/>
     </LinearLayout>
 
     <View

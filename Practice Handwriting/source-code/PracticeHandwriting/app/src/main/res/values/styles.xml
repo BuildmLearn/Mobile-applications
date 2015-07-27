@@ -4,6 +4,7 @@
         parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
         <item name="android:windowActionBar">false</item>
+
         <!-- Support library compatibility -->
         <item name="actionBarStyle">@style/MyActionBar</item>
         <item name="windowActionBar">false</item>

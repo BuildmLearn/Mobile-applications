@@ -3,9 +3,11 @@ package org.buildmlearn.practicehandwriting.helper;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,6 +18,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.amlcurran.showcaseview.ShowcaseView;
+import com.github.amlcurran.showcaseview.targets.ViewTarget;
 import com.software.shell.fab.ActionButton;
 
 import org.buildmlearn.practicehandwriting.R;
@@ -38,7 +42,7 @@ public class PracticeBaseActivity extends ActionBarActivity {
     protected boolean mDone; //Boolean variable set if the user has finished tracing
     protected String mPracticeString; //String to be practiced
     protected TextView mScoreTimerView, mBestScoreView;
-
+    protected boolean isFirstRun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

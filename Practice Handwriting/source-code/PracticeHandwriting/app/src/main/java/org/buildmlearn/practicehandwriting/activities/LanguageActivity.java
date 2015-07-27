@@ -4,15 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import org.buildmlearn.practicehandwriting.R;
-import org.buildmlearn.practicehandwriting.helper.TimeTrialResult;
+import com.github.amlcurran.showcaseview.ShowcaseView;
+import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
-import java.util.ArrayList;
+import org.buildmlearn.practicehandwriting.R;
+
 import java.util.Locale;
 
 
@@ -23,12 +23,31 @@ public class LanguageActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
         //adding slide in animation for the buttons
-        int[] buttons = new int[] {R.id.english_button,R.id.hindi_button,R.id.arabic_button};
+        final int[] buttons = new int[] {R.id.english_button,R.id.hindi_button,R.id.arabic_button};
         for(int i=0;i<buttons.length;i++) {
             Animation animation = AnimationUtils.loadAnimation(this, R.anim.slide_in);
             animation.setStartOffset(500 * i);
             findViewById(buttons[i]).startAnimation(animation);
         }
+        if(SplashActivity.isFirstRun)
+            new ShowcaseView.Builder(this)
+                    .setTarget(new ViewTarget(R.id.english_button, this))
+                    .setContentTitle("Choose a Language")
+                    .setContentText("")
+                    .setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            ((ShowcaseView) view.getParent()).hide();
+                            for (int button : buttons)
+                                findViewById(button).setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        languageActivityOnClick(view);
+                                    }
+                                });
+                        }
+                    })
+                    .build();
     }
 
     public void languageActivityOnClick(View v) {
@@ -64,9 +83,6 @@ public class LanguageActivity extends Activity {
         SplashActivity.EASY_WORD_LIST = getResources().getStringArray(R.array.Words_easy);
         SplashActivity.MEDIUM_WORD_LIST = getResources().getStringArray(R.array.Words_medium);
         SplashActivity.HARD_WORD_LIST = getResources().getStringArray(R.array.Words_hard);
-
-        SplashActivity.mTimeTrialResults = new ArrayList<TimeTrialResult>(SplashActivity.CHARACTER_LIST.length);
-
     }
 
     @Override

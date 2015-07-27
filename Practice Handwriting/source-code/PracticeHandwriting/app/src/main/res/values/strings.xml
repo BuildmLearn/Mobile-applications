@@ -597,4 +597,14 @@
     <string name="action_next">Next</string>
     <string name="action_previous">Previous</string>
 
+    <string name="mode_selection">Choose a mode of practice</string>
+    <string name="character_selection">Choose a character</string>
+    <string name="word_selection">Choose a difficulty level</string>
+    <string name="traceHelp">Don\'t go outside the black boundary</string>
+    <string name="doneHelp">Press when you have finished writing</string>
+    <string name="resetHelp">Press to restart</string>
+    <string name="saveHelp">Press to save to memory</string>
+    <string name="actionbarHelp">Press to go to the next/previous letter/word</string>
+    <string name="freehandHelp">Trace freely without a boundary</string>
+    <string name="timerHelp">Trace as much as you can before the time runs out</string>
 </resources>

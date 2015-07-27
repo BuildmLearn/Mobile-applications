@@ -3,7 +3,9 @@ package org.buildmlearn.practicehandwriting.activities;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.util.DisplayMetrics;
 import android.widget.Toast;
@@ -27,6 +29,8 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
 
     private boolean mTtsInitDone;
 
+    public static boolean isFirstRun;
+
     public static ArrayList<TimeTrialResult> mTimeTrialResults;
 
     public static ScoreDbHelper mDbHelper;
@@ -38,6 +42,14 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         mTtsInitDone = false;
+
+        SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(this);
+        isFirstRun = wmbPreference.getBoolean("FIRSTRUN", true);
+        if (isFirstRun) {
+            SharedPreferences.Editor editor = wmbPreference.edit();
+            editor.putBoolean("FIRSTRUN", false);
+            editor.apply();
+        }
 
         //try catch block as action TextToSpeech.Engine.ACTION_CHECK_TTS_DATA might not be present if no TTS engine is present
         try {

@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 
+import com.github.amlcurran.showcaseview.ShowcaseView;
+import com.github.amlcurran.showcaseview.targets.ViewTarget;
+
 import org.buildmlearn.practicehandwriting.R;
 import org.buildmlearn.practicehandwriting.helper.Animator;
 
@@ -17,12 +20,32 @@ public class MainMenuActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         //adding zoom in animation for the buttons
-        int[] buttons = new int[] {R.id.character_button,R.id.word_button,R.id.timetrial_button,R.id.freehand_button};
+        final int[] buttons = new int[] {R.id.character_button,R.id.word_button,R.id.timetrial_button,R.id.freehand_button};
         for(int i=0;i<buttons.length;i++) {
             Animation animation = Animator.createScaleUpCompleteAnimation();
             animation.setStartOffset(500 * i);
             findViewById(buttons[i]).startAnimation(animation);
         }
+
+        if(SplashActivity.isFirstRun)
+            new ShowcaseView.Builder(this)
+                    .setTarget(new ViewTarget(R.id.character_button, this))
+                    .setContentTitle(getString(R.string.mode_selection))
+                    .setContentText("")
+                    .setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            for (int button : buttons)
+                                findViewById(button).setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        mainMenuActivityOnClick(view);
+                                    }
+                                });
+                            ((ShowcaseView) view.getParent()).hide();
+                        }
+                    })
+                    .build();
     }
 
     public void mainMenuActivityOnClick(View view) {
@@ -52,6 +75,7 @@ public class MainMenuActivity extends Activity {
     @Override
     public void onBackPressed() {
         finish();
+        SplashActivity.isFirstRun = false;
         startActivity(new Intent(MainMenuActivity.this, LanguageActivity.class));
     }
 }

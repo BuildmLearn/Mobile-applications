@@ -1,12 +1,17 @@
 package org.buildmlearn.practicehandwriting.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.view.Menu;
 import android.view.View;
+
+import com.github.amlcurran.showcaseview.ShowcaseView;
+import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
 import org.buildmlearn.practicehandwriting.R;
 import org.buildmlearn.practicehandwriting.helper.PracticeBaseActivity;
@@ -14,12 +19,14 @@ import org.buildmlearn.practicehandwriting.helper.PracticeBaseActivity;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Random;
 
 public class TimeTrialActivity extends PracticeBaseActivity {
     private CountDownTimer mCountDownTimer;
     private String mSaveDir;
+    private HashMap<String, Boolean> isStringDone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +53,31 @@ public class TimeTrialActivity extends PracticeBaseActivity {
             mSaveDir = File.separator + "TIME_TRIAL_TEMP_" + new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
             mDrawView.setBitmapFromText(mPracticeString);
             mDrawView.canVibrate(true);
-            mCountDownTimer.start();
+            isStringDone = new HashMap<>();
+            isStringDone.put(mPracticeString,true);
+
+            SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(this);
+            isFirstRun = wmbPreference.getBoolean("FIRSTTIMETRIAL", true);
+            if (isFirstRun) {
+                SharedPreferences.Editor editor = wmbPreference.edit();
+                editor.putBoolean("FIRSTTIMETRIAL", false);
+                editor.apply();
+
+                new ShowcaseView.Builder(TimeTrialActivity.this)
+                        .setTarget(new ViewTarget(R.id.score_and_timer_View, TimeTrialActivity.this))
+                        .setContentTitle("")
+                        .setContentText(getString(R.string.timerHelp))
+                        .setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                ((ShowcaseView) view.getParent()).hide();
+                                mCountDownTimer.start();
+                            }
+                        })
+                        .build();
+            } else {
+                mCountDownTimer.start();
+            }
         } catch (Exception e) {
             showErrorDialog(e);
         }
@@ -90,6 +121,9 @@ public class TimeTrialActivity extends PracticeBaseActivity {
 
                     System.gc();
                     mPracticeString = randomStringGenerator();
+                    while(isStringDone.containsKey(mPracticeString))
+                        mPracticeString = randomStringGenerator();
+                    isStringDone.put(mPracticeString,true);
                     mDrawView.destroyDrawingCache();
                     mDrawView.setBitmapFromText(mPracticeString);
                     if(SplashActivity.TTSobj!=null) {

@@ -68,6 +68,9 @@ public class PlaceHolderContainer {
 			case "DryCell":
 				getDryCellMarkerList();
 				break;
+			case "Circuit":
+				getCircuitMarkerList();
+				break;
 			// TODO The other diagrams goes here
 
 			}
@@ -75,6 +78,26 @@ public class PlaceHolderContainer {
 		} else {
 			return null;
 		}
+	}
+
+	private List<Integer[]> getCircuitMarkerList() {
+
+		leftPlaceHolderList = new Integer[] { R.id.capacitorBlb,
+				R.id.voltmeterBlb, R.id.loadBlb
+
+		};
+
+		rightPlaceHolderList = new Integer[] { R.id.batteryBlb,
+				R.id.currentBlb, R.id.ameterBlb, R.id.resistorBlb,
+				R.id.bulbBlb, R.id.switchBlb
+
+		};
+
+		listHolder.add(leftPlaceHolderList);
+		listHolder.add(rightPlaceHolderList);
+
+		return listHolder;
+
 	}
 
 	private List<Integer[]> getDryCellMarkerList() {

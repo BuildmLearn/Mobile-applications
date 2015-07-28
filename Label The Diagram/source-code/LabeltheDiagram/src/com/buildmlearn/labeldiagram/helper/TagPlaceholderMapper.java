@@ -63,6 +63,9 @@ public class TagPlaceholderMapper {
 			case "DryCell":
 				getDryCellTagMap();
 				break;
+			case "Circuit":
+				getCircuitTagMap();
+				break;
 			
 			}
 		}
@@ -70,6 +73,22 @@ public class TagPlaceholderMapper {
 		return tagMapper;
 	}
 	
+	private SparseIntArray getCircuitTagMap() {
+		
+		tagMapper.put(R.id.capacitorBlb, R.id.capacitorTag);
+		tagMapper.put(R.id.batteryBlb, R.id.batteryTag);
+		tagMapper.put(R.id.currentBlb, R.id.currentTag);
+		tagMapper.put(R.id.resistorBlb, R.id.resistorTag);
+		tagMapper.put(R.id.switchBlb, R.id.switchTag);
+		tagMapper.put(R.id.ameterBlb, R.id.ameterTag);
+		tagMapper.put(R.id.loadBlb, R.id.loadTag);
+		tagMapper.put(R.id.voltmeterBlb, R.id.voltmeterTag);
+		tagMapper.put(R.id.bulbBlb, R.id.bulbTag);
+		
+		return tagMapper;
+		
+	}
+
 	private SparseIntArray getDryCellTagMap() {
 		
 		tagMapper.put(R.id.posTerminalBlb, R.id.posTerminalTag);

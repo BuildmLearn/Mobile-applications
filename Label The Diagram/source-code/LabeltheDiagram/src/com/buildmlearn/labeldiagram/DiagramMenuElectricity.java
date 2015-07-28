@@ -1,6 +1,7 @@
 package com.buildmlearn.labeldiagram;
 
 import com.buildmlearn.labeldiagram.helper.HelperClass;
+import com.buildmlearn.labeldiagram.resources.CircuitFragment;
 import com.buildmlearn.labeldiagram.resources.DryCellFragment;
 import com.buildmlearn.labeldiagram.resources.HumanEarFragment;
 import com.buildmlearn.labeldiagram.resources.HumanEyeFragment;
@@ -25,7 +26,7 @@ public class DiagramMenuElectricity extends FragmentActivity {
 	FragmentPagerAdapter adapterViewPager;
 	static float scoreMotor;
 	static float scoreDryCell;
-	//static float scoreEMSpectrum;
+	static float scoreCircuit;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class DiagramMenuElectricity extends FragmentActivity {
 				Context.MODE_PRIVATE);
 		scoreMotor = pref.getFloat("Motor", 0);
 		scoreDryCell = pref.getFloat("DryCell", 0);
-		/*scoreEMSpectrum = pref.getFloat("EMSpectrum", 0);*/
+		scoreCircuit = pref.getFloat("Circuit", 0);
 	}
 
 	public static class HumanBodyPagerAdapter extends FragmentPagerAdapter {
@@ -89,8 +90,8 @@ public class DiagramMenuElectricity extends FragmentActivity {
 				cellFrag.setArguments(bundle);
 				return cellFrag;
 			case 2:
-				DryCellFragment circuitFrag = new DryCellFragment();
-				bundle.putFloat("SCORE_SAVED", scoreMotor);
+				CircuitFragment circuitFrag = new CircuitFragment();
+				bundle.putFloat("SCORE_SAVED", scoreCircuit);
 				circuitFrag.setArguments(bundle);
 				return circuitFrag;
 			default:

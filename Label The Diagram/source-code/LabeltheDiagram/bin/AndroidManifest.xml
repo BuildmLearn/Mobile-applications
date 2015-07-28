@@ -88,6 +88,10 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.DiagramMenu">
             </meta-data>
         </activity>
+        <activity android:configChanges="orientation" android:name="com.buildmlearn.labeldiagram.DiagramPlayCircuit" android:parentActivityName="com.buildmlearn.labeldiagram.DiagramMenu" android:screenOrientation="portrait">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.DiagramMenu">
+            </meta-data>
+        </activity>
         <activity android:name="com.buildmlearn.labeldiagram.DiagramMenu" android:parentActivityName="com.buildmlearn.labeldiagram.DiagramCategory">
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.DiagramCategory">
             </meta-data>

@@ -24,7 +24,7 @@ public class DiagramMenuOptics extends FragmentActivity {
 	FragmentPagerAdapter adapterViewPager;
 	static float scorePrism;
 	static float scoreLens;
-	static float scoreEMSpectrum;
+	static float scoreSpectrum;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class DiagramMenuOptics extends FragmentActivity {
 				Context.MODE_PRIVATE);
 		scorePrism = pref.getFloat("Prism", 0);
 		scoreLens = pref.getFloat("Lens", 0);
-		/*scoreEMSpectrum = pref.getFloat("EMSpectrum", 0);*/
+		scoreSpectrum = pref.getFloat("Spectrum", 0);
 	}
 
 	public static class HumanBodyPagerAdapter extends FragmentPagerAdapter {
@@ -89,7 +89,7 @@ public class DiagramMenuOptics extends FragmentActivity {
 				return lensFrag;
 			case 2:
 				SpectrumFragment spectrumFrag = new SpectrumFragment();
-				bundle.putFloat("SCORE_SAVED", scoreLens);
+				bundle.putFloat("SCORE_SAVED", scoreSpectrum);
 				spectrumFrag.setArguments(bundle);
 				return spectrumFrag;
 			default:

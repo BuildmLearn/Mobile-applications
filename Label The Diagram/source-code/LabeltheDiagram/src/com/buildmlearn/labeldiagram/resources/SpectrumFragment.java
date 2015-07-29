@@ -1,6 +1,7 @@
 package com.buildmlearn.labeldiagram.resources;
 
 import com.buildmlearn.labeldiagram.DiagramPlayPrism;
+import com.buildmlearn.labeldiagram.DiagramPlaySpectrum;
 import com.example.labelthediagram.R;
 
 import android.content.Intent;
@@ -52,7 +53,7 @@ public class SpectrumFragment extends Fragment {
 			public void onClick(View v) {
 
 				Intent spectrumIntent = new Intent(getActivity(),
-						DiagramPlayPrism.class);
+						DiagramPlaySpectrum.class);
 				spectrumIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				spectrumIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				spectrumIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

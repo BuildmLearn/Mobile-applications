@@ -189,6 +189,16 @@
             </meta-data>
         </activity>
         <activity
+            android:name="com.buildmlearn.labeldiagram.DiagramPlaySpectrum"
+            android:configChanges="orientation"
+            android:parentActivityName="com.buildmlearn.labeldiagram.DiagramMenu"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.buildmlearn.labeldiagram.DiagramMenu" >
+            </meta-data>
+        </activity>
+        <activity
             android:name="com.buildmlearn.labeldiagram.DiagramPlayMotor"
             android:configChanges="orientation"
             android:parentActivityName="com.buildmlearn.labeldiagram.DiagramMenu"
@@ -198,7 +208,7 @@
                 android:value="com.buildmlearn.labeldiagram.DiagramMenu" >
             </meta-data>
         </activity>
-         <activity
+        <activity
             android:name="com.buildmlearn.labeldiagram.DiagramPlayDryCell"
             android:configChanges="orientation"
             android:parentActivityName="com.buildmlearn.labeldiagram.DiagramMenu"
@@ -296,10 +306,12 @@
                 android:value="com.buildmlearn.labeldiagram.ScoreboardViewer" >
             </meta-data>
         </activity>
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="37b3161e48423b96715470d17f0ac8dad7799436" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>

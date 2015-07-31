@@ -48,6 +48,14 @@ public class LanguageActivity extends Activity {
                         }
                     })
                     .build();
+        else
+            for (int button : buttons)
+                findViewById(button).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        languageActivityOnClick(view);
+                    }
+                });
     }
 
     public void languageActivityOnClick(View v) {

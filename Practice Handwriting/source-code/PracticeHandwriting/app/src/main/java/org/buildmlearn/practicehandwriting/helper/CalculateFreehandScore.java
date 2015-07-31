@@ -39,7 +39,7 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
         mTouches = mDrawView.getTouchesList();
         mTouchBounds = mDrawView.getTouchBounds();
 
-        mDrawView.clearCanvas();
+        mDrawView.init();
         mDrawView.init();
         mDrawView.setBitmapFromText(mPracticeString);//setting the text to calculate the score
         mDrawView.canDraw(false);
@@ -129,7 +129,7 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
             SplashActivity.mDbHelper.writeScore(mPracticeString,best);
         }
 
-        mDrawView.clearCanvas();
+        mDrawView.init();
         mDrawView.init();
         //Overlaying the touches bitmap on the text at the best scale and position and setting it to the DrawingView
         mDrawView.setBitmap(bitmapOverlay(mSavedImg, scaleBitmap(mTouchImg, result[1], result[2]), (int) result[3], (int) result[4]));

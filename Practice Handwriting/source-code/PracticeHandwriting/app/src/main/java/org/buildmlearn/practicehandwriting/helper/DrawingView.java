@@ -39,7 +39,7 @@ public class DrawingView extends View {
     private Path mDrawPath; //The drawing path
     private Paint mDrawPaint, mCanvasPaint; //The paints used to draw on the canvas
     private Canvas mDrawCanvas; //The canvas of the view
-    private Bitmap mCanvasBitmap; //The bitmap that is set
+    private Bitmap mCanvasBitmap, mTextBitmap; //The bitmap that is set
     private Vibrator mVibrator; //Vibrator instance to vibrate if the user traces outside the boundary of the string
     private long mWrongTouches, mCorrectTouches; //number of correct/wrong touches
     private boolean mDraw, mVibrate; //Boolean variables that allow the view to be redrawn and to vibrate
@@ -74,7 +74,6 @@ public class DrawingView extends View {
         //Getting display width and height
         mWidth = SplashActivity.mDisplayMetrics.widthPixels;
         mHeight = SplashActivity.mDisplayMetrics.heightPixels;
-        clearCanvas();
 
         ((Activity)mContext).runOnUiThread(new Runnable() {
             @Override
@@ -118,11 +117,20 @@ public class DrawingView extends View {
         mVibrate = true; //Vibration on by default
 
         mTouchPoints = new ArrayList<>(); //Empty list as no touches yet
+
+        System.gc();
+        if(mCanvasBitmap!=null) {
+            mCanvasBitmap.recycle();
+            mCanvasBitmap = null;
+            mDrawCanvas = null;
+        }
+        mCanvasBitmap = Bitmap.createBitmap(mWidth,mHeight, Bitmap.Config.ARGB_4444);
+        mDrawCanvas = new Canvas(mCanvasBitmap);
     }
 
     //function to set text to be traced to the view
     public void setBitmapFromText(String str) {
-        clearCanvas();
+        init();
 
         Paint paintText = new Paint(Paint.ANTI_ALIAS_FLAG);
         paintText.setColor(Color.BLACK);
@@ -141,21 +149,14 @@ public class DrawingView extends View {
         mTextHeight = (int) textHeight;
         //Drawing the text at the center of the view
         mDrawCanvas.drawText(str, (mWidth - paintText.measureText(str)) / 2, (mHeight / 2) + textOffset, paintText);
+        mTextBitmap = Bitmap.createBitmap(mCanvasBitmap);
         invalidate();
     }
 
     public void setBitmap(Bitmap b) {
-        clearCanvas();
+        init();
         //Drawing the bitmap at the center of the view
         mDrawCanvas.drawBitmap(b, (mWidth - b.getWidth()) / 2, (mHeight - b.getHeight()) / 2, mCanvasPaint);
-        invalidate();
-    }
-
-    //Clearing the canvas
-    public void clearCanvas() {
-        mCanvasBitmap = Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_8888);
-        mDrawCanvas = new Canvas(mCanvasBitmap);
-        init();
         invalidate();
     }
 
@@ -189,7 +190,7 @@ public class DrawingView extends View {
                 maxY = y;
 
             //checking if the touches are correct or wrong (inside or outside the boundary
-            if ((x >= 0 && x < mWidth && y >= 0 && y < mHeight && mCanvasBitmap.getPixel(x, y) != getResources().getColor(R.color.Black)  && mCanvasBitmap.getPixel(x, y) != mTouchColour) || (x < 0 || x >= mWidth || y < 0 || y >= mHeight)) {
+            if ((x >= 0 && x < mWidth && y >= 0 && y < mHeight && mTextBitmap.getPixel(x,y)== Color.TRANSPARENT) || (x < 0 || x >= mWidth || y < 0 || y >= mHeight)) {
                 mWrongTouches++;
                 if(mVibrate) {//Device will vibrate only if mVibrate is true
                     mVibrator.vibrate(100);
@@ -239,7 +240,7 @@ public class DrawingView extends View {
 
     public Bitmap getBitmap() {
         //Get the image of the view
-        Bitmap overlayBitmap = Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_8888);
+        Bitmap overlayBitmap = Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_4444);
         overlayBitmap.eraseColor(getResources().getColor(R.color.AppBg));
         Canvas canvas = new Canvas(overlayBitmap);
         canvas.drawBitmap(mCanvasBitmap,0,0,null);
@@ -266,12 +267,15 @@ public class DrawingView extends View {
         if(minX!=mWidth && minY!=mHeight && maxX!=-1 && maxY!=-1)
             return Bitmap.createBitmap(mCanvasBitmap,Math.max(minX - 30, 0),Math.max(minY -30,0),Math.min(maxX - minX +40, mWidth - minX),Math.min(maxY - minY +40, mHeight - minY));
         else//This implies no touch events were received
-            return Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_8888);
+            return Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_4444);
     }
 
     public String saveBitmap(String practiceString, String dirExtra) {
+        System.out.println(Environment.getExternalStorageDirectory());
         File mediaStorageDir = new File(Environment.getExternalStorageDirectory() + File.separator + getResources().getString(R.string.app_name) + dirExtra);
-        if (!mediaStorageDir.exists() && !mediaStorageDir.mkdir()) {
+        if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()) {
+            System.out.println(mediaStorageDir.exists());
+            System.out.println(mediaStorageDir.mkdirs());
             return "Could not save trace. Unable to create directory";
         } else {//Compress the bitmap and then store it
             File file;
@@ -302,7 +306,7 @@ public class DrawingView extends View {
                     actualWidth = (int) maxWidth;
                 }
             }
-            Bitmap scaledBitmap = Bitmap.createBitmap(actualWidth, actualHeight, Bitmap.Config.ARGB_8888);
+            Bitmap scaledBitmap = Bitmap.createBitmap(actualWidth, actualHeight, Bitmap.Config.ARGB_4444);
 
             float ratioX = actualWidth / (float) mWidth;
             float ratioY = actualHeight / (float) mHeight;

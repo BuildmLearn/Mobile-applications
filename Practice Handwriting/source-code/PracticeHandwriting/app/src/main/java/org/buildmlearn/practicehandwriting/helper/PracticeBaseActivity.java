@@ -68,12 +68,12 @@ public class PracticeBaseActivity extends ActionBarActivity {
             mScoreTimerView.bringToFront();
 
             //speaking the string to be practiced
-            if(SplashActivity.TTSobj!=null) {
+           /* if(SplashActivity.TTSobj!=null) {
                 if (Build.VERSION.SDK_INT >= 21) //This function works only on devices with SDK version greater that 20
                     SplashActivity.TTSobj.speak(mPracticeString, TextToSpeech.QUEUE_FLUSH, null, null);
                 else //if the device is running an older version of android, use the previous speaking function
                     SplashActivity.TTSobj.speak(mPracticeString, TextToSpeech.QUEUE_FLUSH, null);
-            }
+            }*/
         } catch (Exception e) {
             showErrorDialog(e);
         }
@@ -172,7 +172,12 @@ public class PracticeBaseActivity extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
+    }
 
+    @Override
+    public void onBackPressed() {
+        System.gc();
+        super.onBackPressed();
     }
 
 }

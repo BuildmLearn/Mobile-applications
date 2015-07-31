@@ -66,6 +66,9 @@ public class TagPlaceholderMapper {
 			case "Circuit":
 				getCircuitTagMap();
 				break;
+			case "Spectrum":
+				getSpectrumTagMap();
+				break;
 			
 			}
 		}
@@ -73,6 +76,22 @@ public class TagPlaceholderMapper {
 		return tagMapper;
 	}
 	
+	private SparseIntArray getSpectrumTagMap() {
+
+		tagMapper.put(R.id.amBlb, R.id.amTag);
+		tagMapper.put(R.id.fmBlb, R.id.fmTag);
+		tagMapper.put(R.id.microwaveBlb, R.id.microwaveTag);
+		tagMapper.put(R.id.visibleLightBlb, R.id.visibleLightTag);
+		tagMapper.put(R.id.radio_wavesBlb, R.id.radio_wavesTag);
+		tagMapper.put(R.id.irBlb, R.id.irTag);
+		tagMapper.put(R.id.uvBlb, R.id.uvTag);
+		tagMapper.put(R.id.xrayBlb, R.id.xrayTag);
+		tagMapper.put(R.id.gammaBlb, R.id.gammaTag);
+		
+		return tagMapper;
+		
+	}
+
 	private SparseIntArray getCircuitTagMap() {
 		
 		tagMapper.put(R.id.capacitorBlb, R.id.capacitorTag);

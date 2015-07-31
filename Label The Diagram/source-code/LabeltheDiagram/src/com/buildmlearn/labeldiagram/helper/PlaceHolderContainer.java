@@ -71,6 +71,9 @@ public class PlaceHolderContainer {
 			case "Circuit":
 				getCircuitMarkerList();
 				break;
+			case "Spectrum":
+				getSpectrumMarkerList();
+				break;
 			// TODO The other diagrams goes here
 
 			}
@@ -78,6 +81,25 @@ public class PlaceHolderContainer {
 		} else {
 			return null;
 		}
+	}
+
+	private List<Integer[]> getSpectrumMarkerList() {
+
+		leftPlaceHolderList = new Integer[] { R.id.radio_wavesBlb, R.id.irBlb
+
+		};
+
+		rightPlaceHolderList = new Integer[] { R.id.amBlb, R.id.fmBlb,
+				R.id.uvBlb, R.id.xrayBlb, R.id.gammaBlb, R.id.visibleLightBlb,
+				R.id.microwaveBlb
+
+		};
+
+		listHolder.add(leftPlaceHolderList);
+		listHolder.add(rightPlaceHolderList);
+
+		return listHolder;
+
 	}
 
 	private List<Integer[]> getCircuitMarkerList() {

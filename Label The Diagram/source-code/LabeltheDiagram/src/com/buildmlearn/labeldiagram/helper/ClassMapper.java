@@ -14,6 +14,7 @@ import com.buildmlearn.labeldiagram.DiagramPlayMotor;
 import com.buildmlearn.labeldiagram.DiagramPlayPlantCell;
 import com.buildmlearn.labeldiagram.DiagramPlayPlantFlower;
 import com.buildmlearn.labeldiagram.DiagramPlayPrism;
+import com.buildmlearn.labeldiagram.DiagramPlaySolarSystem;
 import com.buildmlearn.labeldiagram.DiagramPlaySpectrum;
 import com.buildmlearn.labeldiagram.DiagramPlayVirus;
 import com.buildmlearn.labeldiagram.DiagramPlayWaterCycle;
@@ -48,6 +49,7 @@ public class ClassMapper {
 		tagMap.put("Electric Motor", "Motor");
 		tagMap.put("Dry Cell", "DryCell");
 		tagMap.put("Electric Circuit", "Circuit");
+		tagMap.put("Solar System", "SolarSystem");
 		
 	}
 
@@ -71,6 +73,7 @@ public class ClassMapper {
 		classMap.put("Motor", DiagramPlayMotor.class);
 		classMap.put("DryCell", DiagramPlayDryCell.class);
 		classMap.put("Circuit", DiagramPlayCircuit.class);
+		classMap.put("Solar System", DiagramPlaySolarSystem.class);
 		
 	}
 

@@ -69,6 +69,9 @@ public class TagPlaceholderMapper {
 			case "Spectrum":
 				getSpectrumTagMap();
 				break;
+			case "SolarSystem":
+				getSolarSystemTagMap();
+				break;
 			
 			}
 		}
@@ -76,6 +79,22 @@ public class TagPlaceholderMapper {
 		return tagMapper;
 	}
 	
+	private SparseIntArray getSolarSystemTagMap() {
+		
+		tagMapper.put(R.id.sunBlb, R.id.sunTag);
+		tagMapper.put(R.id.mercuryBlb, R.id.mercuryTag);
+		tagMapper.put(R.id.venusBlb, R.id.venusTag);
+		tagMapper.put(R.id.earthBlb, R.id.earthTag);
+		tagMapper.put(R.id.marsBlb, R.id.marsTag);
+		tagMapper.put(R.id.jupiterBlb, R.id.jupiterTag);
+		tagMapper.put(R.id.saturnBlb, R.id.saturnTag);
+		tagMapper.put(R.id.uranusBlb, R.id.uranusTag);
+		tagMapper.put(R.id.neptuneBlb, R.id.neptuneTag);
+		
+		return tagMapper;
+		
+	}
+
 	private SparseIntArray getSpectrumTagMap() {
 
 		tagMapper.put(R.id.amBlb, R.id.amTag);

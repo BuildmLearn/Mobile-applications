@@ -1,8 +1,6 @@
 package com.buildmlearn.labeldiagram.resources;
 
-import com.buildmlearn.labeldiagram.DiagramPlayPrism;
 import com.buildmlearn.labeldiagram.DiagramPlaySolarSystem;
-import com.buildmlearn.labeldiagram.DiagramPlaySpectrum;
 import com.example.labelthediagram.R;
 
 import android.content.Intent;
@@ -20,7 +18,6 @@ public class SolarSystemFragment extends Fragment {
 
 	private Typeface tfThin;
 	private float score;
-	private int gameScore;
 
 	// Store instance variables based on arguments passed
 	@Override

@@ -77,6 +77,9 @@ public class PlaceHolderContainer {
 			case "SolarSystem":
 				getSolarSystemMarkerList();
 				break;
+			case "StarPatterns":
+				getStarPatternsMarkerList();
+				break;
 			// TODO The other diagrams goes here
 
 			}
@@ -86,11 +89,26 @@ public class PlaceHolderContainer {
 		}
 	}
 
-	private List<Integer[]> getSolarSystemMarkerList() {
-		
-		leftPlaceHolderList = new Integer[] { R.id.earthBlb, R.id.venusBlb
+	private List<Integer[]> getStarPatternsMarkerList() {
+
+		leftPlaceHolderList = new Integer[] { R.id.libraBlb, R.id.orianBlb };
+
+		rightPlaceHolderList = new Integer[] { R.id.scorpioBlb, R.id.leoBlb,
+				R.id.little_dripperBlb, R.id.big_dripperBlb, R.id.geminiBlb,
+				R.id.dracoBlb,
 
 		};
+
+		listHolder.add(leftPlaceHolderList);
+		listHolder.add(rightPlaceHolderList);
+
+		return listHolder;
+
+	}
+
+	private List<Integer[]> getSolarSystemMarkerList() {
+
+		leftPlaceHolderList = new Integer[] { R.id.earthBlb, R.id.venusBlb };
 
 		rightPlaceHolderList = new Integer[] { R.id.sunBlb, R.id.mercuryBlb,
 				R.id.neptuneBlb, R.id.saturnBlb, R.id.jupiterBlb, R.id.marsBlb,
@@ -102,7 +120,7 @@ public class PlaceHolderContainer {
 		listHolder.add(rightPlaceHolderList);
 
 		return listHolder;
-		
+
 	}
 
 	private List<Integer[]> getSpectrumMarkerList() {

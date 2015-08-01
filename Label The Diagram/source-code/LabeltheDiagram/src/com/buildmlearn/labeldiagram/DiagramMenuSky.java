@@ -10,6 +10,7 @@ import com.buildmlearn.labeldiagram.resources.LensFragment;
 import com.buildmlearn.labeldiagram.resources.MotorFragment;
 import com.buildmlearn.labeldiagram.resources.PrismFragment;
 import com.buildmlearn.labeldiagram.resources.SolarSystemFragment;
+import com.buildmlearn.labeldiagram.resources.StarPatternsFragment;
 import com.example.labelthediagram.R;
 
 import android.app.ActionBar;
@@ -53,7 +54,7 @@ public class DiagramMenuSky extends FragmentActivity {
 				"com.buildmlearn.labeldiagram.PREFERENCE_FILE_KEY",
 				Context.MODE_PRIVATE);
 		scoreSolarSystem = pref.getFloat("SolarSystem", 0);
-		//scoreStarPattern = pref.getFloat("DryCell", 0);
+		scoreStarPattern = pref.getFloat("StarPatterns", 0);
 	
 	}
 
@@ -85,7 +86,7 @@ public class DiagramMenuSky extends FragmentActivity {
 				solarFrag.setArguments(bundle);
 				return solarFrag;
 			case 1:
-				SolarSystemFragment starFrag = new SolarSystemFragment();
+				StarPatternsFragment starFrag = new StarPatternsFragment();
 				bundle.putFloat("SCORE_SAVED", scoreStarPattern);
 				starFrag.setArguments(bundle);
 				return starFrag;

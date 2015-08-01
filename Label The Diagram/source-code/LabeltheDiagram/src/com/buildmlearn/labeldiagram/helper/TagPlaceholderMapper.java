@@ -72,6 +72,9 @@ public class TagPlaceholderMapper {
 			case "SolarSystem":
 				getSolarSystemTagMap();
 				break;
+			case "StarPatterns":
+				getStarPatternsTagMap();
+				break;
 			
 			}
 		}
@@ -79,6 +82,21 @@ public class TagPlaceholderMapper {
 		return tagMapper;
 	}
 	
+	private SparseIntArray getStarPatternsTagMap() {
+		
+		tagMapper.put(R.id.libraBlb, R.id.libraTag);
+		tagMapper.put(R.id.little_dripperBlb, R.id.little_dripperTag);
+		tagMapper.put(R.id.big_dripperBlb, R.id.big_dripperTag);
+		tagMapper.put(R.id.scorpioBlb, R.id.scorpioTag);
+		tagMapper.put(R.id.orianBlb, R.id.orianTag);
+		tagMapper.put(R.id.leoBlb, R.id.leoTag);
+		tagMapper.put(R.id.geminiBlb, R.id.geminiTag);
+		tagMapper.put(R.id.dracoBlb, R.id.dracoTag);
+		
+		return tagMapper;
+		
+	}
+
 	private SparseIntArray getSolarSystemTagMap() {
 		
 		tagMapper.put(R.id.sunBlb, R.id.sunTag);

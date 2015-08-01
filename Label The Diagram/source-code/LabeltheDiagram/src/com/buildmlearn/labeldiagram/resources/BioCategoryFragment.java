@@ -19,7 +19,7 @@ public class BioCategoryFragment extends Fragment {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 
 		createModel();
@@ -34,19 +34,17 @@ public class BioCategoryFragment extends Fragment {
 		DiagramCategoryRawItem item1 = new DiagramCategoryRawItem("Human Body", "Diagrams of Human Body", R.drawable.human_body);
 		DiagramCategoryRawItem item2 = new DiagramCategoryRawItem("Plants", "Diagrams of plants", R.drawable.plants);
 		DiagramCategoryRawItem item3 = new DiagramCategoryRawItem("Micro-organisams", "Diagrams of microbes", R.drawable.micro);
-		DiagramCategoryRawItem item4 = new DiagramCategoryRawItem("Natural Cycles", "Diagrams of nature cycles", R.drawable.natural_cycle);
 		
 		categories.add(item1);
 		categories.add(item2);
 		categories.add(item3);
-		categories.add(item4);
 		
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+
 		View view = inflater.inflate(R.layout.diagram_category_mainview,
 				container, false);
 		ListView list = (ListView) view.findViewById(R.id.category_mainList);

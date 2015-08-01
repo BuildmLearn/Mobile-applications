@@ -56,7 +56,7 @@ public class ScoreboardScienceFragment extends Fragment {
 	private void fillDataModel() {
 		// TODO Extract lists to database or separate class
 		String scienceListItem[] = new String[] { "Solar System",
-				"Star Patterns" };
+				"Star Patterns", "Water Cycle", "Carbon Cycle" };
 
 		for (int i = 0; i < scienceListItem.length; i++) {
 			ScoreboardRawItem item = new ScoreboardRawItem(scienceListItem[i],

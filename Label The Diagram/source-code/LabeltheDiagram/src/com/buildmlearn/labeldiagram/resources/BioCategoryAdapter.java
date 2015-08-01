@@ -9,6 +9,7 @@ import com.buildmlearn.labeldiagram.DiagramMenuPlants;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
@@ -34,24 +35,19 @@ public class BioCategoryAdapter extends DiagramCategoryAdapter{
 			public void onClick(View v) {
 
 				if(index==0){
-					Toast.makeText(getContext(), "Dispatching to Human Body Diagram Play screen", Toast.LENGTH_SHORT).show();
 					Intent intent = new Intent(v.getContext(), DiagramMenuHuman.class);
 					v.getContext().startActivity(intent);
 					
 				}else if(index==1){
-					Toast.makeText(getContext(), "Dispatching to Plants screen", Toast.LENGTH_SHORT).show();
 					Intent intent = new Intent(v.getContext(), DiagramMenuPlants.class);
 					v.getContext().startActivity(intent);
 				}else if(index==2){
-					Toast.makeText(getContext(), "Dispatching to  Microorganisms screen", Toast.LENGTH_SHORT).show();
 					Intent intent = new Intent(v.getContext(), DiagramMenuMicroogranisms.class);
 					v.getContext().startActivity(intent);
 				}else{
-					Toast.makeText(getContext(), "Dispatching to  Natural Cycles screen", Toast.LENGTH_SHORT).show();
-					Intent intent = new Intent(v.getContext(), DiagramMenuNaturalCycles.class);
-					v.getContext().startActivity(intent);
+					Toast.makeText(getContext(), "Error occured", Toast.LENGTH_SHORT).show();
+					Log.e("Error Tag", "Menu item count exceeded");
 				} 
-				
 				
 			}
 		});

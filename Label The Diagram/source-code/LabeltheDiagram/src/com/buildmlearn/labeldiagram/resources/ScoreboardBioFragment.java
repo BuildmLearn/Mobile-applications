@@ -54,7 +54,7 @@ public class ScoreboardBioFragment extends Fragment {
 			// TODO Extract lists to database or separate class
 			String biolistItems[] = new String[] { "Human Eye", "Human Heart",
 					"Human Ear", "Plant Cell", "Plant Flower", "Bacteria", "Virus",
-					"Water Cycle", "Carbon Cycle" };
+					 };
 
 			for (int i = 0; i < biolistItems.length; i++) {
 				ScoreboardRawItem item = new ScoreboardRawItem(biolistItems[i],

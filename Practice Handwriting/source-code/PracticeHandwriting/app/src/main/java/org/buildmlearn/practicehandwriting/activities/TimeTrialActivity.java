@@ -117,7 +117,7 @@ public class TimeTrialActivity extends PracticeBaseActivity {
             case R.id.done_save_button:
                 if(!mDone) {
                     //Saving the string and the touches to be redrawn in the result
-                    mDrawView.saveBitmap(mPracticeString,mSaveDir);
+                    System.out.println(mDrawView.saveBitmap(mPracticeString,mSaveDir));
 
                     System.gc();
                     mPracticeString = randomStringGenerator();
@@ -125,6 +125,8 @@ public class TimeTrialActivity extends PracticeBaseActivity {
                         mPracticeString = randomStringGenerator();
                     isStringDone.put(mPracticeString,true);
                     mDrawView.destroyDrawingCache();
+                    System.gc();
+                    mDrawView.init();
                     mDrawView.setBitmapFromText(mPracticeString);
                     if(SplashActivity.TTSobj!=null) {
                         if (Build.VERSION.SDK_INT >= 21) //This function works only on devices with SDK version greater that 20
@@ -146,6 +148,7 @@ public class TimeTrialActivity extends PracticeBaseActivity {
 
     @Override
     public void onBackPressed() {
+        System.gc();
         if(mCountDownTimer!=null)
             mCountDownTimer.cancel();//cancel the timer if the user decides to go back
         super.onBackPressed();

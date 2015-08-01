@@ -51,7 +51,7 @@ public class ClassMapper {
 		tagMap.put("Dry Cell", "DryCell");
 		tagMap.put("Electric Circuit", "Circuit");
 		tagMap.put("Solar System", "SolarSystem");
-		tagMap.put("Star Patterns", "Star Patterns");
+		tagMap.put("Star Patterns", "StarPatterns");
 		
 	}
 

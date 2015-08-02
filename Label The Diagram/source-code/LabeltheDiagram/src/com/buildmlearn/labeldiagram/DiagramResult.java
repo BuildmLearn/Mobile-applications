@@ -39,7 +39,7 @@ import android.widget.Toast;
  */
 public class DiagramResult extends Activity implements OnClickListener {
 
-	ArrayList<DiagramResultRawItem> reultList = new ArrayList<DiagramResultRawItem>();
+	ArrayList<DiagramResultRawItem> resultList = new ArrayList<DiagramResultRawItem>();
 	List<TextView> correctTagList = new ArrayList<TextView>();
 	List<TextView> incorrectTagList = new ArrayList<TextView>();
 	List<String> correctTagTextList = new ArrayList<String>();
@@ -96,7 +96,7 @@ public class DiagramResult extends Activity implements OnClickListener {
 
 		// Set DiagramResult adapter
 		ArrayAdapter<DiagramResultRawItem> resultAdapter = new DiagramResultAdapter(
-				this, R.layout.diagram_result_row_item, reultList);
+				this, R.layout.diagram_result_row_item, resultList);
 		list.setAdapter(resultAdapter);
 	}
 
@@ -179,7 +179,7 @@ public class DiagramResult extends Activity implements OnClickListener {
 			DiagramResultRawItem item = new DiagramResultRawItem(labeledTag,
 					R.drawable.incorrect_btn);
 
-			reultList.add(item);
+			resultList.add(item);
 
 		}
 

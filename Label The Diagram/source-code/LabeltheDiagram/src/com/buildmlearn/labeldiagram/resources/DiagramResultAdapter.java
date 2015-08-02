@@ -72,9 +72,6 @@ public class DiagramResultAdapter extends ArrayAdapter<DiagramResultRawItem> {
 			holder.resultIcon.setImageResource(R.drawable.incorrect_btn);
 		}
 		
-	
-		
-		
 		return convertView;
 	}
 }

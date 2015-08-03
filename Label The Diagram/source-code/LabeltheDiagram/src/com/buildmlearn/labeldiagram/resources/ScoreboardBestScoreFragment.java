@@ -135,6 +135,7 @@ public class ScoreboardBestScoreFragment extends Fragment {
 				Type type = new TypeToken<Result>() {
 				}.getType();
 
+				Log.i("row json : ", result);
 				currentResult = gsonObj.fromJson(result, type);
 
 				String outputDiagram = currentResult.getDiagramName();

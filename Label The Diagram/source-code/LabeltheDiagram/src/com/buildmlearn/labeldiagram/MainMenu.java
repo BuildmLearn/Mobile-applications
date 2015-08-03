@@ -1,5 +1,6 @@
 package com.buildmlearn.labeldiagram;
 
+import com.buildmlearn.labeldiagram.lessons.LessonHumanEye;
 import com.example.labelthediagram.R;
 
 import android.app.Activity;
@@ -111,6 +112,8 @@ public class MainMenu extends Activity implements OnClickListener {
 		case R.id.start_lesson:
 			Toast.makeText(getApplication(), "Comming soon...", 2000)
 					.show();
+			Intent lessonIntent = new Intent(getApplicationContext(), LessonHumanEye.class);
+			startActivity(lessonIntent);
 			break;
 		case R.id.start_badge:
 			Toast.makeText(getApplication(), "Comming soon...", 2000)

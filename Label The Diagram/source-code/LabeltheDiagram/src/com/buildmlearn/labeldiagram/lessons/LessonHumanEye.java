@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 public class LessonHumanEye extends Activity{
 	
+	private Database db;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -21,6 +23,13 @@ public class LessonHumanEye extends Activity{
 		if(result != null){
 			Toast.makeText(this, result,Toast.LENGTH_LONG).show();
 		}
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		
+		db.close();
 	}
 
 }

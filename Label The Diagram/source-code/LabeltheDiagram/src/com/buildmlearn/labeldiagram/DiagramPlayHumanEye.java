@@ -154,12 +154,12 @@ public class DiagramPlayHumanEye extends DiagramPlayBase {
 			break;
 		case R.id.opticdiskTag:
 			InfoTooltip popup7 = new InfoTooltip(getApplicationContext(),
-					"The most sensitive place of the eye to light rays ");
+					"The place of the eye that is not sensitive to light ");
 			popup7.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.foveaTag:
 			InfoTooltip popup8 = new InfoTooltip(getApplicationContext(),
-					"The place of the eye that not sensitive to light ");
+					"The most sensitive place of the eye to light rays ");
 			popup8.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.retinaTag:

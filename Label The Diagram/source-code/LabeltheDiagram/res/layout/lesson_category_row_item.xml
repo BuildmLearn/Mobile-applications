@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="3dp" xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="1dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="1dp"
+        android:paddingBottom="5dp"
+        android:background="@color/appBg_color"
+        android:divider="@color/appBg_color_white"
+        android:dividerHeight="0dp" >
+        
+
+        <LinearLayout
+            android:id="@+id/innerLayout1"
+            android:layout_width="230dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical" >
+
+            <com.buildmlearn.labeldiagram.widget.CustomFontManager
+                android:id="@+id/lessonTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#ffff"
+                app:typeface="roboto_light" />
+
+            <com.buildmlearn.labeldiagram.widget.CustomFontManager
+                android:id="@+id/lessonDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ffff"
+                android:textSize="17sp" 
+                app:typeface="roboto_thin"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/navigatorBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/proceed_btn" />
+    </RelativeLayout>
+
+</RelativeLayout>

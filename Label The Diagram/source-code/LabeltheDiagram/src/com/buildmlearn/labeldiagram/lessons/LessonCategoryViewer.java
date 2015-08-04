@@ -2,10 +2,10 @@ package com.buildmlearn.labeldiagram.lessons;
 
 import com.buildmlearn.labeldiagram.CategoryViewer;
 import com.buildmlearn.labeldiagram.helper.HelperClass;
-import com.buildmlearn.labeldiagram.resources.BioCategoryFragment;
+import com.buildmlearn.labeldiagram.resources.BioLessonFragment;
 import com.buildmlearn.labeldiagram.resources.CategoryViewerAdapter;
-import com.buildmlearn.labeldiagram.resources.PhysicsCategoryFragment;
-import com.buildmlearn.labeldiagram.resources.ScienceCategoryFragment;
+import com.buildmlearn.labeldiagram.resources.PhysicsLessonFragment;
+import com.buildmlearn.labeldiagram.resources.ScienceLessonFragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -43,13 +43,13 @@ public class LessonCategoryViewer extends CategoryViewer {
 
 			switch (position) {
 			case 0:
-				BioCategoryFragment bioFrag = new BioCategoryFragment();
+				BioLessonFragment bioFrag = new BioLessonFragment();
 				return bioFrag;
 			case 1:
-				PhysicsCategoryFragment physicsFrag = new PhysicsCategoryFragment();
+				PhysicsLessonFragment physicsFrag = new PhysicsLessonFragment();
 				return physicsFrag;
 			case 2:
-				ScienceCategoryFragment scienceFrag = new ScienceCategoryFragment();
+				ScienceLessonFragment scienceFrag = new ScienceLessonFragment();
 				return scienceFrag;
 			default:
 				return null;

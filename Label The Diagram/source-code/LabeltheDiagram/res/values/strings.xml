@@ -15,5 +15,41 @@
     <string name="category_plants_desc">Diagrams of plants</string>
     <string name="category_microbes_desc">Diagrams of microbes</string>
     <string name="category_natural_cycles_desc">Diagrams of nature cycles</string>
+    
+    <string name="lesson_human_eye">Human Eye</string>
+    <string name="lesson_human_heart">Human Heart</string>
+    <string name="lesson_human_ear">Human Ear</string>
+    <string name="lesson_plant_flower">Plant Flower</string>
+    <string name="lesson_plant_cell">Plant Cell</string>
+    <string name="lesson_bacteria">Bacteria</string>
+    <string name="lesson_virus">Virus</string>
+    <string name="lesson_prism">Refraction of Prism</string>
+    <string name="lesson_lens">Refraction of Lens</string>
+    <string name="lesson_spectrum">Light Spectrum</string>
+    <string name="lesson_motor">Elecrtic Motor</string>
+    <string name="lesson_dry_cell">Dry Cell</string>
+    <string name="lesson_circuit">Electric Circuit</string>
+    <string name="lesson_solar_system">Solar System</string>
+    <string name="lesson_star_patterns">Star Patterns</string>
+    <string name="lesson_water_cycle">Water Cycle</string>
+    <string name="lesson_carbon_cycle">Carbon Cycele</string>
+    
+    <string name="lesson_human_eye_desc">Lesson of human eye</string>
+    <string name="lesson_human_heart_desc">Lesson of human heart</string>
+    <string name="lesson_human_ear_desc">Lesson of human ear</string>
+    <string name="lesson_plant_flower_desc">Lesson of plant flower</string>
+    <string name="lesson_plant_cell_desc">Lesson of plant cell</string>
+    <string name="lesson_bacteria_desc">Lesson of bacteria</string>
+    <string name="lesson_virus_desc">Lesson of virus</string>
+    <string name="lesson_prism_desc">Lesson of refraction of prism</string>
+    <string name="lesson_lens_desc">Lesson of refraction of lens</string>
+    <string name="lesson_spectrum_desc">Lesson of light spectrum</string>
+    <string name="lesson_motor_desc">Lesson of elecrtic motor</string>
+    <string name="lesson_dry_cell_desc">Lesson of dry cell</string>
+    <string name="lesson_circuit_desc">Lesson of electric circuit</string>
+    <string name="lesson_solar_system_desc">Lesson of solar system</string>
+    <string name="lesson_star_patterns_desc">Lesson of star patterns</string>
+    <string name="lesson_water_cycle_desc">Lesson of water cycle</string>
+    <string name="lesson_carbon_cycle_desc">Lesson of carbon cycle</string>
 
 </resources>

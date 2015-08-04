@@ -48,9 +48,6 @@ public class DiagramCategoryAdapter extends ArrayAdapter<DiagramCategoryRawItem>
 		tfLight = Typeface.createFromAsset(context.getAssets(),
 				"fonts/Roboto-Light.ttf");
 		
-		
-		
-		//Toast.makeText(context, "No of items in the list : "+nItems, 1000).show();
 	}
 
 	/*
@@ -99,33 +96,6 @@ public class DiagramCategoryAdapter extends ArrayAdapter<DiagramCategoryRawItem>
 		holder.descriptionTxt.setTypeface(tfThin);
 		
 		setDispatchClass(holder,index);
-		
-		/*holder.goIcon.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				
-				
-				if(index==0){
-					Toast.makeText(getContext(), "Dispatching to Human Body Diagram Play screen", Toast.LENGTH_SHORT).show();
-					Intent intent = new Intent(v.getContext(), DiagramMenuHuman.class);
-					v.getContext().startActivity(intent);
-					
-				}else if(index==1){
-					Toast.makeText(getContext(), "Dispatching to Plants screen", Toast.LENGTH_SHORT).show();
-					Intent intent = new Intent(v.getContext(), DiagramMenuPlants.class);
-					v.getContext().startActivity(intent);
-				}else if(index==2){
-					Toast.makeText(getContext(), "Dispatching to  Microorganisms screen", Toast.LENGTH_SHORT).show();
-					Intent intent = new Intent(v.getContext(), DiagramMenuMicroogranisms.class);
-					v.getContext().startActivity(intent);
-				}else{
-					Toast.makeText(getContext(), "Dispatching to  Natural Cycles screen", Toast.LENGTH_SHORT).show();
-					Intent intent = new Intent(v.getContext(), DiagramMenuNaturalCycles.class);
-					v.getContext().startActivity(intent);
-				} 
-			}
-		});*/
 		
 		return convertView;
 

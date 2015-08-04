@@ -23,6 +23,7 @@ public class BioCategoryAdapter extends DiagramCategoryAdapter{
 		super(context, resource, objects);
 		
 		nItems = this.getCount();
+		
 	}
 
 	@Override

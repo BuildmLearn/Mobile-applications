@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/mainDiagramPlantFlower"
+        android:layout_width="320dp"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/plant_flower" />
+
+    <ImageView
+        android:id="@+id/antherBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramPlantFlower"
+        android:layout_marginLeft="73dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/ten" />
+
+    <ImageView
+        android:id="@+id/petalBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/mainDiagramPlantFlower"
+        android:layout_alignLeft="@+id/mainDiagramPlantFlower"
+        android:layout_marginBottom="97dp"
+        android:layout_marginLeft="35dp"
+        android:src="@drawable/nine" />
+
+    <ImageView
+        android:id="@+id/receptacleBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignTop="@+id/petalBlb"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="47dp"
+        android:layout_toRightOf="@+id/antherBlb"
+        android:src="@drawable/eight" />
+
+    <ImageView
+        android:id="@+id/pedicelBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/receptacleBlb"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/seven" />
+
+    <ImageView
+        android:id="@+id/stigmaBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="7dp"
+        android:layout_toRightOf="@+id/receptacleBlb"
+        android:src="@drawable/one" />
+
+    <ImageView
+        android:id="@+id/styleBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/antherBlb"
+        android:layout_marginBottom="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_toRightOf="@+id/pedicelBlb"
+        android:src="@drawable/two" />
+
+    <ImageView
+        android:id="@+id/overyBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/styleBlb"
+        android:layout_marginLeft="11dp"
+        android:layout_toRightOf="@+id/styleBlb"
+        android:src="@drawable/three" />
+
+    <ImageView
+        android:id="@+id/filamentBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_above="@+id/receptacleBlb"
+        android:layout_marginBottom="5dp"
+        android:layout_toRightOf="@+id/overyBlb"
+        android:src="@drawable/four" />
+
+    <ImageView
+        android:id="@+id/sepalBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/filamentBlb"
+        android:layout_alignTop="@+id/petalBlb"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="7dp"
+        android:src="@drawable/five" />
+
+    <ImageView
+        android:id="@+id/ovuleBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_above="@+id/pedicelBlb"
+        android:layout_alignLeft="@+id/styleBlb"
+        android:layout_marginLeft="8dp"
+        android:src="@drawable/six" />
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mainDiagramPlantFlower"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/lesson_list"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout>
+
+</RelativeLayout>

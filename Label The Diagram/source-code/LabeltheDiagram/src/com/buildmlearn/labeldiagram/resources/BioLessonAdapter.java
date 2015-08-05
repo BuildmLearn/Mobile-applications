@@ -5,6 +5,8 @@ import java.util.List;
 import com.buildmlearn.labeldiagram.lessons.LessonHumanEar;
 import com.buildmlearn.labeldiagram.lessons.LessonHumanEye;
 import com.buildmlearn.labeldiagram.lessons.LessonHumanHeart;
+import com.buildmlearn.labeldiagram.lessons.LessonPlantCell;
+import com.buildmlearn.labeldiagram.lessons.LessonPlantFlower;
 
 import android.content.Context;
 import android.content.Intent;
@@ -49,11 +51,11 @@ public class BioLessonAdapter extends LessonCategoryAdapter {
 					v.getContext().startActivity(intent);
 					break;
 				case 3:
-					intent = new Intent(v.getContext(), LessonHumanEar.class);
+					intent = new Intent(v.getContext(), LessonPlantCell.class);
 					v.getContext().startActivity(intent);
 					break;
 				case 4:
-					intent = new Intent(v.getContext(), LessonHumanEar.class);
+					intent = new Intent(v.getContext(), LessonPlantFlower.class);
 					v.getContext().startActivity(intent);
 					break;
 				case 5:

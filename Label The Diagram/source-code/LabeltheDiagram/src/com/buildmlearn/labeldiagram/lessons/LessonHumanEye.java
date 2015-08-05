@@ -24,7 +24,7 @@ public class LessonHumanEye extends LessonBase {
 
 		setContentView(getResourcesId());
 
-		HelperClass.setActionBar("Human Ear", this);
+		HelperClass.setActionBar("Human Eye", this);
 		setDiagramName(getDiagramName());
 
 		ListView lessonListView = (ListView) findViewById(R.id.lesson_list);
@@ -60,12 +60,12 @@ public class LessonHumanEye extends LessonBase {
 
 	@Override
 	public String getDiagramName() {
-		return "HumanEar";
+		return "HumanEye";
 	}
 
 	@Override
 	protected int getResourcesId() {
-		return R.layout.lesson_ear;
+		return R.layout.lesson_eye;
 	}
 
 	@Override

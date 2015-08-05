@@ -2,7 +2,9 @@ package com.buildmlearn.labeldiagram.resources;
 
 import java.util.List;
 
+import com.buildmlearn.labeldiagram.lessons.LessonHumanEar;
 import com.buildmlearn.labeldiagram.lessons.LessonHumanEye;
+import com.buildmlearn.labeldiagram.lessons.LessonHumanHeart;
 
 import android.content.Context;
 import android.content.Intent;
@@ -39,27 +41,27 @@ public class BioLessonAdapter extends LessonCategoryAdapter {
 					v.getContext().startActivity(intent);
 					break;
 				case 1:
-					intent = new Intent(v.getContext(), LessonHumanEye.class);
+					intent = new Intent(v.getContext(), LessonHumanHeart.class);
 					v.getContext().startActivity(intent);
 					break;
 				case 2:
-					intent = new Intent(v.getContext(), LessonHumanEye.class);
+					intent = new Intent(v.getContext(), LessonHumanEar.class);
 					v.getContext().startActivity(intent);
 					break;
 				case 3:
-					intent = new Intent(v.getContext(), LessonHumanEye.class);
+					intent = new Intent(v.getContext(), LessonHumanEar.class);
 					v.getContext().startActivity(intent);
 					break;
 				case 4:
-					intent = new Intent(v.getContext(), LessonHumanEye.class);
+					intent = new Intent(v.getContext(), LessonHumanEar.class);
 					v.getContext().startActivity(intent);
 					break;
 				case 5:
-					intent = new Intent(v.getContext(), LessonHumanEye.class);
+					intent = new Intent(v.getContext(), LessonHumanEar.class);
 					v.getContext().startActivity(intent);
 					break;
 				case 6:
-					intent = new Intent(v.getContext(), LessonHumanEye.class);
+					intent = new Intent(v.getContext(), LessonHumanEar.class);
 					v.getContext().startActivity(intent);
 					break;
 

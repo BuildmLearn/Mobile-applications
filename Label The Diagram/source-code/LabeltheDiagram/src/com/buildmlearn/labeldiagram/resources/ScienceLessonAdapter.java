@@ -2,7 +2,7 @@ package com.buildmlearn.labeldiagram.resources;
 
 import java.util.List;
 
-import com.buildmlearn.labeldiagram.lessons.LessonHumanEye;
+import com.buildmlearn.labeldiagram.lessons.LessonHumanEar;
 
 import android.content.Context;
 import android.content.Intent;
@@ -35,19 +35,19 @@ public class ScienceLessonAdapter extends LessonCategoryAdapter {
 
 				switch (index) {
 				case 0:
-					intent = new Intent(v.getContext(), LessonHumanEye.class);
+					intent = new Intent(v.getContext(), LessonHumanEar.class);
 					v.getContext().startActivity(intent);
 					break;
 				case 1:
-					intent = new Intent(v.getContext(), LessonHumanEye.class);
+					intent = new Intent(v.getContext(), LessonHumanEar.class);
 					v.getContext().startActivity(intent);
 					break;
 				case 2:
-					intent = new Intent(v.getContext(), LessonHumanEye.class);
+					intent = new Intent(v.getContext(), LessonHumanEar.class);
 					v.getContext().startActivity(intent);
 					break;
 				case 3:
-					intent = new Intent(v.getContext(), LessonHumanEye.class);
+					intent = new Intent(v.getContext(), LessonHumanEar.class);
 					v.getContext().startActivity(intent);
 					break;
 				default:

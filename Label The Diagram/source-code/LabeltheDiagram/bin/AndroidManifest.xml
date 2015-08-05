@@ -108,7 +108,15 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.DiagramMenu">
             </meta-data>
         </activity>
+        <activity android:configChanges="orientation" android:name="com.buildmlearn.labeldiagram.lessons.LessonHumanEar" android:parentActivityName="com.buildmlearn.labeldiagram.DiagramMenu" android:screenOrientation="portrait">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.DiagramMenu">
+            </meta-data>
+        </activity>
         <activity android:configChanges="orientation" android:name="com.buildmlearn.labeldiagram.lessons.LessonHumanEye" android:parentActivityName="com.buildmlearn.labeldiagram.DiagramMenu" android:screenOrientation="portrait">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.DiagramMenu">
+            </meta-data>
+        </activity>
+        <activity android:configChanges="orientation" android:name="com.buildmlearn.labeldiagram.lessons.LessonHumanHeart" android:parentActivityName="com.buildmlearn.labeldiagram.DiagramMenu" android:screenOrientation="portrait">
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.DiagramMenu">
             </meta-data>
         </activity>

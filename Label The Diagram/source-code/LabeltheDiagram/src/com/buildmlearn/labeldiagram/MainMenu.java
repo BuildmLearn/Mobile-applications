@@ -1,7 +1,7 @@
 package com.buildmlearn.labeldiagram;
 
 import com.buildmlearn.labeldiagram.lessons.LessonCategoryViewer;
-import com.buildmlearn.labeldiagram.lessons.LessonHumanEye;
+import com.buildmlearn.labeldiagram.lessons.LessonHumanEar;
 import com.example.labelthediagram.R;
 
 import android.app.Activity;

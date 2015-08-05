@@ -21,7 +21,7 @@ public class Database extends SQLiteAssetHelper{
     	
     	db = getReadableDatabase();
     	String query = "SELECT * FROM Lesson where diagram_name='" + diagramTitle + "'";
-    	String result=null;
+    	String result = null;
     	Cursor cursor = db.rawQuery(query, null);
     	
     	if(cursor.moveToFirst()){

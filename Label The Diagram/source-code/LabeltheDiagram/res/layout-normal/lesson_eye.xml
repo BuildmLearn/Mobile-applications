@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/mainDiagramEye"
+        android:layout_width="280dp"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/human_eye" />
+
+    <ImageView
+        android:id="@+id/opticNerveBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramEye"
+        android:layout_alignTop="@+id/mainDiagramEye"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="225dp"
+        android:src="@drawable/seven" />
+
+    <ImageView
+        android:id="@+id/retinaBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramEye"
+        android:layout_alignTop="@+id/mainDiagramEye"
+        android:layout_marginRight="37dp"
+        android:layout_marginTop="42dp"
+        android:src="@drawable/ten" />
+
+    <ImageView
+        android:id="@+id/ciliaryBodyBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramEye"
+        android:layout_alignTop="@+id/mainDiagramEye"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/one" />
+
+    <ImageView
+        android:id="@+id/lensBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramEye"
+        android:layout_alignTop="@+id/mainDiagramEye"
+        android:layout_marginTop="192dp"
+        android:layout_marginLeft="-5dp"
+        android:src="@drawable/five" />
+
+    <ImageView
+        android:id="@+id/vitreousBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramEye"
+        android:layout_alignTop="@+id/mainDiagramEye"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="225dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/six" />
+
+    
+    <ImageView
+        android:id="@+id/irisBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramEye"
+        android:layout_alignTop="@+id/mainDiagramEye"
+        android:layout_marginLeft="-5dp"
+        android:layout_marginTop="95dp"
+        android:src="@drawable/two" />
+
+    <ImageView
+        android:id="@+id/blindSpotBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramEye"
+        android:layout_alignTop="@+id/mainDiagramEye"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="145dp"
+        android:src="@drawable/eight" />
+
+    <ImageView
+        android:id="@+id/foveaBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramEye"
+        android:layout_alignTop="@+id/mainDiagramEye"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="110dp"
+        android:src="@drawable/nine" />
+
+    <ImageView
+        android:id="@+id/pupilBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramEye"
+        android:layout_alignTop="@+id/mainDiagramEye"
+        android:layout_marginLeft="-17dp"
+        android:layout_marginTop="135dp"
+        android:src="@drawable/three" />
+
+    <ImageView
+        android:id="@+id/corneaBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramEye"
+        android:layout_alignTop="@+id/mainDiagramEye"
+        android:layout_marginLeft="-17dp"
+        android:layout_marginTop="165dp"
+        android:src="@drawable/four" />
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mainDiagramEye"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/lesson_list"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout>
+
+</RelativeLayout>

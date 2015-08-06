@@ -2,8 +2,11 @@ package com.buildmlearn.labeldiagram.resources;
 
 import java.util.List;
 
+import com.buildmlearn.labeldiagram.lessons.LessonCircuit;
+import com.buildmlearn.labeldiagram.lessons.LessonDryCell;
 import com.buildmlearn.labeldiagram.lessons.LessonHumanEar;
 import com.buildmlearn.labeldiagram.lessons.LessonLens;
+import com.buildmlearn.labeldiagram.lessons.LessonMotor;
 import com.buildmlearn.labeldiagram.lessons.LessonPrism;
 import com.buildmlearn.labeldiagram.lessons.LessonSpectrum;
 
@@ -39,35 +42,28 @@ public class PhysicsLessonAdapter extends LessonCategoryAdapter {
 
 				switch (index) {
 				case 0:
-					
-					//Toast.makeText(getContext(), "Comming soon...", 200).show();
 					intent = new Intent(v.getContext(), LessonPrism.class);
 					v.getContext().startActivity(intent);
 					break;
 				case 1:
-					//Toast.makeText(getContext(), "Comming soon...", 200).show();
 					intent = new Intent(v.getContext(), LessonLens.class);
 					v.getContext().startActivity(intent);
 					break;
 				case 2:
-					//Toast.makeText(getContext(), "Comming soon...", 200).show();
 					intent = new Intent(v.getContext(), LessonSpectrum.class);
 					v.getContext().startActivity(intent);
 					break;
 				case 3:
-					Toast.makeText(getContext(), "Comming soon...", 200).show();
-					/*intent = new Intent(v.getContext(), LessonHumanEar.class);
-					v.getContext().startActivity(intent);*/
+					intent = new Intent(v.getContext(), LessonMotor.class);
+					v.getContext().startActivity(intent);
 					break;
 				case 4:
-					Toast.makeText(getContext(), "Comming soon...", 200).show();
-					/*intent = new Intent(v.getContext(), LessonHumanEar.class);
-					v.getContext().startActivity(intent);*/
+					intent = new Intent(v.getContext(), LessonDryCell.class);
+					v.getContext().startActivity(intent);
 					break;
 				case 5:
-					Toast.makeText(getContext(), "Comming soon...", 200).show();
-					/*intent = new Intent(v.getContext(), LessonHumanEar.class);
-					v.getContext().startActivity(intent);*/
+					intent = new Intent(v.getContext(), LessonCircuit.class);
+					v.getContext().startActivity(intent);
 					break;
 				default:
 					break;

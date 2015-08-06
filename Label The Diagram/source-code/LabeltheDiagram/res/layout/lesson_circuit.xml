@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/mainDiagramCircuit"
+        android:layout_width="320dp"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/circuit" />
+
+    <ImageView
+        android:id="@+id/capacitorBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramCircuit"
+        android:layout_alignTop="@+id/mainDiagramCircuit"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/two" />
+
+    <ImageView
+        android:id="@+id/switchBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramCircuit"
+        android:layout_alignTop="@+id/mainDiagramCircuit"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/one" />
+    
+    
+    <ImageView
+        android:id="@+id/batteryBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramCircuit"
+        android:layout_alignTop="@+id/mainDiagramCircuit"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="105dp"
+        android:src="@drawable/three" />
+    
+    <ImageView
+        android:id="@+id/currentBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramCircuit"
+        android:layout_alignBottom="@+id/mainDiagramCircuit"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="70dp"
+        android:src="@drawable/four" />
+    
+    <ImageView
+        android:id="@+id/resistorBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramCircuit"
+        android:layout_alignBottom="@+id/mainDiagramCircuit"
+        android:layout_marginLeft="35dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/five" />
+    
+    <ImageView
+        android:id="@+id/ameterBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramCircuit"
+        android:layout_alignBottom="@+id/mainDiagramCircuit"
+        android:layout_marginRight="80dp"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/six" />
+    
+    <ImageView
+        android:id="@+id/loadBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramCircuit"
+        android:layout_alignBottom="@+id/mainDiagramCircuit"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="75dp"
+        android:src="@drawable/seven" />
+    
+    <ImageView
+        android:id="@+id/voltmeterBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramCircuit"
+        android:layout_alignTop="@+id/mainDiagramCircuit"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/eight" />
+    
+    <ImageView
+        android:id="@+id/bulbBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramCircuit"
+        android:layout_alignTop="@+id/mainDiagramCircuit"
+        android:layout_marginRight="65dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/nine" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mainDiagramCircuit"
+        android:orientation="vertical" >
+        <ListView
+            android:id="@+id/lesson_list"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout>
+    
+    
+
+</RelativeLayout>

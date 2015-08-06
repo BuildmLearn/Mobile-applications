@@ -327,6 +327,36 @@
             </meta-data>
         </activity>
         <activity
+            android:name="com.buildmlearn.labeldiagram.lessons.LessonPrism"
+            android:configChanges="orientation"
+            android:parentActivityName="com.buildmlearn.labeldiagram.DiagramMenu"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.buildmlearn.labeldiagram.DiagramMenu" >
+            </meta-data>
+        </activity>
+        <activity
+            android:name="com.buildmlearn.labeldiagram.lessons.LessonLens"
+            android:configChanges="orientation"
+            android:parentActivityName="com.buildmlearn.labeldiagram.DiagramMenu"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.buildmlearn.labeldiagram.DiagramMenu" >
+            </meta-data>
+        </activity>
+        <activity
+            android:name="com.buildmlearn.labeldiagram.lessons.LessonSpectrum"
+            android:configChanges="orientation"
+            android:parentActivityName="com.buildmlearn.labeldiagram.DiagramMenu"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.buildmlearn.labeldiagram.DiagramMenu" >
+            </meta-data>
+        </activity>
+        <activity
             android:name="com.buildmlearn.labeldiagram.DiagramMenu"
             android:parentActivityName="com.buildmlearn.labeldiagram.DiagramCategory" >
             <meta-data

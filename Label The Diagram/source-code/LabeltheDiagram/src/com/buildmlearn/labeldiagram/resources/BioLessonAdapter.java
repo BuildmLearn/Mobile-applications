@@ -2,11 +2,13 @@ package com.buildmlearn.labeldiagram.resources;
 
 import java.util.List;
 
+import com.buildmlearn.labeldiagram.lessons.LessonBacteria;
 import com.buildmlearn.labeldiagram.lessons.LessonHumanEar;
 import com.buildmlearn.labeldiagram.lessons.LessonHumanEye;
 import com.buildmlearn.labeldiagram.lessons.LessonHumanHeart;
 import com.buildmlearn.labeldiagram.lessons.LessonPlantCell;
 import com.buildmlearn.labeldiagram.lessons.LessonPlantFlower;
+import com.buildmlearn.labeldiagram.lessons.LessonVirus;
 
 import android.content.Context;
 import android.content.Intent;
@@ -59,11 +61,11 @@ public class BioLessonAdapter extends LessonCategoryAdapter {
 					v.getContext().startActivity(intent);
 					break;
 				case 5:
-					intent = new Intent(v.getContext(), LessonHumanEar.class);
+					intent = new Intent(v.getContext(), LessonBacteria.class);
 					v.getContext().startActivity(intent);
 					break;
 				case 6:
-					intent = new Intent(v.getContext(), LessonHumanEar.class);
+					intent = new Intent(v.getContext(), LessonVirus.class);
 					v.getContext().startActivity(intent);
 					break;
 

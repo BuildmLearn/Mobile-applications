@@ -24,7 +24,7 @@ public class ScienceLessonFragment extends Fragment {
 
 		createModel();
 
-		lessonAdapter = new BioLessonAdapter(getActivity(),
+		lessonAdapter = new ScienceLessonAdapter(getActivity(),
 				R.layout.lesson_category_row_item, categories);
 	}
 

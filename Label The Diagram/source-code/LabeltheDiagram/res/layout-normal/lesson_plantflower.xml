@@ -109,7 +109,6 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/mainDiagramPlantFlower"
         android:orientation="vertical" >
-
         <ListView
             android:id="@+id/lesson_list"
             android:layout_width="fill_parent"

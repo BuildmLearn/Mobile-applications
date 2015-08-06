@@ -93,6 +93,7 @@ public abstract class DiagramPlayBase extends Activity implements
 
 		tagListSize = tagPlaceHolderMap.size();
 
+		// Create sharedpreferences object
 		preferences = getApplicationContext().getSharedPreferences(
 				"com.buildmlearn.labeldiagram.PREFERENCE_FILE_KEY",
 				Context.MODE_PRIVATE);

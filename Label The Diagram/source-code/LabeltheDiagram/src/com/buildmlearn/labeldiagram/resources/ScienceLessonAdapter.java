@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 public class ScienceLessonAdapter extends LessonCategoryAdapter {
 
@@ -35,20 +36,24 @@ public class ScienceLessonAdapter extends LessonCategoryAdapter {
 
 				switch (index) {
 				case 0:
-					intent = new Intent(v.getContext(), LessonHumanEar.class);
-					v.getContext().startActivity(intent);
+					Toast.makeText(getContext(), "Comming soon...", 200).show();
+					/*intent = new Intent(v.getContext(), LessonHumanEar.class);
+					v.getContext().startActivity(intent);*/
 					break;
 				case 1:
-					intent = new Intent(v.getContext(), LessonHumanEar.class);
-					v.getContext().startActivity(intent);
+					Toast.makeText(getContext(), "Comming soon...", 200).show();
+					/*intent = new Intent(v.getContext(), LessonHumanEar.class);
+					v.getContext().startActivity(intent);*/
 					break;
 				case 2:
-					intent = new Intent(v.getContext(), LessonHumanEar.class);
-					v.getContext().startActivity(intent);
+					Toast.makeText(getContext(), "Comming soon...", 200).show();
+					/*intent = new Intent(v.getContext(), LessonHumanEar.class);
+					v.getContext().startActivity(intent);*/
 					break;
 				case 3:
-					intent = new Intent(v.getContext(), LessonHumanEar.class);
-					v.getContext().startActivity(intent);
+					Toast.makeText(getContext(), "Comming soon...", 200).show();
+					/*intent = new Intent(v.getContext(), LessonHumanEar.class);
+					v.getContext().startActivity(intent);*/
 					break;
 				default:
 					break;

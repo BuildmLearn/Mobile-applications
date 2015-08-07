@@ -38,14 +38,13 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
         mTouchImg = mDrawView.getTouchesBitmap();
         mTouches = mDrawView.getTouchesList();
         mTouchBounds = mDrawView.getTouchBounds();
+        //Image of the text to calculate the score on
 
         mDrawView.init();
         mDrawView.init();
         mDrawView.setBitmapFromText(mPracticeString);//setting the text to calculate the score
         mDrawView.canDraw(false);
-
-        //Image of the text to calculate the score on
-        mSavedImg = mDrawView.getCanvasBitmap();
+        mSavedImg = Bitmap.createBitmap(mDrawView.getCanvasBitmap());
 
         mProgressDialog = new ProgressDialog(mContext);
         mProgressDialog.setTitle("Please wait ...");
@@ -61,10 +60,9 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
         for (int i = 0; i < mTouches.size(); i++)
             size += mTouches.get(i).size();
         if(size!=0) {//Computes score only if the view has been touched
-
             int centerX = (mSavedImg.getWidth() - mTouchImg.getWidth())/2, centerY = (mSavedImg.getHeight() - mTouchImg.getHeight())/2;
             int minx = mTouchBounds[0], miny = mTouchBounds[1];
-            float correctTouches;
+            float correctTouches = 0;
             int i, j, cx, cy, x ,y, count = 0;
             float scaleX, scaleY;
             int textColour = mContext.getResources().getColor(R.color.Black); //Storing locally for faster access inside the loop
@@ -99,7 +97,7 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
                                 y = (int) (yTouches[i] * scaleY) + cy;
 
                                 if (x >= 0 && x < width && y >= 0 && y < height && bitmap[x][y] == textColour)
-                                        correctTouches += 1;
+                                    correctTouches += 1;
                             }
                             score = correctTouches / size;
                             if (score > maxScore) { //updating the values for a maximum score
@@ -153,7 +151,8 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
         float height = originalImage.getHeight() * scaleY;
 
         //initializing an empty canvas
-        Bitmap background = Bitmap.createBitmap((int) width, (int) height, Bitmap.Config.ARGB_8888);
+        System.gc();
+        Bitmap background = Bitmap.createBitmap((int) width, (int) height, Bitmap.Config.ARGB_4444);
         Canvas canvas = new Canvas(background);
 
         //Transformation matrix for the given scale
@@ -173,15 +172,14 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
     //function to place a bitmap over another
     private Bitmap bitmapOverlay(Bitmap bitmap1, Bitmap bitmap2, int xOffset, int yOffset) {
         //initializing an empty canvas and drawing the first bitmap on top
-        Bitmap resultBitmap = Bitmap.createBitmap(bitmap1.getWidth(), bitmap1.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas c = new Canvas(resultBitmap);
-        c.drawBitmap(bitmap1, 0, 0, null);
+        System.gc();
+        Canvas c = new Canvas(bitmap1);
 
         Paint p = new Paint();
         p.setAlpha(255);
 
         //Drawing the second bitmap over the first with the given offset
         c.drawBitmap(bitmap2, xOffset, yOffset, p);
-        return resultBitmap;
+        return bitmap1;
     }
 }

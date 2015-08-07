@@ -42,10 +42,12 @@ public class WordSelectionActivity extends Activity {
                     .setTarget(new ViewTarget(R.id.easy_button, this))
                     .setContentTitle("")
                     .setContentText(getString(R.string.word_selection))
+                    .setStyle(R.style.CustomShowcaseTheme)
                     .setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             ((ShowcaseView) view.getParent()).hide();
+                            System.gc();
                         }
                     })
                     .build();

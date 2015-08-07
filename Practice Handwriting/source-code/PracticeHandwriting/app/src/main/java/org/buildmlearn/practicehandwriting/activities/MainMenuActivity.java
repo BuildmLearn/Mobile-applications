@@ -32,6 +32,7 @@ public class MainMenuActivity extends Activity {
                     .setTarget(new ViewTarget(R.id.character_button, this))
                     .setContentTitle(getString(R.string.mode_selection))
                     .setContentText("")
+                    .setStyle(R.style.CustomShowcaseTheme)
                     .setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -43,6 +44,7 @@ public class MainMenuActivity extends Activity {
                                     }
                                 });
                             ((ShowcaseView) view.getParent()).hide();
+                            System.gc();
                         }
                     })
                     .build();

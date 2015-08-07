@@ -34,6 +34,7 @@ public class LanguageActivity extends Activity {
                     .setTarget(new ViewTarget(R.id.english_button, this))
                     .setContentTitle("Choose a Language")
                     .setContentText("")
+                    .setStyle(R.style.CustomShowcaseTheme)
                     .setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -45,6 +46,7 @@ public class LanguageActivity extends Activity {
                                         languageActivityOnClick(view);
                                     }
                                 });
+                            System.gc();
                         }
                     })
                     .build();

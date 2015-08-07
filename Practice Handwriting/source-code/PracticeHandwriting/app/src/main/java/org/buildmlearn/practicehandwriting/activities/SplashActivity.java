@@ -12,9 +12,6 @@ import android.widget.Toast;
 
 import org.buildmlearn.practicehandwriting.R;
 import org.buildmlearn.practicehandwriting.helper.ScoreDbHelper;
-import org.buildmlearn.practicehandwriting.helper.TimeTrialResult;
-
-import java.util.ArrayList;
 
 //Splash Screen Activity
 public class SplashActivity extends Activity implements TextToSpeech.OnInitListener{
@@ -30,8 +27,6 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
     private boolean mTtsInitDone;
 
     public static boolean isFirstRun;
-
-    public static ArrayList<TimeTrialResult> mTimeTrialResults;
 
     public static ScoreDbHelper mDbHelper;
 

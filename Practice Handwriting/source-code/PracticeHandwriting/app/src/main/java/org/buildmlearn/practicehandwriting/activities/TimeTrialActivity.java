@@ -33,6 +33,7 @@ public class TimeTrialActivity extends PracticeBaseActivity {
         try {
             getIntent().putExtra(getResources().getString(R.string.practice_string), randomStringGenerator());//practice session with random strings, kept first since the string is spoken in super
             super.onCreate(savedInstanceState);
+            mScoreTimerView.setText("02:00");
             mCountDownTimer = new CountDownTimer(120000, 1000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
@@ -67,11 +68,13 @@ public class TimeTrialActivity extends PracticeBaseActivity {
                         .setTarget(new ViewTarget(R.id.score_and_timer_View, TimeTrialActivity.this))
                         .setContentTitle("")
                         .setContentText(getString(R.string.timerHelp))
+                        .setStyle(R.style.CustomShowcaseTheme)
                         .setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 ((ShowcaseView) view.getParent()).hide();
                                 mCountDownTimer.start();
+                                System.gc();
                             }
                         })
                         .build();
@@ -117,8 +120,6 @@ public class TimeTrialActivity extends PracticeBaseActivity {
             case R.id.done_save_button:
                 if(!mDone) {
                     //Saving the string and the touches to be redrawn in the result
-                    System.out.println(mDrawView.saveBitmap(mPracticeString,mSaveDir));
-
                     System.gc();
                     mPracticeString = randomStringGenerator();
                     while(isStringDone.containsKey(mPracticeString))

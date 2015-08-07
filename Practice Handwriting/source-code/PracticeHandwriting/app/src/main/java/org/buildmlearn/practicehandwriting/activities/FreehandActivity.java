@@ -18,6 +18,7 @@ public class FreehandActivity extends PracticeBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mDrawView.canVibrate(false);
+        mDrawView.canScore(false);
         SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(this);
         isFirstRun = wmbPreference.getBoolean("FIRSTFREEHAND", true);
         if (isFirstRun) {
@@ -28,10 +29,12 @@ public class FreehandActivity extends PracticeBaseActivity {
                     .setTarget(new ViewTarget(R.id.drawing, this))
                     .setContentTitle("")
                     .setContentText(getString(R.string.freehandHelp))
+                    .setStyle(R.style.CustomShowcaseTheme)
                     .setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             ((ShowcaseView) view.getParent()).hide();
+                            System.gc();
                         }
                     })
                     .build();
@@ -45,6 +48,7 @@ public class FreehandActivity extends PracticeBaseActivity {
             case R.id.reset_button:
                 mDrawView.init();
                 mDrawView.canVibrate(false);
+                mDrawView.canScore(false);
                 break;
             case R.id.done_save_button:
                 if(!mDone) {

@@ -139,15 +139,18 @@ public class TimeTrialResultActivity extends Activity {
         System.gc();
 
         //Deleting the files in the temp directory and the directory itself
-        for(File file : mTempDir.listFiles())
-            file.delete();
-        mTempDir.delete();
+        if(mTempDir.exists()) {
+            for (File file : mTempDir.listFiles())
+                file.delete();
+            mTempDir.delete();
+        }
     }
 
 
     @Override
     public void onBackPressed() {
         //Going back to the main menu instead of the Tracing screen
+        SplashActivity.isFirstRun = false;
         startActivity(new Intent(TimeTrialResultActivity.this, MainMenuActivity.class));
     }
 }

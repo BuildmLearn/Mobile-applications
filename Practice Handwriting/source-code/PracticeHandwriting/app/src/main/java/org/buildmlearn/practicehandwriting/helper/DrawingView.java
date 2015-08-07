@@ -39,10 +39,10 @@ public class DrawingView extends View {
     private Path mDrawPath; //The drawing path
     private Paint mDrawPaint, mCanvasPaint; //The paints used to draw on the canvas
     private Canvas mDrawCanvas; //The canvas of the view
-    private Bitmap mCanvasBitmap, mTextBitmap; //The bitmap that is set
+    private Bitmap mCanvasBitmap; //The bitmap that is set
     private Vibrator mVibrator; //Vibrator instance to vibrate if the user traces outside the boundary of the string
     private long mWrongTouches, mCorrectTouches; //number of correct/wrong touches
-    private boolean mDraw, mVibrate; //Boolean variables that allow the view to be redrawn and to vibrate
+    private boolean mDraw, mVibrate, mScoring; //Boolean variables that allow the view to be redrawn and to vibrate
     private long mVibrationStartTime; //The start time of the vibration
     private Toast mErrorToast; //Toast to display if user has been tracing wrongly for a long time
     private int minX, minY, maxX, maxY; //bounds of the touches
@@ -114,6 +114,8 @@ public class DrawingView extends View {
         minY = mHeight;
         maxY = -1;
 
+        mScoring = true;
+
         mVibrate = true; //Vibration on by default
 
         mTouchPoints = new ArrayList<>(); //Empty list as no touches yet
@@ -149,7 +151,6 @@ public class DrawingView extends View {
         mTextHeight = (int) textHeight;
         //Drawing the text at the center of the view
         mDrawCanvas.drawText(str, (mWidth - paintText.measureText(str)) / 2, (mHeight / 2) + textOffset, paintText);
-        mTextBitmap = Bitmap.createBitmap(mCanvasBitmap);
         invalidate();
     }
 
@@ -175,35 +176,37 @@ public class DrawingView extends View {
             float touchX = event.getX();
             float touchY = event.getY();
 
+
             // mapping screen touch co-ordinates to image pixel co-ordinates
             int x = (int) (touchX * mCanvasBitmap.getWidth() / mWidth);
             int y = (int) (touchY * mCanvasBitmap.getHeight() / mHeight);
 
             //updating the touch bounds
-            if(x < minX)
+            if (x < minX)
                 minX = x;
-            if(x > maxX)
+            if (x > maxX)
                 maxX = x;
-            if(y < minY)
+            if (y < minY)
                 minY = y;
-            if(y > maxY)
+            if (y > maxY)
                 maxY = y;
-
-            //checking if the touches are correct or wrong (inside or outside the boundary
-            if ((x >= 0 && x < mWidth && y >= 0 && y < mHeight && mTextBitmap.getPixel(x,y)== Color.TRANSPARENT) || (x < 0 || x >= mWidth || y < 0 || y >= mHeight)) {
-                mWrongTouches++;
-                if(mVibrate) {//Device will vibrate only if mVibrate is true
-                    mVibrator.vibrate(100);
-                    if (mVibrationStartTime == 0) {
-                        mVibrationStartTime = new Date().getTime();
-                        mErrorToast.cancel();
-                    } else if (new Date().getTime() - mVibrationStartTime > 1000 && mErrorToast.getView().getWindowVisibility() != View.VISIBLE) {
-                        mErrorToast.show();
+            if(mScoring) {
+                //checking if the touches are correct or wrong (inside or outside the boundary
+                if ((x >= 0 && x < mWidth && y >= 0 && y < mHeight && mCanvasBitmap.getPixel(x, y) == Color.TRANSPARENT) || (x < 0 || x >= mWidth || y < 0 || y >= mHeight)) {
+                    mWrongTouches++;
+                    if (mVibrate) {//Device will vibrate only if mVibrate is true
+                        mVibrator.vibrate(100);
+                        if (mVibrationStartTime == 0) {
+                            mVibrationStartTime = new Date().getTime();
+                            mErrorToast.cancel();
+                        } else if (new Date().getTime() - mVibrationStartTime > 1000 && mErrorToast.getView().getWindowVisibility() != View.VISIBLE) {
+                            mErrorToast.show();
+                        }
                     }
+                } else {
+                    mVibrationStartTime = 0;
+                    mCorrectTouches++;
                 }
-            } else {
-                mVibrationStartTime = 0;
-                mCorrectTouches++;
             }
 
             switch (event.getAction()) {
@@ -228,6 +231,10 @@ public class DrawingView extends View {
             return true;
         }
         return false;
+    }
+
+    public void canScore(boolean scoring){
+        mScoring = scoring;
     }
 
     public void canVibrate(boolean vibrate){
@@ -271,11 +278,8 @@ public class DrawingView extends View {
     }
 
     public String saveBitmap(String practiceString, String dirExtra) {
-        System.out.println(Environment.getExternalStorageDirectory());
         File mediaStorageDir = new File(Environment.getExternalStorageDirectory() + File.separator + getResources().getString(R.string.app_name) + dirExtra);
         if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()) {
-            System.out.println(mediaStorageDir.exists());
-            System.out.println(mediaStorageDir.mkdirs());
             return "Could not save trace. Unable to create directory";
         } else {//Compress the bitmap and then store it
             File file;

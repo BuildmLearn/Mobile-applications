@@ -83,6 +83,14 @@ public class CharacterSelectionActivity extends Activity {
             new ShowcaseView.Builder(this)
                     .setContentTitle(getString(R.string.character_selection))
                     .setContentText("")
+                    .setStyle(R.style.CustomShowcaseTheme)
+                    .setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            ((ShowcaseView) view.getParent()).hide();
+                            System.gc();
+                        }
+                    })
                     .build();
     }
 }

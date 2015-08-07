@@ -36,30 +36,44 @@ public class PracticeActivity extends PracticeBaseActivity {
                         .setTarget(new ViewTarget(R.id.drawing, PracticeActivity.this))
                         .setContentTitle("")
                         .setContentText(getString(R.string.traceHelp))
+                        .setStyle(R.style.CustomShowcaseTheme)
                         .setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 ((ShowcaseView) view.getParent()).hide();
+                                System.gc();
                                 new ShowcaseView.Builder(PracticeActivity.this)
                                         .setTarget(new ViewTarget(R.id.done_save_button, PracticeActivity.this))
                                         .setContentTitle("")
                                         .setContentText(getString(R.string.doneHelp))
+                                        .setStyle(R.style.CustomShowcaseTheme)
                                         .setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
                                                 ((ShowcaseView) view.getParent()).hide();
+                                                System.gc();
                                                 new ShowcaseView.Builder(PracticeActivity.this)
                                                         .setTarget(new ViewTarget(R.id.reset_button, PracticeActivity.this))
                                                         .setContentTitle("")
                                                         .setContentText(getString(R.string.resetHelp))
+                                                        .setStyle(R.style.CustomShowcaseTheme)
                                                         .setOnClickListener(new View.OnClickListener() {
                                                             @Override
                                                             public void onClick(View view) {
                                                                 ((ShowcaseView) view.getParent()).hide();
+                                                                System.gc();
                                                                 new ShowcaseView.Builder(PracticeActivity.this)
                                                                         .setTarget(new ViewTarget(R.id.action_next, PracticeActivity.this))
                                                                         .setContentTitle("")
                                                                         .setContentText(getString(R.string.actionbarHelp))
+                                                                        .setStyle(R.style.CustomShowcaseTheme)
+                                                                        .setOnClickListener(new View.OnClickListener() {
+                                                                            @Override
+                                                                            public void onClick(View view) {
+                                                                                ((ShowcaseView) view.getParent()).hide();
+                                                                                System.gc();
+                                                                            }
+                                                                        })
                                                                         .build();
                                                             }
                                                         })
@@ -106,12 +120,20 @@ public class PracticeActivity extends PracticeBaseActivity {
                     //User cannot draw anymore on the View
                     mDrawView.canDraw(false);
                     mDone = true;
-                    if(isFirstRun)
+                    //Commented out since it causes OOM
+                   /* if(isFirstRun)
                         new ShowcaseView.Builder(this)
                                 .setTarget(new ViewTarget(R.id.done_save_button, this))
                                 .setContentTitle("")
                                 .setContentText(getString(R.string.saveHelp))
-                                .build();
+                                .setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        ((ShowcaseView) view.getParent()).hide();
+                                        System.gc();
+                                    }
+                                })
+                                .build();*/
                 }
                 break;
         }

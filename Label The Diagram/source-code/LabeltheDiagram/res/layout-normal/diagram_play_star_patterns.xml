@@ -226,7 +226,7 @@
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
-        android:text="little dripper"
+        android:text="little dipper"
         android:textColor="#ffff" />
     
     <TextView
@@ -283,14 +283,14 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="138dp"
+        android:layout_marginLeft="140dp"
         android:layout_marginTop="45dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
-        android:text="big dripper"
+        android:text="big dipper"
         android:textColor="#ffff" />
     
     <TextView

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram">
+
+    <ImageView
+        android:id="@+id/mainDiagramStarPatterns"
+        android:layout_width="320dp"
+        android:layout_height="290dp"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/stars" />
+    
+    <ImageView
+        android:id="@+id/libraBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramStarPatterns"
+        android:layout_alignTop="@+id/mainDiagramStarPatterns"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/one" />
+    
+    <ImageView
+        android:id="@+id/little_dripperBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramStarPatterns"
+        android:layout_alignTop="@+id/mainDiagramStarPatterns"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/two" />
+    
+    <ImageView
+        android:id="@+id/big_dripperBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramStarPatterns"
+        android:layout_alignTop="@+id/mainDiagramStarPatterns"
+        android:layout_marginRight="70dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/three" />
+    
+    <ImageView
+        android:id="@+id/scorpioBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramStarPatterns"
+        android:layout_alignTop="@+id/mainDiagramStarPatterns"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="110dp"
+        android:src="@drawable/six" />
+    
+    <ImageView
+        android:id="@+id/geminiBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramStarPatterns"
+        android:layout_alignTop="@+id/mainDiagramStarPatterns"
+        android:layout_marginRight="145dp"
+        android:layout_marginTop="155dp"
+        android:src="@drawable/five" />
+    
+    <ImageView
+        android:id="@+id/leoBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramStarPatterns"
+        android:layout_alignBottom="@+id/mainDiagramStarPatterns"
+        android:layout_marginRight="45dp"
+        android:layout_marginBottom="45dp"
+        android:src="@drawable/eight" />
+    
+    <ImageView
+        android:id="@+id/dracoBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramStarPatterns"
+        android:layout_alignBottom="@+id/mainDiagramStarPatterns"
+        android:layout_marginRight="153dp"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/seven" />
+    
+    <ImageView
+        android:id="@+id/orianBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramStarPatterns"
+        android:layout_alignBottom="@+id/mainDiagramStarPatterns"
+        android:layout_marginLeft="35dp"
+        android:layout_marginBottom="65dp"
+        android:src="@drawable/four" />
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mainDiagramStarPatterns"
+        android:orientation="vertical" >
+        <ListView
+            android:id="@+id/lesson_list"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout>
+    
+
+</RelativeLayout>

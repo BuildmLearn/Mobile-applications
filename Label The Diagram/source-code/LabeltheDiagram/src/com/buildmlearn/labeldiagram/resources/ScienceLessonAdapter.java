@@ -2,7 +2,11 @@ package com.buildmlearn.labeldiagram.resources;
 
 import java.util.List;
 
+import com.buildmlearn.labeldiagram.lessons.LessonCarbonCycle;
 import com.buildmlearn.labeldiagram.lessons.LessonHumanEar;
+import com.buildmlearn.labeldiagram.lessons.LessonSolarSystem;
+import com.buildmlearn.labeldiagram.lessons.LessonStarPatterns;
+import com.buildmlearn.labeldiagram.lessons.LessonWaterCycle;
 
 import android.content.Context;
 import android.content.Intent;
@@ -36,24 +40,20 @@ public class ScienceLessonAdapter extends LessonCategoryAdapter {
 
 				switch (index) {
 				case 0:
-					Toast.makeText(getContext(), "Comming soon...", 200).show();
-					/*intent = new Intent(v.getContext(), LessonHumanEar.class);
-					v.getContext().startActivity(intent);*/
+					intent = new Intent(v.getContext(), LessonSolarSystem.class);
+					v.getContext().startActivity(intent);
 					break;
 				case 1:
-					Toast.makeText(getContext(), "Comming soon...", 200).show();
-					/*intent = new Intent(v.getContext(), LessonHumanEar.class);
-					v.getContext().startActivity(intent);*/
+					intent = new Intent(v.getContext(), LessonStarPatterns.class);
+					v.getContext().startActivity(intent);
 					break;
 				case 2:
-					Toast.makeText(getContext(), "Comming soon...", 200).show();
-					/*intent = new Intent(v.getContext(), LessonHumanEar.class);
-					v.getContext().startActivity(intent);*/
+					intent = new Intent(v.getContext(), LessonWaterCycle.class);
+					v.getContext().startActivity(intent);
 					break;
 				case 3:
-					Toast.makeText(getContext(), "Comming soon...", 200).show();
-					/*intent = new Intent(v.getContext(), LessonHumanEar.class);
-					v.getContext().startActivity(intent);*/
+					intent = new Intent(v.getContext(), LessonCarbonCycle.class);
+					v.getContext().startActivity(intent);
 					break;
 				default:
 					break;

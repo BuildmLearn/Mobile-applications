@@ -98,27 +98,22 @@ public class MainMenu extends Activity implements OnClickListener {
 
 		switch (v.getId()) {
 		case R.id.start_diagram:
-			Toast.makeText(getApplication(), "Dispatching to diagrams", 2000)
-					.show();
 			Intent diagramIntent = new Intent(v.getContext(), DiagramCategoryViewer.class);
 			startActivity(diagramIntent);
-			
 			break;
 		case R.id.start_screboard:
-			Toast.makeText(getApplication(), "Dispatching to scoreboard", 2000)
-					.show();
 			Intent scoreboardIntent = new Intent(getApplicationContext(), ScoreboardViewer.class);
 			startActivity(scoreboardIntent);
 			break;
 		case R.id.start_lesson:
-			Toast.makeText(getApplication(), "Comming soon...", 2000)
-					.show();
 			Intent lessonIntent = new Intent(getApplicationContext(), LessonCategoryViewer.class);
 			startActivity(lessonIntent);
 			break;
 		case R.id.start_badge:
 			Toast.makeText(getApplication(), "Comming soon...", 2000)
 					.show();
+			Intent badgesIntent = new Intent(getApplicationContext(), BadgesViewer.class);
+			startActivity(badgesIntent);
 			break;
 		case R.id.start_settings:
 			Toast.makeText(getApplication(), "Comming soon...", 2000)

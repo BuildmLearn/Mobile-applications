@@ -76,7 +76,7 @@
     <ImageView
         android:id="@+id/mainDiagramSpectrum"
         android:layout_width="360dp"
-        android:layout_height="360dp"
+        android:layout_height="480dp"
         android:layout_below="@+id/scoreTab"
         android:layout_centerHorizontal="true"
         android:adjustViewBounds="true"
@@ -94,115 +94,115 @@
 
     <ImageView
         android:id="@+id/amBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramSpectrum"
         android:layout_alignStart="@+id/mainDiagramSpectrum"
         android:layout_alignTop="@+id/mainDiagramSpectrum"
-        android:layout_marginLeft="140dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginLeft="128dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="10dp"
         android:src="@drawable/marker_white" />
     
     <ImageView
         android:id="@+id/fmBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramSpectrum"
         android:layout_alignStart="@+id/mainDiagramSpectrum"
         android:layout_alignTop="@+id/mainDiagramSpectrum"
         android:layout_marginLeft="215dp"
         android:layout_marginStart="215dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:src="@drawable/marker_white" />
     
     <ImageView
         android:id="@+id/microwaveBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramSpectrum"
         android:layout_alignStart="@+id/mainDiagramSpectrum"
         android:layout_alignTop="@+id/mainDiagramSpectrum"
         android:layout_marginLeft="215dp"
         android:layout_marginStart="215dp"
-        android:layout_marginTop="73dp"
+        android:layout_marginTop="105dp"
         android:src="@drawable/marker_white" />
     
     <ImageView
         android:id="@+id/visibleLightBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignRight="@+id/mainDiagramSpectrum"
         android:layout_alignEnd="@+id/mainDiagramSpectrum"
         android:layout_alignTop="@+id/mainDiagramSpectrum"
-        android:layout_marginRight="90dp"
-        android:layout_marginEnd="90dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginRight="67dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginTop="160dp"
         android:src="@drawable/marker_white" />
     
     <ImageView
         android:id="@+id/radio_wavesBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramSpectrum"
         android:layout_alignStart="@+id/mainDiagramSpectrum"
         android:layout_alignTop="@+id/mainDiagramSpectrum"
-        android:layout_marginLeft="80dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="10dp"
         android:src="@drawable/marker_white" />
     
     <ImageView
         android:id="@+id/irBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramSpectrum"
         android:layout_alignStart="@+id/mainDiagramSpectrum"
         android:layout_alignTop="@+id/mainDiagramSpectrum"
-        android:layout_marginLeft="50dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="85dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="155dp"
         android:src="@drawable/marker_white" />
     
     <ImageView
         android:id="@+id/uvBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignRight="@+id/mainDiagramSpectrum"
         android:layout_alignEnd="@+id/mainDiagramSpectrum"
         android:layout_alignBottom="@+id/mainDiagramSpectrum"
         android:layout_marginRight="125dp"
         android:layout_marginEnd="125dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="170dp"
         android:src="@drawable/marker_white" />
     
     <ImageView
         android:id="@+id/xrayBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignRight="@+id/mainDiagramSpectrum"
         android:layout_alignEnd="@+id/mainDiagramSpectrum"
         android:layout_alignBottom="@+id/mainDiagramSpectrum"
-        android:layout_marginRight="130dp"
-        android:layout_marginEnd="130dp"
-        android:layout_marginBottom="75dp"
+        android:layout_marginRight="120dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="110dp"
         android:src="@drawable/marker_white" />
     
     <ImageView
         android:id="@+id/gammaBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignRight="@+id/mainDiagramSpectrum"
         android:layout_alignEnd="@+id/mainDiagramSpectrum"
         android:layout_alignBottom="@+id/mainDiagramSpectrum"
-        android:layout_marginRight="130dp"
-        android:layout_marginEnd="130dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginRight="120dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="30dp"
         android:src="@drawable/marker_white" />
 
     <ImageView
         android:id="@+id/innerTagHolder"
-        android:layout_width="450dp"
+        android:layout_width="455dp"
         android:layout_height="170dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
@@ -221,7 +221,7 @@
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -229,7 +229,7 @@
         android:paddingTop="3dp"
         android:text="radio waves"
         android:textColor="#ffff"
-        android:textSize="18sp"/>
+        android:textSize="20sp"/>
     
     <TextView
         android:id="@+id/uvTag"
@@ -237,8 +237,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="145dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -246,7 +246,7 @@
         android:paddingTop="3dp"
         android:text="ulatra violate"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
     
     <TextView
         android:id="@+id/microwaveTag"
@@ -254,8 +254,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="290dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="295dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -263,7 +263,7 @@
         android:paddingTop="3dp"
         android:text="microwaves"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
     
     
     <TextView
@@ -273,7 +273,7 @@
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="65dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -281,7 +281,7 @@
         android:paddingTop="3dp"
         android:text="gamma"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
     
     <TextView
         android:id="@+id/visibleLightTag"
@@ -290,7 +290,7 @@
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
         android:layout_marginLeft="115dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="65dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -298,7 +298,7 @@
         android:paddingTop="3dp"
         android:text="visible light"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
     
     <TextView
         android:id="@+id/irTag"
@@ -306,8 +306,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="255dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginLeft="253dp"
+        android:layout_marginTop="65dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -315,7 +315,7 @@
         android:paddingTop="3dp"
         android:text="infrared"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
     
     <TextView
         android:id="@+id/amTag"
@@ -324,7 +324,7 @@
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
         android:layout_marginLeft="360dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="65dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -332,7 +332,7 @@
         android:paddingTop="3dp"
         android:text="AM"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/xrayTag"
@@ -341,7 +341,7 @@
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="110dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -349,7 +349,7 @@
         android:paddingTop="3dp"
         android:text="X rays"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
     
     <TextView
         android:id="@+id/fmTag"
@@ -358,7 +358,7 @@
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="110dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -366,6 +366,6 @@
         android:paddingTop="3dp"
         android:text="FM"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
     
 </RelativeLayout>

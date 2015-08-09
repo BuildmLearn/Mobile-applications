@@ -8,9 +8,11 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:horizontalSpacing="2dp"
+        android:horizontalSpacing="3dp"
         android:numColumns="2"
-        android:verticalSpacing="2dp" >
+        android:verticalSpacing="3dp" 
+        android:layout_margin="3dp"
+        android:background="#FFFFFF">
     </GridView>
 
 </RelativeLayout>

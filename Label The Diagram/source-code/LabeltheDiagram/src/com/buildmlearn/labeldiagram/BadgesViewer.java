@@ -16,6 +16,7 @@ import android.support.v4.app.FragmentTabHost;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -48,6 +49,9 @@ public class BadgesViewer extends FragmentActivity {
 				mTabHost.newTabSpec("tab2").setIndicator(
 						getTabIndicator(mTabHost.getContext(), "YOUR BADGES")),
 				BadgesAll.class, null);
+
+		findViewById(android.R.id.tabcontent).setBackgroundColor(
+				getResources().getColor(R.color.appBg_color_white));
 
 	}
 

@@ -220,7 +220,8 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.ScoreboardViewer">
             </meta-data>
         </activity>
-
+        <activity android:name="com.buildmlearn.labeldiagram.widget.CustomPopUpWindow" android:theme="@style/DialogNoTitleBar">
+        </activity>
         <meta-data android:name="io.fabric.ApiKey" android:value="37b3161e48423b96715470d17f0ac8dad7799436"/>
     </application>
 

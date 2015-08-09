@@ -75,8 +75,8 @@
 
     <ImageView
         android:id="@+id/mainDiagramDryCell"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
+        android:layout_width="440dp"
+        android:layout_height="500dp"
         android:layout_below="@+id/scoreTab"
         android:layout_centerHorizontal="true"
         android:adjustViewBounds="true"
@@ -94,114 +94,114 @@
     
     <ImageView
         android:id="@+id/posTerminalBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramDryCell"
         android:layout_alignStart="@+id/mainDiagramDryCell"
         android:layout_alignTop="@+id/mainDiagramDryCell"
-        android:layout_marginLeft="160dp"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginLeft="170dp"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="5dp"
         android:src="@drawable/marker_white" />
     
     <ImageView
         android:id="@+id/chemPasteBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignRight="@+id/mainDiagramDryCell"
         android:layout_alignEnd="@+id/mainDiagramDryCell"
         android:layout_alignTop="@+id/mainDiagramDryCell"
-        android:layout_marginRight="120dp"
-        android:layout_marginEnd="120dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginRight="125dp"
+        android:layout_marginEnd="125dp"
+        android:layout_marginTop="5dp"
         android:src="@drawable/marker_white" />
     
     <ImageView
         android:id="@+id/sealBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignRight="@+id/mainDiagramDryCell"
         android:layout_alignEnd="@+id/mainDiagramDryCell"
         android:layout_alignTop="@+id/mainDiagramDryCell"
-        android:layout_marginRight="75dp"
+        android:layout_marginRight="60dp"
         android:layout_marginTop="40dp"
         android:src="@drawable/marker_white" />
     
     <ImageView
         android:id="@+id/cathodeBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignRight="@+id/mainDiagramDryCell"
         android:layout_alignEnd="@+id/mainDiagramDryCell"
         android:layout_alignTop="@+id/mainDiagramDryCell"
-        android:layout_marginRight="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginTop="198dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="240dp"
         android:src="@drawable/marker_white" />
     
     <ImageView
         android:id="@+id/insulatorBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignRight="@+id/mainDiagramDryCell"
         android:layout_alignEnd="@+id/mainDiagramDryCell"
         android:layout_alignTop="@+id/mainDiagramDryCell"
-        android:layout_marginRight="75dp"
-        android:layout_marginEnd="75dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginTop="310dp"
         android:src="@drawable/marker_white" />
     
     <ImageView
         android:id="@+id/mJacketBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignRight="@+id/mainDiagramDryCell"
         android:layout_alignEnd="@+id/mainDiagramDryCell"
         android:layout_alignBottom="@+id/mainDiagramDryCell"
-        android:layout_marginRight="109dp"
-        android:layout_marginEnd="109dp"
+        android:layout_marginRight="105dp"
+        android:layout_marginEnd="105dp"
         android:layout_marginBottom="10dp"
         android:src="@drawable/marker_white" />
     
     <ImageView
         android:id="@+id/negTerminalBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignRight="@+id/mainDiagramDryCell"
         android:layout_alignEnd="@+id/mainDiagramDryCell"
         android:layout_alignBottom="@+id/mainDiagramDryCell"
-        android:layout_marginRight="230dp"
-        android:layout_marginEnd="230dp"
+        android:layout_marginRight="250dp"
+        android:layout_marginEnd="250dp"
         android:layout_marginBottom="10dp"
         android:src="@drawable/marker_white" />
     
     <ImageView
         android:id="@+id/airSpaceBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramDryCell"
         android:layout_alignStart="@+id/mainDiagramDryCell"
         android:layout_alignTop="@+id/mainDiagramDryCell"
         android:layout_marginLeft="65dp"
         android:layout_marginStart="65dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="90dp"
         android:src="@drawable/marker_white" />
     
     <ImageView
         android:id="@+id/anodeBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramDryCell"
         android:layout_alignStart="@+id/mainDiagramDryCell"
         android:layout_alignTop="@+id/mainDiagramDryCell"
-        android:layout_marginLeft="50dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="310dp"
         android:src="@drawable/marker_white" />
 
     <ImageView
         android:id="@+id/innerTagHolder"
-        android:layout_width="460dp"
+        android:layout_width="450dp"
         android:layout_height="170dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
@@ -219,8 +219,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -228,7 +228,7 @@
         android:paddingTop="3dp"
         android:text="positive terminal"
         android:textColor="#ffff"
-        android:textSize="18sp"/>
+        android:textSize="20sp"/>
     
     <TextView
         android:id="@+id/cathodeTag"
@@ -236,8 +236,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="190dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="185dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -245,7 +245,7 @@
         android:paddingTop="3dp"
         android:text="cathode"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
     
     <TextView
         android:id="@+id/sealTag"
@@ -253,8 +253,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="285dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -262,7 +262,7 @@
         android:paddingTop="3dp"
         android:text="asphalt seal"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
     
     <TextView
         android:id="@+id/negTerminalTag"
@@ -270,8 +270,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="65dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -279,7 +279,7 @@
         android:paddingTop="3dp"
         android:text="negative terminal"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
     
     <TextView
         android:id="@+id/anodeTag"
@@ -287,8 +287,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="200dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginLeft="195dp"
+        android:layout_marginTop="65dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -296,7 +296,7 @@
         android:paddingTop="3dp"
         android:text="anode"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
     
     <TextView
         android:id="@+id/mJacketTag"
@@ -304,8 +304,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginLeft="280dp"
+        android:layout_marginTop="65dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -313,7 +313,7 @@
         android:paddingTop="3dp"
         android:text="metal jacket"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
     
     <TextView
         android:id="@+id/chemPasteTag"
@@ -321,8 +321,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="110dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -330,7 +330,7 @@
         android:paddingTop="3dp"
         android:text="chemical paste"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
     
     <TextView
         android:id="@+id/airSpaceTag"
@@ -338,8 +338,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="190dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginLeft="187dp"
+        android:layout_marginTop="110dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -347,7 +347,7 @@
         android:paddingTop="3dp"
         android:text="air space"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
     
     <TextView
         android:id="@+id/insulatorTag"
@@ -355,8 +355,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="325dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginLeft="312dp"
+        android:layout_marginTop="110dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -364,6 +364,6 @@
         android:paddingTop="3dp"
         android:text="insulator"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
 </RelativeLayout>

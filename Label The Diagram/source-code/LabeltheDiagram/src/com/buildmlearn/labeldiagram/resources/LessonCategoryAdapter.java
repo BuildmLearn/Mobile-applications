@@ -32,6 +32,7 @@ public class LessonCategoryAdapter extends ArrayAdapter<LessonCategoryRawItem> {
 	public class ViewHolder {
 
 		ImageView navIcon;
+		ImageView lessonIcon;
 		TextView titleTxt;
 		TextView descriptionTxt;
 
@@ -54,6 +55,7 @@ public class LessonCategoryAdapter extends ArrayAdapter<LessonCategoryRawItem> {
 			holder.titleTxt = (TextView) convertView.findViewById(R.id.lessonTitle);
 			holder.descriptionTxt = (TextView) convertView.findViewById(R.id.lessonDescription);
 			holder.navIcon = (ImageView) convertView.findViewById(R.id.navigatorBtn);
+			holder.lessonIcon = (ImageView) convertView.findViewById(R.id.lessonIcon);
 			convertView.setTag(holder);
 
 		} else {
@@ -63,6 +65,7 @@ public class LessonCategoryAdapter extends ArrayAdapter<LessonCategoryRawItem> {
 		holder.titleTxt.setText(rawItem.getTitle());
 		holder.descriptionTxt.setText(rawItem.getDescription());
 		holder.navIcon.setImageResource(R.drawable.proceed_btn);
+		holder.lessonIcon.setImageResource(rawItem.getIconId());
 		
 		setDispatchClass(holder,index);
 		

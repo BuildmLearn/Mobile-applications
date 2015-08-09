@@ -24,8 +24,8 @@ public class PhysicsLessonFragment extends Fragment {
 
 		createModel();
 
-		lessonAdapter = new PhysicsLessonAdapter(
-				getActivity(), R.layout.lesson_category_row_item, categories);
+		lessonAdapter = new PhysicsLessonAdapter(getActivity(),
+				R.layout.lesson_category_row_item, categories);
 	}
 
 	@Override
@@ -52,13 +52,19 @@ public class PhysicsLessonFragment extends Fragment {
 				R.string.lesson_motor_desc, R.string.lesson_dry_cell_desc,
 				R.string.lesson_circuit_desc };
 
+		int[] iconArray = new int[] { R.drawable.icon_prism,
+				R.drawable.icon_lens, R.drawable.icon_spectrum,
+				R.drawable.icon_electric_motor, R.drawable.icon_drycell,
+				R.drawable.icon_circuit };
+
 		for (int i = 0; i < titleArray.length; i++) {
 
 			LessonCategoryRawItem item = new LessonCategoryRawItem(
-					getResources().getString(titleArray[i]), getResources().getString(descrptionArray[i]));
+					getResources().getString(titleArray[i]), getResources()
+							.getString(descrptionArray[i]), iconArray[i]);
 
 			categories.add(item);
 		}
-		
+
 	}
 }

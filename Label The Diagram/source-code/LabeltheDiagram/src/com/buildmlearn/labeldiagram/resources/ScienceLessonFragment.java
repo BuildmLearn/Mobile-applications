@@ -49,12 +49,16 @@ public class ScienceLessonFragment extends Fragment {
 		int[] descrptionArray = new int[] { R.string.lesson_solar_system_desc,
 				R.string.lesson_star_patterns_desc, R.string.lesson_water_cycle_desc,
 				R.string.lesson_carbon_cycle_desc };
+		
+		int[] iconArray = new int[] { R.drawable.icon_solar_system,
+				R.drawable.icon_stars_pattern, R.drawable.icon_water_cycle,
+				R.drawable.icon_corban_cycle };
 
 		for (int i = 0; i < titleArray.length; i++) {
 
 			LessonCategoryRawItem item = new LessonCategoryRawItem(
 					getResources().getString(titleArray[i]), getResources()
-							.getString(descrptionArray[i]));
+							.getString(descrptionArray[i]), iconArray[i]);
 
 			categories.add(item);
 		}

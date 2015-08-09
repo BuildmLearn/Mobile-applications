@@ -24,8 +24,8 @@ public class BioLessonFragment extends Fragment {
 
 		createModel();
 
-		lessonAdapter = new BioLessonAdapter(
-				getActivity(), R.layout.lesson_category_row_item, categories);
+		lessonAdapter = new BioLessonAdapter(getActivity(),
+				R.layout.lesson_category_row_item, categories);
 	}
 
 	@Override
@@ -54,13 +54,19 @@ public class BioLessonFragment extends Fragment {
 				R.string.lesson_plant_flower_desc,
 				R.string.lesson_bacteria_desc, R.string.lesson_virus_desc };
 
+		int[] iconArray = new int[] { R.drawable.icon_eye,
+				R.drawable.icon_heart, R.drawable.icon_ear,
+				R.drawable.icon_plant_cell, R.drawable.icon_flower,
+				R.drawable.icon_bacteria, R.drawable.icon_virus };
+
 		for (int i = 0; i < titleArray.length; i++) {
 
 			LessonCategoryRawItem item = new LessonCategoryRawItem(
-					getResources().getString(titleArray[i]), getResources().getString(descrptionArray[i]));
+					getResources().getString(titleArray[i]), getResources()
+							.getString(descrptionArray[i]),iconArray[i]);
 
 			categories.add(item);
 		}
-		
+
 	}
 }

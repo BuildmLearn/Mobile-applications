@@ -663,6 +663,8 @@ int string badge_persistence 0x7f070035
 int string badge_physics 0x7f070031
 int string badge_science 0x7f070032
 int string badge_streak 0x7f070034
+int string bio_diagrams_completed 0x7f070036
+int string bio_diagrams_count 0x7f07003a
 int string category_human_body 0x7f070006
 int string category_human_body_desc 0x7f07000a
 int string category_microbes 0x7f070008
@@ -707,7 +709,13 @@ int string lesson_virus 0x7f070014
 int string lesson_virus_desc 0x7f070025
 int string lesson_water_cycle 0x7f07001d
 int string lesson_water_cycle_desc 0x7f07002e
+int string physics_diagrams_completed 0x7f070037
+int string physics_diagrams_count 0x7f07003b
+int string science_diagrams_completed 0x7f070038
+int string science_diagrams_count 0x7f07003c
 int string title_activity_main_menu 0x7f070005
+int string total_diagrams_completed 0x7f070039
+int string total_diagrams_count 0x7f07003d
 int style Animations 0x7f090003
 int style Animations_PopDownMenu 0x7f090004
 int style Animations_PopDownMenu_Center 0x7f090005

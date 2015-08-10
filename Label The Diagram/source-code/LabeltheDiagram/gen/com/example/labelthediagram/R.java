@@ -712,6 +712,10 @@ public final class R {
         public static final int badge_physics=0x7f070031;
         public static final int badge_science=0x7f070032;
         public static final int badge_streak=0x7f070034;
+        /**  Shared Preferences key strings  
+         */
+        public static final int bio_diagrams_completed=0x7f070036;
+        public static final int bio_diagrams_count=0x7f07003a;
         public static final int category_human_body=0x7f070006;
         public static final int category_human_body_desc=0x7f07000a;
         public static final int category_microbes=0x7f070008;
@@ -763,7 +767,13 @@ public final class R {
         public static final int lesson_virus_desc=0x7f070025;
         public static final int lesson_water_cycle=0x7f07001d;
         public static final int lesson_water_cycle_desc=0x7f07002e;
+        public static final int physics_diagrams_completed=0x7f070037;
+        public static final int physics_diagrams_count=0x7f07003b;
+        public static final int science_diagrams_completed=0x7f070038;
+        public static final int science_diagrams_count=0x7f07003c;
         public static final int title_activity_main_menu=0x7f070005;
+        public static final int total_diagrams_completed=0x7f070039;
+        public static final int total_diagrams_count=0x7f07003d;
     }
     public static final class style {
         public static final int Animations=0x7f090003;

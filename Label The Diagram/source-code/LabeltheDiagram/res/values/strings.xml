@@ -59,5 +59,15 @@
     <string name="badge_streak">Great Streak</string>
     <string name="badge_persistence">Persistence</string>
     
+    <!-- Shared Preferences key strings  -->
+    <string name="bio_diagrams_completed">completedBioDiagrams</string>
+    <string name="physics_diagrams_completed">completedPhysicsDiagrams</string>
+    <string name="science_diagrams_completed">completedScienceDiagrams</string>
+    <string name="total_diagrams_completed">completedTotalDiagrams</string>
+    <string name="bio_diagrams_count">bioDiagramsCount</string>
+    <string name="physics_diagrams_count">physicsDiagramsCount</string>
+    <string name="science_diagrams_count">scienceDiagramsCount</string>
+    <string name="total_diagrams_count">TotalDiagramsCount</string>
+    
 
 </resources>

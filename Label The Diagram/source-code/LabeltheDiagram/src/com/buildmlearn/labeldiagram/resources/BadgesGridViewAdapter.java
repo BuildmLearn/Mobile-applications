@@ -60,7 +60,9 @@ public class BadgesGridViewAdapter extends ArrayAdapter<BadgeGridRowItem> {
 			convertView.setTag(holder);
 
 		} else {
+			
 			holder = (ViewHolder) convertView.getTag();
+			
 		}
 
 		View child = inflater.inflate(rawItem.getLayoutId(), null);
@@ -68,6 +70,7 @@ public class BadgesGridViewAdapter extends ArrayAdapter<BadgeGridRowItem> {
 		TextView bagdgeTxt = (TextView) child.findViewById(R.id.badgeTitle);
 
 		switch (position) {
+		
 		case 0:
 			badgeIcon.setImageResource(R.drawable.champion);
 			bagdgeTxt.setText(R.string.badge_champion);
@@ -107,6 +110,7 @@ public class BadgesGridViewAdapter extends ArrayAdapter<BadgeGridRowItem> {
 
 		default:
 			break;
+			
 		}
 		
 		badgeNameToPass = badgeName;

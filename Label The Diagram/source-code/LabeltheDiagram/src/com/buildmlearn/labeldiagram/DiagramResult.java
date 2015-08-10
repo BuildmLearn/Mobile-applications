@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.json.JSONObject;
 
+import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
 import com.buildmlearn.labeldiagram.database.DBAdapter;
 import com.buildmlearn.labeldiagram.entity.Result;
 import com.buildmlearn.labeldiagram.helper.ClassMapper;
@@ -19,7 +20,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -38,7 +41,12 @@ import android.widget.Toast;
  *
  */
 public class DiagramResult extends Activity implements OnClickListener {
-
+	
+	final static int BIO_DIAGRAM_COUNT = 7;
+	final static int PHYSICS_DIAGRAM_COUNT = 6;
+	final static int SCIENCE_DIAGRAM_COUNT = 4;
+	final static int TOTAL_DIAGRAM_COUNT = 17;
+	
 	ArrayList<DiagramResultRawItem> resultList = new ArrayList<DiagramResultRawItem>();
 	List<TextView> correctTagList = new ArrayList<TextView>();
 	List<TextView> incorrectTagList = new ArrayList<TextView>();
@@ -47,10 +55,14 @@ public class DiagramResult extends Activity implements OnClickListener {
 
 	boolean isBestScore;
 	int gameScore;
-	float rating;
+	float score;
 	String source;
+	String category;
 	DBAdapter diagramDb;
-
+	SharedPreferences preferences;
+	SharedPreferences.Editor editor;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -66,18 +78,19 @@ public class DiagramResult extends Activity implements OnClickListener {
 				.getIncorrectLabelList();
 
 		// Capture intent values passed by DiagramPlay activity
-		rating = getIntent().getExtras().getFloat("SCORE");
+		score = getIntent().getExtras().getFloat("SCORE");
 		source = getIntent().getExtras().getString("SOURCE");
+		category = getIntent().getExtras().getString("CATEGORY");
 		isBestScore = getIntent().getExtras().getBoolean("BEST_SCORE");
 		gameScore = getIntent().getExtras().getInt("GAME_SCORE");
 
-		// Set the score on the ratingbar
+		// Set the score on the rating bar
 		RatingBar scoreRater = (RatingBar) findViewById(R.id.resultBar);
-		scoreRater.setRating((rating / gameScore) * 5);
+		scoreRater.setRating((score / gameScore) * 5);
 
 		// Set score on the score TextView
 		TextView scoreTxt = (TextView) findViewById(R.id.scoreboardScore);
-		scoreTxt.setText((int) rating + "/" +gameScore);
+		scoreTxt.setText((int) score + "/" + gameScore);
 
 		// Referencing action buttons and register for onClick event
 		Button tryAgain = (Button) findViewById(R.id.againButton);
@@ -86,7 +99,7 @@ public class DiagramResult extends Activity implements OnClickListener {
 		tryAgain.setOnClickListener(this);
 		nextButton.setOnClickListener(this);
 
-		// Save diagram result for viewing on the Scoreboard
+		// Save diagram result for viewing on the ScoreBoard
 		saveDiagramScore();
 
 		// Call for populating data for adapter
@@ -100,7 +113,105 @@ public class DiagramResult extends Activity implements OnClickListener {
 		list.setAdapter(resultAdapter);
 	}
 
+	private void saveResultForBadges() {
+
+		initPreferences();
+		checkConstrainsts();
+		//HelperClass.setPreferences(source, value, this);
+
+	}
+
+	private void initPreferences() {
+		preferences = this.getPreferences(Context.MODE_PRIVATE);	
+		editor = preferences.edit();
+	}
+
+	private void checkConstrainsts() {
+
+		String key; 
+		String badgeTitle;
+		int keyValue;
+		int badgeId;
+		
+		if ((int) score == gameScore) {
+
+			switch (category) {
+
+			case "Biology":
+				
+				key = getResources().getString(R.string.bio_diagrams_completed);
+				keyValue = updatePreferences(key);
+				
+				if(keyValue == BIO_DIAGRAM_COUNT){
+					
+					badgeTitle = getResources().getString(R.string.badge_biology);
+					badgeId = R.drawable.bio;
+					intentBuilder(badgeTitle,badgeId);
+					
+				}
+				
+				break;
+				
+			case "Physics":
+				
+				key = getResources().getString(R.string.physics_diagrams_completed);
+				keyValue = updatePreferences(key);
+				
+				if(keyValue == PHYSICS_DIAGRAM_COUNT){
+					
+					badgeTitle = getResources().getString(R.string.badge_physics);
+					badgeId = R.drawable.physics;
+					intentBuilder(badgeTitle,badgeId);
+					
+				}
+				
+				break;
+				
+			case "Science":
+				
+				key = getResources().getString(R.string.science_diagrams_completed);
+				keyValue = updatePreferences(key);
+				
+				if(keyValue == SCIENCE_DIAGRAM_COUNT){
+					
+					badgeTitle = getResources().getString(R.string.badge_science);
+					badgeId = R.drawable.science;
+					intentBuilder(badgeTitle,badgeId);
+					
+				}
+				
+				break;
+				
+			default:
+				break;
+				
+			}
+		}
+
+	}
+
+	private void intentBuilder(String badgeTitle, int badgeId) {
+		Intent intent;
+		intent = new Intent(this, BadgePopUpWindow.class);
+		intent.putExtra("BADGE_TITLE", badgeTitle);
+		intent.putExtra("BADGE_ID", badgeId);
+		startActivity(intent);
+	}
 	
+	private int updatePreferences(String key){
+		
+		int previousVal;
+		int updatedVal;
+		
+		previousVal = preferences.getInt(key, 0);
+		updatedVal = previousVal += 1;
+		editor.putInt(key, updatedVal);
+		editor.commit();
+		
+		return updatedVal;
+		
+	}
+
 	/**
 	 * save score for the diagram play action
 	 */
@@ -111,7 +222,7 @@ public class DiagramResult extends Activity implements OnClickListener {
 		extractTags(correctTagList, incorrectTagList);
 
 		Result resultObj = new Result(source);
-		resultObj.setScore(rating);
+		resultObj.setScore(score);
 		resultObj.setCorrectTagList(correctTagTextList);
 		resultObj.setIncorrectTagList(incorrectTagTextList);
 		resultObj.setGameScore(gameScore);

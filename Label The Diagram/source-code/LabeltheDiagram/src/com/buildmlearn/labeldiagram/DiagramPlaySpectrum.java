@@ -150,6 +150,7 @@ public class DiagramPlaySpectrum extends DiagramPlayBase {
 		intent.putExtra("SCORE", totalScore);
 		intent.putExtra("GAME_SCORE", gameScore);
 		intent.putExtra("SOURCE", "Spectrum");
+		intent.putExtra("CATEGORY", "Physics");
 		intent.putExtra("BEST_SCORE", achievedBestScore);
 		startActivity(intent);
 	}

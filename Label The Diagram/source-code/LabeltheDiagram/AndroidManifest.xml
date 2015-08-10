@@ -62,7 +62,7 @@
             </meta-data>
         </activity>
         <activity
-            android:name="com.buildmlearn.labeldiagram.BadgesViewer"
+            android:name="com.buildmlearn.labeldiagram.badges.BadgesViewer"
             android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -522,7 +522,7 @@
             </meta-data>
         </activity>
         <activity
-            android:name="com.buildmlearn.labeldiagram.widget.CustomPopUpWindow"
+            android:name="com.buildmlearn.labeldiagram.badges.BadgePopUpWindow"
             android:theme="@style/DialogNoTitleBar">
         </activity>
         <meta-data

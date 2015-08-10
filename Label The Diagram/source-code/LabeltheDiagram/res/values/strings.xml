@@ -51,5 +51,13 @@
     <string name="lesson_star_patterns_desc">Lesson star patterns</string>
     <string name="lesson_water_cycle_desc">Lesson water cycle</string>
     <string name="lesson_carbon_cycle_desc">Lesson carbon cycle</string>
+    
+    <string name="badge_biology">Master in Biology</string>
+    <string name="badge_physics">Master in Physics</string>
+    <string name="badge_science">Master in Science</string>
+    <string name="badge_champion">Champion</string>
+    <string name="badge_streak">Great Streak</string>
+    <string name="badge_persistence">Persistence</string>
+    
 
 </resources>

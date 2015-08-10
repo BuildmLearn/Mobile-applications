@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.buildmlearn.labeldiagram.entity.Badge;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 public class Database extends SQLiteAssetHelper{
@@ -31,4 +32,19 @@ public class Database extends SQLiteAssetHelper{
     	return result;
     }
 
+    public Badge getBadge(String badgeTitle){
+    	
+    	db = getReadableDatabase();
+    	String query = "SELECT * FROM Badge where name='" + badgeTitle + "'";
+    	Badge badge = new Badge();
+    	Cursor cursor = db.rawQuery(query, null);
+    	
+    	if(cursor.moveToFirst()){
+    		badge.setTitle(cursor.getString(0));
+    		badge.setDescription(cursor.getString(1));
+    		//badge.setIconId(Integer.parseInt(cursor.getString(3)));
+    	}
+    	cursor.close();
+    	return badge;
+    }
 }

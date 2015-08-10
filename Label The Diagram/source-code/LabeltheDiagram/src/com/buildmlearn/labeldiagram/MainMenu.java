@@ -1,5 +1,6 @@
 package com.buildmlearn.labeldiagram;
 
+import com.buildmlearn.labeldiagram.badges.BadgesViewer;
 import com.buildmlearn.labeldiagram.lessons.LessonCategoryViewer;
 import com.buildmlearn.labeldiagram.lessons.LessonHumanEar;
 import com.example.labelthediagram.R;

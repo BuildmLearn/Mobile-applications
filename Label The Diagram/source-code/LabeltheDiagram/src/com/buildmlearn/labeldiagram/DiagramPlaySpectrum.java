@@ -1,5 +1,6 @@
 package com.buildmlearn.labeldiagram;
 
+import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
 import com.example.labelthediagram.R;
 
 import android.app.AlertDialog;
@@ -24,6 +25,7 @@ public class DiagramPlaySpectrum extends DiagramPlayBase {
 
 		actionBar.setTitle("Spectrum");
 		setDiagramName("Spectrum");
+		setDiagramCategory("Physics");
 
 		// Score board textViews
 		compeleteRatio = (TextView) findViewById(R.id.complete_ratio);
@@ -150,9 +152,18 @@ public class DiagramPlaySpectrum extends DiagramPlayBase {
 		intent.putExtra("SCORE", totalScore);
 		intent.putExtra("GAME_SCORE", gameScore);
 		intent.putExtra("SOURCE", "Spectrum");
-		intent.putExtra("CATEGORY", "Physics");
 		intent.putExtra("BEST_SCORE", achievedBestScore);
 		startActivity(intent);
 	}
 	
+	@Override
+	protected void intentBuilder(String badgeTitle, int badgeId) {
+		Intent intent;
+		intent = new Intent(getApplicationContext(), BadgePopUpWindow.class);
+		intent.putExtra("BADGE_TITLE", badgeTitle);
+		intent.putExtra("BADGE_ID", badgeId);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+		finish();
+	}
 }

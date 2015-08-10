@@ -19,15 +19,20 @@ public class BadgePopUpWindow extends Activity implements OnClickListener {
 	TextView badgeTitle;
 	TextView badgeDescription;
 	String badgeName;
+	String source;
 	int badgeId;
 	Badge badgeObj;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		getIntentData();
+		if(source.equals("diagram_play")){
+			setTheme(R.style.DialogWithDimmedBack);
+		}
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.popup_window_view);
-		getIntentData();
+		
 		initViews();
 		loadDatabase();
 		getBadgeData();
@@ -38,6 +43,7 @@ public class BadgePopUpWindow extends Activity implements OnClickListener {
 	private void getIntentData() {
 		badgeName = getIntent().getExtras().getString("BADGE_TITLE");
 		badgeId = getIntent().getExtras().getInt("BADGE_ID");
+		source = getIntent().getExtras().getString("SOURCE");
 	}
 
 	private void initViews() {

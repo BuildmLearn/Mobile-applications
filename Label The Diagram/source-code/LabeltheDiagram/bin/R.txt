@@ -730,6 +730,7 @@ int style Animations_PopUpMenu_Right 0x7f09000c
 int style AppBaseTheme 0x7f090000
 int style AppTheme 0x7f090001
 int style DialogNoTitleBar 0x7f09000e
+int style DialogWithDimmedBack 0x7f09000f
 int style resultRatingBar 0x7f090002
 int[] styleable CustomFontManager { 0x7f010000 }
 int styleable CustomFontManager_typeface 0

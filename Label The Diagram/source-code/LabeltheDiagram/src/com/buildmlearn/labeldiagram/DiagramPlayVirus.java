@@ -1,5 +1,6 @@
 package com.buildmlearn.labeldiagram;
 
+import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
 import com.example.labelthediagram.R;
 
 import android.app.AlertDialog;
@@ -21,6 +22,7 @@ public class DiagramPlayVirus extends DiagramPlayBase {
 
 		actionBar.setTitle("Virus");
 		setDiagramName("Virus");
+		setDiagramCategory("Biology");
 
 		// Score board textViews
 		TextView completeTxt = (TextView) findViewById(R.id.complatedTxt);
@@ -149,4 +151,14 @@ public class DiagramPlayVirus extends DiagramPlayBase {
 		startActivity(intent);
 	}
 
+	@Override
+	protected void intentBuilder(String badgeTitle, int badgeId) {
+		Intent intent;
+		intent = new Intent(getApplicationContext(), BadgePopUpWindow.class);
+		intent.putExtra("BADGE_TITLE", badgeTitle);
+		intent.putExtra("BADGE_ID", badgeId);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+		finish();
+	}
 }

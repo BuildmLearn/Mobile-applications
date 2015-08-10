@@ -1,5 +1,6 @@
 package com.buildmlearn.labeldiagram;
 
+import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
 import com.buildmlearn.labeldiagram.tooltipkit.InfoTooltip;
 import com.buildmlearn.labeldiagram.tooltipkit.CustomTooltip.AlignMode;
 import com.example.labelthediagram.R;
@@ -26,6 +27,7 @@ public class DiagramPlayBacteria extends DiagramPlayBase {
 
 		actionBar.setTitle("Bacteria");
 		setDiagramName("Bacteria");
+		setDiagramCategory("Biology");
 
 		// Score board textViews
 		TextView completeTxt = (TextView) findViewById(R.id.complatedTxt);
@@ -237,5 +239,16 @@ public class DiagramPlayBacteria extends DiagramPlayBase {
 		startActivity(intent);
 	}
 
+	@Override
+	protected void intentBuilder(String badgeTitle, int badgeId) {
+		Intent intent;
+		intent = new Intent(getBaseContext(), BadgePopUpWindow.class);
+		intent.putExtra("BADGE_TITLE", badgeTitle);
+		intent.putExtra("BADGE_ID", badgeId);
+		intent.putExtra("SOURCE", "diagram_play");
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+		finish();
+	}
 
 }

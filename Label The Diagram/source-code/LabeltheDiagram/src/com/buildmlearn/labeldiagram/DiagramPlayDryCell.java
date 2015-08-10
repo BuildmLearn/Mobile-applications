@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
 import com.example.labelthediagram.R;
 
 public class DiagramPlayDryCell extends DiagramPlayBase {
@@ -24,6 +25,7 @@ public class DiagramPlayDryCell extends DiagramPlayBase {
 
 		actionBar.setTitle("Dry Cell");
 		setDiagramName("DryCell");
+		setDiagramCategory("Physics");
 
 		// Score board textViews
 		compeleteRatio = (TextView) findViewById(R.id.complete_ratio);
@@ -154,4 +156,14 @@ public class DiagramPlayDryCell extends DiagramPlayBase {
 		startActivity(intent);
 	}
 
+	@Override
+	protected void intentBuilder(String badgeTitle, int badgeId) {
+		Intent intent;
+		intent = new Intent(getBaseContext(), BadgePopUpWindow.class);
+		intent.putExtra("BADGE_TITLE", badgeTitle);
+		intent.putExtra("BADGE_ID", badgeId);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+		finish();
+	}
 }

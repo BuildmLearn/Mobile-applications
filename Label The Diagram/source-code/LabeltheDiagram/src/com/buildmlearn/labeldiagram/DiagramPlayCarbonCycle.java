@@ -1,5 +1,6 @@
 package com.buildmlearn.labeldiagram;
 
+import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
 import com.buildmlearn.labeldiagram.tooltipkit.InfoTooltip;
 import com.buildmlearn.labeldiagram.tooltipkit.CustomTooltip.AlignMode;
 import com.example.labelthediagram.R;
@@ -24,6 +25,7 @@ public class DiagramPlayCarbonCycle extends DiagramPlayBase {
 
 		actionBar.setTitle("Carbon Cycle");
 		setDiagramName("CarbonCycle");
+		setDiagramCategory("Science");
 
 		// Score board textViews
 		TextView completeTxt = (TextView) findViewById(R.id.complatedTxt);
@@ -221,6 +223,18 @@ public class DiagramPlayCarbonCycle extends DiagramPlayBase {
 		intent.putExtra("SOURCE", "CarbonCycle");
 		intent.putExtra("BEST_SCORE", achievedBestScore);
 		startActivity(intent);
+	}
+	
+	@Override
+	protected void intentBuilder(String badgeTitle, int badgeId) {
+		Intent intent;
+		intent = new Intent(getBaseContext(), BadgePopUpWindow.class);
+		intent.putExtra("BADGE_TITLE", badgeTitle);
+		intent.putExtra("BADGE_ID", badgeId);
+		intent.putExtra("SOURCE", "diagram_play");
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+		finish();
 	}
 
 

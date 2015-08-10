@@ -1,5 +1,6 @@
 package com.buildmlearn.labeldiagram;
 
+import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
 import com.buildmlearn.labeldiagram.tooltipkit.InfoTooltip;
 import com.buildmlearn.labeldiagram.tooltipkit.CustomTooltip.AlignMode;
 import com.example.labelthediagram.R;
@@ -26,6 +27,7 @@ public class DiagramPlayHumanEye extends DiagramPlayBase {
 
 		actionBar.setTitle("Human Eye");
 		setDiagramName("HumanEye");
+		setDiagramCategory("Biology");
 
 		// Score board textViews
 		TextView completeTxt = (TextView) findViewById(R.id.complatedTxt);
@@ -227,6 +229,17 @@ public class DiagramPlayHumanEye extends DiagramPlayBase {
 		intent.putExtra("SOURCE", "HumanEye");
 		intent.putExtra("BEST_SCORE", achievedBestScore);
 		startActivity(intent);
+	}
+	
+	@Override
+	protected void intentBuilder(String badgeTitle, int badgeId) {
+		Intent intent;
+		intent = new Intent(getBaseContext(), BadgePopUpWindow.class);
+		intent.putExtra("BADGE_TITLE", badgeTitle);
+		intent.putExtra("BADGE_ID", badgeId);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+		finish();
 	}
 	
 }

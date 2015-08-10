@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
 import com.example.labelthediagram.R;
 import com.example.labelthediagram.R.id;
 import com.example.labelthediagram.R.layout;
@@ -25,6 +26,7 @@ public class DiagramPlayStarPatterns extends DiagramPlayBase {
 
 		actionBar.setTitle("Star Patterns");
 		setDiagramName("StarPatterns");
+		setDiagramCategory("Science");
 
 		// Score board textViews
 		compeleteRatio = (TextView) findViewById(R.id.complete_ratio);
@@ -147,6 +149,18 @@ public class DiagramPlayStarPatterns extends DiagramPlayBase {
 		intent.putExtra("SOURCE", "StarPatterns");
 		intent.putExtra("BEST_SCORE", achievedBestScore);
 		startActivity(intent);
+	}
+	
+	@Override
+	protected void intentBuilder(String badgeTitle, int badgeId) {
+		Intent intent;
+		intent = new Intent(getApplicationContext(), BadgePopUpWindow.class);
+		intent.putExtra("BADGE_TITLE", badgeTitle);
+		intent.putExtra("BADGE_ID", badgeId);
+		intent.putExtra("SOURCE", "diagram_play");
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+		finish();
 	}
 
 }

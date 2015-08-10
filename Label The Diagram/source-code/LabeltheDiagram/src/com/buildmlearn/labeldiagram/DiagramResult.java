@@ -42,10 +42,10 @@ import android.widget.Toast;
  */
 public class DiagramResult extends Activity implements OnClickListener {
 	
-	final static int BIO_DIAGRAM_COUNT = 7;
+	/*final static int BIO_DIAGRAM_COUNT = 7;
 	final static int PHYSICS_DIAGRAM_COUNT = 6;
 	final static int SCIENCE_DIAGRAM_COUNT = 4;
-	final static int TOTAL_DIAGRAM_COUNT = 17;
+	final static int TOTAL_DIAGRAM_COUNT = 17;*/
 	
 	ArrayList<DiagramResultRawItem> resultList = new ArrayList<DiagramResultRawItem>();
 	List<TextView> correctTagList = new ArrayList<TextView>();
@@ -80,7 +80,6 @@ public class DiagramResult extends Activity implements OnClickListener {
 		// Capture intent values passed by DiagramPlay activity
 		score = getIntent().getExtras().getFloat("SCORE");
 		source = getIntent().getExtras().getString("SOURCE");
-		category = getIntent().getExtras().getString("CATEGORY");
 		isBestScore = getIntent().getExtras().getBoolean("BEST_SCORE");
 		gameScore = getIntent().getExtras().getInt("GAME_SCORE");
 
@@ -113,7 +112,7 @@ public class DiagramResult extends Activity implements OnClickListener {
 		list.setAdapter(resultAdapter);
 	}
 
-	private void saveResultForBadges() {
+	/*private void saveResultForBadges() {
 
 		initPreferences();
 		checkConstrainsts();
@@ -210,7 +209,7 @@ public class DiagramResult extends Activity implements OnClickListener {
 		
 		return updatedVal;
 		
-	}
+	}*/
 
 	/**
 	 * save score for the diagram play action

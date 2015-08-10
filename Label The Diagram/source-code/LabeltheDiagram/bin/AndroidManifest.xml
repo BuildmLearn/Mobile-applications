@@ -222,6 +222,8 @@
         </activity>
         <activity android:name="com.buildmlearn.labeldiagram.badges.BadgePopUpWindow" android:theme="@style/DialogNoTitleBar">
         </activity>
+        <activity android:name="com.buildmlearn.labeldiagram.badges.AchievementPopupWindow" android:theme="@style/DialogWithDimmedBack">
+        </activity>
         <meta-data android:name="io.fabric.ApiKey" android:value="37b3161e48423b96715470d17f0ac8dad7799436"/>
     </application>
 

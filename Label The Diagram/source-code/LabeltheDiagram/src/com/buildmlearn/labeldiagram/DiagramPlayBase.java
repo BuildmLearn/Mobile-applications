@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
 import com.buildmlearn.labeldiagram.helper.PlaceHolderContainer;
 import com.buildmlearn.labeldiagram.helper.DiagramResultContainer;
 import com.buildmlearn.labeldiagram.helper.TagContainerSingleton;
@@ -44,6 +45,11 @@ public abstract class DiagramPlayBase extends Activity implements
 
 	static final String TAG = "InfoTag";
 	static final String TAG_ERROR = "Error";
+	static final int BIO_DIAGRAM_COUNT = 7;
+	static final int PHYSICS_DIAGRAM_COUNT = 6;
+	static final int SCIENCE_DIAGRAM_COUNT = 4;
+	static final int TOTAL_DIAGRAM_COUNT = 17;
+	
 	List<Integer[]> placeHolderlist;
 	SparseIntArray tagPlaceHolderMap;
 	SparseIntArray incompleteTagList;
@@ -52,17 +58,20 @@ public abstract class DiagramPlayBase extends Activity implements
 	PlaceHolderContainer container;
 	TagPlaceholderMapper tagPlaceholdermapper;
 	SharedPreferences preferences;
+	SharedPreferences.Editor editor;
 
 	int correctLabeledCount = 0;
 	int totalLabeledCount = 0;
 	int tagListSize = 0;
 	boolean achievedBestScore = false;
 	String diagramName;
+	String diagramCategory;
 	TextView compeleteRatio;
 	TextView score;
 	ActionBar actionBar;
 	Typeface tfThin;
 	Typeface tfLight;
+	boolean isToDispatch = false;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -93,11 +102,17 @@ public abstract class DiagramPlayBase extends Activity implements
 
 		tagListSize = tagPlaceHolderMap.size();
 
-		// Create sharedpreferences object
+		// Create SharedPreferences object
+		initPreferences();
+
+	}
+
+	private void initPreferences() {
 		preferences = getApplicationContext().getSharedPreferences(
 				"com.buildmlearn.labeldiagram.PREFERENCE_FILE_KEY",
 				Context.MODE_PRIVATE);
-
+		editor = preferences.edit();
+		
 	}
 
 	@Override
@@ -303,6 +318,8 @@ public abstract class DiagramPlayBase extends Activity implements
 						achievedBestScore = true;
 					}
 
+					saveResultForBadges(totalScore, gameScore);
+					
 					dispatch(totalScore,gameScore);
 
 				}
@@ -334,7 +351,6 @@ public abstract class DiagramPlayBase extends Activity implements
 		TagContainerSingleton container = TagContainerSingleton.getInstance();
 
 		for (int i = 0; i < incompleteTagList.size(); i++) {
-
 			TextView incompleteView = (TextView) findViewById(incompleteTagList
 					.valueAt(i));
 			incorrectTagList.add(incompleteView);
@@ -351,9 +367,104 @@ public abstract class DiagramPlayBase extends Activity implements
 			achievedBestScore = true;
 		}
 
-		dispatch(totalScore,gameScore);
+		saveResultForBadges(totalScore, gameScore);
+		
+		if(isToDispatch == false){
+			dispatch(totalScore, gameScore);
+		}
+		
 	
 	}
+	
+	private void saveResultForBadges(float score, int gameScore) {
+
+		initPreferences();
+		generateBadges(score, gameScore);
+		//HelperClass.setPreferences(source, value, this);
+
+	}
+	
+	private void generateBadges(float score, int gameScore) {
+
+		String key; 
+		String badgeTitle;
+		int keyValue;
+		int badgeId;
+		
+		if ((int)score >= 10) {
+
+			switch (diagramCategory) {
+
+			case "Biology":
+				
+				key = getResources().getString(R.string.bio_diagrams_completed);
+				keyValue = updatePreferences(key);
+				
+				if(keyValue == BIO_DIAGRAM_COUNT){
+					
+					badgeTitle = getResources().getString(R.string.badge_biology);
+					badgeId = R.drawable.bio;
+					intentBuilder(badgeTitle,badgeId);
+					
+				}
+				
+				break;
+				
+			case "Physics":
+				
+				key = getResources().getString(R.string.physics_diagrams_completed);
+				keyValue = updatePreferences(key);
+				
+				if(keyValue == PHYSICS_DIAGRAM_COUNT){
+					
+					badgeTitle = getResources().getString(R.string.badge_physics);
+					badgeId = R.drawable.physics;
+					intentBuilder(badgeTitle,badgeId);
+					
+				}
+				
+				break;
+				
+			case "Science":
+				
+				key = getResources().getString(R.string.science_diagrams_completed);
+				keyValue = updatePreferences(key);
+				
+				if(keyValue == SCIENCE_DIAGRAM_COUNT){
+					isToDispatch = true;
+					badgeTitle = getResources().getString(R.string.badge_science);
+					badgeId = R.drawable.science;
+					intentBuilder(badgeTitle,badgeId);
+					
+				}
+				
+				break;
+				
+			default:
+				break;
+				
+			}
+		}
+
+	}
+	protected abstract void intentBuilder(String badgeTitle, int badgeId);
+	
+	
+	
+	private int updatePreferences(String key){
+		
+		int previousVal;
+		int updatedVal;
+		
+		previousVal = preferences.getInt(key, 0);
+		updatedVal = previousVal += 1;
+		editor.putInt(key, updatedVal);
+		editor.commit();
+		
+		return updatedVal;
+		
+	}
+
 
 
 	/**
@@ -456,8 +567,6 @@ public abstract class DiagramPlayBase extends Activity implements
 		return super.onOptionsItemSelected(item);
 	}
 
-	protected abstract int getResourcesId();
-
 	public String getDiagramName() {
 		return diagramName;
 	}
@@ -466,4 +575,13 @@ public abstract class DiagramPlayBase extends Activity implements
 		this.diagramName = diagramName;
 	}
 
+	public String getDiagramCategory() {
+		return diagramCategory;
+	}
+
+	public void setDiagramCategory(String diagramCategory) {
+		this.diagramCategory = diagramCategory;
+	}
+	
+	protected abstract int getResourcesId();
 }

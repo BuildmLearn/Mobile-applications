@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
 import com.buildmlearn.labeldiagram.tooltipkit.InfoTooltip;
 import com.buildmlearn.labeldiagram.tooltipkit.CustomTooltip.AlignMode;
 import com.example.labelthediagram.R;
@@ -26,6 +27,7 @@ public class DiagramPlayPlantCell extends DiagramPlayBase{
 
 		actionBar.setTitle("Plant Cell");
 		setDiagramName("PlantCell");
+		setDiagramCategory("Biology");
 
 		// Score board textViews
 		TextView completeTxt = (TextView) findViewById(R.id.complatedTxt);
@@ -231,4 +233,14 @@ public class DiagramPlayPlantCell extends DiagramPlayBase{
 		startActivity(intent);
 	}
 
+	@Override
+	protected void intentBuilder(String badgeTitle, int badgeId) {
+		Intent intent;
+		intent = new Intent(getBaseContext(), BadgePopUpWindow.class);
+		intent.putExtra("BADGE_TITLE", badgeTitle);
+		intent.putExtra("BADGE_ID", badgeId);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+		finish();
+	}
 }

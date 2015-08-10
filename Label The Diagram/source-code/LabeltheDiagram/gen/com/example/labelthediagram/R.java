@@ -818,6 +818,7 @@ public final class R {
          */
         public static final int AppTheme=0x7f090001;
         public static final int DialogNoTitleBar=0x7f09000e;
+        public static final int DialogWithDimmedBack=0x7f09000f;
         public static final int resultRatingBar=0x7f090002;
     }
     public static final class styleable {

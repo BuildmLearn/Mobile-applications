@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
 import com.example.labelthediagram.R;
 
 public class DiagramPlayLens extends DiagramPlayBase {
@@ -24,6 +25,7 @@ public class DiagramPlayLens extends DiagramPlayBase {
 
 		actionBar.setTitle("Lens");
 		setDiagramName("Lens");
+		setDiagramCategory("Physics");
 
 		// Score board textViews
 		compeleteRatio = (TextView) findViewById(R.id.complete_ratio);
@@ -147,6 +149,17 @@ public class DiagramPlayLens extends DiagramPlayBase {
 		intent.putExtra("SOURCE", "Lens");
 		intent.putExtra("BEST_SCORE", achievedBestScore);
 		startActivity(intent);
+	}
+	
+	@Override
+	protected void intentBuilder(String badgeTitle, int badgeId) {
+		Intent intent;
+		intent = new Intent(getBaseContext(), BadgePopUpWindow.class);
+		intent.putExtra("BADGE_TITLE", badgeTitle);
+		intent.putExtra("BADGE_ID", badgeId);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+		finish();
 	}
 
 

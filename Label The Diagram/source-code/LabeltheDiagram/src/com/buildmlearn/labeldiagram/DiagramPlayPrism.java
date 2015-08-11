@@ -151,11 +151,15 @@ public class DiagramPlayPrism extends DiagramPlayBase {
 	}
 	
 	@Override
-	protected void intentBuilder(String badgeTitle, int badgeId) {
+	protected void intentBuilder(String badgeTitle, int badgeId, float totalScore, int gameScore) {
 		Intent intent;
 		intent = new Intent(getApplicationContext(), BadgePopUpWindow.class);
 		intent.putExtra("BADGE_TITLE", badgeTitle);
 		intent.putExtra("BADGE_ID", badgeId);
+		intent.putExtra("SCORE", totalScore);
+		intent.putExtra("GAME_SCORE", gameScore);
+		intent.putExtra("SOURCE", "Prism");
+		intent.putExtra("BEST_SCORE", achievedBestScore);
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 		finish();

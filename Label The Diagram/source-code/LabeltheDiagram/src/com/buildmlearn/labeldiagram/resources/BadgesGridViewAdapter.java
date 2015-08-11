@@ -44,8 +44,10 @@ public class BadgesGridViewAdapter extends ArrayAdapter<BadgeGridRowItem> {
 		final ViewHolder holder;
 		final String badgeNameToPass;
 		final int badgeIdToPass;
+		final String source = "Adapter";
 		String badgeName = null;
 		int badgeId = 0;
+		
 		BadgeGridRowItem rawItem = getItem(position);
 
 		LayoutInflater inflater = (LayoutInflater) context
@@ -124,6 +126,7 @@ public class BadgesGridViewAdapter extends ArrayAdapter<BadgeGridRowItem> {
 				Intent intent = new Intent(context, BadgePopUpWindow.class);
 				intent.putExtra("BADGE_TITLE", badgeNameToPass);
 				intent.putExtra("BADGE_ID", badgeIdToPass);
+				intent.putExtra("SOURCE", source);
 				context.startActivity(intent);
 				
 			}

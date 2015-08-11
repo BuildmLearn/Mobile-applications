@@ -404,7 +404,7 @@ public abstract class DiagramPlayBase extends Activity implements
 					
 					badgeTitle = getResources().getString(R.string.badge_biology);
 					badgeId = R.drawable.bio;
-					intentBuilder(badgeTitle,badgeId);
+					intentBuilder(badgeTitle,badgeId,score,gameScore);
 					
 				}
 				
@@ -419,7 +419,7 @@ public abstract class DiagramPlayBase extends Activity implements
 					
 					badgeTitle = getResources().getString(R.string.badge_physics);
 					badgeId = R.drawable.physics;
-					intentBuilder(badgeTitle,badgeId);
+					intentBuilder(badgeTitle,badgeId,score,gameScore);
 					
 				}
 				
@@ -434,7 +434,7 @@ public abstract class DiagramPlayBase extends Activity implements
 					isToDispatch = true;
 					badgeTitle = getResources().getString(R.string.badge_science);
 					badgeId = R.drawable.science;
-					intentBuilder(badgeTitle,badgeId);
+					intentBuilder(badgeTitle,badgeId,score,gameScore);
 					
 				}
 				
@@ -447,7 +447,7 @@ public abstract class DiagramPlayBase extends Activity implements
 		}
 
 	}
-	protected abstract void intentBuilder(String badgeTitle, int badgeId);
+	protected abstract void intentBuilder(String badgeTitle, int badgeId, float score, int gameScore);
 	
 	
 	

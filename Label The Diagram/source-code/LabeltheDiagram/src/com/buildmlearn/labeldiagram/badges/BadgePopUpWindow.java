@@ -1,13 +1,16 @@
 package com.buildmlearn.labeldiagram.badges;
 
+import com.buildmlearn.labeldiagram.DiagramResult;
 import com.buildmlearn.labeldiagram.database.Database;
 import com.buildmlearn.labeldiagram.entity.Badge;
 import com.example.labelthediagram.R;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,21 +21,19 @@ public class BadgePopUpWindow extends Activity implements OnClickListener {
 	ImageView badgeIcon;
 	TextView badgeTitle;
 	TextView badgeDescription;
+	Badge badgeObj;
 	String badgeName;
 	String source;
+	boolean achievedBestScore = false;
+	float score;
+	int gameScore;
 	int badgeId;
-	Badge badgeObj;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		getIntentData();
-		if(source.equals("diagram_play")){
-			setTheme(R.style.DialogWithDimmedBack);
-		}
-		super.onCreate(savedInstanceState);
-
-		setContentView(R.layout.popup_window_view);
 		
+		init(savedInstanceState);
 		initViews();
 		loadDatabase();
 		getBadgeData();
@@ -40,10 +41,35 @@ public class BadgePopUpWindow extends Activity implements OnClickListener {
 
 	}
 
+	private void init(Bundle savedInstanceState) {
+		
+		getIntentData();
+		setCustomTheme();
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.popup_window_view);
+		adjustDimOpacity();
+		
+	}
+
+	private void setCustomTheme() {
+		if(!source.equals("Adapter")){
+			setTheme(R.style.DialogWithDimmedBack);
+		}
+	}
+
+	private void adjustDimOpacity() {
+		WindowManager.LayoutParams lp = getWindow().getAttributes();
+		lp.dimAmount = 0.8f;
+		getWindow().setAttributes(lp);
+	}
+
 	private void getIntentData() {
 		badgeName = getIntent().getExtras().getString("BADGE_TITLE");
 		badgeId = getIntent().getExtras().getInt("BADGE_ID");
 		source = getIntent().getExtras().getString("SOURCE");
+		score = getIntent().getExtras().getFloat("SCORE");
+		gameScore = getIntent().getExtras().getInt("GAME_SCORE");
+		achievedBestScore = getIntent().getExtras().getBoolean("BEST_SCORE");
 	}
 
 	private void initViews() {
@@ -81,6 +107,13 @@ public class BadgePopUpWindow extends Activity implements OnClickListener {
 
 		switch (v.getId()) {
 		case R.id.cancel_btn:
+			Intent intent = new Intent(getBaseContext(), DiagramResult.class);
+			intent.putExtra("SCORE", score);
+			intent.putExtra("GAME_SCORE", gameScore);
+			intent.putExtra("SOURCE", "Bacteria");
+			intent.putExtra("BEST_SCORE", achievedBestScore);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
 			finish();
 			break;
 		default:

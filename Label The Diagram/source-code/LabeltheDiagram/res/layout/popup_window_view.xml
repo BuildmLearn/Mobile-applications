@@ -39,7 +39,7 @@
         android:layout_marginEnd="28dp"
         android:text="You have successfully completed all the diagrams under Physics category"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#424242"
+        android:textColor="#212121"
         android:textSize="16sp"
         app:typeface="roboto_thin" />
 

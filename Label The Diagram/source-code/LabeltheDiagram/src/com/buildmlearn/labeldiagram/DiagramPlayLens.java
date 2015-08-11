@@ -152,7 +152,7 @@ public class DiagramPlayLens extends DiagramPlayBase {
 	}
 	
 	@Override
-	protected void intentBuilder(String badgeTitle, int badgeId, float totalScore, int gameScore) {
+	protected void intentBuilder(String badgeTitle, int badgeId, float totalScore, int gameScore, boolean completed) {
 		Intent intent;
 		intent = new Intent(getBaseContext(), BadgePopUpWindow.class);
 		intent.putExtra("BADGE_TITLE", badgeTitle);
@@ -161,6 +161,7 @@ public class DiagramPlayLens extends DiagramPlayBase {
 		intent.putExtra("GAME_SCORE", gameScore);
 		intent.putExtra("SOURCE", "Lens");
 		intent.putExtra("BEST_SCORE", achievedBestScore);
+		intent.putExtra("COMPLETED", completed);
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 		finish();

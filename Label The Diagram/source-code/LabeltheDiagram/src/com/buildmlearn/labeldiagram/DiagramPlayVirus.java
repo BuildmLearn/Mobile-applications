@@ -152,7 +152,7 @@ public class DiagramPlayVirus extends DiagramPlayBase {
 	}
 
 	@Override
-	protected void intentBuilder(String badgeTitle, int badgeId, float totalScore, int gameScore) {
+	protected void intentBuilder(String badgeTitle, int badgeId, float totalScore, int gameScore, boolean completed) {
 		Intent intent;
 		intent = new Intent(getApplicationContext(), BadgePopUpWindow.class);
 		intent.putExtra("BADGE_TITLE", badgeTitle);
@@ -161,8 +161,11 @@ public class DiagramPlayVirus extends DiagramPlayBase {
 		intent.putExtra("GAME_SCORE", gameScore);
 		intent.putExtra("SOURCE", "Virus");
 		intent.putExtra("BEST_SCORE", achievedBestScore);
+		intent.putExtra("COMPLETED", completed);
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 		finish();
 	}
+	
+
 }

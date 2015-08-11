@@ -24,7 +24,8 @@ public class BadgePopUpWindow extends Activity implements OnClickListener {
 	Badge badgeObj;
 	String badgeName;
 	String source;
-	boolean achievedBestScore = false;
+	boolean achievedBestScore;
+	boolean isCompleted;
 	float score;
 	int gameScore;
 	int badgeId;
@@ -70,6 +71,7 @@ public class BadgePopUpWindow extends Activity implements OnClickListener {
 		score = getIntent().getExtras().getFloat("SCORE");
 		gameScore = getIntent().getExtras().getInt("GAME_SCORE");
 		achievedBestScore = getIntent().getExtras().getBoolean("BEST_SCORE");
+		isCompleted = getIntent().getExtras().getBoolean("COMPLETED");
 	}
 
 	private void initViews() {
@@ -107,14 +109,42 @@ public class BadgePopUpWindow extends Activity implements OnClickListener {
 
 		switch (v.getId()) {
 		case R.id.cancel_btn:
-			Intent intent = new Intent(getBaseContext(), DiagramResult.class);
-			intent.putExtra("SCORE", score);
-			intent.putExtra("GAME_SCORE", gameScore);
-			intent.putExtra("SOURCE", "Bacteria");
-			intent.putExtra("BEST_SCORE", achievedBestScore);
-			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			startActivity(intent);
-			finish();
+			
+			if(!source.equals("Adapter")){
+				
+				if(isCompleted == true){
+					
+					boolean completed = false;
+					badgeName = getResources().getString(R.string.badge_champion);
+					badgeId =  R.drawable.champion;
+					
+					Intent intent = new Intent(getBaseContext(), BadgePopUpWindow.class);
+					intent.putExtra("BADGE_TITLE", badgeName);
+					intent.putExtra("BADGE_ID", badgeId);
+					intent.putExtra("SCORE", score);
+					intent.putExtra("GAME_SCORE", gameScore);
+					intent.putExtra("SOURCE", "Bacteria");
+					intent.putExtra("BEST_SCORE", achievedBestScore);
+					intent.putExtra("COMPLETED", completed);
+					intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					startActivity(intent);
+					finish();
+					
+				}else{
+					Intent intent = new Intent(getBaseContext(), DiagramResult.class);
+					intent.putExtra("SCORE", score);
+					intent.putExtra("GAME_SCORE", gameScore);
+					intent.putExtra("SOURCE", "Bacteria");
+					intent.putExtra("BEST_SCORE", achievedBestScore);
+					intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					startActivity(intent);
+					finish();
+				}
+			}else{
+				finish();
+			}
+			
+			
 			break;
 		default:
 			break;

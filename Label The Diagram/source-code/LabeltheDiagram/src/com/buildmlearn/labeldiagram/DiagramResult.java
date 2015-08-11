@@ -42,11 +42,6 @@ import android.widget.Toast;
  */
 public class DiagramResult extends Activity implements OnClickListener {
 	
-	/*final static int BIO_DIAGRAM_COUNT = 7;
-	final static int PHYSICS_DIAGRAM_COUNT = 6;
-	final static int SCIENCE_DIAGRAM_COUNT = 4;
-	final static int TOTAL_DIAGRAM_COUNT = 17;*/
-	
 	ArrayList<DiagramResultRawItem> resultList = new ArrayList<DiagramResultRawItem>();
 	List<TextView> correctTagList = new ArrayList<TextView>();
 	List<TextView> incorrectTagList = new ArrayList<TextView>();
@@ -60,8 +55,7 @@ public class DiagramResult extends Activity implements OnClickListener {
 	String category;
 	DBAdapter diagramDb;
 	SharedPreferences preferences;
-	SharedPreferences.Editor editor;
-	
+
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -111,105 +105,6 @@ public class DiagramResult extends Activity implements OnClickListener {
 				this, R.layout.diagram_result_row_item, resultList);
 		list.setAdapter(resultAdapter);
 	}
-
-	/*private void saveResultForBadges() {
-
-		initPreferences();
-		checkConstrainsts();
-		//HelperClass.setPreferences(source, value, this);
-
-	}
-
-	private void initPreferences() {
-		preferences = this.getPreferences(Context.MODE_PRIVATE);	
-		editor = preferences.edit();
-	}
-
-	private void checkConstrainsts() {
-
-		String key; 
-		String badgeTitle;
-		int keyValue;
-		int badgeId;
-		
-		if ((int) score == gameScore) {
-
-			switch (category) {
-
-			case "Biology":
-				
-				key = getResources().getString(R.string.bio_diagrams_completed);
-				keyValue = updatePreferences(key);
-				
-				if(keyValue == BIO_DIAGRAM_COUNT){
-					
-					badgeTitle = getResources().getString(R.string.badge_biology);
-					badgeId = R.drawable.bio;
-					intentBuilder(badgeTitle,badgeId);
-					
-				}
-				
-				break;
-				
-			case "Physics":
-				
-				key = getResources().getString(R.string.physics_diagrams_completed);
-				keyValue = updatePreferences(key);
-				
-				if(keyValue == PHYSICS_DIAGRAM_COUNT){
-					
-					badgeTitle = getResources().getString(R.string.badge_physics);
-					badgeId = R.drawable.physics;
-					intentBuilder(badgeTitle,badgeId);
-					
-				}
-				
-				break;
-				
-			case "Science":
-				
-				key = getResources().getString(R.string.science_diagrams_completed);
-				keyValue = updatePreferences(key);
-				
-				if(keyValue == SCIENCE_DIAGRAM_COUNT){
-					
-					badgeTitle = getResources().getString(R.string.badge_science);
-					badgeId = R.drawable.science;
-					intentBuilder(badgeTitle,badgeId);
-					
-				}
-				
-				break;
-				
-			default:
-				break;
-				
-			}
-		}
-
-	}
-
-	private void intentBuilder(String badgeTitle, int badgeId) {
-		Intent intent;
-		intent = new Intent(this, BadgePopUpWindow.class);
-		intent.putExtra("BADGE_TITLE", badgeTitle);
-		intent.putExtra("BADGE_ID", badgeId);
-		startActivity(intent);
-	}
-	
-	private int updatePreferences(String key){
-		
-		int previousVal;
-		int updatedVal;
-		
-		previousVal = preferences.getInt(key, 0);
-		updatedVal = previousVal += 1;
-		editor.putInt(key, updatedVal);
-		editor.commit();
-		
-		return updatedVal;
-		
-	}*/
 
 	/**
 	 * save score for the diagram play action
@@ -296,9 +191,9 @@ public class DiagramResult extends Activity implements OnClickListener {
 	}
 
 	private void displayRecordSet(Cursor cursor, Gson gson) {
+		
 		String message = "";
 		String testObj = "";
-		// populate the message from the cursor
 
 		// Reset cursor to start, checking to see if there's data:
 		if (cursor.moveToFirst()) {
@@ -317,6 +212,7 @@ public class DiagramResult extends Activity implements OnClickListener {
 
 				testObj += "outputDiagram" + outputDiagram + "score" + score;
 			} while (cursor.moveToNext());
+			
 		}
 
 		// Close the cursor to avoid a resource leak.
@@ -352,8 +248,6 @@ public class DiagramResult extends Activity implements OnClickListener {
 
 		case R.id.nextButton:
 
-			Toast.makeText(getApplicationContext(),
-					"Dispatching to Diagram Menu", 200).show();
 			Intent intent = new Intent(getApplicationContext(),
 					DiagramCategoryViewer.class);
 			intentBuilder(intent);

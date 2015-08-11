@@ -49,6 +49,7 @@ public abstract class DiagramPlayBase extends Activity implements
 	static final int PHYSICS_DIAGRAM_COUNT = 6;
 	static final int SCIENCE_DIAGRAM_COUNT = 4;
 	static final int TOTAL_DIAGRAM_COUNT = 17;
+	static final int TOTAL_CATEGORY_COUNT = 3;
 	
 	List<Integer[]> placeHolderlist;
 	SparseIntArray tagPlaceHolderMap;
@@ -388,6 +389,7 @@ public abstract class DiagramPlayBase extends Activity implements
 
 		String key; 
 		String badgeTitle;
+		boolean allDiagramsCompleted = false;
 		int keyValue;
 		int badgeId;
 		
@@ -402,9 +404,23 @@ public abstract class DiagramPlayBase extends Activity implements
 				
 				if(keyValue == BIO_DIAGRAM_COUNT){
 					
+					isToDispatch = true;
 					badgeTitle = getResources().getString(R.string.badge_biology);
 					badgeId = R.drawable.bio;
-					intentBuilder(badgeTitle,badgeId,score,gameScore);
+					
+					key = getResources().getString(R.string.total_category_completed);
+					keyValue = updatePreferences(key);
+					
+					if(keyValue == TOTAL_CATEGORY_COUNT){
+						
+						allDiagramsCompleted = true;
+						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
+						
+					}else{
+						
+						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
+					
+					}
 					
 				}
 				
@@ -417,9 +433,23 @@ public abstract class DiagramPlayBase extends Activity implements
 				
 				if(keyValue == PHYSICS_DIAGRAM_COUNT){
 					
+					isToDispatch = true;
 					badgeTitle = getResources().getString(R.string.badge_physics);
 					badgeId = R.drawable.physics;
-					intentBuilder(badgeTitle,badgeId,score,gameScore);
+					
+					key = getResources().getString(R.string.total_category_completed);
+					keyValue = updatePreferences(key);
+					
+					if(keyValue == TOTAL_CATEGORY_COUNT){
+						
+						allDiagramsCompleted = true;
+						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
+					
+					}else{
+						
+						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
+					
+					}
 					
 				}
 				
@@ -431,10 +461,24 @@ public abstract class DiagramPlayBase extends Activity implements
 				keyValue = updatePreferences(key);
 				
 				if(keyValue == SCIENCE_DIAGRAM_COUNT){
+					
 					isToDispatch = true;
 					badgeTitle = getResources().getString(R.string.badge_science);
 					badgeId = R.drawable.science;
-					intentBuilder(badgeTitle,badgeId,score,gameScore);
+
+					key = getResources().getString(R.string.total_category_completed);
+					keyValue = updatePreferences(key);
+					
+					if(keyValue == TOTAL_CATEGORY_COUNT){
+						
+						allDiagramsCompleted = true;
+						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
+					
+					}else{
+						
+						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
+					
+					}
 					
 				}
 				
@@ -447,9 +491,7 @@ public abstract class DiagramPlayBase extends Activity implements
 		}
 
 	}
-	protected abstract void intentBuilder(String badgeTitle, int badgeId, float score, int gameScore);
-	
-	
+	protected abstract void intentBuilder(String badgeTitle, int badgeId, float score, int gameScore, boolean completed);
 	
 	private int updatePreferences(String key){
 		

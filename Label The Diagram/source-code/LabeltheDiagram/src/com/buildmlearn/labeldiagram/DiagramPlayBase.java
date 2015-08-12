@@ -412,13 +412,12 @@ public abstract class DiagramPlayBase extends Activity implements
 		String badgeTitle;
 		int badgeId;
 		int keyVal;
-		boolean isMasterBadge;
 		boolean allDiagramsCompleted;
 		Gson gson = new Gson();
 		List<Boolean> lastScores = new ArrayList<Boolean>();
 		
-		/*key = getResources().getString(R.string.fully_completed_tries_count);
-		keyVal = updatePreferences(key);*/
+		key = getResources().getString(R.string.fully_completed_tries_count);
+		keyVal = updatePreferences(key);
 		
 		openDB();
 		Cursor cursor = diagramDb.getFirstThreeScoreRows(); 
@@ -440,20 +439,27 @@ public abstract class DiagramPlayBase extends Activity implements
 			return;
 		}
 		
-		if(lastScores.size() == 2){
+		if((keyVal < 4)){
 			
-			isToDispatch = true;
-			badgeTitle = getResources().getString(R.string.badge_streak);
-			badgeId = R.drawable.streak;
+			if(lastScores.size() == 2){
+				
+				isToDispatch = true;
+				badgeTitle = getResources().getString(R.string.badge_streak);
+				badgeId = R.drawable.streak;
+				
+				allDiagramsCompleted = false;
+				
+				intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
 			
-			isMasterBadge = false;
-			allDiagramsCompleted = false;
+			}else{
+				return;
+			}
 			
-			intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,isMasterBadge);
-		
 		}else{
 			return;
 		}
+		
+		
 		
 		
 		/*if(keyVal == TOTAL_COMPLETE_TRIES_COUNT){
@@ -475,98 +481,126 @@ public abstract class DiagramPlayBase extends Activity implements
 		String badgeTitle;
 		int keyValue;
 		int badgeId;
-		boolean isMasterBadge;
+		String mMasterBioBadge;
+		String mMasterPhysicsBadge;
+		String mMasterScienceBadge;
 		boolean allDiagramsCompleted = false;
 		
 		switch (diagramCategory) {
 
 		case "Biology":
 			
-			key = getResources().getString(R.string.bio_diagrams_completed);
-			keyValue = updatePreferences(key);
+			key = getDiagramName().concat("Biology");
+			keyValue = updateMasterPreferences(key,diagramCategory);
 			
-			if(keyValue == BIO_DIAGRAM_COUNT){
+			mMasterBioBadge = "bioBadge";
+			boolean isMasterBioBadge = preferences.getBoolean(mMasterBioBadge, false);
+			
+			if(!isMasterBioBadge){
 				
-				isToDispatch = true;
-				isMasterBadge = true;
-				badgeTitle = getResources().getString(R.string.badge_biology);
-				badgeId = R.drawable.bio;
-				
-				key = getResources().getString(R.string.total_category_completed);
-				keyValue = updatePreferences(key);
-				
-				if(keyValue == TOTAL_CATEGORY_COUNT){
+				if(keyValue == BIO_DIAGRAM_COUNT){
 					
-					allDiagramsCompleted = true;
-					intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,isMasterBadge);
+					isToDispatch = true;
+					updateBoolPreferences(mMasterBioBadge);
+					badgeTitle = getResources().getString(R.string.badge_biology);
+					badgeId = R.drawable.bio;
 					
-				}else{
+					key = getResources().getString(R.string.total_category_completed);
+					keyValue = updatePreferences(key);
 					
-					intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,isMasterBadge);
-				
+					if(keyValue == TOTAL_CATEGORY_COUNT){
+						
+						allDiagramsCompleted = true;
+						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
+						
+					}else{
+						
+						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
+					
+					}
+					
 				}
 				
 			}
+			
 			
 			break;
 			
 		case "Physics":
 			
-			key = getResources().getString(R.string.physics_diagrams_completed);
-			keyValue = updatePreferences(key);
+			key = getDiagramName().concat("Physics");
+			keyValue = updateMasterPreferences(key,diagramCategory);
 			
-			if(keyValue == PHYSICS_DIAGRAM_COUNT){
+			mMasterPhysicsBadge = "physicsBadge";
+			boolean isMasterPhysicsBadge = preferences.getBoolean(mMasterPhysicsBadge, false);
+			
+			if(!isMasterPhysicsBadge){
 				
-				isToDispatch = true;
-				isMasterBadge = true;
-				badgeTitle = getResources().getString(R.string.badge_physics);
-				badgeId = R.drawable.physics;
-				
-				key = getResources().getString(R.string.total_category_completed);
-				keyValue = updatePreferences(key);
-				
-				if(keyValue == TOTAL_CATEGORY_COUNT){
+				if(keyValue == PHYSICS_DIAGRAM_COUNT){
 					
-					allDiagramsCompleted = true;
-					intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,isMasterBadge);
-				
-				}else{
+					isToDispatch = true;
+					updateBoolPreferences(mMasterPhysicsBadge);
+					badgeTitle = getResources().getString(R.string.badge_physics);
+					badgeId = R.drawable.physics;
 					
-					intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,isMasterBadge);
-				
+					key = getResources().getString(R.string.total_category_completed);
+					keyValue = updatePreferences(key);
+					
+					if(keyValue == TOTAL_CATEGORY_COUNT){
+						
+						allDiagramsCompleted = true;
+						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
+					
+					}else{
+						
+						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
+					
+					}
+					
 				}
 				
 			}
+			
+			
 			
 			break;
 			
 		case "Science":
 			
-			key = getResources().getString(R.string.science_diagrams_completed);
-			keyValue = updatePreferences(key);
+			key = getDiagramName().concat("Science");
+			keyValue = updateMasterPreferences(key,diagramCategory);
 			
-			if(keyValue == SCIENCE_DIAGRAM_COUNT){
+			mMasterScienceBadge = "scienceBadge";
+			boolean isMasterScienceBadge = preferences.getBoolean(mMasterScienceBadge, false);
+			
+			if(!isMasterScienceBadge){
 				
-				isToDispatch = true;
-				isMasterBadge = true;
-				badgeTitle = getResources().getString(R.string.badge_science);
-				badgeId = R.drawable.science;
+				if(keyValue == SCIENCE_DIAGRAM_COUNT){
+					
+					isToDispatch = true;
+					updateBoolPreferences(mMasterScienceBadge);
+					badgeTitle = getResources().getString(R.string.badge_science);
+					badgeId = R.drawable.science;
 
-				key = getResources().getString(R.string.total_category_completed);
-				keyValue = updatePreferences(key);
-				
-				if(keyValue == TOTAL_CATEGORY_COUNT){
+					key = getResources().getString(R.string.total_category_completed);
+					keyValue = updatePreferences(key);
 					
-					allDiagramsCompleted = true;
-					intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,isMasterBadge);
-				
-				}else{
+					if(keyValue == TOTAL_CATEGORY_COUNT){
+						
+						allDiagramsCompleted = true;
+						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
 					
-					intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,isMasterBadge);
-				
+					}else{
+						
+						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
+					
+					}
+					
 				}
 				
 			}
+			
+			
 			
 			break;
 			
@@ -576,6 +610,36 @@ public abstract class DiagramPlayBase extends Activity implements
 		}
 	}
 	
+	private int updateMasterPreferences(String key, String category) {
+		
+		boolean value;
+		int count;
+		
+		value = preferences.getBoolean(key, false);
+		count = preferences.getInt(category, 0);
+		
+		if(value == false){
+			value = true;
+			count += 1;
+		}
+		
+		editor.putBoolean(key, value);
+		editor.putInt(category, count);
+		editor.commit();
+		
+		return count;
+	}
+	
+	private void updateBoolPreferences(String key){
+		
+		boolean value;
+		value = preferences.getBoolean(key, false);
+		value = true;
+		editor.putBoolean(key, value);
+		editor.commit();
+		
+	}
+
 	private void generatePersistanceBadge(float score, int gameScore) {
 		
 		String key;
@@ -596,11 +660,11 @@ public abstract class DiagramPlayBase extends Activity implements
 			isMasterBadge = false;
 			allDiagramsCompleted = false;
 			
-			intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,isMasterBadge);
+			intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
 		}
 	}
 
-	protected abstract void intentBuilder(String badgeTitle, int badgeId, float score, int gameScore, boolean completed, boolean isMassterBadge);
+	protected abstract void intentBuilder(String badgeTitle, int badgeId, float score, int gameScore, boolean completed);
 	
 	
 	private int updatePreferences(String key){
@@ -612,7 +676,7 @@ public abstract class DiagramPlayBase extends Activity implements
 		updatedVal = previousVal += 1;
 		editor.putInt(key, updatedVal);
 		editor.commit();
-		
+		//preferences.getBoolean(key, defValue)
 		return updatedVal;
 		
 	}
@@ -737,12 +801,12 @@ public abstract class DiagramPlayBase extends Activity implements
 	
 	protected abstract int getResourcesId();
 	
-	private void openDB() {
+	protected void openDB() {
 		diagramDb = new DBAdapter(this);
 		diagramDb.open();
 	}
 
-	private void closeDB() {
+	protected void closeDB() {
 		diagramDb.close();
 	}
 

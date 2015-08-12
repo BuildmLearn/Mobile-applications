@@ -3,6 +3,7 @@ package com.buildmlearn.labeldiagram;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
@@ -55,6 +56,8 @@ public abstract class DiagramPlayBase extends Activity implements
 	static final int TOTAL_DIAGRAM_COUNT = 17;
 	static final int TOTAL_CATEGORY_COUNT = 3;
 	static final int TOTAL_COMPLETE_TRIES_COUNT = 3;
+	static final int MAX_ROWS_COUNT = 2;
+	static final int MAX_PREF_UPDATE_CYCLES = 4;
 	
 	List<Integer[]> placeHolderlist;
 	SparseIntArray tagPlaceHolderMap;
@@ -415,6 +418,7 @@ public abstract class DiagramPlayBase extends Activity implements
 		boolean allDiagramsCompleted;
 		Gson gson = new Gson();
 		List<Boolean> lastScores = new ArrayList<Boolean>();
+		HashMap<String, Boolean> recordMap = new HashMap<String, Boolean>();
 		
 		key = getResources().getString(R.string.fully_completed_tries_count);
 		keyVal = updatePreferences(key);
@@ -430,7 +434,8 @@ public abstract class DiagramPlayBase extends Activity implements
 				Type type = new TypeToken<Result>() {}.getType();
 				Result resultObj = gson.fromJson(result, type);
 				
-				lastScores.add(resultObj.getCompleted());
+				//lastScores.add(resultObj.getCompleted());
+				recordMap.put(resultObj.getDiagramName(), resultObj.getCompleted());
 				
 			} while (cursor.moveToNext());
 			
@@ -439,17 +444,22 @@ public abstract class DiagramPlayBase extends Activity implements
 			return;
 		}
 		
-		if((keyVal < 4)){
+		if((keyVal < MAX_PREF_UPDATE_CYCLES)){
 			
-			if(lastScores.size() == 2){
+			if(recordMap.size() == MAX_ROWS_COUNT){
 				
-				isToDispatch = true;
-				badgeTitle = getResources().getString(R.string.badge_streak);
-				badgeId = R.drawable.streak;
+				if(!recordMap.containsKey(getDiagramName())){
+					
+					isToDispatch = true;
+					badgeTitle = getResources().getString(R.string.badge_streak);
+					badgeId = R.drawable.streak;
+					allDiagramsCompleted = false;
+					
+					intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
+					
+				}
 				
-				allDiagramsCompleted = false;
 				
-				intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
 			
 			}else{
 				return;

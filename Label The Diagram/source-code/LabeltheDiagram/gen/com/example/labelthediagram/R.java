@@ -731,10 +731,8 @@ public final class R {
 
          */
         public static final int com_crashlytics_android_build_id=0x7f070000;
+        public static final int fully_completed_tries_count=0x7f07003a;
         public static final int hello_world=0x7f070002;
-        public static final int is_bio_diagrams_last=0x7f07003a;
-        public static final int is_physics_diagrams_last=0x7f07003b;
-        public static final int is_science_diagrams_last=0x7f07003c;
         public static final int lesson_bacteria=0x7f070013;
         public static final int lesson_bacteria_desc=0x7f070024;
         public static final int lesson_carbon_cycle=0x7f07001e;

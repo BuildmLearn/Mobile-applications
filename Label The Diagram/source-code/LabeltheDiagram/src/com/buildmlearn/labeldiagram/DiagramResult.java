@@ -114,13 +114,16 @@ public class DiagramResult extends Activity implements OnClickListener {
 		openDB();
 
 		extractTags(correctTagList, incorrectTagList);
+		
+		boolean completed = checkCompleted();
 
 		Result resultObj = new Result(source);
 		resultObj.setScore(score);
 		resultObj.setCorrectTagList(correctTagTextList);
 		resultObj.setIncorrectTagList(incorrectTagTextList);
 		resultObj.setGameScore(gameScore);
-
+		resultObj.setCompleted(completed);
+		
 		Gson gson = new Gson();
 		String resultData = gson.toJson(resultObj);
 
@@ -148,6 +151,14 @@ public class DiagramResult extends Activity implements OnClickListener {
 
 		}
 
+	}
+
+	private boolean checkCompleted() {
+		
+		if((int)score == 10){
+			return true;
+		}
+		return false;
 	}
 
 	/**

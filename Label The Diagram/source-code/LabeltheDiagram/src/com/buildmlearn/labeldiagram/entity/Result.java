@@ -10,6 +10,7 @@ public class Result {
 	private String diagramName;
 	private float score;
 	private float gameScore;
+	private boolean isCompleted;
 	private List<String> correctTagList;
 	private List<String> incorrectTagList;
 
@@ -46,6 +47,15 @@ public class Result {
 	public void setGameScore(float gameScore) {
 		this.gameScore = gameScore;
 	}
+	
+	public boolean getCompleted() {
+		return isCompleted;
+	}
+
+	public void setCompleted(boolean isCompleted) {
+		this.isCompleted = isCompleted;
+	}
+
 
 	public List<String> getCorrectTagList() {
 		return correctTagList;
@@ -66,11 +76,9 @@ public class Result {
 	@Override
 	public String toString() {
 		return "Result [diagramName=" + diagramName + ", score=" + score
-				+ ", gameScore=" + gameScore + ", correctTagList="
-				+ correctTagList + ", incorrectTagList=" + incorrectTagList
-				+ "]";
+				+ ", gameScore=" + gameScore + ", isCompleted=" + isCompleted
+				+ ", correctTagList=" + correctTagList + ", incorrectTagList="
+				+ incorrectTagList + "]";
 	}
-	
-	
 
 }

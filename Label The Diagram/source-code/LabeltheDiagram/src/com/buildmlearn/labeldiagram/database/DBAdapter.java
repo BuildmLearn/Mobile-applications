@@ -149,6 +149,15 @@ public class DBAdapter {
 		return c;
 	}
 
+	public Cursor getFirstThreeScoreRows() {
+
+		Cursor c = db.rawQuery("SELECT * FROM '" + TABLE_DIAGRAM_SCORE.trim()+"' LIMIT 2",null);
+		if (c != null) {
+			c.moveToFirst();
+		}
+		return c;
+	}
+	
 	// Change an existing row to be equal to new data.
 	public boolean updateScore(String diagramName, String result) {
 

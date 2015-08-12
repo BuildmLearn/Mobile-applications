@@ -1,16 +1,19 @@
 package com.buildmlearn.labeldiagram;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
+import com.buildmlearn.labeldiagram.database.DBAdapter;
+import com.buildmlearn.labeldiagram.entity.Result;
 import com.buildmlearn.labeldiagram.helper.PlaceHolderContainer;
-import com.buildmlearn.labeldiagram.helper.DiagramResultContainer;
 import com.buildmlearn.labeldiagram.helper.TagContainerSingleton;
 import com.buildmlearn.labeldiagram.helper.TagPlaceholderMapper;
 import com.example.labelthediagram.R;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -19,6 +22,7 @@ import android.content.ClipDescription;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.Typeface;
@@ -50,6 +54,7 @@ public abstract class DiagramPlayBase extends Activity implements
 	static final int SCIENCE_DIAGRAM_COUNT = 4;
 	static final int TOTAL_DIAGRAM_COUNT = 17;
 	static final int TOTAL_CATEGORY_COUNT = 3;
+	static final int TOTAL_COMPLETE_TRIES_COUNT = 3;
 	
 	List<Integer[]> placeHolderlist;
 	SparseIntArray tagPlaceHolderMap;
@@ -60,6 +65,7 @@ public abstract class DiagramPlayBase extends Activity implements
 	TagPlaceholderMapper tagPlaceholdermapper;
 	SharedPreferences preferences;
 	SharedPreferences.Editor editor;
+	DBAdapter diagramDb;
 
 	int correctLabeledCount = 0;
 	int totalLabeledCount = 0;
@@ -386,112 +392,216 @@ public abstract class DiagramPlayBase extends Activity implements
 	}
 	
 	private void generateBadges(float score, int gameScore) {
-
-		String key; 
-		String badgeTitle;
-		boolean allDiagramsCompleted = false;
-		int keyValue;
-		int badgeId;
 		
 		if ((int)score >= 10) {
+			
+			generateGreatStreakBadge(score, gameScore);
+			
+			//generatePersistanceBadge(score, gameScore);
 
-			switch (diagramCategory) {
-
-			case "Biology":
-				
-				key = getResources().getString(R.string.bio_diagrams_completed);
-				keyValue = updatePreferences(key);
-				
-				if(keyValue == BIO_DIAGRAM_COUNT){
-					
-					isToDispatch = true;
-					badgeTitle = getResources().getString(R.string.badge_biology);
-					badgeId = R.drawable.bio;
-					
-					key = getResources().getString(R.string.total_category_completed);
-					keyValue = updatePreferences(key);
-					
-					if(keyValue == TOTAL_CATEGORY_COUNT){
-						
-						allDiagramsCompleted = true;
-						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
-						
-					}else{
-						
-						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
-					
-					}
-					
-				}
-				
-				break;
-				
-			case "Physics":
-				
-				key = getResources().getString(R.string.physics_diagrams_completed);
-				keyValue = updatePreferences(key);
-				
-				if(keyValue == PHYSICS_DIAGRAM_COUNT){
-					
-					isToDispatch = true;
-					badgeTitle = getResources().getString(R.string.badge_physics);
-					badgeId = R.drawable.physics;
-					
-					key = getResources().getString(R.string.total_category_completed);
-					keyValue = updatePreferences(key);
-					
-					if(keyValue == TOTAL_CATEGORY_COUNT){
-						
-						allDiagramsCompleted = true;
-						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
-					
-					}else{
-						
-						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
-					
-					}
-					
-				}
-				
-				break;
-				
-			case "Science":
-				
-				key = getResources().getString(R.string.science_diagrams_completed);
-				keyValue = updatePreferences(key);
-				
-				if(keyValue == SCIENCE_DIAGRAM_COUNT){
-					
-					isToDispatch = true;
-					badgeTitle = getResources().getString(R.string.badge_science);
-					badgeId = R.drawable.science;
-
-					key = getResources().getString(R.string.total_category_completed);
-					keyValue = updatePreferences(key);
-					
-					if(keyValue == TOTAL_CATEGORY_COUNT){
-						
-						allDiagramsCompleted = true;
-						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
-					
-					}else{
-						
-						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
-					
-					}
-					
-				}
-				
-				break;
-				
-			default:
-				break;
-				
-			}
+			generateMasterBadges(score, gameScore);
+			
+			
 		}
 
 	}
-	protected abstract void intentBuilder(String badgeTitle, int badgeId, float score, int gameScore, boolean completed);
+
+	private void generateGreatStreakBadge(float score, int gameScore) {
+
+		String key;
+		String badgeTitle;
+		int badgeId;
+		int keyVal;
+		boolean isMasterBadge;
+		boolean allDiagramsCompleted;
+		Gson gson = new Gson();
+		List<Boolean> lastScores = new ArrayList<Boolean>();
+		
+		/*key = getResources().getString(R.string.fully_completed_tries_count);
+		keyVal = updatePreferences(key);*/
+		
+		openDB();
+		Cursor cursor = diagramDb.getFirstThreeScoreRows(); 
+		
+		if (cursor.moveToFirst()) {
+			do {
+				String name = cursor.getString(DBAdapter.COL_DIAGRAM_NAME);
+				String result = cursor.getString(DBAdapter.COL_RESULT);
+
+				Type type = new TypeToken<Result>() {}.getType();
+				Result resultObj = gson.fromJson(result, type);
+				
+				lastScores.add(resultObj.getCompleted());
+				
+			} while (cursor.moveToNext());
+			
+		}else{
+			Log.i("NULL RECORD SET", "No records yet");
+			return;
+		}
+		
+		if(lastScores.size() == 2){
+			
+			isToDispatch = true;
+			badgeTitle = getResources().getString(R.string.badge_streak);
+			badgeId = R.drawable.streak;
+			
+			isMasterBadge = false;
+			allDiagramsCompleted = false;
+			
+			intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,isMasterBadge);
+		
+		}else{
+			return;
+		}
+		
+		
+		/*if(keyVal == TOTAL_COMPLETE_TRIES_COUNT){
+			
+			badgeTitle = getResources().getString(R.string.badge_streak);
+			badgeId = R.drawable.streak;
+			
+			isMasterBadge = false;
+			allDiagramsCompleted = false;
+			
+			intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,isMasterBadge);
+		}*/
+		
+	}
+
+	private void generateMasterBadges(float score, int gameScore) {
+		
+		String key;
+		String badgeTitle;
+		int keyValue;
+		int badgeId;
+		boolean isMasterBadge;
+		boolean allDiagramsCompleted = false;
+		
+		switch (diagramCategory) {
+
+		case "Biology":
+			
+			key = getResources().getString(R.string.bio_diagrams_completed);
+			keyValue = updatePreferences(key);
+			
+			if(keyValue == BIO_DIAGRAM_COUNT){
+				
+				isToDispatch = true;
+				isMasterBadge = true;
+				badgeTitle = getResources().getString(R.string.badge_biology);
+				badgeId = R.drawable.bio;
+				
+				key = getResources().getString(R.string.total_category_completed);
+				keyValue = updatePreferences(key);
+				
+				if(keyValue == TOTAL_CATEGORY_COUNT){
+					
+					allDiagramsCompleted = true;
+					intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,isMasterBadge);
+					
+				}else{
+					
+					intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,isMasterBadge);
+				
+				}
+				
+			}
+			
+			break;
+			
+		case "Physics":
+			
+			key = getResources().getString(R.string.physics_diagrams_completed);
+			keyValue = updatePreferences(key);
+			
+			if(keyValue == PHYSICS_DIAGRAM_COUNT){
+				
+				isToDispatch = true;
+				isMasterBadge = true;
+				badgeTitle = getResources().getString(R.string.badge_physics);
+				badgeId = R.drawable.physics;
+				
+				key = getResources().getString(R.string.total_category_completed);
+				keyValue = updatePreferences(key);
+				
+				if(keyValue == TOTAL_CATEGORY_COUNT){
+					
+					allDiagramsCompleted = true;
+					intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,isMasterBadge);
+				
+				}else{
+					
+					intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,isMasterBadge);
+				
+				}
+				
+			}
+			
+			break;
+			
+		case "Science":
+			
+			key = getResources().getString(R.string.science_diagrams_completed);
+			keyValue = updatePreferences(key);
+			
+			if(keyValue == SCIENCE_DIAGRAM_COUNT){
+				
+				isToDispatch = true;
+				isMasterBadge = true;
+				badgeTitle = getResources().getString(R.string.badge_science);
+				badgeId = R.drawable.science;
+
+				key = getResources().getString(R.string.total_category_completed);
+				keyValue = updatePreferences(key);
+				
+				if(keyValue == TOTAL_CATEGORY_COUNT){
+					
+					allDiagramsCompleted = true;
+					intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,isMasterBadge);
+				
+				}else{
+					
+					intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,isMasterBadge);
+				
+				}
+				
+			}
+			
+			break;
+			
+		default:
+			break;
+			
+		}
+	}
+	
+	private void generatePersistanceBadge(float score, int gameScore) {
+		
+		String key;
+		int keyVal;
+		String badgeTitle;
+		int badgeId;
+		boolean isMasterBadge;
+		boolean allDiagramsCompleted;
+		
+		key = getResources().getString(R.string.fully_completed_tries_count);
+		keyVal = updatePreferences(key);
+		
+		if(keyVal == TOTAL_COMPLETE_TRIES_COUNT){
+			
+			badgeTitle = getResources().getString(R.string.badge_streak);
+			badgeId = R.drawable.streak;
+			
+			isMasterBadge = false;
+			allDiagramsCompleted = false;
+			
+			intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,isMasterBadge);
+		}
+	}
+
+	protected abstract void intentBuilder(String badgeTitle, int badgeId, float score, int gameScore, boolean completed, boolean isMassterBadge);
+	
 	
 	private int updatePreferences(String key){
 		
@@ -626,4 +736,20 @@ public abstract class DiagramPlayBase extends Activity implements
 	}
 	
 	protected abstract int getResourcesId();
+	
+	private void openDB() {
+		diagramDb = new DBAdapter(this);
+		diagramDb.open();
+	}
+
+	private void closeDB() {
+		diagramDb.close();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		closeDB();
+	}
+
 }

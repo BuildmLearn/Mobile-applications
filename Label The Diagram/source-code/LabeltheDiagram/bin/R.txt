@@ -673,10 +673,8 @@ int string category_natural_cycles_desc 0x7f07000d
 int string category_plants 0x7f070007
 int string category_plants_desc 0x7f07000b
 int string com_crashlytics_android_build_id 0x7f070000
+int string fully_completed_tries_count 0x7f07003a
 int string hello_world 0x7f070002
-int string is_bio_diagrams_last 0x7f07003a
-int string is_physics_diagrams_last 0x7f07003b
-int string is_science_diagrams_last 0x7f07003c
 int string lesson_bacteria 0x7f070013
 int string lesson_bacteria_desc 0x7f070024
 int string lesson_carbon_cycle 0x7f07001e

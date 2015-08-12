@@ -64,9 +64,6 @@
     <string name="physics_diagrams_completed">completedPhysicsDiagrams</string>
     <string name="science_diagrams_completed">completedScienceDiagrams</string>
     <string name="total_category_completed">completedTotalCategories</string>
-    <string name="is_bio_diagrams_last">isBioCompletedLast</string>
-    <string name="is_physics_diagrams_last">isPhysicsCompletedLast</string>
-    <string name="is_science_diagrams_last">isScienceCompletedLast</string>
-    
+    <string name="fully_completed_tries_count">completeTryCount</string>
 
 </resources>

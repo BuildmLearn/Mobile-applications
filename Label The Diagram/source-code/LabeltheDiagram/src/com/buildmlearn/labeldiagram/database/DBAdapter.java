@@ -19,6 +19,7 @@ public class DBAdapter {
 	// DB Fields
 	public static final String KEY_DIAGRAM_NAME = "name";
 	public static final String KEY_RESULT = "result";
+	//public static final String KEY_CREATED_AT = "created_at";
 
 	// Field numbers
 	public static final int COL_DIAGRAM_NAME = 0;
@@ -151,7 +152,7 @@ public class DBAdapter {
 
 	public Cursor getFirstThreeScoreRows() {
 
-		Cursor c = db.rawQuery("SELECT * FROM '" + TABLE_DIAGRAM_SCORE.trim()+"' LIMIT 2",null);
+		Cursor c = db.rawQuery("SELECT * FROM '" + TABLE_DIAGRAM_SCORE.trim()+"'ORDER BY rowid DESC LIMIT 2",null);
 		if (c != null) {
 			c.moveToFirst();
 		}

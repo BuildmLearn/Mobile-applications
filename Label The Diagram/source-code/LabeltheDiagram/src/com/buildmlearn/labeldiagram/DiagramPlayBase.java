@@ -3,6 +3,7 @@ package com.buildmlearn.labeldiagram;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -421,7 +422,9 @@ public abstract class DiagramPlayBase extends Activity implements
 		HashMap<String, Boolean> recordMap = new HashMap<String, Boolean>();
 		
 		key = getResources().getString(R.string.fully_completed_tries_count);
-		keyVal = updatePreferences(key);
+		//keyVal = updatePreferences(key);
+		
+		boolean isGreatStreakBadge = preferences.getBoolean(key, false);
 		
 		openDB();
 		Cursor cursor = diagramDb.getFirstThreeScoreRows(); 
@@ -444,18 +447,33 @@ public abstract class DiagramPlayBase extends Activity implements
 			return;
 		}
 		
-		if((keyVal < MAX_PREF_UPDATE_CYCLES)){
+		if(!isGreatStreakBadge){
 			
 			if(recordMap.size() == MAX_ROWS_COUNT){
 				
 				if(!recordMap.containsKey(getDiagramName())){
 					
-					isToDispatch = true;
-					badgeTitle = getResources().getString(R.string.badge_streak);
-					badgeId = R.drawable.streak;
-					allDiagramsCompleted = false;
+					Collection<Boolean> val = recordMap.values();
+					Boolean[] array = (Boolean[])(val.toArray(new Boolean[val.size()]));
+					int count = 0;
+					 for(int i=0; i<array.length; i++){
+						 if(array[i] == true){
+							 count += 1;
+						 }
+					 }
+					 
+					 if(count == 2){
+						 
+						isToDispatch = true;
+						updateBoolPreferences(key);
+						badgeTitle = getResources().getString(R.string.badge_streak);
+						badgeId = R.drawable.streak;
+						allDiagramsCompleted = false;
+						
+						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
+					 }
 					
-					intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
+					
 					
 				}
 				

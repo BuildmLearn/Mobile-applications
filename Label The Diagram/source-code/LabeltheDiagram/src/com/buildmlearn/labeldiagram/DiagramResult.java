@@ -155,7 +155,7 @@ public class DiagramResult extends Activity implements OnClickListener {
 
 	private boolean checkCompleted() {
 		
-		if((int)score == 10){
+		if((int)score >= 10){
 			return true;
 		}
 		return false;

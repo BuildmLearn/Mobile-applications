@@ -64,6 +64,8 @@ public class BacteriaFragment extends Fragment {
 
 				Intent bactIntent = new Intent(getActivity(),
 						DiagramPlayBacteria.class);
+				bactIntent.putExtra("SOURCE", "Fragment");
+				bactIntent.putExtra("TRY_CYCLE", 0);
 				bactIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				bactIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				bactIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

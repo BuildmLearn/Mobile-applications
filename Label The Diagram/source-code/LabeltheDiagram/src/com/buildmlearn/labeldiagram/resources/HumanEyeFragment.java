@@ -54,6 +54,8 @@ public class HumanEyeFragment extends Fragment {
 
 				Intent eyeIntent = new Intent(getActivity(),
 						DiagramPlayHumanEye.class);
+				eyeIntent.putExtra("SOURCE", "Fragment");
+				eyeIntent.putExtra("TRY_CYCLE", 0);
 				eyeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				eyeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				eyeIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

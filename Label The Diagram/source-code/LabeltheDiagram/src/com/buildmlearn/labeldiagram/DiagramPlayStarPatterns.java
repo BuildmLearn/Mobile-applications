@@ -154,7 +154,7 @@ public class DiagramPlayStarPatterns extends DiagramPlayBase {
 	}
 	
 	@Override
-	protected void intentBuilder(String badgeTitle, int badgeId, float totalScore, int gameScore, boolean completed) {
+	protected void intentBuilder(String badgeTitle, int badgeId, float totalScore, int gameScore, boolean completed, int tryCycle) {
 		Intent intent;
 		intent = new Intent(getApplicationContext(), BadgePopUpWindow.class);
 		intent.putExtra("BADGE_TITLE", badgeTitle);
@@ -164,6 +164,7 @@ public class DiagramPlayStarPatterns extends DiagramPlayBase {
 		intent.putExtra("SOURCE", "StarPatterns");
 		intent.putExtra("BEST_SCORE", achievedBestScore);
 		intent.putExtra("COMPLETED", completed);
+		intent.putExtra("TRY_CYCLE", tryCycle);
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 		finish();

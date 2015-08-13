@@ -64,6 +64,8 @@ public class VirusFragment extends Fragment {
 
 				Intent virusIntent = new Intent(getActivity(),
 						DiagramPlayVirus.class);
+				virusIntent.putExtra("SOURCE", "Fragment");
+				virusIntent.putExtra("TRY_CYCLE", 0);
 				virusIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				virusIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				virusIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

@@ -74,9 +74,11 @@ public abstract class DiagramPlayBase extends Activity implements
 	int correctLabeledCount = 0;
 	int totalLabeledCount = 0;
 	int tagListSize = 0;
+	int tryCycle;
 	boolean achievedBestScore = false;
 	String diagramName;
 	String diagramCategory;
+	String source;
 	TextView compeleteRatio;
 	TextView score;
 	ActionBar actionBar;
@@ -116,6 +118,15 @@ public abstract class DiagramPlayBase extends Activity implements
 		// Create SharedPreferences object
 		initPreferences();
 
+		getIntentData();
+	}
+
+	private void getIntentData() {
+
+		source = getIntent().getExtras().getString("SOURCE");
+		tryCycle = getIntent().getExtras().getInt("TRY_CYCLE");
+		
+		
 	}
 
 	private void initPreferences() {
@@ -397,11 +408,22 @@ public abstract class DiagramPlayBase extends Activity implements
 	
 	private void generateBadges(float score, int gameScore) {
 		
-		if ((int)score >= 10) {
+
+		if((int)score < 20){
+			
+			if(source.equals("Fragment")){
+				tryCycle = 0;
+			}else if(source.equals("Result")){
+				tryCycle = tryCycle + 1;
+			}
+			
+		}
+		
+		if ((int)score >= 20) {
 			
 			generateGreatStreakBadge(score, gameScore);
 			
-			//generatePersistanceBadge(score, gameScore);
+			generatePersistanceBadge(score, gameScore);
 
 			generateMasterBadges(score, gameScore);
 			
@@ -415,14 +437,11 @@ public abstract class DiagramPlayBase extends Activity implements
 		String key;
 		String badgeTitle;
 		int badgeId;
-		int keyVal;
 		boolean allDiagramsCompleted;
 		Gson gson = new Gson();
-		List<Boolean> lastScores = new ArrayList<Boolean>();
 		HashMap<String, Boolean> recordMap = new HashMap<String, Boolean>();
 		
 		key = getResources().getString(R.string.fully_completed_tries_count);
-		//keyVal = updatePreferences(key);
 		
 		boolean isGreatStreakBadge = preferences.getBoolean(key, false);
 		
@@ -437,7 +456,6 @@ public abstract class DiagramPlayBase extends Activity implements
 				Type type = new TypeToken<Result>() {}.getType();
 				Result resultObj = gson.fromJson(result, type);
 				
-				//lastScores.add(resultObj.getCompleted());
 				recordMap.put(resultObj.getDiagramName(), resultObj.getCompleted());
 				
 			} while (cursor.moveToNext());
@@ -462,7 +480,7 @@ public abstract class DiagramPlayBase extends Activity implements
 						 }
 					 }
 					 
-					 if(count == 2){
+					 if(count == MAX_ROWS_COUNT){
 						 
 						isToDispatch = true;
 						updateBoolPreferences(key);
@@ -470,15 +488,11 @@ public abstract class DiagramPlayBase extends Activity implements
 						badgeId = R.drawable.streak;
 						allDiagramsCompleted = false;
 						
-						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
+						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
 					 }
-					
-					
 					
 				}
 				
-				
-			
 			}else{
 				return;
 			}
@@ -486,21 +500,7 @@ public abstract class DiagramPlayBase extends Activity implements
 		}else{
 			return;
 		}
-		
-		
-		
-		
-		/*if(keyVal == TOTAL_COMPLETE_TRIES_COUNT){
-			
-			badgeTitle = getResources().getString(R.string.badge_streak);
-			badgeId = R.drawable.streak;
-			
-			isMasterBadge = false;
-			allDiagramsCompleted = false;
-			
-			intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,isMasterBadge);
-		}*/
-		
+
 	}
 
 	private void generateMasterBadges(float score, int gameScore) {
@@ -539,11 +539,11 @@ public abstract class DiagramPlayBase extends Activity implements
 					if(keyValue == TOTAL_CATEGORY_COUNT){
 						
 						allDiagramsCompleted = true;
-						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
+						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
 						
 					}else{
 						
-						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
+						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
 					
 					}
 					
@@ -577,19 +577,17 @@ public abstract class DiagramPlayBase extends Activity implements
 					if(keyValue == TOTAL_CATEGORY_COUNT){
 						
 						allDiagramsCompleted = true;
-						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
+						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
 					
 					}else{
 						
-						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
+						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
 					
 					}
 					
 				}
 				
 			}
-			
-			
 			
 			break;
 			
@@ -616,19 +614,17 @@ public abstract class DiagramPlayBase extends Activity implements
 					if(keyValue == TOTAL_CATEGORY_COUNT){
 						
 						allDiagramsCompleted = true;
-						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
+						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
 					
 					}else{
 						
-						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
+						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
 					
 					}
 					
 				}
 				
 			}
-			
-			
 			
 			break;
 			
@@ -637,6 +633,29 @@ public abstract class DiagramPlayBase extends Activity implements
 			
 		}
 	}
+	
+	
+	private void generatePersistanceBadge(float score, int gameScore) {
+		
+		String badgeTitle;
+		int badgeId;
+		boolean allDiagramsCompleted;
+
+			
+			if(tryCycle == TOTAL_COMPLETE_TRIES_COUNT){
+				
+				isToDispatch = true;
+				badgeTitle = getResources().getString(R.string.badge_persistence);
+				badgeId = R.drawable.persistence;
+				
+				allDiagramsCompleted = false;
+				
+				intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
+				
+			}
+		
+	}
+	
 	
 	private int updateMasterPreferences(String key, String category) {
 		
@@ -668,31 +687,9 @@ public abstract class DiagramPlayBase extends Activity implements
 		
 	}
 
-	private void generatePersistanceBadge(float score, int gameScore) {
-		
-		String key;
-		int keyVal;
-		String badgeTitle;
-		int badgeId;
-		boolean isMasterBadge;
-		boolean allDiagramsCompleted;
-		
-		key = getResources().getString(R.string.fully_completed_tries_count);
-		keyVal = updatePreferences(key);
-		
-		if(keyVal == TOTAL_COMPLETE_TRIES_COUNT){
-			
-			badgeTitle = getResources().getString(R.string.badge_streak);
-			badgeId = R.drawable.streak;
-			
-			isMasterBadge = false;
-			allDiagramsCompleted = false;
-			
-			intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted);
-		}
-	}
 
-	protected abstract void intentBuilder(String badgeTitle, int badgeId, float score, int gameScore, boolean completed);
+
+	protected abstract void intentBuilder(String badgeTitle, int badgeId, float score, int gameScore, boolean completed, int tryCycle);
 	
 	
 	private int updatePreferences(String key){

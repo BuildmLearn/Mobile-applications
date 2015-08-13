@@ -30,6 +30,7 @@ public class BadgePopUpWindow extends Activity implements OnClickListener {
 	float score;
 	int gameScore;
 	int badgeId;
+	int tryCycle;
 	
 
 	@Override
@@ -74,6 +75,7 @@ public class BadgePopUpWindow extends Activity implements OnClickListener {
 		achievedBestScore = getIntent().getExtras().getBoolean("BEST_SCORE");
 		isCompleted = getIntent().getExtras().getBoolean("COMPLETED");
 		isMasterBadge = getIntent().getExtras().getBoolean("MASTER_BADGE");
+		tryCycle = getIntent().getExtras().getInt("TRY_CYCLE");
 	}
 
 	private void initViews() {
@@ -128,6 +130,7 @@ public class BadgePopUpWindow extends Activity implements OnClickListener {
 					intent.putExtra("SOURCE", source);
 					intent.putExtra("BEST_SCORE", achievedBestScore);
 					intent.putExtra("COMPLETED", completed);
+					intent.putExtra("TRY_CYCLE", tryCycle);
 					intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					startActivity(intent);
 					finish();
@@ -138,6 +141,7 @@ public class BadgePopUpWindow extends Activity implements OnClickListener {
 					intent.putExtra("GAME_SCORE", gameScore);
 					intent.putExtra("SOURCE", source);
 					intent.putExtra("BEST_SCORE", achievedBestScore);
+					intent.putExtra("TRY_CYCLE", tryCycle);
 					intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					startActivity(intent);
 					finish();

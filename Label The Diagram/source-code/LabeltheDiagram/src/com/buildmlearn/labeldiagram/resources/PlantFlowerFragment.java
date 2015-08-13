@@ -57,6 +57,8 @@ public class PlantFlowerFragment extends Fragment {
    			public void onClick(View v) {
 
    				Intent flowerIntent = new Intent(getActivity(), DiagramPlayPlantFlower.class);
+   				flowerIntent.putExtra("SOURCE", "Fragment");
+   				flowerIntent.putExtra("TRY_CYCLE", 0);
    				flowerIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
    				flowerIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
    				flowerIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

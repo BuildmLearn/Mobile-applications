@@ -51,6 +51,7 @@ public class DiagramResult extends Activity implements OnClickListener {
 	boolean isBestScore;
 	int gameScore;
 	float score;
+	int tryCycle;
 	String source;
 	String category;
 	DBAdapter diagramDb;
@@ -76,6 +77,7 @@ public class DiagramResult extends Activity implements OnClickListener {
 		source = getIntent().getExtras().getString("SOURCE");
 		isBestScore = getIntent().getExtras().getBoolean("BEST_SCORE");
 		gameScore = getIntent().getExtras().getInt("GAME_SCORE");
+		tryCycle = getIntent().getExtras().getInt("TRY_CYCLE");
 
 		// Set the score on the rating bar
 		RatingBar scoreRater = (RatingBar) findViewById(R.id.resultBar);
@@ -281,10 +283,12 @@ public class DiagramResult extends Activity implements OnClickListener {
 	}
 
 	private void getDispatcingClass(String source) {
-
+		
 		HashMap<String, Class<?>> destMap = ClassMapper.getInstance().getMap();
 		Class<?> destinationClass = destMap.get(source);
 		Intent intent = new Intent(getApplicationContext(), destinationClass);
+		intent.putExtra("TRY_CYCLE", tryCycle);
+		intent.putExtra("SOURCE", "Result");
 		intentBuilder(intent);
 
 	}

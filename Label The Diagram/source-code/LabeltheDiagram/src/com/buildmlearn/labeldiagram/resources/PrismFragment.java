@@ -53,6 +53,8 @@ public class PrismFragment extends Fragment {
 
 				Intent prismIntent = new Intent(getActivity(),
 						DiagramPlayPrism.class);
+				prismIntent.putExtra("SOURCE", "Fragment");
+				prismIntent.putExtra("TRY_CYCLE", 0);
 				prismIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				prismIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				prismIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

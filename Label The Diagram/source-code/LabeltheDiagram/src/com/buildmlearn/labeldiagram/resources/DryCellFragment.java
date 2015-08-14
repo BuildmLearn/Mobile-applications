@@ -54,6 +54,8 @@ public class DryCellFragment extends Fragment {
 
 				Intent cellIntent = new Intent(getActivity(),
 						DiagramPlayDryCell.class);
+				cellIntent.putExtra("SOURCE", "Fragment");
+				cellIntent.putExtra("TRY_CYCLE", 0);
 				cellIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				cellIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				cellIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

@@ -63,6 +63,8 @@ public class CarbonCycleFragment extends Fragment {
 
 				Intent carbonIntent = new Intent(getActivity(),
 						DiagramPlayCarbonCycle.class);
+				carbonIntent.putExtra("SOURCE", "Fragment");
+				carbonIntent.putExtra("TRY_CYCLE", 0);
 				carbonIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				carbonIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				carbonIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

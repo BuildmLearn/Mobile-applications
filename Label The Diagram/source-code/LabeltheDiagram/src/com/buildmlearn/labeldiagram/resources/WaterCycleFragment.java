@@ -66,6 +66,8 @@ public class WaterCycleFragment extends Fragment {
 
 				Intent waterCycIntent = new Intent(getActivity(),
 						DiagramPlayWaterCycle.class);
+				waterCycIntent.putExtra("SOURCE", "Fragment");
+				waterCycIntent.putExtra("TRY_CYCLE", 0);
 				waterCycIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				waterCycIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				waterCycIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

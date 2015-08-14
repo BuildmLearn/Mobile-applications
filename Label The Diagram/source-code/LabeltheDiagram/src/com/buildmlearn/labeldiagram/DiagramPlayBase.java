@@ -59,7 +59,7 @@ public abstract class DiagramPlayBase extends Activity implements
 	static final int SCIENCE_DIAGRAM_COUNT = 4;
 	static final int TOTAL_DIAGRAM_COUNT = 17;
 	static final int TOTAL_CATEGORY_COUNT = 3;
-	static final int TOTAL_COMPLETE_TRIES_COUNT = 3;
+	static final int TOTAL_COMPLETE_TRIES_COUNT = 2;
 	static final int MAX_ROWS_COUNT = 2;
 	static final int MAX_PREF_UPDATE_CYCLES = 4;
 	
@@ -544,6 +544,7 @@ public abstract class DiagramPlayBase extends Activity implements
 					if(keyValue == TOTAL_CATEGORY_COUNT){
 						
 						allDiagramsCompleted = true;
+						database.updateBadgeAchievement(badgeTitle, true);
 						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
 						
 					}else{
@@ -583,6 +584,7 @@ public abstract class DiagramPlayBase extends Activity implements
 					if(keyValue == TOTAL_CATEGORY_COUNT){
 						
 						allDiagramsCompleted = true;
+						database.updateBadgeAchievement(badgeTitle, true);
 						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
 					
 					}else{
@@ -621,6 +623,7 @@ public abstract class DiagramPlayBase extends Activity implements
 					if(keyValue == TOTAL_CATEGORY_COUNT){
 						
 						allDiagramsCompleted = true;
+						database.updateBadgeAchievement(badgeTitle, true);
 						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
 					
 					}else{

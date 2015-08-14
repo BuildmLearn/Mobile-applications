@@ -54,6 +54,8 @@ public class LensFragment extends Fragment {
 
 				Intent lensIntent = new Intent(getActivity(),
 						DiagramPlayLens.class);
+				lensIntent.putExtra("SOURCE", "Fragment");
+				lensIntent.putExtra("TRY_CYCLE", 0);
 				lensIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				lensIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				lensIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

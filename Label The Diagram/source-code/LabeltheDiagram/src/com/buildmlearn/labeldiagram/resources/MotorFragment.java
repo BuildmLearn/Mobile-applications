@@ -54,6 +54,8 @@ public class MotorFragment extends Fragment {
 
 				Intent motorIntent = new Intent(getActivity(),
 						DiagramPlayMotor.class);
+				motorIntent.putExtra("SOURCE", "Fragment");
+				motorIntent.putExtra("TRY_CYCLE", 0);
 				motorIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				motorIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				motorIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

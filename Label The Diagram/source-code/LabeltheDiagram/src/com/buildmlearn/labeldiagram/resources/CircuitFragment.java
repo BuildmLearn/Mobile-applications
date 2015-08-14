@@ -55,6 +55,8 @@ public class CircuitFragment extends Fragment {
 
 				Intent circuitIntent = new Intent(getActivity(),
 						DiagramPlayCircuit.class);
+				circuitIntent.putExtra("SOURCE", "Fragment");
+				circuitIntent.putExtra("TRY_CYCLE", 0);
 				circuitIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				circuitIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				circuitIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

@@ -1,6 +1,5 @@
 package com.buildmlearn.labeldiagram.resources;
 
-import com.buildmlearn.labeldiagram.DiagramPlaySolarSystem;
 import com.buildmlearn.labeldiagram.DiagramPlayStarPatterns;
 import com.example.labelthediagram.R;
 
@@ -53,6 +52,8 @@ public class StarPatternsFragment extends Fragment {
 
 				Intent starIntent = new Intent(getActivity(),
 						DiagramPlayStarPatterns.class);
+				starIntent.putExtra("SOURCE", "Fragment");
+				starIntent.putExtra("TRY_CYCLE", 0);
 				starIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				starIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				starIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

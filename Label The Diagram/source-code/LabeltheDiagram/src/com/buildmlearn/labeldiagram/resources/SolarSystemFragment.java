@@ -52,6 +52,8 @@ public class SolarSystemFragment extends Fragment {
 
 				Intent spectrumIntent = new Intent(getActivity(),
 						DiagramPlaySolarSystem.class);
+				spectrumIntent.putExtra("SOURCE", "Fragment");
+				spectrumIntent.putExtra("TRY_CYCLE", 0);
 				spectrumIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				spectrumIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				spectrumIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

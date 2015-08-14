@@ -32,6 +32,10 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.MainMenu">
             </meta-data>
         </activity>
+        <activity android:name="com.buildmlearn.labeldiagram.Settings" android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.MainMenu">
+            </meta-data>
+        </activity>
         <activity android:configChanges="orientation" android:name="com.buildmlearn.labeldiagram.DiagramPlay" android:parentActivityName="com.buildmlearn.labeldiagram.DiagramCategory" android:screenOrientation="portrait">
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.DiagramCategory">
             </meta-data>

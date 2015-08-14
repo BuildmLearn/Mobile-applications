@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/settings_color" >
+
+        <ImageView
+            android:id="@+id/soundView"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/sound" />
+
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
+            android:id="@+id/soundTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="45dp"
+            android:layout_marginStart="45dp"
+            android:layout_toEndOf="@+id/soundView"
+            android:layout_toRightOf="@+id/soundView"
+            android:text="Sound"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            app:typeface="roboto_light" />
+
+        <CheckBox
+            android:id="@+id/soundCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/relativeLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/settings_color" >
+
+        <ImageView
+            android:id="@+id/notificationView"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/notification" />
+        
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
+            android:id="@+id/notificationTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="45dp"
+            android:layout_marginStart="45dp"
+            android:layout_toEndOf="@+id/notificationView"
+            android:layout_toRightOf="@+id/notificationView"
+            android:text="Notification"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            app:typeface="roboto_light" />
+        
+        <CheckBox
+            android:id="@+id/notificationCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp" />
+        
+    </RelativeLayout>
+    
+     <RelativeLayout
+        android:id="@+id/updateLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/settings_color" >
+        
+         <ImageView
+            android:id="@+id/updateView"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/update" />
+        
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
+            android:id="@+id/updateTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="45dp"
+            android:layout_marginStart="45dp"
+            android:layout_toEndOf="@+id/updateView"
+            android:layout_toRightOf="@+id/updateView"
+            android:text="Update"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            app:typeface="roboto_light" />
+        
+         
+    </RelativeLayout>
+    
+     <RelativeLayout
+        android:id="@+id/rateLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/updateLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/settings_color" >
+        
+         <ImageView
+            android:id="@+id/rateView"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/rate" />
+        
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
+            android:id="@+id/rateTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="45dp"
+            android:layout_marginStart="45dp"
+            android:layout_toEndOf="@+id/rateView"
+            android:layout_toRightOf="@+id/rateView"
+            android:text="Rate the app"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            app:typeface="roboto_light" />
+         
+    </RelativeLayout>
+
+</RelativeLayout>

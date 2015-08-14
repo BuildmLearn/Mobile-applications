@@ -265,11 +265,10 @@ public class PlaceHolderContainer {
 		leftPlaceHolderList = new Integer[] { R.id.oceanBlb,
 				R.id.infiltrationBlb, R.id.precipitationBlb,
 				R.id.surface_runBlb, R.id.condensationBlb,
-				R.id.underground_waterBlb, R.id.transpirationBlb };
+				R.id.transpirationBlb };
 
-		rightPlaceHolderList = new Integer[] { R.id.eveporationBlb
-
-		};
+		rightPlaceHolderList = new Integer[] { R.id.eveporationBlb,
+				R.id.underground_waterBlb };
 
 		listHolder.add(leftPlaceHolderList);
 		listHolder.add(rightPlaceHolderList);
@@ -379,8 +378,8 @@ public class PlaceHolderContainer {
 	private List<Integer[]> getHumanEyeMarkerList() {
 
 		leftPlaceHolderList = new Integer[] { R.id.corneaBlb,
-				R.id.ciliaryBodyBlb, R.id.pul_arteryBulb, R.id.pupilBlb,
-				R.id.lensBlb, R.id.vitreousBlb };
+				R.id.ciliaryBodyBlb, R.id.irisBlb, R.id.pupilBlb, R.id.lensBlb,
+				R.id.vitreousBlb };
 
 		rightPlaceHolderList = new Integer[] { R.id.foveaBlb, R.id.retinaBlb,
 				R.id.opticNerveBlb, R.id.blindSpotBlb };

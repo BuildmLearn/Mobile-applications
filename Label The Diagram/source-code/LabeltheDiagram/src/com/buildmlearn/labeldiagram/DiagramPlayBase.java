@@ -30,6 +30,7 @@ import android.database.Cursor;
 import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.NavUtils;
@@ -54,6 +55,8 @@ public abstract class DiagramPlayBase extends Activity implements
 	static final String TAG = "InfoTag";
 	static final String TAG_ERROR = "Error";
 	static final String KEY_ACHIEVED = "isAchieved";
+	static final String SOUND_SETTING = "sound";
+	static final String NOTIFICATION_SETTING = "notification";
 	static final int BIO_DIAGRAM_COUNT = 7;
 	static final int PHYSICS_DIAGRAM_COUNT = 6;
 	static final int SCIENCE_DIAGRAM_COUNT = 4;
@@ -246,6 +249,8 @@ public abstract class DiagramPlayBase extends Activity implements
 				// change the tag color to RED
 				draggedImageTag
 						.setBackgroundResource(R.drawable.custom_textview_incorrect);
+				
+				playSound(false);
 
 				totalLabeledCount += 1;
 
@@ -260,6 +265,8 @@ public abstract class DiagramPlayBase extends Activity implements
 				// the tag color to light greenS
 				draggedImageTag
 						.setBackgroundResource(R.drawable.custom_textview_correct);
+				
+				playSound(true);
 
 				totalLabeledCount += 1;
 				correctLabeledCount += 1;
@@ -299,6 +306,27 @@ public abstract class DiagramPlayBase extends Activity implements
 		}
 
 		return true;
+	}
+
+	private void playSound(boolean soundOtion) {
+		
+		boolean isEnabled = preferences.getBoolean(SOUND_SETTING, false);
+		
+		if(isEnabled){
+			
+			if(soundOtion){
+				
+				MediaPlayer correctSound= MediaPlayer.create(getApplicationContext(), R.raw.correct);
+				correctSound.start();
+			
+			}else{
+				
+				MediaPlayer wrongSound = MediaPlayer.create(getApplicationContext(), R.raw.wrong);
+				wrongSound.start();
+			
+			}
+			
+		}
 	}
 
 	/**

@@ -9,5 +9,6 @@
     <color name="correct_color">#6ACB9A</color>
     <color name="tab_indicator_color">#01675B</color>
     <color name="frame_color">#EEEEEE</color>
+    <color name="settings_color">#DDDDDD</color>
 
 </resources>

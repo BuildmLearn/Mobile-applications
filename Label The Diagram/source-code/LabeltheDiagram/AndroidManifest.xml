@@ -70,6 +70,14 @@
             </meta-data>
         </activity>
         <activity
+            android:name="com.buildmlearn.labeldiagram.Settings"
+            android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.buildmlearn.labeldiagram.MainMenu" >
+            </meta-data>
+        </activity>
+        <activity
             android:name="com.buildmlearn.labeldiagram.DiagramPlay"
             android:configChanges="orientation"
             android:parentActivityName="com.buildmlearn.labeldiagram.DiagramCategory"

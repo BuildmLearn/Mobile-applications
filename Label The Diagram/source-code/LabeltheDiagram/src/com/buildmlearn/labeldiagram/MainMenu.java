@@ -115,8 +115,8 @@ public class MainMenu extends Activity implements OnClickListener {
 			startActivity(badgesIntent);
 			break;
 		case R.id.start_settings:
-			Toast.makeText(getApplication(), "Comming soon...", 2000)
-					.show();
+			Intent settingsIntent = new Intent(getApplicationContext(), Settings.class);
+			startActivity(settingsIntent);
 			break;
 		case R.id.start_help:
 			Toast.makeText(getApplication(), "Comming soon...", 2000)

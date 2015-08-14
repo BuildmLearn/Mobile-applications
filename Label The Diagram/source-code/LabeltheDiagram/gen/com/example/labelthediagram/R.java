@@ -162,36 +162,40 @@ public final class R {
         public static final int seven=0x7f02005d;
         public static final int shadow=0x7f02005e;
         public static final int shadow_on=0x7f02005f;
-        public static final int six=0x7f020060;
-        public static final int sky_icon=0x7f020061;
-        public static final int solar_system=0x7f020062;
-        public static final int solar_system_unlabel=0x7f020063;
-        public static final int spalsh=0x7f020064;
-        public static final int spectrum=0x7f020065;
-        public static final int spectrum_unlabel=0x7f020066;
-        public static final int star_empty=0x7f020067;
-        public static final int star_filled=0x7f020068;
-        public static final int star_full_new=0x7f020069;
-        public static final int star_new=0x7f02006a;
-        public static final int stars=0x7f02006b;
-        public static final int stars_unlabel=0x7f02006c;
-        public static final int streak=0x7f02006d;
-        public static final int tab_indicator=0x7f02006e;
-        public static final int tab_pressed=0x7f02006f;
-        public static final int tab_selected=0x7f020070;
-        public static final int tab_unselected=0x7f020071;
-        public static final int ten=0x7f020072;
-        public static final int three=0x7f020073;
-        public static final int tooltip_background=0x7f020074;
-        public static final int trans_inner_holder=0x7f020075;
-        public static final int two=0x7f020076;
-        public static final int view_btn=0x7f020077;
-        public static final int virus=0x7f020078;
-        public static final int virus_unlabel=0x7f020079;
+        public static final int shadow_small=0x7f020060;
+        public static final int six=0x7f020061;
+        public static final int sky_icon=0x7f020062;
+        public static final int solar_system=0x7f020063;
+        public static final int solar_system_unlabel=0x7f020064;
+        public static final int spalsh=0x7f020065;
+        public static final int spectrum=0x7f020066;
+        public static final int spectrum_unlabel=0x7f020067;
+        public static final int star_empty=0x7f020068;
+        public static final int star_filled=0x7f020069;
+        public static final int star_full_new=0x7f02006a;
+        public static final int star_new=0x7f02006b;
+        public static final int stars=0x7f02006c;
+        public static final int stars_unlabel=0x7f02006d;
+        public static final int streak=0x7f02006e;
+        public static final int tab_indicator=0x7f02006f;
+        public static final int tab_pressed=0x7f020070;
+        public static final int tab_selected=0x7f020071;
+        public static final int tab_unselected=0x7f020072;
+        public static final int ten=0x7f020073;
+        public static final int three=0x7f020074;
+        public static final int tooltip_background=0x7f020075;
+        public static final int trans_inner_holder=0x7f020076;
+        public static final int two=0x7f020077;
+        public static final int view_btn=0x7f020078;
+        public static final int virus=0x7f020079;
+        public static final int virus_unlabel=0x7f02007a;
     }
     public static final class id {
-        public static final int action_done=0x7f0501ab;
-        public static final int action_settings=0x7f0501ac;
+        public static final int achieved_badge=0x7f0501ad;
+        public static final int achievement_title=0x7f0501ae;
+        public static final int achievement_txt=0x7f0501b0;
+        public static final int action_done=0x7f0501b3;
+        public static final int action_settings=0x7f0501b4;
         public static final int againButton=0x7f050168;
         public static final int airSpaceBlb=0x7f050069;
         public static final int airSpaceTag=0x7f050072;
@@ -209,19 +213,19 @@ public final class R {
         public static final int aortaTag=0x7f0500a6;
         public static final int armatureBlb=0x7f0500c6;
         public static final int armatureTag=0x7f0500cb;
-        public static final int arrow_down=0x7f0501a9;
-        public static final int arrow_left=0x7f0501a6;
-        public static final int arrow_right=0x7f0501aa;
-        public static final int arrow_up=0x7f0501a7;
+        public static final int arrow_down=0x7f0501ab;
+        public static final int arrow_left=0x7f0501a8;
+        public static final int arrow_right=0x7f0501ac;
+        public static final int arrow_up=0x7f0501a9;
         public static final int axelBlb=0x7f0500c3;
         public static final int axelTag=0x7f0500cd;
         public static final int badgeGrid=0x7f050010;
         public static final int badgeIcon=0x7f050186;
         public static final int badgeLayout=0x7f050015;
         public static final int badgeTitle=0x7f050017;
-        public static final int badge_desc=0x7f050197;
-        public static final int badge_icon=0x7f050196;
-        public static final int badge_txt=0x7f050195;
+        public static final int badge_desc=0x7f05019a;
+        public static final int badge_icon=0x7f050199;
+        public static final int badge_txt=0x7f050198;
         public static final int badges=0x7f050185;
         public static final int baseplateBlb=0x7f050145;
         public static final int baseplateTag=0x7f05014b;
@@ -235,10 +239,10 @@ public final class R {
         public static final int brushTag=0x7f0500cc;
         public static final int bulbBlb=0x7f050057;
         public static final int bulbTag=0x7f05005a;
-        public static final int button1=0x7f0501a5;
+        public static final int button1=0x7f0501a7;
         public static final int canalsBlb=0x7f050077;
         public static final int canalsTag=0x7f050085;
-        public static final int cancel_btn=0x7f050198;
+        public static final int cancel_btn=0x7f050196;
         public static final int capacitorBlb=0x7f05004f;
         public static final int capacitorTag=0x7f050058;
         public static final int capsuleBlb=0x7f05002b;
@@ -275,7 +279,7 @@ public final class R {
         public static final int complete_ratio=0x7f050021;
         public static final int condensationBlb=0x7f050153;
         public static final int condensationTag=0x7f05015d;
-        public static final int content=0x7f0501a8;
+        public static final int content=0x7f0501aa;
         public static final int corneaBlb=0x7f05008e;
         public static final int corneaTag=0x7f050091;
         public static final int currentBlb=0x7f050052;
@@ -286,9 +290,9 @@ public final class R {
         public static final int dead_organismsTag=0x7f050047;
         public static final int devAngleBlb=0x7f0500fb;
         public static final int devAngleTag=0x7f050105;
-        public static final int devider=0x7f05019a;
+        public static final int devider=0x7f05019c;
         public static final int diagramIcon=0x7f050179;
-        public static final int diagramListItemsView=0x7f05019e;
+        public static final int diagramListItemsView=0x7f0501a0;
         public static final int diagram_toselect=0x7f05000f;
         public static final int diagrampager=0x7f05001b;
         public static final int diagrams=0x7f050178;
@@ -353,6 +357,7 @@ public final class R {
         public static final int infiltrationBlb=0x7f050156;
         public static final int infiltratoinTag=0x7f05015c;
         public static final int innerLayout1=0x7f050008;
+        public static final int innerLayout2=0x7f0501af;
         public static final int innerTagHolder=0x7f05003a;
         public static final int insulatorBlb=0x7f050066;
         public static final int insulatorTag=0x7f050073;
@@ -384,8 +389,10 @@ public final class R {
         public static final int little_dripperTag=0x7f050138;
         public static final int loadBlb=0x7f050055;
         public static final int loadTag=0x7f05005f;
+        public static final int mBody=0x7f050195;
         public static final int mJacketBlb=0x7f050067;
         public static final int mJacketTag=0x7f050070;
+        public static final int mTitle=0x7f050194;
         public static final int magFieldBlb=0x7f0500c1;
         public static final int magFieldTag=0x7f0500ce;
         public static final int mainDiagramBacteria=0x7f050039;
@@ -442,7 +449,7 @@ public final class R {
         public static final int organic_carbonTag=0x7f050043;
         public static final int orianBlb=0x7f050135;
         public static final int orianTag=0x7f050136;
-        public static final int out_of_txt=0x7f05019b;
+        public static final int out_of_txt=0x7f05019d;
         public static final int outerearBlb=0x7f05007c;
         public static final int outerearTag=0x7f050084;
         public static final int outter_layout=0x7f050007;
@@ -467,7 +474,7 @@ public final class R {
         public static final int plasma_membraneTag=0x7f050035;
         public static final int plasmidBlb=0x7f05002a;
         public static final int plasmidTag=0x7f050038;
-        public static final int popup_element=0x7f050194;
+        public static final int popup_element=0x7f050197;
         public static final int posTerminalBlb=0x7f050062;
         public static final int posTerminalTag=0x7f05006b;
         public static final int precipitationBlb=0x7f05014f;
@@ -498,9 +505,9 @@ public final class R {
         public static final int resultHeaderTxt=0x7f050160;
         public static final int resultHeaderTxt2=0x7f050161;
         public static final int resultHeaderTxt3=0x7f050162;
-        public static final int resultIndiacator=0x7f0501a0;
-        public static final int resultItemTxt=0x7f05019f;
-        public static final int resultScoreTxt=0x7f050199;
+        public static final int resultIndiacator=0x7f0501a2;
+        public static final int resultItemTxt=0x7f0501a1;
+        public static final int resultScoreTxt=0x7f05019b;
         public static final int resultTagTxt=0x7f05016a;
         public static final int result_icon=0x7f05016b;
         public static final int retinaBlb=0x7f05008a;
@@ -531,10 +538,10 @@ public final class R {
         public static final int scoreTxt=0x7f050020;
         public static final int score_saved=0x7f05000b;
         public static final int scoreboard=0x7f05017c;
-        public static final int scoreboardItemTxt=0x7f0501a1;
+        public static final int scoreboardItemTxt=0x7f0501a3;
         public static final int scoreboardScore=0x7f050165;
-        public static final int scoreboard_pager=0x7f0501a4;
-        public static final int scoreboard_result_itemlist=0x7f05019c;
+        public static final int scoreboard_pager=0x7f0501a6;
+        public static final int scoreboard_result_itemlist=0x7f05019e;
         public static final int scoreboardicon=0x7f05017d;
         public static final int scorpioBlb=0x7f050131;
         public static final int scorpioTag=0x7f050137;
@@ -562,7 +569,7 @@ public final class R {
         public static final int stigmaTag=0x7f0500f2;
         public static final int styleBlb=0x7f0500e6;
         public static final int styleTag=0x7f0500f4;
-        public static final int subjectTxt=0x7f05019d;
+        public static final int subjectTxt=0x7f05019f;
         public static final int sunBlb=0x7f05010a;
         public static final int sunTag=0x7f050111;
         public static final int sunlightBlb=0x7f05004b;
@@ -580,7 +587,8 @@ public final class R {
         public static final int tailfibreTag=0x7f050148;
         public static final int tailpinsBlb=0x7f050149;
         public static final int tailpinsTag=0x7f05014d;
-        public static final int textView=0x7f0501a3;
+        public static final int textView=0x7f0501a5;
+        public static final int tick_icon=0x7f0501b1;
         public static final int title_badge=0x7f050187;
         public static final int title_diagram=0x7f05017a;
         public static final int title_help=0x7f050191;
@@ -610,7 +618,7 @@ public final class R {
         public static final int view4=0x7f050188;
         public static final int view5=0x7f05018d;
         public static final int view6=0x7f050192;
-        public static final int viewIcon=0x7f0501a2;
+        public static final int viewIcon=0x7f0501a4;
         public static final int visibleLightBlb=0x7f05011e;
         public static final int visibleLightTag=0x7f050128;
         public static final int vitreousBlb=0x7f05008b;
@@ -619,6 +627,7 @@ public final class R {
         public static final int voltmeterTag=0x7f05005c;
         public static final int xrayBlb=0x7f050122;
         public static final int xrayTag=0x7f05012b;
+        public static final int your_badges_list=0x7f0501b2;
     }
     public static final class layout {
         public static final int bacteria_view=0x7f030000;
@@ -677,26 +686,29 @@ public final class R {
         public static final int lesson_virus=0x7f030035;
         public static final int lesson_water_cycle=0x7f030036;
         public static final int main_menu=0x7f030037;
-        public static final int motor_view=0x7f030038;
-        public static final int plant_cell_view=0x7f030039;
-        public static final int plant_flower_view=0x7f03003a;
-        public static final int popup_window_view=0x7f03003b;
-        public static final int prism_view=0x7f03003c;
-        public static final int scoreboard_fragment_layout=0x7f03003d;
-        public static final int scoreboard_page=0x7f03003e;
-        public static final int scoreboard_result=0x7f03003f;
-        public static final int scoreboard_result_row_view=0x7f030040;
-        public static final int scoreboard_row_view=0x7f030041;
-        public static final int scoreboard_tab=0x7f030042;
-        public static final int scoreboard_view=0x7f030043;
-        public static final int solar_system_view=0x7f030044;
-        public static final int spectrum_view=0x7f030045;
-        public static final int splash_screen=0x7f030046;
-        public static final int star_patterns_view=0x7f030047;
-        public static final int tooltip_test_view=0x7f030048;
-        public static final int tooltip_view=0x7f030049;
-        public static final int virus_view=0x7f03004a;
-        public static final int water_cycle_view=0x7f03004b;
+        public static final int message_popup_view=0x7f030038;
+        public static final int motor_view=0x7f030039;
+        public static final int plant_cell_view=0x7f03003a;
+        public static final int plant_flower_view=0x7f03003b;
+        public static final int popup_window_view=0x7f03003c;
+        public static final int prism_view=0x7f03003d;
+        public static final int scoreboard_fragment_layout=0x7f03003e;
+        public static final int scoreboard_page=0x7f03003f;
+        public static final int scoreboard_result=0x7f030040;
+        public static final int scoreboard_result_row_view=0x7f030041;
+        public static final int scoreboard_row_view=0x7f030042;
+        public static final int scoreboard_tab=0x7f030043;
+        public static final int scoreboard_view=0x7f030044;
+        public static final int solar_system_view=0x7f030045;
+        public static final int spectrum_view=0x7f030046;
+        public static final int splash_screen=0x7f030047;
+        public static final int star_patterns_view=0x7f030048;
+        public static final int tooltip_test_view=0x7f030049;
+        public static final int tooltip_view=0x7f03004a;
+        public static final int virus_view=0x7f03004b;
+        public static final int water_cycle_view=0x7f03004c;
+        public static final int your_badge_row_item=0x7f03004d;
+        public static final int your_badges=0x7f03004e;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;
@@ -706,6 +718,7 @@ public final class R {
         public static final int action_done=0x7f070004;
         public static final int action_settings=0x7f070003;
         public static final int app_name=0x7f070001;
+        public static final int badge_achieved=0x7f070036;
         public static final int badge_biology=0x7f070030;
         public static final int badge_champion=0x7f070033;
         public static final int badge_persistence=0x7f070035;
@@ -714,7 +727,7 @@ public final class R {
         public static final int badge_streak=0x7f070034;
         /**  Shared Preferences key strings  
          */
-        public static final int bio_diagrams_completed=0x7f070036;
+        public static final int bio_diagrams_completed=0x7f070037;
         public static final int category_human_body=0x7f070006;
         public static final int category_human_body_desc=0x7f07000a;
         public static final int category_microbes=0x7f070008;
@@ -731,7 +744,7 @@ public final class R {
 
          */
         public static final int com_crashlytics_android_build_id=0x7f070000;
-        public static final int fully_completed_tries_count=0x7f07003a;
+        public static final int fully_completed_tries_count=0x7f07003b;
         public static final int hello_world=0x7f070002;
         public static final int lesson_bacteria=0x7f070013;
         public static final int lesson_bacteria_desc=0x7f070024;
@@ -767,10 +780,10 @@ public final class R {
         public static final int lesson_virus_desc=0x7f070025;
         public static final int lesson_water_cycle=0x7f07001d;
         public static final int lesson_water_cycle_desc=0x7f07002e;
-        public static final int physics_diagrams_completed=0x7f070037;
-        public static final int science_diagrams_completed=0x7f070038;
+        public static final int physics_diagrams_completed=0x7f070038;
+        public static final int science_diagrams_completed=0x7f070039;
         public static final int title_activity_main_menu=0x7f070005;
-        public static final int total_category_completed=0x7f070039;
+        public static final int total_category_completed=0x7f07003a;
     }
     public static final class style {
         public static final int Animations=0x7f090003;

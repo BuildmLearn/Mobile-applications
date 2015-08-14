@@ -122,6 +122,8 @@ public class BadgePopUpWindow extends Activity implements OnClickListener {
 					badgeName = getResources().getString(R.string.badge_champion);
 					badgeId =  R.drawable.champion;
 					
+					database.updateBadgeAchievement(badgeName, true);
+					
 					Intent intent = new Intent(getBaseContext(), BadgePopUpWindow.class);
 					intent.putExtra("BADGE_TITLE", badgeName);
 					intent.putExtra("BADGE_ID", badgeId);

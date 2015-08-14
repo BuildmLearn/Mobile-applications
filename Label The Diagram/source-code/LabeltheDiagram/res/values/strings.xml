@@ -58,6 +58,7 @@
     <string name="badge_champion">Champion</string>
     <string name="badge_streak">Great Streak</string>
     <string name="badge_persistence">Persistence</string>
+    <string name="badge_achieved">Achieved</string>
     
     <!-- Shared Preferences key strings  -->
     <string name="bio_diagrams_completed">completedBioDiagrams</string>

@@ -526,7 +526,7 @@
             android:theme="@style/DialogNoTitleBar">
         </activity>
         <activity
-            android:name="com.buildmlearn.labeldiagram.badges.AchievementPopupWindow"
+            android:name="com.buildmlearn.labeldiagram.widget.MessagePopupWindow"
             android:theme="@style/DialogWithDimmedBack">
         </activity>
         <meta-data

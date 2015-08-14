@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
 import com.buildmlearn.labeldiagram.database.DBAdapter;
+import com.buildmlearn.labeldiagram.database.Database;
 import com.buildmlearn.labeldiagram.entity.Result;
 import com.buildmlearn.labeldiagram.helper.PlaceHolderContainer;
 import com.buildmlearn.labeldiagram.helper.TagContainerSingleton;
@@ -21,6 +22,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipDescription;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -51,6 +53,7 @@ public abstract class DiagramPlayBase extends Activity implements
 
 	static final String TAG = "InfoTag";
 	static final String TAG_ERROR = "Error";
+	static final String KEY_ACHIEVED = "isAchieved";
 	static final int BIO_DIAGRAM_COUNT = 7;
 	static final int PHYSICS_DIAGRAM_COUNT = 6;
 	static final int SCIENCE_DIAGRAM_COUNT = 4;
@@ -70,6 +73,7 @@ public abstract class DiagramPlayBase extends Activity implements
 	SharedPreferences preferences;
 	SharedPreferences.Editor editor;
 	DBAdapter diagramDb;
+	Database database;
 
 	int correctLabeledCount = 0;
 	int totalLabeledCount = 0;
@@ -351,7 +355,6 @@ public abstract class DiagramPlayBase extends Activity implements
 
 	}
 
-	protected abstract void dispatch(float totalScore, int gameScore);
 
 	/**
 	 * Update score and progress if quit playing without completing all the tags
@@ -402,7 +405,6 @@ public abstract class DiagramPlayBase extends Activity implements
 
 		initPreferences();
 		generateBadges(score, gameScore);
-		//HelperClass.setPreferences(source, value, this);
 
 	}
 	
@@ -483,10 +485,13 @@ public abstract class DiagramPlayBase extends Activity implements
 					 if(count == MAX_ROWS_COUNT){
 						 
 						isToDispatch = true;
+						allDiagramsCompleted = false;
 						updateBoolPreferences(key);
+						
 						badgeTitle = getResources().getString(R.string.badge_streak);
 						badgeId = R.drawable.streak;
-						allDiagramsCompleted = false;
+						
+						database.updateBadgeAchievement(badgeTitle, true);
 						
 						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
 					 }
@@ -543,6 +548,7 @@ public abstract class DiagramPlayBase extends Activity implements
 						
 					}else{
 						
+						database.updateBadgeAchievement(badgeTitle, true);
 						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
 					
 					}
@@ -581,6 +587,7 @@ public abstract class DiagramPlayBase extends Activity implements
 					
 					}else{
 						
+						database.updateBadgeAchievement(badgeTitle, true);
 						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
 					
 					}
@@ -618,6 +625,7 @@ public abstract class DiagramPlayBase extends Activity implements
 					
 					}else{
 						
+						database.updateBadgeAchievement(badgeTitle, true);
 						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
 					
 					}
@@ -645,10 +653,12 @@ public abstract class DiagramPlayBase extends Activity implements
 			if(tryCycle == TOTAL_COMPLETE_TRIES_COUNT){
 				
 				isToDispatch = true;
+				allDiagramsCompleted = false;
+				
 				badgeTitle = getResources().getString(R.string.badge_persistence);
 				badgeId = R.drawable.persistence;
 				
-				allDiagramsCompleted = false;
+				database.updateBadgeAchievement(badgeTitle, true);
 				
 				intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
 				
@@ -687,10 +697,6 @@ public abstract class DiagramPlayBase extends Activity implements
 		
 	}
 
-
-
-	protected abstract void intentBuilder(String badgeTitle, int badgeId, float score, int gameScore, boolean completed, int tryCycle);
-	
 	
 	private int updatePreferences(String key){
 		
@@ -706,8 +712,10 @@ public abstract class DiagramPlayBase extends Activity implements
 		
 	}
 
+	protected abstract void intentBuilder(String badgeTitle, int badgeId, float score, int gameScore, boolean completed, int tryCycle);
 
-
+	protected abstract void dispatch(float totalScore, int gameScore);
+	
 	/**
 	 * Indicate whether the placeholder is on left side or right side of the
 	 * diagram
@@ -807,6 +815,7 @@ public abstract class DiagramPlayBase extends Activity implements
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
 
 	public String getDiagramName() {
 		return diagramName;
@@ -829,10 +838,12 @@ public abstract class DiagramPlayBase extends Activity implements
 	protected void openDB() {
 		diagramDb = new DBAdapter(this);
 		diagramDb.open();
+		database = new Database(this);
 	}
 
 	protected void closeDB() {
 		diagramDb.close();
+		database.close();
 	}
 
 	@Override
@@ -840,5 +851,5 @@ public abstract class DiagramPlayBase extends Activity implements
 		super.onDestroy();
 		closeDB();
 	}
-
+	
 }

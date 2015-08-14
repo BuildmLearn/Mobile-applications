@@ -4,6 +4,7 @@ import com.buildmlearn.labeldiagram.helper.HelperClass;
 import com.buildmlearn.labeldiagram.resources.BadgesAll;
 import com.buildmlearn.labeldiagram.resources.ScoreboardBestScoreFragment;
 import com.buildmlearn.labeldiagram.resources.ScoreboardScoreFragment;
+import com.buildmlearn.labeldiagram.resources.YourBadges;
 import com.example.labelthediagram.R;
 
 import android.content.Context;
@@ -48,7 +49,7 @@ public class BadgesViewer extends FragmentActivity {
 		mTabHost.addTab(
 				mTabHost.newTabSpec("tab2").setIndicator(
 						getTabIndicator(mTabHost.getContext(), "YOUR BADGES")),
-				BadgesAll.class, null);
+				YourBadges.class, null);
 
 		findViewById(android.R.id.tabcontent).setBackgroundColor(
 				getResources().getColor(R.color.appBg_color_white));

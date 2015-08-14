@@ -6,6 +6,7 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -26,7 +27,8 @@ public class CharacterSelectionActivity extends Activity {
             R.color.Orange,
             R.color.Pink,
             R.color.Red,
-            R.color.Yellow};
+            R.color.Yellow
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,18 +81,23 @@ public class CharacterSelectionActivity extends Activity {
         }
         root.addView(child);
 
-        if(SplashActivity.isFirstRun)
-            new ShowcaseView.Builder(this)
+        if(SplashActivity.isFirstRun) {
+            System.gc();
+           /* new ShowcaseView.Builder(this)
                     .setContentTitle(getString(R.string.character_selection))
                     .setContentText("")
                     .setStyle(R.style.CustomShowcaseTheme)
                     .setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            ((ShowcaseView) view.getParent()).hide();
+                            ShowcaseView parent = (ShowcaseView) view.getParent();
+                            parent.hide();
+                            ((ViewGroup) getWindow().getDecorView()).removeView(parent);
+                            parent.setVisibility(View.GONE);
                             System.gc();
                         }
                     })
-                    .build();
+                    .build();*/
+        }
     }
 }

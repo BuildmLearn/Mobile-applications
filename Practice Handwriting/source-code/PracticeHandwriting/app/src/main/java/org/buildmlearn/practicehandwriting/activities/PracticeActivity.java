@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.github.amlcurran.showcaseview.ShowcaseView;
@@ -31,50 +32,49 @@ public class PracticeActivity extends PracticeBaseActivity {
             super.onCreate(savedInstanceState);
             mDrawView.setBitmapFromText(mPracticeString);
             mDrawView.canVibrate(true);
-            if(isFirstRun)
-                new ShowcaseView.Builder(PracticeActivity.this)
-                        .setTarget(new ViewTarget(R.id.drawing, PracticeActivity.this))
+            if (isFirstRun) {
+                System.gc();
+                //TODO cleanup the below code
+
+                /*new ShowcaseView.Builder(PracticeActivity.this)
+                        .setTarget(new ViewTarget(R.id.done_save_button, PracticeActivity.this))
                         .setContentTitle("")
-                        .setContentText(getString(R.string.traceHelp))
+                        .setContentText(getString(R.string.doneHelp))
                         .setStyle(R.style.CustomShowcaseTheme)
                         .setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                ((ShowcaseView) view.getParent()).hide();
+                                ShowcaseView parent = (ShowcaseView) view.getParent();
+                                parent.hide();
+                                ((ViewGroup) getWindow().getDecorView()).removeView(parent);
+                                parent.setVisibility(View.GONE);
                                 System.gc();
                                 new ShowcaseView.Builder(PracticeActivity.this)
-                                        .setTarget(new ViewTarget(R.id.done_save_button, PracticeActivity.this))
+                                        .setTarget(new ViewTarget(R.id.reset_button, PracticeActivity.this))
                                         .setContentTitle("")
-                                        .setContentText(getString(R.string.doneHelp))
+                                        .setContentText(getString(R.string.resetHelp))
                                         .setStyle(R.style.CustomShowcaseTheme)
                                         .setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                ((ShowcaseView) view.getParent()).hide();
+                                                ShowcaseView parent = (ShowcaseView) view.getParent();
+                                                parent.hide();
+                                                ((ViewGroup) getWindow().getDecorView()).removeView(parent);
+                                                parent.setVisibility(View.GONE);
                                                 System.gc();
                                                 new ShowcaseView.Builder(PracticeActivity.this)
-                                                        .setTarget(new ViewTarget(R.id.reset_button, PracticeActivity.this))
+                                                        .setTarget(new ViewTarget(R.id.action_next, PracticeActivity.this))
                                                         .setContentTitle("")
-                                                        .setContentText(getString(R.string.resetHelp))
+                                                        .setContentText(getString(R.string.actionbarHelp))
                                                         .setStyle(R.style.CustomShowcaseTheme)
                                                         .setOnClickListener(new View.OnClickListener() {
                                                             @Override
                                                             public void onClick(View view) {
-                                                                ((ShowcaseView) view.getParent()).hide();
+                                                                ShowcaseView parent = (ShowcaseView) view.getParent();
+                                                                parent.hide();
+                                                                ((ViewGroup) getWindow().getDecorView()).removeView(parent);
+                                                                parent.setVisibility(View.GONE);
                                                                 System.gc();
-                                                                new ShowcaseView.Builder(PracticeActivity.this)
-                                                                        .setTarget(new ViewTarget(R.id.action_next, PracticeActivity.this))
-                                                                        .setContentTitle("")
-                                                                        .setContentText(getString(R.string.actionbarHelp))
-                                                                        .setStyle(R.style.CustomShowcaseTheme)
-                                                                        .setOnClickListener(new View.OnClickListener() {
-                                                                            @Override
-                                                                            public void onClick(View view) {
-                                                                                ((ShowcaseView) view.getParent()).hide();
-                                                                                System.gc();
-                                                                            }
-                                                                        })
-                                                                        .build();
                                                             }
                                                         })
                                                         .build();
@@ -83,7 +83,8 @@ public class PracticeActivity extends PracticeBaseActivity {
                                         .build();
                             }
                         })
-                        .build();
+                        .build();*/
+            }
         } catch (Exception e) {
             showErrorDialog(e);
         }
@@ -120,20 +121,25 @@ public class PracticeActivity extends PracticeBaseActivity {
                     //User cannot draw anymore on the View
                     mDrawView.canDraw(false);
                     mDone = true;
-                    //Commented out since it causes OOM
-                   /* if(isFirstRun)
-                        new ShowcaseView.Builder(this)
+                    if(isFirstRun) {
+                        System.gc();
+                        /*new ShowcaseView.Builder(this)
                                 .setTarget(new ViewTarget(R.id.done_save_button, this))
                                 .setContentTitle("")
                                 .setContentText(getString(R.string.saveHelp))
+                                .setStyle(R.style.CustomShowcaseTheme)
                                 .setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        ((ShowcaseView) view.getParent()).hide();
+                                        ShowcaseView parent = (ShowcaseView) view.getParent();
+                                        parent.hide();
+                                        ((ViewGroup) getWindow().getDecorView()).removeView(parent);
+                                        parent.setVisibility(View.GONE);
                                         System.gc();
                                     }
                                 })
                                 .build();*/
+                    }
                 }
                 break;
         }

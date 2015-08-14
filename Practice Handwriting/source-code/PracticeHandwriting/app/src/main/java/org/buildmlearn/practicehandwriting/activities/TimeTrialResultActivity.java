@@ -4,16 +4,26 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import org.buildmlearn.practicehandwriting.R;
 
@@ -38,28 +48,48 @@ public class TimeTrialResultActivity extends Activity {
             setContentView(R.layout.activity_time_trial_result);
             findViewById(R.id.TimeTrialToolbar).bringToFront();
             mTempDir = new File(Environment.getExternalStorageDirectory() + File.separator + getString(R.string.app_name) + File.separator + getIntent().getStringExtra(getString(R.string.directory_name)));
-            File[] savedFiles = mTempDir.listFiles();
+            final File[] savedFiles = mTempDir.listFiles();
             float mScore = 0;
 
-            LinearLayout resultLL = (LinearLayout) findViewById(R.id.resultLL);
-            TextView scoreView = new TextView(this);
-            scoreView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            scoreView.setTextSize(35);
-            resultLL.addView(scoreView);
+            TextView finalScoreView = new TextView(this);
+            finalScoreView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            finalScoreView.setTextSize(35);
 
-            for(int i = 0;i<savedFiles.length;i++) {
-                View result = View.inflate(this,R.layout.layout_result,null);
+            LinearLayout resultLL = (LinearLayout) findViewById(R.id.resultLL);
+            resultLL.addView(finalScoreView);
+
+            final ScrollView scrollView = (ScrollView) findViewById(R.id.ResultScrollView);
+
+            ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+            ImageLoader.getInstance().init(config);
+            final ImageLoader imageLoader = ImageLoader.getInstance();
+            for (int i = 0;i<savedFiles.length;i++) {
+                final int index = i;
+
+                final View result = View.inflate(this,R.layout.layout_result, null);
                 resultLL.addView(result, i + 1); //The first view is the overall score TextView
 
-                ((ImageView)  result.findViewById(R.id.resultImageView)).setImageURI(Uri.fromFile(savedFiles[i]));
-
-                String score = savedFiles[i].getName().split("_")[1];
+                String score = savedFiles[i].getName().replace("_",": ");
                 score = score.substring(0,score.length()-4);
-                ((TextView) result.findViewById(R.id.resultTextView)).setText(score);
 
-                mScore += Float.parseFloat(score);
-                scoreView.setText("Overall: " + String.valueOf(mScore /(float) (i+1)));
+                final TextView scoreView = (TextView) result.findViewById(R.id.resultTextView);
+                scoreView.setText(score);
+                result.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        System.gc();
+                        scrollView.scrollBy(0,SplashActivity.mDisplayMetrics.heightPixels*3/8);
+                        final ImageView resultImageView = (ImageView) result.findViewById(R.id.resultImageView);
+                        if (resultImageView.getDrawable() == null)
+                            imageLoader.displayImage(Uri.fromFile(savedFiles[index]).toString().replace("%20", " "), resultImageView);
+                        else
+                            resultImageView.setImageDrawable(null);
+                        scrollView.smoothScrollTo(0, result.getTop());
+                    }
+                });
 
+                mScore += Float.parseFloat(score.split(": ")[1]);
+                finalScoreView.setText("Overall: " + String.valueOf(mScore / (float) (i + 1)));
                 System.gc();
             }
         } catch (Exception e) {
@@ -137,13 +167,6 @@ public class TimeTrialResultActivity extends Activity {
         super.onStop();
         //Running Garbage Collection
         System.gc();
-
-        //Deleting the files in the temp directory and the directory itself
-        if(mTempDir.exists()) {
-            for (File file : mTempDir.listFiles())
-                file.delete();
-            mTempDir.delete();
-        }
     }
 
 
@@ -151,6 +174,12 @@ public class TimeTrialResultActivity extends Activity {
     public void onBackPressed() {
         //Going back to the main menu instead of the Tracing screen
         SplashActivity.isFirstRun = false;
+        //Deleting the files in the temp directory and the directory itself
+        if(mTempDir.exists()) {
+            for (File file : mTempDir.listFiles())
+                file.delete();
+            mTempDir.delete();
+        }
         startActivity(new Intent(TimeTrialResultActivity.this, MainMenuActivity.class));
     }
 }

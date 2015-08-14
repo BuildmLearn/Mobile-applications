@@ -9,7 +9,9 @@ import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
 
+import com.github.amlcurran.showcaseview.OnShowcaseEventListener;
 import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
@@ -63,21 +65,26 @@ public class TimeTrialActivity extends PracticeBaseActivity {
                 SharedPreferences.Editor editor = wmbPreference.edit();
                 editor.putBoolean("FIRSTTIMETRIAL", false);
                 editor.apply();
-
-                new ShowcaseView.Builder(TimeTrialActivity.this)
+                System.gc();
+                /*new ShowcaseView.Builder(TimeTrialActivity.this)
                         .setTarget(new ViewTarget(R.id.score_and_timer_View, TimeTrialActivity.this))
                         .setContentTitle("")
                         .setContentText(getString(R.string.timerHelp))
                         .setStyle(R.style.CustomShowcaseTheme)
+
                         .setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                ((ShowcaseView) view.getParent()).hide();
+                                ShowcaseView parent = (ShowcaseView) view.getParent();
+                                parent.hide();
+                                ((ViewGroup) getWindow().getDecorView()).removeView(parent);
+                                parent.setVisibility(View.GONE);
                                 mCountDownTimer.start();
                                 System.gc();
                             }
                         })
-                        .build();
+                        .build();*/
+                mCountDownTimer.start();
             } else {
                 mCountDownTimer.start();
             }
@@ -119,8 +126,8 @@ public class TimeTrialActivity extends PracticeBaseActivity {
 
             case R.id.done_save_button:
                 if(!mDone) {
-                    //Saving the string and the touches to be redrawn in the result
                     System.gc();
+                    mDrawView.saveBitmap(mPracticeString, mSaveDir);
                     mPracticeString = randomStringGenerator();
                     while(isStringDone.containsKey(mPracticeString))
                         mPracticeString = randomStringGenerator();
@@ -152,6 +159,13 @@ public class TimeTrialActivity extends PracticeBaseActivity {
         System.gc();
         if(mCountDownTimer!=null)
             mCountDownTimer.cancel();//cancel the timer if the user decides to go back
+        //Deleting the files in the temp directory and the directory itself
+        File tempDir = new File(mSaveDir);
+        if(tempDir.exists()) {
+            for (File file : tempDir.listFiles())
+                file.delete();
+            tempDir.delete();
+        }
         super.onBackPressed();
     }
 }

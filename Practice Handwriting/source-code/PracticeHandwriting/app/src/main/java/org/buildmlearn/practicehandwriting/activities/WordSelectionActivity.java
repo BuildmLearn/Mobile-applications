@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
@@ -38,7 +39,8 @@ public class WordSelectionActivity extends Activity {
             SharedPreferences.Editor editor = wmbPreference.edit();
             editor.putBoolean("FIRSTWORD", false);
             editor.apply();
-            new ShowcaseView.Builder(this)
+            System.gc();
+            /*new ShowcaseView.Builder(this)
                     .setTarget(new ViewTarget(R.id.easy_button, this))
                     .setContentTitle("")
                     .setContentText(getString(R.string.word_selection))
@@ -46,11 +48,14 @@ public class WordSelectionActivity extends Activity {
                     .setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            ((ShowcaseView) view.getParent()).hide();
+                            ShowcaseView parent = (ShowcaseView) view.getParent();
+                            parent.hide();
+                            ((ViewGroup) getWindow().getDecorView()).removeView(parent);
+                            parent.setVisibility(View.GONE);
                             System.gc();
                         }
                     })
-                    .build();
+                    .build();*/
         }
     }
 

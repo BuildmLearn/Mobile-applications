@@ -2,7 +2,7 @@ package org.buildmlearn.practicehandwriting.helper;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -43,6 +43,7 @@ public class PracticeBaseActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         try {
+            System.gc();
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_practice);
 
@@ -106,30 +107,39 @@ public class PracticeBaseActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent = getIntent();
-        if (mPracticeString.length() > 1) {//if the string is a word then give a random when the for the previous/next button is clicked
-            if (mPracticeString.length() < 5)
-                intent.putExtra(getResources().getString(R.string.practice_string), SplashActivity.EASY_WORD_LIST[new Random().nextInt(SplashActivity.EASY_WORD_LIST.length)]);
-            else if (mPracticeString.length() >= 5 && mPracticeString.length() < 7)
-                intent.putExtra(getResources().getString(R.string.practice_string), SplashActivity.MEDIUM_WORD_LIST[new Random().nextInt(SplashActivity.MEDIUM_WORD_LIST.length)]);
-            else if (mPracticeString.length() >= 7)
-                intent.putExtra(getResources().getString(R.string.practice_string), SplashActivity.HARD_WORD_LIST[new Random().nextInt(SplashActivity.HARD_WORD_LIST.length)]);
-        } else { //If the string is a character, return the next or previous character in a circular manner (next of the last character is the first character and vice versa)
-            int next = Arrays.asList(SplashActivity.CHARACTER_LIST).indexOf(mPracticeString);
-            switch (item.getItemId()) {
-                case R.id.action_next:
-                    next = (next + 1) % SplashActivity.CHARACTER_LIST.length;
-                    break;
+        if (!mDone) {
+            if (mPracticeString.length() > 1) {//if the string is a word then give a random when the for the previous/next button is clicked
+                if (mPracticeString.length() < 5)
+                    mPracticeString = SplashActivity.EASY_WORD_LIST[new Random().nextInt(SplashActivity.EASY_WORD_LIST.length)];
+                else if (mPracticeString.length() >= 5 && mPracticeString.length() < 7)
+                    mPracticeString = SplashActivity.MEDIUM_WORD_LIST[new Random().nextInt(SplashActivity.MEDIUM_WORD_LIST.length)];
+                else if (mPracticeString.length() >= 7)
+                    mPracticeString = SplashActivity.HARD_WORD_LIST[new Random().nextInt(SplashActivity.HARD_WORD_LIST.length)];
+            } else { //If the string is a character, return the next or previous character in a circular manner (next of the last character is the first character and vice versa)
+                int next = Arrays.asList(SplashActivity.CHARACTER_LIST).indexOf(mPracticeString);
+                switch (item.getItemId()) {
+                    case R.id.action_next:
+                        next = (next + 1) % SplashActivity.CHARACTER_LIST.length;
+                        break;
 
-                case R.id.action_previous:
-                    next = (next + SplashActivity.CHARACTER_LIST.length - 1) % SplashActivity.CHARACTER_LIST.length;
-                    break;
+                    case R.id.action_previous:
+                        next = (next + SplashActivity.CHARACTER_LIST.length - 1) % SplashActivity.CHARACTER_LIST.length;
+                        break;
+                }
+                mPracticeString = SplashActivity.CHARACTER_LIST[next];
             }
-            intent.putExtra(getResources().getString(R.string.practice_string), SplashActivity.CHARACTER_LIST[next]);
+
+            mDrawView.setBitmapFromText(mPracticeString);
+            if (SplashActivity.TTSobj != null) {
+                if (Build.VERSION.SDK_INT >= 21) //This function works only on devices with SDK version greater that 20
+                    SplashActivity.TTSobj.speak(mPracticeString, TextToSpeech.QUEUE_FLUSH, null, null);
+                else //if the device is running an older version of android, use the previous speaking function
+                    SplashActivity.TTSobj.speak(mPracticeString, TextToSpeech.QUEUE_FLUSH, null);
+            }
+            return true;
+        } else {
+            return false;
         }
-        finish();
-        startActivity(intent);
-        return true;
     }
 
     //function to show the error that occurred while starting the practice session
@@ -176,4 +186,7 @@ public class PracticeBaseActivity extends ActionBarActivity {
         super.onBackPressed();
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+    }
 }

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 
 import com.github.amlcurran.showcaseview.ShowcaseView;
@@ -27,8 +28,9 @@ public class MainMenuActivity extends Activity {
             findViewById(buttons[i]).startAnimation(animation);
         }
 
-        if(SplashActivity.isFirstRun)
-            new ShowcaseView.Builder(this)
+        if(SplashActivity.isFirstRun) {
+            System.gc();
+            /*new ShowcaseView.Builder(this)
                     .setTarget(new ViewTarget(R.id.character_button, this))
                     .setContentTitle(getString(R.string.mode_selection))
                     .setContentText("")
@@ -36,6 +38,10 @@ public class MainMenuActivity extends Activity {
                     .setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            ShowcaseView parent = (ShowcaseView) view.getParent();
+                            parent.hide();
+                            ((ViewGroup) getWindow().getDecorView()).removeView(parent);
+                            parent.setVisibility(View.GONE);
                             for (int button : buttons)
                                 findViewById(button).setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -43,11 +49,11 @@ public class MainMenuActivity extends Activity {
                                         mainMenuActivityOnClick(view);
                                     }
                                 });
-                            ((ShowcaseView) view.getParent()).hide();
                             System.gc();
                         }
                     })
-                    .build();
+                    .build();*/
+        }
     }
 
     public void mainMenuActivityOnClick(View view) {

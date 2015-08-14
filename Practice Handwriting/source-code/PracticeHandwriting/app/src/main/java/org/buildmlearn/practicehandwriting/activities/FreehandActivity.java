@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
@@ -25,7 +26,8 @@ public class FreehandActivity extends PracticeBaseActivity {
             SharedPreferences.Editor editor = wmbPreference.edit();
             editor.putBoolean("FIRSTFREEHAND", false);
             editor.apply();
-            new ShowcaseView.Builder(this)
+            System.gc();
+          /*  new ShowcaseView.Builder(this)
                     .setTarget(new ViewTarget(R.id.drawing, this))
                     .setContentTitle("")
                     .setContentText(getString(R.string.freehandHelp))
@@ -33,11 +35,14 @@ public class FreehandActivity extends PracticeBaseActivity {
                     .setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            ((ShowcaseView) view.getParent()).hide();
+                            ShowcaseView parent = (ShowcaseView) view.getParent();
+                            parent.hide();
+                            ((ViewGroup) getWindow().getDecorView()).removeView(parent);
+                            parent.setVisibility(View.GONE);
                             System.gc();
                         }
                     })
-                    .build();
+                    .build();*/
         }
     }
 

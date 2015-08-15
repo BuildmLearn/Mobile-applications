@@ -374,7 +374,9 @@ public abstract class DiagramPlayBase extends Activity implements
 
 					saveResultForBadges(totalScore, gameScore);
 					
-					dispatch(totalScore,gameScore);
+					if(isToDispatch == false){
+						dispatch(totalScore,gameScore);
+					}
 
 				}
 			}, 3000);

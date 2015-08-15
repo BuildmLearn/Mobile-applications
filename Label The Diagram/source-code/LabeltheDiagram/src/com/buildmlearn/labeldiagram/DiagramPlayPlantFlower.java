@@ -252,6 +252,7 @@ public class DiagramPlayPlantFlower extends DiagramPlayBase {
 		intent.putExtra("GAME_SCORE", gameScore);
 		intent.putExtra("SOURCE", "PlantFlower");
 		intent.putExtra("BEST_SCORE", achievedBestScore);
+		intent.putExtra("TRY_CYCLE", tryCycle);
 		startActivity(intent);
 	}
 	

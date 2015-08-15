@@ -155,6 +155,7 @@ public class DiagramPlayMotor extends DiagramPlayBase {
 		intent.putExtra("GAME_SCORE", gameScore);
 		intent.putExtra("SOURCE", "Motor");
 		intent.putExtra("BEST_SCORE", achievedBestScore);
+		intent.putExtra("TRY_CYCLE", tryCycle);
 		startActivity(intent);
 	}
 

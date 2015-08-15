@@ -2,6 +2,7 @@ package com.buildmlearn.labeldiagram.resources;
 
 import com.buildmlearn.labeldiagram.DiagramPlayHumanEye;
 import com.example.labelthediagram.R;
+import com.github.mikephil.charting.charts.PieChart;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -19,6 +20,10 @@ public class HumanEyeFragment extends Fragment {
 	private Typeface tfThin;
 	private float score;
 
+	private PieChart mChart;
+	private float[] xData = {30,20,50} ;
+	private String[] yData = {"Complete","Incomplete"};
+	
 	// Store instance variables based on arguments passed
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

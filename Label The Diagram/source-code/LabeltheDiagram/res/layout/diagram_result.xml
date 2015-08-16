@@ -42,7 +42,7 @@
             android:id="@+id/resultHeaderTxt3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Achievemnet"
+            android:text="Achievement"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffff"
             android:textSize="40sp" />
@@ -82,7 +82,7 @@
                 android:text="100/100"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/appBg_color"
-                android:textSize="36sp" />
+                android:textSize="32sp" />
 
             <RatingBar
                 android:id="@+id/resultBar"
@@ -131,7 +131,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:background="@color/tab_color"
+            android:background="@color/action_bar_color"
             android:gravity="center"
             android:text="Try Again"
             android:textColor="#ffff" />
@@ -144,7 +144,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:background="@color/tab_color"
+            android:background="@color/action_bar_color"
             android:gravity="center"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"

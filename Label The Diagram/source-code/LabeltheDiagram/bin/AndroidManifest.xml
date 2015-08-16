@@ -6,8 +6,8 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
-    <application android:allowBackup="true" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:theme="@style/AppTheme">
-        <activity android:label="@string/app_name" android:name="com.buildmlearn.labeldiagram.SplashScreen">
+    <application android:allowBackup="true" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:theme="@style/CustomActionBarTheme">
+        <activity android:label="@string/app_name" android:name="com.buildmlearn.labeldiagram.SplashScreen" android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -33,6 +33,10 @@
             </meta-data>
         </activity>
         <activity android:name="com.buildmlearn.labeldiagram.Settings" android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.MainMenu">
+            </meta-data>
+        </activity>
+        <activity android:name="com.buildmlearn.labeldiagram.HelpMenu" android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu">
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.MainMenu">
             </meta-data>
         </activity>

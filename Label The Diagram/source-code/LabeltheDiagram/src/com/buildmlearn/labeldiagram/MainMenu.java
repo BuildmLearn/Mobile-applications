@@ -119,8 +119,10 @@ public class MainMenu extends Activity implements OnClickListener {
 			startActivity(settingsIntent);
 			break;
 		case R.id.start_help:
-			Toast.makeText(getApplication(), "Comming soon...", 2000)
-					.show();
+			/*Toast.makeText(getApplication(), "Comming soon...", 2000)
+					.show();*/
+			Intent helpIntent = new Intent(getApplicationContext(), HelpMenu.class);
+			startActivity(helpIntent);
 			break;
 		}
 

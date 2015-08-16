@@ -27,10 +27,6 @@ public class SplashScreen extends Activity {
         Handler handler=new Handler();
 		handler.postDelayed(new NavigationHandler(),3000);
         
-		// Disable the ActionBar
-		ActionBar bar=getActionBar();
-		bar.hide();
-        
     }
     
     class NavigationHandler implements Runnable{

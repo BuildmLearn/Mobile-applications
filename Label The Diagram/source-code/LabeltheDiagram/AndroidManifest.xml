@@ -72,7 +72,8 @@
         </activity>
         <activity
             android:name="com.buildmlearn.labeldiagram.Settings"
-            android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu" >
+            android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu" 
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.buildmlearn.labeldiagram.MainMenu" >
@@ -80,7 +81,8 @@
         </activity>
         <activity
             android:name="com.buildmlearn.labeldiagram.HelpMenu"
-            android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu" >
+            android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu" 
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.buildmlearn.labeldiagram.MainMenu" >

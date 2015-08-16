@@ -4,6 +4,7 @@ import com.example.labelthediagram.R;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
@@ -63,6 +64,9 @@ public class HelpMenu extends Activity {
 				break;
 			case 9:
 				resId = R.layout.help_screen10;
+				Intent intent = new Intent(getApplicationContext(),MainMenu.class);
+				startActivity(intent);
+				finish();
 				break;
 			}
 			View view = inflater.inflate(resId, null);

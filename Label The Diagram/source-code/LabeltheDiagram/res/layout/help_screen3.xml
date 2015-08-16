@@ -9,6 +9,6 @@
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/science" />
+        android:src="@drawable/help_3" />
 
 </RelativeLayout>

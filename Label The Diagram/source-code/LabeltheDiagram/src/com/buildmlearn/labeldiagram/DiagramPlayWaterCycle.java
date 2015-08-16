@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -96,6 +97,13 @@ public class DiagramPlayWaterCycle extends DiagramPlayBase {
 		tagListSize = tagPlaceHolderMap.size();
 		
 		openDB();
+		
+	}
+	
+	@Override
+	public void onClick(View tagView) {
+		super.onClick(tagView);
+		
 		
 	}
 

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram">
+    
+    <RelativeLayout
+        android:id="@+id/diagrams"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/appBg_color" >
+
+        <ImageView
+            android:id="@+id/diagramIcon"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/diagrams" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/title_diagram"
+            android:background="#c0c0c0" />
+
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
+            android:id="@+id/start_diagram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="8dp"
+            android:text="Start Here"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#fff" 
+            app:typeface="roboto_thin"/>
+
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
+            android:id="@+id/title_diagram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/diagramIcon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="4dp"
+            android:text="Diagrams"
+            android:textSize="28sp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#fff"
+            app:typeface="roboto_light" />
+
+    </RelativeLayout>
+    
+
+</RelativeLayout>

@@ -1,6 +1,8 @@
 package com.buildmlearn.labeldiagram;
 
 import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
+import com.buildmlearn.labeldiagram.tooltipkit.InfoTooltip;
+import com.buildmlearn.labeldiagram.tooltipkit.CustomTooltip.AlignMode;
 import com.example.labelthediagram.R;
 
 import android.app.AlertDialog;
@@ -10,6 +12,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,7 +20,7 @@ public class DiagramPlayVirus extends DiagramPlayBase {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 
 		actionBar.setTitle("Virus");
@@ -55,7 +58,7 @@ public class DiagramPlayVirus extends DiagramPlayBase {
 		TextView tailpinsTag = (TextView) findViewById(R.id.tailpinsTag);
 		TextView dnaTag = (TextView) findViewById(R.id.dnaTag);
 		TextView baseplateTag = (TextView) findViewById(R.id.baseplateTag);
-		
+
 		// Register draggable views to receive drag events
 		headView.setOnDragListener(this);
 		collarView.setOnDragListener(this);
@@ -65,7 +68,7 @@ public class DiagramPlayVirus extends DiagramPlayBase {
 		tailfibreView.setOnDragListener(this);
 		danView.setOnDragListener(this);
 		baseplateView.setOnDragListener(this);
-		
+
 		// Register place holders to receive onLongclick events
 		headTag.setOnLongClickListener(this);
 		collarTag.setOnLongClickListener(this);
@@ -75,8 +78,7 @@ public class DiagramPlayVirus extends DiagramPlayBase {
 		tailpinsTag.setOnLongClickListener(this);
 		dnaTag.setOnLongClickListener(this);
 		baseplateTag.setOnLongClickListener(this);
-		
-		
+
 		// Register place holders to receive onClick events
 		headTag.setOnClickListener(this);
 		collarTag.setOnClickListener(this);
@@ -86,23 +88,82 @@ public class DiagramPlayVirus extends DiagramPlayBase {
 		tailpinsTag.setOnClickListener(this);
 		dnaTag.setOnClickListener(this);
 		baseplateTag.setOnClickListener(this);
-		
+
 		placeHolderlist = container.diagramCaller("Virus");
 		tagPlaceHolderMap = tagPlaceholdermapper.diagramMapper("Virus");
 		incompleteTagList = tagPlaceholdermapper.diagramMapper("Virus");
 		tagListSize = tagPlaceHolderMap.size();
-		
+
 		openDB();
-		
+
 	}
 
+	@Override
+	public void onClick(View tagView) {
+		super.onClick(tagView);
+
+		// TODO Extract messages to separate container
+		switch (tagView.getId()) {
+		case R.id.headTag:
+			InfoTooltip popup = new InfoTooltip(getApplicationContext(),
+					"This is situated within nucleoid region \n"
+							+ "and contain a circular DNA molecule");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.collarTag:
+			InfoTooltip popup1 = new InfoTooltip(getApplicationContext(),
+					"Structures that assemble proteins ");
+			popup1.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.neckTag:
+			InfoTooltip popup2 = new InfoTooltip(getApplicationContext(),
+					"They occur as small granules of lipids or glycogen\n"
+							+ " held in sacs formed from lipid membrane");
+			popup2.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.sheathTag:
+			InfoTooltip popup3 = new InfoTooltip(getApplicationContext(),
+					"Short, thin, straight, hair like projections form surface  ");
+			popup3.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.tailfibreTag:
+			InfoTooltip popup4 = new InfoTooltip(
+					getApplicationContext(),
+					"This is a lash-like appendage that begins\n"
+							+ " from the cell body which is important for locomotion");
+			popup4.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.tailpinsTag:
+			InfoTooltip popup5 = new InfoTooltip(getApplicationContext(),
+					"Located in cytosol of bacterial cells which\n"
+							+ " contains supplemental genetic information");
+			popup5.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.dnaTag:
+			InfoTooltip popup6 = new InfoTooltip(getApplicationContext(),
+					"A layer that lies outside the cell envelope\n"
+							+ "of bacteria which can be the cause of \n"
+							+ "various diseases");
+			popup6.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.baseplateTag:
+			InfoTooltip popup7 = new InfoTooltip(getApplicationContext(),
+					"This protects the cell from shock,\n "
+							+ "physical damage,confers rigidity \n"
+							+ "and shape of bacterial cells ");
+			popup7.show(tagView, AlignMode.BOTTOM);
+			break;
+		default:
+			break;
+		}
+	}
 
 	@Override
 	protected int getResourcesId() {
-		
+
 		return R.layout.diagram_play_virus;
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
@@ -155,7 +216,8 @@ public class DiagramPlayVirus extends DiagramPlayBase {
 	}
 
 	@Override
-	protected void intentBuilder(String badgeTitle, int badgeId, float totalScore, int gameScore, boolean completed, int tryCycle) {
+	protected void intentBuilder(String badgeTitle, int badgeId,
+			float totalScore, int gameScore, boolean completed, int tryCycle) {
 		Intent intent;
 		intent = new Intent(getApplicationContext(), BadgePopUpWindow.class);
 		intent.putExtra("BADGE_TITLE", badgeTitle);
@@ -170,7 +232,7 @@ public class DiagramPlayVirus extends DiagramPlayBase {
 		startActivity(intent);
 		finish();
 	}
-	
+
 	@Override
 	public void onDestroy() {
 		super.onDestroy();

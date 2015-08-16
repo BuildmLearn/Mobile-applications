@@ -34,7 +34,7 @@ public class SplashScreen extends Activity {
 		@Override
 		public void run() {
 			
-			startActivity(new Intent(getApplication(),MainMenu.class));
+			startActivity(new Intent(getApplication(),MainMenuGrid.class));
 			/*Intent launchNextActivity;
 			launchNextActivity = new Intent(getApplication(), MainMenu.class);
 			launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

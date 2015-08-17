@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/mainDiagramPlantCell"
+        android:layout_width="400dp"
+        android:layout_height="420dp"
+        android:layout_below="@+id/scoreTab"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/plant_cell" />
+
+    <ImageView
+        android:id="@+id/ribosomesBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramPlantCell"
+        android:layout_alignTop="@+id/mainDiagramPlantCell"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="55dp"
+        android:src="@drawable/ten" />
+
+    <ImageView
+        android:id="@+id/smootherBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramPlantCell"
+        android:layout_alignTop="@+id/mainDiagramPlantCell"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="145dp"
+        android:src="@drawable/nine" />
+
+    <ImageView
+        android:id="@+id/rougherBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@id/mainDiagramPlantCell"
+        android:layout_alignLeft="@+id/mainDiagramPlantCell"
+        android:layout_marginBottom="-8dp"
+        android:layout_marginLeft="105dp"
+        android:src="@drawable/seven" />
+
+    <ImageView
+        android:id="@+id/vacuoleBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@id/mainDiagramPlantCell"
+        android:layout_alignLeft="@+id/mainDiagramPlantCell"
+        android:layout_marginBottom="-8dp"
+        android:layout_marginLeft="165dp"
+        android:src="@drawable/six" />
+
+    <ImageView
+        android:id="@+id/golgi_complexBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramPlantCell"
+        android:layout_alignTop="@+id/mainDiagramPlantCell"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="-10dp"
+        android:src="@drawable/one" />
+
+    <ImageView
+        android:id="@+id/cell_membraneBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramPlantCell"
+        android:layout_alignTop="@+id/mainDiagramPlantCell"
+        android:layout_marginLeft="265dp"
+        android:layout_marginTop="-10dp"
+        android:src="@drawable/two" />
+
+    <ImageView
+        android:id="@+id/nucleusBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramPlantCell"
+        android:layout_alignTop="@+id/mainDiagramPlantCell"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="200dp"
+        android:src="@drawable/eight" />
+
+    <ImageView
+        android:id="@+id/chloroplastBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramPlantCell"
+        android:layout_alignTop="@+id/mainDiagramPlantCell"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="110dp"
+        android:src="@drawable/three" />
+
+    <ImageView
+        android:id="@+id/mitochondriumBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramPlantCell"
+        android:layout_alignTop="@+id/mainDiagramPlantCell"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="255dp"
+        android:src="@drawable/four" />
+
+    <ImageView
+        android:id="@+id/cellwallBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramPlantCell"
+        android:layout_alignTop="@+id/mainDiagramPlantCell"
+        android:layout_marginLeft="325dp"
+        android:layout_marginTop="390dp"
+        android:src="@drawable/five" />
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mainDiagramPlantCell"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/lesson_list"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout>
+
+
+</RelativeLayout>

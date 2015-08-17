@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram">
+
+    <ImageView
+        android:id="@+id/mainDiagramMotor"
+        android:layout_width="450dp"
+        android:layout_height="420dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/motor" />
+
+    <ImageView
+        android:id="@+id/northPoleBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramMotor"
+        android:layout_alignTop="@+id/mainDiagramMotor"
+        android:layout_marginLeft="105dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/one" />
+    
+    <ImageView
+        android:id="@+id/southPoleBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramMotor"
+        android:layout_alignTop="@+id/mainDiagramMotor"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/nine" />
+    
+    <ImageView
+        android:id="@+id/magFieldBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramMotor"
+        android:layout_alignTop="@+id/mainDiagramMotor"
+        android:layout_marginRight="130dp"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/eight" />
+    
+    <ImageView
+        android:id="@+id/forceBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramMotor"
+        android:layout_alignTop="@+id/mainDiagramMotor"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="75dp"
+        android:src="@drawable/two" />
+    
+    <ImageView
+        android:id="@+id/axelBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramMotor"
+        android:layout_alignBottom="@+id/mainDiagramMotor"
+        android:layout_marginLeft="45dp"
+        android:layout_marginBottom="180dp"
+        android:src="@drawable/three" />
+    
+    <ImageView
+        android:id="@+id/batteryBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramMotor"
+        android:layout_alignBottom="@+id/mainDiagramMotor"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/four" />
+    
+    <ImageView
+        android:id="@+id/commutatorBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramMotor"
+        android:layout_alignBottom="@+id/mainDiagramMotor"
+        android:layout_marginLeft="162dp"
+        android:layout_marginBottom="35dp"
+        android:src="@drawable/five" />
+    
+    <ImageView
+        android:id="@+id/brushBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramMotor"
+        android:layout_alignBottom="@+id/mainDiagramMotor"
+        android:layout_marginRight="135dp"
+        android:layout_marginBottom="80dp"
+        android:src="@drawable/six" />
+    
+    <ImageView
+        android:id="@+id/armatureBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramMotor"
+        android:layout_alignBottom="@+id/mainDiagramMotor"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="130dp"
+        android:src="@drawable/seven" />
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mainDiagramMotor"
+        android:orientation="vertical" >
+        <ListView
+            android:id="@+id/lesson_list"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout>
+    
+    
+
+</RelativeLayout>

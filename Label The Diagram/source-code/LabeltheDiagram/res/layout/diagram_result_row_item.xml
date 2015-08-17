@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -11,15 +11,15 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp" >
 
-        <TextView
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
             android:id="@+id/resultTagTxt"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginStart="0dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/custom_textview_result"
             android:paddingBottom="3dp"
@@ -29,14 +29,17 @@
             android:text="Tag Title"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ffff" />
+            android:textColor="#ffff" 
+            app:typeface="roboto_light"/>
 
         <ImageView
             android:id="@+id/result_icon"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_marginTop="4dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"

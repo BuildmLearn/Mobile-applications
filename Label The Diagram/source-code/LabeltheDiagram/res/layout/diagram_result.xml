@@ -51,8 +51,8 @@
     <LinearLayout
         android:id="@+id/scoreLayout"
         android:layout_width="fill_parent"
-        android:layout_height="290dp"
-        android:layout_alignParentLeft="true"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btnPannel"
         android:layout_below="@+id/innerLayout1"
         android:weightSum="1" >
 
@@ -104,17 +104,18 @@
         <ListView
             android:id="@+id/mylistview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_weight="0.4"
             android:divider="@android:color/transparent"
+            android:layout_weight="0.4"
             android:dividerHeight="5dp"
             android:paddingBottom="5dp" >
         </ListView>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/btnPannel"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

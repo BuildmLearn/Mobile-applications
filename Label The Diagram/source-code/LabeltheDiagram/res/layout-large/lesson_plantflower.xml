@@ -52,7 +52,7 @@
         android:id="@+id/stigmaBlb"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="12dp"
         android:layout_marginTop="7dp"
         android:layout_toRightOf="@+id/receptacleBlb"
         android:src="@drawable/one" />

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram">
+
+    <ImageView
+        android:id="@+id/mainDiagramLens"
+        android:layout_width="450dp"
+        android:layout_height="420dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/lens" />
+
+    <ImageView
+        android:id="@+id/principalRayBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramLens"
+        android:layout_alignTop="@+id/mainDiagramLens"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/one" />
+
+    <ImageView
+        android:id="@+id/centralRayBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramLens"
+        android:layout_alignTop="@+id/mainDiagramLens"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="70dp"
+        android:src="@drawable/two" />
+
+    <ImageView
+        android:id="@+id/focalRayBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramLens"
+        android:layout_alignLeft="@+id/mainDiagramLens"
+        android:layout_marginBottom="150dp"
+        android:layout_marginLeft="70dp"
+        android:src="@drawable/seven" />
+
+    <ImageView
+        android:id="@+id/objectBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramLens"
+        android:layout_alignLeft="@+id/mainDiagramLens"
+        android:layout_marginBottom="95dp"
+        android:layout_marginLeft="15dp"
+        android:src="@drawable/eight" />
+    
+    <ImageView
+        android:id="@+id/lensBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramLens"
+        android:layout_alignRight="@+id/mainDiagramLens"
+        android:layout_marginBottom="70dp"
+        android:layout_marginRight="180dp"
+        android:src="@drawable/six" />
+
+    <ImageView
+        android:id="@+id/lensAxisBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramLens"
+        android:layout_alignRight="@+id/mainDiagramLens"
+        android:layout_marginBottom="55dp"
+        android:layout_marginRight="85dp"
+        android:src="@drawable/five" />
+    
+    <ImageView
+        android:id="@+id/focusBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignTop="@+id/mainDiagramLens"
+        android:layout_alignRight="@+id/mainDiagramLens"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="75dp"
+        android:src="@drawable/three" />
+    
+    <ImageView
+        android:id="@+id/imageBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignTop="@+id/mainDiagramLens"
+        android:layout_alignRight="@+id/mainDiagramLens"
+        android:layout_marginTop="165dp"
+        android:layout_marginRight="0dp"
+        android:src="@drawable/four" />
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mainDiagramLens"
+        android:orientation="vertical" >
+        <ListView
+            android:id="@+id/lesson_list"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout>
+    
+
+</RelativeLayout>

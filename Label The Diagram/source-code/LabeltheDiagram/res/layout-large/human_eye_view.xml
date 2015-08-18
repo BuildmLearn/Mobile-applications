@@ -110,7 +110,7 @@
                     android:layout_margin="2dp"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:text="Bacteria"
+                    android:text="Human Eye"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="#fff"
                     android:textSize="32sp" />
@@ -126,9 +126,9 @@
 
                 <ImageView
                     android:id="@+id/diagram_toselect"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/bacteria_unlabel" 
+                    android:layout_width="400dp"
+                    android:layout_height="400dp"
+                    android:src="@drawable/human_eye_unlabel" 
                     android:layout_centerInParent="true"/>
 
             </RelativeLayout>

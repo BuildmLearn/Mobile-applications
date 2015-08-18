@@ -125,7 +125,7 @@
         android:layout_alignLeft="@+id/mainDiagramHeart"
         android:layout_alignTop="@+id/mainDiagramHeart"
         android:layout_marginLeft="102dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="8dp"
         android:layout_centerVertical="true"
         android:src="@drawable/marker_white" />
 
@@ -194,7 +194,7 @@
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
-        android:text="Cornea"
+        android:text="cornea"
         android:textColor="#ffff" />
 
     <TextView
@@ -274,7 +274,7 @@
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
-        android:text="Lens"
+        android:text="lens"
         android:textColor="#ffff" />
 
     <TextView
@@ -290,7 +290,7 @@
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
-        android:text="Retina"
+        android:text="retina"
         android:textColor="#ffff" />
 
     <TextView

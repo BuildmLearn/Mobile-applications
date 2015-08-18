@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 public class SolarSystemFragment extends Fragment {
 
+	private static final int GAME_SCORE = 90;
 	private Typeface tfThin;
 	private float score;
 
@@ -43,7 +44,7 @@ public class SolarSystemFragment extends Fragment {
 		Button startBtn = (Button) view.findViewById(R.id.go_diagram_btn);
 
 		startBtn.setTypeface(tfThin);
-		savedScoreTxt.setText((int)((score / 90 ) * 100) + "% Sucess");
+		savedScoreTxt.setText((int)((score / GAME_SCORE ) * 100) + "% Sucess");
 
 		startBtn.setOnClickListener(new OnClickListener() {
 

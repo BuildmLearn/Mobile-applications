@@ -17,9 +17,9 @@ import android.widget.TextView;
 
 public class DryCellFragment extends Fragment {
 
+	private static final int GAME_SCORE = 90;
 	private Typeface tfThin;
 	private float score;
-	private int gameScore;
 
 	// Store instance variables based on arguments passed
 	@Override
@@ -45,7 +45,7 @@ public class DryCellFragment extends Fragment {
 		Button startBtn = (Button) view.findViewById(R.id.go_diagram_btn);
 
 		startBtn.setTypeface(tfThin);
-		savedScoreTxt.setText((int)((score / 80 ) * 100) + "% Sucess");
+		savedScoreTxt.setText((int)((score / GAME_SCORE ) * 100) + "% Sucess");
 
 		startBtn.setOnClickListener(new OnClickListener() {
 

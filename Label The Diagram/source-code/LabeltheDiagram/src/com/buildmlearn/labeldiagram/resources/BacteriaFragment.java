@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 public class BacteriaFragment extends Fragment {
 
+	private static final int GAME_SCORE = 100;
 	private Typeface tfThin;
 	private float score;
 
@@ -55,7 +56,7 @@ public class BacteriaFragment extends Fragment {
 
 		diagramTxt.setTypeface(tfThin);
 		startBtn.setTypeface(tfThin);
-		savedScoreTxt.setText((int)score + "% Sucess");
+		savedScoreTxt.setText((int)((score / GAME_SCORE ) * 100) + "% Sucess");
 
 		startBtn.setOnClickListener(new OnClickListener() {
 

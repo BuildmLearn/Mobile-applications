@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/scoreTxt"
             android:layout_alignBottom="@+id/scoreTxt"
-            android:layout_marginLeft="18dp"
+            android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/scoreTxt"
             android:text="0"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -38,9 +38,9 @@
             android:layout_alignBaseline="@+id/complatedTxt"
             android:layout_alignBottom="@+id/complatedTxt"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/complatedTxt"
-            android:text=" 0%"
+            android:text="0%"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffff" />
 
@@ -50,8 +50,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:text="Complete :"
+            android:layout_marginLeft="25dp"
+            android:text="Complete    :"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffff" />
 
@@ -61,12 +61,11 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/complete_ratio"
             android:layout_alignBottom="@+id/complete_ratio"
-            android:layout_marginLeft="24dp"
+            android:layout_marginLeft="25dp"
             android:layout_toRightOf="@+id/view1"
             android:text="Score   :"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffff" />
-
     </RelativeLayout>
 
     <ImageView
@@ -196,7 +195,7 @@
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
-        android:text="Cornea"
+        android:text="cornea"
         android:textSize="20sp"
         android:textColor="#ffff" />
 
@@ -206,7 +205,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="170dp"
+        android:layout_marginLeft="167dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
@@ -223,7 +222,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="85dp"
+        android:layout_marginLeft="83dp"
         android:layout_marginTop="55dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
@@ -281,7 +280,7 @@
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
-        android:text="Lens"
+        android:text="lens"
         android:textSize="20sp"
         android:textColor="#ffff" />
 
@@ -298,7 +297,7 @@
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
-        android:text="Retina"
+        android:text="retina"
         android:textSize="20sp"
         android:textColor="#ffff" />
 

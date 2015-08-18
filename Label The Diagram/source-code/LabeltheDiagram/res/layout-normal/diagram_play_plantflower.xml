@@ -68,6 +68,15 @@
             android:textColor="#ffff" />
     </RelativeLayout>
 
+    <ImageView
+        android:id="@+id/mainDiagramFlower"
+        android:layout_width="320dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/scoreTab"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/plant_flower" />
+
         <ImageView
             android:id="@+id/antherBlb"
             android:layout_width="25dp"
@@ -348,14 +357,5 @@
         android:paddingTop="3dp"
         android:text="sepal"
         android:textColor="#ffff" />
-
-    <ImageView
-        android:id="@+id/mainDiagramFlower"
-        android:layout_width="320dp"
-        android:layout_height="250dp"
-        android:layout_alignLeft="@+id/antherTag"
-        android:layout_below="@+id/scoreTab"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/plant_flower" />
 
 </RelativeLayout>

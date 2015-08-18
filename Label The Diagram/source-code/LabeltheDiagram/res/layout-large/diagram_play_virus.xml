@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/scoreTxt"
             android:layout_alignBottom="@+id/scoreTxt"
-            android:layout_marginLeft="18dp"
+            android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/scoreTxt"
             android:text="0"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -38,9 +38,9 @@
             android:layout_alignBaseline="@+id/complatedTxt"
             android:layout_alignBottom="@+id/complatedTxt"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/complatedTxt"
-            android:text=" 0%"
+            android:text="0%"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffff" />
 
@@ -50,8 +50,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:text="Complete :"
+            android:layout_marginLeft="25dp"
+            android:text="Complete    :"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffff" />
 
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/complete_ratio"
             android:layout_alignBottom="@+id/complete_ratio"
-            android:layout_marginLeft="24dp"
+            android:layout_marginLeft="25dp"
             android:layout_toRightOf="@+id/view1"
             android:text="Score   :"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -150,10 +150,10 @@
         android:id="@+id/tailpinsBlb"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_alignLeft="@+id/mainDiagramVirus"
         android:layout_alignBottom="@+id/mainDiagramVirus"
-        android:layout_marginLeft="115dp"
+        android:layout_alignLeft="@+id/mainDiagramVirus"
         android:layout_marginBottom="5dp"
+        android:layout_marginLeft="115dp"
         android:src="@drawable/marker" />
 
     <ImageView
@@ -162,8 +162,8 @@
         android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramVirus"
         android:layout_alignTop="@+id/mainDiagramVirus"
+        android:layout_marginLeft="165dp"
         android:layout_marginTop="425dp"
-         android:layout_marginLeft="165dp"
         android:src="@drawable/marker" />
 
     <TextView
@@ -172,7 +172,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignTop="@+id/tagHolder"
-        android:layout_marginLeft="33dp"
+        android:layout_marginLeft="35dp"
         android:layout_marginTop="100dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
@@ -181,7 +181,7 @@
         android:paddingTop="3dp"
         android:text="head"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/baseplateTag"
@@ -190,7 +190,7 @@
         android:layout_alignBaseline="@+id/neckTag"
         android:layout_alignBottom="@+id/neckTag"
         android:layout_alignLeft="@+id/tailfibreBlb"
-        android:layout_marginLeft="7dp"
+        android:layout_marginLeft="2dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -198,7 +198,7 @@
         android:paddingTop="3dp"
         android:text="baseplate"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/neckTag"
@@ -207,7 +207,7 @@
         android:layout_alignBaseline="@+id/sheathTag"
         android:layout_alignBottom="@+id/sheathTag"
         android:layout_alignLeft="@+id/baseplateBlb"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="10dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -215,7 +215,7 @@
         android:paddingTop="3dp"
         android:text="neck"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/sheathTag"
@@ -231,7 +231,7 @@
         android:paddingTop="3dp"
         android:text="shealth"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/collarTag"
@@ -239,7 +239,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/headTag"
         android:layout_below="@+id/headTag"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -247,7 +247,7 @@
         android:paddingTop="3dp"
         android:text="collar"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/dnaTag"
@@ -256,6 +256,7 @@
         android:layout_alignBaseline="@+id/collarTag"
         android:layout_alignBottom="@+id/collarTag"
         android:layout_alignLeft="@+id/sheathTag"
+        android:layout_marginLeft="10dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -263,7 +264,7 @@
         android:paddingTop="3dp"
         android:text="DNA"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/tailfibreTag"
@@ -272,6 +273,7 @@
         android:layout_alignBaseline="@+id/dnaTag"
         android:layout_alignBottom="@+id/dnaTag"
         android:layout_alignLeft="@+id/baseplateBlb"
+        android:layout_marginLeft="-5dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -279,7 +281,7 @@
         android:paddingTop="3dp"
         android:text="tail fibre"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/tailpinsTag"
@@ -287,6 +289,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tailfibreTag"
         android:layout_alignRight="@+id/baseplateTag"
+        android:layout_marginRight="2dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -294,6 +297,6 @@
         android:paddingTop="3dp"
         android:text="tail pins"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
 </RelativeLayout>

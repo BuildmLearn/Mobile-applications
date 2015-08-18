@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/scoreTxt"
             android:layout_alignBottom="@+id/scoreTxt"
-            android:layout_marginLeft="18dp"
+            android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/scoreTxt"
             android:text="0"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -38,9 +38,9 @@
             android:layout_alignBaseline="@+id/complatedTxt"
             android:layout_alignBottom="@+id/complatedTxt"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/complatedTxt"
-            android:text=" 0%"
+            android:text="0%"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffff" />
 
@@ -50,8 +50,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:text="Complete :"
+            android:layout_marginLeft="25dp"
+            android:text="Complete    :"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffff" />
 
@@ -61,12 +61,21 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/complete_ratio"
             android:layout_alignBottom="@+id/complete_ratio"
-            android:layout_marginLeft="24dp"
+            android:layout_marginLeft="25dp"
             android:layout_toRightOf="@+id/view1"
             android:text="Score   :"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffff" />
     </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/mainDiagramPlantCell"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/scoreTab"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/plant_cell" />
 
     <ImageView
         android:id="@+id/tagHolder"
@@ -94,8 +103,8 @@
         android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramPlantCell"
         android:layout_alignTop="@+id/mainDiagramPlantCell"
-        android:layout_marginLeft="-5dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="55dp"
         android:src="@drawable/marker_white" />
 
     <ImageView
@@ -104,8 +113,8 @@
         android:layout_height="35dp"
         android:layout_alignBottom="@id/mainDiagramPlantCell"
         android:layout_alignLeft="@+id/mainDiagramPlantCell"
-        android:layout_marginBottom="-8dp"
-        android:layout_marginLeft="65dp"
+        android:layout_marginBottom="-15dp"
+        android:layout_marginLeft="110dp"
         android:src="@drawable/marker_white" />
 
     <ImageView
@@ -114,8 +123,8 @@
         android:layout_height="35dp"
         android:layout_alignBottom="@id/mainDiagramPlantCell"
         android:layout_alignLeft="@+id/mainDiagramPlantCell"
-        android:layout_marginBottom="-5dp"
-        android:layout_marginLeft="115dp"
+        android:layout_marginBottom="-15dp"
+        android:layout_marginLeft="165dp"
         android:src="@drawable/marker_white" />
 
     <ImageView
@@ -124,8 +133,8 @@
         android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramPlantCell"
         android:layout_alignTop="@+id/mainDiagramPlantCell"
-        android:layout_marginLeft="145dp"
-        android:layout_marginTop="-10dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="-25dp"
         android:src="@drawable/marker_white" />
 
     <ImageView
@@ -134,8 +143,8 @@
         android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramPlantCell"
         android:layout_alignTop="@+id/mainDiagramPlantCell"
-        android:layout_marginLeft="210dp"
-        android:layout_marginTop="-10dp"
+        android:layout_marginLeft="265dp"
+        android:layout_marginTop="-25dp"
         android:src="@drawable/marker_white" />
 
     <ImageView
@@ -144,7 +153,7 @@
         android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramPlantCell"
         android:layout_alignTop="@+id/mainDiagramPlantCell"
-        android:layout_marginLeft="-5dp"
+        android:layout_marginLeft="12dp"
         android:layout_marginTop="190dp"
         android:src="@drawable/marker_white" />
 
@@ -154,6 +163,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="245dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
@@ -170,6 +180,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="120dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
@@ -186,7 +197,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -202,7 +214,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="360dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="355dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -218,8 +231,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="55dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -235,8 +248,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="305dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="55dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -252,7 +265,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="100dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
@@ -269,7 +282,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="140dp"
+        android:layout_marginLeft="122dp"
         android:layout_marginTop="100dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
@@ -281,30 +294,21 @@
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/chloroplastTag"
+        android:id="@+id/cell_membraneTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
        android:layout_alignLeft="@id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="330dp"
+        android:layout_marginLeft="290dp"
         android:layout_marginTop="100dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
-        android:text="chloroplast"
+        android:text="cell membrane"
         android:textColor="#ffff"
         android:textSize="20sp" />
-
-    <ImageView
-        android:id="@+id/mainDiagramPlantCell"
-        android:layout_width="300dp"
-        android:layout_height="400dp"
-        android:layout_below="@+id/scoreTab"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/plant_cell" />
 
     <ImageView
         android:id="@+id/cellwallBlb"
@@ -312,6 +316,8 @@
         android:layout_height="35dp"
         android:layout_alignBottom="@+id/mainDiagramPlantCell"
         android:layout_alignRight="@+id/mainDiagramPlantCell"
+        android:layout_marginRight="45dp"
+        android:layout_marginBottom="-15dp"
         android:src="@drawable/marker_white" />
 
     <ImageView
@@ -320,8 +326,8 @@
         android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramPlantCell"
         android:layout_alignTop="@+id/mainDiagramPlantCell"
-        android:layout_marginLeft="-5dp"
-        android:layout_marginTop="145dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="140dp"
         android:src="@drawable/marker_white" />
 
     <ImageView
@@ -330,8 +336,8 @@
         android:layout_height="35dp"
         android:layout_alignRight="@+id/mainDiagramPlantCell"
         android:layout_alignTop="@+id/mainDiagramPlantCell"
-        android:layout_marginRight="0dp"
-        android:layout_marginTop="115dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="55dp"
         android:src="@drawable/marker_white" />
 
     <ImageView
@@ -340,24 +346,24 @@
         android:layout_height="35dp"
         android:layout_alignRight="@+id/mainDiagramPlantCell"
         android:layout_alignTop="@+id/mainDiagramPlantCell"
-        android:layout_marginRight="0dp"
-        android:layout_marginTop="240dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="310dp"
         android:src="@drawable/marker_white" />
 
     <TextView
-        android:id="@+id/cell_membraneTag"
+        android:id="@+id/chloroplastTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="135dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginLeft="155dp"
+        android:layout_marginTop="55dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
-        android:text="cell membrane"
+        android:text="chloroplast"
         android:textColor="#ffff"
         android:textSize="20sp" />
 

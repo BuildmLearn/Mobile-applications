@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/scoreTxt"
             android:layout_alignBottom="@+id/scoreTxt"
-            android:layout_marginLeft="18dp"
+            android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/scoreTxt"
             android:text="0"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -38,9 +38,9 @@
             android:layout_alignBaseline="@+id/complatedTxt"
             android:layout_alignBottom="@+id/complatedTxt"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/complatedTxt"
-            android:text=" 0%"
+            android:text="0%"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffff" />
 
@@ -50,8 +50,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:text="Complete :"
+            android:layout_marginLeft="25dp"
+            android:text="Complete    :"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffff" />
 
@@ -61,15 +61,16 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/complete_ratio"
             android:layout_alignBottom="@+id/complete_ratio"
-            android:layout_marginLeft="24dp"
+            android:layout_marginLeft="25dp"
             android:layout_toRightOf="@+id/view1"
             android:text="Score   :"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffff" />
+        
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/mainDiagramHeart"
+        android:id="@+id/mainDiagramEar"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_above="@+id/tagHolder"
@@ -140,8 +141,9 @@
         android:id="@+id/pinnaTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/mainDiagramHeart"
+        android:layout_alignLeft="@+id/tagHolder"
         android:layout_alignTop="@+id/tagHolder"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="85dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
@@ -150,15 +152,16 @@
         android:paddingTop="3dp"
         android:text="pinna"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/cochleaTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/eardrumTag"
-        android:layout_alignBottom="@+id/eardrumTag"
-        android:layout_alignRight="@+id/mainDiagramHeart"
+        android:layout_alignLeft="@+id/tagHolder"
+        android:layout_alignTop="@+id/tagHolder"
+        android:layout_marginLeft="350dp"
+        android:layout_marginTop="85dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -166,15 +169,16 @@
         android:paddingTop="3dp"
         android:text="cochlea"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/eardrumTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/ear_canalTag"
-        android:layout_alignBottom="@+id/ear_canalTag"
-        android:layout_alignRight="@+id/stapesBlb"
+        android:layout_alignLeft="@+id/tagHolder"
+        android:layout_alignTop="@+id/tagHolder"
+        android:layout_marginLeft="235dp"
+        android:layout_marginTop="85dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -182,16 +186,16 @@
         android:paddingTop="3dp"
         android:text="ear drum"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/ear_canalTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/pinnaTag"
-        android:layout_alignBottom="@+id/pinnaTag"
-        android:layout_alignLeft="@+id/outerearBlb"
-        android:layout_marginLeft="12dp"
+        android:layout_alignLeft="@+id/tagHolder"
+        android:layout_alignTop="@+id/tagHolder"
+        android:layout_marginLeft="115dp"
+        android:layout_marginTop="85dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -199,15 +203,16 @@
         android:paddingTop="3dp"
         android:text="ear canal"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/earnerveTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/pinnaTag"
-        android:layout_below="@+id/pinnaTag"
-        android:layout_marginTop="20dp"
+        android:layout_alignLeft="@+id/tagHolder"
+        android:layout_alignTop="@+id/tagHolder"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="130dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -215,63 +220,16 @@
         android:paddingTop="3dp"
         android:text="nerve"
         android:textColor="#ffff"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/incusTag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/malleusTag"
-        android:layout_alignBottom="@+id/malleusTag"
-        android:layout_toRightOf="@+id/eardrumBlb"
-        android:background="@drawable/custom_textview"
-        android:paddingBottom="3dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="3dp"
-        android:text="incus"
-        android:textColor="#ffff"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/outerearTag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/incusTag"
-        android:layout_alignBottom="@+id/incusTag"
-        android:layout_alignRight="@+id/cochleaTag"
-        android:background="@drawable/custom_textview"
-        android:paddingBottom="3dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="3dp"
-        android:text="outer ear"
-        android:textColor="#ffff"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/canalsTag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/stapesTag"
-        android:layout_alignBottom="@+id/stapesTag"
-        android:layout_alignRight="@+id/malleusTag"
-        android:background="@drawable/custom_textview"
-        android:paddingBottom="3dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="3dp"
-        android:text="canals"
-        android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/stapesTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/earnerveTag"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
+        android:layout_alignLeft="@+id/tagHolder"
+        android:layout_alignTop="@+id/tagHolder"
+        android:layout_marginLeft="230dp"
+        android:layout_marginTop="130dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -279,15 +237,67 @@
         android:paddingTop="3dp"
         android:text="stapes"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/outerearTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tagHolder"
+        android:layout_alignTop="@+id/tagHolder"
+        android:layout_marginLeft="335dp"
+        android:layout_marginTop="130dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="outer ear"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/canalsTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tagHolder"
+        android:layout_alignTop="@+id/tagHolder"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="175dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="canals"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/incusTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tagHolder"
+        android:layout_alignTop="@+id/tagHolder"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="175dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="incus"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/malleusTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/earnerveTag"
-        android:layout_alignBottom="@+id/earnerveTag"
-        android:layout_alignRight="@+id/ear_canalTag"
+        android:layout_alignLeft="@+id/tagHolder"
+        android:layout_alignTop="@+id/tagHolder"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="130dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -295,15 +305,16 @@
         android:paddingTop="3dp"
         android:text="malleus"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <ImageView
         android:id="@+id/pinnaBlb"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_alignTop="@+id/mainDiagramHeart"
+        android:layout_alignTop="@+id/mainDiagramEar"
+        android:layout_alignLeft="@+id/mainDiagramEar"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="47dp"
-        android:layout_toLeftOf="@+id/outerearBlb"
         android:src="@drawable/marker_white" />
 
     <ImageView
@@ -326,9 +337,10 @@
         android:id="@+id/outerearBlb"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_alignBottom="@+id/mainDiagramHeart"
-        android:layout_marginBottom="60dp"
-        android:layout_toRightOf="@+id/stapesTag"
+        android:layout_alignBottom="@+id/mainDiagramEar"
+        android:layout_alignLeft="@+id/mainDiagramEar"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="80dp"
         android:src="@drawable/marker_white" />
 
     <ImageView

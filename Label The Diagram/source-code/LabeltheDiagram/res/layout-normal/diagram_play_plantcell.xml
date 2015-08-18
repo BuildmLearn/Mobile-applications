@@ -143,8 +143,8 @@
         android:layout_height="25dp"
         android:layout_alignLeft="@+id/mainDiagramPlantCell"
         android:layout_alignTop="@+id/mainDiagramPlantCell"
-        android:layout_marginLeft="125dp"
-        android:layout_marginTop="-5dp"
+        android:layout_marginLeft="122dp"
+        android:layout_marginTop="-8dp"
         android:src="@drawable/marker_white" />
 
     <ImageView
@@ -154,7 +154,7 @@
         android:layout_alignLeft="@+id/mainDiagramPlantCell"
         android:layout_alignTop="@+id/mainDiagramPlantCell"
         android:layout_marginLeft="165dp"
-        android:layout_marginTop="-5dp"
+        android:layout_marginTop="-8dp"
         android:src="@drawable/marker_white" />
 
     <ImageView
@@ -173,8 +173,8 @@
         android:layout_height="25dp"
         android:layout_alignRight="@+id/mainDiagramPlantCell"
         android:layout_alignTop="@+id/mainDiagramPlantCell"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="35dp"
         android:src="@drawable/marker_white" />
 
     <ImageView
@@ -183,8 +183,8 @@
         android:layout_height="25dp"
         android:layout_alignRight="@+id/mainDiagramPlantCell"
         android:layout_alignTop="@+id/mainDiagramPlantCell"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="158dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="200dp"
         android:src="@drawable/marker_white" />
 
     <ImageView
@@ -193,7 +193,7 @@
         android:layout_height="25dp"
         android:layout_alignLeft="@+id/mainDiagramPlantCell"
         android:layout_alignTop="@+id/mainDiagramPlantCell"
-        android:layout_marginLeft="210dp"
+        android:layout_marginLeft="205dp"
         android:layout_marginTop="245dp"
         android:src="@drawable/marker_white" />
 

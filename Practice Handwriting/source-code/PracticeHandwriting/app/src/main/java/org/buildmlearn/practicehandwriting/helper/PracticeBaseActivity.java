@@ -2,7 +2,7 @@ package org.buildmlearn.practicehandwriting.helper;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.res.Configuration;
+import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -45,6 +45,7 @@ public class PracticeBaseActivity extends ActionBarActivity {
         try {
             System.gc();
             super.onCreate(savedInstanceState);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
             setContentView(R.layout.activity_practice);
 
             //Initializing all the variables
@@ -184,9 +185,5 @@ public class PracticeBaseActivity extends ActionBarActivity {
     public void onBackPressed() {
         System.gc();
         super.onBackPressed();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
     }
 }

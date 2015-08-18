@@ -1,13 +1,7 @@
 package org.buildmlearn.practicehandwriting.activities;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
-import android.view.ViewGroup;
-
-import com.github.amlcurran.showcaseview.ShowcaseView;
-import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
 import org.buildmlearn.practicehandwriting.R;
 import org.buildmlearn.practicehandwriting.helper.CalculateFreehandScore;
@@ -20,30 +14,6 @@ public class FreehandActivity extends PracticeBaseActivity {
         super.onCreate(savedInstanceState);
         mDrawView.canVibrate(false);
         mDrawView.canScore(false);
-        SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(this);
-        isFirstRun = wmbPreference.getBoolean("FIRSTFREEHAND", true);
-        if (isFirstRun) {
-            SharedPreferences.Editor editor = wmbPreference.edit();
-            editor.putBoolean("FIRSTFREEHAND", false);
-            editor.apply();
-            System.gc();
-          /*  new ShowcaseView.Builder(this)
-                    .setTarget(new ViewTarget(R.id.drawing, this))
-                    .setContentTitle("")
-                    .setContentText(getString(R.string.freehandHelp))
-                    .setStyle(R.style.CustomShowcaseTheme)
-                    .setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            ShowcaseView parent = (ShowcaseView) view.getParent();
-                            parent.hide();
-                            ((ViewGroup) getWindow().getDecorView()).removeView(parent);
-                            parent.setVisibility(View.GONE);
-                            System.gc();
-                        }
-                    })
-                    .build();*/
-        }
     }
 
     @Override

@@ -1,19 +1,13 @@
 package org.buildmlearn.practicehandwriting.activities;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.preference.PreferenceManager;
+import android.os.Environment;
 import android.speech.tts.TextToSpeech;
 import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
-
-import com.github.amlcurran.showcaseview.OnShowcaseEventListener;
-import com.github.amlcurran.showcaseview.ShowcaseView;
-import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
 import org.buildmlearn.practicehandwriting.R;
 import org.buildmlearn.practicehandwriting.helper.PracticeBaseActivity;
@@ -58,36 +52,7 @@ public class TimeTrialActivity extends PracticeBaseActivity {
             mDrawView.canVibrate(true);
             isStringDone = new HashMap<>();
             isStringDone.put(mPracticeString,true);
-
-            SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(this);
-            isFirstRun = wmbPreference.getBoolean("FIRSTTIMETRIAL", true);
-            if (isFirstRun) {
-                SharedPreferences.Editor editor = wmbPreference.edit();
-                editor.putBoolean("FIRSTTIMETRIAL", false);
-                editor.apply();
-                System.gc();
-                /*new ShowcaseView.Builder(TimeTrialActivity.this)
-                        .setTarget(new ViewTarget(R.id.score_and_timer_View, TimeTrialActivity.this))
-                        .setContentTitle("")
-                        .setContentText(getString(R.string.timerHelp))
-                        .setStyle(R.style.CustomShowcaseTheme)
-
-                        .setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                ShowcaseView parent = (ShowcaseView) view.getParent();
-                                parent.hide();
-                                ((ViewGroup) getWindow().getDecorView()).removeView(parent);
-                                parent.setVisibility(View.GONE);
-                                mCountDownTimer.start();
-                                System.gc();
-                            }
-                        })
-                        .build();*/
-                mCountDownTimer.start();
-            } else {
-                mCountDownTimer.start();
-            }
+            mCountDownTimer.start();
         } catch (Exception e) {
             showErrorDialog(e);
         }
@@ -153,14 +118,13 @@ public class TimeTrialActivity extends PracticeBaseActivity {
         return false;
     }
 
-
     @Override
     public void onBackPressed() {
         System.gc();
         if(mCountDownTimer!=null)
             mCountDownTimer.cancel();//cancel the timer if the user decides to go back
         //Deleting the files in the temp directory and the directory itself
-        File tempDir = new File(mSaveDir);
+        File tempDir = new File(Environment.getExternalStorageDirectory() + File.separator + getResources().getString(R.string.app_name) + mSaveDir);
         if(tempDir.exists()) {
             for (File file : tempDir.listFiles())
                 file.delete();

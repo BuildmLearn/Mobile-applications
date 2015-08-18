@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import org.buildmlearn.practicehandwriting.R;
 import org.buildmlearn.practicehandwriting.helper.ScoreDbHelper;
+import org.buildmlearn.practicehandwriting.helper.tutorials.TutorialActivity;
 
 //Splash Screen Activity
 public class SplashActivity extends Activity implements TextToSpeech.OnInitListener{
@@ -26,8 +27,6 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
 
     private boolean mTtsInitDone;
 
-    public static boolean isFirstRun;
-
     public static ScoreDbHelper mDbHelper;
 
     public static DisplayMetrics mDisplayMetrics;
@@ -39,7 +38,7 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
         mTtsInitDone = false;
 
         SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(this);
-        isFirstRun = wmbPreference.getBoolean("FIRSTRUN", true);
+        final boolean isFirstRun = wmbPreference.getBoolean("FIRSTRUN", true);
         if (isFirstRun) {
             SharedPreferences.Editor editor = wmbPreference.edit();
             editor.putBoolean("FIRSTRUN", false);
@@ -65,7 +64,10 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
             @Override
             public void run() {
                 while(!(mTtsInitDone));
-                startActivity(new Intent(SplashActivity.this, LanguageActivity.class));
+                if(!isFirstRun)
+                    startActivity(new Intent(SplashActivity.this, LanguageActivity.class));
+                else
+                    startActivity(new Intent(SplashActivity.this, TutorialActivity.class));
             }
         }).start();
     }

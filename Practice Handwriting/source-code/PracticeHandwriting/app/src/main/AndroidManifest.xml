@@ -7,13 +7,14 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:noHistory="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:noHistory="true"
         android:theme="@style/ActionBarTheme" >
         <activity
             android:name=".activities.SplashActivity"
+            android:configChanges="orientation|screenSize"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,14 +24,17 @@
         </activity>
         <activity
             android:name=".activities.LanguageActivity"
+            android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_language" >
         </activity>
         <activity
             android:name=".activities.MainMenuActivity"
+            android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_main_menu" >
         </activity>
         <activity
             android:name=".activities.IncompleteActivity"
+            android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_incomplete" >
         </activity>
         <activity
@@ -39,27 +43,37 @@
         </activity>
         <activity
             android:name=".helper.PracticeBaseActivity"
+            android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_practice" >
         </activity>
         <activity
             android:name=".activities.WordSelectionActivity"
+            android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_word_selection" >
         </activity>
         <activity
             android:name=".activities.TimeTrialResultActivity"
+            android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_time_trial_result" >
         </activity>
         <activity
             android:name=".activities.PracticeActivity"
+            android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_practice" >
         </activity>
         <activity
             android:name=".activities.FreehandActivity"
+            android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_freehand" >
         </activity>
         <activity
             android:name=".activities.TimeTrialActivity"
+            android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_time_trial" >
+        </activity>
+        <activity
+            android:name=".helper.tutorials.TutorialActivity"
+            android:label="@string/title_activity_tutorial" >
         </activity>
     </application>
 

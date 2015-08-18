@@ -4,11 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
-
-import com.github.amlcurran.showcaseview.ShowcaseView;
-import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
 import org.buildmlearn.practicehandwriting.R;
 import org.buildmlearn.practicehandwriting.helper.Animator;
@@ -26,33 +22,6 @@ public class MainMenuActivity extends Activity {
             Animation animation = Animator.createScaleUpCompleteAnimation();
             animation.setStartOffset(500 * i);
             findViewById(buttons[i]).startAnimation(animation);
-        }
-
-        if(SplashActivity.isFirstRun) {
-            System.gc();
-            /*new ShowcaseView.Builder(this)
-                    .setTarget(new ViewTarget(R.id.character_button, this))
-                    .setContentTitle(getString(R.string.mode_selection))
-                    .setContentText("")
-                    .setStyle(R.style.CustomShowcaseTheme)
-                    .setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            ShowcaseView parent = (ShowcaseView) view.getParent();
-                            parent.hide();
-                            ((ViewGroup) getWindow().getDecorView()).removeView(parent);
-                            parent.setVisibility(View.GONE);
-                            for (int button : buttons)
-                                findViewById(button).setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        mainMenuActivityOnClick(view);
-                                    }
-                                });
-                            System.gc();
-                        }
-                    })
-                    .build();*/
         }
     }
 
@@ -83,7 +52,6 @@ public class MainMenuActivity extends Activity {
     @Override
     public void onBackPressed() {
         finish();
-        SplashActivity.isFirstRun = false;
         startActivity(new Intent(MainMenuActivity.this, LanguageActivity.class));
     }
 }

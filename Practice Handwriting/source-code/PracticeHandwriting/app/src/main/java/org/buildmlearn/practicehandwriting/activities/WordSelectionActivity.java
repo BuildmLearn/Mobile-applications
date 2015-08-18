@@ -2,16 +2,10 @@ package org.buildmlearn.practicehandwriting.activities;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-
-import com.github.amlcurran.showcaseview.ShowcaseView;
-import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
 import org.buildmlearn.practicehandwriting.R;
 
@@ -31,31 +25,6 @@ public class WordSelectionActivity extends Activity {
             Animation animation = AnimationUtils.loadAnimation(this, R.anim.slide_in);
             animation.setStartOffset(500 * i);
             findViewById(buttons[i]).startAnimation(animation);
-        }
-
-        SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean isFirstRun = wmbPreference.getBoolean("FIRSTWORD", true);
-        if (isFirstRun) {
-            SharedPreferences.Editor editor = wmbPreference.edit();
-            editor.putBoolean("FIRSTWORD", false);
-            editor.apply();
-            System.gc();
-            /*new ShowcaseView.Builder(this)
-                    .setTarget(new ViewTarget(R.id.easy_button, this))
-                    .setContentTitle("")
-                    .setContentText(getString(R.string.word_selection))
-                    .setStyle(R.style.CustomShowcaseTheme)
-                    .setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            ShowcaseView parent = (ShowcaseView) view.getParent();
-                            parent.hide();
-                            ((ViewGroup) getWindow().getDecorView()).removeView(parent);
-                            parent.setVisibility(View.GONE);
-                            System.gc();
-                        }
-                    })
-                    .build();*/
         }
     }
 

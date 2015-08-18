@@ -80,51 +80,52 @@
 
     <ImageView
         android:id="@+id/opticNerveBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramHeart"
         android:layout_alignTop="@+id/mainDiagramHeart"
-        android:layout_marginLeft="310dp"
-        android:layout_marginTop="310dp"
+        android:layout_marginLeft="305dp"
+        android:layout_marginTop="370dp"
         android:src="@drawable/marker_white" />
 
     <ImageView
         android:id="@+id/retinaBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignRight="@+id/mainDiagramHeart"
         android:layout_alignTop="@+id/mainDiagramHeart"
-        android:layout_marginRight="68dp"
+        android:layout_marginRight="80dp"
         android:layout_marginTop="65dp"
         android:src="@drawable/marker_white" />
 
     <ImageView
         android:id="@+id/ciliaryBodyBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramHeart"
         android:layout_alignTop="@+id/mainDiagramHeart"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="55dp"
         android:src="@drawable/marker_white" />
 
     <ImageView
         android:id="@+id/lensBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramHeart"
         android:layout_alignTop="@+id/mainDiagramHeart"
-        android:layout_marginTop="280dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="375dp"
         android:src="@drawable/marker_white" />
 
     <ImageView
         android:id="@+id/vitreousBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramHeart"
         android:layout_alignTop="@+id/mainDiagramHeart"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginLeft="168dp"
+        android:layout_marginTop="15dp"
         android:layout_centerVertical="true"
         android:src="@drawable/marker_white" />
 
@@ -162,7 +163,7 @@
         android:paddingRight="12dp"
         android:paddingTop="3dp"
         android:text="iris"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textColor="#ffff"/>
 
     <TextView
@@ -179,7 +180,7 @@
         android:paddingRight="12dp"
         android:paddingTop="3dp"
         android:text="pupil"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textColor="#ffff" />
 
     <TextView
@@ -196,7 +197,7 @@
         android:paddingRight="12dp"
         android:paddingTop="3dp"
         android:text="Cornea"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textColor="#ffff" />
 
     <TextView
@@ -213,7 +214,7 @@
         android:paddingRight="12dp"
         android:paddingTop="3dp"
         android:text="ciliary body"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textColor="#ffff" />
 
     <TextView
@@ -222,15 +223,15 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="90dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="55dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
         android:text="vitreous"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textColor="#ffff" />
 
     <TextView
@@ -239,15 +240,15 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="195dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginLeft="190dp"
+        android:layout_marginTop="55dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
         android:text="optic nerve"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textColor="#ffff" />
 
     <TextView
@@ -257,14 +258,14 @@
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
         android:layout_marginLeft="323dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="55dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
         android:text="fovea"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textColor="#ffff"/>
 
     <TextView
@@ -274,14 +275,14 @@
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="55dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
         android:text="Lens"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textColor="#ffff" />
 
     <TextView
@@ -291,14 +292,14 @@
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
         android:text="Retina"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textColor="#ffff" />
 
     <TextView
@@ -307,30 +308,31 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingTop="3dp"
         android:text="blind spot"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textColor="#ffff" />
 
     <ImageView
         android:id="@+id/irisBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramHeart"
         android:layout_alignTop="@+id/mainDiagramHeart"
-        android:layout_marginTop="140dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="80dp"
         android:src="@drawable/marker_white" />
 
     <ImageView
         android:id="@+id/blindSpotBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignRight="@+id/mainDiagramHeart"
         android:layout_alignTop="@+id/mainDiagramHeart"
         android:layout_marginRight="20dp"
@@ -339,32 +341,32 @@
 
     <ImageView
         android:id="@+id/foveaBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignRight="@+id/mainDiagramHeart"
         android:layout_alignTop="@+id/mainDiagramHeart"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="165dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="140dp"
         android:src="@drawable/marker_white" />
 
     <ImageView
         android:id="@+id/pupilBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramHeart"
         android:layout_alignTop="@+id/mainDiagramHeart"
-        android:layout_marginLeft="-14dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginLeft="-20dp"
+        android:layout_marginTop="165dp"
         android:src="@drawable/marker_white" />
 
     <ImageView
         android:id="@+id/corneaBlb"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_alignLeft="@+id/mainDiagramHeart"
         android:layout_alignTop="@+id/mainDiagramHeart"
-        android:layout_marginLeft="-17dp"
-        android:layout_marginTop="245dp"
+        android:layout_marginLeft="-20dp"
+        android:layout_marginTop="300dp"
         android:src="@drawable/marker_white" />
 
 </RelativeLayout>

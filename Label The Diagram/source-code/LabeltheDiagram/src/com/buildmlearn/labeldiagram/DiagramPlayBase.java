@@ -36,6 +36,7 @@ import android.os.Handler;
 import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.util.SparseIntArray;
+import android.view.Display;
 import android.view.DragEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -65,7 +66,7 @@ public abstract class DiagramPlayBase extends Activity implements
 	static final int TOTAL_COMPLETE_TRIES_COUNT = 2;
 	static final int MAX_ROWS_COUNT = 2;
 	static final int MAX_PREF_UPDATE_CYCLES = 4;
-	
+
 	List<Integer[]> placeHolderlist;
 	SparseIntArray tagPlaceHolderMap;
 	SparseIntArray incompleteTagList;
@@ -82,6 +83,8 @@ public abstract class DiagramPlayBase extends Activity implements
 	int totalLabeledCount = 0;
 	int tagListSize = 0;
 	int tryCycle;
+	int screenWidth;
+	int screenHeight;
 	boolean achievedBestScore = false;
 	String diagramName;
 	String diagramCategory;
@@ -124,16 +127,29 @@ public abstract class DiagramPlayBase extends Activity implements
 
 		// Create SharedPreferences object
 		initPreferences();
-
 		getIntentData();
+		getDisplayDimensions();
+
+	}
+
+	private void getDisplayDimensions() {
+
+		Display display = getWindowManager().getDefaultDisplay();
+		Point size = new Point();
+		display.getSize(size);
+		screenWidth = size.x;
+		screenHeight = size.y;
+
+		Log.i("Screen Size", "width : " + screenWidth + " height : "
+				+ screenHeight);
+
 	}
 
 	private void getIntentData() {
 
 		source = getIntent().getExtras().getString("SOURCE");
 		tryCycle = getIntent().getExtras().getInt("TRY_CYCLE");
-		
-		
+
 	}
 
 	private void initPreferences() {
@@ -141,7 +157,7 @@ public abstract class DiagramPlayBase extends Activity implements
 				"com.buildmlearn.labeldiagram.PREFERENCE_FILE_KEY",
 				Context.MODE_PRIVATE);
 		editor = preferences.edit();
-		
+
 	}
 
 	@Override
@@ -192,8 +208,8 @@ public abstract class DiagramPlayBase extends Activity implements
 
 		case DragEvent.ACTION_DRAG_ENTERED:
 
-			Toast.makeText(getApplicationContext(), "Ready to drop !",
-					20).show();
+			Toast.makeText(getApplicationContext(), "Ready to drop !", 20)
+					.show();
 			Log.i(TAG, "drag action entered");
 			return true;
 
@@ -222,16 +238,39 @@ public abstract class DiagramPlayBase extends Activity implements
 			// If placeholder is on left side, set XY coordinates of the
 			// draggedImageTag to right top corner
 			if (side == true) {
-				draggedImageTag
-						.setX(droppableView.getX() + droppableView.getWidth()
-								- draggedImageTag.getWidth());
+
+				float posX = droppableView.getX() + droppableView.getWidth()
+						- draggedImageTag.getWidth();
+
+				// If the draggedImage left margin < 0, align
+				// the left margin to 0.0f 
+				if (posX < 0.0) {
+					draggedImageTag.setX(0);
+				} else {
+					draggedImageTag.setX(droppableView.getX()
+							+ droppableView.getWidth()
+							- draggedImageTag.getWidth());
+				}
+				
 				draggedImageTag.setY(droppableView.getY());
+				
 			}
 
 			// If placeholder is on right side, set XY coordinates of the
 			// draggedImageTag to left top corner
 			else if (side == false) {
-				draggedImageTag.setX(droppableView.getX());
+				
+				float posX = droppableView.getX() + draggedImageTag.getWidth();
+				float offset = posX - screenWidth;
+				
+				// If the draggedImage right margin > screen-width, 
+				// set align the right margin to screen width
+				if(posX > screenWidth){
+					draggedImageTag.setX(droppableView.getX()- offset);
+				}else{
+					draggedImageTag.setX(droppableView.getX());
+				}
+				
 				draggedImageTag.setY(droppableView.getY());
 			}
 
@@ -249,7 +288,7 @@ public abstract class DiagramPlayBase extends Activity implements
 				// change the tag color to RED
 				draggedImageTag
 						.setBackgroundResource(R.drawable.custom_textview_incorrect);
-				
+
 				playSound(false);
 
 				totalLabeledCount += 1;
@@ -265,7 +304,7 @@ public abstract class DiagramPlayBase extends Activity implements
 				// the tag color to light greenS
 				draggedImageTag
 						.setBackgroundResource(R.drawable.custom_textview_correct);
-				
+
 				playSound(true);
 
 				totalLabeledCount += 1;
@@ -309,23 +348,25 @@ public abstract class DiagramPlayBase extends Activity implements
 	}
 
 	private void playSound(boolean soundOtion) {
-		
+
 		boolean isEnabled = preferences.getBoolean(SOUND_SETTING, false);
-		
-		if(isEnabled){
-			
-			if(soundOtion){
-				
-				MediaPlayer correctSound= MediaPlayer.create(getApplicationContext(), R.raw.correct);
+
+		if (isEnabled) {
+
+			if (soundOtion) {
+
+				MediaPlayer correctSound = MediaPlayer.create(
+						getApplicationContext(), R.raw.correct);
 				correctSound.start();
-			
-			}else{
-				
-				MediaPlayer wrongSound = MediaPlayer.create(getApplicationContext(), R.raw.wrong);
+
+			} else {
+
+				MediaPlayer wrongSound = MediaPlayer.create(
+						getApplicationContext(), R.raw.wrong);
 				wrongSound.start();
-			
+
 			}
-			
+
 		}
 	}
 
@@ -373,9 +414,9 @@ public abstract class DiagramPlayBase extends Activity implements
 					}
 
 					saveResultForBadges(totalScore, gameScore);
-					
-					if(isToDispatch == false){
-						dispatch(totalScore,gameScore);
+
+					if (isToDispatch == false) {
+						dispatch(totalScore, gameScore);
 					}
 
 				}
@@ -384,7 +425,6 @@ public abstract class DiagramPlayBase extends Activity implements
 		}
 
 	}
-
 
 	/**
 	 * Update score and progress if quit playing without completing all the tags
@@ -423,43 +463,40 @@ public abstract class DiagramPlayBase extends Activity implements
 		}
 
 		saveResultForBadges(totalScore, gameScore);
-		
-		if(isToDispatch == false){
+
+		if (isToDispatch == false) {
 			dispatch(totalScore, gameScore);
 		}
-		
-	
+
 	}
-	
+
 	private void saveResultForBadges(float score, int gameScore) {
 
 		initPreferences();
 		generateBadges(score, gameScore);
 
 	}
-	
-	private void generateBadges(float score, int gameScore) {
-		
 
-		if((int)score < 20){
-			
-			if(source.equals("Fragment")){
+	private void generateBadges(float score, int gameScore) {
+
+		if ((int) score < 20) {
+
+			if (source.equals("Fragment")) {
 				tryCycle = 0;
-			}else if(source.equals("Result")){
+			} else if (source.equals("Result")) {
 				tryCycle = tryCycle + 1;
 			}
-			
+
 		}
-		
-		if ((int)score >= 20) {
-			
+
+		if ((int) score >= 20) {
+
 			generateGreatStreakBadge(score, gameScore);
-			
+
 			generatePersistanceBadge(score, gameScore);
 
 			generateMasterBadges(score, gameScore);
-			
-			
+
 		}
 
 	}
@@ -472,74 +509,79 @@ public abstract class DiagramPlayBase extends Activity implements
 		boolean allDiagramsCompleted;
 		Gson gson = new Gson();
 		HashMap<String, Boolean> recordMap = new HashMap<String, Boolean>();
-		
+
 		key = getResources().getString(R.string.fully_completed_tries_count);
-		
+
 		boolean isGreatStreakBadge = preferences.getBoolean(key, false);
-		
+
 		openDB();
-		Cursor cursor = diagramDb.getFirstThreeScoreRows(); 
-		
+		Cursor cursor = diagramDb.getFirstThreeScoreRows();
+
 		if (cursor.moveToFirst()) {
 			do {
 				String name = cursor.getString(DBAdapter.COL_DIAGRAM_NAME);
 				String result = cursor.getString(DBAdapter.COL_RESULT);
 
-				Type type = new TypeToken<Result>() {}.getType();
+				Type type = new TypeToken<Result>() {
+				}.getType();
 				Result resultObj = gson.fromJson(result, type);
-				
-				recordMap.put(resultObj.getDiagramName(), resultObj.getCompleted());
-				
+
+				recordMap.put(resultObj.getDiagramName(),
+						resultObj.getCompleted());
+
 			} while (cursor.moveToNext());
-			
-		}else{
+
+		} else {
 			Log.i("NULL RECORD SET", "No records yet");
 			return;
 		}
-		
-		if(!isGreatStreakBadge){
-			
-			if(recordMap.size() == MAX_ROWS_COUNT){
-				
-				if(!recordMap.containsKey(getDiagramName())){
-					
+
+		if (!isGreatStreakBadge) {
+
+			if (recordMap.size() == MAX_ROWS_COUNT) {
+
+				if (!recordMap.containsKey(getDiagramName())) {
+
 					Collection<Boolean> val = recordMap.values();
-					Boolean[] array = (Boolean[])(val.toArray(new Boolean[val.size()]));
+					Boolean[] array = (Boolean[]) (val.toArray(new Boolean[val
+							.size()]));
 					int count = 0;
-					 for(int i=0; i<array.length; i++){
-						 if(array[i] == true){
-							 count += 1;
-						 }
-					 }
-					 
-					 if(count == MAX_ROWS_COUNT){
-						 
+					for (int i = 0; i < array.length; i++) {
+						if (array[i] == true) {
+							count += 1;
+						}
+					}
+
+					if (count == MAX_ROWS_COUNT) {
+
 						isToDispatch = true;
 						allDiagramsCompleted = false;
 						updateBoolPreferences(key);
-						
-						badgeTitle = getResources().getString(R.string.badge_streak);
+
+						badgeTitle = getResources().getString(
+								R.string.badge_streak);
 						badgeId = R.drawable.streak;
-						
+
 						database.updateBadgeAchievement(badgeTitle, true);
-						
-						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
-					 }
-					
+
+						intentBuilder(badgeTitle, badgeId, score, gameScore,
+								allDiagramsCompleted, tryCycle);
+					}
+
 				}
-				
-			}else{
+
+			} else {
 				return;
 			}
-			
-		}else{
+
+		} else {
 			return;
 		}
 
 	}
 
 	private void generateMasterBadges(float score, int gameScore) {
-		
+
 		String key;
 		String badgeTitle;
 		int keyValue;
@@ -548,207 +590,219 @@ public abstract class DiagramPlayBase extends Activity implements
 		String mMasterPhysicsBadge;
 		String mMasterScienceBadge;
 		boolean allDiagramsCompleted = false;
-		
+
 		switch (diagramCategory) {
 
 		case "Biology":
-			
+
 			key = getDiagramName().concat("Biology");
-			keyValue = updateMasterPreferences(key,diagramCategory);
-			
+			keyValue = updateMasterPreferences(key, diagramCategory);
+
 			mMasterBioBadge = "bioBadge";
-			boolean isMasterBioBadge = preferences.getBoolean(mMasterBioBadge, false);
-			
-			if(!isMasterBioBadge){
-				
-				if(keyValue == BIO_DIAGRAM_COUNT){
-					
+			boolean isMasterBioBadge = preferences.getBoolean(mMasterBioBadge,
+					false);
+
+			if (!isMasterBioBadge) {
+
+				if (keyValue == BIO_DIAGRAM_COUNT) {
+
 					isToDispatch = true;
 					updateBoolPreferences(mMasterBioBadge);
-					badgeTitle = getResources().getString(R.string.badge_biology);
+					badgeTitle = getResources().getString(
+							R.string.badge_biology);
 					badgeId = R.drawable.bio;
-					
-					key = getResources().getString(R.string.total_category_completed);
+
+					key = getResources().getString(
+							R.string.total_category_completed);
 					keyValue = updatePreferences(key);
-					
-					if(keyValue == TOTAL_CATEGORY_COUNT){
-						
+
+					if (keyValue == TOTAL_CATEGORY_COUNT) {
+
 						allDiagramsCompleted = true;
 						database.updateBadgeAchievement(badgeTitle, true);
-						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
-						
-					}else{
-						
+						intentBuilder(badgeTitle, badgeId, score, gameScore,
+								allDiagramsCompleted, tryCycle);
+
+					} else {
+
 						database.updateBadgeAchievement(badgeTitle, true);
-						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
-					
+						intentBuilder(badgeTitle, badgeId, score, gameScore,
+								allDiagramsCompleted, tryCycle);
+
 					}
-					
+
 				}
-				
+
 			}
-			
-			
+
 			break;
-			
+
 		case "Physics":
-			
+
 			key = getDiagramName().concat("Physics");
-			keyValue = updateMasterPreferences(key,diagramCategory);
-			
+			keyValue = updateMasterPreferences(key, diagramCategory);
+
 			mMasterPhysicsBadge = "physicsBadge";
-			boolean isMasterPhysicsBadge = preferences.getBoolean(mMasterPhysicsBadge, false);
-			
-			if(!isMasterPhysicsBadge){
-				
-				if(keyValue == PHYSICS_DIAGRAM_COUNT){
-					
+			boolean isMasterPhysicsBadge = preferences.getBoolean(
+					mMasterPhysicsBadge, false);
+
+			if (!isMasterPhysicsBadge) {
+
+				if (keyValue == PHYSICS_DIAGRAM_COUNT) {
+
 					isToDispatch = true;
 					updateBoolPreferences(mMasterPhysicsBadge);
-					badgeTitle = getResources().getString(R.string.badge_physics);
+					badgeTitle = getResources().getString(
+							R.string.badge_physics);
 					badgeId = R.drawable.physics;
-					
-					key = getResources().getString(R.string.total_category_completed);
+
+					key = getResources().getString(
+							R.string.total_category_completed);
 					keyValue = updatePreferences(key);
-					
-					if(keyValue == TOTAL_CATEGORY_COUNT){
-						
+
+					if (keyValue == TOTAL_CATEGORY_COUNT) {
+
 						allDiagramsCompleted = true;
 						database.updateBadgeAchievement(badgeTitle, true);
-						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
-					
-					}else{
-						
+						intentBuilder(badgeTitle, badgeId, score, gameScore,
+								allDiagramsCompleted, tryCycle);
+
+					} else {
+
 						database.updateBadgeAchievement(badgeTitle, true);
-						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
-					
+						intentBuilder(badgeTitle, badgeId, score, gameScore,
+								allDiagramsCompleted, tryCycle);
+
 					}
-					
+
 				}
-				
+
 			}
-			
+
 			break;
-			
+
 		case "Science":
-			
+
 			key = getDiagramName().concat("Science");
-			keyValue = updateMasterPreferences(key,diagramCategory);
-			
+			keyValue = updateMasterPreferences(key, diagramCategory);
+
 			mMasterScienceBadge = "scienceBadge";
-			boolean isMasterScienceBadge = preferences.getBoolean(mMasterScienceBadge, false);
-			
-			if(!isMasterScienceBadge){
-				
-				if(keyValue == SCIENCE_DIAGRAM_COUNT){
-					
+			boolean isMasterScienceBadge = preferences.getBoolean(
+					mMasterScienceBadge, false);
+
+			if (!isMasterScienceBadge) {
+
+				if (keyValue == SCIENCE_DIAGRAM_COUNT) {
+
 					isToDispatch = true;
 					updateBoolPreferences(mMasterScienceBadge);
-					badgeTitle = getResources().getString(R.string.badge_science);
+					badgeTitle = getResources().getString(
+							R.string.badge_science);
 					badgeId = R.drawable.science;
 
-					key = getResources().getString(R.string.total_category_completed);
+					key = getResources().getString(
+							R.string.total_category_completed);
 					keyValue = updatePreferences(key);
-					
-					if(keyValue == TOTAL_CATEGORY_COUNT){
-						
+
+					if (keyValue == TOTAL_CATEGORY_COUNT) {
+
 						allDiagramsCompleted = true;
 						database.updateBadgeAchievement(badgeTitle, true);
-						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
-					
-					}else{
-						
+						intentBuilder(badgeTitle, badgeId, score, gameScore,
+								allDiagramsCompleted, tryCycle);
+
+					} else {
+
 						database.updateBadgeAchievement(badgeTitle, true);
-						intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
-					
+						intentBuilder(badgeTitle, badgeId, score, gameScore,
+								allDiagramsCompleted, tryCycle);
+
 					}
-					
+
 				}
-				
+
 			}
-			
+
 			break;
-			
+
 		default:
 			break;
-			
+
 		}
 	}
-	
-	
+
 	private void generatePersistanceBadge(float score, int gameScore) {
-		
+
 		String badgeTitle;
 		int badgeId;
 		boolean allDiagramsCompleted;
 
-			
-			if(tryCycle == TOTAL_COMPLETE_TRIES_COUNT){
-				
-				isToDispatch = true;
-				allDiagramsCompleted = false;
-				
-				badgeTitle = getResources().getString(R.string.badge_persistence);
-				badgeId = R.drawable.persistence;
-				
-				database.updateBadgeAchievement(badgeTitle, true);
-				
-				intentBuilder(badgeTitle,badgeId,score,gameScore,allDiagramsCompleted,tryCycle);
-				
-			}
-		
+		if (tryCycle == TOTAL_COMPLETE_TRIES_COUNT) {
+
+			isToDispatch = true;
+			allDiagramsCompleted = false;
+
+			badgeTitle = getResources().getString(R.string.badge_persistence);
+			badgeId = R.drawable.persistence;
+
+			database.updateBadgeAchievement(badgeTitle, true);
+
+			intentBuilder(badgeTitle, badgeId, score, gameScore,
+					allDiagramsCompleted, tryCycle);
+
+		}
+
 	}
-	
-	
+
 	private int updateMasterPreferences(String key, String category) {
-		
+
 		boolean value;
 		int count;
-		
+
 		value = preferences.getBoolean(key, false);
 		count = preferences.getInt(category, 0);
-		
-		if(value == false){
+
+		if (value == false) {
 			value = true;
 			count += 1;
 		}
-		
+
 		editor.putBoolean(key, value);
 		editor.putInt(category, count);
 		editor.commit();
-		
+
 		return count;
 	}
-	
-	private void updateBoolPreferences(String key){
-		
+
+	private void updateBoolPreferences(String key) {
+
 		boolean value;
 		value = preferences.getBoolean(key, false);
 		value = true;
 		editor.putBoolean(key, value);
 		editor.commit();
-		
+
 	}
 
-	
-	private int updatePreferences(String key){
-		
+	private int updatePreferences(String key) {
+
 		int previousVal;
 		int updatedVal;
-		
+
 		previousVal = preferences.getInt(key, 0);
 		updatedVal = previousVal += 1;
 		editor.putInt(key, updatedVal);
 		editor.commit();
-		//preferences.getBoolean(key, defValue)
+		// preferences.getBoolean(key, defValue)
 		return updatedVal;
-		
+
 	}
 
-	protected abstract void intentBuilder(String badgeTitle, int badgeId, float score, int gameScore, boolean completed, int tryCycle);
+	protected abstract void intentBuilder(String badgeTitle, int badgeId,
+			float score, int gameScore, boolean completed, int tryCycle);
 
 	protected abstract void dispatch(float totalScore, int gameScore);
-	
+
 	/**
 	 * Indicate whether the placeholder is on left side or right side of the
 	 * diagram
@@ -848,7 +902,6 @@ public abstract class DiagramPlayBase extends Activity implements
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
 
 	public String getDiagramName() {
 		return diagramName;
@@ -865,9 +918,9 @@ public abstract class DiagramPlayBase extends Activity implements
 	public void setDiagramCategory(String diagramCategory) {
 		this.diagramCategory = diagramCategory;
 	}
-	
+
 	protected abstract int getResourcesId();
-	
+
 	protected void openDB() {
 		diagramDb = new DBAdapter(this);
 		diagramDb.open();
@@ -884,5 +937,5 @@ public abstract class DiagramPlayBase extends Activity implements
 		super.onDestroy();
 		closeDB();
 	}
-	
+
 }

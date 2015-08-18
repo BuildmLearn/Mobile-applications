@@ -378,11 +378,10 @@ public class PlaceHolderContainer {
 	private List<Integer[]> getHumanEyeMarkerList() {
 
 		leftPlaceHolderList = new Integer[] { R.id.corneaBlb,
-				R.id.ciliaryBodyBlb, R.id.irisBlb, R.id.pupilBlb, R.id.lensBlb,
-				R.id.vitreousBlb };
+				R.id.ciliaryBodyBlb, R.id.irisBlb, R.id.pupilBlb, R.id.lensBlb, };
 
 		rightPlaceHolderList = new Integer[] { R.id.foveaBlb, R.id.retinaBlb,
-				R.id.opticNerveBlb, R.id.blindSpotBlb };
+				R.id.opticNerveBlb, R.id.blindSpotBlb, R.id.vitreousBlb };
 
 		listHolder.add(leftPlaceHolderList);
 		listHolder.add(rightPlaceHolderList);

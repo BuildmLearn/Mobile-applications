@@ -4,16 +4,12 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -22,8 +18,6 @@ import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import org.buildmlearn.practicehandwriting.R;
 
@@ -37,10 +31,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-//Activity to display the results of the Time Trial session
+/**
+ * Activity to display the results of the Time Trial session
+ */
 public class TimeTrialResultActivity extends Activity {
 
+    /**
+     * The temporary directory where the user's traces are stored
+     */
     private File mTempDir;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         try {
@@ -97,7 +97,10 @@ public class TimeTrialResultActivity extends Activity {
         }
     }
 
-    //function to show the error that occurred while starting the practice session
+    /**
+     * Function to show the error that occurred while starting the practice session
+     * @param e The exception that was caught
+     */
     protected void showErrorDialog(final Exception e) {
         new AlertDialog.Builder(this)
                 .setTitle("ERROR")
@@ -128,6 +131,10 @@ public class TimeTrialResultActivity extends Activity {
                 .show();
     }
 
+    /**
+     * Function that saves the user traces to the memory when the save button is pressed
+     * @param view
+     */
     public void saveTimeTrial(View view) {
         int i;
         String toastText = "";
@@ -167,13 +174,17 @@ public class TimeTrialResultActivity extends Activity {
         super.onStop();
         //Running Garbage Collection
         System.gc();
+        if(mTempDir.exists()) {
+            for (File file : mTempDir.listFiles())
+                file.delete();
+            mTempDir.delete();
+        }
     }
 
 
     @Override
     public void onBackPressed() {
         //Going back to the main menu instead of the Tracing screen
-        SplashActivity.isFirstRun = false;
         //Deleting the files in the temp directory and the directory itself
         if(mTempDir.exists()) {
             for (File file : mTempDir.listFiles())

@@ -5,12 +5,8 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-
-import com.github.amlcurran.showcaseview.ShowcaseView;
-import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
 import org.buildmlearn.practicehandwriting.R;
 
@@ -29,47 +25,6 @@ public class LanguageActivity extends Activity {
             Animation animation = AnimationUtils.loadAnimation(this, R.anim.slide_in);
             animation.setStartOffset(500 * i);
             findViewById(buttons[i]).startAnimation(animation);
-        }
-        if(SplashActivity.isFirstRun) {
-            System.gc();
-            /*new ShowcaseView.Builder(this)
-                    .setTarget(new ViewTarget(R.id.english_button, this))
-                    .setContentTitle("Choose a Language")
-                    .setContentText("")
-                    .setStyle(R.style.CustomShowcaseTheme)
-                    .setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            ShowcaseView parent = (ShowcaseView) view.getParent();
-                            parent.hide();
-                            ((ViewGroup) getWindow().getDecorView()).removeView(parent);
-                            parent.setVisibility(View.GONE);
-                            for (int button : buttons)
-                                findViewById(button).setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        languageActivityOnClick(view);
-                                    }
-                                });
-                            System.gc();
-                        }
-                    })
-                    .build();*/
-            for (int button : buttons)
-                findViewById(button).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        languageActivityOnClick(view);
-                    }
-                });
-        } else {
-            for (int button : buttons)
-                findViewById(button).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        languageActivityOnClick(view);
-                    }
-                });
         }
     }
 

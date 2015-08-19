@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/AppBg"
     android:gravity="center"
+    android:id="@+id/PracticeParentView"
     tools:context="org.buildmlearn.practicehandwriting.helper.PracticeBaseActivity">
 
     <android.support.v7.widget.Toolbar

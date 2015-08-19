@@ -13,23 +13,53 @@ import android.widget.Toast;
 import org.buildmlearn.practicehandwriting.R;
 import org.buildmlearn.practicehandwriting.helper.ScoreDbHelper;
 
-//Splash Screen Activity
+/**
+ * Splash Screen Activity
+ */
 public class SplashActivity extends Activity implements TextToSpeech.OnInitListener{
     //All the public static fields are going to be used throughout the app. They are initialized here to prevent recurring initialization while using the app.
 
-    private static int SPLASH_TIME_OUT = 1500;
+
     private static final int MY_DATA_CHECK_CODE = 100;
 
+    /**
+     * The TTS object that shall be speaking throughout the app
+     */
     public static TextToSpeech TTSobj;
 
-    public static String[] CHARACTER_LIST, EASY_WORD_LIST, MEDIUM_WORD_LIST, HARD_WORD_LIST;
+    /**
+     * The list of characters that are available to the user
+     */
+    public static String[] CHARACTER_LIST;
 
+    /**
+     * The list of words of easy difficulty that are available to the user
+     */
+    public static String[] EASY_WORD_LIST;
+
+    /**
+     * The list of words of medium difficulty that are available to the user
+     */
+    public static String[] MEDIUM_WORD_LIST;
+
+    /**
+     * The list of words of hard difficulty that are available to the user
+     */
+    public static String[] HARD_WORD_LIST;
+
+    /**
+     * Boolean variable that is set to true when the TTS is initialized
+     */
     private boolean mTtsInitDone;
 
-    public static boolean isFirstRun;
-
+    /**
+     * Helper object to assist with writing and reading from the score database
+     */
     public static ScoreDbHelper mDbHelper;
 
+    /**
+     * Display metrics of the device screen
+     */
     public static DisplayMetrics mDisplayMetrics;
 
     @Override
@@ -39,7 +69,7 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
         mTtsInitDone = false;
 
         SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(this);
-        isFirstRun = wmbPreference.getBoolean("FIRSTRUN", true);
+        final boolean isFirstRun = wmbPreference.getBoolean("FIRSTRUN", true);
         if (isFirstRun) {
             SharedPreferences.Editor editor = wmbPreference.edit();
             editor.putBoolean("FIRSTRUN", false);
@@ -65,11 +95,15 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
             @Override
             public void run() {
                 while(!(mTtsInitDone));
-                startActivity(new Intent(SplashActivity.this, LanguageActivity.class));
+                if(!isFirstRun)
+                    startActivity(new Intent(SplashActivity.this, LanguageActivity.class));
+                else
+                    startActivity(new Intent(SplashActivity.this, TutorialActivity.class));
             }
         }).start();
     }
 
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == MY_DATA_CHECK_CODE) {
@@ -94,9 +128,11 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
         }
     }
 
+    @Override
     public void onInit(int status) {
         try {
             //show the splash screen for sometime before proceeding.
+            int SPLASH_TIME_OUT = 1500;
             Thread.sleep(SPLASH_TIME_OUT);
             mTtsInitDone = true;
         } catch (InterruptedException e) {

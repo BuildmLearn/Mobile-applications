@@ -577,6 +577,7 @@
     <string name="title_activity_time_trial_result">TimeTrialResultActivity</string>
     <string name="title_activity_freehand">FreehandActivity</string>
     <string name="title_activity_time_trial">TimeTrialActivity</string>
+    <string name="title_activity_tutorial">TutorialActivity</string>
 
     <string name="incomplete">We are still working on this.</string>
 
@@ -607,4 +608,5 @@
     <string name="actionbarHelp">Press to go to the next/previous letter/word</string>
     <string name="freehandHelp">Trace freely without a boundary</string>
     <string name="timerHelp">Trace as much as you can before the time runs out</string>
+    <string name="title_activity_tutorial_display">TutorialDisplayActivity</string>
 </resources>

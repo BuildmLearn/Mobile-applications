@@ -33,40 +33,141 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-//Custom View implementing the trace engine.
+/**
+ * Custom View implementing the trace engine.
+ */
 public class DrawingView extends View {
 
-    private Path mDrawPath; //The drawing path
-    private Paint mDrawPaint, mCanvasPaint; //The paints used to draw on the canvas
-    private Canvas mDrawCanvas; //The canvas of the view
-    private Bitmap mCanvasBitmap; //The bitmap that is set
-    private Vibrator mVibrator; //Vibrator instance to vibrate if the user traces outside the boundary of the string
-    private long mWrongTouches, mCorrectTouches; //number of correct/wrong touches
-    private boolean mDraw, mVibrate, mScoring; //Boolean variables that allow the view to be redrawn and to vibrate
-    private long mVibrationStartTime; //The start time of the vibration
-    private Toast mErrorToast; //Toast to display if user has been tracing wrongly for a long time
-    private int minX, minY, maxX, maxY; //bounds of the touches
-    private int mTouchColour; //colour of the touch
-    private ArrayList<ArrayList<Point>> mTouchPoints; //List of strokes. Each ArrayList<Point> is the touches from one MOTION_DOWN even to a MOTION_UP even
-    private Context mContext;// The context of the view
+    /**
+     * The drawing path
+     */
+    private Path mDrawPath;
 
-    public int mWidth, mHeight, mTextWidth, mTextHeight; //View dimensions and text dimensions
+    /**
+     * The paint used to draw the touches
+     */
+    private Paint mDrawPaint;
 
+    private Paint mCanvasPaint;  //The paints used to draw on the canvas
+    /**
+     * The canvas of the view
+     */
+    private Canvas mDrawCanvas;
+
+    /**
+     * The bitmap that is set
+     */
+    private Bitmap mCanvasBitmap;
+
+    /**
+     * Vibrator instance to vibrate if the user traces outside the boundary of the string
+     */
+    private Vibrator mVibrator;
+
+    /**
+     * number of wrong touches
+     */
+    private long mWrongTouches;
+
+    /**
+     * number of correct touches
+     */
+    private long mCorrectTouches;
+
+    /**
+     * Boolean variable that enables drawing
+     */
+    private boolean mDraw;
+
+    /**
+     * Boolean variable that enables vibration
+     */
+    private boolean mVibrate;
+
+    /**
+     * Boolean variables that enables scoring
+     */
+    private boolean mScoring;
+
+    /**
+     * The start time of the vibration
+     */
+    private long mVibrationStartTime;
+
+    /**
+     * Toast to display if user has been tracing wrongly for a long time
+     */
+    private Toast mErrorToast;
+
+    /**
+     * bounds of the touches
+     */
+    private int minX, minY, maxX, maxY;
+
+    /**
+     * List of strokes. Each ArrayList<Point> is the touches from one MOTION_DOWN even to a MOTION_UP even
+     */
+    private ArrayList<ArrayList<Point>> mTouchPoints;
+
+    /**
+     * The context of the view
+     */
+    private Context mContext;
+
+    /**
+     * View width
+     */
+    public int mWidth;
+
+    /**
+     * View height
+     */
+    public int mHeight;
+
+    /**
+     * Text width
+     */
+    public int  mTextWidth;
+
+    /**
+     * Text height
+     */
+    public int mTextHeight;
+
+    /**
+     * Simple constructor to use when creating a view from code.
+     * @param context The Context the view is running in, through which it can access the current theme, resources, etc.
+     */
     public DrawingView(Context context) {
         super(context);
         init(context);
     }
 
+    /**
+     * Constructor that is called when inflating a view from XML.
+     * @param context The Context the view is running in, through which it can access the current theme, resources, etc.
+     * @param attrs The attributes of the XML tag that is inflating the view.
+     */
     public DrawingView(Context context,AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
+    /**
+     * Perform inflation from XML and apply a class-specific base style from a theme attribute.
+     * @param context The Context the view is running in, through which it can access the current theme, resources, etc.
+     * @param attrs The attributes of the XML tag that is inflating the view.
+     * @param defStyle An attribute in the current theme that contains a reference to a style resource that supplies default values for the view. Can be 0 to not look for defaults.
+     */
     public DrawingView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(context);
     }
 
+    /**
+     * Function to initialize all the variables of the class
+     * @param context The Context the view is running in, through which it can access the current theme, resources, etc.
+     */
     private void init(Context context) {
         //context based init goes here
         mContext = context;
@@ -90,9 +191,12 @@ public class DrawingView extends View {
         init();
     }
 
+    /**
+     *  Function to initialize all the variables of the class that do not require a context
+     */
     public void init() {
         //get drawing area setup for interaction
-        mTouchColour = getResources().getColor(R.color.Red);
+        int mTouchColour = getResources().getColor(R.color.Red);
 
         mDrawPath = new Path();
         mDrawPaint = new Paint();
@@ -130,7 +234,10 @@ public class DrawingView extends View {
         mDrawCanvas = new Canvas(mCanvasBitmap);
     }
 
-    //function to set text to be traced to the view
+    /**
+     * Function to set text to be traced to the view
+     * @param str The string to be practiced
+     */
     public void setBitmapFromText(String str) {
         init();
 
@@ -154,6 +261,10 @@ public class DrawingView extends View {
         invalidate();
     }
 
+    /**
+     * Function to set a bitmap to the view
+     * @param b The Bitmap to be set
+     */
     public void setBitmap(Bitmap b) {
         init();
         //Drawing the bitmap at the center of the view
@@ -233,20 +344,35 @@ public class DrawingView extends View {
         return false;
     }
 
+    /**
+     * Function to enable/disable scoring of the traces
+     * @param scoring true to enable scoring, false to disable it
+     */
     public void canScore(boolean scoring){
         mScoring = scoring;
     }
 
+    /**
+     * Function to enable/disable vibration
+     * @param vibrate true to enable vibration, false to disable it
+     */
     public void canVibrate(boolean vibrate){
         mVibrate = vibrate;
     }
 
+    /**
+     * Function to enable/disable drawing of user touches
+     * @param draw true to enable drawing, false to disable it
+     */
     public void canDraw(boolean draw) {
         mDraw = draw;
     }
 
+    /**
+     * Function to get the image of the view with a distinct background
+     * @return the image of the view
+     */
     public Bitmap getBitmap() {
-        //Get the image of the view
         Bitmap overlayBitmap = Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_4444);
         overlayBitmap.eraseColor(getResources().getColor(R.color.AppBg));
         Canvas canvas = new Canvas(overlayBitmap);
@@ -254,22 +380,42 @@ public class DrawingView extends View {
         return overlayBitmap;
     }
 
+    /**
+     * Function to get the raw image of the view
+     * @return the raw image of the view
+     */
     public Bitmap getCanvasBitmap() {
         return mCanvasBitmap;
     }
 
+    /**
+     * Function to return the bounds of the touches performed by the user
+     * @return An array of the bounds
+     */
     public int[] getTouchBounds() {
         return new int[] {minX,minY,maxX,maxY};
     }
 
+    /**
+     * Function to obtain the Score of the current trace
+     * @return Score of the current trace
+     */
     public float score() {
         return (mCorrectTouches + mWrongTouches !=0)?100* mCorrectTouches /(mCorrectTouches + mWrongTouches):0;
     }
 
+    /**
+     * Funtion to get the List of touches performed by the user
+     * @return List of touches performed by the user
+     */
     public ArrayList<ArrayList<Point>> getTouchesList() {
         return mTouchPoints;
     }
 
+    /**
+     * Funtion to get a part of the view that lies within the touch bounds
+     * @return Image of the view cropped within the touch bounds
+     */
     public Bitmap getTouchesBitmap() {
         if(minX!=mWidth && minY!=mHeight && maxX!=-1 && maxY!=-1)
             return Bitmap.createBitmap(mCanvasBitmap,Math.max(minX - 30, 0),Math.max(minY -30,0),Math.min(maxX - minX +40, mWidth - minX),Math.min(maxY - minY +40, mHeight - minY));
@@ -277,6 +423,12 @@ public class DrawingView extends View {
             return Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_4444);
     }
 
+    /**
+     * Function to save the current trace to device memory
+     * @param practiceString The string that was being practiced
+     * @param dirExtra The extra path to the directory in case of a time trial view, or an empty string in case of saving a single trace
+     * @return String explaining the
+     */
     public String saveBitmap(String practiceString, String dirExtra) {
         File mediaStorageDir = new File(Environment.getExternalStorageDirectory() + File.separator + getResources().getString(R.string.app_name) + dirExtra);
         if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()) {

@@ -36,7 +36,8 @@
         fbutton:buttonColor="@color/ButtonBg"
         android:textColor="@color/White"
         android:textSize="20sp"
-        android:text="@string/English" />
+        android:text="@string/English"
+        android:onClick="languageActivityOnClick"/>
     </LinearLayout>
 
     <View
@@ -58,7 +59,8 @@
             fbutton:buttonColor="@color/ButtonBg"
             android:textColor="@color/White"
             android:textSize="20sp"
-            android:text="@string/Hindi"/>
+            android:text="@string/Hindi"
+            android:onClick="languageActivityOnClick"/>
     </LinearLayout>
 
     <View
@@ -80,7 +82,8 @@
             android:textSize="20sp"
             fbutton:buttonColor="@color/ButtonBg"
             android:textColor="@color/White"
-            android:text="@string/Arabic"/>
+            android:text="@string/Arabic"
+            android:onClick="languageActivityOnClick"/>
     </LinearLayout>
 
     <View

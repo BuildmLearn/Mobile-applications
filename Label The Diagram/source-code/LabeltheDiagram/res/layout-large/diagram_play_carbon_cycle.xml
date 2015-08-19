@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/scoreTxt"
             android:layout_alignBottom="@+id/scoreTxt"
-            android:layout_marginLeft="18dp"
+            android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/scoreTxt"
             android:text="0"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -38,9 +38,9 @@
             android:layout_alignBaseline="@+id/complatedTxt"
             android:layout_alignBottom="@+id/complatedTxt"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/complatedTxt"
-            android:text=" 0%"
+            android:text="0%"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffff" />
 
@@ -50,8 +50,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:text="Complete :"
+            android:layout_marginLeft="25dp"
+            android:text="Complete    :"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffff" />
 
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/complete_ratio"
             android:layout_alignBottom="@+id/complete_ratio"
-            android:layout_marginLeft="24dp"
+            android:layout_marginLeft="25dp"
             android:layout_toRightOf="@+id/view1"
             android:text="Score   :"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -178,7 +178,7 @@
 
     <ImageView
         android:id="@+id/innerTagHolder"
-        android:layout_width="460dp"
+        android:layout_width="450dp"
         android:layout_height="180dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -190,7 +190,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
@@ -199,7 +199,7 @@
         android:paddingTop="3dp"
         android:text="photosynthesis"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/organic_carbonTag"
@@ -207,7 +207,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="190dp"
+        android:layout_marginLeft="187dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
@@ -216,7 +216,7 @@
         android:paddingTop="3dp"
         android:text="photosynthesis"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/fossilsTag"
@@ -233,7 +233,7 @@
         android:paddingTop="3dp"
         android:text="fossils"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/ocean_uptakeTag"
@@ -241,7 +241,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
@@ -250,7 +250,7 @@
         android:paddingTop="3dp"
         android:text="ocean uptake"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/sunlightTag"
@@ -258,7 +258,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="175dp"
+        android:layout_marginLeft="170dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
@@ -267,7 +267,7 @@
         android:paddingTop="3dp"
         android:text="sunlight"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/dead_organismsTag"
@@ -275,7 +275,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="285dp"
+        android:layout_marginLeft="275dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
@@ -284,7 +284,7 @@
         android:paddingTop="3dp"
         android:text="dead organisms"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/animal_respirationTag"
@@ -292,7 +292,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="95dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
@@ -301,7 +301,7 @@
         android:paddingTop="3dp"
         android:text="animal respiration"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/vehicle_emissionsTag"
@@ -318,7 +318,7 @@
         android:paddingTop="3dp"
         android:text="vehicle emissions"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/plant_respirationTag"
@@ -326,7 +326,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="140dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
@@ -335,6 +335,6 @@
         android:paddingTop="3dp"
         android:text="plant respiration"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
 </RelativeLayout>

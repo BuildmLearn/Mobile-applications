@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/scoreTxt"
             android:layout_alignBottom="@+id/scoreTxt"
-            android:layout_marginLeft="18dp"
+            android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/scoreTxt"
             android:text="0"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -38,9 +38,9 @@
             android:layout_alignBaseline="@+id/complatedTxt"
             android:layout_alignBottom="@+id/complatedTxt"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/complatedTxt"
-            android:text=" 0%"
+            android:text="0%"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffff" />
 
@@ -50,8 +50,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:text="Complete :"
+            android:layout_marginLeft="25dp"
+            android:text="Complete    :"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffff" />
 
@@ -61,11 +61,12 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/complete_ratio"
             android:layout_alignBottom="@+id/complete_ratio"
-            android:layout_marginLeft="24dp"
+            android:layout_marginLeft="25dp"
             android:layout_toRightOf="@+id/view1"
             android:text="Score   :"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffff" />
+        
     </RelativeLayout>
 
     <ImageView
@@ -87,11 +88,11 @@
 
     <ImageView
         android:id="@+id/innerTagHolder"
-        android:layout_width="500dp"
+        android:layout_width="450dp"
         android:layout_height="170dp"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/tagHolder"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="0dp"
         android:layout_marginTop="70dp"
         android:scaleType="fitXY"
         android:src="@drawable/inner_holder" />
@@ -182,8 +183,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -191,7 +192,7 @@
         android:paddingTop="3dp"
         android:text="ocean"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/infiltratoinTag"
@@ -199,8 +200,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginLeft="95dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -208,7 +209,7 @@
         android:paddingTop="3dp"
         android:text="infiltration"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/underground_waterTag"
@@ -216,8 +217,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="260dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginLeft="225dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -225,7 +226,7 @@
         android:paddingTop="3dp"
         android:text="underground water"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/preciptationTag"
@@ -233,8 +234,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -242,7 +243,7 @@
         android:paddingTop="3dp"
         android:text="preciptation"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/eveporationTag"
@@ -250,8 +251,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="160dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -259,7 +260,7 @@
         android:paddingTop="3dp"
         android:text="eveporation"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/transpirationTag"
@@ -267,8 +268,8 @@
         android:layout_height="wrap_content"
          android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="310dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginLeft="280dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
         android:paddingLeft="12dp"
@@ -276,7 +277,7 @@
         android:paddingTop="3dp"
         android:text="transpiration"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/surface_runTag"
@@ -284,7 +285,7 @@
         android:layout_height="wrap_content"
          android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="0dp"
         android:layout_marginTop="105dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
@@ -293,7 +294,7 @@
         android:paddingTop="3dp"
         android:text="condensation"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/condensationTag"
@@ -301,7 +302,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/innerTagHolder"
         android:layout_alignTop="@+id/innerTagHolder"
-        android:layout_marginLeft="170dp"
+        android:layout_marginLeft="160dp"
         android:layout_marginTop="105dp"
         android:background="@drawable/custom_textview"
         android:paddingBottom="3dp"
@@ -310,6 +311,6 @@
         android:paddingTop="3dp"
         android:text="condensation"
         android:textColor="#ffff"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
 </RelativeLayout>

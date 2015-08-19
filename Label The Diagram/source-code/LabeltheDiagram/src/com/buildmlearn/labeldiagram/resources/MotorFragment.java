@@ -17,9 +17,9 @@ import android.widget.TextView;
 
 public class MotorFragment extends Fragment {
 
+	private static final int GAME_SCORE = 90;
 	private Typeface tfThin;
 	private float score;
-	private int gameScore;
 
 	// Store instance variables based on arguments passed
 	@Override
@@ -45,7 +45,7 @@ public class MotorFragment extends Fragment {
 		Button startBtn = (Button) view.findViewById(R.id.go_diagram_btn);
 
 		startBtn.setTypeface(tfThin);
-		savedScoreTxt.setText((int)((score / 80 ) * 100) + "% Sucess");
+		savedScoreTxt.setText((int)((score / GAME_SCORE ) * 100) + "% Sucess");
 
 		startBtn.setOnClickListener(new OnClickListener() {
 
@@ -59,7 +59,6 @@ public class MotorFragment extends Fragment {
 				motorIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				motorIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				motorIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-				// getActivity().finish();
 				startActivity(motorIntent);
 
 			}

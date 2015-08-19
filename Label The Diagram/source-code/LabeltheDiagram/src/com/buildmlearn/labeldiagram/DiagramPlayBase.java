@@ -289,8 +289,13 @@ public abstract class DiagramPlayBase extends Activity implements
 				draggedImageTag
 						.setBackgroundResource(R.drawable.custom_textview_incorrect);
 
+				// Play wrong answer sound
 				playSound(false);
 
+				// Unregister tag from OnLongClicklistener to avoid 
+				// further dragging after a successful drop
+				draggedImageTag.setOnLongClickListener(null);
+				
 				totalLabeledCount += 1;
 
 				// Update score and progress
@@ -305,7 +310,12 @@ public abstract class DiagramPlayBase extends Activity implements
 				draggedImageTag
 						.setBackgroundResource(R.drawable.custom_textview_correct);
 
+				// Play right answer sound
 				playSound(true);
+				
+				// Unregister tag from OnLongClicklistener to avoid 
+				// further dragging after a successful drop
+				draggedImageTag.setOnLongClickListener(null);
 
 				totalLabeledCount += 1;
 				correctLabeledCount += 1;

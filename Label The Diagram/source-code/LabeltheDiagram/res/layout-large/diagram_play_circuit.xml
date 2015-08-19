@@ -5,72 +5,69 @@
                 android:layout_height="match_parent" >
 
     <RelativeLayout
-            android:id="@+id/scoreTab"
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:background="@color/tab_color" >
+        android:id="@+id/scoreTab"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/tab_color" >
 
         <View
-                android:id="@+id/view1"
-                android:layout_width="1dp"
-                android:layout_height="fill_parent"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:background="@color/appBg_color" />
+            android:id="@+id/view1"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/appBg_color" />
 
-        <com.buildmlearn.labeldiagram.widget.CustomFontManager
-                android:id="@+id/score"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/scoreTxt"
-                android:layout_alignBottom="@+id/scoreTxt"
-                android:layout_marginLeft="18dp"
-                android:layout_toRightOf="@+id/scoreTxt"
-                android:text="0"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#ffff"
-                app:typeface="roboto_thin" />
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/scoreTxt"
+            android:layout_alignBottom="@+id/scoreTxt"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/scoreTxt"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
 
-        <com.buildmlearn.labeldiagram.widget.CustomFontManager
-                android:id="@+id/complete_ratio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/complatedTxt"
-                android:layout_alignBottom="@+id/complatedTxt"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@+id/complatedTxt"
-                android:text=" 0%"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#ffff"
-                app:typeface="roboto_thin" />
+        <TextView
+            android:id="@+id/complete_ratio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complatedTxt"
+            android:layout_alignBottom="@+id/complatedTxt"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/complatedTxt"
+            android:text="0%"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
 
-        <com.buildmlearn.labeldiagram.widget.CustomFontManager
-                android:id="@+id/complatedTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:text="Complete :"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#ffff"
-                app:typeface="roboto_thin" />
+        <TextView
+            android:id="@+id/complatedTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:text="Complete    :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
 
-        <com.buildmlearn.labeldiagram.widget.CustomFontManager
-                android:id="@+id/scoreTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/complete_ratio"
-                android:layout_alignBottom="@+id/complete_ratio"
-                android:layout_marginLeft="24dp"
-                android:layout_toRightOf="@+id/view1"
-                android:text="Score   :"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#ffff"
-                app:typeface="roboto_thin" />
+        <TextView
+            android:id="@+id/scoreTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complete_ratio"
+            android:layout_alignBottom="@+id/complete_ratio"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@+id/view1"
+            android:text="Score   :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+        
     </RelativeLayout>
 
     <ImageView
@@ -200,7 +197,7 @@
             android:layout_alignLeft="@+id/innerTagHolder"
             android:layout_alignTop="@+id/innerTagHolder"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             android:background="@drawable/custom_textview"
             android:paddingBottom="3dp"
             android:paddingLeft="12dp"
@@ -217,7 +214,7 @@
             android:layout_alignLeft="@+id/innerTagHolder"
             android:layout_alignTop="@+id/innerTagHolder"
             android:layout_marginLeft="130dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             android:background="@drawable/custom_textview"
             android:paddingBottom="3dp"
             android:paddingLeft="12dp"
@@ -234,7 +231,7 @@
             android:layout_alignLeft="@+id/innerTagHolder"
             android:layout_alignTop="@+id/innerTagHolder"
             android:layout_marginLeft="225dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             android:background="@drawable/custom_textview"
             android:paddingBottom="3dp"
             android:paddingLeft="12dp"
@@ -251,7 +248,7 @@
             android:layout_alignLeft="@+id/innerTagHolder"
             android:layout_alignTop="@+id/innerTagHolder"
             android:layout_marginLeft="308dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             android:background="@drawable/custom_textview"
             android:paddingBottom="3dp"
             android:paddingLeft="12dp"
@@ -268,7 +265,7 @@
             android:layout_alignLeft="@+id/innerTagHolder"
             android:layout_alignTop="@+id/innerTagHolder"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="65dp"
+            android:layout_marginTop="70dp"
             android:background="@drawable/custom_textview"
             android:paddingBottom="3dp"
             android:paddingLeft="12dp"
@@ -285,7 +282,7 @@
             android:layout_alignLeft="@+id/innerTagHolder"
             android:layout_alignTop="@+id/innerTagHolder"
             android:layout_marginLeft="130dp"
-            android:layout_marginTop="65dp"
+            android:layout_marginTop="70dp"
             android:background="@drawable/custom_textview"
             android:paddingBottom="3dp"
             android:paddingLeft="12dp"
@@ -302,7 +299,7 @@
             android:layout_alignLeft="@+id/innerTagHolder"
             android:layout_alignTop="@+id/innerTagHolder"
             android:layout_marginLeft="235dp"
-            android:layout_marginTop="65dp"
+            android:layout_marginTop="70dp"
             android:background="@drawable/custom_textview"
             android:paddingBottom="3dp"
             android:paddingLeft="12dp"
@@ -319,7 +316,7 @@
             android:layout_alignLeft="@+id/innerTagHolder"
             android:layout_alignTop="@+id/innerTagHolder"
             android:layout_marginLeft="335dp"
-            android:layout_marginTop="65dp"
+            android:layout_marginTop="70dp"
             android:background="@drawable/custom_textview"
             android:paddingBottom="3dp"
             android:paddingLeft="12dp"
@@ -336,7 +333,7 @@
             android:layout_alignLeft="@+id/innerTagHolder"
             android:layout_alignTop="@+id/innerTagHolder"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="110dp"
+            android:layout_marginTop="115dp"
             android:background="@drawable/custom_textview"
             android:paddingBottom="3dp"
             android:paddingLeft="12dp"

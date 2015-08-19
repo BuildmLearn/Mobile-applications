@@ -72,7 +72,7 @@
             android:label="@string/title_activity_time_trial" >
         </activity>
         <activity
-            android:name=".helper.tutorials.TutorialActivity"
+            android:name=".activities.TutorialActivity"
             android:label="@string/title_activity_tutorial" >
         </activity>
     </application>

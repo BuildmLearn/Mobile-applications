@@ -15,11 +15,14 @@ import java.util.Random;
 
 import info.hoang8f.widget.FButton;
 
-
+/**
+ * Activity to let the user choose a character
+ */
 public class CharacterSelectionActivity extends Activity {
-    //TODO add dynamic text size for the button text
 
-    //colours for the buttons
+    /**
+     *  colours for the buttons
+     */
     private int[] colours = {R.color.Green,
             R.color.Orange,
             R.color.Pink,
@@ -43,13 +46,12 @@ public class CharacterSelectionActivity extends Activity {
         //width and height to fit 4 buttons on the screen.
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams((size.x-8*horizontal_padding)/4,(size.x-8*horizontal_padding)/4);
         params.setMargins(horizontal_padding, vertical_padding, horizontal_padding, vertical_padding);
-
         int count = 0;
         for(int i=0;i<SplashActivity.CHARACTER_LIST.length;i++) {
             String s = SplashActivity.CHARACTER_LIST[i];
             FButton fb = new FButton(this);
             fb.setText(s);
-            fb.setTextSize(40); // need to change this to make it dynamic
+            fb.setTextSize(((size.x - 8 * horizontal_padding) / 4) * 5/16);
             fb.setAllCaps(false);
             fb.setButtonColor(getResources().getColor(colours[new Random().nextInt(colours.length)])); //setting a random colour
             fb.setShadowEnabled(false);

@@ -19,9 +19,23 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Random;
 
+/**
+ * Activity for Timed tracing of characters/words
+ */
 public class TimeTrialActivity extends PracticeBaseActivity {
+    /**
+     * Timer that counts down till zero
+     */
     private CountDownTimer mCountDownTimer;
+
+    /**
+     * The temporary directory to store the user's traces
+     */
     private String mSaveDir;
+
+    /**
+     * Hashmap of the strings that are traced so that they aren't repeated
+     */
     private HashMap<String, Boolean> isStringDone;
 
     @Override
@@ -58,6 +72,10 @@ public class TimeTrialActivity extends PracticeBaseActivity {
         }
     }
 
+    /**
+     * Funtion to randomly generate strings from the lists in @SplashActivity
+     * @return The next string that the user will trace
+     */
     private String randomStringGenerator() {
         //Returns character or word with 50% probability
         int char_or_word = new Random().nextInt(2);

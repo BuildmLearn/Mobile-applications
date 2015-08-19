@@ -31,10 +31,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-//Activity to display the results of the Time Trial session
+/**
+ * Activity to display the results of the Time Trial session
+ */
 public class TimeTrialResultActivity extends Activity {
 
+    /**
+     * The temporary directory where the user's traces are stored
+     */
     private File mTempDir;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         try {
@@ -91,7 +97,10 @@ public class TimeTrialResultActivity extends Activity {
         }
     }
 
-    //function to show the error that occurred while starting the practice session
+    /**
+     * Function to show the error that occurred while starting the practice session
+     * @param e The exception that was caught
+     */
     protected void showErrorDialog(final Exception e) {
         new AlertDialog.Builder(this)
                 .setTitle("ERROR")
@@ -122,6 +131,10 @@ public class TimeTrialResultActivity extends Activity {
                 .show();
     }
 
+    /**
+     * Function that saves the user traces to the memory when the save button is pressed
+     * @param view
+     */
     public void saveTimeTrial(View view) {
         int i;
         String toastText = "";

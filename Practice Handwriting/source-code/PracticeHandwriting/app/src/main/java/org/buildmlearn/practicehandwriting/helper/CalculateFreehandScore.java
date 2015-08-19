@@ -18,15 +18,57 @@ import org.buildmlearn.practicehandwriting.activities.SplashActivity;
 
 import java.util.ArrayList;
 
+/**
+ * Helper class to calculate the score of a freehand trace in the background using AsyncTask
+ */
 public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
-    Bitmap mTouchImg, mSavedImg;
+
+    /**
+     * The image of the touches
+     */
+    Bitmap mTouchImg;
+
+    /**
+     * The image of the character
+     */
+    Bitmap mSavedImg;
+
+    /**
+     * The string what was practiced
+     */
     String mPracticeString;
+
+    /**
+     * The list of touches performed by the user
+     */
     ArrayList<ArrayList<Point>> mTouches;
+
+    /**
+     * A ProgressDialog that is displayed while the background task is getting executed
+     */
     ProgressDialog mProgressDialog;
+
+    /**
+     * The DrawingView on which the touches were performed
+     */
     DrawingView mDrawView;
+
+    /**
+     * The context in which the class was called
+     */
     Context mContext;
+
+    /**
+     * The bounding box coordinates of the touches performed
+     */
     int[] mTouchBounds;
 
+    /**
+     * Constructor
+     * @param context The context in which the class was called
+     * @param drawView The DrawingView on which the touches were performed
+     * @param practiceString The string that was practiced
+     */
     public CalculateFreehandScore(Context context, DrawingView drawView, String practiceString) {
         mContext = context;
         mDrawView = drawView;
@@ -54,6 +96,7 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
         mProgressDialog.show();
     }
 
+    @SuppressWarnings("ConstantConditions")
     @Override
     protected float[] doInBackground(Void... voids) {
         float size = 0;
@@ -62,7 +105,7 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
         if(size!=0) {//Computes score only if the view has been touched
             int centerX = (mSavedImg.getWidth() - mTouchImg.getWidth())/2, centerY = (mSavedImg.getHeight() - mTouchImg.getHeight())/2;
             int minx = mTouchBounds[0], miny = mTouchBounds[1];
-            float correctTouches = 0;
+            float correctTouches;
             int i, j, cx, cy, x ,y, count = 0;
             float scaleX, scaleY;
             int textColour = mContext.getResources().getColor(R.color.Black); //Storing locally for faster access inside the loop
@@ -145,6 +188,13 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
         Animator.createYFlipBackwardAnimation(((Activity) mContext).findViewById(R.id.done_save_button));
     }
 
+    /**
+     * Function to scale a Bitmap by given scales along the x & y axes
+     * @param originalImage The image to be scaled
+     * @param scaleX The scaling value along the X axis
+     * @param scaleY The scaling value along the Y axis
+     * @return The scaled Bitmap
+     */
     private Bitmap scaleBitmap(Bitmap originalImage, float scaleX, float scaleY) {
         //new dimensions
         float width = originalImage.getWidth() * scaleX;
@@ -169,7 +219,14 @@ public class CalculateFreehandScore extends AsyncTask<Void,Void,float[]> {
         return background;
     }
 
-    //function to place a bitmap over another
+    /**
+     * Function to place a bitmap over another
+     * @param bitmap1 The original bitmap
+     * @param bitmap2 The bitmap to be placed over the original one
+     * @param xOffset the offset on the x axis to place the overlay
+     * @param yOffset the offset on the y axis to place the overlay
+     * @return
+     */
     private Bitmap bitmapOverlay(Bitmap bitmap1, Bitmap bitmap2, int xOffset, int yOffset) {
         //initializing an empty canvas and drawing the first bitmap on top
         System.gc();

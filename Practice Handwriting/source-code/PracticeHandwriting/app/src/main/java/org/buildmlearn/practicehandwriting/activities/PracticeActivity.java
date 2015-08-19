@@ -10,7 +10,9 @@ import org.buildmlearn.practicehandwriting.R;
 import org.buildmlearn.practicehandwriting.helper.Animator;
 import org.buildmlearn.practicehandwriting.helper.PracticeBaseActivity;
 
-//Activity for normal practice of characters and words
+/**
+ * Activity for normal practice of characters and words
+ */
 public class PracticeActivity extends PracticeBaseActivity {
 
     @Override

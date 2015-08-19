@@ -5,7 +5,9 @@ import android.support.v7.app.ActionBarActivity;
 
 import org.buildmlearn.practicehandwriting.R;
 
-
+/**
+ * Activity that will be displayed when the user tries to access those activities that haven't been completed.
+ */
 public class IncompleteActivity extends ActionBarActivity {
 
     @Override

@@ -29,16 +29,35 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 
-//Base class for practicing
+/**
+ * Base class for activities where the user would practice
+ */
 public class PracticeBaseActivity extends ActionBarActivity {
 
-    //TODO time dependant vibrations
-
+    /**
+     * DrawingView on which the user shall trace
+     */
     protected DrawingView mDrawView;
-    protected boolean mDone; //Boolean variable set if the user has finished tracing
-    protected String mPracticeString; //String to be practiced
-    protected TextView mScoreTimerView, mBestScoreView;
-    protected boolean isFirstRun;
+
+    /**
+     * Boolean variable set if the user has finished tracing
+     */
+    protected boolean mDone;
+
+    /**
+     * String to be practiced
+     */
+    protected String mPracticeString;
+
+    /**
+     * TextView to display the current score/time left in a time trial
+     */
+    protected TextView mScoreTimerView;
+
+    /**
+     * TextViews to display the best score for a given string
+     */
+    protected TextView mBestScoreView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +96,10 @@ public class PracticeBaseActivity extends ActionBarActivity {
         }
     }
 
+    /**
+     * The onClick function the reset button and the done/save button. It is overridden in the derived classes but called by them using super
+     * @param v the button that called the function
+     */
     public void practiceOnClick(View v) {
         switch (v.getId()) {
             case R.id.reset_button:
@@ -143,7 +166,10 @@ public class PracticeBaseActivity extends ActionBarActivity {
         }
     }
 
-    //function to show the error that occurred while starting the practice session
+    /**
+     * Function to show the error that occurred while starting the practice session
+     * @param e The exception that was caught
+     */
     protected void showErrorDialog(final Exception e) {
         new AlertDialog.Builder(this)
                 .setTitle("ERROR")

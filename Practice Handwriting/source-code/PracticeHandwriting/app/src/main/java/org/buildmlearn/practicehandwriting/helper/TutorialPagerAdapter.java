@@ -1,4 +1,4 @@
-package org.buildmlearn.practicehandwriting.helper.tutorials;
+package org.buildmlearn.practicehandwriting.helper;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,12 +19,26 @@ import org.buildmlearn.practicehandwriting.activities.LanguageActivity;
 
 import info.hoang8f.widget.FButton;
 
+/**
+ * PagerAdapter to display the tutorials
+ */
 public class TutorialPagerAdapter extends PagerAdapter {
 
+    /**
+     * The context of the Adapter
+     */
     private Context mContext;
+
+    /**
+     * The number of fragments that are going to be displayed
+     */
     public static int CHILD_COUNT = 12;
 
-    public void setContext(Context context) {
+    /**
+     * Constructor
+     * @param context The context of the activity that called the Adapter
+     */
+    public TutorialPagerAdapter(Context context) {
         mContext = context;
     }
 

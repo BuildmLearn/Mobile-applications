@@ -9,7 +9,9 @@ import android.view.animation.Animation;
 import org.buildmlearn.practicehandwriting.R;
 import org.buildmlearn.practicehandwriting.helper.Animator;
 
-
+/**
+ * Activity that displayes the main menu where the user chooses his mode of practice.
+ */
 public class MainMenuActivity extends Activity {
 
     @Override
@@ -25,6 +27,10 @@ public class MainMenuActivity extends Activity {
         }
     }
 
+    /**
+     * The onClick function for the buttons in this activity
+     * @param view The view that called the function
+     */
     public void mainMenuActivityOnClick(View view) {
         Intent intent = null;
         switch(view.getId()) {

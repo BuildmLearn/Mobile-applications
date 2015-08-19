@@ -7,6 +7,9 @@ import org.buildmlearn.practicehandwriting.R;
 import org.buildmlearn.practicehandwriting.helper.CalculateFreehandScore;
 import org.buildmlearn.practicehandwriting.helper.PracticeBaseActivity;
 
+/**
+ * Activity for freehand (borderless) tracing of a given character
+ */
 public class FreehandActivity extends PracticeBaseActivity {
 
     @Override

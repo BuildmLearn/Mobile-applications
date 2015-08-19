@@ -51,8 +51,6 @@ public class Settings extends Activity implements OnClickListener {
 		HelperClass.setActionBar("Settings", this);
 
 		soundCheckBox = (CheckBox) findViewById(R.id.soundCheckBox);
-		notificationCheckBox = (CheckBox) findViewById(R.id.notificationCheckBox);
-		updateLayout = (RelativeLayout) findViewById(R.id.updateLayout);
 		rateLayout = (RelativeLayout) findViewById(R.id.rateLayout);
 
 		soundCheckBox.setOnClickListener(this);
@@ -86,26 +84,6 @@ public class Settings extends Activity implements OnClickListener {
 				editor.commit();
 			}
 
-			break;
-
-		case R.id.notificationCheckBox:
-
-			isChecked = notificationCheckBox.isChecked();
-
-			if (isChecked) {
-				editor.putBoolean(NOTIFICATION_SETTING, true);
-				editor.commit();
-			} else {
-				editor.putBoolean(NOTIFICATION_SETTING, false);
-				editor.commit();
-			}
-
-			break;
-
-		case R.id.updateLayout:
-
-			Toast.makeText(this, "Comming soon...", Toast.LENGTH_SHORT).show();
-			
 			break;
 
 		case R.id.rateLayout:

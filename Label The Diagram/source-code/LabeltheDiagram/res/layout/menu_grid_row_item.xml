@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/menuGridRowLayout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:id="@+id/menuGridRowLayout" >
-    
+    android:background="@drawable/shadow_view1"
+    android:paddingBottom="10px"
+    android:paddingLeft="3px"
+    android:paddingRight="3px"
+    android:paddingTop="3px" >
 
 </RelativeLayout>

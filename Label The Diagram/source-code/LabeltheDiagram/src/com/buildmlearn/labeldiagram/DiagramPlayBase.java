@@ -357,13 +357,18 @@ public abstract class DiagramPlayBase extends Activity implements
 		return true;
 	}
 
-	private void playSound(boolean soundOtion) {
+	
+	/**
+	 * Play sound for correct/incorrect answer
+	 * @param soundOption
+	 */
+	private void playSound(boolean soundOption) {
 
 		boolean isEnabled = preferences.getBoolean(SOUND_SETTING, false);
 
 		if (isEnabled) {
 
-			if (soundOtion) {
+			if (soundOption) {
 
 				MediaPlayer correctSound = MediaPlayer.create(
 						getApplicationContext(), R.raw.correct);

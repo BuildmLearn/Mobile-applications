@@ -21,6 +21,8 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -99,11 +101,19 @@ public class MenuGridViewAdapter extends ArrayAdapter<MenuGridRowItem> {
 		case 4:
 			iconView.setImageResource(R.drawable.settings);
 			iconTxt.setText("Settings");
+			/*RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+			params.setMargins(0, 171, 0, 4);
+			params.addRule(RelativeLayout.CENTER_HORIZONTAL);
+			iconTxt.setLayoutParams(params);*/
 			holder.id = 4;
 			break;
 		case 5:
 			iconView.setImageResource(R.drawable.help);
 			iconTxt.setText("Help");
+			/*RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+			params1.setMargins(0, 171, 0, 4);
+			params1.addRule(RelativeLayout.CENTER_HORIZONTAL);
+			iconTxt.setLayoutParams(params1);*/
 			holder.id = 5;
 			break;
 

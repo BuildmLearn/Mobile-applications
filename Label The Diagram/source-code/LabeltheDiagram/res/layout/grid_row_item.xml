@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gridRowLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#DDDDDD" 
-    android:id="@+id/gridRowLayout">
-    
+    android:layout_height="match_parent"
+    android:background="@drawable/shadow_view1"
+    android:paddingBottom="10px"
+    android:paddingLeft="3px"
+    android:paddingRight="3px"
+    android:paddingTop="5px">
 
 </RelativeLayout>

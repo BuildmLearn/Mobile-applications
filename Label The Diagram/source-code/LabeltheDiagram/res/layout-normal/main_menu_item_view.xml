@@ -37,7 +37,7 @@
             android:text="Start Here"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#fff" 
-            app:typeface="roboto_thin"/>
+            app:typeface="roboto_light"/>
 
         <com.buildmlearn.labeldiagram.widget.CustomFontManager
             android:id="@+id/title_diagram"
@@ -51,7 +51,7 @@
             android:textSize="28sp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#fff"
-            app:typeface="roboto_light" />
+            app:typeface="roboto_thin" />
 
     </RelativeLayout>
     

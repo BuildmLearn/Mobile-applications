@@ -251,10 +251,10 @@ public final class R {
         public static final int arrow_up=0x7f0601ba;
         public static final int axelBlb=0x7f0600c4;
         public static final int axelTag=0x7f0600ce;
-        public static final int badgeGrid=0x7f060010;
+        public static final int badgeGrid=0x7f060013;
         public static final int badgeIcon=0x7f060190;
-        public static final int badgeLayout=0x7f060016;
-        public static final int badgeTitle=0x7f060018;
+        public static final int badgeLayout=0x7f060010;
+        public static final int badgeTitle=0x7f060012;
         public static final int badge_desc=0x7f0601a6;
         public static final int badge_icon=0x7f0601a5;
         public static final int badge_txt=0x7f0601a4;
@@ -265,7 +265,7 @@ public final class R {
         public static final int batteryTag=0x7f060061;
         public static final int big_dripperBlb=0x7f060131;
         public static final int big_dripperTag=0x7f06013d;
-        public static final int bioBadge=0x7f060017;
+        public static final int bioBadge=0x7f060011;
         public static final int blindSpotBlb=0x7f060098;
         public static final int brushBlb=0x7f0600c6;
         public static final int brushTag=0x7f0600cd;
@@ -280,9 +280,9 @@ public final class R {
         public static final int capacitorTag=0x7f060059;
         public static final int capsuleBlb=0x7f06002c;
         public static final int capsuleTag=0x7f060034;
-        public static final int catDescription=0x7f060014;
-        public static final int categoryIcon=0x7f060012;
-        public static final int categoryTitle=0x7f060013;
+        public static final int catDescription=0x7f060017;
+        public static final int categoryIcon=0x7f060015;
+        public static final int categoryTitle=0x7f060016;
         public static final int category_list=0x7f060019;
         public static final int category_list_common=0x7f06001a;
         public static final int category_mainList=0x7f06001b;
@@ -462,7 +462,7 @@ public final class R {
         public static final int mitochondiumTag=0x7f0600e0;
         public static final int mitochondriumBlb=0x7f0600d8;
         public static final int mylistview=0x7f060169;
-        public static final int navigatorBtn=0x7f060015;
+        public static final int navigatorBtn=0x7f060018;
         public static final int neckBlb=0x7f060141;
         public static final int neckTag=0x7f06014d;
         public static final int negTerminalBlb=0x7f060069;
@@ -634,7 +634,7 @@ public final class R {
         public static final int tailfibreTag=0x7f060149;
         public static final int tailpinsBlb=0x7f06014a;
         public static final int tailpinsTag=0x7f06014e;
-        public static final int textView=0x7f060011;
+        public static final int textView=0x7f060014;
         public static final int tick_icon=0x7f0601c2;
         public static final int title_badge=0x7f060191;
         public static final int title_diagram=0x7f060184;
@@ -679,11 +679,11 @@ public final class R {
     }
     public static final class layout {
         public static final int bacteria_view=0x7f030000;
-        public static final int badges_all_view=0x7f030001;
-        public static final int badges_tab=0x7f030002;
-        public static final int carbon_cycle_view=0x7f030003;
-        public static final int category_row_item=0x7f030004;
-        public static final int champion_badge_layout=0x7f030005;
+        public static final int badge_layout=0x7f030001;
+        public static final int badges_all_view=0x7f030002;
+        public static final int badges_tab=0x7f030003;
+        public static final int carbon_cycle_view=0x7f030004;
+        public static final int category_row_item=0x7f030005;
         public static final int circuit_view=0x7f030006;
         public static final int diagram_categories=0x7f030007;
         public static final int diagram_categories_view=0x7f030008;

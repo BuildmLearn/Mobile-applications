@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
+import com.buildmlearn.labeldiagram.tooltipkit.InfoTooltip;
 import com.example.labelthediagram.R;
 
 public class DiagramPlayLens extends DiagramPlayBase {
@@ -80,35 +81,66 @@ public class DiagramPlayLens extends DiagramPlayBase {
 		imageTag.setOnClickListener(this);
 		lensTag.setOnClickListener(this);
 		lensAxisTag.setOnClickListener(this);
-		
+
 		placeHolderlist = container.diagramCaller("Lens");
 		tagPlaceHolderMap = tagPlaceholdermapper.diagramMapper("Lens");
 		incompleteTagList = tagPlaceholdermapper.diagramMapper("Lens");
 		tagListSize = tagPlaceHolderMap.size();
-		
+
 		openDB();
 
 	}
 
 	@Override
 	public void onClick(View tagView) {
-		// TODO Auto-generated method stub
 		super.onClick(tagView);
+
+		InfoTooltip popup;
+
+		switch (tagView.getId()) {
+		case R.id.principalRayTag:
+
+			break;
+		case R.id.centralRayTag:
+
+			break;
+		case R.id.focalRayTag:
+
+			break;
+		case R.id.focusTag:
+
+			break;
+		case R.id.objectTag:
+
+			break;
+		case R.id.imageTag:
+
+			break;
+		case R.id.lensTag:
+
+			break;
+		case R.id.lensAxisTag:
+
+			break;
+
+		default:
+			break;
+		}
 	}
-	
+
 	@Override
 	protected int getResourcesId() {
 		// TODO Auto-generated method stub
 		return R.layout.diagram_play_lens;
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		
+
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.main, menu);
 		return super.onCreateOptionsMenu(menu);
-		
+
 	}
 
 	@Override
@@ -153,9 +185,10 @@ public class DiagramPlayLens extends DiagramPlayBase {
 		intent.putExtra("TRY_CYCLE", tryCycle);
 		startActivity(intent);
 	}
-	
+
 	@Override
-	protected void intentBuilder(String badgeTitle, int badgeId, float totalScore, int gameScore, boolean completed, int tryCycle) {
+	protected void intentBuilder(String badgeTitle, int badgeId,
+			float totalScore, int gameScore, boolean completed, int tryCycle) {
 		Intent intent;
 		intent = new Intent(getBaseContext(), BadgePopUpWindow.class);
 		intent.putExtra("BADGE_TITLE", badgeTitle);

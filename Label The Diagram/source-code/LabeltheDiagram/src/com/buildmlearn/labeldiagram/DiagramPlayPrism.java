@@ -8,10 +8,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnCreateContextMenuListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
+import com.buildmlearn.labeldiagram.tooltipkit.InfoTooltip;
+import com.buildmlearn.labeldiagram.tooltipkit.CustomTooltip.AlignMode;
 import com.example.labelthediagram.R;
 
 public class DiagramPlayPrism extends DiagramPlayBase {
@@ -26,7 +29,7 @@ public class DiagramPlayPrism extends DiagramPlayBase {
 		actionBar.setTitle("Prism");
 		setDiagramName("Prism");
 		setDiagramCategory("Physics");
-		
+
 		// Score board textViews
 		compeleteRatio = (TextView) findViewById(R.id.complete_ratio);
 		score = (TextView) findViewById(R.id.score);
@@ -80,34 +83,86 @@ public class DiagramPlayPrism extends DiagramPlayBase {
 		refRayTag.setOnClickListener(this);
 		emergeAngleTag.setOnClickListener(this);
 		emergeRayTag.setOnClickListener(this);
-		
+
 		placeHolderlist = container.diagramCaller("Prism");
 		tagPlaceHolderMap = tagPlaceholdermapper.diagramMapper("Prism");
 		incompleteTagList = tagPlaceholdermapper.diagramMapper("Prism");
 		tagListSize = tagPlaceHolderMap.size();
-		
+
 		openDB();
-		
+
 	}
-	
+
 	@Override
 	public void onClick(View tagView) {
-		// TODO Auto-generated method stub
 		super.onClick(tagView);
+		
+		InfoTooltip popup;
+		
+		switch (tagView.getId()) {
+		case R.id.prismAngleTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The apex angle of the prism");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.refAngleTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The angle with which the light ray \n"
+					+ "enters the glass slab");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.incAngleTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The angle formed by a ray incident on prism surface \n"
+					+ " and a line perpendicular to the prism surface \n"
+					+ "at the point of incidence");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.incRayTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The ray of light that pointing towards the prism");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.devAngleTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The angle between the original incident beam \n"
+					+ "and the final transmitted beam");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.refRayTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The ray that undergoes a change of velocity and direction");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.emergeAngleTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The angle with which the light ray leaves the glass slab");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.emergeRayTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The ray of light which passes through \n"
+					+ "the denser medium to the rarer medium");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		default:
+			break;
+		}
+
 	}
 
 	@Override
 	protected int getResourcesId() {
 		return R.layout.diagram_play_prism;
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		
+
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.main, menu);
 		return super.onCreateOptionsMenu(menu);
-		
+
 	}
 
 	@Override
@@ -152,9 +207,10 @@ public class DiagramPlayPrism extends DiagramPlayBase {
 		intent.putExtra("TRY_CYCLE", tryCycle);
 		startActivity(intent);
 	}
-	
+
 	@Override
-	protected void intentBuilder(String badgeTitle, int badgeId, float totalScore, int gameScore, boolean completed, int tryCycle) {
+	protected void intentBuilder(String badgeTitle, int badgeId,
+			float totalScore, int gameScore, boolean completed, int tryCycle) {
 		Intent intent;
 		intent = new Intent(getApplicationContext(), BadgePopUpWindow.class);
 		intent.putExtra("BADGE_TITLE", badgeTitle);
@@ -169,7 +225,7 @@ public class DiagramPlayPrism extends DiagramPlayBase {
 		startActivity(intent);
 		finish();
 	}
-	
+
 	@Override
 	public void onDestroy() {
 		super.onDestroy();

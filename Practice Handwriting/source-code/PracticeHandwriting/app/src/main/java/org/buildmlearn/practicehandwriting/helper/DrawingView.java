@@ -125,16 +125,6 @@ public class DrawingView extends View {
     public int mHeight;
 
     /**
-     * Text width
-     */
-    public int  mTextWidth;
-
-    /**
-     * Text height
-     */
-    public int mTextHeight;
-
-    /**
      * Simple constructor to use when creating a view from code.
      * @param context The Context the view is running in, through which it can access the current theme, resources, etc.
      */
@@ -254,8 +244,6 @@ public class DrawingView extends View {
         mDrawPaint.setStrokeWidth(size * 3 / 182); //values got from experimenting
 
         float textOffset = textHeight/ 2 - paintText.descent();
-        mTextWidth = (int) paintText.measureText(str);
-        mTextHeight = (int) textHeight;
         //Drawing the text at the center of the view
         mDrawCanvas.drawText(str, (mWidth - paintText.measureText(str)) / 2, (mHeight / 2) + textOffset, paintText);
         invalidate();

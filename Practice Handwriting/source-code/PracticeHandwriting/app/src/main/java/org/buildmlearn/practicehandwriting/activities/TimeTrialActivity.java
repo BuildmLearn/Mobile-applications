@@ -150,4 +150,8 @@ public class TimeTrialActivity extends PracticeBaseActivity {
         }
         super.onBackPressed();
     }
+
+    public String getSaveDir() {
+        return mSaveDir;
+    }
 }

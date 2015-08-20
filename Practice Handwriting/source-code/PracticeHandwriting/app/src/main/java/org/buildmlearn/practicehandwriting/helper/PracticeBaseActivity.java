@@ -212,4 +212,20 @@ public class PracticeBaseActivity extends ActionBarActivity {
         System.gc();
         super.onBackPressed();
     }
+
+    /**
+     * Function to get the string that is being practiced
+     * @return The string that is being practiced
+     */
+    public String getPracticeString() {
+        return mPracticeString;
+    }
+
+    /**
+     * Function to get the DrawingView that is being traced upon
+     * @return The DrawingView that is being traced upon
+     */
+    public DrawingView getDrawingView() {
+        return mDrawView;
+    }
 }

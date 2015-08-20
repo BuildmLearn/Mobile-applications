@@ -2,29 +2,17 @@ package com.buildmlearn.labeldiagram.resources;
 
 import java.util.List;
 
-import com.buildmlearn.labeldiagram.DiagramMenu;
-import com.buildmlearn.labeldiagram.DiagramMenuHuman;
-import com.buildmlearn.labeldiagram.DiagramMenuMicroogranisms;
-import com.buildmlearn.labeldiagram.DiagramMenuNaturalCycles;
-import com.buildmlearn.labeldiagram.DiagramMenuPlants;
-import com.buildmlearn.labeldiagram.DiagramPlay;
-import com.buildmlearn.labeldiagram.DiagramPlayBase;
-import com.buildmlearn.labeldiagram.DiagramPlayHumanEye;
-import com.buildmlearn.labeldiagram.DiagramResult;
 import com.example.labelthediagram.R;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /*
  *Adapter class to generate custom view of DiagramCategory list items

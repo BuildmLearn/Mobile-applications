@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
 import com.buildmlearn.labeldiagram.tooltipkit.InfoTooltip;
+import com.buildmlearn.labeldiagram.tooltipkit.CustomTooltip.AlignMode;
 import com.example.labelthediagram.R;
 
 public class DiagramPlayLens extends DiagramPlayBase {
@@ -99,28 +100,49 @@ public class DiagramPlayLens extends DiagramPlayBase {
 
 		switch (tagView.getId()) {
 		case R.id.principalRayTag:
-
+			popup = new InfoTooltip(getApplicationContext(),
+					"This ray is initially parallel to the axis \n"
+					+ "then passes through the focal point");
+			popup.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.centralRayTag:
-
+			popup = new InfoTooltip(getApplicationContext(),
+					"The ray that passes straight through the center \n"
+					+ "of the lens and is not deflected");
+			popup.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.focalRayTag:
-
+			popup = new InfoTooltip(getApplicationContext(),
+					"This ray is directed through the other focal point,\n"
+					+ "after passing the lens it goes parallel to the axis");
+			popup.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.focusTag:
-
+			popup = new InfoTooltip(getApplicationContext(),
+					"A point at which rays of light");
+			popup.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.objectTag:
-
+			popup = new InfoTooltip(getApplicationContext(),
+					"The material thing that can be seen");
+			popup.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.imageTag:
-
+			popup = new InfoTooltip(getApplicationContext(),
+					"The representation of the external form \n"
+					+ "of the object may be in different size");
+			popup.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.lensTag:
-
+			popup = new InfoTooltip(getApplicationContext(),
+					"the lens having convex surface");
+			popup.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.lensAxisTag:
-
+			popup = new InfoTooltip(getApplicationContext(),
+					"An imaginary axis that passing through \n"
+					+ "the center of the lens");
+			popup.show(tagView, AlignMode.BOTTOM);
 			break;
 
 		default:

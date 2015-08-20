@@ -1,6 +1,8 @@
 package com.buildmlearn.labeldiagram;
 
 import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
+import com.buildmlearn.labeldiagram.tooltipkit.InfoTooltip;
+import com.buildmlearn.labeldiagram.tooltipkit.CustomTooltip.AlignMode;
 import com.example.labelthediagram.R;
 
 import android.app.AlertDialog;
@@ -104,6 +106,61 @@ public class DiagramPlayWaterCycle extends DiagramPlayBase {
 	public void onClick(View tagView) {
 		super.onClick(tagView);
 		
+		InfoTooltip popup;
+		
+		switch (tagView.getId()) {
+		case R.id.oceanTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The sea, main source for evoporation");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.preciptationTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Rain, snow, sleet, or hail that falls \n"
+					+ "to or condenses on the ground");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.infiltratoinTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The process by which water on the \n"
+					+ "ground surface enters the soil");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.condensationTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The conversion of a vapour or gas to a liquid");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.eveporationTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The process of a substance in a \n"
+					+ "liquid state changing to a gaseous state");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.transpirationTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The process which evaporation \n"
+					+ "of water from plant leaves");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.underground_waterTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The water found underground \n"
+					+ "in the cracks and spaces in soil, \n"
+					+ "sand and rock");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.surface_runTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Surface runoff is water, from rain, \n"
+					+ " snowmelt, or other sources, \n"
+					+ "that flows over the land surface");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+
+		default:
+			break;
+		}
 		
 	}
 

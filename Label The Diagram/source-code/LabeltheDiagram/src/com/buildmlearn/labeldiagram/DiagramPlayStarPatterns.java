@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
+import com.buildmlearn.labeldiagram.tooltipkit.InfoTooltip;
+import com.buildmlearn.labeldiagram.tooltipkit.CustomTooltip.AlignMode;
 import com.example.labelthediagram.R;
 import com.example.labelthediagram.R.id;
 import com.example.labelthediagram.R.layout;
@@ -93,8 +95,66 @@ public class DiagramPlayStarPatterns extends DiagramPlayBase {
 	
 	@Override
 	public void onClick(View tagView) {
-		// TODO Auto-generated method stub
 		super.onClick(tagView);
+		
+		InfoTooltip popup;
+		
+		switch (tagView.getId()) {
+		case R.id.libraTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Libra is Latin for weighing scales, \n"
+					+ "only constellation of the Zodiac \n"
+					+ "representing an inanimate object");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.little_dripperTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Ursa Minor, also known as the Little Bear, \n"
+					+ " is a constellation in the northern sky");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.big_dripperTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The Big Dipper is an asterism of seven stars \n"
+					+ "recognized as a distinct grouping \n"
+					+ "in many cultures");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.scorpioTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Eighth astrological sign in the Zodiac");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.orianTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"A constellation which named after a hunter, \n"
+					+ "Orian in Greek mythology");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.leoTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Fifth astrological sign of the zodiac, \n"
+					+ "originating from the constellation of Leo");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.geminiTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Third astrological sign in the Zodiac, \n"
+					+ "originating from the constellation of Gemini");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.dracoTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Draco is latin for dragon, \n"
+					+ "a constellation in the far northern sky");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+			
+			
+		default:
+			break;
+		}
+		
 	}
 
 	@Override

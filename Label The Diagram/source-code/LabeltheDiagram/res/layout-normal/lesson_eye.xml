@@ -17,7 +17,7 @@
         android:layout_alignLeft="@+id/mainDiagramEye"
         android:layout_alignTop="@+id/mainDiagramEye"
         android:layout_marginLeft="210dp"
-        android:layout_marginTop="225dp"
+        android:layout_marginTop="250dp"
         android:src="@drawable/seven" />
 
     <ImageView
@@ -26,8 +26,8 @@
         android:layout_height="25dp"
         android:layout_alignRight="@+id/mainDiagramEye"
         android:layout_alignTop="@+id/mainDiagramEye"
-        android:layout_marginRight="37dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginTop="45dp"
         android:src="@drawable/ten" />
 
     <ImageView
@@ -36,8 +36,8 @@
         android:layout_height="25dp"
         android:layout_alignLeft="@+id/mainDiagramEye"
         android:layout_alignTop="@+id/mainDiagramEye"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="25dp"
         android:src="@drawable/one" />
 
     <ImageView
@@ -46,8 +46,8 @@
         android:layout_height="25dp"
         android:layout_alignLeft="@+id/mainDiagramEye"
         android:layout_alignTop="@+id/mainDiagramEye"
-        android:layout_marginTop="192dp"
-        android:layout_marginLeft="-5dp"
+        android:layout_marginTop="255dp"
+        android:layout_marginLeft="30dp"
         android:src="@drawable/five" />
 
     <ImageView
@@ -56,8 +56,8 @@
         android:layout_height="25dp"
         android:layout_alignLeft="@+id/mainDiagramEye"
         android:layout_alignTop="@+id/mainDiagramEye"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="225dp"
+        android:layout_marginLeft="115dp"
+        android:layout_marginTop="10dp"
         android:layout_centerVertical="true"
         android:src="@drawable/six" />
 
@@ -68,8 +68,8 @@
         android:layout_height="25dp"
         android:layout_alignLeft="@+id/mainDiagramEye"
         android:layout_alignTop="@+id/mainDiagramEye"
-        android:layout_marginLeft="-5dp"
-        android:layout_marginTop="95dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="55dp"
         android:src="@drawable/two" />
 
     <ImageView
@@ -78,7 +78,7 @@
         android:layout_height="25dp"
         android:layout_alignRight="@+id/mainDiagramEye"
         android:layout_alignTop="@+id/mainDiagramEye"
-        android:layout_marginRight="5dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="145dp"
         android:src="@drawable/eight" />
 
@@ -88,8 +88,8 @@
         android:layout_height="25dp"
         android:layout_alignRight="@+id/mainDiagramEye"
         android:layout_alignTop="@+id/mainDiagramEye"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="100dp"
         android:src="@drawable/nine" />
 
     <ImageView
@@ -98,8 +98,8 @@
         android:layout_height="25dp"
         android:layout_alignLeft="@+id/mainDiagramEye"
         android:layout_alignTop="@+id/mainDiagramEye"
-        android:layout_marginLeft="-17dp"
-        android:layout_marginTop="135dp"
+        android:layout_marginLeft="-15dp"
+        android:layout_marginTop="115dp"
         android:src="@drawable/three" />
 
     <ImageView
@@ -108,8 +108,8 @@
         android:layout_height="25dp"
         android:layout_alignLeft="@+id/mainDiagramEye"
         android:layout_alignTop="@+id/mainDiagramEye"
-        android:layout_marginLeft="-17dp"
-        android:layout_marginTop="165dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="-10dp"
         android:src="@drawable/four" />
     
     <LinearLayout

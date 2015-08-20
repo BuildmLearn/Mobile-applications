@@ -16,14 +16,10 @@ import android.widget.Toast;
 public class Settings extends Activity implements OnClickListener {
 
 	private static final String SOUND_SETTING = "sound";
-	private static final String NOTIFICATION_SETTING = "notification";
 	private CheckBox soundCheckBox;
-	private CheckBox notificationCheckBox;
 	private SharedPreferences preferences;
-	private RelativeLayout updateLayout;
 	private RelativeLayout rateLayout;
 	private boolean sound_pref;
-	private boolean notify_pref;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +38,6 @@ public class Settings extends Activity implements OnClickListener {
 				Context.MODE_PRIVATE);
 		
 		sound_pref = preferences.getBoolean(SOUND_SETTING, false);
-		notify_pref = preferences.getBoolean(NOTIFICATION_SETTING, false);
 
 	}
 
@@ -54,14 +49,9 @@ public class Settings extends Activity implements OnClickListener {
 		rateLayout = (RelativeLayout) findViewById(R.id.rateLayout);
 
 		soundCheckBox.setOnClickListener(this);
-		notificationCheckBox.setOnClickListener(this);
-		updateLayout.setOnClickListener(this);
 		rateLayout.setOnClickListener(this);
 		
-		
-		
 		soundCheckBox.setChecked(sound_pref);
-		notificationCheckBox.setChecked(notify_pref);
 	}
 
 	@Override

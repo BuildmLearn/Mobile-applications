@@ -88,8 +88,8 @@
         android:layout_height="35dp"
         android:layout_alignRight="@+id/mainDiagramPlantCell"
         android:layout_alignTop="@+id/mainDiagramPlantCell"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="60dp"
         android:src="@drawable/three" />
 
     <ImageView
@@ -99,7 +99,7 @@
         android:layout_alignRight="@+id/mainDiagramPlantCell"
         android:layout_alignTop="@+id/mainDiagramPlantCell"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="255dp"
+        android:layout_marginTop="320dp"
         android:src="@drawable/four" />
 
     <ImageView

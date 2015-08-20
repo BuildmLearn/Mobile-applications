@@ -64,7 +64,7 @@ public class HelpMenu extends Activity {
 				break;
 			case 9:
 				resId = R.layout.help_screen10;
-				Intent intent = new Intent(getApplicationContext(),MainMenu.class);
+				Intent intent = new Intent(getApplicationContext(),MainMenuGrid.class);
 				startActivity(intent);
 				finish();
 				break;

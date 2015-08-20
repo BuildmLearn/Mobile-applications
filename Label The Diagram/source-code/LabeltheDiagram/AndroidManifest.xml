@@ -47,51 +47,51 @@
         </activity>
         <activity
             android:name="com.buildmlearn.labeldiagram.DiagramCategory"
-            android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu" >
+            android:parentActivityName="com.buildmlearn.labeldiagram.MainMenuGrid" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.buildmlearn.labeldiagram.MainMenu" >
+                android:value="com.buildmlearn.labeldiagram.MainMenuGrid" >
             </meta-data>
         </activity>
         <activity
             android:name="com.buildmlearn.labeldiagram.DiagramCategoryViewer"
-            android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu" >
+            android:parentActivityName="com.buildmlearn.labeldiagram.MainMenuGrid" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.buildmlearn.labeldiagram.MainMenu" >
+                android:value="com.buildmlearn.labeldiagram.MainMenuGrid" >
             </meta-data>
         </activity>
         <activity
             android:name="com.buildmlearn.labeldiagram.lessons.LessonCategoryViewer"
-            android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu" >
+            android:parentActivityName="com.buildmlearn.labeldiagram.MainMenuGrid" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.buildmlearn.labeldiagram.MainMenu" >
+                android:value="com.buildmlearn.labeldiagram.MainMenuGrid" >
             </meta-data>
         </activity>
         <activity
             android:name="com.buildmlearn.labeldiagram.badges.BadgesViewer"
-            android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu" >
+            android:parentActivityName="com.buildmlearn.labeldiagram.MainMenuGrid" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.buildmlearn.labeldiagram.MainMenu" >
+                android:value="com.buildmlearn.labeldiagram.MainMenuGrid" >
             </meta-data>
         </activity>
         <activity
             android:name="com.buildmlearn.labeldiagram.Settings"
-            android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu" >
+            android:parentActivityName="com.buildmlearn.labeldiagram.MainMenuGrid" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.buildmlearn.labeldiagram.MainMenu" >
+                android:value="com.buildmlearn.labeldiagram.MainMenuGrid" >
             </meta-data>
         </activity>
         <activity
             android:name="com.buildmlearn.labeldiagram.HelpMenu"
-            android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu"
+            android:parentActivityName="com.buildmlearn.labeldiagram.MainMenuGrid"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.buildmlearn.labeldiagram.MainMenu" >
+                android:value="com.buildmlearn.labeldiagram.MainMenuGrid" >
             </meta-data>
         </activity>
         <activity
@@ -532,10 +532,10 @@
         </activity>
         <activity
             android:name="com.buildmlearn.labeldiagram.ScoreboardViewer"
-            android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu" >
+            android:parentActivityName="com.buildmlearn.labeldiagram.MainMenuGrid" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.buildmlearn.labeldiagram.MainMenu" >
+                android:value="com.buildmlearn.labeldiagram.MainMenuGrid" >
             </meta-data>
         </activity>
         <activity

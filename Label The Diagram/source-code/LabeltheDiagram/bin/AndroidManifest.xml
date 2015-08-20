@@ -18,28 +18,28 @@
         </activity>
         <activity android:configChanges="orientation" android:label="@string/title_activity_main_menu" android:name="com.buildmlearn.labeldiagram.MainMenuGrid" android:screenOrientation="portrait">
         </activity>
-        <activity android:name="com.buildmlearn.labeldiagram.DiagramCategory" android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.MainMenu">
+        <activity android:name="com.buildmlearn.labeldiagram.DiagramCategory" android:parentActivityName="com.buildmlearn.labeldiagram.MainMenuGrid">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.MainMenuGrid">
             </meta-data>
         </activity>
-        <activity android:name="com.buildmlearn.labeldiagram.DiagramCategoryViewer" android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.MainMenu">
+        <activity android:name="com.buildmlearn.labeldiagram.DiagramCategoryViewer" android:parentActivityName="com.buildmlearn.labeldiagram.MainMenuGrid">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.MainMenuGrid">
             </meta-data>
         </activity>
-        <activity android:name="com.buildmlearn.labeldiagram.lessons.LessonCategoryViewer" android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.MainMenu">
+        <activity android:name="com.buildmlearn.labeldiagram.lessons.LessonCategoryViewer" android:parentActivityName="com.buildmlearn.labeldiagram.MainMenuGrid">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.MainMenuGrid">
             </meta-data>
         </activity>
-        <activity android:name="com.buildmlearn.labeldiagram.badges.BadgesViewer" android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.MainMenu">
+        <activity android:name="com.buildmlearn.labeldiagram.badges.BadgesViewer" android:parentActivityName="com.buildmlearn.labeldiagram.MainMenuGrid">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.MainMenuGrid">
             </meta-data>
         </activity>
-        <activity android:name="com.buildmlearn.labeldiagram.Settings" android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.MainMenu">
+        <activity android:name="com.buildmlearn.labeldiagram.Settings" android:parentActivityName="com.buildmlearn.labeldiagram.MainMenuGrid">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.MainMenuGrid">
             </meta-data>
         </activity>
-        <activity android:name="com.buildmlearn.labeldiagram.HelpMenu" android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu" android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.MainMenu">
+        <activity android:name="com.buildmlearn.labeldiagram.HelpMenu" android:parentActivityName="com.buildmlearn.labeldiagram.MainMenuGrid" android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.MainMenuGrid">
             </meta-data>
         </activity>
         <activity android:configChanges="orientation" android:name="com.buildmlearn.labeldiagram.DiagramPlay" android:parentActivityName="com.buildmlearn.labeldiagram.DiagramCategory" android:screenOrientation="portrait">
@@ -222,8 +222,8 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.DiagramCategory">
             </meta-data>
         </activity>
-        <activity android:name="com.buildmlearn.labeldiagram.ScoreboardViewer" android:parentActivityName="com.buildmlearn.labeldiagram.MainMenu">
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.MainMenu">
+        <activity android:name="com.buildmlearn.labeldiagram.ScoreboardViewer" android:parentActivityName="com.buildmlearn.labeldiagram.MainMenuGrid">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.MainMenuGrid">
             </meta-data>
         </activity>
         <activity android:name="com.buildmlearn.labeldiagram.ScoreboardResult" android:parentActivityName="com.buildmlearn.labeldiagram.ScoreboardViewer">

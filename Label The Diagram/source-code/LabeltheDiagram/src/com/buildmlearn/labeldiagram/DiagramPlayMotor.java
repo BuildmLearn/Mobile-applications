@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
+import com.buildmlearn.labeldiagram.tooltipkit.InfoTooltip;
+import com.buildmlearn.labeldiagram.tooltipkit.CustomTooltip.AlignMode;
 import com.example.labelthediagram.R;
 
 public class DiagramPlayMotor extends DiagramPlayBase {
@@ -97,8 +99,65 @@ public class DiagramPlayMotor extends DiagramPlayBase {
 
 	@Override
 	public void onClick(View tagView) {
-		// TODO Auto-generated method stub
 		super.onClick(tagView);
+		
+		InfoTooltip popup;
+		
+		switch (tagView.getId()) {
+		case R.id.northPoleTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Northern end of the magnet");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.southPoleTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Southern end of the magnet");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.magFieldTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The region around a moving electric charge\n"
+					+ " within which the force of magnetism acts");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.forceTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Energy as an attribute of rotation of motor");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.axelTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The metal rod of the motor");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.batteryTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The power source which supplies current to amature");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.commutatorTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"A metal ring divided into two separate halves, \n"
+					+ "which reverse the electric current in the coil");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.brushTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Loose connectors made from pieces of graphite \n"
+					+ "or springy metals which brush against \n"
+					+ "the commutator");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.armatureTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The rotating coil of the electric motor");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+
+		default:
+			break;
+		}
+		
 	}
 	
 	@Override

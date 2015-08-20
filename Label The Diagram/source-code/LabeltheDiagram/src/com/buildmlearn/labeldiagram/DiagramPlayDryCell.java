@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
+import com.buildmlearn.labeldiagram.tooltipkit.InfoTooltip;
+import com.buildmlearn.labeldiagram.tooltipkit.CustomTooltip.AlignMode;
 import com.example.labelthediagram.R;
 
 public class DiagramPlayDryCell extends DiagramPlayBase {
@@ -74,7 +76,7 @@ public class DiagramPlayDryCell extends DiagramPlayBase {
 		sealTag.setOnLongClickListener(this);
 		mJacketTag.setOnLongClickListener(this);
 		insulatorTag.setOnLongClickListener(this);
-		
+
 		// Register place holders to receive onClick events
 		posTerminalTag.setOnClickListener(this);
 		negTerminalTag.setOnClickListener(this);
@@ -85,20 +87,81 @@ public class DiagramPlayDryCell extends DiagramPlayBase {
 		sealTag.setOnClickListener(this);
 		mJacketTag.setOnClickListener(this);
 		insulatorTag.setOnClickListener(this);
-		
+
 		placeHolderlist = container.diagramCaller("DryCell");
 		tagPlaceHolderMap = tagPlaceholdermapper.diagramMapper("DryCell");
 		incompleteTagList = tagPlaceholdermapper.diagramMapper("DryCell");
 		tagListSize = tagPlaceHolderMap.size();
-		
+
 		openDB();
 
 	}
-	
+
 	@Override
 	public void onClick(View tagView) {
-		// TODO Auto-generated method stub
 		super.onClick(tagView);
+
+		InfoTooltip popup;
+		
+		switch (tagView.getId()) {
+		case R.id.posTerminalTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Electrons flow to the positive terminal \n"
+					+ "of the battery through the circuit");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.negTerminalTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Electrons flow from the negative \n"
+					+ "terminal of the battery through the circuit");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.chemPasteTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"A mixture of several substances to hold \n"
+					+ "the cathode rigid in the center of the cell");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.anodeTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The zinc container serves as the \n"
+					+ "negative electrode of the cell");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.cathodeTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The carbon electrode located in the center \n"
+					+ "which serves as the positive terminal");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.airSpaceTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Small space left at the top for \n"
+					+ "expansion of the electrolytic paste");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.sealTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Provides electrical & chemical insulation \n"
+					+ " and prevents air infiltration");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.mJacketTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The cell is enclosed with metal jacket \n"
+					+ " to electrically isolate the anode");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.insulatorTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Non-conducting material to separate \n"
+					+ "the zinc from the paste");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+
+		default:
+			break;
+		}
 	}
 
 	@Override
@@ -109,11 +172,11 @@ public class DiagramPlayDryCell extends DiagramPlayBase {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		
+
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.main, menu);
 		return super.onCreateOptionsMenu(menu);
-		
+
 	}
 
 	@Override
@@ -160,7 +223,8 @@ public class DiagramPlayDryCell extends DiagramPlayBase {
 	}
 
 	@Override
-	protected void intentBuilder(String badgeTitle, int badgeId, float totalScore, int gameScore, boolean completed, int tryCycle) {
+	protected void intentBuilder(String badgeTitle, int badgeId,
+			float totalScore, int gameScore, boolean completed, int tryCycle) {
 		Intent intent;
 		intent = new Intent(getBaseContext(), BadgePopUpWindow.class);
 		intent.putExtra("BADGE_TITLE", badgeTitle);
@@ -175,7 +239,7 @@ public class DiagramPlayDryCell extends DiagramPlayBase {
 		startActivity(intent);
 		finish();
 	}
-	
+
 	@Override
 	public void onDestroy() {
 		super.onDestroy();

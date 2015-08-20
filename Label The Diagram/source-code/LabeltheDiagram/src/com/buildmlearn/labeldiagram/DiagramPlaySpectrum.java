@@ -107,8 +107,9 @@ public class DiagramPlaySpectrum extends DiagramPlayBase {
 		case R.id.amTag:
 			popup = new InfoTooltip(
 					getApplicationContext(),
-					"The Amplitude Modulation are ways of broadcasting "
-							+ "radio signals, which ranges from 535 to 1605 kHz");
+					"The Amplitude Modulation are ways of \n "
+							+ "broadcasting radio signals, which ranges\n "
+							+ "from 535 to 1605 kHz");
 			popup.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.fmTag:
@@ -118,9 +119,9 @@ public class DiagramPlaySpectrum extends DiagramPlayBase {
 			break;
 		case R.id.microwaveTag:
 			popup = new InfoTooltip(getApplicationContext(),
-					"Having a wavelength (in the range 0.001–0.3 m) "
-							+ "shorter than that of a normal radio wave "
-							+ "but longer than those of infrared radiation");
+					"Having a wavelength (in the range 0.001–0.3 m)"
+							+ "\n shorter than that of a normal radio wave"
+							+ "\n but longer than those of infrared radiation");
 			popup.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.visibleLightTag:
@@ -130,8 +131,8 @@ public class DiagramPlaySpectrum extends DiagramPlayBase {
 			break;
 		case R.id.radio_wavesTag:
 			popup = new InfoTooltip(getApplicationContext(),
-					"EM radiation which has frequencies from 300 GHz to 3 kHz."
-							+ " Two frequency ranges, AM and FM");
+					"EM radiation which has frequencies from \n"
+					+ "300 GHz to 3 kHz. Two frequency ranges,\n AM and FM");
 			popup.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.irTag:
@@ -143,22 +144,23 @@ public class DiagramPlaySpectrum extends DiagramPlayBase {
 			break;
 		case R.id.uvTag:
 			popup = new InfoTooltip(getApplicationContext(),
-					"Having a wavelength shorter than that "
-							+ "of the violet end of the visible spectrum "
-							+ "but longer than that of X-rays");
+					"Having a wavelength shorter than that of the"
+							+ "\n violet end of the visible spectrum "
+							+ "\n but longer than that of X-rays");
 			popup.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.xrayTag:
 			popup = new InfoTooltip(
 					getApplicationContext(),
-					"Have a wavelength ranging from 0.01 to 10 nm, "
-							+ "corresponding to frequencies in the range 3×10^16 Hz to 3×10^19 Hz");
+					"Have a wavelength ranging from 0.01 to 10 nm, \n"
+							+ "corresponding to frequencies in the range \n"
+							+ "3×10^16 Hz to 3×10^19 Hz");
 			popup.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.gammaTag:
 			popup = new InfoTooltip(
 					getApplicationContext(),
-					"Have the smallest wavelengths and the most energy "
+					"Have the smallest wavelengths and the most energy \n"
 					+ "of any wave in the EM spectrum");
 			popup.show(tagView, AlignMode.BOTTOM);
 			break;

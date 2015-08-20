@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
+import com.buildmlearn.labeldiagram.tooltipkit.InfoTooltip;
+import com.buildmlearn.labeldiagram.tooltipkit.CustomTooltip.AlignMode;
 import com.example.labelthediagram.R;
 
 public class DiagramPlayCircuit extends DiagramPlayBase {
@@ -85,20 +87,82 @@ public class DiagramPlayCircuit extends DiagramPlayBase {
 		loadTag.setOnClickListener(this);
 		voltmeterTag.setOnClickListener(this);
 		bulbTag.setOnClickListener(this);
-		
+
 		placeHolderlist = container.diagramCaller("Circuit");
 		tagPlaceHolderMap = tagPlaceholdermapper.diagramMapper("Circuit");
 		incompleteTagList = tagPlaceholdermapper.diagramMapper("Circuit");
 		tagListSize = tagPlaceHolderMap.size();
-		
+
 		openDB();
-	
+
 	}
 
 	@Override
 	public void onClick(View tagView) {
-		// TODO Auto-generated method stub
 		super.onClick(tagView);
+
+		InfoTooltip popup;
+		
+		switch (tagView.getId()) {
+		case R.id.capacitorTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"This stores energy in the form of \n"
+					+ "an electrostatic field between its plates");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.batteryTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The source of power fro the electric \n"
+					+ "circuit");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.currentTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The flow of electricity");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.resistorTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"A device designed to introduce \n"
+					+ "resistance into an electric circuit");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.switchTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Device for making and breaking \n "
+					+ "the connection in the electric circuit");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.ameterTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Instrument for measuring electric \n"
+					+ "current in amperes");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.loadTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Something in the circuit that will draw power");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.voltmeterTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Instrument for measure electrical \n"
+					+ "potential difference between two \n"
+					+ "points in an electric circuit");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.bulbTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The glass bulb that provides light \n"
+					+ "by passing an electric current t\n"
+					+ "hrough a filament");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+
+		default:
+			break;
+		}
+
 	}
 
 	@Override
@@ -106,14 +170,14 @@ public class DiagramPlayCircuit extends DiagramPlayBase {
 		// TODO Auto-generated method stub
 		return R.layout.diagram_play_circuit;
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		
+
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.main, menu);
 		return super.onCreateOptionsMenu(menu);
-		
+
 	}
 
 	@Override
@@ -158,9 +222,10 @@ public class DiagramPlayCircuit extends DiagramPlayBase {
 		intent.putExtra("TRY_CYCLE", tryCycle);
 		startActivity(intent);
 	}
-	
+
 	@Override
-	protected void intentBuilder(String badgeTitle, int badgeId, float totalScore, int gameScore, boolean completed, int tryCycle) {
+	protected void intentBuilder(String badgeTitle, int badgeId,
+			float totalScore, int gameScore, boolean completed, int tryCycle) {
 		Intent intent;
 		intent = new Intent(getBaseContext(), BadgePopUpWindow.class);
 		intent.putExtra("BADGE_TITLE", badgeTitle);
@@ -175,7 +240,7 @@ public class DiagramPlayCircuit extends DiagramPlayBase {
 		startActivity(intent);
 		finish();
 	}
-	
+
 	@Override
 	public void onDestroy() {
 		super.onDestroy();

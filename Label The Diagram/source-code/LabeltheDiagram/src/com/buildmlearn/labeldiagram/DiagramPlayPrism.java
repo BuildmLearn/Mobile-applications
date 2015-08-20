@@ -114,8 +114,8 @@ public class DiagramPlayPrism extends DiagramPlayBase {
 		case R.id.incAngleTag:
 			popup = new InfoTooltip(getApplicationContext(),
 					"The angle formed by a ray incident on prism surface"
-					+ " and a line perpendicular to the prism surface"
-					+ " at the point of incidence");
+					+ "\n and a line perpendicular to the prism surface"
+					+ "\n at the point of incidence");
 			popup.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.incRayTag:
@@ -131,7 +131,8 @@ public class DiagramPlayPrism extends DiagramPlayBase {
 			break;
 		case R.id.refRayTag:
 			popup = new InfoTooltip(getApplicationContext(),
-					"The ray that undergoes a change of velocity and direction");
+					"The ray that undergoes a change of velocity \n"
+					+ "and direction");
 			popup.show(tagView, AlignMode.BOTTOM);
 			break;
 		case R.id.emergeAngleTag:

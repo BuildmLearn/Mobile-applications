@@ -292,4 +292,9 @@ public class DiagramResult extends Activity implements OnClickListener {
 		intentBuilder(intent);
 
 	}
+	
+	@Override
+	public void onBackPressed() {
+		
+	}
 }

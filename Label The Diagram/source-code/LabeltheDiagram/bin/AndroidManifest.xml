@@ -45,7 +45,7 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.buildmlearn.labeldiagram.DiagramCategory">
             </meta-data>
         </activity>
-        <activity android:configChanges="orientation" android:name="com.buildmlearn.labeldiagram.DiagramResult" android:parentActivityName="com.buildmlearn.labeldiagram.DiagramCategory" android:screenOrientation="portrait">
+        <activity android:configChanges="orientation" android:name="com.buildmlearn.labeldiagram.DiagramResult" android:screenOrientation="portrait">
         </activity>
         <activity android:name="com.buildmlearn.labeldiagram.tooltipkit.PopupActivity">
         </activity>
@@ -224,6 +224,8 @@
             </meta-data>
         </activity>
         <activity android:configChanges="orientation" android:name="com.buildmlearn.labeldiagram.badges.BadgePopUpWindow" android:screenOrientation="portrait" android:theme="@style/DialogNoTitleBar">
+        </activity>
+        <activity android:configChanges="orientation" android:name="com.buildmlearn.labeldiagram.Navigator" android:screenOrientation="portrait">
         </activity>
 
         <meta-data android:name="io.fabric.ApiKey" android:value="37b3161e48423b96715470d17f0ac8dad7799436"/>

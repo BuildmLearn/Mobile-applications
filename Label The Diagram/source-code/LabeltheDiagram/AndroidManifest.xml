@@ -115,7 +115,6 @@
         <activity
             android:name="com.buildmlearn.labeldiagram.DiagramResult"
             android:configChanges="orientation"
-            android:parentActivityName="com.buildmlearn.labeldiagram.DiagramCategory"
             android:screenOrientation="portrait" >
         </activity>
         <activity android:name="com.buildmlearn.labeldiagram.tooltipkit.PopupActivity" >
@@ -567,6 +566,11 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/DialogNoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.buildmlearn.labeldiagram.Navigator"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
         </activity>
 
         <meta-data

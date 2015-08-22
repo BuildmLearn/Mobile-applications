@@ -26,10 +26,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:text="Exit"
+            android:text="@string/exit_title"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#FFFFFF"
-            android:textSize="32sp"
+            android:textSize="34sp"
             app:typeface="roboto_light" />
     </LinearLayout>
 
@@ -52,40 +52,54 @@
         android:layout_marginRight="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginTop="25dp"
-        android:text="Do you want to exit ?"
+        android:text="@string/exit_msg"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#FFFFFF"
         app:typeface="roboto_light"
-        android:textSize="22sp" />
+        android:textSize="24sp" />
 
-    <Button
-        android:id="@+id/yes_btn"
-        android:layout_width="80dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/confirm_txt"
-        android:layout_marginLeft="105dp"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="30dp"
-        android:padding="15dp"
-        android:background="@drawable/border_button"
-        android:text="Yes"
-        android:textColor="#FFFFFF"
-        android:textSize="22sp" />
+        android:layout_marginTop="20dp" >
 
-    <Button
-        android:id="@+id/no_btn"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/yes_btn"
-        android:layout_alignBottom="@+id/yes_btn"
-        android:layout_marginRight="105dp"
-        android:layout_marginEnd="105dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:background="@drawable/border_button"
-        android:padding="15dp"
-        android:text="No" 
-        android:textColor="#FFFFFF"
-        android:textSize="22sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
+
+            <Button
+                android:id="@+id/yes_btn"
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_button"
+                android:gravity="center"
+                android:text="@string/yes_text"
+                android:padding="15dp"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/no_btn"
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_button"
+                android:gravity="center"
+                android:text="@string/no_text"
+                android:padding="15dp"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
 
 </RelativeLayout>

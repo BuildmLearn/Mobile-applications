@@ -3,6 +3,7 @@ package com.buildmlearn.labeldiagram;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.buildmlearn.labeldiagram.SplashScreen.NavigationHandler;
 import com.buildmlearn.labeldiagram.helper.HelperClass;
 import com.buildmlearn.labeldiagram.resources.MenuGridRowItem;
 import com.buildmlearn.labeldiagram.resources.MenuGridViewAdapter;
@@ -68,9 +69,14 @@ public class MainMenuGrid extends Activity implements OnClickListener{
 			@Override
 			public void onClick(View v) {
 				dialog.dismiss();
-				Intent intent = new Intent(Intent.ACTION_MAIN);
+				/*Intent intent = new Intent(Intent.ACTION_MAIN);
 				intent.addCategory(Intent.CATEGORY_HOME);
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intent);
+				finish();*/
+				
+				Intent intent = new Intent(MainMenuGrid.this,Navigator.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(intent);
 				finish();
 			}

@@ -1,16 +1,12 @@
 package com.buildmlearn.labeldiagram;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
@@ -228,20 +224,7 @@ public class DiagramPlayPlantFlower extends DiagramPlayBase {
 
 	private void quitPlay() {
 
-		new AlertDialog.Builder(this)
-				.setIcon(android.R.drawable.ic_dialog_alert)
-				.setTitle("Quit Playing")
-				.setMessage("Are you sure?")
-				.setPositiveButton("Yes",
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-
-								quitPlayUpdataProgress();
-
-							}
-						}).setNegativeButton("No", null).show();
+		super.dialogBuilder(DiagramPlayPlantFlower.this);
 
 	}
 

@@ -5,8 +5,6 @@ import com.buildmlearn.labeldiagram.tooltipkit.InfoTooltip;
 import com.buildmlearn.labeldiagram.tooltipkit.CustomTooltip.AlignMode;
 import com.example.labelthediagram.R;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -193,20 +191,7 @@ public class DiagramPlayWaterCycle extends DiagramPlayBase {
 
 	private void quitPlay() {
 
-		new AlertDialog.Builder(this)
-				.setIcon(android.R.drawable.ic_dialog_alert)
-				.setTitle("Quit Playing")
-				.setMessage("Are you sure?")
-				.setPositiveButton("Yes",
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-
-								quitPlayUpdataProgress();
-
-							}
-						}).setNegativeButton("No", null).show();
+		super.dialogBuilder(DiagramPlayWaterCycle.this);
 
 	}
 

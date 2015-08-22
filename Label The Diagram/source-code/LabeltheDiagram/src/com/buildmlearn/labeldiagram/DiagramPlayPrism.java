@@ -1,14 +1,11 @@
 package com.buildmlearn.labeldiagram;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnCreateContextMenuListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -181,20 +178,7 @@ public class DiagramPlayPrism extends DiagramPlayBase {
 
 	private void quitPlay() {
 
-		new AlertDialog.Builder(this)
-				.setIcon(android.R.drawable.ic_dialog_alert)
-				.setTitle("Quit Playing")
-				.setMessage("Are you sure?")
-				.setPositiveButton("Yes",
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-
-								quitPlayUpdataProgress();
-
-							}
-						}).setNegativeButton("No", null).show();
+		super.dialogBuilder(DiagramPlayPrism.this);
 
 	}
 

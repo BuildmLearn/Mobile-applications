@@ -20,7 +20,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logo_2_small"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/CustomActionBarTheme" >
         <activity
@@ -34,12 +34,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="com.buildmlearn.labeldiagram.MainMenu"
-            android:configChanges="orientation"
-            android:label="@string/title_activity_main_menu"
-            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.buildmlearn.labeldiagram.MainMenuGrid"
@@ -573,12 +567,6 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/DialogNoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.buildmlearn.labeldiagram.widget.MessagePopupWindow"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
-            android:theme="@style/DialogWithDimmedBack" >
         </activity>
 
         <meta-data

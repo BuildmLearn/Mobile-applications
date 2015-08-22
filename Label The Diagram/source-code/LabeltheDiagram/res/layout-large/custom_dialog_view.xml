@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/appBg_color"
+    android:paddingBottom="30dp"
+    android:id="@+id/dialog_layout" >
+
+    <LinearLayout
+        android:id="@+id/title_panel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:src="@drawable/ic_warning_white" />
+
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
+            android:id="@+id/dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="Exit"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#FFFFFF"
+            android:textSize="32sp"
+            app:typeface="roboto_light" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/title_panel"
+        android:background="#c0c0c0" />
+
+    <com.buildmlearn.labeldiagram.widget.CustomFontManager
+        android:id="@+id/confirm_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/view1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="25dp"
+        android:text="Do you want to exit ?"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FFFFFF"
+        app:typeface="roboto_light"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/yes_btn"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/confirm_txt"
+        android:layout_marginLeft="105dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="30dp"
+        android:padding="15dp"
+        android:background="@drawable/border_button"
+        android:text="Yes"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/no_btn"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/yes_btn"
+        android:layout_alignBottom="@+id/yes_btn"
+        android:layout_marginRight="105dp"
+        android:layout_marginEnd="105dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/border_button"
+        android:padding="15dp"
+        android:text="No" 
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"/>
+
+</RelativeLayout>

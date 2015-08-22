@@ -7,7 +7,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
-import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
 import com.buildmlearn.labeldiagram.database.DBAdapter;
 import com.buildmlearn.labeldiagram.database.Database;
 import com.buildmlearn.labeldiagram.entity.Result;
@@ -20,11 +19,10 @@ import com.google.gson.reflect.TypeToken;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
-import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Canvas;
@@ -40,9 +38,11 @@ import android.view.Display;
 import android.view.DragEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -494,7 +494,7 @@ public abstract class DiagramPlayBase extends Activity implements
 
 	private void generateBadges(float score, int gameScore) {
 
-		if ((int) score < 20) {
+		if ((int) score < gameScore) {
 
 			if (source.equals("Fragment")) {
 				tryCycle = 0;
@@ -504,7 +504,7 @@ public abstract class DiagramPlayBase extends Activity implements
 
 		}
 
-		if ((int) score >= 20) {
+		if ((int) score == gameScore) {
 
 			generateGreatStreakBadge(score, gameScore);
 
@@ -811,6 +811,39 @@ public abstract class DiagramPlayBase extends Activity implements
 		// preferences.getBoolean(key, defValue)
 		return updatedVal;
 
+	}
+	
+	protected void dialogBuilder(Context context){
+		
+		final Dialog dialog = new Dialog(context);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.setContentView(R.layout.custom_dialog_view);
+
+		Button yesBtn = (Button) dialog.findViewById(R.id.yes_btn);
+		Button noBtn = (Button) dialog.findViewById(R.id.no_btn);
+		TextView tvTitle = (TextView) dialog.findViewById(R.id.dialog_title);
+		TextView tvMessage = (TextView) dialog.findViewById(R.id.confirm_txt);
+		
+		tvTitle.setText(getResources().getString(R.string.quit_play));
+		tvMessage.setText(getResources().getString(R.string.quit_play_msg));
+		yesBtn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				quitPlayUpdataProgress();
+			}
+		});
+		
+		noBtn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+
+		dialog.show();
+		
 	}
 
 	protected abstract void intentBuilder(String badgeTitle, int badgeId,

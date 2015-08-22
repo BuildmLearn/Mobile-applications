@@ -66,5 +66,11 @@
     <string name="science_diagrams_completed">completedScienceDiagrams</string>
     <string name="total_category_completed">completedTotalCategories</string>
     <string name="fully_completed_tries_count">completeTryCount</string>
-
+    
+    <string name="not_complete">Not Complete</string>
+    <string name="not_complete_msg">You have not take the challenge yet to view the score.\nDo you take the challenge now ?</string>
+ 	<string name="no_badges">No Badges</string>	
+ 	<string name="no_badges_msg">You have not yet achieved any badges to view. Hurry up and grab some badges ! \n\nDo you take a challenge right now?</string>
+ 	<string name="quit_play">Quit Playig</string>
+ 	<string name="quit_play_msg">Are you sure ?</string>	
 </resources>

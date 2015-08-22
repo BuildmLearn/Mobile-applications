@@ -53,12 +53,12 @@ public class BadgesViewer extends FragmentActivity {
 
 		findViewById(android.R.id.tabcontent).setBackgroundColor(
 				getResources().getColor(R.color.appBg_color_white));
-		
+
 	}
 
 	private View getTabIndicator(Context context, String title) {
-		View view = LayoutInflater.from(context).inflate(
-				R.layout.badges_tab, null);
+		View view = LayoutInflater.from(context).inflate(R.layout.badges_tab,
+				null);
 		TextView tv = (TextView) view.findViewById(R.id.textView);
 		tfThin = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Thin.ttf");
 		tv.setText(title);

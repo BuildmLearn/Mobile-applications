@@ -5,6 +5,7 @@ import com.buildmlearn.labeldiagram.tooltipkit.InfoTooltip;
 import com.buildmlearn.labeldiagram.tooltipkit.CustomTooltip.AlignMode;
 import com.example.labelthediagram.R;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -213,8 +214,10 @@ public class DiagramPlayBacteria extends DiagramPlayBase {
 	}
 
 	private void quitPlay() {
+		
+		super.dialogBuilder(DiagramPlayBacteria.this);
 
-		new AlertDialog.Builder(this)
+		/*new AlertDialog.Builder(this)
 				.setIcon(android.R.drawable.ic_dialog_alert)
 				.setTitle("Quit Playing")
 				.setMessage("Are you sure?")
@@ -227,7 +230,7 @@ public class DiagramPlayBacteria extends DiagramPlayBase {
 								quitPlayUpdataProgress();
 
 							}
-						}).setNegativeButton("No", null).show();
+						}).setNegativeButton("No", null).show();*/
 
 	}
 

@@ -7,16 +7,15 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginBottom="30dp"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/diagram_shadow"
         android:orientation="vertical" >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-             >
+            android:layout_height="match_parent" >
 
             <LinearLayout
                 android:id="@+id/outter_layout"
@@ -28,19 +27,12 @@
                 <LinearLayout
                     android:id="@+id/innerLayout1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                     >
-
-                    <ProgressBar
-                        android:id="@+id/progressBar1"
-                        style="?android:attr/progressBarStyleLarge"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content" >
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="10dp"
                         android:orientation="vertical" >
 
                         <TextView
@@ -57,32 +49,30 @@
                             android:id="@+id/score_saved"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="6dp"
                             android:layout_weight="0.5"
                             android:gravity="center"
                             android:text="75% Success"
                             android:textColor="@color/appBg_color"
                             android:textSize="22sp" />
                     </LinearLayout>
-
                 </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" 
-                    android:padding="10dp"
-                    android:background="@drawable/layout_bg_bottom">
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/layout_bg_bottom"
+                    android:padding="10dp" >
 
                     <Button
                         android:id="@+id/go_diagram_btn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/custom_textview"
                         android:text="Start"
                         android:textColor="#ffff"
-                        android:textSize="26sp"
-                        android:background="@drawable/custom_textview" />
-
+                        android:textSize="26sp" />
                 </RelativeLayout>
-
             </LinearLayout>
 
             <RelativeLayout
@@ -115,19 +105,16 @@
                 android:layout_height="match_parent"
                 android:layout_above="@+id/outter_layout"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/relativeLayout1" 
-                >
+                android:layout_below="@+id/relativeLayout1" >
 
                 <ImageView
                     android:id="@+id/diagram_toselect"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/virus_unlabel" 
-                    android:layout_centerInParent="true"/>
-
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/virus_unlabel" />
             </RelativeLayout>
         </RelativeLayout>
-
     </LinearLayout>
 
 </LinearLayout>

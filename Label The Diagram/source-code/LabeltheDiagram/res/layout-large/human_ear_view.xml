@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content" xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram">
+    android:layout_height="wrap_content" >
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginBottom="30dp"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/diagram_shadow"
         android:orientation="vertical" >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-             >
+            android:layout_height="match_parent" >
 
             <LinearLayout
                 android:id="@+id/outter_layout"
@@ -29,14 +29,7 @@
                     android:id="@+id/innerLayout1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                     >
-
-                    <ProgressBar
-                        android:id="@+id/progressBar1"
-                        style="?android:attr/progressBarStyleLarge"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                    android:layout_marginBottom="5dp" >
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -58,37 +51,34 @@
                             android:id="@+id/score_saved"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
                             android:layout_weight="0.5"
                             android:gravity="center"
                             android:text="75% Success"
                             android:textColor="@color/appBg_color"
-                            android:textSize="28sp"
-                            android:layout_marginBottom="10dp" />
+                            android:textSize="28sp" />
                     </LinearLayout>
-
                 </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" 
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/layout_bg_bottom"
+                    android:paddingBottom="20dp"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
-                    android:paddingTop="20dp"
-                    android:paddingBottom="20dp"
-                    android:background="@drawable/layout_bg_bottom">
+                    android:paddingTop="20dp" >
 
                     <Button
                         android:id="@+id/go_diagram_btn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/custom_textview"
+                        android:padding="10dp"
                         android:text="Start"
                         android:textColor="#ffff"
-                        android:textSize="32sp"
-                        android:padding="10dp"
-                        android:background="@drawable/custom_textview" />
-
+                        android:textSize="32sp" />
                 </RelativeLayout>
-
             </LinearLayout>
 
             <RelativeLayout
@@ -122,19 +112,16 @@
                 android:layout_height="match_parent"
                 android:layout_above="@+id/outter_layout"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/relativeLayout1" 
-                >
+                android:layout_below="@+id/relativeLayout1" >
 
                 <ImageView
                     android:id="@+id/diagram_toselect"
                     android:layout_width="wrap_content"
                     android:layout_height="420dp"
-                    android:src="@drawable/humanearunlabel" 
-                    android:layout_centerInParent="true"/>
-
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/humanearunlabel" />
             </RelativeLayout>
         </RelativeLayout>
-
     </LinearLayout>
 
 </LinearLayout>

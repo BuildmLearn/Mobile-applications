@@ -7,15 +7,13 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 
-    <application android:allowBackup="true" android:icon="@drawable/logo_2_small" android:label="@string/app_name" android:theme="@style/CustomActionBarTheme">
+    <application android:allowBackup="true" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:theme="@style/CustomActionBarTheme">
         <activity android:configChanges="orientation" android:label="@string/app_name" android:name="com.buildmlearn.labeldiagram.SplashScreen" android:screenOrientation="portrait" android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity android:configChanges="orientation" android:label="@string/title_activity_main_menu" android:name="com.buildmlearn.labeldiagram.MainMenu" android:screenOrientation="portrait">
         </activity>
         <activity android:configChanges="orientation" android:label="@string/title_activity_main_menu" android:name="com.buildmlearn.labeldiagram.MainMenuGrid" android:screenOrientation="portrait">
         </activity>
@@ -226,8 +224,6 @@
             </meta-data>
         </activity>
         <activity android:configChanges="orientation" android:name="com.buildmlearn.labeldiagram.badges.BadgePopUpWindow" android:screenOrientation="portrait" android:theme="@style/DialogNoTitleBar">
-        </activity>
-        <activity android:configChanges="orientation" android:name="com.buildmlearn.labeldiagram.widget.MessagePopupWindow" android:screenOrientation="portrait" android:theme="@style/DialogWithDimmedBack">
         </activity>
 
         <meta-data android:name="io.fabric.ApiKey" android:value="37b3161e48423b96715470d17f0ac8dad7799436"/>

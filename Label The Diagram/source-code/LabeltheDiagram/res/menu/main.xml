@@ -9,7 +9,7 @@
         android:title="@string/action_settings"/> -->
     
     <item android:id="@+id/action_done"
-          android:icon="@drawable/ic_done_white_36dp"
+          android:icon="@drawable/ic_done_white"
           android:title="@string/action_done"
           android:showAsAction="always" />
 

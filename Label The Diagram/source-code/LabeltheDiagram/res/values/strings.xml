@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">LabeltheDiagram</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="splash_app_name">Label the Diagram</string>
     <string name="action_settings">Settings</string>
     <string name="action_done">Done</string>
     <string name="title_activity_main_menu">MainMenu</string>

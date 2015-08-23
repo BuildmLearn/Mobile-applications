@@ -57,7 +57,7 @@ public class ScoreboardScoreFragment extends Fragment {
 		loadData();
 
 		if (result == null) {
-			
+
 			createDialog();
 
 		} else {
@@ -189,21 +189,25 @@ public class ScoreboardScoreFragment extends Fragment {
 		Button noBtn = (Button) dialog.findViewById(R.id.no_btn);
 		TextView tvTitle = (TextView) dialog.findViewById(R.id.dialog_title);
 		TextView tvMessage = (TextView) dialog.findViewById(R.id.confirm_txt);
-		
+
 		tvTitle.setText(getResources().getString(R.string.not_complete));
 		tvMessage.setText(getResources().getString(R.string.not_complete_msg));
 		yesBtn.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
+				dialog.dismiss();
+				getActivity().finish();
 				launchIntent(DiagramCategoryViewer.class);
 			}
 		});
-		
+
 		noBtn.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
+				dialog.dismiss();
+				getActivity().finish();
 				launchIntent(ScoreboardViewer.class);
 			}
 		});
@@ -217,7 +221,7 @@ public class ScoreboardScoreFragment extends Fragment {
 		Intent intent = new Intent(getActivity(), dispatchedClass);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
-		getActivity().finish();
+		// getActivity().finish();
 
 	}
 

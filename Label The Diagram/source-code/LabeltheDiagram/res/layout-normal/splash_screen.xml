@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash3"
+    android:orientation="vertical" xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram">
+
+    <ImageView
+        android:id="@+id/splash_logo"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:src="@drawable/logo" 
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/view"
+        android:layout_marginTop="18dp"/>
+
+    <com.buildmlearn.labeldiagram.widget.CustomFontManager
+        android:id="@+id/splash_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="18dp"
+        android:text="@string/splash_app_name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        app:typeface="roboto_light"
+        android:textSize="28sp"
+        android:textColor="#FFFFFF" />
+        
+        <View
+            android:id="@+id/view"
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_centerVertical="true"
+            android:background="#009688" />
+        
+
+</RelativeLayout>

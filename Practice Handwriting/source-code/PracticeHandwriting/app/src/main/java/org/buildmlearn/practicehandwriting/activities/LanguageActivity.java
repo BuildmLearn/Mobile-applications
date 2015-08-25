@@ -20,7 +20,7 @@ public class LanguageActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
         //adding slide in animation for the buttons
-        final int[] buttons = new int[] {R.id.english_button,R.id.hindi_button,R.id.arabic_button};
+        final int[] buttons = new int[] {R.id.english_button,R.id.hindi_button,R.id.about_button};
         for(int i=0;i<buttons.length;i++) {
             Animation animation = AnimationUtils.loadAnimation(this, R.anim.slide_in);
             animation.setStartOffset(500 * i);
@@ -41,8 +41,8 @@ public class LanguageActivity extends Activity {
                 intent = new Intent(this,MainMenuActivity.class);
                 break;
 
-            case R.id.arabic_button:
-                intent = new Intent(this,IncompleteActivity.class);
+            case R.id.about_button:
+                intent = new Intent(this,AboutActivity.class);
                 break;
         }
         startActivity(intent);

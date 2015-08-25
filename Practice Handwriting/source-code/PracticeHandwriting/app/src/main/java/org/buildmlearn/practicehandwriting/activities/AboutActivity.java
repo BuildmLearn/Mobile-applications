@@ -8,11 +8,11 @@ import org.buildmlearn.practicehandwriting.R;
 /**
  * Activity that will be displayed when the user tries to access those activities that haven't been completed.
  */
-public class IncompleteActivity extends ActionBarActivity {
+public class AboutActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_incomplete);
+        setContentView(R.layout.activity_about);
     }
 }

@@ -3,7 +3,6 @@
 
     <string name="English">English</string>
     <string name="Hindi">हिंदी</string>
-    <string name="Arabic">العربية</string>
 
     <string-array name="Characters">
         <item>A</item>
@@ -609,4 +608,7 @@
     <string name="freehandHelp">Trace freely without a boundary</string>
     <string name="timerHelp">Trace as much as you can before the time runs out</string>
     <string name="title_activity_tutorial_display">TutorialDisplayActivity</string>
+
+    <string name="about">About</string>
+    <string name="about_text">Practice Handwriting\n\nThis mobile application is for children who are learning how to write, by allowing them to practice their handwriting skills. The application would present letters and words, and allow the kids to trace them. Warnings would be given instantaneously when the trace is wrong. The kids would be able to save traces for their own self assessment.\n\nVersion: 1.0.0\n\nDeveloped by: BuildmLearn\n\nVisit us at: <a href='www.buildmlearn.org'>www.buildmlearn.org</a></string>
 </resources>

@@ -75,14 +75,14 @@
         android:weightSum="2"
         android:gravity="center">
         <info.hoang8f.widget.FButton
-            android:id="@+id/arabic_button"
+            android:id="@+id/about_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20sp"
             fbutton:buttonColor="@color/ButtonBg"
             android:textColor="@color/White"
-            android:text="@string/Arabic"
+            android:text="@string/about"
             android:onClick="languageActivityOnClick"/>
     </LinearLayout>
 

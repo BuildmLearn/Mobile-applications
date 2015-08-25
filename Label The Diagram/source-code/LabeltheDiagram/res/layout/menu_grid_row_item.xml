@@ -3,10 +3,10 @@
     android:id="@+id/menuGridRowLayout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/shadow_view1"
-    android:paddingBottom="10px"
-    android:paddingLeft="3px"
-    android:paddingRight="3px"
-    android:paddingTop="3px" >
+    android:background="@drawable/shadow_4"
+    android:paddingBottom="8dp"
+    android:paddingLeft="1dp"
+    android:paddingRight="1dp"
+    android:paddingTop="0dp" >
 
 </RelativeLayout>

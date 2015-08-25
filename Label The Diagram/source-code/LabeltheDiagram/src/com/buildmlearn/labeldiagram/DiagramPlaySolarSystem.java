@@ -1,7 +1,5 @@
 package com.buildmlearn.labeldiagram;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
+import com.buildmlearn.labeldiagram.tooltipkit.InfoTooltip;
+import com.buildmlearn.labeldiagram.tooltipkit.CustomTooltip.AlignMode;
 import com.example.labelthediagram.R;
 
 public class DiagramPlaySolarSystem extends DiagramPlayBase {
@@ -73,7 +73,7 @@ public class DiagramPlaySolarSystem extends DiagramPlayBase {
 		saturnTag.setOnLongClickListener(this);
 		uranusTag.setOnLongClickListener(this);
 		neptuneTag.setOnLongClickListener(this);
-		
+
 		// Register place holders to receive onClick events
 		sunTag.setOnClickListener(this);
 		mercuryTag.setOnClickListener(this);
@@ -84,20 +84,83 @@ public class DiagramPlaySolarSystem extends DiagramPlayBase {
 		saturnTag.setOnClickListener(this);
 		uranusTag.setOnClickListener(this);
 		neptuneTag.setOnClickListener(this);
-		
+
 		placeHolderlist = container.diagramCaller("SolarSystem");
 		tagPlaceHolderMap = tagPlaceholdermapper.diagramMapper("SolarSystem");
 		incompleteTagList = tagPlaceholdermapper.diagramMapper("SolarSystem");
 		tagListSize = tagPlaceHolderMap.size();
-		
+
 		openDB();
-		
+
 	}
 
 	@Override
 	public void onClick(View tagView) {
-		// TODO Auto-generated method stub
 		super.onClick(tagView);
+
+		InfoTooltip popup;
+		
+		switch (tagView.getId()) {
+		case R.id.sunTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The star at the center of the Solar System \n"
+					+ "and the most important source of energy \n"
+					+ "for life on");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.mercuryTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Fastest planet and has the greatest \n"
+					+ "temperature variation of the planets \n"
+					+ "in the Solar System");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.venusTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"After the Moon, this is the brightest \n"
+					+ "natural object in the night sky");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.earthTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The only astronomical object \n"
+					+ "known to accommodate life");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.marsTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Second smallest planet in solar system");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.jupiterTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The largest planet in the Solar System \n"
+					+ "with a mass one-thousandth that of the Sun");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.saturnTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The second largest in the Solar System \n"
+					+ "and has a prominent ring system");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.uranusTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Has the third-largest planetary radius \n"
+					+ "and fourth-largest planetary mass");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.neptuneTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The most far away planet from the sun \n"
+					+ "in the Solar System");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+
+		default:
+			break;
+		}
+
 	}
 
 	@Override
@@ -107,11 +170,11 @@ public class DiagramPlaySolarSystem extends DiagramPlayBase {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		
+
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.main, menu);
 		return super.onCreateOptionsMenu(menu);
-		
+
 	}
 
 	@Override
@@ -129,20 +192,7 @@ public class DiagramPlaySolarSystem extends DiagramPlayBase {
 
 	private void quitPlay() {
 
-		new AlertDialog.Builder(this)
-				.setIcon(android.R.drawable.ic_dialog_alert)
-				.setTitle("Quit Playing")
-				.setMessage("Are you sure?")
-				.setPositiveButton("Yes",
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-
-								quitPlayUpdataProgress();
-
-							}
-						}).setNegativeButton("No", null).show();
+		super.dialogBuilder(DiagramPlaySolarSystem.this);
 
 	}
 
@@ -156,9 +206,10 @@ public class DiagramPlaySolarSystem extends DiagramPlayBase {
 		intent.putExtra("TRY_CYCLE", tryCycle);
 		startActivity(intent);
 	}
-	
+
 	@Override
-	protected void intentBuilder(String badgeTitle, int badgeId, float totalScore, int gameScore, boolean completed, int tryCycle) {
+	protected void intentBuilder(String badgeTitle, int badgeId,
+			float totalScore, int gameScore, boolean completed, int tryCycle) {
 		Intent intent;
 		intent = new Intent(getApplicationContext(), BadgePopUpWindow.class);
 		intent.putExtra("BADGE_TITLE", badgeTitle);
@@ -173,7 +224,7 @@ public class DiagramPlaySolarSystem extends DiagramPlayBase {
 		startActivity(intent);
 		finish();
 	}
-	
+
 	@Override
 	public void onDestroy() {
 		super.onDestroy();

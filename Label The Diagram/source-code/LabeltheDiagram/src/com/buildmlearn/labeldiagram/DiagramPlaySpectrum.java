@@ -1,10 +1,10 @@
 package com.buildmlearn.labeldiagram;
 
 import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
+import com.buildmlearn.labeldiagram.tooltipkit.InfoTooltip;
+import com.buildmlearn.labeldiagram.tooltipkit.CustomTooltip.AlignMode;
 import com.example.labelthediagram.R;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -85,22 +85,89 @@ public class DiagramPlaySpectrum extends DiagramPlayBase {
 		uvTag.setOnClickListener(this);
 		xrayTag.setOnClickListener(this);
 		gammaTag.setOnClickListener(this);
-		
+
 		placeHolderlist = container.diagramCaller("Spectrum");
 		tagPlaceHolderMap = tagPlaceholdermapper.diagramMapper("Spectrum");
 		incompleteTagList = tagPlaceholdermapper.diagramMapper("Spectrum");
 		tagListSize = tagPlaceHolderMap.size();
 
 		openDB();
-		
+
 	}
-	
+
 	@Override
 	public void onClick(View tagView) {
-		// TODO Auto-generated method stub
 		super.onClick(tagView);
+
+		InfoTooltip popup;
+
+		switch (tagView.getId()) {
+		case R.id.amTag:
+			popup = new InfoTooltip(
+					getApplicationContext(),
+					"The Amplitude Modulation are ways of \n "
+							+ "broadcasting radio signals, which ranges\n "
+							+ "from 535 to 1605 kHz");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.fmTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The Frequency Modulation radio ranges from 88 to 108 MHz");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.microwaveTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Having a wavelength (in the range 0.001–0.3 m)"
+							+ "\n shorter than that of a normal radio wave"
+							+ "\n but longer than those of infrared radiation");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.visibleLightTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The wavelengths that are visible to most human eyes");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.radio_wavesTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"EM radiation which has frequencies from \n"
+					+ "300 GHz to 3 kHz. Two frequency ranges,\n AM and FM");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.irTag:
+			popup = new InfoTooltip(
+					getApplicationContext(),
+					"Having a wavelength just greater than "
+							+ "that of the red end of the visible light spectrum");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.uvTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"Having a wavelength shorter than that of the"
+							+ "\n violet end of the visible spectrum "
+							+ "\n but longer than that of X-rays");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.xrayTag:
+			popup = new InfoTooltip(
+					getApplicationContext(),
+					"Have a wavelength ranging from 0.01 to 10 nm, \n"
+							+ "corresponding to frequencies in the range \n"
+							+ "3×10^16 Hz to 3×10^19 Hz");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.gammaTag:
+			popup = new InfoTooltip(
+					getApplicationContext(),
+					"Have the smallest wavelengths and the most energy \n"
+					+ "of any wave in the EM spectrum");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+
+		default:
+			break;
+		}
 	}
-	
+
 	@Override
 	protected int getResourcesId() {
 		// TODO Auto-generated method stub
@@ -109,11 +176,11 @@ public class DiagramPlaySpectrum extends DiagramPlayBase {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		
+
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.main, menu);
 		return super.onCreateOptionsMenu(menu);
-		
+
 	}
 
 	@Override
@@ -131,20 +198,7 @@ public class DiagramPlaySpectrum extends DiagramPlayBase {
 
 	private void quitPlay() {
 
-		new AlertDialog.Builder(this)
-				.setIcon(android.R.drawable.ic_dialog_alert)
-				.setTitle("Quit Playing")
-				.setMessage("Are you sure?")
-				.setPositiveButton("Yes",
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-
-								quitPlayUpdataProgress();
-
-							}
-						}).setNegativeButton("No", null).show();
+		super.dialogBuilder(DiagramPlaySpectrum.this);
 
 	}
 
@@ -158,9 +212,10 @@ public class DiagramPlaySpectrum extends DiagramPlayBase {
 		intent.putExtra("TRY_CYCLE", tryCycle);
 		startActivity(intent);
 	}
-	
+
 	@Override
-	protected void intentBuilder(String badgeTitle, int badgeId, float totalScore, int gameScore, boolean completed, int tryCycle) {
+	protected void intentBuilder(String badgeTitle, int badgeId,
+			float totalScore, int gameScore, boolean completed, int tryCycle) {
 		Intent intent;
 		intent = new Intent(getApplicationContext(), BadgePopUpWindow.class);
 		intent.putExtra("BADGE_TITLE", badgeTitle);
@@ -175,7 +230,7 @@ public class DiagramPlaySpectrum extends DiagramPlayBase {
 		startActivity(intent);
 		finish();
 	}
-	
+
 	@Override
 	public void onDestroy() {
 		super.onDestroy();

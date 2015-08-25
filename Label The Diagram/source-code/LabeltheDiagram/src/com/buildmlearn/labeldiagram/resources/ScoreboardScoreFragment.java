@@ -4,6 +4,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.buildmlearn.labeldiagram.DiagramCategoryViewer;
+import com.buildmlearn.labeldiagram.ScoreboardViewer;
 import com.buildmlearn.labeldiagram.database.DBAdapter;
 import com.buildmlearn.labeldiagram.entity.Result;
 import com.buildmlearn.labeldiagram.widget.DiagramAlertDialogFragment;
@@ -11,7 +13,9 @@ import com.example.labelthediagram.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,7 +23,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -35,7 +42,7 @@ public class ScoreboardScoreFragment extends Fragment {
 	private ArrayAdapter<DiagramScoreboardResultRawItem> diagramScoreResultAdapter;
 	private int score;
 	private int gameScore;
-	
+
 	private static final String TAG = "LOG MESSAGE";
 
 	@Override
@@ -50,12 +57,9 @@ public class ScoreboardScoreFragment extends Fragment {
 		loadData();
 
 		if (result == null) {
-			
-			DiagramAlertDialogFragment alertdFragment = new DiagramAlertDialogFragment();
-			// Show Alert DialogFragment
-			alertdFragment.show(getFragmentManager(), "TAG");
-			alertdFragment.setCancelable(false);
-			
+
+			createDialog();
+
 		} else {
 			score = (int) result.getScore();
 			gameScore = (int) result.getGameScore();
@@ -80,7 +84,6 @@ public class ScoreboardScoreFragment extends Fragment {
 		ListView itemList = (ListView) v
 				.findViewById(R.id.scoreboard_result_itemlist);
 
-		
 		scoreTxt.setText(Integer.toString(score));
 		gameScoreTxt.setText(Integer.toString(gameScore));
 		// Set DiagramResult adapter
@@ -118,11 +121,11 @@ public class ScoreboardScoreFragment extends Fragment {
 		Cursor cursor = diagramDb.getRowScore(source);
 		gsonObj = new Gson();
 		result = new Result();
-		if(cursor==null){
+		if (cursor == null) {
 			Log.i("..TAG.. ", "Hore ahuuna");
 		}
 		result = getResultRecord(cursor);
-		//Log.i("Loaded reulst", result.toString());
+		// Log.i("Loaded reulst", result.toString());
 
 	}
 
@@ -142,16 +145,17 @@ public class ScoreboardScoreFragment extends Fragment {
 				}.getType();
 
 				currentResult = gsonObj.fromJson(result, type);
-				
-				if(currentResult.getDiagramName() == null){
-					
+
+				if (currentResult.getDiagramName() == null) {
+
 					Log.i("NULL Pointer", "Null point");
-					
-				}else{
-					
+
+				} else {
+
 					String outputDiagram = currentResult.getDiagramName();
 					float score = currentResult.getScore();
-					List<String> correctTagList = currentResult.getCorrectTagList();
+					List<String> correctTagList = currentResult
+							.getCorrectTagList();
 					List<String> incorrectTagList = currentResult
 							.getIncorrectTagList();
 					Log.i("POJO Object :", outputDiagram + " " + score + " "
@@ -159,24 +163,66 @@ public class ScoreboardScoreFragment extends Fragment {
 					Log.i("REsult to string", currentResult.toString());
 				}
 
-				
-
-				
-
 			} while (cursor.moveToNext());
-			
+
 			// Close the cursor to avoid a resource leak.
 			cursor.close();
 			return currentResult;
 
-			
-		}else{
-			
+		} else {
+
 			cursor.close();
 			return null;
 		}
 
-		
+	}
+
+	private void createDialog() {
+
+		final Dialog dialog = new Dialog(getActivity());
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.setCanceledOnTouchOutside(false);
+		dialog.setContentView(R.layout.custom_dialog_view);
+		dialog.setCancelable(false);
+
+		Button yesBtn = (Button) dialog.findViewById(R.id.yes_btn);
+		Button noBtn = (Button) dialog.findViewById(R.id.no_btn);
+		TextView tvTitle = (TextView) dialog.findViewById(R.id.dialog_title);
+		TextView tvMessage = (TextView) dialog.findViewById(R.id.confirm_txt);
+
+		tvTitle.setText(getResources().getString(R.string.not_complete));
+		tvMessage.setText(getResources().getString(R.string.not_complete_msg));
+		yesBtn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+				getActivity().finish();
+				launchIntent(DiagramCategoryViewer.class);
+			}
+		});
+
+		noBtn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+				getActivity().finish();
+				launchIntent(ScoreboardViewer.class);
+			}
+		});
+
+		dialog.show();
+
+	}
+
+	private void launchIntent(Class<?> dispatchedClass) {
+
+		Intent intent = new Intent(getActivity(), dispatchedClass);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+		// getActivity().finish();
+
 	}
 
 	private void openDB() {

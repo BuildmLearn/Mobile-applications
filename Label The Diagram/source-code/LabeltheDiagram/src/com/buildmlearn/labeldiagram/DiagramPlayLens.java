@@ -1,7 +1,5 @@
 package com.buildmlearn.labeldiagram;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.buildmlearn.labeldiagram.badges.BadgePopUpWindow;
+import com.buildmlearn.labeldiagram.tooltipkit.InfoTooltip;
+import com.buildmlearn.labeldiagram.tooltipkit.CustomTooltip.AlignMode;
 import com.example.labelthediagram.R;
 
 public class DiagramPlayLens extends DiagramPlayBase {
@@ -80,35 +80,87 @@ public class DiagramPlayLens extends DiagramPlayBase {
 		imageTag.setOnClickListener(this);
 		lensTag.setOnClickListener(this);
 		lensAxisTag.setOnClickListener(this);
-		
+
 		placeHolderlist = container.diagramCaller("Lens");
 		tagPlaceHolderMap = tagPlaceholdermapper.diagramMapper("Lens");
 		incompleteTagList = tagPlaceholdermapper.diagramMapper("Lens");
 		tagListSize = tagPlaceHolderMap.size();
-		
+
 		openDB();
 
 	}
 
 	@Override
 	public void onClick(View tagView) {
-		// TODO Auto-generated method stub
 		super.onClick(tagView);
+
+		InfoTooltip popup;
+
+		switch (tagView.getId()) {
+		case R.id.principalRayTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"This ray is initially parallel to the axis \n"
+					+ "then passes through the focal point");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.centralRayTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The ray that passes straight through the center \n"
+					+ "of the lens and is not deflected");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.focalRayTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"This ray is directed through the other focal point,\n"
+					+ "after passing the lens it goes parallel to the axis");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.focusTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"A point at which rays of light");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.objectTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The material thing that can be seen");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.imageTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"The representation of the external form \n"
+					+ "of the object may be in different size");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.lensTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"the lens having convex surface");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+		case R.id.lensAxisTag:
+			popup = new InfoTooltip(getApplicationContext(),
+					"An imaginary axis that passing through \n"
+					+ "the center of the lens");
+			popup.show(tagView, AlignMode.BOTTOM);
+			break;
+
+		default:
+			break;
+		}
 	}
-	
+
 	@Override
 	protected int getResourcesId() {
 		// TODO Auto-generated method stub
 		return R.layout.diagram_play_lens;
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		
+
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.main, menu);
 		return super.onCreateOptionsMenu(menu);
-		
+
 	}
 
 	@Override
@@ -126,20 +178,7 @@ public class DiagramPlayLens extends DiagramPlayBase {
 
 	private void quitPlay() {
 
-		new AlertDialog.Builder(this)
-				.setIcon(android.R.drawable.ic_dialog_alert)
-				.setTitle("Quit Playing")
-				.setMessage("Are you sure?")
-				.setPositiveButton("Yes",
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-
-								quitPlayUpdataProgress();
-
-							}
-						}).setNegativeButton("No", null).show();
+		super.dialogBuilder(DiagramPlayLens.this);
 
 	}
 
@@ -153,9 +192,10 @@ public class DiagramPlayLens extends DiagramPlayBase {
 		intent.putExtra("TRY_CYCLE", tryCycle);
 		startActivity(intent);
 	}
-	
+
 	@Override
-	protected void intentBuilder(String badgeTitle, int badgeId, float totalScore, int gameScore, boolean completed, int tryCycle) {
+	protected void intentBuilder(String badgeTitle, int badgeId,
+			float totalScore, int gameScore, boolean completed, int tryCycle) {
 		Intent intent;
 		intent = new Intent(getBaseContext(), BadgePopUpWindow.class);
 		intent.putExtra("BADGE_TITLE", badgeTitle);

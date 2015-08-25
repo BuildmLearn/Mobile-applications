@@ -7,12 +7,14 @@ import com.example.labelthediagram.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,7 +71,7 @@ public class MainMenu extends Activity implements OnClickListener {
 	public void onBackPressed() {
 
 		// Disable back button behavior and exit the app
-		new AlertDialog.Builder(this)
+		/*new AlertDialog.Builder(this)
 				.setIcon(android.R.drawable.ic_dialog_alert)
 				.setTitle("Exit")
 				.setMessage("Are you sure?")
@@ -89,7 +91,34 @@ public class MainMenu extends Activity implements OnClickListener {
 								// finish(); // finish activity
 
 							}
-						}).setNegativeButton("No", null).show();
+						}).setNegativeButton("No", null).show();*/
+		
+		final Dialog dialog = new Dialog(this);
+		dialog.setContentView(R.layout.custom_dialog_view);
+		
+		Button yesBtn = (Button) dialog.findViewById(R.id.yes_btn);
+		yesBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(Intent.ACTION_MAIN);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intent);
+				finish();
+				System.exit(0);
+				
+			}
+		});
+		Button noBtn = (Button) dialog.findViewById(R.id.no_btn);
+		noBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();				
+			}
+		});
+		
+		dialog.show();
 	}
 
 	@Override

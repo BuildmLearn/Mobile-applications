@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">LabeltheDiagram</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="splash_app_name">Label the Diagram</string>
     <string name="action_settings">Settings</string>
     <string name="action_done">Done</string>
     <string name="title_activity_main_menu">MainMenu</string>
@@ -66,5 +66,16 @@
     <string name="science_diagrams_completed">completedScienceDiagrams</string>
     <string name="total_category_completed">completedTotalCategories</string>
     <string name="fully_completed_tries_count">completeTryCount</string>
-
+    
+    <string name="not_complete">Not Complete</string>
+    <string name="not_complete_msg">You have not take the challenge yet to view the score.\nDo you take the challenge now ?</string>
+ 	<string name="no_badges">No Badges</string>	
+ 	<string name="no_badges_msg">You have not yet achieved any badges to view. Hurry up and grab some badges ! \n\nDo you take a challenge right now?</string>
+ 	<string name="quit_play">Quit Playing</string>
+ 	<string name="quit_play_msg">Are you sure ?</string>	
+ 	<string name="yes_text">Yes</string>	
+ 	<string name="no_text">No</string>	
+ 	<string name="exit_title">Exit</string>	
+ 	<string name="exit_msg">Do you want to exit ?</string>	
+ 	
 </resources>

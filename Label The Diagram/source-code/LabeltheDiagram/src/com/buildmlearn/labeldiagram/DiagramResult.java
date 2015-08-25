@@ -157,7 +157,7 @@ public class DiagramResult extends Activity implements OnClickListener {
 
 	private boolean checkCompleted() {
 		
-		if((int)score >= 20){
+		if((int)score == gameScore){
 			return true;
 		}
 		return false;
@@ -291,5 +291,10 @@ public class DiagramResult extends Activity implements OnClickListener {
 		intent.putExtra("SOURCE", "Result");
 		intentBuilder(intent);
 
+	}
+	
+	@Override
+	public void onBackPressed() {
+		
 	}
 }

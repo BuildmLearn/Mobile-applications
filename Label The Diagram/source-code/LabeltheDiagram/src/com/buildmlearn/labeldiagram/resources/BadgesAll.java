@@ -23,12 +23,12 @@ public class BadgesAll extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		gridArray.add(new BadgeGridRowItem(R.layout.champion_badge_layout));
-		gridArray.add(new BadgeGridRowItem(R.layout.champion_badge_layout));
-		gridArray.add(new BadgeGridRowItem(R.layout.champion_badge_layout));
-		gridArray.add(new BadgeGridRowItem(R.layout.champion_badge_layout));
-		gridArray.add(new BadgeGridRowItem(R.layout.champion_badge_layout));
-		gridArray.add(new BadgeGridRowItem(R.layout.champion_badge_layout));
+		gridArray.add(new BadgeGridRowItem(R.layout.badge_layout));
+		gridArray.add(new BadgeGridRowItem(R.layout.badge_layout));
+		gridArray.add(new BadgeGridRowItem(R.layout.badge_layout));
+		gridArray.add(new BadgeGridRowItem(R.layout.badge_layout));
+		gridArray.add(new BadgeGridRowItem(R.layout.badge_layout));
+		gridArray.add(new BadgeGridRowItem(R.layout.badge_layout));
 		
 		adapter = new BadgesGridViewAdapter(this.getActivity(), R.layout.grid_row_item, gridArray);
 	}

@@ -14,7 +14,7 @@
         android:layout_marginLeft="7dp"
         android:layout_marginRight="7dp"
         android:background="#FFFFFF"
-        android:horizontalSpacing="3dp"
+        android:horizontalSpacing="4dp"
         android:numColumns="2"
         android:verticalSpacing="0dp" >
     </GridView>

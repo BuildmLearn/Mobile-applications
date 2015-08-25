@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/shadow_view1"
-    android:paddingBottom="10px"
-    android:paddingLeft="3px"
-    android:paddingRight="3px"
-    android:paddingTop="5px">
+    android:paddingBottom="5dp"
+    android:paddingLeft="2dp"
+    android:paddingRight="2dp"
+    android:paddingTop="2dp">
 
 </RelativeLayout>

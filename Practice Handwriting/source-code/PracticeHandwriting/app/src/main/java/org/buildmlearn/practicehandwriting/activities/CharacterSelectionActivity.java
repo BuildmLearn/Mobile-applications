@@ -51,7 +51,7 @@ public class CharacterSelectionActivity extends Activity {
             String s = SplashActivity.CHARACTER_LIST[i];
             FButton fb = new FButton(this);
             fb.setText(s);
-            fb.setTextSize(((size.x - 8 * horizontal_padding) / 4) * 5/16);
+            fb.setTextSize(((size.x - 8 * horizontal_padding) / 4) * 1.0f/4.0f);
             fb.setAllCaps(false);
             fb.setButtonColor(getResources().getColor(colours[new Random().nextInt(colours.length)])); //setting a random colour
             fb.setShadowEnabled(false);

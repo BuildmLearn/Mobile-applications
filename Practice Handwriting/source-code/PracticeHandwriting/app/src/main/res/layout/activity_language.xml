@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20sp"
-            fbutton:buttonColor="@color/ButtonBg"
+            fbutton:buttonColor="@color/fbutton_color_wisteria"
             android:textColor="@color/White"
             android:text="@string/about"
             android:onClick="languageActivityOnClick"/>

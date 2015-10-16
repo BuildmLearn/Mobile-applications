@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram">
+
+    <RelativeLayout
+        android:id="@+id/scoreTab"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/tab_color" >
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/appBg_color" />
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/scoreTxt"
+            android:layout_alignBottom="@+id/scoreTxt"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/scoreTxt"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/complete_ratio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complatedTxt"
+            android:layout_alignBottom="@+id/complatedTxt"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/complatedTxt"
+            android:text="0%"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/complatedTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:text="Complete    :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/scoreTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complete_ratio"
+            android:layout_alignBottom="@+id/complete_ratio"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@+id/view1"
+            android:text="Score   :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+        
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/mainDiagramMotor"
+        android:layout_width="400dp"
+        android:layout_height="500dp"
+        android:layout_below="@+id/scoreTab"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/motor" />
+
+    <ImageView
+        android:id="@+id/tagHolder"
+        android:layout_width="fill_parent"
+        android:layout_height="240dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/holder" />
+
+    <ImageView
+        android:id="@+id/northPoleBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramMotor"
+        android:layout_alignTop="@+id/mainDiagramMotor"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/southPoleBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramMotor"
+        android:layout_alignTop="@+id/mainDiagramMotor"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="75dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/magFieldBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramMotor"
+        android:layout_alignTop="@+id/mainDiagramMotor"
+        android:layout_marginRight="115dp"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/forceBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramMotor"
+        android:layout_alignTop="@+id/mainDiagramMotor"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="140dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/axelBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramMotor"
+        android:layout_alignBottom="@+id/mainDiagramMotor"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="210dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/batteryBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramMotor"
+        android:layout_alignBottom="@+id/mainDiagramMotor"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="90dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/commutatorBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramMotor"
+        android:layout_alignBottom="@+id/mainDiagramMotor"
+        android:layout_marginLeft="143dp"
+        android:layout_marginBottom="90dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/brushBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramMotor"
+        android:layout_alignBottom="@+id/mainDiagramMotor"
+        android:layout_marginRight="135dp"
+        android:layout_marginBottom="140dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/armatureBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramMotor"
+        android:layout_alignBottom="@+id/mainDiagramMotor"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="180dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/innerTagHolder"
+        android:layout_width="440dp"
+        android:layout_height="170dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tagHolder"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="50dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/trans_inner_holder" />
+    
+    <TextView
+        android:id="@+id/northPoleTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="north pole"
+        android:textColor="#ffff"
+        android:textSize="20sp"/>
+    
+    <TextView
+        android:id="@+id/southPoleTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="south pole"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+    
+    <TextView
+        android:id="@+id/commutatorTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="260dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="commutator"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+    
+    <TextView
+        android:id="@+id/forceTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="75dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="force"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+    
+    <TextView
+        android:id="@+id/armatureTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="75dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="armature"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+    
+    <TextView
+        android:id="@+id/brushTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="215dp"
+        android:layout_marginTop="75dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="brush"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+    
+    <TextView
+        android:id="@+id/batteryTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="305dp"
+        android:layout_marginTop="75dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="battery"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+    
+    <TextView
+        android:id="@+id/axelTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="axel"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+    
+    <TextView
+        android:id="@+id/magFieldTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="magnetic field"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+
+</RelativeLayout>

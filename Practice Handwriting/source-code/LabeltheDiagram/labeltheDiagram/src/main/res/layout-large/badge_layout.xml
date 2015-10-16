@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/badgeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ECEFF1" xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram">
+
+    <ImageView
+        android:id="@+id/bioBadge"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/bio" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/bioBadge"
+        android:layout_marginTop="21dp"
+        android:background="@color/appBg_color" >
+
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
+            android:id="@+id/badgeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="Master in Biology"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:typeface="roboto_thin"/>
+    </RelativeLayout>
+
+</RelativeLayout>

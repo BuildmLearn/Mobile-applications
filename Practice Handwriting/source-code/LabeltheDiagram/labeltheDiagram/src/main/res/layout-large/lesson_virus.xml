@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/mainDiagramVirus"
+        android:layout_width="450dp"
+        android:layout_height="420dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/virus" />
+
+    <ImageView
+        android:id="@+id/headBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramVirus"
+        android:layout_alignStart="@+id/mainDiagramVirus"
+        android:layout_alignTop="@+id/mainDiagramVirus"
+        android:layout_marginLeft="90dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="42dp"
+        android:src="@drawable/one" />
+
+    <ImageView
+        android:id="@+id/collarBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramVirus"
+        android:layout_alignStart="@+id/mainDiagramVirus"
+        android:layout_alignTop="@+id/mainDiagramVirus"
+        android:layout_marginLeft="115dp"
+        android:layout_marginStart="115dp"
+        android:layout_marginTop="145dp"
+        android:src="@drawable/two" />
+
+    <ImageView
+        android:id="@+id/neckBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramVirus"
+        android:layout_alignEnd="@+id/mainDiagramVirus"
+        android:layout_alignTop="@+id/mainDiagramVirus"
+        android:layout_marginRight="100dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginTop="135dp"
+        android:src="@drawable/seven" />
+
+    <ImageView
+        android:id="@+id/dnaBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramVirus"
+        android:layout_alignEnd="@+id/mainDiagramVirus"
+        android:layout_alignTop="@+id/mainDiagramVirus"
+        android:layout_marginRight="95dp"
+        android:layout_marginEnd="95dp"
+        android:layout_marginTop="85dp"
+        android:src="@drawable/eight" />
+
+    <ImageView
+        android:id="@+id/sheathBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramVirus"
+        android:layout_alignStart="@+id/mainDiagramVirus"
+        android:layout_alignTop="@+id/mainDiagramVirus"
+        android:layout_marginLeft="100dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="190dp"
+        android:src="@drawable/three" />
+
+    <ImageView
+        android:id="@+id/tailpinsBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramVirus"
+        android:layout_alignLeft="@+id/mainDiagramVirus"
+        android:layout_alignStart="@+id/mainDiagramVirus"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="165dp"
+        android:layout_marginStart="165dp"
+        android:src="@drawable/four" />
+
+    <ImageView
+        android:id="@+id/baseplateBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramVirus"
+        android:layout_alignRight="@+id/mainDiagramVirus"
+        android:layout_alignEnd="@+id/mainDiagramVirus"
+        android:layout_marginBottom="0dp"
+        android:layout_marginRight="200dp"
+        android:layout_marginEnd="200dp"
+        android:src="@drawable/five" />
+
+    <ImageView
+        android:id="@+id/tailfibreBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramVirus"
+        android:layout_alignEnd="@+id/mainDiagramVirus"
+        android:layout_alignTop="@+id/mainDiagramVirus"
+        android:layout_marginRight="100dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginTop="230dp"
+        android:src="@drawable/six" />
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mainDiagramVirus"
+        android:orientation="vertical" >
+        <ListView
+            android:id="@+id/lesson_list"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout>
+
+    
+
+</RelativeLayout>

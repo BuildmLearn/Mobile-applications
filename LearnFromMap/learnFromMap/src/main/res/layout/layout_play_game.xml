@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:foo="http://schemas.android.com/apk/res/org.buildmlearn.learnfrommap"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="7dp"
+        android:orientation="vertical" >
+
+        <org.buildmlearn.learnfrommap.helper.TextViewPlus
+            android:id="@+id/sett_tutorial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_tile_color"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="startGame"
+            android:padding="10dp"
+            android:text="@string/start_game"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            foo:customFont="Roboto_Light.ttf" />
+        <org.buildmlearn.learnfrommap.helper.TextViewPlus
+            android:id="@+id/play_selection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#80000000"
+            android:padding="3dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="startGame"
+            android:text="@string/start_game"
+            android:textColor="@android:color/white"
+            foo:customFont="Roboto_Light.ttf" />
+        
+    </LinearLayout>
+
+</RelativeLayout>

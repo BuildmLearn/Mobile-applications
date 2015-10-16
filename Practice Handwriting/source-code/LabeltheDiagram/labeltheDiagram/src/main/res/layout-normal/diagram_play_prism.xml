@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram">
+
+    <RelativeLayout
+        android:id="@+id/scoreTab"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/tab_color" >
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/appBg_color" />
+
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/scoreTxt"
+            android:layout_alignBottom="@+id/scoreTxt"
+            android:layout_marginLeft="18dp"
+            android:layout_toRightOf="@+id/scoreTxt"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" 
+            app:typeface="roboto_thin"/>
+
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
+            android:id="@+id/complete_ratio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complatedTxt"
+            android:layout_alignBottom="@+id/complatedTxt"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/complatedTxt"
+            android:text=" 0%"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" 
+            app:typeface="roboto_thin"/>
+
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
+            android:id="@+id/complatedTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="Complete :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" 
+            app:typeface="roboto_thin"/>
+
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
+            android:id="@+id/scoreTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complete_ratio"
+            android:layout_alignBottom="@+id/complete_ratio"
+            android:layout_marginLeft="24dp"
+            android:layout_toRightOf="@+id/view1"
+            android:text="Score   :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff"
+            app:typeface="roboto_thin" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/mainDiagramPrism"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_below="@+id/scoreTab"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/prism" />
+
+    <ImageView
+        android:id="@+id/tagHolder"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/holder" />
+
+    <ImageView
+        android:id="@+id/prismAngleBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramPrism"
+        android:layout_alignStart="@+id/mainDiagramPrism"
+        android:layout_alignTop="@+id/mainDiagramPrism"
+        android:layout_marginLeft="105dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/refAngleBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramPrism"
+        android:layout_alignStart="@+id/mainDiagramPrism"
+        android:layout_alignTop="@+id/mainDiagramPrism"
+        android:layout_marginLeft="70dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="70dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/incAngleBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramPrism"
+        android:layout_alignStart="@+id/mainDiagramPrism"
+        android:layout_alignTop="@+id/mainDiagramPrism"
+        android:layout_marginLeft="-20dp"
+        android:layout_marginStart="-20dp"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/incRayBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/mainDiagramPrism"
+        android:layout_alignLeft="@+id/mainDiagramPrism"
+        android:layout_alignStart="@+id/mainDiagramPrism"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="-15dp"
+        android:layout_marginStart="-15dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/devAngleBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignEnd="@+id/mainDiagramPrism"
+        android:layout_alignRight="@+id/mainDiagramPrism"
+        android:layout_alignTop="@+id/mainDiagramPrism"
+        android:layout_marginEnd="98dp"
+        android:layout_marginRight="98dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/refRayBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignEnd="@+id/mainDiagramPrism"
+        android:layout_alignRight="@+id/mainDiagramPrism"
+        android:layout_alignTop="@+id/mainDiagramPrism"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/emergeAngleBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignEnd="@+id/mainDiagramPrism"
+        android:layout_alignRight="@+id/mainDiagramPrism"
+        android:layout_alignTop="@+id/mainDiagramPrism"
+        android:layout_marginEnd="-20dp"
+        android:layout_marginRight="-20dp"
+        android:layout_marginTop="110dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/emergeRayBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/mainDiagramPrism"
+        android:layout_alignEnd="@+id/mainDiagramPrism"
+        android:layout_alignRight="@+id/mainDiagramPrism"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="-13dp"
+        android:layout_marginRight="-13dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/innerTagHolder"
+        android:layout_width="345dp"
+        android:layout_height="125dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tagHolder"
+        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="50dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/trans_inner_holder" />
+
+    <TextView
+        android:id="@+id/incAngleTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="incident angle"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/incRayTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="115dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="incident ray"
+        android:textColor="#ffff" />
+    
+    <TextView
+        android:id="@+id/refRayTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="212dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="refraction ray"
+        android:textColor="#ffff" />
+    
+    <TextView
+        android:id="@+id/emergeRayTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="emergent ray"
+        android:textColor="#ffff" />
+    
+    <TextView
+        android:id="@+id/prismAngleTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="114dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="prism angle"
+        android:textColor="#ffff" />
+    
+    <TextView
+        android:id="@+id/refAngleTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="215dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="refract angle"
+        android:textColor="#ffff" />
+    
+    <TextView
+        android:id="@+id/devAngleTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="65dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="deviation angle"
+        android:textColor="#ffff" />
+    
+    <TextView
+        android:id="@+id/emergeAngleTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="65dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="emergent angle"
+        android:textColor="#ffff" />
+
+</RelativeLayout>

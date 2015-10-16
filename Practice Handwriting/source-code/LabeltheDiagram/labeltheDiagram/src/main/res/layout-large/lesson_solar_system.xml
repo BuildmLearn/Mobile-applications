@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/mainDiagramSolarSystem"
+        android:layout_width="470dp"
+        android:layout_height="420dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/solar_system" />
+
+    <ImageView
+        android:id="@+id/earthBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramSolarSystem"
+        android:layout_alignTop="@+id/mainDiagramSolarSystem"
+        android:layout_marginLeft="115dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/four" />
+    
+    <ImageView
+        android:id="@+id/mercuryBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramSolarSystem"
+        android:layout_alignTop="@+id/mainDiagramSolarSystem"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/two" />
+    
+    <ImageView
+        android:id="@+id/sunBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramSolarSystem"
+        android:layout_alignBottom="@+id/mainDiagramSolarSystem"
+        android:layout_marginLeft="0dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/one" />
+    
+    <ImageView
+        android:id="@+id/venusBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramSolarSystem"
+        android:layout_alignBottom="@+id/mainDiagramSolarSystem"
+        android:layout_marginLeft="115dp"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/three" />
+    
+    <ImageView
+        android:id="@+id/marsBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramSolarSystem"
+        android:layout_alignBottom="@+id/mainDiagramSolarSystem"
+        android:layout_marginLeft="220dp"
+        android:layout_marginBottom="55dp"
+        android:src="@drawable/five" />
+    
+    <ImageView
+        android:id="@+id/jupiterBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramSolarSystem"
+        android:layout_alignBottom="@+id/mainDiagramSolarSystem"
+        android:layout_marginRight="135dp"
+        android:layout_marginBottom="110dp"
+        android:src="@drawable/six" />
+    
+    <ImageView
+        android:id="@+id/uranusBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramSolarSystem"
+        android:layout_alignBottom="@+id/mainDiagramSolarSystem"
+        android:layout_marginRight="125dp"
+        android:layout_marginBottom="165dp"
+        android:src="@drawable/eight" />
+    
+    <ImageView
+        android:id="@+id/neptuneBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramSolarSystem"
+        android:layout_alignTop="@+id/mainDiagramSolarSystem"
+        android:layout_marginRight="120dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/nine" />
+    
+    <ImageView
+        android:id="@+id/saturnBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramSolarSystem"
+        android:layout_alignTop="@+id/mainDiagramSolarSystem"
+        android:layout_marginRight="210dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/seven" />
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mainDiagramSolarSystem"
+        android:orientation="vertical" >
+        <ListView
+            android:id="@+id/lesson_list"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout>
+    
+    
+</RelativeLayout>

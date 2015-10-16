@@ -1,0 +1,56 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:foo="http://schemas.android.com/apk/res/org.buildmlearn.learnfrommap"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:padding="10dp"
+    android:background="#282828"
+    android:orientation="vertical" >
+
+    <org.buildmlearn.learnfrommap.helper.TextViewPlus
+        android:id="@+id/buildmlearn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/location_disabled"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        foo:customFont="Roboto_Light.ttf" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal" >
+
+        <org.buildmlearn.learnfrommap.helper.TextViewPlus
+            android:id="@+id/confirm_yes"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/border_button"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/yes"
+            android:textColor="@android:color/white"
+            foo:customFont="Roboto_Light.ttf" />
+
+        <org.buildmlearn.learnfrommap.helper.TextViewPlus
+            android:id="@+id/confirm_no"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/border_button"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/not_now"
+            android:textColor="@android:color/white"
+            foo:customFont="Roboto_Light.ttf" />
+    </LinearLayout>
+
+</LinearLayout>

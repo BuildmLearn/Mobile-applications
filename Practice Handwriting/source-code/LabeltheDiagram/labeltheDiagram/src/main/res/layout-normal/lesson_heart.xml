@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/mainDiagramHeart"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/human_heart1" />
+
+    <ImageView
+        android:id="@+id/sup_vena_cavaBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramHeart"
+        android:layout_alignTop="@+id/mainDiagramHeart"
+        android:layout_marginLeft="75dp"
+        android:src="@drawable/one" />
+
+    <ImageView
+        android:id="@+id/pul_arteryBulb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramHeart"
+        android:layout_alignTop="@+id/mainDiagramHeart"
+        android:layout_marginLeft="185dp"
+        android:layout_marginTop="38dp"
+        android:layout_toRightOf="@+id/sup_vena_cavaBlb"
+        android:src="@drawable/three" />
+
+    <ImageView
+        android:id="@+id/aortaBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramHeart"
+        android:layout_alignTop="@+id/mainDiagramHeart"
+        android:layout_marginLeft="160dp"
+        android:src="@drawable/two" />
+
+    <ImageView
+        android:id="@+id/pul_veinBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramHeart"
+        android:layout_alignTop="@+id/mainDiagramHeart"
+        android:layout_marginLeft="235dp"
+        android:layout_marginTop="90dp"
+        android:src="@drawable/four" />
+
+    <ImageView
+        android:id="@+id/right_atriumBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramHeart"
+        android:layout_alignTop="@+id/mainDiagramHeart"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="180dp"
+        android:src="@drawable/nine" />
+
+    <ImageView
+        android:id="@+id/inf_vena_cavaBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/mainDiagramHeart"
+        android:layout_alignLeft="@+id/mainDiagramHeart"
+        android:layout_marginLeft="75dp"
+        android:src="@drawable/eight" />
+
+    <ImageView
+        android:id="@+id/left_atriumBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramHeart"
+        android:layout_alignTop="@+id/mainDiagramHeart"
+        android:layout_marginLeft="230dp"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/five" />
+
+    <ImageView
+        android:id="@+id/right_ventricleBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramHeart"
+        android:layout_alignBottom="@+id/mainDiagramHeart"
+        android:layout_marginLeft="118dp"
+        android:src="@drawable/seven" />
+
+    <ImageView
+        android:id="@+id/left_ventricleBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramHeart"
+        android:layout_alignTop="@+id/mainDiagramHeart"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="270dp"
+        android:src="@drawable/six" />
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mainDiagramHeart"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/lesson_list"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout>
+
+    
+
+</RelativeLayout>

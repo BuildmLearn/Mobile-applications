@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/scoreTab"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/tab_color" >
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/appBg_color" />
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/scoreTxt"
+            android:layout_alignBottom="@+id/scoreTxt"
+            android:layout_marginLeft="18dp"
+            android:layout_toRightOf="@+id/scoreTxt"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/complete_ratio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complatedTxt"
+            android:layout_alignBottom="@+id/complatedTxt"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/complatedTxt"
+            android:text=" 0%"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/complatedTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="Complete :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/scoreTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complete_ratio"
+            android:layout_alignBottom="@+id/complete_ratio"
+            android:layout_marginLeft="24dp"
+            android:layout_toRightOf="@+id/view1"
+            android:text="Score   :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/mainDiagramEar"
+        android:layout_width="320dp"
+        android:layout_height="300dp"
+        android:layout_below="@+id/scoreTab"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/human_ear" />
+
+    <ImageView
+        android:id="@+id/tagHolder"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/holder" />
+
+    <ImageView
+        android:id="@+id/innerTagHolder"
+        android:layout_width="340dp"
+        android:layout_height="115dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tagHolder"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="50dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/inner_holder" />
+
+    <ImageView
+        android:id="@+id/pinnaBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramEar"
+        android:layout_alignTop="@+id/mainDiagramEar"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/malleusBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/pinnaBlb"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/incusBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@id/mainDiagramEar"
+        android:layout_alignTop="@id/mainDiagramEar"
+        android:layout_marginRight="115dp"
+        android:layout_marginTop="45dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/earnerveBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@id/mainDiagramEar"
+        android:layout_alignTop="@id/mainDiagramEar"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="55dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/stapesBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@id/mainDiagramEar"
+        android:layout_alignLeft="@id/mainDiagramEar"
+        android:layout_marginBottom="70dp"
+        android:layout_marginLeft="207dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/earcanalBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/mainDiagramEar"
+        android:layout_alignLeft="@id/mainDiagramEar"
+        android:layout_marginBottom="38dp"
+        android:layout_marginLeft="120dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/outerearBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/mainDiagramEar"
+        android:layout_alignLeft="@id/mainDiagramEar"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="60dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/cochleaBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/mainDiagramEar"
+        android:layout_alignRight="@id/mainDiagramEar"
+        android:layout_marginBottom="115dp"
+        android:layout_marginRight="30dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/eardrumBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/mainDiagramEar"
+        android:layout_alignLeft="@id/mainDiagramEar"
+        android:layout_marginBottom="95dp"
+        android:layout_marginLeft="147dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/canalsBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@id/mainDiagramEar"
+        android:layout_alignTop="@id/mainDiagramEar"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/marker_white" />
+
+    <TextView
+        android:id="@+id/pinnaTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="pinna"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/ear_canalTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="ear canal"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/eardrumTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="158dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="eardrum"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/cochleaTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="cochlea"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/earnerveTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="nerve"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/malleusTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="malleus"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/outerearTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="158dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="outer ear"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/stapesTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="245dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="stapes"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/incusTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="75dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="incus"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/canalsTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="75dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="canals"
+        android:textColor="#ffff" />
+
+</RelativeLayout>

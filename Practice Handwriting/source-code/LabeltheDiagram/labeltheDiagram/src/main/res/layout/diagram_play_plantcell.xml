@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/scoreTab"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/tab_color" >
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/appBg_color" />
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/scoreTxt"
+            android:layout_alignBottom="@+id/scoreTxt"
+            android:layout_marginLeft="18dp"
+            android:layout_toRightOf="@+id/scoreTxt"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/complete_ratio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complatedTxt"
+            android:layout_alignBottom="@+id/complatedTxt"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/complatedTxt"
+            android:text=" 0%"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/complatedTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="Complete :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/scoreTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complete_ratio"
+            android:layout_alignBottom="@+id/complete_ratio"
+            android:layout_marginLeft="24dp"
+            android:layout_toRightOf="@+id/view1"
+            android:text="Score   :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/mainDiagramPlantCell"
+        android:layout_width="250dp"
+        android:layout_height="260dp"
+        android:layout_above="@+id/tagHolder"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/plant_cell" />
+
+    <ImageView
+        android:id="@+id/tagHolder"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/holder" />
+
+    <ImageView
+        android:id="@+id/ribosomesBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramPlantCell"
+        android:layout_alignTop="@+id/mainDiagramPlantCell"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="36dp"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/smootherBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/ribosomesBlb"
+        android:layout_below="@+id/ribosomesBlb"
+        android:layout_marginTop="27dp"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/rougherBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_above="@+id/tagHolder"
+        android:layout_marginLeft="29dp"
+        android:layout_toRightOf="@+id/smootherBlb"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/vacuoleBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_above="@+id/tagHolder"
+        android:layout_marginLeft="7dp"
+        android:layout_toRightOf="@+id/rougherBlb"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/golgi_complexBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/scoreTab"
+        android:layout_marginTop="11dp"
+        android:layout_toRightOf="@+id/vacuoleBlb"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/cell_membraneBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignTop="@+id/golgi_complexBlb"
+        android:layout_marginLeft="21dp"
+        android:layout_toRightOf="@+id/golgi_complexBlb"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/nucleusBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramPlantCell"
+        android:layout_below="@+id/smootherBlb"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/chloroplastBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramPlantCell"
+        android:layout_below="@+id/ribosomesBlb"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/mitochondriumBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/chloroplastBlb"
+        android:layout_below="@+id/nucleusBlb"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/cellwallBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mitochondriumBlb"
+        android:layout_alignTop="@+id/vacuoleBlb"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/marker" />
+
+    <TextView
+        android:id="@+id/cellwallTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/ribosomeTag"
+        android:layout_alignBottom="@+id/ribosomeTag"
+        android:layout_alignLeft="@+id/golgi_complexBlb"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="cell wall"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/ribosomeTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/nucleusTag"
+        android:layout_alignBottom="@+id/nucleusTag"
+        android:layout_toRightOf="@+id/smootherBlb"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="ribosome"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/nucleusTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/nucleusBlb"
+        android:layout_alignTop="@+id/tagHolder"
+        android:layout_marginTop="55dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="nucleus"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/vacuoleTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cellwallTag"
+        android:layout_alignBottom="@+id/cellwallTag"
+        android:layout_alignLeft="@+id/mitochondriumBlb"
+        android:layout_marginLeft="7dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="vacuole"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/smootherTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nucleusTag"
+        android:layout_below="@+id/nucleusTag"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="smooth ER"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/cell_membraneTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/smootherTag"
+        android:layout_alignBottom="@+id/smootherTag"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/smootherTag"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="cell membrane"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/golgi_complexTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cell_membraneTag"
+        android:layout_alignBottom="@+id/cell_membraneTag"
+        android:layout_alignLeft="@+id/cell_membraneBlb"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="golgi complex"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/rougherTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/smootherTag"
+        android:layout_below="@+id/smootherTag"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="rough ER"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/mitochondiumTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/rougherTag"
+        android:layout_alignBottom="@+id/rougherTag"
+        android:layout_toRightOf="@+id/smootherTag"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="mitochondrium"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/chloroplastTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/mitochondiumTag"
+        android:layout_alignBottom="@+id/mitochondiumTag"
+        android:layout_alignLeft="@+id/golgi_complexTag"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="chloroplast"
+        android:textColor="#ffff" />
+
+</RelativeLayout>

@@ -1,0 +1,30 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.buildmlearn.sensordatameasurement.MainActivity" >
+
+    <TextView
+		android:id="@+id/tv_supported_sensor"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Your Device supports following Sensors"        
+        android:layout_margin="5dp"
+        android:textStyle="bold"
+        />
+    
+    
+    <ListView
+        android:layout_margin="10dp"
+        android:layout_below="@id/tv_supported_sensor"
+        android:background="#D8D8D8"
+        android:id="@+id/lv_supported_sensors"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+		android:cacheColorHint="@android:color/transparent"/>
+
+</RelativeLayout>

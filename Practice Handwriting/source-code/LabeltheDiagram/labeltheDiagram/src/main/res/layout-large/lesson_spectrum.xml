@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram">
+
+    <ImageView
+        android:id="@+id/mainDiagramSpectrum"
+        android:layout_width="360dp"
+        android:layout_height="420dp"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/spectrum" />
+
+    <ImageView
+        android:id="@+id/amBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramSpectrum"
+        android:layout_alignStart="@+id/mainDiagramSpectrum"
+        android:layout_alignTop="@+id/mainDiagramSpectrum"
+        android:layout_marginLeft="135dp"
+        android:layout_marginStart="135dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/two" />
+    
+    <ImageView
+        android:id="@+id/fmBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramSpectrum"
+        android:layout_alignStart="@+id/mainDiagramSpectrum"
+        android:layout_alignTop="@+id/mainDiagramSpectrum"
+        android:layout_marginLeft="230dp"
+        android:layout_marginStart="230dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/three" />
+    
+    <ImageView
+        android:id="@+id/microwaveBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramSpectrum"
+        android:layout_alignStart="@+id/mainDiagramSpectrum"
+        android:layout_alignTop="@+id/mainDiagramSpectrum"
+        android:layout_marginLeft="225dp"
+        android:layout_marginStart="225dp"
+        android:layout_marginTop="82dp"
+        android:src="@drawable/four" />
+    
+    <ImageView
+        android:id="@+id/visibleLightBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramSpectrum"
+        android:layout_alignEnd="@+id/mainDiagramSpectrum"
+        android:layout_alignTop="@+id/mainDiagramSpectrum"
+        android:layout_marginRight="78dp"
+        android:layout_marginEnd="78dp"
+        android:layout_marginTop="130dp"
+        android:src="@drawable/five" />
+    
+    <ImageView
+        android:id="@+id/radio_wavesBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramSpectrum"
+        android:layout_alignStart="@+id/mainDiagramSpectrum"
+        android:layout_alignTop="@+id/mainDiagramSpectrum"
+        android:layout_marginLeft="68dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/one" />
+    
+    <ImageView
+        android:id="@+id/irBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramSpectrum"
+        android:layout_alignStart="@+id/mainDiagramSpectrum"
+        android:layout_alignTop="@+id/mainDiagramSpectrum"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="125dp"
+        android:src="@drawable/nine" />
+    
+    <ImageView
+        android:id="@+id/uvBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramSpectrum"
+        android:layout_alignEnd="@+id/mainDiagramSpectrum"
+        android:layout_alignBottom="@+id/mainDiagramSpectrum"
+        android:layout_marginRight="120dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="145dp"
+        android:src="@drawable/six" />
+    
+    <ImageView
+        android:id="@+id/xrayBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramSpectrum"
+        android:layout_alignEnd="@+id/mainDiagramSpectrum"
+        android:layout_alignBottom="@+id/mainDiagramSpectrum"
+        android:layout_marginRight="125dp"
+        android:layout_marginEnd="125dp"
+        android:layout_marginBottom="95dp"
+        android:src="@drawable/seven" />
+    
+    <ImageView
+        android:id="@+id/gammaBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramSpectrum"
+        android:layout_alignEnd="@+id/mainDiagramSpectrum"
+        android:layout_alignBottom="@+id/mainDiagramSpectrum"
+        android:layout_marginRight="115dp"
+        android:layout_marginEnd="115dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/eight" />
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mainDiagramSpectrum"
+        android:orientation="vertical" >
+        <ListView
+            android:id="@+id/lesson_list"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout>
+
+    
+    
+</RelativeLayout>

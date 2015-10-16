@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/scoreTab"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/tab_color" >
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/appBg_color" />
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/scoreTxt"
+            android:layout_alignBottom="@+id/scoreTxt"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/scoreTxt"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/complete_ratio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complatedTxt"
+            android:layout_alignBottom="@+id/complatedTxt"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/complatedTxt"
+            android:text="0%"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/complatedTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:text="Complete    :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/scoreTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complete_ratio"
+            android:layout_alignBottom="@+id/complete_ratio"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@+id/view1"
+            android:text="Score   :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+        
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/tagHolder"
+        android:layout_width="fill_parent"
+        android:layout_height="240dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/holder" />
+
+    <ImageView
+        android:id="@+id/chromosomeBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramBacteria"
+        android:layout_alignTop="@+id/mainDiagramBacteria"
+        android:layout_marginRight="165dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/ribosomesBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramBacteria"
+        android:layout_alignTop="@+id/mainDiagramBacteria"
+        android:layout_marginLeft="185dp"
+        android:layout_marginTop="70dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/food_granuleBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramBacteria"
+        android:layout_alignTop="@+id/mainDiagramBacteria"
+        android:layout_marginLeft="135dp"
+        android:layout_marginTop="110dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/piliBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramBacteria"
+        android:layout_alignTop="@+id/mainDiagramBacteria"
+        android:layout_marginLeft="95dp"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/capsuleBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_above="@+id/plasmidBlb"
+        android:layout_alignBottom="@+id/mainDiagramBacteria"
+        android:layout_alignRight="@+id/mainDiagramBacteria"
+        android:layout_marginBottom="165dp"
+        android:layout_marginRight="50dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/plasma_membraneBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramBacteria"
+        android:layout_alignRight="@+id/mainDiagramBacteria"
+        android:layout_marginBottom="75dp"
+        android:layout_marginRight="140dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/cytoplasmBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramBacteria"
+        android:layout_alignRight="@+id/mainDiagramBacteria"
+        android:layout_marginBottom="45dp"
+        android:layout_marginRight="180dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/cellwallBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramBacteria"
+        android:layout_alignRight="@+id/mainDiagramBacteria"
+        android:layout_marginBottom="110dp"
+        android:layout_marginRight="60dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/mainDiagramBacteria"
+        android:layout_width="450dp"
+        android:layout_height="450dp"
+        android:layout_above="@+id/tagHolder"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/bacteria" />
+
+    <ImageView
+        android:id="@+id/flagellumBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramBacteria"
+        android:layout_alignLeft="@+id/mainDiagramBacteria"
+        android:layout_marginBottom="45dp"
+        android:layout_marginLeft="60dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/plasmidBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramBacteria"
+        android:layout_alignLeft="@+id/mainDiagramBacteria"
+        android:layout_marginBottom="85dp"
+        android:layout_marginLeft="145dp"
+        android:src="@drawable/marker_white" />
+
+    <ImageView
+        android:id="@+id/innerTagHolder"
+        android:layout_width="460dp"
+        android:layout_height="170dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/inner_holder" />
+
+    <TextView
+        android:id="@+id/piliTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="pili"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/ribosomesTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="ribosomes"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/cellwallTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="cell wall"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/flagellumTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="335dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="flagellum"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/capsuleTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="55dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="capsule"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/cytoplasmTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="55dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="cytoplasm"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/plasma_membraneTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="55dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="plasma membrane"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/chromosomeTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="chromosome"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/plasmidTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="185dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="plasmid"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/food_granuleTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="305dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="food granule"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+
+</RelativeLayout>

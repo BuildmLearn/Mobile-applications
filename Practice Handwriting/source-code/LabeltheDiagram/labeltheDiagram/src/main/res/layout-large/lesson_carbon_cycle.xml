@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    
+
+    <ImageView
+        android:id="@+id/mainDiagramCarbonCycle"
+        android:layout_width="420dp"
+        android:layout_height="420dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/carbon_cycle_unlabel" />
+
+    <ImageView
+        android:id="@+id/vehicle_emissionsBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramCarbonCycle"
+        android:layout_alignTop="@+id/mainDiagramCarbonCycle"
+        android:layout_marginRight="65dp"
+        android:layout_marginTop="115dp"
+        android:src="@drawable/three" />
+
+    <ImageView
+        android:id="@+id/photosynthesisBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramCarbonCycle"
+        android:layout_alignTop="@+id/mainDiagramCarbonCycle"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="160dp"
+        android:src="@drawable/one" />
+
+    <ImageView
+        android:id="@+id/plant_respirationBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramCarbonCycle"
+        android:layout_alignTop="@+id/mainDiagramCarbonCycle"
+        android:layout_marginRight="145dp"
+        android:layout_marginTop="165dp"
+        android:src="@drawable/four" />
+
+    <ImageView
+        android:id="@+id/organic_carbonBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramCarbonCycle"
+        android:layout_alignTop="@+id/mainDiagramCarbonCycle"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="250dp"
+        android:src="@drawable/five" />
+
+    <ImageView
+        android:id="@+id/dead_organismsBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramCarbonCycle"
+        android:layout_alignLeft="@+id/mainDiagramCarbonCycle"
+        android:layout_marginBottom="80dp"
+        android:layout_marginLeft="165dp"
+        android:src="@drawable/six" />
+
+    <ImageView
+        android:id="@+id/ocean_uptakeBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramCarbonCycle"
+        android:layout_alignRight="@+id/mainDiagramCarbonCycle"
+        android:layout_marginBottom="80dp"
+        android:layout_marginRight="40dp"
+        android:src="@drawable/nine" />
+
+    <ImageView
+        android:id="@+id/animal_respirationBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignTop="@+id/mainDiagramCarbonCycle"
+        android:layout_alignRight="@+id/mainDiagramCarbonCycle"
+        android:layout_marginTop="165dp"
+        android:layout_marginRight="235dp"
+        android:src="@drawable/eight" />
+
+    <ImageView
+        android:id="@+id/sunlightBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramCarbonCycle"
+        android:layout_alignTop="@+id/mainDiagramCarbonCycle"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/two" />
+
+    <ImageView
+        android:id="@+id/fossilsBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramCarbonCycle"
+        android:layout_alignLeft="@+id/mainDiagramCarbonCycle"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="192dp"
+        android:src="@drawable/seven" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mainDiagramCarbonCycle"
+        android:orientation="vertical" >
+        <ListView
+            android:id="@+id/lesson_list"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout>
+   
+
+</RelativeLayout>

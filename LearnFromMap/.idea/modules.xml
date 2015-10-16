@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/LearnFromMap.iml" filepath="$PROJECT_DIR$/LearnFromMap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/holoGraphLibrary/holoGraphLibrary.iml" filepath="$PROJECT_DIR$/holoGraphLibrary/holoGraphLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/learnFromMap/learnFromMap.iml" filepath="$PROJECT_DIR$/learnFromMap/learnFromMap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/volley_buildmlearn/volley_buildmlearn.iml" filepath="$PROJECT_DIR$/volley_buildmlearn/volley_buildmlearn.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram">
+
+    <ImageView
+        android:id="@+id/mainDiagramPrism"
+        android:layout_width="400dp"
+        android:layout_height="420dp"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/prism" />
+
+    <ImageView
+        android:id="@+id/prismAngleBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramPrism"
+        android:layout_alignStart="@+id/mainDiagramPrism"
+        android:layout_alignTop="@+id/mainDiagramPrism"
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/one" />
+
+    <ImageView
+        android:id="@+id/refAngleBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramPrism"
+        android:layout_alignStart="@+id/mainDiagramPrism"
+        android:layout_alignTop="@+id/mainDiagramPrism"
+        android:layout_marginLeft="100dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="110dp"
+        android:src="@drawable/two" />
+
+    <ImageView
+        android:id="@+id/incAngleBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramPrism"
+        android:layout_alignStart="@+id/mainDiagramPrism"
+        android:layout_alignTop="@+id/mainDiagramPrism"
+        android:layout_marginLeft="-30dp"
+        android:layout_marginStart="-30dp"
+        android:layout_marginTop="180dp"
+        android:src="@drawable/three" />
+
+    <ImageView
+        android:id="@+id/incRayBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramPrism"
+        android:layout_alignLeft="@+id/mainDiagramPrism"
+        android:layout_alignStart="@+id/mainDiagramPrism"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="-15dp"
+        android:layout_marginStart="-15dp"
+        android:src="@drawable/four" />
+
+    <ImageView
+        android:id="@+id/devAngleBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignEnd="@+id/mainDiagramPrism"
+        android:layout_alignRight="@+id/mainDiagramPrism"
+        android:layout_alignTop="@+id/mainDiagramPrism"
+        android:layout_marginEnd="140dp"
+        android:layout_marginRight="140dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/eight" />
+
+    <ImageView
+        android:id="@+id/refRayBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignEnd="@+id/mainDiagramPrism"
+        android:layout_alignRight="@+id/mainDiagramPrism"
+        android:layout_alignTop="@+id/mainDiagramPrism"
+        android:layout_marginEnd="110dp"
+        android:layout_marginRight="110dp"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/seven" />
+
+    <ImageView
+        android:id="@+id/emergeAngleBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignEnd="@+id/mainDiagramPrism"
+        android:layout_alignRight="@+id/mainDiagramPrism"
+        android:layout_alignTop="@+id/mainDiagramPrism"
+        android:layout_marginEnd="-15dp"
+        android:layout_marginRight="-15dp"
+        android:layout_marginTop="175dp"
+        android:src="@drawable/six" />
+
+    <ImageView
+        android:id="@+id/emergeRayBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramPrism"
+        android:layout_alignEnd="@+id/mainDiagramPrism"
+        android:layout_alignRight="@+id/mainDiagramPrism"
+        android:layout_marginBottom="35dp"
+        android:layout_marginEnd="-15dp"
+        android:layout_marginRight="-15dp"
+        android:src="@drawable/five" />
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mainDiagramPrism"
+        android:orientation="vertical" >
+        <ListView
+            android:id="@+id/lesson_list"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout>
+
+    
+
+</RelativeLayout>

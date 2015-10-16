@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/scoreTab"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/tab_color" >
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/appBg_color" />
+
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/scoreTxt"
+            android:layout_alignBottom="@+id/scoreTxt"
+            android:layout_marginLeft="18dp"
+            android:layout_toRightOf="@+id/scoreTxt"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff"
+            app:typeface="roboto_thin" />
+
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
+            android:id="@+id/complete_ratio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complatedTxt"
+            android:layout_alignBottom="@+id/complatedTxt"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/complatedTxt"
+            android:text=" 0%"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff"
+            app:typeface="roboto_thin" />
+
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
+            android:id="@+id/complatedTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="Complete :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff"
+            app:typeface="roboto_thin" />
+
+        <com.buildmlearn.labeldiagram.widget.CustomFontManager
+            android:id="@+id/scoreTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complete_ratio"
+            android:layout_alignBottom="@+id/complete_ratio"
+            android:layout_marginLeft="24dp"
+            android:layout_toRightOf="@+id/view1"
+            android:text="Score   :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff"
+            app:typeface="roboto_thin" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/mainDiagramSolarSystem"
+        android:layout_width="320dp"
+        android:layout_height="280dp"
+        android:layout_below="@+id/scoreTab"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/solar_system" />
+
+    <ImageView
+        android:id="@+id/tagHolder"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/holder" />
+
+    <ImageView
+        android:id="@+id/earthBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramSolarSystem"
+        android:layout_alignTop="@+id/mainDiagramSolarSystem"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/mercuryBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramSolarSystem"
+        android:layout_alignTop="@+id/mainDiagramSolarSystem"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="35dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/sunBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramSolarSystem"
+        android:layout_alignBottom="@+id/mainDiagramSolarSystem"
+        android:layout_marginLeft="3dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/venusBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramSolarSystem"
+        android:layout_alignBottom="@+id/mainDiagramSolarSystem"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/marsBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramSolarSystem"
+        android:layout_alignBottom="@+id/mainDiagramSolarSystem"
+        android:layout_marginLeft="150dp"
+        android:layout_marginBottom="35dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/jupiterBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramSolarSystem"
+        android:layout_alignBottom="@+id/mainDiagramSolarSystem"
+        android:layout_marginRight="95dp"
+        android:layout_marginBottom="75dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/uranusBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramSolarSystem"
+        android:layout_alignBottom="@+id/mainDiagramSolarSystem"
+        android:layout_marginRight="85dp"
+        android:layout_marginBottom="110dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/neptuneBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramSolarSystem"
+        android:layout_alignTop="@+id/mainDiagramSolarSystem"
+        android:layout_marginRight="80dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/saturnBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramSolarSystem"
+        android:layout_alignTop="@+id/mainDiagramSolarSystem"
+        android:layout_marginRight="140dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/marker_white" />
+    
+    <ImageView
+        android:id="@+id/innerTagHolder"
+        android:layout_width="345dp"
+        android:layout_height="125dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tagHolder"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="50dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/trans_inner_holder" />
+    
+    <TextView
+        android:id="@+id/sunTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="sun"
+        android:textColor="#ffff" />
+    
+    <TextView
+        android:id="@+id/mercuryTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="mercury"
+        android:textColor="#ffff" />
+    
+    <TextView
+        android:id="@+id/neptuneTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="155dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="neptune"
+        android:textColor="#ffff" />
+    
+    <TextView
+        android:id="@+id/uranusTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="uranus"
+        android:textColor="#ffff" />
+    
+    <TextView
+        android:id="@+id/earthTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="earth"
+        android:textColor="#ffff" />
+    
+    <TextView
+        android:id="@+id/jupiterTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="jupiter"
+        android:textColor="#ffff" />
+    
+    <TextView
+        android:id="@+id/saturnTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="saturn"
+        android:textColor="#ffff" />
+    
+    <TextView
+        android:id="@+id/venusTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="245dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="venus"
+        android:textColor="#ffff" />
+    
+    <TextView
+        android:id="@+id/marsTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/innerTagHolder"
+        android:layout_alignTop="@+id/innerTagHolder"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="65dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="mars"
+        android:textColor="#ffff" />
+
+</RelativeLayout>

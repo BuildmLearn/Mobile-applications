@@ -1,11 +1,11 @@
-package org.buildmlearn.practicehandwriting.activities;
+package org.buildmlearn.practicehandwriting.activities.practice;
 
 import android.os.Bundle;
 import android.view.View;
 
 import org.buildmlearn.practicehandwriting.R;
-import org.buildmlearn.practicehandwriting.helper.CalculateFreehandScore;
-import org.buildmlearn.practicehandwriting.helper.PracticeBaseActivity;
+import org.buildmlearn.practicehandwriting.helper.background.CalculateFreehandScore;
+import org.buildmlearn.practicehandwriting.helper.practice.PracticeBaseActivity;
 
 /**
  * Activity for freehand (borderless) tracing of a given character

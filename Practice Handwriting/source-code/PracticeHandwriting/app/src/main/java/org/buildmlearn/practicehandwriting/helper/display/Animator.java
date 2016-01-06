@@ -1,4 +1,4 @@
-package org.buildmlearn.practicehandwriting.helper;
+package org.buildmlearn.practicehandwriting.helper.display;
 
 import android.animation.ObjectAnimator;
 import android.view.View;

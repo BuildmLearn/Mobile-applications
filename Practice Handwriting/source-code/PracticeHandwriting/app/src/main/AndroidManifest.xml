@@ -13,7 +13,7 @@
         android:noHistory="true"
         android:theme="@style/ActionBarTheme" >
         <activity
-            android:name=".activities.SplashActivity"
+            android:name=".activities.information.SplashActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name" >
             <intent-filter>
@@ -23,56 +23,56 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.LanguageActivity"
+            android:name=".activities.selection.LanguageActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_language" >
         </activity>
         <activity
-            android:name=".activities.MainMenuActivity"
+            android:name=".activities.selection.MainMenuActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_main_menu" >
         </activity>
         <activity
-            android:name=".activities.AboutActivity"
+            android:name=".activities.information.AboutActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_incomplete" >
         </activity>
         <activity
-            android:name=".activities.CharacterSelectionActivity"
+            android:name=".activities.selection.CharacterSelectionActivity"
             android:label="@string/title_activity_character_selection" >
         </activity>
         <activity
-            android:name=".helper.PracticeBaseActivity"
+            android:name=".helper.practice.PracticeBaseActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_practice" >
         </activity>
         <activity
-            android:name=".activities.WordSelectionActivity"
+            android:name=".activities.selection.WordSelectionActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_word_selection" >
         </activity>
         <activity
-            android:name=".activities.TimeTrialResultActivity"
+            android:name=".activities.practice.TimeTrialResultActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_time_trial_result" >
         </activity>
         <activity
-            android:name=".activities.PracticeActivity"
+            android:name=".activities.practice.PracticeActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_practice" >
         </activity>
         <activity
-            android:name=".activities.FreehandActivity"
+            android:name=".activities.practice.FreehandActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_freehand" >
         </activity>
         <activity
-            android:name=".activities.TimeTrialActivity"
+            android:name=".activities.practice.TimeTrialActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_time_trial" >
         </activity>
         <activity
-            android:name=".activities.TutorialActivity"
+            android:name=".activities.information.TutorialActivity"
             android:label="@string/title_activity_tutorial" >
         </activity>
     </application>

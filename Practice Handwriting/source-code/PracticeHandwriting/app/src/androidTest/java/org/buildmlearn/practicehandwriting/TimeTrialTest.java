@@ -2,7 +2,7 @@ package org.buildmlearn.practicehandwriting;
 
 import android.os.Environment;
 
-import org.buildmlearn.practicehandwriting.activities.TimeTrialActivity;
+import org.buildmlearn.practicehandwriting.activities.practice.TimeTrialActivity;
 import org.buildmlearn.practicehandwriting.testing.PracticeBaseActivityTest;
 
 import java.io.File;

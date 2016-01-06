@@ -1,4 +1,4 @@
-package org.buildmlearn.practicehandwriting.helper;
+package org.buildmlearn.practicehandwriting.helper.background;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -14,7 +14,9 @@ import android.widget.TextView;
 import com.software.shell.fab.ActionButton;
 
 import org.buildmlearn.practicehandwriting.R;
-import org.buildmlearn.practicehandwriting.activities.SplashActivity;
+import org.buildmlearn.practicehandwriting.activities.information.SplashActivity;
+import org.buildmlearn.practicehandwriting.helper.display.Animator;
+import org.buildmlearn.practicehandwriting.helper.practice.DrawingView;
 
 import java.util.ArrayList;
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/AppBg"
     android:id="@+id/resultMainLL"
-    tools:context="org.buildmlearn.practicehandwriting.activities.TimeTrialResultActivity">
+    tools:context=".activities.practice.TimeTrialResultActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/TimeTrialToolbar"

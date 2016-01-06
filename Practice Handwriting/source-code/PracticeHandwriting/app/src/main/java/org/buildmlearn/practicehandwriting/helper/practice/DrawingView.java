@@ -1,4 +1,4 @@
-package org.buildmlearn.practicehandwriting.helper;
+package org.buildmlearn.practicehandwriting.helper.practice;
 
 import android.app.Activity;
 import android.content.Context;
@@ -21,7 +21,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import org.buildmlearn.practicehandwriting.R;
-import org.buildmlearn.practicehandwriting.activities.SplashActivity;
+import org.buildmlearn.practicehandwriting.activities.information.SplashActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

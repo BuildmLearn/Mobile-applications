@@ -58,6 +58,8 @@ public class PracticeActivity extends PracticeBaseActivity {
                     //User cannot draw anymore on the View
                     mDrawView.canDraw(false);
                     mDone = true;
+
+
                 }
                 break;
         }

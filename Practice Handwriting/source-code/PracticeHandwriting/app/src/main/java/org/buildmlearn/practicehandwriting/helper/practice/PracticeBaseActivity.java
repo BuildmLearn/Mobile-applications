@@ -213,6 +213,7 @@ public class PracticeBaseActivity extends ActionBarActivity {
     @Override
     public void onBackPressed() {
         System.gc();
+        mDrawView.destroyBitmap();
         super.onBackPressed();
     }
 

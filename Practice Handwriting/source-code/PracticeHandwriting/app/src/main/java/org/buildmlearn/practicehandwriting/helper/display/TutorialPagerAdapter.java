@@ -32,7 +32,7 @@ public class TutorialPagerAdapter extends PagerAdapter {
     /**
      * The number of fragments that are going to be displayed
      */
-    public static int CHILD_COUNT = 12;
+    public static int CHILD_COUNT = 15;
 
     /**
      * Constructor

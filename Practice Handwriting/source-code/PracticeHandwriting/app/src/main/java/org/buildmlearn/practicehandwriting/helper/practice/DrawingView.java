@@ -484,4 +484,15 @@ public class DrawingView extends View {
             }
         }
     }
+
+    /**
+     * Function to release the memory used by the DrawingView
+     */
+    void destroyBitmap() {
+        if(mCanvasBitmap!=null) {
+            mCanvasBitmap.recycle();
+            mCanvasBitmap = null;
+            mDrawCanvas = null;
+        }
+    }
 }

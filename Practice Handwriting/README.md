@@ -8,15 +8,16 @@ PracticeHandwriting, as the name suggests is an app that allows kids to practice
 
 This app has been developed by [Vignesh Prasad](http://researchweb.iiit.ac.in/~vignesh.prasad).
 ### Acknowledgements
-A lot of the code is inspired by [TrazeMaze](https://github.com/priyankasuresh/TrazeMaze) which was initially developed by [Priyanka Suresh](https://github.com/priyankasuresh). 
+Parts of the code are inspired by [TrazeMaze](https://github.com/priyankasuresh/TrazeMaze) which was initially developed by [Priyanka Suresh](https://github.com/priyankasuresh). 
 Other libraries used include
 - [FButton](https://github.com/hoang8f/android-flat-button) developed by [Le Van Hoang](https://github.com/hoang8f)
 - [Floating Action Button Library](https://github.com/shell-software/fab) developed by [Shell Software](https://github.com/shell-software)
 - [Universal Image Loader](https://github.com/nostra13/Android-Universal-Image-Loader) developed by [Sergey Tarasevich](https://github.com/nostra13)
 - The tracing engine was developed using [this](http://code.tutsplus.com/tutorials/android-sdk-create-a-drawing-app-touch-interaction--mobile-19202) tutorial 
+
 ### Todos
- - Write Tests
  - Improve Freehand score calculation
+ - Fix practice screen crashes for high resolution devices
 
 
 ### License

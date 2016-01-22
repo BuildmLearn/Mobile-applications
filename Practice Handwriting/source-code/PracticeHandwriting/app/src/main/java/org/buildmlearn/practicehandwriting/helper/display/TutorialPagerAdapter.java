@@ -1,4 +1,4 @@
-package org.buildmlearn.practicehandwriting.helper;
+package org.buildmlearn.practicehandwriting.helper.display;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +15,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import org.buildmlearn.practicehandwriting.R;
-import org.buildmlearn.practicehandwriting.activities.LanguageActivity;
+import org.buildmlearn.practicehandwriting.activities.selection.LanguageActivity;
 
 import info.hoang8f.widget.FButton;
 
@@ -32,7 +32,7 @@ public class TutorialPagerAdapter extends PagerAdapter {
     /**
      * The number of fragments that are going to be displayed
      */
-    public static int CHILD_COUNT = 12;
+    public static int CHILD_COUNT = 15;
 
     /**
      * Constructor

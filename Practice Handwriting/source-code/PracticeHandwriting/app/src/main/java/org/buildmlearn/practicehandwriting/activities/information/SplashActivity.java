@@ -1,9 +1,10 @@
-package org.buildmlearn.practicehandwriting.activities;
+package org.buildmlearn.practicehandwriting.activities.information;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
@@ -11,7 +12,8 @@ import android.util.DisplayMetrics;
 import android.widget.Toast;
 
 import org.buildmlearn.practicehandwriting.R;
-import org.buildmlearn.practicehandwriting.helper.ScoreDbHelper;
+import org.buildmlearn.practicehandwriting.activities.selection.LanguageActivity;
+import org.buildmlearn.practicehandwriting.helper.background.ScoreDbHelper;
 
 /**
  * Splash Screen Activity
@@ -65,6 +67,7 @@ public class SplashActivity extends Activity implements TextToSpeech.OnInitListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         setContentView(R.layout.activity_splash);
         mTtsInitDone = false;
 

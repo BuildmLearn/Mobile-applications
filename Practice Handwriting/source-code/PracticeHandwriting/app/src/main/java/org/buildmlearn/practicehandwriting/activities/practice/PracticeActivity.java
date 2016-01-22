@@ -1,4 +1,4 @@
-package org.buildmlearn.practicehandwriting.activities;
+package org.buildmlearn.practicehandwriting.activities.practice;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,8 +7,9 @@ import android.widget.TextView;
 import com.software.shell.fab.ActionButton;
 
 import org.buildmlearn.practicehandwriting.R;
-import org.buildmlearn.practicehandwriting.helper.Animator;
-import org.buildmlearn.practicehandwriting.helper.PracticeBaseActivity;
+import org.buildmlearn.practicehandwriting.activities.information.SplashActivity;
+import org.buildmlearn.practicehandwriting.helper.display.Animator;
+import org.buildmlearn.practicehandwriting.helper.practice.PracticeBaseActivity;
 
 /**
  * Activity for normal practice of characters and words
@@ -57,6 +58,8 @@ public class PracticeActivity extends PracticeBaseActivity {
                     //User cannot draw anymore on the View
                     mDrawView.canDraw(false);
                     mDone = true;
+
+
                 }
                 break;
         }

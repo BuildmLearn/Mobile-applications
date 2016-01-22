@@ -3,9 +3,9 @@ package org.buildmlearn.practicehandwriting;
 import android.os.Environment;
 import android.widget.TextView;
 
-import org.buildmlearn.practicehandwriting.activities.PracticeActivity;
-import org.buildmlearn.practicehandwriting.activities.SplashActivity;
-import org.buildmlearn.practicehandwriting.helper.DrawingView;
+import org.buildmlearn.practicehandwriting.activities.practice.PracticeActivity;
+import org.buildmlearn.practicehandwriting.activities.information.SplashActivity;
+import org.buildmlearn.practicehandwriting.helper.practice.DrawingView;
 import org.buildmlearn.practicehandwriting.testing.PracticeBaseActivityTest;
 
 import java.io.File;

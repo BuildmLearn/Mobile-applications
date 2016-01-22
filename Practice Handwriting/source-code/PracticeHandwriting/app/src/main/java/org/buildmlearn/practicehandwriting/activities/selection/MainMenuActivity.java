@@ -1,13 +1,15 @@
-package org.buildmlearn.practicehandwriting.activities;
+package org.buildmlearn.practicehandwriting.activities.selection;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 
 import org.buildmlearn.practicehandwriting.R;
-import org.buildmlearn.practicehandwriting.helper.Animator;
+import org.buildmlearn.practicehandwriting.activities.practice.TimeTrialActivity;
+import org.buildmlearn.practicehandwriting.helper.display.Animator;
 
 /**
  * Activity that displayes the main menu where the user chooses his mode of practice.
@@ -17,6 +19,7 @@ public class MainMenuActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         setContentView(R.layout.activity_main_menu);
         //adding zoom in animation for the buttons
         final int[] buttons = new int[] {R.id.character_button,R.id.word_button,R.id.timetrial_button,R.id.freehand_button};

@@ -1,5 +1,6 @@
-package org.buildmlearn.practicehandwriting.activities;
+package org.buildmlearn.practicehandwriting.activities.information;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
@@ -13,6 +14,7 @@ public class AboutActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         setContentView(R.layout.activity_about);
     }
 }

@@ -1,4 +1,4 @@
-package org.buildmlearn.practicehandwriting.activities;
+package org.buildmlearn.practicehandwriting.activities.practice;
 
 import android.content.Intent;
 import android.os.Build;
@@ -10,7 +10,8 @@ import android.view.Menu;
 import android.view.View;
 
 import org.buildmlearn.practicehandwriting.R;
-import org.buildmlearn.practicehandwriting.helper.PracticeBaseActivity;
+import org.buildmlearn.practicehandwriting.activities.information.SplashActivity;
+import org.buildmlearn.practicehandwriting.helper.practice.PracticeBaseActivity;
 
 import java.io.File;
 import java.text.SimpleDateFormat;

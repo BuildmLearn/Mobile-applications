@@ -8,9 +8,9 @@ import android.test.ActivityInstrumentationTestCase2;
 import com.robotium.solo.Solo;
 
 import org.buildmlearn.practicehandwriting.R;
-import org.buildmlearn.practicehandwriting.activities.SplashActivity;
-import org.buildmlearn.practicehandwriting.helper.PracticeBaseActivity;
-import org.buildmlearn.practicehandwriting.helper.ScoreDbHelper;
+import org.buildmlearn.practicehandwriting.activities.information.SplashActivity;
+import org.buildmlearn.practicehandwriting.helper.practice.PracticeBaseActivity;
+import org.buildmlearn.practicehandwriting.helper.background.ScoreDbHelper;
 
 /**
  * Base class to perform UI tests

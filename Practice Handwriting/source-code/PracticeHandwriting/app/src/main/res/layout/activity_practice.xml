@@ -7,7 +7,7 @@
     android:background="@color/AppBg"
     android:gravity="center"
     android:id="@+id/PracticeParentView"
-    tools:context="org.buildmlearn.practicehandwriting.helper.PracticeBaseActivity">
+    tools:context=".helper.practice.PracticeBaseActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/PracticeToolbar"
@@ -39,7 +39,7 @@
         android:textSize="25sp"
         android:textColor="#000000"/>
 
-    <org.buildmlearn.practicehandwriting.helper.DrawingView
+    <org.buildmlearn.practicehandwriting.helper.practice.DrawingView
         android:id="@+id/drawing"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

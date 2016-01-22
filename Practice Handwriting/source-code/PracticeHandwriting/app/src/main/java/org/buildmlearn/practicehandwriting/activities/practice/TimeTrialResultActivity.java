@@ -1,9 +1,10 @@
-package org.buildmlearn.practicehandwriting.activities;
+package org.buildmlearn.practicehandwriting.activities.practice;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -20,6 +21,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import org.buildmlearn.practicehandwriting.R;
+import org.buildmlearn.practicehandwriting.activities.information.SplashActivity;
+import org.buildmlearn.practicehandwriting.activities.selection.MainMenuActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -45,6 +48,7 @@ public class TimeTrialResultActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         try {
             super.onCreate(savedInstanceState);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
             setContentView(R.layout.activity_time_trial_result);
             findViewById(R.id.TimeTrialToolbar).bringToFront();
             mTempDir = new File(Environment.getExternalStorageDirectory() + File.separator + getString(R.string.app_name) + File.separator + getIntent().getStringExtra(getString(R.string.directory_name)));
@@ -78,7 +82,7 @@ public class TimeTrialResultActivity extends Activity {
                     @Override
                     public void onClick(View view) {
                         System.gc();
-                        scrollView.scrollBy(0,SplashActivity.mDisplayMetrics.heightPixels*3/8);
+                        scrollView.scrollBy(0, SplashActivity.mDisplayMetrics.heightPixels*3/8);
                         final ImageView resultImageView = (ImageView) result.findViewById(R.id.resultImageView);
                         if (resultImageView.getDrawable() == null)
                             imageLoader.displayImage(Uri.fromFile(savedFiles[index]).toString().replace("%20", " "), resultImageView);

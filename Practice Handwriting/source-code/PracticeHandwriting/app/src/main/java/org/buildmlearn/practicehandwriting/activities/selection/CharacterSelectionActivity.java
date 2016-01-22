@@ -1,7 +1,8 @@
-package org.buildmlearn.practicehandwriting.activities;
+package org.buildmlearn.practicehandwriting.activities.selection;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.view.Display;
@@ -10,6 +11,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import org.buildmlearn.practicehandwriting.R;
+import org.buildmlearn.practicehandwriting.activities.practice.FreehandActivity;
+import org.buildmlearn.practicehandwriting.activities.practice.PracticeActivity;
+import org.buildmlearn.practicehandwriting.activities.information.SplashActivity;
 
 import java.util.Random;
 
@@ -33,6 +37,7 @@ public class CharacterSelectionActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         setContentView(R.layout.activity_character_selection);
         LinearLayout root = (LinearLayout) findViewById(R.id.CharacterLL);
         LinearLayout child = new LinearLayout(this);
@@ -47,7 +52,7 @@ public class CharacterSelectionActivity extends Activity {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams((size.x-8*horizontal_padding)/4,(size.x-8*horizontal_padding)/4);
         params.setMargins(horizontal_padding, vertical_padding, horizontal_padding, vertical_padding);
         int count = 0;
-        for(int i=0;i<SplashActivity.CHARACTER_LIST.length;i++) {
+        for(int i=0;i< SplashActivity.CHARACTER_LIST.length;i++) {
             String s = SplashActivity.CHARACTER_LIST[i];
             FButton fb = new FButton(this);
             fb.setText(s);

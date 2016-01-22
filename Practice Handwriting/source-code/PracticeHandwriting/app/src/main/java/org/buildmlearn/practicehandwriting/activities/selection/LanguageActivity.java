@@ -1,7 +1,8 @@
-package org.buildmlearn.practicehandwriting.activities;
+package org.buildmlearn.practicehandwriting.activities.selection;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import org.buildmlearn.practicehandwriting.R;
+import org.buildmlearn.practicehandwriting.activities.information.AboutActivity;
+import org.buildmlearn.practicehandwriting.activities.information.SplashActivity;
 
 import java.util.Locale;
 
@@ -18,6 +21,7 @@ public class LanguageActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         setContentView(R.layout.activity_language);
         //adding slide in animation for the buttons
         final int[] buttons = new int[] {R.id.english_button,R.id.hindi_button,R.id.about_button};

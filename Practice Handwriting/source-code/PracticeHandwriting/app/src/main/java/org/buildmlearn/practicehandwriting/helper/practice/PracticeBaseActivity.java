@@ -1,4 +1,4 @@
-package org.buildmlearn.practicehandwriting.helper;
+package org.buildmlearn.practicehandwriting.helper.practice;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -19,7 +19,9 @@ import android.widget.Toast;
 import com.software.shell.fab.ActionButton;
 
 import org.buildmlearn.practicehandwriting.R;
-import org.buildmlearn.practicehandwriting.activities.SplashActivity;
+import org.buildmlearn.practicehandwriting.activities.practice.FreehandActivity;
+import org.buildmlearn.practicehandwriting.activities.information.SplashActivity;
+import org.buildmlearn.practicehandwriting.helper.display.Animator;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -64,7 +66,7 @@ public class PracticeBaseActivity extends ActionBarActivity {
         try {
             System.gc();
             super.onCreate(savedInstanceState);
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
             setContentView(R.layout.activity_practice);
 
             //Initializing all the variables
@@ -153,7 +155,8 @@ public class PracticeBaseActivity extends ActionBarActivity {
                 mPracticeString = SplashActivity.CHARACTER_LIST[next];
             }
 
-            mDrawView.setBitmapFromText(mPracticeString);
+            if(!(this instanceof FreehandActivity))
+                mDrawView.setBitmapFromText(mPracticeString);
             if (SplashActivity.TTSobj != null) {
                 if (Build.VERSION.SDK_INT >= 21) //This function works only on devices with SDK version greater that 20
                     SplashActivity.TTSobj.speak(mPracticeString, TextToSpeech.QUEUE_FLUSH, null, null);
@@ -210,6 +213,7 @@ public class PracticeBaseActivity extends ActionBarActivity {
     @Override
     public void onBackPressed() {
         System.gc();
+        mDrawView.destroyBitmap();
         super.onBackPressed();
     }
 

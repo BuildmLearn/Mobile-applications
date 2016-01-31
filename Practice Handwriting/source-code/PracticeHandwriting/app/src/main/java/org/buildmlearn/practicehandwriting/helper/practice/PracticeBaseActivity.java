@@ -1,12 +1,16 @@
 package org.buildmlearn.practicehandwriting.helper.practice;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.speech.tts.TextToSpeech;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -60,6 +64,8 @@ public class PracticeBaseActivity extends ActionBarActivity {
      * TextViews to display the best score for a given string
      */
     protected TextView mBestScoreView;
+
+    private static final int REQUEST_WRITE_STORAGE = 112;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,13 +128,29 @@ public class PracticeBaseActivity extends ActionBarActivity {
 
             case R.id.done_save_button:
                 if(mDone) {//if the user is done then save the trace
-                    String result = mDrawView.saveBitmap(mPracticeString,"");
-                    if(result.charAt(0)=='/')
-                        result = "Trace Saved";
-                    Toast.makeText(this,result,Toast.LENGTH_SHORT).show();//Toast displayed with the status of saving the trace
+                    boolean hasPermission = (ContextCompat.checkSelfPermission(getApplicationContext(),
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
+                    Log.d("test", "External storage permission : " + hasPermission);
+                    if (hasPermission){
+                        String result = mDrawView.saveBitmap(mPracticeString,"");
+                        if(result.charAt(0)=='/')
+                            result = "Trace Saved";
+                        Toast.makeText(this,result,Toast.LENGTH_SHORT).show();//Toast displayed with the status of saving the trace
+                    }
+                    else{
+                        // Prompt to user to allow or deny the permission
+                        Toast.makeText(this, "Not allowed to perform function", Toast.LENGTH_SHORT).show();
+                        askForPermission();
+                    }
                 }
                 break;
         }
+    }
+
+    private void askForPermission(){
+        ActivityCompat.requestPermissions(PracticeBaseActivity.this,
+                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                REQUEST_WRITE_STORAGE);
     }
 
     @Override

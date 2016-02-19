@@ -1,0 +1,227 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Risky Project Location:
+-----------------------
+The tools *should* handle project locations in any directory. However,
+due to bugs, placing projects in directories containing spaces in the
+path, or characters like ", ' and &, have had issues. We're working to
+eliminate these bugs, but to save yourself headaches you may want to
+move your project to a location where this is not a problem.
+/home/priyank/AndroidStudioProjects/Mobile-applications/Practice Handwriting/source-code/LabeltheDiagram
+                                                                -                                       
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+From LabeltheDiagram:
+* fabric.properties
+* go_btn-web.png
+* ic_launcher-web.png
+* kit-libs/
+* kit-libs/com-crashlytics-sdk-android_answers/
+* kit-libs/com-crashlytics-sdk-android_answers/AndroidManifest.xml
+* kit-libs/com-crashlytics-sdk-android_answers/aapt/
+* kit-libs/com-crashlytics-sdk-android_answers/aapt/AndroidManifest.xml
+* kit-libs/com-crashlytics-sdk-android_answers/aapt/bin/
+* kit-libs/com-crashlytics-sdk-android_answers/aapt/bin/AndroidManifest.xml
+* kit-libs/com-crashlytics-sdk-android_answers/aapt/bin/classes/
+* kit-libs/com-crashlytics-sdk-android_answers/aapt/bin/classes/com/
+* kit-libs/com-crashlytics-sdk-android_answers/aapt/bin/classes/com/crashlytics/
+* kit-libs/com-crashlytics-sdk-android_answers/aapt/bin/classes/com/crashlytics/android/
+* kit-libs/com-crashlytics-sdk-android_answers/aapt/bin/classes/com/crashlytics/android/answers/
+* kit-libs/com-crashlytics-sdk-android_answers/aapt/bin/classes/com/crashlytics/android/answers/BuildConfig.class
+* kit-libs/com-crashlytics-sdk-android_answers/aapt/gen/
+* kit-libs/com-crashlytics-sdk-android_answers/aapt/gen/com/
+* kit-libs/com-crashlytics-sdk-android_answers/aapt/gen/com/crashlytics/
+* kit-libs/com-crashlytics-sdk-android_answers/aapt/gen/com/crashlytics/android/
+* kit-libs/com-crashlytics-sdk-android_answers/aapt/gen/com/crashlytics/android/answers/
+* kit-libs/com-crashlytics-sdk-android_answers/aapt/gen/com/crashlytics/android/answers/BuildConfig.java
+* kit-libs/com-crashlytics-sdk-android_answers/aapt/project.properties
+* kit-libs/com-crashlytics-sdk-android_answers/bin/
+* kit-libs/com-crashlytics-sdk-android_answers/bin/AndroidManifest.xml
+* kit-libs/com-crashlytics-sdk-android_answers/bin/classes/
+* kit-libs/com-crashlytics-sdk-android_answers/bin/classes/com/
+* kit-libs/com-crashlytics-sdk-android_answers/bin/classes/com/crashlytics/
+* kit-libs/com-crashlytics-sdk-android_answers/bin/classes/com/crashlytics/android/
+* kit-libs/com-crashlytics-sdk-android_answers/bin/classes/com/crashlytics/android/answers/
+* kit-libs/com-crashlytics-sdk-android_answers/bin/classes/com/crashlytics/android/answers/BuildConfig.class
+* kit-libs/com-crashlytics-sdk-android_answers/bin/com-crashlytics-sdk-android_answers.jar
+* kit-libs/com-crashlytics-sdk-android_answers/build.xml
+* kit-libs/com-crashlytics-sdk-android_answers/gen/
+* kit-libs/com-crashlytics-sdk-android_answers/gen/com/
+* kit-libs/com-crashlytics-sdk-android_answers/gen/com/crashlytics/
+* kit-libs/com-crashlytics-sdk-android_answers/gen/com/crashlytics/android/
+* kit-libs/com-crashlytics-sdk-android_answers/gen/com/crashlytics/android/answers/
+* kit-libs/com-crashlytics-sdk-android_answers/gen/com/crashlytics/android/answers/BuildConfig.java
+* kit-libs/com-crashlytics-sdk-android_answers/kit-version.properties
+* kit-libs/com-crashlytics-sdk-android_answers/libs/
+* kit-libs/com-crashlytics-sdk-android_answers/libs/com-crashlytics-sdk-android_answers-classes.jar
+* kit-libs/com-crashlytics-sdk-android_answers/project.properties
+* kit-libs/com-crashlytics-sdk-android_beta/
+* kit-libs/com-crashlytics-sdk-android_beta/AndroidManifest.xml
+* kit-libs/com-crashlytics-sdk-android_beta/aapt/
+* kit-libs/com-crashlytics-sdk-android_beta/aapt/AndroidManifest.xml
+* kit-libs/com-crashlytics-sdk-android_beta/bin/
+* kit-libs/com-crashlytics-sdk-android_beta/bin/AndroidManifest.xml
+* kit-libs/com-crashlytics-sdk-android_beta/bin/classes/
+* kit-libs/com-crashlytics-sdk-android_beta/bin/classes/com/
+* kit-libs/com-crashlytics-sdk-android_beta/bin/classes/com/crashlytics/
+* kit-libs/com-crashlytics-sdk-android_beta/bin/classes/com/crashlytics/android/
+* kit-libs/com-crashlytics-sdk-android_beta/bin/classes/com/crashlytics/android/beta/
+* kit-libs/com-crashlytics-sdk-android_beta/bin/classes/com/crashlytics/android/beta/BuildConfig.class
+* kit-libs/com-crashlytics-sdk-android_beta/bin/com-crashlytics-sdk-android_beta.jar
+* kit-libs/com-crashlytics-sdk-android_beta/build.gradle
+* kit-libs/com-crashlytics-sdk-android_beta/build.xml
+* kit-libs/com-crashlytics-sdk-android_beta/com-crashlytics-sdk-android_beta.iml
+* kit-libs/com-crashlytics-sdk-android_beta/gen/
+* kit-libs/com-crashlytics-sdk-android_beta/gen/com/
+* kit-libs/com-crashlytics-sdk-android_beta/gen/com/crashlytics/
+* kit-libs/com-crashlytics-sdk-android_beta/gen/com/crashlytics/android/
+* kit-libs/com-crashlytics-sdk-android_beta/gen/com/crashlytics/android/beta/
+* kit-libs/com-crashlytics-sdk-android_beta/gen/com/crashlytics/android/beta/BuildConfig.java
+* kit-libs/com-crashlytics-sdk-android_beta/kit-version.properties
+* kit-libs/com-crashlytics-sdk-android_beta/libs/
+* kit-libs/com-crashlytics-sdk-android_beta/libs/com-crashlytics-sdk-android_beta-classes.jar
+* kit-libs/com-crashlytics-sdk-android_beta/project.properties
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/AndroidManifest.xml
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/aapt/
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/aapt/AndroidManifest.xml
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/bin/
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/bin/AndroidManifest.xml
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/bin/classes/
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/bin/classes/com/
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/bin/classes/com/crashlytics/
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/bin/classes/com/crashlytics/android/
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/bin/classes/com/crashlytics/android/core/
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/bin/classes/com/crashlytics/android/core/BuildConfig.class
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/bin/com-crashlytics-sdk-android_crashlytics-core.jar
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/build.xml
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/gen/
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/gen/com/
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/gen/com/crashlytics/
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/gen/com/crashlytics/android/
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/gen/com/crashlytics/android/core/
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/gen/com/crashlytics/android/core/BuildConfig.java
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/kit-version.properties
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/libs/
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/libs/com-crashlytics-sdk-android_crashlytics-core-classes.jar
+* kit-libs/com-crashlytics-sdk-android_crashlytics-core/project.properties
+* kit-libs/com-crashlytics-sdk-android_crashlytics/
+* kit-libs/com-crashlytics-sdk-android_crashlytics/AndroidManifest.xml
+* kit-libs/com-crashlytics-sdk-android_crashlytics/aapt/
+* kit-libs/com-crashlytics-sdk-android_crashlytics/aapt/AndroidManifest.xml
+* kit-libs/com-crashlytics-sdk-android_crashlytics/bin/
+* kit-libs/com-crashlytics-sdk-android_crashlytics/bin/AndroidManifest.xml
+* kit-libs/com-crashlytics-sdk-android_crashlytics/bin/classes/
+* kit-libs/com-crashlytics-sdk-android_crashlytics/bin/classes/com/
+* kit-libs/com-crashlytics-sdk-android_crashlytics/bin/classes/com/crashlytics/
+* kit-libs/com-crashlytics-sdk-android_crashlytics/bin/classes/com/crashlytics/android/
+* kit-libs/com-crashlytics-sdk-android_crashlytics/bin/classes/com/crashlytics/android/BuildConfig.class
+* kit-libs/com-crashlytics-sdk-android_crashlytics/bin/com-crashlytics-sdk-android_crashlytics.jar
+* kit-libs/com-crashlytics-sdk-android_crashlytics/build.xml
+* kit-libs/com-crashlytics-sdk-android_crashlytics/gen/
+* kit-libs/com-crashlytics-sdk-android_crashlytics/gen/com/
+* kit-libs/com-crashlytics-sdk-android_crashlytics/gen/com/crashlytics/
+* kit-libs/com-crashlytics-sdk-android_crashlytics/gen/com/crashlytics/android/
+* kit-libs/com-crashlytics-sdk-android_crashlytics/gen/com/crashlytics/android/BuildConfig.java
+* kit-libs/com-crashlytics-sdk-android_crashlytics/kit-version.properties
+* kit-libs/com-crashlytics-sdk-android_crashlytics/libs/
+* kit-libs/com-crashlytics-sdk-android_crashlytics/libs/com-crashlytics-sdk-android_crashlytics-classes.jar
+* kit-libs/com-crashlytics-sdk-android_crashlytics/project.properties
+* kit-libs/io-fabric-sdk-android_fabric/
+* kit-libs/io-fabric-sdk-android_fabric/AndroidManifest.xml
+* kit-libs/io-fabric-sdk-android_fabric/aapt/
+* kit-libs/io-fabric-sdk-android_fabric/aapt/AndroidManifest.xml
+* kit-libs/io-fabric-sdk-android_fabric/bin/
+* kit-libs/io-fabric-sdk-android_fabric/bin/AndroidManifest.xml
+* kit-libs/io-fabric-sdk-android_fabric/bin/classes/
+* kit-libs/io-fabric-sdk-android_fabric/bin/classes/io/
+* kit-libs/io-fabric-sdk-android_fabric/bin/classes/io/fabric/
+* kit-libs/io-fabric-sdk-android_fabric/bin/classes/io/fabric/sdk/
+* kit-libs/io-fabric-sdk-android_fabric/bin/classes/io/fabric/sdk/android/
+* kit-libs/io-fabric-sdk-android_fabric/bin/classes/io/fabric/sdk/android/BuildConfig.class
+* kit-libs/io-fabric-sdk-android_fabric/bin/io-fabric-sdk-android_fabric.jar
+* kit-libs/io-fabric-sdk-android_fabric/build.xml
+* kit-libs/io-fabric-sdk-android_fabric/gen/
+* kit-libs/io-fabric-sdk-android_fabric/gen/io/
+* kit-libs/io-fabric-sdk-android_fabric/gen/io/fabric/
+* kit-libs/io-fabric-sdk-android_fabric/gen/io/fabric/sdk/
+* kit-libs/io-fabric-sdk-android_fabric/gen/io/fabric/sdk/android/
+* kit-libs/io-fabric-sdk-android_fabric/gen/io/fabric/sdk/android/BuildConfig.java
+* kit-libs/io-fabric-sdk-android_fabric/kit-version.properties
+* kit-libs/io-fabric-sdk-android_fabric/libs/
+* kit-libs/io-fabric-sdk-android_fabric/libs/io-fabric-sdk-android_fabric-classes.jar
+* kit-libs/io-fabric-sdk-android_fabric/project.properties
+* kit-libs/kit-libs.iml
+* kits.properties
+* proceed_btn-web.png
+* proguard-project.txt
+* sound_icon-web.png
+* view_btn-web.png
+From com-crashlytics-sdk-android_crashlytics:
+* AndroidManifest.xml
+* aapt/
+* aapt/AndroidManifest.xml
+* build.xml
+* kit-version.properties
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:22.2.1
+gson-2.2.4.jar => com.google.code.gson:gson:2.2.4
+
+Potentially Missing Dependency:
+-------------------------------
+When we replaced the following .jar files with a Gradle dependency, we
+inferred the dependency version number from the filename. This
+specific version may not actually be available from the repository.
+If you get a build error stating that the dependency is missing, edit
+the version number to for example "+" to pick up the latest version
+instead. (This may require you to update your code if the library APIs
+have changed.)
+
+gson-2.2.4.jar => version 2.2.4 in com.google.code.gson:gson:2.2.4
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+In com-crashlytics-sdk-android_crashlytics:
+* libs/com-crashlytics-sdk-android_crashlytics-classes.jar => comcrashlyticssdkandroid_crashlytics/libs/com-crashlytics-sdk-android_crashlytics-classes.jar
+In LabeltheDiagram:
+* AndroidManifest.xml => labeltheDiagram/src/main/AndroidManifest.xml
+* assets/ => labeltheDiagram/src/main/assets/
+* libs/io-fabric-sdk-android_fabric.jar => labeltheDiagram/libs/io-fabric-sdk-android_fabric.jar
+* libs/mpandroidchartlibrary-2-1-3.jar => labeltheDiagram/libs/mpandroidchartlibrary-2-1-3.jar
+* libs/sqliteassethelper-2.0.1.jar => labeltheDiagram/libs/sqliteassethelper-2.0.1.jar
+* res/ => labeltheDiagram/src/main/res/
+* src/ => labeltheDiagram/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

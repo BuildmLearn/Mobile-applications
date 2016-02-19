@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/LabeltheDiagram.iml" filepath="$PROJECT_DIR$/LabeltheDiagram.iml" />
+      <module fileurl="file://$PROJECT_DIR$/comcrashlyticssdkandroid_crashlytics/comcrashlyticssdkandroid_crashlytics.iml" filepath="$PROJECT_DIR$/comcrashlyticssdkandroid_crashlytics/comcrashlyticssdkandroid_crashlytics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/labeltheDiagram/labeltheDiagram.iml" filepath="$PROJECT_DIR$/labeltheDiagram/labeltheDiagram.iml" />
+    </modules>
+  </component>
+</project>

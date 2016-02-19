@@ -1,0 +1,208 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Manifest Merging:
+-----------------
+Your project uses libraries that provide manifests, and your Eclipse
+project did not explicitly turn on manifest merging. In Android Gradle
+projects, manifests are always merged (meaning that contents from your
+libraries' manifests will be merged into the app manifest. If you had
+manually copied contents from library manifests into your app manifest
+you may need to remove these for the app to build correctly.
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+From HoloGraphLibrary:
+* LICENSE.txt
+* NOTICE.txt
+* build.gradle
+* proguard-project.txt
+From LearnFromMap:
+* Main.jpg
+* Main.ucls
+* ic_launcher-web.png
+* javadoc.xml
+* proguard-project.txt
+* sequence diagram.useq
+From volley_buildmlearn:
+* Android.mk
+* AndroidManifest.xml
+* build.gradle
+* build.xml
+* custom_rules.xml
+* proguard-project.txt
+* proguard.cfg
+* tests/
+* tests/Android.mk
+* tests/AndroidManifest.xml
+* tests/bin/
+* tests/bin/AndroidManifest.xml
+* tests/bin/classes/
+* tests/bin/classes/com/
+* tests/bin/classes/com/android/
+* tests/bin/classes/com/android/volley/
+* tests/bin/classes/com/android/volley/CacheDispatcherTest.class
+* tests/bin/classes/com/android/volley/NetworkDispatcherTest.class
+* tests/bin/classes/com/android/volley/RequestQueueTest$1.class
+* tests/bin/classes/com/android/volley/RequestQueueTest$DelayedRequest.class
+* tests/bin/classes/com/android/volley/RequestQueueTest$OrderCheckingNetwork.class
+* tests/bin/classes/com/android/volley/RequestQueueTest.class
+* tests/bin/classes/com/android/volley/RequestTest$TestRequest.class
+* tests/bin/classes/com/android/volley/RequestTest$UrlParseRequest.class
+* tests/bin/classes/com/android/volley/RequestTest.class
+* tests/bin/classes/com/android/volley/ResponseDeliveryTest.class
+* tests/bin/classes/com/android/volley/mock/
+* tests/bin/classes/com/android/volley/mock/MockCache.class
+* tests/bin/classes/com/android/volley/mock/MockHttpClient.class
+* tests/bin/classes/com/android/volley/mock/MockHttpStack.class
+* tests/bin/classes/com/android/volley/mock/MockHttpURLConnection.class
+* tests/bin/classes/com/android/volley/mock/MockNetwork.class
+* tests/bin/classes/com/android/volley/mock/MockRequest.class
+* tests/bin/classes/com/android/volley/mock/MockResponseDelivery.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$Base.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$Delete.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$DeprecatedGet.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$DeprecatedPost.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$Get.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$Head.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$Options.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$Patch.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$PatchWithBody.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$Post.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$PostWithBody.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$Put.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$PutWithBody.class
+* tests/bin/classes/com/android/volley/mock/TestRequest$Trace.class
+* tests/bin/classes/com/android/volley/mock/TestRequest.class
+* tests/bin/classes/com/android/volley/mock/WaitableQueue$MagicStopRequest.class
+* tests/bin/classes/com/android/volley/mock/WaitableQueue.class
+* tests/bin/classes/com/android/volley/tests/
+* tests/bin/classes/com/android/volley/tests/BuildConfig.class
+* tests/bin/classes/com/android/volley/tests/R$attr.class
+* tests/bin/classes/com/android/volley/tests/R$raw.class
+* tests/bin/classes/com/android/volley/tests/R.class
+* tests/bin/classes/com/android/volley/toolbox/
+* tests/bin/classes/com/android/volley/toolbox/BasicNetworkTest$1.class
+* tests/bin/classes/com/android/volley/toolbox/BasicNetworkTest.class
+* tests/bin/classes/com/android/volley/toolbox/ByteArrayPoolTest.class
+* tests/bin/classes/com/android/volley/toolbox/DiskBasedCacheTest.class
+* tests/bin/classes/com/android/volley/toolbox/HttpClientStackTest.class
+* tests/bin/classes/com/android/volley/toolbox/HttpHeaderParserTest.class
+* tests/bin/classes/com/android/volley/toolbox/HurlStackTest.class
+* tests/bin/classes/com/android/volley/toolbox/ImageRequestTest.class
+* tests/bin/classes/com/android/volley/toolbox/NetworkImageViewTest$MockImageLoader.class
+* tests/bin/classes/com/android/volley/toolbox/NetworkImageViewTest.class
+* tests/bin/classes/com/android/volley/toolbox/PoolingByteArrayOutputStreamTest.class
+* tests/bin/classes/com/android/volley/utils/
+* tests/bin/classes/com/android/volley/utils/CacheTestUtils.class
+* tests/bin/classes/com/android/volley/utils/ImmediateResponseDelivery$1.class
+* tests/bin/classes/com/android/volley/utils/ImmediateResponseDelivery.class
+* tests/gen/
+* tests/gen/com/
+* tests/gen/com/android/
+* tests/gen/com/android/volley/
+* tests/gen/com/android/volley/tests/
+* tests/gen/com/android/volley/tests/BuildConfig.java
+* tests/gen/com/android/volley/tests/R.java
+* tests/project.properties
+* tests/res/
+* tests/res/raw/
+* tests/res/raw/large_jpeg_1024_500.jpg
+* tests/src/
+* tests/src/com/
+* tests/src/com/android/
+* tests/src/com/android/volley/
+* tests/src/com/android/volley/CacheDispatcherTest.java
+* tests/src/com/android/volley/NetworkDispatcherTest.java
+* tests/src/com/android/volley/RequestQueueTest.java
+* tests/src/com/android/volley/RequestTest.java
+* tests/src/com/android/volley/ResponseDeliveryTest.java
+* tests/src/com/android/volley/mock/
+* tests/src/com/android/volley/mock/MockCache.java
+* tests/src/com/android/volley/mock/MockHttpClient.java
+* tests/src/com/android/volley/mock/MockHttpStack.java
+* tests/src/com/android/volley/mock/MockHttpURLConnection.java
+* tests/src/com/android/volley/mock/MockNetwork.java
+* tests/src/com/android/volley/mock/MockRequest.java
+* tests/src/com/android/volley/mock/MockResponseDelivery.java
+* tests/src/com/android/volley/mock/TestRequest.java
+* tests/src/com/android/volley/mock/WaitableQueue.java
+* tests/src/com/android/volley/toolbox/
+* tests/src/com/android/volley/toolbox/BasicNetworkTest.java
+* tests/src/com/android/volley/toolbox/ByteArrayPoolTest.java
+* tests/src/com/android/volley/toolbox/DiskBasedCacheTest.java
+* tests/src/com/android/volley/toolbox/HttpClientStackTest.java
+* tests/src/com/android/volley/toolbox/HttpHeaderParserTest.java
+* tests/src/com/android/volley/toolbox/HurlStackTest.java
+* tests/src/com/android/volley/toolbox/ImageRequestTest.java
+* tests/src/com/android/volley/toolbox/NetworkImageViewTest.java
+* tests/src/com/android/volley/toolbox/PoolingByteArrayOutputStreamTest.java
+* tests/src/com/android/volley/utils/
+* tests/src/com/android/volley/utils/CacheTestUtils.java
+* tests/src/com/android/volley/utils/ImmediateResponseDelivery.java
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:19.1.0
+android-support-v7-appcompat.jar => com.android.support:appcompat-v7:19.1.0
+
+Replaced Libraries with Dependencies:
+-------------------------------------
+The importer recognized the following library projects as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the source files in your project were of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the library replacement in the import wizard and try
+again:
+
+android-support-v7-appcompat => [com.android.support:appcompat-v7:19.1.0]
+google-play-services_lib => [com.google.android.gms:play-services:+]
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+In HoloGraphLibrary:
+* AndroidManifest.xml => holoGraphLibrary/src/main/AndroidManifest.xml
+* res/ => holoGraphLibrary/src/main/res/
+* src/ => holoGraphLibrary/src/main/java/
+In volley_buildmlearn:
+* src/ => volley_buildmlearn/src/main/java/
+In LearnFromMap:
+* AndroidManifest.xml => learnFromMap/src/main/AndroidManifest.xml
+* assets/ => learnFromMap/src/main/assets/
+* libs/simmetrics_jar_v1_6_2_d07_02_07.jar => learnFromMap/libs/simmetrics_jar_v1_6_2_d07_02_07.jar
+* libs/sqliteassethelper-2.0.1.jar => learnFromMap/libs/sqliteassethelper-2.0.1.jar
+* lint.xml => learnFromMap/lint.xml
+* res/ => learnFromMap/src/main/res/
+* src/ => learnFromMap/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

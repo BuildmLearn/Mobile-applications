@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/scoreTab"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/tab_color" >
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/appBg_color" />
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/scoreTxt"
+            android:layout_alignBottom="@+id/scoreTxt"
+            android:layout_marginLeft="18dp"
+            android:layout_toRightOf="@+id/scoreTxt"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/complete_ratio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complatedTxt"
+            android:layout_alignBottom="@+id/complatedTxt"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/complatedTxt"
+            android:text=" 0%"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/complatedTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="Complete :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+
+        <TextView
+            android:id="@+id/scoreTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/complete_ratio"
+            android:layout_alignBottom="@+id/complete_ratio"
+            android:layout_marginLeft="24dp"
+            android:layout_toRightOf="@+id/view1"
+            android:text="Score   :"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffff" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/mainDiagramHeart"
+        android:layout_width="340dp"
+        android:layout_height="300dp"
+        android:layout_below="@+id/scoreTab"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/hydrolic_cycle" />
+
+    <ImageView
+        android:id="@+id/tagHolder"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/holder" />
+
+    <ImageView
+        android:id="@+id/precipitationBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_above="@+id/transpirationBlb"
+        android:layout_alignRight="@+id/mainDiagramHeart"
+        android:layout_marginRight="14dp"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/surface_runBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/eveporationBlb"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="28dp"
+        android:layout_toRightOf="@+id/transpirationBlb"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/condensationBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramHeart"
+        android:layout_alignTop="@+id/mainDiagramHeart"
+        android:layout_marginLeft="89dp"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/transpirationBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/condensationBlb"
+        android:layout_marginLeft="76dp"
+        android:layout_toRightOf="@+id/condensationBlb"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/eveporationBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/condensationBlb"
+        android:layout_below="@+id/transpirationBlb"
+        android:layout_marginRight="19dp"
+        android:layout_marginTop="93dp"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/oceanBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_above="@+id/tagHolder"
+        android:layout_alignLeft="@+id/condensationBlb"
+        android:layout_marginBottom="11dp"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/underground_waterBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/transpirationBlb"
+        android:layout_alignTop="@+id/oceanBlb"
+        android:layout_marginRight="23dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/marker" />
+
+    <ImageView
+        android:id="@+id/infiltrationBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/oceanBlb"
+        android:layout_alignRight="@+id/mainDiagramHeart"
+        android:layout_marginBottom="9dp"
+        android:src="@drawable/marker" />
+
+    <TextView
+        android:id="@+id/oceanTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/mainDiagramHeart"
+        android:layout_below="@+id/underground_waterBlb"
+        android:layout_marginTop="43dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="ocean"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/preciptationTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/oceanTag"
+        android:layout_below="@+id/oceanTag"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="preciptation"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/eveporationTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/preciptationTag"
+        android:layout_alignBottom="@+id/preciptationTag"
+        android:layout_toRightOf="@+id/oceanBlb"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="eveporation"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/underground_waterTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/preciptationTag"
+        android:layout_alignLeft="@+id/transpirationBlb"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="underground water"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/transpirationTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/eveporationTag"
+        android:layout_alignBottom="@+id/eveporationTag"
+        android:layout_alignRight="@+id/underground_waterTag"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="transpiration"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/infiltratoinTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/underground_waterTag"
+        android:layout_alignBottom="@+id/underground_waterTag"
+        android:layout_toLeftOf="@+id/underground_waterBlb"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="infiltration"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/condensationTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/preciptationTag"
+        android:layout_below="@+id/preciptationTag"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="condensation"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/surface_runTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/condensationTag"
+        android:layout_alignBottom="@+id/condensationTag"
+        android:layout_alignRight="@+id/transpirationBlb"
+        android:background="@drawable/custom_textview"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="3dp"
+        android:text="surface run"
+        android:textColor="#ffff" />
+
+</RelativeLayout>

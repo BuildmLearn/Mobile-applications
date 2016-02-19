@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:foo="http://schemas.android.com/apk/res/org.buildmlearn.learnfrommap"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:gravity="center"
+    android:orientation="horizontal" >
+
+    <View
+        android:id="@+id/legend"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_margin="5dp"
+        android:background="#0099cc" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" >
+
+        <org.buildmlearn.learnfrommap.helper.TextViewPlus
+            android:id="@+id/country_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:gravity="center_vertical"
+            android:text="@string/option1"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            foo:customFont="Roboto_Regular.ttf" />
+
+        <org.buildmlearn.learnfrommap.helper.TextViewPlus
+            android:id="@+id/stat_data"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="3dp"
+            android:gravity="center_vertical"
+            android:text="@string/option1"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            foo:customFont="Roboto_Regular.ttf" />
+    </RelativeLayout>
+
+</LinearLayout>

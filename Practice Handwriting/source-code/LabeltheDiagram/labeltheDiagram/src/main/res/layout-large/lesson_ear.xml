@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/mainDiagramEar"
+        android:layout_width="450dp"
+        android:layout_height="420dp"
+        android:layout_below="@+id/scoreTab"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/human_ear" />
+
+    <ImageView
+        android:id="@+id/pinnaBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramEar"
+        android:layout_alignTop="@+id/mainDiagramEar"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/one" />
+
+    <ImageView
+        android:id="@+id/malleusBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/pinnaBlb"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/two" />
+
+    <ImageView
+        android:id="@+id/incusBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@id/mainDiagramEar"
+        android:layout_alignTop="@id/mainDiagramEar"
+        android:layout_marginRight="165dp"
+        android:layout_marginTop="55dp"
+        android:src="@drawable/three" />
+
+    <ImageView
+        android:id="@+id/earnerveBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@id/mainDiagramEar"
+        android:layout_alignTop="@id/mainDiagramEar"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/five" />
+
+    <ImageView
+        android:id="@+id/stapesBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@id/mainDiagramEar"
+        android:layout_alignLeft="@id/mainDiagramEar"
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="290dp"
+        android:src="@drawable/seven" />
+
+    <ImageView
+        android:id="@+id/earcanalBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramEar"
+        android:layout_alignLeft="@id/mainDiagramEar"
+        android:layout_marginBottom="52dp"
+        android:layout_marginLeft="165dp"
+        android:src="@drawable/nine" />
+
+    <ImageView
+        android:id="@+id/outerearBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramEar"
+        android:layout_alignLeft="@id/mainDiagramEar"
+        android:layout_marginBottom="35dp"
+        android:layout_marginLeft="85dp"
+        android:src="@drawable/ten" />
+
+    <ImageView
+        android:id="@+id/cochleaBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramEar"
+        android:layout_alignRight="@id/mainDiagramEar"
+        android:layout_marginBottom="160dp"
+        android:layout_marginRight="40dp"
+        android:src="@drawable/six" />
+
+    <ImageView
+        android:id="@+id/eardrumBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramEar"
+        android:layout_alignLeft="@id/mainDiagramEar"
+        android:layout_marginBottom="125dp"
+        android:layout_marginLeft="210dp"
+        android:src="@drawable/eight" />
+
+    <ImageView
+        android:id="@+id/canalsBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@id/mainDiagramEar"
+        android:layout_alignTop="@id/mainDiagramEar"
+        android:layout_marginRight="70dp"
+        android:layout_marginTop="35dp"
+        android:src="@drawable/four" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mainDiagramEar"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/lesson_list"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout>
+
+</RelativeLayout>

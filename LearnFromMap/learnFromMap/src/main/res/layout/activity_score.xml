@@ -1,0 +1,108 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:foo="http://schemas.android.com/apk/res/org.buildmlearn.learnfrommap"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.buildmlearn.learnfrommap.MainActivity" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/explore_world_map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_nexus" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:background="#60000000"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <org.buildmlearn.learnfrommap.helper.TextViewPlus
+                    android:id="@+id/score_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/score"
+                    android:textColor="@android:color/white"
+                    android:textSize="90sp"
+                    foo:customFont="Roboto_Thin.ttf" />
+
+                <org.buildmlearn.learnfrommap.helper.TextViewPlus
+                    android:id="@+id/sett_tutorial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/your_score"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    foo:customFont="Roboto_Light.ttf" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="10dp"
+                    android:background="#ffffff" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp" >
+
+                    <org.buildmlearn.learnfrommap.helper.TextViewPlus
+                        android:id="@+id/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/questions_correctly_solved"
+                        android:textColor="@android:color/white"
+                        foo:customFont="Roboto_Light.ttf" />
+
+                    <org.buildmlearn.learnfrommap.helper.TextViewPlus
+                        android:id="@+id/score_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_toRightOf="@+id/text"
+                        android:gravity="right"
+                        android:text="@string/question_answer_count"
+                        android:textColor="@android:color/white"
+                        foo:customFont="Roboto_Light.ttf" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/score_question_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:background="#60000000"
+                android:cacheColorHint="@android:color/transparent"
+                android:divider="#60ffffff"
+                android:dividerHeight="2dp"
+                android:listSelector="@android:color/transparent"
+                android:padding="10dp"
+                tools:listitem="@layout/listview_row_mcq" >
+            </ListView>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

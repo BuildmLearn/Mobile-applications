@@ -1,0 +1,51 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:foo="http://schemas.android.com/apk/res/org.buildmlearn.learnfrommap"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.buildmlearn.learnfrommap.MainActivity" >
+
+    <ImageView
+        android:id="@+id/explore_world_map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_nexus" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:background="#80000000"
+            android:orientation="vertical" >
+
+            <org.buildmlearn.learnfrommap.helper.TextViewPlus
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/category_desc"
+                android:textColor="@android:color/white"
+                foo:customFont="Roboto_Light.ttf" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/listView_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10.0sp"
+            android:listSelector="@android:color/transparent"
+            tools:listitem="@layout/listview_row_category_mode" >
+        </ListView>
+    </LinearLayout>
+
+</RelativeLayout>

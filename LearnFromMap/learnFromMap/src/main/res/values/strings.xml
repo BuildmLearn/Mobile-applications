@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <string name="app_name">Learn From Map</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">About</string>
+
+    <color android:id="@+id/color1" name="black_alpha">#70000000</color>
+
+    <string name="title_activity_splash"></string>
+    <string name="buildmlearn">BuildmLearn</string>
+    <string name="most_successful_answers">MOST SUCCESSFUL ANSWERS</string>
+    <string name="more_info">more info</string>
+    <string name="explore">Explore Mode</string>
+    <string name="classic_mode">Classic Mode</string>
+    <string name="category_mode">Category Mode</string>
+    <string name="settings">Settings</string>
+
+    <color name="pressed">#800099CC</color>
+    <color name="topline_btn">#51ffffff</color>
+    <color name="bottomline_btn">#51000000</color>
+    <color name="grey">#A0797979</color>
+    <color name="grey_end">#A00099CC</color>
+    <color name="red_end">#A0CC0000</color>
+    <color name="green_end">#A099CC00</color>
+    <color name="selected">#A033B5E5</color>
+
+    <string name="title_activity_map">Map</string>
+    <string name="title_activity_fun">Fun</string>
+    <string name="question">Pin the capital of India</string>
+    <string name="time">00:60</string>
+    <string name="next_question">Submit</string>
+    <string name="title_activity_mcq">Mcq</string>
+    <string name="mcq_question">What is the capital of India ?</string>
+    <string name="option1">Option 1</string>
+    <string name="option2">Option 2</string>
+    <string name="option3">Option 3</string>
+    <string name="option4">Option 4</string>
+    <string name="title_activity_category">Category Mode</string>
+    <string name="title_activity_classic_mode">Classic Mode</string>
+    <string name="classic_mode_description">"In this mode, you can select your phone location or select any of the available countries from the drop-down. The questions will be based on your selection."</string>
+    <string name="use_my_location">Use My Location</string>
+    <string name="select_a_location">Or select a location</string>
+    <string name="play">Play</string>
+    <string name="title_activity_explore_mode">Explore Mode</string>
+    <string name="select_continent">Select a  continent</string>
+    <string name="unlocked_continents">Double tap the continent to select</string>
+    <string name="title_activity_game">Start Challenge</string>
+    <string name="loading">Loading</string>
+    <string name="start_game">Start Challenge</string>
+    <string name="answer">Answer</string>
+    <string name="title_activity_test">Test</string>
+    <string name="title_activity_score">Score Board</string>
+    <string name="score">96</string>
+    <string name="your_score">Your Score</string>
+    <string name="questions_correctly_solved">Questions correctly solved</string>
+    <string name="question_answer_count">18/20</string>
+    <string name="title_activity_test_db">TestDb</string>
+    <string name="fetching_location">Please Wait...\nFetching Your Location</string>
+    <string name="version">Version: 2.0.0</string>
+    <string name="confirm_exit">Are you sure you want to quit this challenge?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="about_build_m_learn">"\'Learn from Map\' is an educative game that teaches geography in a fun way. The users get to use an interactive map to answer questions by pinning relevant location on the Maps."</string>
+    <string name="developed_by_build_m_learn">Developed by BuildmLearn</string>
+    <string name="website">Visit us at www.buildmlearn.org</string>
+    <string name="select_a_category">Select a category</string>
+    <string name="category_desc">"In this mode, you can select a category from the given list. Question will be based on selected category."</string>
+    <string name="title_activity_statistics">Statistics</string>
+    <string name="no_data">Play challenges to see statistics here!</string>
+    <string name="india">India</string>
+    <string name="per95">95%</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="rate_this_app">Rate this app</string>
+    <string name="title_activity_app_tutorial">AppTutorial</string>
+    <string name="show_app_tut">Show App tutorial</string>
+    <string name="sound">Sound</string>
+    <string name="notifications">Notifications</string>
+    <string name="location_disabled">Location services are disabled, do you wish to enable location?</string>
+    <string name="not_now">Not now</string>
+
+</resources>

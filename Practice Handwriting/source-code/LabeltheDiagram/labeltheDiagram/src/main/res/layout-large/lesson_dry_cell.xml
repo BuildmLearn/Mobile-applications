@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res/com.example.labelthediagram">
+
+    <ImageView
+        android:id="@+id/mainDiagramDryCell"
+        android:layout_width="380dp"
+        android:layout_height="420dp"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/dry_cell" />
+    
+    <ImageView
+        android:id="@+id/posTerminalBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramDryCell"
+        android:layout_alignStart="@+id/mainDiagramDryCell"
+        android:layout_alignTop="@+id/mainDiagramDryCell"
+        android:layout_marginLeft="145dp"
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="2dp"
+        android:src="@drawable/one" />
+    
+    <ImageView
+        android:id="@+id/chemPasteBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramDryCell"
+        android:layout_alignEnd="@+id/mainDiagramDryCell"
+        android:layout_alignTop="@+id/mainDiagramDryCell"
+        android:layout_marginRight="105dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginTop="2dp"
+        android:src="@drawable/nine" />
+    
+    <ImageView
+        android:id="@+id/sealBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramDryCell"
+        android:layout_alignEnd="@+id/mainDiagramDryCell"
+        android:layout_alignTop="@+id/mainDiagramDryCell"
+        android:layout_marginRight="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/eight" />
+    
+    <ImageView
+        android:id="@+id/cathodeBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramDryCell"
+        android:layout_alignEnd="@+id/mainDiagramDryCell"
+        android:layout_alignTop="@+id/mainDiagramDryCell"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="200dp"
+        android:src="@drawable/seven" />
+    
+    <ImageView
+        android:id="@+id/insulatorBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramDryCell"
+        android:layout_alignEnd="@+id/mainDiagramDryCell"
+        android:layout_alignTop="@+id/mainDiagramDryCell"
+        android:layout_marginRight="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="250dp"
+        android:src="@drawable/six" />
+    
+    <ImageView
+        android:id="@+id/mJacketBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramDryCell"
+        android:layout_alignEnd="@+id/mainDiagramDryCell"
+        android:layout_alignBottom="@+id/mainDiagramDryCell"
+        android:layout_marginRight="90dp"
+        android:layout_marginEnd="90dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/five" />
+    
+    <ImageView
+        android:id="@+id/negTerminalBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramDryCell"
+        android:layout_alignEnd="@+id/mainDiagramDryCell"
+        android:layout_alignBottom="@+id/mainDiagramDryCell"
+        android:layout_marginRight="210dp"
+        android:layout_marginEnd="210dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/four" />
+    
+    <ImageView
+        android:id="@+id/airSpaceBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramDryCell"
+        android:layout_alignStart="@+id/mainDiagramDryCell"
+        android:layout_alignTop="@+id/mainDiagramDryCell"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="65dp"
+        android:src="@drawable/two" />
+    
+    <ImageView
+        android:id="@+id/anodeBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramDryCell"
+        android:layout_alignStart="@+id/mainDiagramDryCell"
+        android:layout_alignTop="@+id/mainDiagramDryCell"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="255dp"
+        android:src="@drawable/three" />
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mainDiagramDryCell"
+        android:orientation="vertical" >
+        <ListView
+            android:id="@+id/lesson_list"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sqliteassethelper-2.0.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/learnFromMap/libs/sqliteassethelper-2.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

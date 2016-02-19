@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <ImageView
+        android:id="@+id/mainDiagramBacteria"
+        android:layout_width="320dp"
+        android:layout_height="300dp"
+        android:layout_below="@+id/scoreTab"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/bacteria" />
+
+    <ImageView
+        android:id="@+id/ribosomesBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramBacteria"
+        android:layout_alignTop="@+id/mainDiagramBacteria"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="42dp"
+        android:src="@drawable/two" />
+
+    <ImageView
+        android:id="@+id/food_granuleBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramBacteria"
+        android:layout_alignTop="@+id/mainDiagramBacteria"
+        android:layout_marginLeft="95dp"
+        android:layout_marginTop="67dp"
+        android:src="@drawable/three" />
+
+    <ImageView
+        android:id="@+id/piliBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignLeft="@+id/mainDiagramBacteria"
+        android:layout_alignTop="@+id/mainDiagramBacteria"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/four" />
+
+    <ImageView
+        android:id="@+id/capsuleBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/mainDiagramBacteria"
+        android:layout_alignRight="@+id/mainDiagramBacteria"
+        android:layout_marginBottom="110dp"
+        android:layout_marginRight="45dp"
+        android:src="@drawable/ten" />
+
+    <ImageView
+        android:id="@+id/cytoplasmBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/mainDiagramBacteria"
+        android:layout_alignRight="@+id/mainDiagramBacteria"
+        android:layout_marginBottom="25dp"
+        android:layout_marginRight="125dp"
+        android:src="@drawable/seven" />
+
+    <ImageView
+        android:id="@+id/plasma_membraneBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/mainDiagramBacteria"
+        android:layout_alignRight="@+id/mainDiagramBacteria"
+        android:layout_marginBottom="45dp"
+        android:layout_marginRight="100dp"
+        android:src="@drawable/eight" />
+
+    <ImageView
+        android:id="@+id/flagellumBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/mainDiagramBacteria"
+        android:layout_alignLeft="@+id/mainDiagramBacteria"
+        android:layout_marginLeft="35dp"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/five" />
+
+    <ImageView
+        android:id="@+id/plasmidBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/mainDiagramBacteria"
+        android:layout_alignLeft="@+id/mainDiagramBacteria"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="102dp"
+        android:src="@drawable/six" />
+
+    <ImageView
+        android:id="@+id/cellwallBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/mainDiagramBacteria"
+        android:layout_alignRight="@+id/mainDiagramBacteria"
+        android:layout_marginBottom="75dp"
+        android:layout_marginRight="50dp"
+        android:src="@drawable/nine" />
+
+    <ImageView
+        android:id="@+id/chromosomeBlb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/mainDiagramBacteria"
+        android:layout_alignTop="@+id/mainDiagramBacteria"
+        android:layout_marginRight="118dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/one" />
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mainDiagramBacteria"
+        android:orientation="vertical" >
+        <ListView
+            android:id="@+id/lesson_list"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout>
+
+</RelativeLayout>

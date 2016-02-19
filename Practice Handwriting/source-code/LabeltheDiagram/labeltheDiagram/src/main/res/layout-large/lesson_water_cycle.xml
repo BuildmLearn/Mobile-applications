@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/mainDiagramWaterCycle"
+        android:layout_width="480dp"
+        android:layout_height="420dp"
+        android:layout_below="@+id/scoreTab"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/hydrolic_cycle" />
+
+    <ImageView
+        android:id="@+id/precipitationBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@+id/mainDiagramWaterCycle"
+        android:layout_alignTop="@+id/mainDiagramWaterCycle"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/three" />
+
+    <ImageView
+        android:id="@+id/surface_runBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramWaterCycle"
+        android:layout_alignRight="@+id/mainDiagramWaterCycle"
+        android:layout_marginBottom="100dp"
+        android:layout_marginRight="115dp"
+        android:src="@drawable/seven" />
+
+    <ImageView
+        android:id="@+id/condensationBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramWaterCycle"
+        android:layout_alignTop="@+id/mainDiagramWaterCycle"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/one" />
+
+    <ImageView
+        android:id="@+id/transpirationBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramWaterCycle"
+        android:layout_alignTop="@+id/mainDiagramWaterCycle"
+        android:layout_marginLeft="270dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/two" />
+
+    <ImageView
+        android:id="@+id/eveporationBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/mainDiagramWaterCycle"
+        android:layout_alignTop="@+id/mainDiagramWaterCycle"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="200dp"
+        android:src="@drawable/four" />
+
+    <ImageView
+        android:id="@+id/infiltrationBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramWaterCycle"
+        android:layout_alignRight="@+id/mainDiagramWaterCycle"
+        android:layout_marginBottom="25dp"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/eight" />
+    
+     <ImageView
+        android:id="@+id/oceanBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramWaterCycle"
+        android:layout_alignLeft="@+id/mainDiagramWaterCycle"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="120dp"
+        android:src="@drawable/five" />
+
+    <ImageView
+        android:id="@+id/underground_waterBlb"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/mainDiagramWaterCycle"
+        android:layout_alignLeft="@+id/mainDiagramWaterCycle"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="235dp"
+        android:src="@drawable/six" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mainDiagramWaterCycle"
+        android:orientation="vertical" >
+        <ListView
+            android:id="@+id/lesson_list"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout>
+
+</RelativeLayout>

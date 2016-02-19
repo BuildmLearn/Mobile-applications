@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.buildmlearn.learnfrommap"
+    android:versionCode="2"
+    android:versionName="2.0" >
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="19" />
+
+    <permission
+        android:name="org.buildmlearn.learnfrommap.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="org.buildmlearn.learnfrommap.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:theme="@style/CustomActionBarTheme" >
+        <receiver android:name="org.buildmlearn.learnfrommap.NotificationService" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="org.buildmlearn.learnfrommap.service.NotificationBarAlarm" >
+        </receiver>
+
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyCq8O-1lVOwqic6qx1GezTLXSpCtSYpee0" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name="org.buildmlearn.learnfrommap.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="org.buildmlearn.learnfrommap.SplashActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.buildmlearn.learnfrommap.CategoryActivity"
+            android:label="@string/title_activity_category"
+            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.buildmlearn.learnfrommap.MainActivity" />
+        </activity>
+        <activity
+            android:name="org.buildmlearn.learnfrommap.ClassicModeActivity"
+            android:label="@string/title_activity_classic_mode"
+            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.buildmlearn.learnfrommap.MainActivity" />
+        </activity>
+        <activity
+            android:name="org.buildmlearn.learnfrommap.ExploreMode"
+            android:label="@string/title_activity_explore_mode"
+            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.buildmlearn.learnfrommap.MainActivity" />
+        </activity>
+        <activity
+            android:name="org.buildmlearn.learnfrommap.GameActivity"
+            android:label="@string/title_activity_game"
+            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.buildmlearn.learnfrommap.MainActivity" />
+        </activity>
+        <activity
+            android:name="org.buildmlearn.learnfrommap.ScoreActivity"
+            android:label="@string/title_activity_score"
+            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.buildmlearn.learnfrommap.MainActivity" />
+        </activity>
+        <activity
+            android:name="org.buildmlearn.learnfrommap.StatisticsActivity"
+            android:label="@string/title_activity_statistics"
+            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.buildmlearn.learnfrommap.MainActivity" />
+        </activity>
+        <activity
+            android:name="org.buildmlearn.learnfrommap.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:screenOrientation="portrait"
+            android:parentActivityName="org.buildmlearn.learnfrommap.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.buildmlearn.learnfrommap.MainActivity" />
+        </activity>
+
+        <!--
+             <receiver android:name=".NotificationService" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        -->
+        <activity
+            android:name="org.buildmlearn.learnfrommap.Test"
+            android:label="@string/title_activity_test" >
+        </activity>
+
+        <service
+            android:name="org.buildmlearn.learnfrommap.service.AlarmService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name="org.buildmlearn.learnfrommap.AppTutorial"
+            android:label="@string/title_activity_app_tutorial"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        </activity>
+    </application>
+
+</manifest>

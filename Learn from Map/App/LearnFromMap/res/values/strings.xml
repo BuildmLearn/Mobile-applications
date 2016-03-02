@@ -4,6 +4,7 @@
     <string name="app_name">Learn From Map</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">About</string>
+    <string name="action_share">Share App</string>
 
     <color android:id="@+id/color1" name="black_alpha">#70000000</color>
 
